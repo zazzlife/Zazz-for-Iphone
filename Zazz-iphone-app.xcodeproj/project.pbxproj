@@ -145,6 +145,11 @@
 				5E8AA72818FCAF2500C99D9F /* FirstViewController.m */,
 				5E8AA72A18FCAF3000C99D9F /* SecondViewController.h */,
 				5E8AA72B18FCAF3000C99D9F /* SecondViewController.m */,
+				0DD31815191B3501003D5630 /* Will.jpg */,
+				0DD3180F191B34F7003D5630 /* Ken.jpg */,
+				0DD31810191B34F7003D5630 /* Laurent.jpg */,
+				0DD31811191B34F7003D5630 /* Mitchell.jpg */,
+				0DD3180D191B34E9003D5630 /* Fyodor.jpg */,
 				5E8AA70A18FCAED600C99D9F /* Images.xcassets */,
 				5E8AA6F618FCAED600C99D9F /* Supporting Files */,
 			);
@@ -154,11 +159,6 @@
 		5E8AA6F618FCAED600C99D9F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0DD31815191B3501003D5630 /* Will.jpg */,
-				0DD3180F191B34F7003D5630 /* Ken.jpg */,
-				0DD31810191B34F7003D5630 /* Laurent.jpg */,
-				0DD31811191B34F7003D5630 /* Mitchell.jpg */,
-				0DD3180D191B34E9003D5630 /* Fyodor.jpg */,
 				5E8AA6F718FCAED600C99D9F /* Zazz-iphone-app-Info.plist */,
 				5E8AA6F818FCAED600C99D9F /* InfoPlist.strings */,
 				5E8AA6FB18FCAED600C99D9F /* main.m */,
