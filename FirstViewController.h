@@ -10,4 +10,14 @@
 
 @interface FirstViewController : UIViewController
 
+{
+    IBOutlet UIButton *GoToFeed1;
+}
+
+// Not sure this is necessary but I threw it in for now..
+
+-(IBAction)StartFeed1:(id)sender;
+-(void) GetFeed;
+
+
 @end

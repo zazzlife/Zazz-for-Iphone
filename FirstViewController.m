@@ -14,6 +14,22 @@
 
 @implementation FirstViewController
 
+-(IBAction)StartFeed1:(id)sender {
+    
+    // Not really sure what to do here..
+    
+}
+
+-(void) GetFeed {
+    
+    // Or here..
+}
+
+
+
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

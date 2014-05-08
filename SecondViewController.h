@@ -10,4 +10,11 @@
 
 @interface SecondViewController : UIViewController
 
+{
+    IBOutlet UIButton *GoToFeed2;
+}
+
+-(IBAction)StartFeed2:(id)sender;
+-(void) GetFeed;
+
 @end
