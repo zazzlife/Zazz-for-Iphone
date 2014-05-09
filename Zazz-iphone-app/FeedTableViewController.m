@@ -15,18 +15,7 @@
 @synthesize Usernames = _Usernames;
 @synthesize TimeStamps = _TimeStamps;
 
-- (id)initWithStyle:(UITableViewStyle)style
-
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
-
 {
     [super viewDidLoad];
     
@@ -64,12 +53,6 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -92,14 +75,25 @@
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault               reuseIdentifier:CellIdentifier];
+        cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.UserName.text = [self.Usernames objectAtIndex: [indexPath row]];
-    cell.TimeStamp.text = [self.TimeStamps objectAtIndex: [indexPath row]];
     
-    UIImage *userPhoto = [UIImage imageNamed: [self.UserImages objectAtIndex: [indexPath row]]];
-    cell.UserImage.image = userPhoto;
+    NSString *username = [self.Usernames objectAtIndex: [indexPath row]];
+    NSString *timestamp = [self.TimeStamps objectAtIndex: [indexPath row]];
+    NSString *imagePath =[self.UserImages objectAtIndex: [indexPath row]];
+    
+    
+    NSLog(@"%@. %@, %@", username, timestamp, imagePath);
+    
+    //This logic should be moved into FeedTableViewCell
+    cell.UserName.text = username;
+    cell.TimeStamp.text = timestamp;
+    cell.UserImage.image = [UIImage imageNamed:imagePath];
+    
+    
+//    UserProfile *profile = [[UserProfile alloc] initWithUserName:username andImagePath:imagePath ];
+//    [cell initWithProfile: profile andTimeStamp: timestamp]
     
     return cell;
 }

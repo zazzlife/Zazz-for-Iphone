@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FeedTableViewController : UITableViewController
+@interface FeedTableViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *Usernames;
 @property (nonatomic, strong) NSArray *TimeStamps;
 @property (nonatomic, strong) NSArray *UserImages;
-
 @end

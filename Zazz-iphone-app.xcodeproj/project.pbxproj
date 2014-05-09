@@ -11,6 +11,7 @@
 		0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */; };
 		2A5FAEAF191BE48200B917AB /* Fyodor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A5FAEAD191BE48200B917AB /* Fyodor.jpg */; };
 		2A5FAEB0191BE48200B917AB /* Mitchell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A5FAEAE191BE48200B917AB /* Mitchell.jpg */; };
+		2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
 		5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
@@ -25,8 +26,6 @@
 		5E8AA71418FCAED700C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
 		5E8AA71C18FCAED700C99D9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E8AA71A18FCAED700C99D9F /* InfoPlist.strings */; };
 		5E8AA71E18FCAED700C99D9F /* Zazz_iphone_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AA71D18FCAED700C99D9F /* Zazz_iphone_appTests.m */; };
-		5E8AA72918FCAF2500C99D9F /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AA72818FCAF2500C99D9F /* FirstViewController.m */; };
-		5E8AA72C18FCAF3000C99D9F /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AA72B18FCAF3000C99D9F /* SecondViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +45,8 @@
 		0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 		2A5FAEAD191BE48200B917AB /* Fyodor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Fyodor.jpg; sourceTree = "<group>"; };
 		2A5FAEAE191BE48200B917AB /* Mitchell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mitchell.jpg; sourceTree = "<group>"; };
+		2A5FAEB3191BF7CA00B917AB /* ZazzApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzApi.h; path = API_Module/ZazzApi.h; sourceTree = "<group>"; };
+		2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzApi.m; path = API_Module/ZazzApi.m; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,10 +65,6 @@
 		5E8AA71918FCAED700C99D9F /* Zazz-iphone-appTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Zazz-iphone-appTests-Info.plist"; sourceTree = "<group>"; };
 		5E8AA71B18FCAED700C99D9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E8AA71D18FCAED700C99D9F /* Zazz_iphone_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Zazz_iphone_appTests.m; sourceTree = "<group>"; };
-		5E8AA72718FCAF2500C99D9F /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstViewController.h; path = ../FirstViewController.h; sourceTree = "<group>"; };
-		5E8AA72818FCAF2500C99D9F /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstViewController.m; path = ../FirstViewController.m; sourceTree = "<group>"; };
-		5E8AA72A18FCAF3000C99D9F /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SecondViewController.h; path = ../SecondViewController.h; sourceTree = "<group>"; };
-		5E8AA72B18FCAF3000C99D9F /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SecondViewController.m; path = ../SecondViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +108,35 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		2A5FAEB6191BF7D200B917AB /* API_Module */ = {
+			isa = PBXGroup;
+			children = (
+				2A5FAEB3191BF7CA00B917AB /* ZazzApi.h */,
+				2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */,
+			);
+			name = API_Module;
+			sourceTree = "<group>";
+		};
+		2A5FAEB7191D2BE500B917AB /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5E8AA70118FCAED600C99D9F /* Main_iPhone.storyboard */,
+				5E8AA70418FCAED600C99D9F /* Main_iPad.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		2A5FAEB8191D2BF300B917AB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0DD31807191B2063003D5630 /* FeedTableViewController.h */,
+				0DD31808191B2063003D5630 /* FeedTableViewController.m */,
+				0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */,
+				0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		5E8AA6E318FCAED600C99D9F = {
 			isa = PBXGroup;
 			children = (
@@ -144,19 +170,12 @@
 		5E8AA6F518FCAED600C99D9F /* Zazz-iphone-app */ = {
 			isa = PBXGroup;
 			children = (
-				2A5FAEB1191BE48800B917AB /* Assets */,
 				5E8AA6FE18FCAED600C99D9F /* AppDelegate.h */,
 				5E8AA6FF18FCAED600C99D9F /* AppDelegate.m */,
-				5E8AA70118FCAED600C99D9F /* Main_iPhone.storyboard */,
-				5E8AA70418FCAED600C99D9F /* Main_iPad.storyboard */,
-				0DD31807191B2063003D5630 /* FeedTableViewController.h */,
-				0DD31808191B2063003D5630 /* FeedTableViewController.m */,
-				0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */,
-				0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */,
-				5E8AA72718FCAF2500C99D9F /* FirstViewController.h */,
-				5E8AA72818FCAF2500C99D9F /* FirstViewController.m */,
-				5E8AA72A18FCAF3000C99D9F /* SecondViewController.h */,
-				5E8AA72B18FCAF3000C99D9F /* SecondViewController.m */,
+				2A5FAEB6191BF7D200B917AB /* API_Module */,
+				2A5FAEB1191BE48800B917AB /* Assets */,
+				2A5FAEB7191D2BE500B917AB /* Storyboards */,
+				2A5FAEB8191D2BF300B917AB /* Controllers */,
 				5E8AA70A18FCAED600C99D9F /* Images.xcassets */,
 				5E8AA6F618FCAED600C99D9F /* Supporting Files */,
 			);
@@ -294,9 +313,8 @@
 			files = (
 				0DD31809191B2063003D5630 /* FeedTableViewController.m in Sources */,
 				0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */,
-				5E8AA72C18FCAF3000C99D9F /* SecondViewController.m in Sources */,
 				5E8AA70018FCAED600C99D9F /* AppDelegate.m in Sources */,
-				5E8AA72918FCAF2500C99D9F /* FirstViewController.m in Sources */,
+				2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
