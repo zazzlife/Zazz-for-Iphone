@@ -71,26 +71,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"FeedTableCell";
-    
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
         cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    
     NSString *username = [self.Usernames objectAtIndex: [indexPath row]];
     NSString *timestamp = [self.TimeStamps objectAtIndex: [indexPath row]];
     NSString *imagePath =[self.UserImages objectAtIndex: [indexPath row]];
-    
-    
-    NSLog(@"%@. %@, %@", username, timestamp, imagePath);
     
     //This logic should be moved into FeedTableViewCell
     cell.UserName.text = username;
     cell.TimeStamp.text = timestamp;
     cell.UserImage.image = [UIImage imageNamed:imagePath];
-    
     
 //    UserProfile *profile = [[UserProfile alloc] initWithUserName:username andImagePath:imagePath ];
 //    [cell initWithProfile: profile andTimeStamp: timestamp]

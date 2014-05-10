@@ -8,16 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ZazzApi: NSObject<NSURLConnectionDelegate>
+@class ZazzApiClass;
 
-@property (retain, nonatomic) NSMutableData *receivedData;
-@property (retain, nonatomic) NSURLConnection *theConnection;
+@interface ZazzApi: NSObject
 
-+ (void)makeCall;
+@property NSString* auth_token;
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection;
++(NSString *) BASE_URL;
++(NSString *) urlEscapeString:(NSString *)unencodedString;
++(NSString *) getQueryStringFromDictionary:(NSDictionary *)dictionary;
+
+-(BOOL)needAuth;
+-(void) doLoginWithUsername:(NSString*)username andPassword:(NSString*)password;
+-(void) gotLoginToken:(NSString*)token;
+
+-(void) getMe;
+-(void) gotUserId:(NSString*)userId;
 
 @end

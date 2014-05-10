@@ -7,76 +7,72 @@
 //
 
 #import "ZazzApi.h"
+#import "ZazzLogin.h"
+#import "ZazzMe.h"
+
+static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
 
 @implementation ZazzApi
 
-NSMutableData *receivedData;
-NSURLConnection *theConnection;
++(NSString *) BASE_URL{  return BASE_URL; }
+@synthesize auth_token;
 
-+ (void) makeCall{
-    
-//    NSString *BASE_URL = @"http://test.zazzlife.com/api/v1/";
-//    NSString *api_action =  [BASE_URL stringByAppendingString:@"token"];
-//    NSString *postString = @"grant_type=password&username=user&password=123&scope=full";
-//    
-//    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
-//    [request setHTTPMethod:@"POST"];
-//    [request setValue:[NSString   stringWithFormat:@"%d", [postString length]] forHTTPHeaderField:@"Content-length"];
-//    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-//    
-//    NSURLConnection * connection = [NSURLConnection connectionWithRequest:request delegate:self];
+-(id) init{
+    [self setAuth_token:nil];
+    return [super init];
+}
 
-    NSURLRequest *theRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.apple.com/"]
-                                              cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                          timeoutInterval:60.0];
+-(BOOL) needAuth {  return self.auth_token == nil; }
+
+
+/*
+ LOGIN
+ */
+- (void) doLoginWithUsername:(NSString*)username andPassword:(NSString*)password{
+    ZazzLogin * loginCaller = [[ZazzLogin alloc] init];
+    [loginCaller loginWithUsername:username andPassword:password withDelegate:self];
+}
+-(void) gotLoginToken:(NSString*)token{
+    [self setAuth_token:token];
     
-    // Create the NSMutableData to hold the received data.
-    // receivedData is an instance variable declared elsewhere.
-    receivedData = [NSMutableData dataWithCapacity: 0];
+    NSLog(@"TODO: REMOVE AND SEPORATE INTO LOGIN / POST LOGIN SCREENS...");
+    [self getMe];
+}
+
+
+
+/*
+ ME - PROFILE
+ */
+-(void) getMe{
+    [[[ZazzMe alloc] init] getMeWithAuthToken:auth_token delegate:self];
+}
+-(void) gotUserId:(NSString*)userId{
+    NSLog(@"Got UserId: %@",userId);
+}
+
+
+
+
+//STATIC METHODS
++(NSString*)urlEscapeString:(NSString *)unencodedString
+{
+    CFStringRef originalStringRef = (__bridge_retained CFStringRef)unencodedString;
+    NSString *s = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(NULL,originalStringRef, NULL, NULL,kCFStringEncodingUTF8);
+    CFRelease(originalStringRef);
+    return s;
+}
++(NSString*)getQueryStringFromDictionary:(NSDictionary *)dictionary
+{
+    NSMutableString *urlWithQuerystring = [[NSMutableString alloc] initWithString:@""];
     
-    // create the connection with the request
-    // and start loading the data
-    theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-    if (!theConnection) {
-        // Release the receivedData object.
-        receivedData = nil;
-        
-        // Inform the user that the connection failed.
+    for (id key in dictionary) {
+        NSString *keyString = [key description];
+        NSString *valueString = [[dictionary objectForKey:key] description];
+        [urlWithQuerystring appendFormat:@"&%@=%@", [self urlEscapeString:valueString], [self urlEscapeString:keyString]];
     }
-    
-    
-    NSLog(@"connectionWithRequest");
-    
+    return urlWithQuerystring;
 }
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSLog(@"Connection didReceiveResponse");
-    [receivedData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    NSLog(@"didReceiveData");
-//    [_responseData appendData:data];
-//    NSError *jsonParsingError = nil;
-//    NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParsingError];
-//    NSString * response = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//    NSLog(@"GOT DATA:%@ --- [0]%@", response, [array objectAtIndex:0]);
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    NSLog(@"Connection didFailWithError");
-    theConnection = nil;
-    receivedData = nil;
-}
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"connectionDidFinishLoading");
-    theConnection = nil;
-    receivedData = nil;
-}
-
 
 
 @end

@@ -12,6 +12,8 @@
 		2A5FAEAF191BE48200B917AB /* Fyodor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A5FAEAD191BE48200B917AB /* Fyodor.jpg */; };
 		2A5FAEB0191BE48200B917AB /* Mitchell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A5FAEAE191BE48200B917AB /* Mitchell.jpg */; };
 		2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */; };
+		2A5FAEBC191D5FBF00B917AB /* ZazzLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEBB191D5FBF00B917AB /* ZazzLogin.m */; };
+		2A5FAEC4191DC5D500B917AB /* ZazzMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEC3191DC5D500B917AB /* ZazzMe.m */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
 		5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
@@ -47,6 +49,10 @@
 		2A5FAEAE191BE48200B917AB /* Mitchell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mitchell.jpg; sourceTree = "<group>"; };
 		2A5FAEB3191BF7CA00B917AB /* ZazzApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzApi.h; path = API_Module/ZazzApi.h; sourceTree = "<group>"; };
 		2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzApi.m; path = API_Module/ZazzApi.m; sourceTree = "<group>"; };
+		2A5FAEBB191D5FBF00B917AB /* ZazzLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzLogin.m; sourceTree = "<group>"; };
+		2A5FAEBD191D78E300B917AB /* ZazzLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzLogin.h; sourceTree = "<group>"; };
+		2A5FAEC2191DC5D500B917AB /* ZazzMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzMe.h; sourceTree = "<group>"; };
+		2A5FAEC3191DC5D500B917AB /* ZazzMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzMe.m; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -108,13 +114,14 @@
 			name = images;
 			sourceTree = "<group>";
 		};
-		2A5FAEB6191BF7D200B917AB /* API_Module */ = {
+		2A5FAEB6191BF7D200B917AB /* API */ = {
 			isa = PBXGroup;
 			children = (
 				2A5FAEB3191BF7CA00B917AB /* ZazzApi.h */,
 				2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */,
+				2A5FAEBE191D791B00B917AB /* Actions */,
 			);
-			name = API_Module;
+			name = API;
 			sourceTree = "<group>";
 		};
 		2A5FAEB7191D2BE500B917AB /* Storyboards */ = {
@@ -135,6 +142,25 @@
 				0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		2A5FAEB9191D5AA700B917AB /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				2A5FAEB6191BF7D200B917AB /* API */,
+			);
+			name = Modules;
+			sourceTree = "<group>";
+		};
+		2A5FAEBE191D791B00B917AB /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				2A5FAEBD191D78E300B917AB /* ZazzLogin.h */,
+				2A5FAEBB191D5FBF00B917AB /* ZazzLogin.m */,
+				2A5FAEC2191DC5D500B917AB /* ZazzMe.h */,
+				2A5FAEC3191DC5D500B917AB /* ZazzMe.m */,
+			);
+			name = Actions;
 			sourceTree = "<group>";
 		};
 		5E8AA6E318FCAED600C99D9F = {
@@ -172,7 +198,7 @@
 			children = (
 				5E8AA6FE18FCAED600C99D9F /* AppDelegate.h */,
 				5E8AA6FF18FCAED600C99D9F /* AppDelegate.m */,
-				2A5FAEB6191BF7D200B917AB /* API_Module */,
+				2A5FAEB9191D5AA700B917AB /* Modules */,
 				2A5FAEB1191BE48800B917AB /* Assets */,
 				2A5FAEB7191D2BE500B917AB /* Storyboards */,
 				2A5FAEB8191D2BF300B917AB /* Controllers */,
@@ -313,9 +339,11 @@
 			files = (
 				0DD31809191B2063003D5630 /* FeedTableViewController.m in Sources */,
 				0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */,
+				2A5FAEBC191D5FBF00B917AB /* ZazzLogin.m in Sources */,
 				5E8AA70018FCAED600C99D9F /* AppDelegate.m in Sources */,
 				2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
+				2A5FAEC4191DC5D500B917AB /* ZazzMe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
