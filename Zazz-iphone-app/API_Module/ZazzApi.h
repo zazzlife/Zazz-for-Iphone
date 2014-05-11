@@ -7,8 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Profile.h"
+#import "Feed.h"
 
-@class ZazzApiClass;
+@protocol ZazzLoginDelegate<NSObject>
+-(void)finishedZazzAuth:(BOOL)success;
+@end
+
+@protocol ZazzProfileDelegate <NSObject>
+-(void)gotZazzProfile:(Profile*)profile;
+@end
+
+@protocol ZazzFeedDelegate <NSObject>
+-(void)gotZazzFeed:(Feed*)feed;
+@end
+
 
 @interface ZazzApi: NSObject
 
@@ -18,11 +31,17 @@
 +(NSString *) urlEscapeString:(NSString *)unencodedString;
 +(NSString *) getQueryStringFromDictionary:(NSDictionary *)dictionary;
 
--(BOOL)needAuth;
--(void) doLoginWithUsername:(NSString*)username andPassword:(NSString*)password;
+@property id _delegate;
+
+-(BOOL) needAuth;
+-(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password delegate:(id)delegate;
 -(void) gotLoginToken:(NSString*)token;
 
--(void) getMe;
--(void) gotUserId:(NSString*)userId;
+-(void) getMyProfileDelegate:(id)delegate;
+-(void) getProfile:(NSString*)userId delegate:(id)delegate;
+-(void) gotProfile:(Profile*)profile;
+
+-(void) getFeed:(NSString*)userId delegate:(id)delegate;
+-(void) gotFeed:(Feed*)feed;
 
 @end

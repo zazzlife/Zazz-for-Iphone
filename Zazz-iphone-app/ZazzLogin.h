@@ -13,6 +13,6 @@
 
 @property ZazzApi* _delegate;
 
-- (void) loginWithUsername:(NSString*)username andPassword:(NSString*)password withDelegate:(id)delegate;
+- (void) loginWithUsername:(NSString*)username andPassword:(NSString*)password delegate:(id)delegate;
 
 @end

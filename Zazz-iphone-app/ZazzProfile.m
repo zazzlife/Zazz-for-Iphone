@@ -6,25 +6,28 @@
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
-#import "ZazzMe.h"
+#import "ZazzProfile.h"
 
-@implementation ZazzMe
+@implementation ZazzProfile
 
 @synthesize _delegate;
 
-- (void) getMeWithAuthToken:(NSString*)token delegate:(id)delegate{
+- (void) getMyProfileDelegate:(id)delegate{
     
     [self set_delegate:delegate];
     
     NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
     NSString * api_action =  [BASE_URL stringByAppendingString:@"me"];
-    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", token];
+    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
     [request setHTTPMethod:@"GET"];
     [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
     
     [NSURLConnection connectionWithRequest:request delegate:self];
+}
+-(void) getProfile:(NSString *)userId delegate:(id)delegate{
+    NSLog(@"TODO; IMPLEMENT GET PROFILE WITH USERID - ZazzProfile:getProfile");
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -34,8 +37,15 @@
         NSLog(@"JSON ERROR");
         return;
     }
-    NSString * userId = [array objectForKey:@"userId"];
-    [[self _delegate] gotUserId:userId];
+    
+    Profile* profile = [[Profile alloc] init];
+    [profile setUserId:[array objectForKey:@"userId"]];
+    [profile setUsername:[array objectForKey:@"username"]];
+    [profile setPhotoPath:[array objectForKey:@"photoPath"]];
+    
+    NSLog(@"TODO: Return User Profile instead of ID:%@",[profile userId]);
+    
+    [[self _delegate] gotProfile:profile];
 }
 
 @end

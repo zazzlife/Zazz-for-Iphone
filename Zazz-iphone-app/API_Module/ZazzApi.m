@@ -8,7 +8,8 @@
 
 #import "ZazzApi.h"
 #import "ZazzLogin.h"
-#import "ZazzMe.h"
+#import "ZazzProfile.h"
+#import "ZazzFeed.h"
 
 static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
 
@@ -16,27 +17,29 @@ static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
 
 +(NSString *) BASE_URL{  return BASE_URL; }
 @synthesize auth_token;
+@synthesize _delegate;
 
 -(id) init{
     [self setAuth_token:nil];
     return [super init];
 }
 
--(BOOL) needAuth {  return self.auth_token == nil; }
 
 
 /*
  LOGIN
  */
-- (void) doLoginWithUsername:(NSString*)username andPassword:(NSString*)password{
-    ZazzLogin * loginCaller = [[ZazzLogin alloc] init];
-    [loginCaller loginWithUsername:username andPassword:password withDelegate:self];
+
+-(BOOL) needAuth {
+    return self.auth_token == nil;
+}
+-(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password delegate:(id)delegate{
+    [self set_delegate:delegate];
+    [[[ZazzLogin alloc] init] loginWithUsername:username andPassword:password delegate:self];
 }
 -(void) gotLoginToken:(NSString*)token{
     [self setAuth_token:token];
-    
-    NSLog(@"TODO: REMOVE AND SEPORATE INTO LOGIN / POST LOGIN SCREENS...");
-    [self getMe];
+    [_delegate finishedZazzAuth:![self needAuth]];
 }
 
 
@@ -44,11 +47,26 @@ static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
 /*
  ME - PROFILE
  */
--(void) getMe{
-    [[[ZazzMe alloc] init] getMeWithAuthToken:auth_token delegate:self];
+-(void) getMyProfileDelegate:(id)delegate{
+    [[[ZazzProfile alloc] init] getMyProfileDelegate:self];
 }
--(void) gotUserId:(NSString*)userId{
-    NSLog(@"Got UserId: %@",userId);
+-(void) getProfile:(NSString*)userId delegate:(id)delegate{
+    
+}
+-(void) gotProfile:(Profile*)profile{
+    [_delegate gotZazzProfile:profile];
+}
+
+
+/*
+ FEED
+ */
+-(void) getFeed:(NSString*)userId{
+    [[[ZazzFeed alloc] init] getFeedForUserId:userId delegate:self];
+}
+-(void) gotFeed:(Feed*)feed{
+    NSLog(@"TODO: CHANGE METHOD SIGNATURE TO ACCEPT Feed OBJECT. feed:%@", feed);
+    [_delegate gotZazzFeed:feed];
 }
 
 

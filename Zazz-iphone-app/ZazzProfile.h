@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "ZazzApi.h"
 
-@interface ZazzMe : NSObject<NSURLConnectionDataDelegate>
+@interface ZazzProfile : NSObject<NSURLConnectionDataDelegate>
 
 @property ZazzApi* _delegate;
 
-- (void) getMeWithAuthToken:(NSString*)token delegate:(id)delegate;
+- (void) getMyProfileDelegate:(id)delegate;
+- (void) getProfile:(NSString*)userId delegate:(id)delegate;
 
 @end

@@ -7,14 +7,14 @@
 //
 
 #import "AppDelegate.h"
-#import "ZazzApi.h"
 
 @implementation AppDelegate
+
+ZazzApi *API = nil;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     ZazzApi *API = [[ZazzApi alloc] init];
-    [API doLoginWithUsername:@"user" andPassword:@"123"];
     // Override point for customization after application launch.
     return YES;
 }
