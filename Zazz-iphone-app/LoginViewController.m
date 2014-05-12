@@ -54,12 +54,11 @@
 }
 
 -(IBAction)doLogin:(id)sender{
-    NSLog(@"logging in!");
     [[[ZazzApi alloc] init] getAuthTokenWithUsername:_username.text andPassword:_password.text delegate:self];
 }
 
 -(void) finishedZazzAuth:(BOOL)success{
-    NSLog(@"finishedZazzAuth - success:%b",success);
+    NSLog(@"finishedZazzAuth - success:%s",success?"yes":"no");
     if(success){
         [self performSegueWithIdentifier:@"loginComplete" sender:self];
     }
