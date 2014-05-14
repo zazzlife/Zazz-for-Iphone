@@ -19,5 +19,7 @@
 @property IBOutlet UITextField* password;
 
 -(IBAction)doRegistration:(id)sender;
+-(IBAction)userTappedBackgroud:(id)sender;
+-(IBAction)userHitReturn:(id)sender;
 
 @end

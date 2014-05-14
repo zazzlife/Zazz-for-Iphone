@@ -17,7 +17,20 @@
 @synthesize _username;
 @synthesize _password;
 
+
+-(IBAction)userHitReturn:(id)sender {
+    
+    [sender resignFirstResponder];
+}
+
+-(IBAction)userTappedBackgroud:(id)sender {
+    
+    [_password resignFirstResponder];
+    [_username resignFirstResponder];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -29,6 +42,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor blackColor];
+    
+    self.loginprogress.backgroundColor = [UIColor yellowColor];
+    
+    CGRect frame = CGRectMake(120, 235, 80, 80);
+    
+    self.loginprogress = [[UIActivityIndicatorView alloc] initWithFrame:frame];
+    
+    [self.view addSubview:self.loginprogress];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -54,13 +78,26 @@
 }
 
 -(IBAction)doLogin:(id)sender{
+    
     [[[ZazzApi alloc] init] getAuthTokenWithUsername:_username.text andPassword:_password.text delegate:self];
+    [self.loginprogress startAnimating];
+    [_password resignFirstResponder];
+    [_username resignFirstResponder];
 }
 
 -(void) finishedZazzAuth:(BOOL)success{
+   
     NSLog(@"finishedZazzAuth - success:%s",success?"yes":"no");
+    
     if(success){
         [self performSegueWithIdentifier:@"loginComplete" sender:self];
+        [self.loginprogress stopAnimating];
+    }
+    else {
+        UIAlertView *loginerror = [[UIAlertView alloc] initWithTitle:@"Login Failed!" message:@"Your username or password is incorrect" delegate:nil cancelButtonTitle:@"try again" otherButtonTitles:nil, nil];
+        
+        [self.loginprogress stopAnimating];
+        [loginerror show];
     }
 }
 @end

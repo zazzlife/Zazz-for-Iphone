@@ -14,6 +14,27 @@
 
 @implementation RegisterViewController
 
+@synthesize firstName;
+@synthesize lastName;
+@synthesize email;
+@synthesize username;
+@synthesize password;
+
+-(IBAction)userHitReturn:(id)sender {
+    
+    [sender resignFirstResponder];
+}
+
+-(IBAction)userTappedBackgroud:(id)sender {
+    
+    [firstName resignFirstResponder];
+    [lastName resignFirstResponder];
+    [email resignFirstResponder];
+    [username resignFirstResponder];
+    [password resignFirstResponder];
+}
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

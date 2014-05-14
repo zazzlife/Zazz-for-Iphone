@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB12D351922FA20001E9E26 /* QuartzCore.framework */; };
 		0DD31809191B2063003D5630 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD31808191B2063003D5630 /* FeedTableViewController.m */; };
 		0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */; };
 		2A09D716191E916C00A2827F /* ZazzFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D715191E916C00A2827F /* ZazzFeed.m */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DB12D351922FA20001E9E26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0DD31807191B2063003D5630 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		0DD31808191B2063003D5630 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */,
 				5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */,
 				5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */,
 				5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */,
@@ -218,6 +221,7 @@
 		5E8AA6EE18FCAED600C99D9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DB12D351922FA20001E9E26 /* QuartzCore.framework */,
 				5E8AA6EF18FCAED600C99D9F /* Foundation.framework */,
 				5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */,
 				5E8AA6F318FCAED600C99D9F /* UIKit.framework */,
