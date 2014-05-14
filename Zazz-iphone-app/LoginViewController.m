@@ -45,9 +45,9 @@
     
     self.view.backgroundColor = [UIColor blackColor];
     
-    self.loginprogress.backgroundColor = [UIColor yellowColor];
+    self.loginprogress.color = [UIColor yellowColor];
     
-    CGRect frame = CGRectMake(120, 235, 80, 80);
+    CGRect frame = CGRectMake(120, 335, 80, 80);
     
     self.loginprogress = [[UIActivityIndicatorView alloc] initWithFrame:frame];
     
