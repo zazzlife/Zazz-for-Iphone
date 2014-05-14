@@ -15,6 +15,13 @@
 		0DB12D4219233A75001E9E26 /* Logo copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D3F19233A75001E9E26 /* Logo copie(half).png */; };
 		0DB12D4319233A75001E9E26 /* register copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D4019233A75001E9E26 /* register copie(half).png */; };
 		0DB12D4419233A75001E9E26 /* Sign in copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D4119233A75001E9E26 /* Sign in copie(half).png */; };
+		0DB12D48192432D3001E9E26 /* Landing page (LH)1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D45192432D3001E9E26 /* Landing page (LH)1.png */; };
+		0DB12D49192432D3001E9E26 /* Logo copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D46192432D3001E9E26 /* Logo copie(half).png */; };
+		0DB12D4A192432D3001E9E26 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D47192432D3001E9E26 /* Logo.png */; };
+		0DB12D4F192432DD001E9E26 /* register copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D4B192432DD001E9E26 /* register copie(half).png */; };
+		0DB12D50192432DD001E9E26 /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D4C192432DD001E9E26 /* register.png */; };
+		0DB12D51192432DD001E9E26 /* Sign in copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D4D192432DD001E9E26 /* Sign in copie(half).png */; };
+		0DB12D52192432DD001E9E26 /* Sign in.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D4E192432DD001E9E26 /* Sign in.png */; };
 		0DD31809191B2063003D5630 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD31808191B2063003D5630 /* FeedTableViewController.m */; };
 		0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */; };
 		2A09D716191E916C00A2827F /* ZazzFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D715191E916C00A2827F /* ZazzFeed.m */; };
@@ -62,6 +69,13 @@
 		0DB12D3F19233A75001E9E26 /* Logo copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo copie(half).png"; path = "../../zazz PNG's/Logo copie(half).png"; sourceTree = "<group>"; };
 		0DB12D4019233A75001E9E26 /* register copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "register copie(half).png"; path = "../../zazz PNG's/register copie(half).png"; sourceTree = "<group>"; };
 		0DB12D4119233A75001E9E26 /* Sign in copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sign in copie(half).png"; path = "../../zazz PNG's/Sign in copie(half).png"; sourceTree = "<group>"; };
+		0DB12D45192432D3001E9E26 /* Landing page (LH)1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Landing page (LH)1.png"; sourceTree = SOURCE_ROOT; };
+		0DB12D46192432D3001E9E26 /* Logo copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo copie(half).png"; sourceTree = SOURCE_ROOT; };
+		0DB12D47192432D3001E9E26 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Logo.png; sourceTree = SOURCE_ROOT; };
+		0DB12D4B192432DD001E9E26 /* register copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "register copie(half).png"; sourceTree = SOURCE_ROOT; };
+		0DB12D4C192432DD001E9E26 /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = SOURCE_ROOT; };
+		0DB12D4D192432DD001E9E26 /* Sign in copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign in copie(half).png"; sourceTree = SOURCE_ROOT; };
+		0DB12D4E192432DD001E9E26 /* Sign in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sign in.png"; sourceTree = SOURCE_ROOT; };
 		0DD31807191B2063003D5630 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		0DD31808191B2063003D5630 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
@@ -262,6 +276,13 @@
 				2A5FAEB7191D2BE500B917AB /* Storyboards */,
 				2A5FAEB8191D2BF300B917AB /* Controllers */,
 				5E8AA70A18FCAED600C99D9F /* Images.xcassets */,
+				0DB12D4B192432DD001E9E26 /* register copie(half).png */,
+				0DB12D4C192432DD001E9E26 /* register.png */,
+				0DB12D4D192432DD001E9E26 /* Sign in copie(half).png */,
+				0DB12D4E192432DD001E9E26 /* Sign in.png */,
+				0DB12D45192432D3001E9E26 /* Landing page (LH)1.png */,
+				0DB12D46192432D3001E9E26 /* Logo copie(half).png */,
+				0DB12D47192432D3001E9E26 /* Logo.png */,
 				5E8AA6F618FCAED600C99D9F /* Supporting Files */,
 			);
 			path = "Zazz-iphone-app";
@@ -377,14 +398,21 @@
 				0DB12D4419233A75001E9E26 /* Sign in copie(half).png in Resources */,
 				5E8AA70B18FCAED600C99D9F /* Images.xcassets in Resources */,
 				5E8AA70318FCAED600C99D9F /* Main_iPhone.storyboard in Resources */,
+				0DB12D48192432D3001E9E26 /* Landing page (LH)1.png in Resources */,
+				0DB12D52192432DD001E9E26 /* Sign in.png in Resources */,
+				0DB12D51192432DD001E9E26 /* Sign in copie(half).png in Resources */,
 				2A5FAEB0191BE48200B917AB /* Mitchell.jpg in Resources */,
 				0DB12D3C19233633001E9E26 /* Logo.png in Resources */,
 				2A5FAEAF191BE48200B917AB /* Fyodor.jpg in Resources */,
 				0DB12D3E19233633001E9E26 /* Sign in.png in Resources */,
 				0DB12D4219233A75001E9E26 /* Logo copie(half).png in Resources */,
+				0DB12D4F192432DD001E9E26 /* register copie(half).png in Resources */,
 				0DB12D3B19233633001E9E26 /* Landing page (LH)1.png in Resources */,
+				0DB12D4A192432D3001E9E26 /* Logo.png in Resources */,
 				0DB12D3D19233633001E9E26 /* register.png in Resources */,
 				5E8AA6FA18FCAED600C99D9F /* InfoPlist.strings in Resources */,
+				0DB12D50192432DD001E9E26 /* register.png in Resources */,
+				0DB12D49192432D3001E9E26 /* Logo copie(half).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
