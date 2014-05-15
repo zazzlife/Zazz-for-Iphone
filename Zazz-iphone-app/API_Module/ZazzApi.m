@@ -61,7 +61,7 @@ static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
 /*
  FEED
  */
--(void) getFeed:(NSString*)userId{
+-(void) getFeed:(NSString*)userId delegate:(id)delegate{
     [[[ZazzFeed alloc] init] getFeedForUserId:userId delegate:self];
 }
 -(void) gotFeed:(Feed*)feed{

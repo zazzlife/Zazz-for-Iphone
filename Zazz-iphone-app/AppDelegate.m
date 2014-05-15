@@ -14,6 +14,13 @@ ZazzApi *API = nil;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Landing page - body"]]];
+    
+    // navbar background
+    UIImage *navBackgroundImage = [UIImage imageNamed:@"Landing page - nav"];
+    [[UINavigationBar appearance] setBackgroundImage:navBackgroundImage forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
     ZazzApi *API = [[ZazzApi alloc] init];
     // Override point for customization after application launch.
     return YES;

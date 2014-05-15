@@ -8,13 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB12D351922FA20001E9E26 /* QuartzCore.framework */; };
-		0DB12D3B19233633001E9E26 /* Landing page (LH)1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D3719233633001E9E26 /* Landing page (LH)1.png */; };
-		0DB12D3C19233633001E9E26 /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D3819233633001E9E26 /* Logo.png */; };
-		0DB12D3D19233633001E9E26 /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D3919233633001E9E26 /* register.png */; };
-		0DB12D3E19233633001E9E26 /* Sign in.png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D3A19233633001E9E26 /* Sign in.png */; };
-		0DB12D4219233A75001E9E26 /* Logo copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D3F19233A75001E9E26 /* Logo copie(half).png */; };
-		0DB12D4319233A75001E9E26 /* register copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D4019233A75001E9E26 /* register copie(half).png */; };
-		0DB12D4419233A75001E9E26 /* Sign in copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 0DB12D4119233A75001E9E26 /* Sign in copie(half).png */; };
 		0DD31809191B2063003D5630 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD31808191B2063003D5630 /* FeedTableViewController.m */; };
 		0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */; };
 		2A09D716191E916C00A2827F /* ZazzFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D715191E916C00A2827F /* ZazzFeed.m */; };
@@ -22,8 +15,24 @@
 		2A09D71D191EDFB600A2827F /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D71C191EDFB600A2827F /* Feed.m */; };
 		2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D71F191EF3CD00A2827F /* LoginViewController.m */; };
 		2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D3E191FE863008DBFED /* RegisterViewController.m */; };
-		2A5FAEAF191BE48200B917AB /* Fyodor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A5FAEAD191BE48200B917AB /* Fyodor.jpg */; };
-		2A5FAEB0191BE48200B917AB /* Mitchell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A5FAEAE191BE48200B917AB /* Mitchell.jpg */; };
+		2A470D51192431F4008DBFED /* Ken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D4E192431F4008DBFED /* Ken.jpg */; };
+		2A470D52192431F4008DBFED /* Laurent.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D4F192431F4008DBFED /* Laurent.jpg */; };
+		2A470D53192431F4008DBFED /* Will.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D50192431F4008DBFED /* Will.jpg */; };
+		2A470D5619243361008DBFED /* testViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D5519243361008DBFED /* testViewController.m */; };
+		2A470D60192435C4008DBFED /* Fyodor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D57192435C4008DBFED /* Fyodor.jpg */; };
+		2A470D61192435C4008DBFED /* Landing page (LH)1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D58192435C4008DBFED /* Landing page (LH)1.png */; };
+		2A470D62192435C4008DBFED /* Logo copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D59192435C4008DBFED /* Logo copie(half).png */; };
+		2A470D63192435C4008DBFED /* Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D5A192435C4008DBFED /* Logo.png */; };
+		2A470D64192435C4008DBFED /* Mitchell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D5B192435C4008DBFED /* Mitchell.jpg */; };
+		2A470D65192435C4008DBFED /* register copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D5C192435C4008DBFED /* register copie(half).png */; };
+		2A470D66192435C4008DBFED /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D5D192435C4008DBFED /* register.png */; };
+		2A470D67192435C4008DBFED /* Sign in copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D5E192435C4008DBFED /* Sign in copie(half).png */; };
+		2A470D68192435C4008DBFED /* Sign in.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D5F192435C4008DBFED /* Sign in.png */; };
+		2A470D6E19244C81008DBFED /* Landing page - body.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D6C19244C81008DBFED /* Landing page - body.png */; };
+		2A470D6F19244C81008DBFED /* Landing page - nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D6D19244C81008DBFED /* Landing page - nav.png */; };
+		2A470D75192452C9008DBFED /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D74192452C9008DBFED /* IntroViewController.m */; };
+		2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7719245502008DBFED /* CustomPushSegue.m */; };
+		2A470D7B19247A09008DBFED /* CustomPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7A19247A09008DBFED /* CustomPopSegue.m */; };
 		2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */; };
 		2A5FAEBC191D5FBF00B917AB /* ZazzLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEBB191D5FBF00B917AB /* ZazzLogin.m */; };
 		2A5FAEC4191DC5D500B917AB /* ZazzProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEC3191DC5D500B917AB /* ZazzProfile.m */; };
@@ -55,13 +64,6 @@
 
 /* Begin PBXFileReference section */
 		0DB12D351922FA20001E9E26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0DB12D3719233633001E9E26 /* Landing page (LH)1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Landing page (LH)1.png"; path = "../../zazz PNG's/Landing page (LH)1.png"; sourceTree = "<group>"; };
-		0DB12D3819233633001E9E26 /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = "../../zazz PNG's/Logo.png"; sourceTree = "<group>"; };
-		0DB12D3919233633001E9E26 /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = register.png; path = "../../zazz PNG's/register.png"; sourceTree = "<group>"; };
-		0DB12D3A19233633001E9E26 /* Sign in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sign in.png"; path = "../../zazz PNG's/Sign in.png"; sourceTree = "<group>"; };
-		0DB12D3F19233A75001E9E26 /* Logo copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo copie(half).png"; path = "../../zazz PNG's/Logo copie(half).png"; sourceTree = "<group>"; };
-		0DB12D4019233A75001E9E26 /* register copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "register copie(half).png"; path = "../../zazz PNG's/register copie(half).png"; sourceTree = "<group>"; };
-		0DB12D4119233A75001E9E26 /* Sign in copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sign in copie(half).png"; path = "../../zazz PNG's/Sign in copie(half).png"; sourceTree = "<group>"; };
 		0DD31807191B2063003D5630 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		0DD31808191B2063003D5630 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
@@ -76,8 +78,28 @@
 		2A09D71F191EF3CD00A2827F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2A470D3D191FE863008DBFED /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2A470D3E191FE863008DBFED /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		2A5FAEAD191BE48200B917AB /* Fyodor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Fyodor.jpg; sourceTree = "<group>"; };
-		2A5FAEAE191BE48200B917AB /* Mitchell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Mitchell.jpg; sourceTree = "<group>"; };
+		2A470D4E192431F4008DBFED /* Ken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ken.jpg; path = Images.xcassets/Ken.jpg; sourceTree = "<group>"; };
+		2A470D4F192431F4008DBFED /* Laurent.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Laurent.jpg; path = Images.xcassets/Laurent.jpg; sourceTree = "<group>"; };
+		2A470D50192431F4008DBFED /* Will.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Will.jpg; path = Images.xcassets/Will.jpg; sourceTree = "<group>"; };
+		2A470D5419243361008DBFED /* testViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testViewController.h; sourceTree = "<group>"; };
+		2A470D5519243361008DBFED /* testViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testViewController.m; sourceTree = "<group>"; };
+		2A470D57192435C4008DBFED /* Fyodor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Fyodor.jpg; path = Images.xcassets/Fyodor.jpg; sourceTree = "<group>"; };
+		2A470D58192435C4008DBFED /* Landing page (LH)1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Landing page (LH)1.png"; path = "Images.xcassets/Landing page (LH)1.png"; sourceTree = "<group>"; };
+		2A470D59192435C4008DBFED /* Logo copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo copie(half).png"; path = "Images.xcassets/Logo copie(half).png"; sourceTree = "<group>"; };
+		2A470D5A192435C4008DBFED /* Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo.png; path = Images.xcassets/Logo.png; sourceTree = "<group>"; };
+		2A470D5B192435C4008DBFED /* Mitchell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Mitchell.jpg; path = Images.xcassets/Mitchell.jpg; sourceTree = "<group>"; };
+		2A470D5C192435C4008DBFED /* register copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "register copie(half).png"; path = "Images.xcassets/register copie(half).png"; sourceTree = "<group>"; };
+		2A470D5D192435C4008DBFED /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = register.png; path = Images.xcassets/register.png; sourceTree = "<group>"; };
+		2A470D5E192435C4008DBFED /* Sign in copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sign in copie(half).png"; path = "Images.xcassets/Sign in copie(half).png"; sourceTree = "<group>"; };
+		2A470D5F192435C4008DBFED /* Sign in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sign in.png"; path = "Images.xcassets/Sign in.png"; sourceTree = "<group>"; };
+		2A470D6C19244C81008DBFED /* Landing page - body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Landing page - body.png"; path = "Images.xcassets/Landing page - body.png"; sourceTree = "<group>"; };
+		2A470D6D19244C81008DBFED /* Landing page - nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Landing page - nav.png"; path = "Images.xcassets/Landing page - nav.png"; sourceTree = "<group>"; };
+		2A470D73192452C9008DBFED /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
+		2A470D74192452C9008DBFED /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
+		2A470D7619245502008DBFED /* CustomPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
+		2A470D7719245502008DBFED /* CustomPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPushSegue.m; sourceTree = "<group>"; };
+		2A470D7919247A09008DBFED /* CustomPopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopSegue.h; sourceTree = "<group>"; };
+		2A470D7A19247A09008DBFED /* CustomPopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopSegue.m; sourceTree = "<group>"; };
 		2A5FAEB3191BF7CA00B917AB /* ZazzApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzApi.h; path = API_Module/ZazzApi.h; sourceTree = "<group>"; };
 		2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzApi.m; path = API_Module/ZazzApi.m; sourceTree = "<group>"; };
 		2A5FAEBB191D5FBF00B917AB /* ZazzLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzLogin.m; sourceTree = "<group>"; };
@@ -141,6 +163,17 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		2A470D7C19247A11008DBFED /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				2A470D7619245502008DBFED /* CustomPushSegue.h */,
+				2A470D7719245502008DBFED /* CustomPushSegue.m */,
+				2A470D7919247A09008DBFED /* CustomPopSegue.h */,
+				2A470D7A19247A09008DBFED /* CustomPopSegue.m */,
+			);
+			name = Segues;
+			sourceTree = "<group>";
+		};
 		2A5FAEB1191BE48800B917AB /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,15 +185,20 @@
 		2A5FAEB2191BE49200B917AB /* images */ = {
 			isa = PBXGroup;
 			children = (
-				0DB12D3F19233A75001E9E26 /* Logo copie(half).png */,
-				0DB12D4019233A75001E9E26 /* register copie(half).png */,
-				0DB12D4119233A75001E9E26 /* Sign in copie(half).png */,
-				0DB12D3719233633001E9E26 /* Landing page (LH)1.png */,
-				0DB12D3819233633001E9E26 /* Logo.png */,
-				0DB12D3919233633001E9E26 /* register.png */,
-				0DB12D3A19233633001E9E26 /* Sign in.png */,
-				2A5FAEAD191BE48200B917AB /* Fyodor.jpg */,
-				2A5FAEAE191BE48200B917AB /* Mitchell.jpg */,
+				2A470D6C19244C81008DBFED /* Landing page - body.png */,
+				2A470D6D19244C81008DBFED /* Landing page - nav.png */,
+				2A470D57192435C4008DBFED /* Fyodor.jpg */,
+				2A470D58192435C4008DBFED /* Landing page (LH)1.png */,
+				2A470D59192435C4008DBFED /* Logo copie(half).png */,
+				2A470D5A192435C4008DBFED /* Logo.png */,
+				2A470D5B192435C4008DBFED /* Mitchell.jpg */,
+				2A470D5C192435C4008DBFED /* register copie(half).png */,
+				2A470D5D192435C4008DBFED /* register.png */,
+				2A470D5E192435C4008DBFED /* Sign in copie(half).png */,
+				2A470D5F192435C4008DBFED /* Sign in.png */,
+				2A470D4E192431F4008DBFED /* Ken.jpg */,
+				2A470D4F192431F4008DBFED /* Laurent.jpg */,
+				2A470D50192431F4008DBFED /* Will.jpg */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -195,6 +233,9 @@
 				2A09D71F191EF3CD00A2827F /* LoginViewController.m */,
 				2A470D3D191FE863008DBFED /* RegisterViewController.h */,
 				2A470D3E191FE863008DBFED /* RegisterViewController.m */,
+				2A470D73192452C9008DBFED /* IntroViewController.h */,
+				2A470D74192452C9008DBFED /* IntroViewController.m */,
+				2A470D7C19247A11008DBFED /* Segues */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -263,6 +304,8 @@
 				2A5FAEB8191D2BF300B917AB /* Controllers */,
 				5E8AA70A18FCAED600C99D9F /* Images.xcassets */,
 				5E8AA6F618FCAED600C99D9F /* Supporting Files */,
+				2A470D5419243361008DBFED /* testViewController.h */,
+				2A470D5519243361008DBFED /* testViewController.m */,
 			);
 			path = "Zazz-iphone-app";
 			sourceTree = "<group>";
@@ -372,19 +415,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DB12D4319233A75001E9E26 /* register copie(half).png in Resources */,
+				2A470D66192435C4008DBFED /* register.png in Resources */,
 				5E8AA70618FCAED600C99D9F /* Main_iPad.storyboard in Resources */,
-				0DB12D4419233A75001E9E26 /* Sign in copie(half).png in Resources */,
+				2A470D65192435C4008DBFED /* register copie(half).png in Resources */,
+				2A470D6F19244C81008DBFED /* Landing page - nav.png in Resources */,
 				5E8AA70B18FCAED600C99D9F /* Images.xcassets in Resources */,
 				5E8AA70318FCAED600C99D9F /* Main_iPhone.storyboard in Resources */,
-				2A5FAEB0191BE48200B917AB /* Mitchell.jpg in Resources */,
-				0DB12D3C19233633001E9E26 /* Logo.png in Resources */,
-				2A5FAEAF191BE48200B917AB /* Fyodor.jpg in Resources */,
-				0DB12D3E19233633001E9E26 /* Sign in.png in Resources */,
-				0DB12D4219233A75001E9E26 /* Logo copie(half).png in Resources */,
-				0DB12D3B19233633001E9E26 /* Landing page (LH)1.png in Resources */,
-				0DB12D3D19233633001E9E26 /* register.png in Resources */,
+				2A470D61192435C4008DBFED /* Landing page (LH)1.png in Resources */,
+				2A470D68192435C4008DBFED /* Sign in.png in Resources */,
+				2A470D63192435C4008DBFED /* Logo.png in Resources */,
+				2A470D67192435C4008DBFED /* Sign in copie(half).png in Resources */,
+				2A470D62192435C4008DBFED /* Logo copie(half).png in Resources */,
+				2A470D51192431F4008DBFED /* Ken.jpg in Resources */,
+				2A470D60192435C4008DBFED /* Fyodor.jpg in Resources */,
+				2A470D52192431F4008DBFED /* Laurent.jpg in Resources */,
+				2A470D64192435C4008DBFED /* Mitchell.jpg in Resources */,
 				5E8AA6FA18FCAED600C99D9F /* InfoPlist.strings in Resources */,
+				2A470D53192431F4008DBFED /* Will.jpg in Resources */,
+				2A470D6E19244C81008DBFED /* Landing page - body.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,8 +461,12 @@
 				2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */,
 				2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
+				2A470D5619243361008DBFED /* testViewController.m in Sources */,
+				2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */,
 				2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */,
 				2A5FAEC4191DC5D500B917AB /* ZazzProfile.m in Sources */,
+				2A470D7B19247A09008DBFED /* CustomPopSegue.m in Sources */,
+				2A470D75192452C9008DBFED /* IntroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

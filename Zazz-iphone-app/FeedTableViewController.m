@@ -21,7 +21,7 @@
     
     // The TableView was scrolling over the status bar so I found this temporary workaround.. I'm sure there's a better way to do this..
     
-    self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+//    self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
     
     // Initialized some profiles with pictures from fb and made up time stamps..
     
@@ -51,6 +51,9 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+-(void) viewWillAppear:(BOOL)animated{
+    NSLog(@"viewWillAppear");
 }
 
 #pragma mark - Table view data source

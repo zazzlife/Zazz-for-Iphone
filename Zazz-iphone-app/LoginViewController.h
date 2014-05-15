@@ -13,12 +13,11 @@
 
 @property IBOutlet UITextField * _username;
 @property IBOutlet UITextField * _password;
+@property IBOutlet UIButton * backBtn;
 
 @property (nonatomic,strong) IBOutlet UIActivityIndicatorView * loginprogress;
 
 
 -(IBAction)doLogin:(id)sender;
--(IBAction)userHitReturn:(id)sender;
--(IBAction)userTappedBackgroud:(id)sender;
 
 @end

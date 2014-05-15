@@ -13,4 +13,5 @@
 @property (nonatomic, strong) NSArray *Usernames;
 @property (nonatomic, strong) NSArray *TimeStamps;
 @property (nonatomic, strong) NSArray *UserImages;
+
 @end

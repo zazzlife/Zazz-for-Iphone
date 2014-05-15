@@ -18,17 +18,6 @@
 @synthesize _password;
 
 
--(IBAction)userHitReturn:(id)sender {
-    
-    [sender resignFirstResponder];
-}
-
--(IBAction)userTappedBackgroud:(id)sender {
-    
-    [_password resignFirstResponder];
-    [_username resignFirstResponder];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 
 {
@@ -39,28 +28,14 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor blackColor];
-    
-    self.loginprogress.color = [UIColor yellowColor];
-    
-    CGRect frame = CGRectMake(120, 335, 80, 80);
-    
-    self.loginprogress = [[UIActivityIndicatorView alloc] initWithFrame:frame];
-    
-    [self.view addSubview:self.loginprogress];
-    
-    // Do any additional setup after loading the view.
-}
+//- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
+//{
+//    NSLog(@"pop vuew");
+//    // trigger your custom back animation here
+//    
+//    return TRUE;
+//}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation
@@ -72,10 +47,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
-    return false;
-}
 
 -(IBAction)doLogin:(id)sender{
     
@@ -92,12 +63,11 @@
     if(success){
         [self performSegueWithIdentifier:@"loginComplete" sender:self];
         [self.loginprogress stopAnimating];
+        return;
     }
-    else {
-        UIAlertView *loginerror = [[UIAlertView alloc] initWithTitle:@"Login Failed!" message:@"Your username or password is incorrect" delegate:nil cancelButtonTitle:@"try again" otherButtonTitles:nil, nil];
-        
-        [self.loginprogress stopAnimating];
-        [loginerror show];
-    }
+    UIAlertView *loginerror = [[UIAlertView alloc] initWithTitle:@"Login Failed!" message:@"Your username or password is incorrect" delegate:nil cancelButtonTitle:@"try again" otherButtonTitles:nil, nil];
+    
+    [self.loginprogress stopAnimating];
+    [loginerror show];
 }
 @end
