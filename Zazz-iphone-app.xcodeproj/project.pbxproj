@@ -18,7 +18,6 @@
 		2A470D51192431F4008DBFED /* Ken.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D4E192431F4008DBFED /* Ken.jpg */; };
 		2A470D52192431F4008DBFED /* Laurent.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D4F192431F4008DBFED /* Laurent.jpg */; };
 		2A470D53192431F4008DBFED /* Will.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D50192431F4008DBFED /* Will.jpg */; };
-		2A470D5619243361008DBFED /* testViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D5519243361008DBFED /* testViewController.m */; };
 		2A470D60192435C4008DBFED /* Fyodor.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D57192435C4008DBFED /* Fyodor.jpg */; };
 		2A470D61192435C4008DBFED /* Landing page (LH)1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D58192435C4008DBFED /* Landing page (LH)1.png */; };
 		2A470D62192435C4008DBFED /* Logo copie(half).png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D59192435C4008DBFED /* Logo copie(half).png */; };
@@ -81,8 +80,6 @@
 		2A470D4E192431F4008DBFED /* Ken.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Ken.jpg; path = Images.xcassets/Ken.jpg; sourceTree = "<group>"; };
 		2A470D4F192431F4008DBFED /* Laurent.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Laurent.jpg; path = Images.xcassets/Laurent.jpg; sourceTree = "<group>"; };
 		2A470D50192431F4008DBFED /* Will.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Will.jpg; path = Images.xcassets/Will.jpg; sourceTree = "<group>"; };
-		2A470D5419243361008DBFED /* testViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testViewController.h; sourceTree = "<group>"; };
-		2A470D5519243361008DBFED /* testViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testViewController.m; sourceTree = "<group>"; };
 		2A470D57192435C4008DBFED /* Fyodor.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Fyodor.jpg; path = Images.xcassets/Fyodor.jpg; sourceTree = "<group>"; };
 		2A470D58192435C4008DBFED /* Landing page (LH)1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Landing page (LH)1.png"; path = "Images.xcassets/Landing page (LH)1.png"; sourceTree = "<group>"; };
 		2A470D59192435C4008DBFED /* Logo copie(half).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo copie(half).png"; path = "Images.xcassets/Logo copie(half).png"; sourceTree = "<group>"; };
@@ -304,8 +301,6 @@
 				2A5FAEB8191D2BF300B917AB /* Controllers */,
 				5E8AA70A18FCAED600C99D9F /* Images.xcassets */,
 				5E8AA6F618FCAED600C99D9F /* Supporting Files */,
-				2A470D5419243361008DBFED /* testViewController.h */,
-				2A470D5519243361008DBFED /* testViewController.m */,
 			);
 			path = "Zazz-iphone-app";
 			sourceTree = "<group>";
@@ -461,7 +456,6 @@
 				2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */,
 				2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
-				2A470D5619243361008DBFED /* testViewController.m in Sources */,
 				2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */,
 				2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */,
 				2A5FAEC4191DC5D500B917AB /* ZazzProfile.m in Sources */,
