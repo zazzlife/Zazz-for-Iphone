@@ -34,7 +34,17 @@
         // Do any additional setup after loading the view.
 }
 
+- (void)viewDidFinishAnimation{
+    [self._username becomeFirstResponder];
+}
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSLog(@"shouldReturns");
+    if ( textField == self._username ) { [self._password becomeFirstResponder]; }
+    if ( textField == self._password ) { [self doLogin:textField];}
+    return YES;
+}
 
 /*
 #pragma mark - Navigation

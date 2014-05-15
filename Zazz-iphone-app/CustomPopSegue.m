@@ -7,13 +7,14 @@
 //
 
 #import "CustomPopSegue.h"
+#import "AppDelegate.h"
 
 @implementation CustomPopSegue
 
 -(void)perform {
     
-    UIViewController *sourceViewController = self.sourceViewController;
-    UIViewController *destinationViewController = self.destinationViewController;
+    UIViewController<ViewAnimationDelegate> *sourceViewController = self.sourceViewController;
+    UIViewController<ViewAnimationDelegate> *destinationViewController = self.destinationViewController;
     
     // Add the destination view as a subview, temporarily
     [sourceViewController.view addSubview:destinationViewController.view];
@@ -31,6 +32,9 @@
                      completion:^(BOOL finished){
                          [destinationViewController.view removeFromSuperview]; // remove from temp super view
                          [sourceViewController presentViewController:destinationViewController animated:NO completion:NULL]; // set present VC
+                         if([[destinationViewController class] conformsToProtocol:@protocol(ViewAnimationDelegate)]){
+                             [destinationViewController viewDidFinishAnimation];
+                         }
                      }];
 }
 

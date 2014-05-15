@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Zazz-iphone-app/FeedTableViewController.h"
+            filePath = "Zazz-iphone-app/FeedViewController.h"
             timestampString = "421345694.430416"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "11"
             endingLineNumber = "11"
-            landmarkName = "@interface FeedTableViewController"
+            landmarkName = "@interface FeedViewController"
             landmarkType = "2">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,7 +25,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Zazz-iphone-app/FeedTableViewController.h"
+            filePath = "Zazz-iphone-app/FeedViewController.h"
             timestampString = "421349930.833707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zazz-iphone-app/CustomPushSegue.m"
-            timestampString = "421820856.224936"
+            timestampString = "421862583.798317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "-perform"
             landmarkType = "5">
          </BreakpointContent>

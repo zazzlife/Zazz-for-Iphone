@@ -20,20 +20,11 @@
 @synthesize username;
 @synthesize password;
 
--(IBAction)userHitReturn:(id)sender {
-    
-    [sender resignFirstResponder];
-}
 
--(IBAction)userTappedBackgroud:(id)sender {
-    
-    [firstName resignFirstResponder];
-    [lastName resignFirstResponder];
-    [email resignFirstResponder];
-    [username resignFirstResponder];
-    [password resignFirstResponder];
-}
 
+- (void)viewDidFinishAnimation{
+    [self.firstName becomeFirstResponder];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

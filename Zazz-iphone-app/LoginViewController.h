@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ZazzApi.h"
+#import "AppDelegate.h"
 
-@interface LoginViewController : UIViewController<ZazzLoginDelegate>
+@interface LoginViewController : UIViewController<ZazzLoginDelegate, UITextFieldDelegate, ViewAnimationDelegate>
 
 @property IBOutlet UITextField * _username;
 @property IBOutlet UITextField * _password;
@@ -19,5 +20,6 @@
 
 
 -(IBAction)doLogin:(id)sender;
+-(IBAction)focusPassword:(id)sender;
 
 @end

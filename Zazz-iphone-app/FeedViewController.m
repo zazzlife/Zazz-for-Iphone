@@ -6,10 +6,10 @@
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
-#import "FeedTableViewController.h"
+#import "FeedViewController.h"
 #import "FeedTableViewCell.h"
 
-@implementation FeedTableViewController
+@implementation FeedViewController
 
 @synthesize UserImages = _UserImages;
 @synthesize Usernames = _Usernames;

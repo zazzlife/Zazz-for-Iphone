@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface RegisterViewController : UIViewController
+@interface RegisterViewController : UIViewController<ViewAnimationDelegate>
 
 
 @property IBOutlet UITextField* firstName;
