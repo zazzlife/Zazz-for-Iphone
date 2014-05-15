@@ -43,6 +43,8 @@
 {
     [super viewDidLoad];
     
+    _username.delegate = self;
+    
     self.view.backgroundColor = [UIColor blackColor];
     
     self.loginprogress.color = [UIColor yellowColor];
