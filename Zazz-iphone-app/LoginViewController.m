@@ -28,13 +28,12 @@
     return self;
 }
 
-//- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item
-//{
-//    NSLog(@"pop vuew");
-//    // trigger your custom back animation here
-//    
-//    return TRUE;
-//}
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+        // Do any additional setup after loading the view.
+}
+
 
 
 /*
