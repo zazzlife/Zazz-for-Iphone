@@ -17,7 +17,17 @@ ZazzApi *API = nil;
     
     [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Landing page (LH)1"]]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    UIImage* image = [UIImage imageNamed:@"Logo"];
+    UIImageView * zazz_logo = [[UIImageView alloc] initWithImage:image];
+    int scale = 2;
+    [zazz_logo setFrame:CGRectMake(
+                                   ((self.window.frame.size.width/2) - (image.size.width/scale/2) ),
+                                   ((self.window.frame.size.height/4) - (image.size.height/scale/2)),
+                                   image.size.width/scale,
+                                   image.size.height/scale
+                                   )];
 
+    [self.window addSubview:zazz_logo];
     ZazzApi *API = [[ZazzApi alloc] init];
     // Override point for customization after application launch.
     return YES;
