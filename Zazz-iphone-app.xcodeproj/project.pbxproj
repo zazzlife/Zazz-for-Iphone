@@ -29,13 +29,16 @@
 		2A470D68192435C4008DBFED /* Sign in.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D5F192435C4008DBFED /* Sign in.png */; };
 		2A470D6E19244C81008DBFED /* Landing page - body.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D6C19244C81008DBFED /* Landing page - body.png */; };
 		2A470D6F19244C81008DBFED /* Landing page - nav.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D6D19244C81008DBFED /* Landing page - nav.png */; };
-		2A470D75192452C9008DBFED /* IntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D74192452C9008DBFED /* IntroViewController.m */; };
 		2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7719245502008DBFED /* CustomPushSegue.m */; };
 		2A470D7B19247A09008DBFED /* CustomPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7A19247A09008DBFED /* CustomPopSegue.m */; };
 		2A470D7E1924FDC0008DBFED /* ios7-back-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A470D7D1924FDC0008DBFED /* ios7-back-icon.png */; };
 		2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */; };
 		2A5FAEBC191D5FBF00B917AB /* ZazzLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEBB191D5FBF00B917AB /* ZazzLogin.m */; };
 		2A5FAEC4191DC5D500B917AB /* ZazzProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEC3191DC5D500B917AB /* ZazzProfile.m */; };
+		2A6CFC821929189F005D3076 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC811929189F005D3076 /* Photo.m */; };
+		2A6CFC8519291EE7005D3076 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8419291EE7005D3076 /* Post.m */; };
+		2A6CFC8819293039005D3076 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8719293039005D3076 /* Event.m */; };
+		2A6CFC8B19295024005D3076 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8A19295024005D3076 /* Comment.m */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
 		5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
@@ -92,8 +95,6 @@
 		2A470D5F192435C4008DBFED /* Sign in.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sign in.png"; path = "Images.xcassets/Sign in.png"; sourceTree = "<group>"; };
 		2A470D6C19244C81008DBFED /* Landing page - body.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Landing page - body.png"; path = "Images.xcassets/Landing page - body.png"; sourceTree = "<group>"; };
 		2A470D6D19244C81008DBFED /* Landing page - nav.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Landing page - nav.png"; path = "Images.xcassets/Landing page - nav.png"; sourceTree = "<group>"; };
-		2A470D73192452C9008DBFED /* IntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroViewController.h; sourceTree = "<group>"; };
-		2A470D74192452C9008DBFED /* IntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroViewController.m; sourceTree = "<group>"; };
 		2A470D7619245502008DBFED /* CustomPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
 		2A470D7719245502008DBFED /* CustomPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPushSegue.m; sourceTree = "<group>"; };
 		2A470D7919247A09008DBFED /* CustomPopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopSegue.h; sourceTree = "<group>"; };
@@ -105,6 +106,14 @@
 		2A5FAEBD191D78E300B917AB /* ZazzLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzLogin.h; sourceTree = "<group>"; };
 		2A5FAEC2191DC5D500B917AB /* ZazzProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzProfile.h; sourceTree = "<group>"; };
 		2A5FAEC3191DC5D500B917AB /* ZazzProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzProfile.m; sourceTree = "<group>"; };
+		2A6CFC801929189F005D3076 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		2A6CFC811929189F005D3076 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
+		2A6CFC8319291EE7005D3076 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		2A6CFC8419291EE7005D3076 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		2A6CFC8619293039005D3076 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		2A6CFC8719293039005D3076 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		2A6CFC8919295024005D3076 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		2A6CFC8A19295024005D3076 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -157,6 +166,14 @@
 				2A09D718191EDA3700A2827F /* Profile.m */,
 				2A09D71B191EDFB600A2827F /* Feed.h */,
 				2A09D71C191EDFB600A2827F /* Feed.m */,
+				2A6CFC801929189F005D3076 /* Photo.h */,
+				2A6CFC811929189F005D3076 /* Photo.m */,
+				2A6CFC8319291EE7005D3076 /* Post.h */,
+				2A6CFC8419291EE7005D3076 /* Post.m */,
+				2A6CFC8619293039005D3076 /* Event.h */,
+				2A6CFC8719293039005D3076 /* Event.m */,
+				2A6CFC8919295024005D3076 /* Comment.h */,
+				2A6CFC8A19295024005D3076 /* Comment.m */,
 			);
 			name = Entities;
 			path = ..;
@@ -233,8 +250,6 @@
 				2A09D71F191EF3CD00A2827F /* LoginViewController.m */,
 				2A470D3D191FE863008DBFED /* RegisterViewController.h */,
 				2A470D3E191FE863008DBFED /* RegisterViewController.m */,
-				2A470D73192452C9008DBFED /* IntroViewController.h */,
-				2A470D74192452C9008DBFED /* IntroViewController.m */,
 				2A470D7C19247A11008DBFED /* Segues */,
 			);
 			name = Controllers;
@@ -453,9 +468,13 @@
 				2A09D716191E916C00A2827F /* ZazzFeed.m in Sources */,
 				0DD31809191B2063003D5630 /* FeedViewController.m in Sources */,
 				0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */,
+				2A6CFC821929189F005D3076 /* Photo.m in Sources */,
 				2A09D719191EDA3700A2827F /* Profile.m in Sources */,
 				2A5FAEBC191D5FBF00B917AB /* ZazzLogin.m in Sources */,
+				2A6CFC8819293039005D3076 /* Event.m in Sources */,
+				2A6CFC8B19295024005D3076 /* Comment.m in Sources */,
 				2A09D71D191EDFB600A2827F /* Feed.m in Sources */,
+				2A6CFC8519291EE7005D3076 /* Post.m in Sources */,
 				5E8AA70018FCAED600C99D9F /* AppDelegate.m in Sources */,
 				2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */,
 				2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */,
@@ -464,7 +483,6 @@
 				2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */,
 				2A5FAEC4191DC5D500B917AB /* ZazzProfile.m in Sources */,
 				2A470D7B19247A09008DBFED /* CustomPopSegue.m in Sources */,
-				2A470D75192452C9008DBFED /* IntroViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

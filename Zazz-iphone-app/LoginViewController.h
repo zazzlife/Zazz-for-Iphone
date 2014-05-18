@@ -20,6 +20,5 @@
 
 
 -(IBAction)doLogin:(id)sender;
--(IBAction)focusPassword:(id)sender;
 
 @end

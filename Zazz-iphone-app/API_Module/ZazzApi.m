@@ -48,10 +48,11 @@ static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
  ME - PROFILE
  */
 -(void) getMyProfileDelegate:(id)delegate{
+    [self set_delegate:delegate];
     [[[ZazzProfile alloc] init] getMyProfileDelegate:self];
 }
 -(void) getProfile:(NSString*)userId delegate:(id)delegate{
-    
+    [self set_delegate:delegate];
 }
 -(void) gotProfile:(Profile*)profile{
     [_delegate gotZazzProfile:profile];
@@ -61,12 +62,12 @@ static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
 /*
  FEED
  */
--(void) getFeed:(NSString*)userId delegate:(id)delegate{
-    [[[ZazzFeed alloc] init] getFeedForUserId:userId delegate:self];
+-(void) getMyFeedDelegate:(id)delegate{
+    [self set_delegate:delegate];
+    [[[ZazzFeed alloc] init] getMyFeedDelegate:self];
 }
--(void) gotFeed:(Feed*)feed{
-    NSLog(@"TODO: CHANGE METHOD SIGNATURE TO ACCEPT Feed OBJECT. feed:%@", feed);
-    [_delegate gotZazzFeed:feed];
+-(void) gotFeed:(NSMutableArray*)feedArray{
+    [_delegate gotZazzFeed:feedArray];
 }
 
 
@@ -90,6 +91,11 @@ static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
         [urlWithQuerystring appendFormat:@"&%@=%@", [self urlEscapeString:valueString], [self urlEscapeString:keyString]];
     }
     return urlWithQuerystring;
+}
++(UIImage *) getImageAtUrl:(NSString*)photoUrl{
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: photoUrl]];
+    UIImage * image = [UIImage imageWithData: imageData];
+    return image;
 }
 
 

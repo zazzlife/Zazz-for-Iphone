@@ -9,22 +9,14 @@
 #import <Foundation/Foundation.h>
 #import "Profile.h"
 
-typedef enum {
-    Photo, Post, Event
-} FeedType;
-
-@protocol FeedType <NSObject>
-
--(void)getContent;
-
-@end
-
 @interface Feed : NSObject
 
+@property NSString* feedId;
 @property Profile* user;
 @property BOOL canCurrentUserRemoveFeed;
-@property FeedType feedType;
-@property id contentProvider;
+@property id content;
+@property NSString* feedType;
 @property NSMutableArray* comments;
+@property NSString* timestamp;
 
 @end

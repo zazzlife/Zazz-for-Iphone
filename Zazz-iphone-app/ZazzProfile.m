@@ -41,7 +41,6 @@
     Profile* profile = [[Profile alloc] init];
     [profile setUserId:[array objectForKey:@"userId"]];
     [profile setUsername:[array objectForKey:@"username"]];
-    [profile setPhotoPath:[array objectForKey:@"photoPath"]];
     
     NSLog(@"TODO: Return User Profile instead of ID:%@",[profile userId]);
     

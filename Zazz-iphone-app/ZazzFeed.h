@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ZazzApi.h"
+#import "Feed.h"
 
 @interface ZazzFeed : NSObject<NSURLConnectionDataDelegate>
 

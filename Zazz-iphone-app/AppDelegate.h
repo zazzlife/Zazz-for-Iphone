@@ -20,6 +20,8 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property ZazzApi *API;
+@property ZazzApi *zazzAPI;
+
++(AppDelegate*)getAppDelegate;
 
 @end

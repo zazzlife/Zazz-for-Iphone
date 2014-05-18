@@ -23,7 +23,7 @@
     [form setObject:@"password" forKey:password];
     [form setObject:@"scope" forKey:@"full"];
     NSString *postString = [ZazzApi getQueryStringFromDictionary:form];
-//    NSLog(@"ZazzLogin - postString:%@",postString);
+    NSLog(@"ZazzLogin - postString:%@",postString);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
     [request setHTTPMethod:@"POST"];
     [request setValue:@"Basic hdi7o53NSeilrq7oQihy69PvH9BBQtw5QfcJy4ALBuY" forHTTPHeaderField:@"Authorization"];
@@ -42,9 +42,8 @@
         NSLog(@"JSON ERROR");
         return;
     }
-//    if([array objectForKey:@"error"]){
-//        NSLog(@"Invalid login");
-//    }
+    
+    NSLog(@"JUST GOT :%@",[array objectForKey:@"access_token"]);
     [[self _delegate] gotLoginToken:[array objectForKey:@"access_token"]];
 }
 

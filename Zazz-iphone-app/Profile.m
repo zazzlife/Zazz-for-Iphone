@@ -12,6 +12,6 @@
 
 @synthesize userId;
 @synthesize username;
-@synthesize photoPath;
+@synthesize photo;
 
 @end

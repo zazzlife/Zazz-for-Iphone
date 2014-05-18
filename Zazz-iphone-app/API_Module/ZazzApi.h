@@ -19,7 +19,7 @@
 @end
 
 @protocol ZazzFeedDelegate <NSObject>
--(void)gotZazzFeed:(Feed*)feed;
+-(void)gotZazzFeed:(NSMutableArray*)feed;
 @end
 
 
@@ -30,6 +30,7 @@
 +(NSString *) BASE_URL;
 +(NSString *) urlEscapeString:(NSString *)unencodedString;
 +(NSString *) getQueryStringFromDictionary:(NSDictionary *)dictionary;
++(UIImage *) getImageAtUrl:(NSString*)photoUrl;
 
 @property id _delegate;
 
@@ -41,7 +42,7 @@
 -(void) getProfile:(NSString*)userId delegate:(id)delegate;
 -(void) gotProfile:(Profile*)profile;
 
--(void) getFeed:(NSString*)userId delegate:(id)delegate;
--(void) gotFeed:(Feed*)feed;
+-(void) getMyFeedDelegate:(id)delegate;
+-(void) gotFeed:(NSMutableArray*)feed;
 
 @end

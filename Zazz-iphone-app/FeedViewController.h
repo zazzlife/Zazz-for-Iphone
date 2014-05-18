@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZazzApi.h"
 
-@interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ZazzFeedDelegate>
 
-@property (nonatomic, strong) NSArray *Usernames;
-@property (nonatomic, strong) NSArray *TimeStamps;
-@property (nonatomic, strong) NSArray *UserImages;
+@property NSMutableArray* feed;
+
+@property IBOutlet UITableView* feedTableView;
 
 @end

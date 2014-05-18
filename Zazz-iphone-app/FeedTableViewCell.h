@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Feed.h"
 
 @interface FeedTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) IBOutlet UIImageView *UserImage;
-@property (nonatomic, strong) IBOutlet UILabel *UserName;
-@property (nonatomic, strong) IBOutlet UILabel *TimeStamp;
+@property IBOutlet UIImageView* userImage;
+@property IBOutlet UIView* content;
+@property IBOutlet UILabel* timestamp;
+@property IBOutlet UILabel* username;
+
+-(void)setFeed:(Feed*)feed;
 
 @end

@@ -10,10 +10,13 @@
 
 @implementation Feed
 
+@synthesize feedId;
 @synthesize user;
 @synthesize canCurrentUserRemoveFeed;
 @synthesize feedType;
-@synthesize contentProvider;
+@synthesize content;
 @synthesize comments;
+@synthesize timestamp;
+
 
 @end

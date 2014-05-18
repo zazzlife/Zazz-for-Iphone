@@ -12,6 +12,6 @@
 
 @property NSString* userId;
 @property NSString* username;
-@property NSString* photoPath;
+@property UIImage* photo;
 
 @end

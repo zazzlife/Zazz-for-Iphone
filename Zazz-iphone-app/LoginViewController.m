@@ -18,9 +18,7 @@
 @synthesize _password;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -28,38 +26,27 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
-        // Do any additional setup after loading the view.
+    // post-load logic.
 }
 
 - (void)viewDidFinishAnimation{
     [self._username becomeFirstResponder];
 }
 
+/*
+ Hanldle keyboard return keys, to go to tnext field or login on password.
+ **/
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"shouldReturns");
     if ( textField == self._username ) { [self._password becomeFirstResponder]; }
     if ( textField == self._password ) { [self doLogin:textField];}
     return YES;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 -(IBAction)doLogin:(id)sender{
-    
-    [[[ZazzApi alloc] init] getAuthTokenWithUsername:_username.text andPassword:_password.text delegate:self];
+    [[[AppDelegate getAppDelegate] zazzAPI] getAuthTokenWithUsername:_username.text andPassword:_password.text delegate:self];
     [self.loginprogress startAnimating];
     [_password resignFirstResponder];
     [_username resignFirstResponder];

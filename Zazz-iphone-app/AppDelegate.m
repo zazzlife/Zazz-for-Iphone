@@ -10,11 +10,15 @@
 
 @implementation AppDelegate
 
-ZazzApi *API = nil;
+@synthesize zazzAPI;
+
++(AppDelegate*)getAppDelegate{
+    return [[UIApplication sharedApplication] delegate];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    // Override point for customization after application launch.
     [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Landing page (LH)1"]]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     UIImage* image = [UIImage imageNamed:@"Logo"];
@@ -28,8 +32,7 @@ ZazzApi *API = nil;
                                    )];
 
     [self.window addSubview:zazz_logo];
-    ZazzApi *API = [[ZazzApi alloc] init];
-    // Override point for customization after application launch.
+    [self setZazzAPI:[[ZazzApi alloc] init]];
     return YES;
 }
 							

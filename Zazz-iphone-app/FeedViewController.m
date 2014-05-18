@@ -8,66 +8,31 @@
 
 #import "FeedViewController.h"
 #import "FeedTableViewCell.h"
+#import "AppDelegate.h"
 
 @implementation FeedViewController
 
-@synthesize UserImages = _UserImages;
-@synthesize Usernames = _Usernames;
-@synthesize TimeStamps = _TimeStamps;
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     
-    // The TableView was scrolling over the status bar so I found this temporary workaround.. I'm sure there's a better way to do this..
-    
-//    self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
-    
-    // Initialized some profiles with pictures from fb and made up time stamps..
-    
-    self.UserImages = [[NSArray alloc] initWithObjects: (UIImage *) @"Fyodor.jpg",
-                                                                    @"Mitchell.jpg",
-                                                                    @"Laurent.jpg",
-                                                                    @"Will.jpg",
-                                                                    @"Ken.jpg", nil];
-    
-    
-    self.TimeStamps = [[NSArray alloc] initWithObjects: (id) @"11:15:23",
-                                                             @"16:18:45",
-                                                             @"8:15:16",
-                                                             @"17:14:32",
-                                                             @"22:11:15", nil];
-    
-    self.Usernames = [[NSArray alloc] initWithObjects: (id)  @"Fyodor Wolf",
-                                                             @"Mitchell Sorkin",
-                                                             @"Laurent Vincent",
-                                                             @"Will Gasner",
-                                                             @"Ken Montero", nil];
-    
-   
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self setFeed:[[NSMutableArray alloc] init]];
+    [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
 }
--(void) viewWillAppear:(BOOL)animated{
-    NSLog(@"viewWillAppear");
+
+-(void)gotZazzFeed:(NSMutableArray*)feed{
+    [self setFeed:feed];
+    [[self feedTableView] reloadData];
 }
+
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return [self.Usernames count];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [[self feed] count];
 }
 
 
@@ -75,23 +40,14 @@
 {
     static NSString *CellIdentifier = @"FeedTableCell";
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
     if (cell == nil) {
         cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    [cell setAutoresizingMask: UIViewAutoresizingFlexibleHeight];
+    [cell setClipsToBounds:YES];
     
-    NSString *username = [self.Usernames objectAtIndex: [indexPath row]];
-    NSString *timestamp = [self.TimeStamps objectAtIndex: [indexPath row]];
-    NSString *imagePath =[self.UserImages objectAtIndex: [indexPath row]];
-    
-    //This logic should be moved into FeedTableViewCell
-    cell.UserName.text = username;
-    cell.TimeStamp.text = timestamp;
-    cell.UserImage.image = [UIImage imageNamed:imagePath];
-    
-//    UserProfile *profile = [[UserProfile alloc] initWithUserName:username andImagePath:imagePath ];
-//    [cell initWithProfile: profile andTimeStamp: timestamp]
-    
+    Feed *feedItem = [[self feed] objectAtIndex:[indexPath row]];
+    [cell setFeed:feedItem];
     return cell;
 }
 

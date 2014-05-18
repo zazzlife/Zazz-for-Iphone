@@ -7,32 +7,56 @@
 //
 
 #import "FeedTableViewCell.h"
+#import "Photo.h"
+#import "Profile.h"
+#import "Event.h"
+#import "Post.h"
 
 @implementation FeedTableViewCell
 
-@synthesize UserImage = _UserImage;
-@synthesize TimeStamp = _TimeStamp;
-@synthesize UserName = _UserName;
+@synthesize userImage;
+@synthesize content;
+@synthesize timestamp;
+@synthesize username;
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
+-(void)setFeed:(Feed *)feed{
+    [self.userImage setImage:feed.user.photo];
+    [self.username setText:feed.user.username];
+    [self.timestamp setText:feed.timestamp];
+    for(UIView* view in self.content.subviews){
+        [view removeFromSuperview];
     }
-    return self;
-}
-
-- (void)awakeFromNib
-{
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    if([[feed feedType] isEqualToString:@"Photo"]){
+        NSLog(@"type:photos");
+        NSMutableArray* photos = (NSMutableArray*)[feed content];
+        for(Photo* photo in photos){
+            NSLog(@"photoId:%@",photo.photoId);
+            UIImageView* imageView = [[UIImageView alloc] initWithImage:photo.photo];
+            [imageView setCenter:self.content.center];
+            [imageView setFrame:self.content.frame];
+            [self.content addSubview:imageView];
+        }
+    }
+    else if([[feed feedType] isEqualToString:@"Post"]){
+        Post* post = (Post*)[feed content];
+        NSLog(@"postId:%@ text:%@",post.postId, post.message);
+        UITextView* contentText = [[UITextView alloc] init];
+        [contentText setCenter:self.content.center];
+        [contentText setFrame:self.content.frame];
+        [contentText setText:post.message];
+        [self.content addSubview:contentText];
+    }else if([[feed feedType] isEqualToString:@"Event"]){
+        Event* event = (Event*)[feed content];
+        NSLog(@"eventId:%@ text:%@",event.eventId, event.description);
+        UITextView* contentText = [[UITextView alloc] init];
+        [contentText setCenter:self.content.center];
+        [contentText setFrame:self.content.frame];
+        [contentText setText:event.description];
+        [self.content addSubview:contentText];
+    }
+    //make the user photo a circle
+    [self.userImage.layer setCornerRadius:25];
+    [self.userImage.layer setMasksToBounds:YES];
 }
 
 @end
