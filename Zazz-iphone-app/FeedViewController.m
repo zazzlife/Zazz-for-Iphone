@@ -11,6 +11,11 @@
 
 @implementation FeedViewController
 
+@synthesize recognizer_close_drawer;
+@synthesize recognizer_open_drawer;
+@synthesize navigationDrawerLeftWidth;
+@synthesize navigationDrawerLeftX;
+
 @synthesize UserImages = _UserImages;
 @synthesize Usernames = _Usernames;
 @synthesize TimeStamps = _TimeStamps;
@@ -19,9 +24,28 @@
 {
     [super viewDidLoad];
     
+    navigationDrawerLeftWidth = self.view.frame.size.width * 0.75;
+    navigationDrawerLeftX = self.view.frame.origin.x - navigationDrawerLeftWidth;
+    navigationDrawerLeft = [[UIView alloc] initWithFrame:CGRectMake(navigationDrawerLeftX, self.view.frame.origin.y, navigationDrawerLeftWidth, self.view.frame.size.height)];
+    
+    navigationDrawerLeft.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Landing page (LH)1.png"]];
+    
+    recognizer_open_drawer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doSwipes:)];
+    recognizer_close_drawer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doSwipes:)];
+    
+    recognizer_close_drawer.direction = UISwipeGestureRecognizerDirectionLeft;
+    recognizer_open_drawer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.view addGestureRecognizer:recognizer_open_drawer];
+    [self.view addGestureRecognizer:recognizer_close_drawer];
+    
+    [self.view addSubview:navigationDrawerLeft];
+    
+    
+    
     // The TableView was scrolling over the status bar so I found this temporary workaround.. I'm sure there's a better way to do this..
     
-//    self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
+    // self.tableView.contentInset = UIEdgeInsetsMake(20.0f, 0.0f, 0.0f, 0.0f);
     
     // Initialized some profiles with pictures from fb and made up time stamps..
     
@@ -95,6 +119,37 @@
     return cell;
 }
 
+-(void)doSwipes:(UIGestureRecognizer *) sender {
+    
+    [self navigationDrawerAnimation];
+}
+
+-(IBAction)leftDrawerButton:(id)sender {
+    
+    [self navigationDrawerAnimation];
+    
+}
+
+-(void)navigationDrawerAnimation {
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:-10];
+    
+    CGFloat moved_x = 0;
+    
+    if (navigationDrawerLeft.frame.origin.x < self.view.frame.origin.x) {
+        
+        moved_x = navigationDrawerLeft.frame.origin.x + navigationDrawerLeftWidth;
+    }
+    
+    else {
+        
+        moved_x = navigationDrawerLeft.frame.origin.x - navigationDrawerLeftWidth;
+    }
+    
+    navigationDrawerLeft.frame = CGRectMake(moved_x, navigationDrawerLeft.frame.origin.y, navigationDrawerLeft.frame.size.width, navigationDrawerLeft.frame.size.height);
+}
 
 /*
 // Override to support conditional editing of the table view.
