@@ -11,10 +11,12 @@
 
 @interface FeedTableViewCell : UITableViewCell
 
+@property IBOutlet UITableView* tableView;
 @property IBOutlet UIImageView* userImage;
 @property IBOutlet UIView* content;
 @property IBOutlet UILabel* timestamp;
 @property IBOutlet UILabel* username;
+@property CGFloat needed_height;
 
 -(void)setFeed:(Feed*)feed;
 

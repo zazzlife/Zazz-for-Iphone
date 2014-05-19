@@ -20,6 +20,7 @@
 }
 
 -(void)gotZazzFeed:(NSMutableArray*)feed{
+    [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     [self setFeed:feed];
     [[self feedTableView] reloadData];
 }
@@ -35,6 +36,10 @@
     return [[self feed] count];
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    FeedTableViewCell* cell = (FeedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+    return cell.needed_height;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

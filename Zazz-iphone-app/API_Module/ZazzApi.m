@@ -97,6 +97,19 @@ static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
     UIImage * image = [UIImage imageWithData: imageData];
     return image;
 }
++(UIImage *) getImage:(UIImage*)image scaledToWidth:(float)width{
+    float oldWidth = image.size.width;
+    float scaleFactor = width / oldWidth;
+    
+    float newHeight = image.size.height * scaleFactor;
+    float newWidth = oldWidth * scaleFactor;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
+    [image drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
 
 
 @end

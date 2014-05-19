@@ -31,6 +31,7 @@
 +(NSString *) urlEscapeString:(NSString *)unencodedString;
 +(NSString *) getQueryStringFromDictionary:(NSDictionary *)dictionary;
 +(UIImage *) getImageAtUrl:(NSString*)photoUrl;
++(UIImage *) getImage:(UIImage*)image scaledToWidth:(float)width;
 
 @property id _delegate;
 

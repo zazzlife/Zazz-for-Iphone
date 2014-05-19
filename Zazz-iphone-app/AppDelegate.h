@@ -21,6 +21,9 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property ZazzApi *zazzAPI;
+@property UIImageView* zazz_logo;
+-(void)addZazzBackgorundLogo;
+-(void)removeZazzBackgroundLogo;
 
 +(AppDelegate*)getAppDelegate;
 

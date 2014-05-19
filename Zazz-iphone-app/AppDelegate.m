@@ -11,9 +11,26 @@
 @implementation AppDelegate
 
 @synthesize zazzAPI;
+@synthesize zazz_logo;
 
 +(AppDelegate*)getAppDelegate{
     return [[UIApplication sharedApplication] delegate];
+}
+-(void)addZazzBackgorundLogo{
+    UIImage* image = [UIImage imageNamed:@"Logo"];
+    [self setZazz_logo:[[UIImageView alloc] initWithImage:image]];
+    int scale = 2;
+    [self.zazz_logo setFrame:CGRectMake(
+                                   ((self.window.frame.size.width/2) - (image.size.width/scale/2) ),
+                                   ((self.window.frame.size.height/4) - (image.size.height/scale/2)),
+                                   image.size.width/scale,
+                                   image.size.height/scale
+                                   )];
+    [self.window addSubview:zazz_logo];
+}
+
+-(void)removeZazzBackgroundLogo{
+    [self.zazz_logo removeFromSuperview];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -21,17 +38,7 @@
     // Override point for customization after application launch.
     [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Landing page (LH)1"]]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    UIImage* image = [UIImage imageNamed:@"Logo"];
-    UIImageView * zazz_logo = [[UIImageView alloc] initWithImage:image];
-    int scale = 2;
-    [zazz_logo setFrame:CGRectMake(
-                                   ((self.window.frame.size.width/2) - (image.size.width/scale/2) ),
-                                   ((self.window.frame.size.height/4) - (image.size.height/scale/2)),
-                                   image.size.width/scale,
-                                   image.size.height/scale
-                                   )];
-
-    [self.window addSubview:zazz_logo];
+    [self addZazzBackgorundLogo];
     [self setZazzAPI:[[ZazzApi alloc] init]];
     return YES;
 }

@@ -103,7 +103,7 @@ NSMutableData* receivedData;
                 [photo setUser:user];
                 [photo setDescription:(NSString*)[photo_dict objectForKey:@"description"]];
                 [photo setPhotoId:(NSString*)[photo_dict objectForKey:@"photoId"]];
-                [photo setPhoto:[ZazzApi getImageAtUrl:[[photo_dict objectForKey:@"photoLink"] objectForKey:@"mediumLink"]]];
+                [photo setPhoto:[ZazzApi getImageAtUrl:[[photo_dict objectForKey:@"photoLinks"] objectForKey:@"mediumLink"]]];
                 [photos addObject:photo];
             }
             [feed setContent:photos];
