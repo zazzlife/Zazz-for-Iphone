@@ -13,6 +13,8 @@
 
 @property NSMutableArray* feed;
 
+@property (nonatomic,strong) IBOutlet UIActivityIndicatorView * loginprogress;
+
 @property IBOutlet UITableView* feedTableView;
 
 @end

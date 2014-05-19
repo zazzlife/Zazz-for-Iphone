@@ -15,6 +15,11 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
+    [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
+    [self.loginprogress startAnimating];
+    
+    self.loginprogress.color = [UIColor yellowColor];
+    
     [self setFeed:[[NSMutableArray alloc] init]];
     [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
 }
@@ -23,6 +28,9 @@
     [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     [self setFeed:feed];
     [[self feedTableView] reloadData];
+    [self.loginprogress stopAnimating];
+    
+    self.loginprogress.hidden = YES;
 }
 
 
