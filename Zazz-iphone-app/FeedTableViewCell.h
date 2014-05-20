@@ -13,7 +13,8 @@
 
 @property IBOutlet UITableView* tableView;
 @property IBOutlet UIImageView* userImage;
-@property IBOutlet UIView* content;
+@property IBOutlet UIView* feedCellBackgroundView;
+@property IBOutlet UIView* feedCellContentView;
 @property IBOutlet UILabel* timestamp;
 @property IBOutlet UILabel* username;
 @property CGFloat needed_height;

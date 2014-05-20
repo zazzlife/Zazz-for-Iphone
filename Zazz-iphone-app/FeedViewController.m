@@ -16,9 +16,9 @@
     [super viewDidLoad];
     
     [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
-    [self.loginprogress startAnimating];
     
-    self.loginprogress.color = [UIColor yellowColor];
+    [self.loginprogress startAnimating];
+    [self.loginprogress setColor:[UIColor yellowColor]];
     
     [self setFeed:[[NSMutableArray alloc] init]];
     [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
@@ -46,6 +46,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     FeedTableViewCell* cell = (FeedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"");
     return cell.needed_height;
 }
 
