@@ -7,9 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZazzApi.h"
+
+
+@protocol ViewAnimationDelegate <NSObject>
+
+-(void)viewDidFinishAnimation;
+
+@end
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property ZazzApi *zazzAPI;
+@property UIImageView* zazz_logo;
+-(void)addZazzBackgorundLogo;
+-(void)removeZazzBackgroundLogo;
+
++(AppDelegate*)getAppDelegate;
 
 @end
