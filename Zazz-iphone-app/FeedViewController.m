@@ -136,6 +136,11 @@
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDuration:-10];
     
+    UIView* testSideNav = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    [testSideNav setBackgroundColor:[UIColor blueColor]];
+    [self.tabBarController.view.superview addSubview:testSideNav];
+    [self.tabBarController.view setFrame:CGRectMake(200, 20, 200, 200)];
+    
     CGFloat moved_x = 0;
     
     if (navigationDrawerLeft.frame.origin.x < self.view.frame.origin.x) {
