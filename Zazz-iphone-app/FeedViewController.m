@@ -37,8 +37,8 @@ BOOL left_active = false;
     [self.view addGestureRecognizer:recognizer_open_drawer];
     [self.view addGestureRecognizer:recognizer_close_drawer];
     
-    [self.loginprogress startAnimating];
     [self.loginprogress setColor:[UIColor yellowColor]];
+    [self.loginprogress startAnimating];
     
     [self setFeed:[[NSMutableArray alloc] init]];
     [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
