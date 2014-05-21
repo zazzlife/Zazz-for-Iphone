@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSArray *Usernames;
 @property (nonatomic, strong) NSArray *TimeStamps;
 @property (nonatomic, strong) NSArray *UserImages;
+@property IBOutlet UIView * sideNav;
 
 -(void)doSwipes:(UIGestureRecognizer *) sender;
 

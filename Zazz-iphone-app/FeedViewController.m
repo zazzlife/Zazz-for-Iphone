@@ -22,7 +22,6 @@
 
 
 BOOL left_active = false;
-UIView * sideNav;
 
 - (void)viewDidLoad
 {
@@ -72,9 +71,8 @@ UIView * sideNav;
                                                              @"Will Gasner",
                                                              @"Ken Montero", nil];
     
-    
-    sideNav = [[UIView alloc ]initWithFrame:CGRectMake(-200, 0, 200, self.view.frame.size.height)];
-    [sideNav setBackgroundColor:[UIColor blueColor]];
+    [self.sideNav setFrame:CGRectMake(-200, 0, 200, self.view.frame.size.height)];
+//    [self.sideNav setBackgroundColor:[UIColor blueColor]];
     
 }
 
@@ -85,14 +83,14 @@ UIView * sideNav;
 
 -(IBAction)leftDrawerButton:(id)sender {
     if (!left_active){
-        [self.tabBarController.view.superview addSubview:sideNav];
+        [self.tabBarController.view.superview addSubview:self.sideNav];
     }
     [self navigationDrawerAnimation];
     
 }
 -(void)fadeIn:(NSString*)animationId finished:(NSNumber *)finished context:(void *)context{
     if (!left_active){
-        [sideNav removeFromSuperview];
+        [self.sideNav removeFromSuperview];
     }
 }
 
@@ -103,14 +101,13 @@ UIView * sideNav;
     [UIView setAnimationDidStopSelector:@selector(fadeIn:finished:context:) ];
     [UIView setAnimationDuration:-10];
     
-    
     if(!left_active){
         [self.tabBarController.view setFrame:CGRectMake(200, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [sideNav setFrame:CGRectMake(0, 0, 200, self.view.frame.size.height)];
+        [self.sideNav setFrame:CGRectMake(0, 0, 200, self.view.frame.size.height)];
         left_active = true;
     }else{
         [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [sideNav setFrame:CGRectMake(-200, 0, 200, self.view.frame.size.height)];
+        [self.sideNav setFrame:CGRectMake(-200, 0, 200, self.view.frame.size.height)];
         left_active = false;
     }
 }
