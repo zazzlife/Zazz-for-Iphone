@@ -20,6 +20,10 @@
 @synthesize Usernames = _Usernames;
 @synthesize TimeStamps = _TimeStamps;
 
+
+BOOL left_active = false;
+UIView * sideNav;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -68,14 +72,50 @@
                                                              @"Will Gasner",
                                                              @"Ken Montero", nil];
     
-   
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    sideNav = [[UIView alloc ]initWithFrame:CGRectMake(-200, 0, 200, self.view.frame.size.height)];
+    [sideNav setBackgroundColor:[UIColor blueColor]];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+
+-(void)doSwipes:(UIGestureRecognizer *) sender {
+    [self leftDrawerButton:nil];
+}
+
+-(IBAction)leftDrawerButton:(id)sender {
+    if (!left_active){
+        [self.tabBarController.view.superview addSubview:sideNav];
+    }
+    [self navigationDrawerAnimation];
+    
+}
+-(void)fadeIn:(NSString*)animationId finished:(NSNumber *)finished context:(void *)context{
+    if (!left_active){
+        [sideNav removeFromSuperview];
+    }
+}
+
+-(void)navigationDrawerAnimation {
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(fadeIn:finished:context:) ];
+    [UIView setAnimationDuration:-10];
+    
+    
+    if(!left_active){
+        [self.tabBarController.view setFrame:CGRectMake(200, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [sideNav setFrame:CGRectMake(0, 0, 200, self.view.frame.size.height)];
+        left_active = true;
+    }else{
+        [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [sideNav setFrame:CGRectMake(-200, 0, 200, self.view.frame.size.height)];
+        left_active = false;
+    }
+}
+
+
 -(void) viewWillAppear:(BOOL)animated{
     NSLog(@"viewWillAppear");
 }
@@ -116,93 +156,8 @@
 //    UserProfile *profile = [[UserProfile alloc] initWithUserName:username andImagePath:imagePath ];
 //    [cell initWithProfile: profile andTimeStamp: timestamp]
     
+    
     return cell;
 }
-
--(void)doSwipes:(UIGestureRecognizer *) sender {
-    
-    [self navigationDrawerAnimation];
-}
-
--(IBAction)leftDrawerButton:(id)sender {
-    
-    [self navigationDrawerAnimation];
-    
-}
-
--(void)navigationDrawerAnimation {
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:-10];
-    
-    UIView* testSideNav = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-    [testSideNav setBackgroundColor:[UIColor blueColor]];
-    [self.tabBarController.view.superview addSubview:testSideNav];
-    [self.tabBarController.view setFrame:CGRectMake(200, 20, 200, 200)];
-    
-    CGFloat moved_x = 0;
-    
-    if (navigationDrawerLeft.frame.origin.x < self.view.frame.origin.x) {
-        
-        moved_x = navigationDrawerLeft.frame.origin.x + navigationDrawerLeftWidth;
-    }
-    
-    else {
-        
-        moved_x = navigationDrawerLeft.frame.origin.x - navigationDrawerLeftWidth;
-    }
-    
-    navigationDrawerLeft.frame = CGRectMake(moved_x, navigationDrawerLeft.frame.origin.y, navigationDrawerLeft.frame.size.width, navigationDrawerLeft.frame.size.height);
-}
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
