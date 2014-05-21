@@ -71,8 +71,8 @@ BOOL left_active = false;
                                                              @"Will Gasner",
                                                              @"Ken Montero", nil];
     
+    
     [self.sideNav setFrame:CGRectMake(-200, 0, 200, self.view.frame.size.height)];
-//    [self.sideNav setBackgroundColor:[UIColor blueColor]];
     
 }
 
@@ -85,20 +85,14 @@ BOOL left_active = false;
     if (!left_active){
         [self.tabBarController.view.superview addSubview:self.sideNav];
     }
+    NSLog(@"%d",self.tabBarController.view.superview.subviews.count);
     [self navigationDrawerAnimation];
     
 }
--(void)fadeIn:(NSString*)animationId finished:(NSNumber *)finished context:(void *)context{
-    if (!left_active){
-        [self.sideNav removeFromSuperview];
-    }
-}
-
 -(void)navigationDrawerAnimation {
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(fadeIn:finished:context:) ];
     [UIView setAnimationDuration:-10];
     
     if(!left_active){
