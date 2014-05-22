@@ -28,6 +28,17 @@ BOOL left_active = false;
 {
     [super viewDidLoad];
     
+    
+    /* IF WE MAKE TAB BAR CONTROLLER, MOVE THIS THERE INSTEAD*/
+//    self.tabBarItem.imageInsets = UIEdgeInsetsMake(10, 5, 10, 10);
+//    UITabBar *tabBar = self.tabBarController.tabBar;
+//    UITabBarItem *myItem = [tabBar.items objectAtIndex:0];
+    
+//    [myItem initWithTitle:@"" image:[UIImage imageNamed:@"Home_icon_general.png"] selectedImage:[UIImage imageNamed:@"Home_icon_general.png"]];
+    
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setBarTintColor:[AppDelegate colorFromHexString:@"#453F3F"]];
+    
     recognizer_open_drawer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doSwipes:)];
     recognizer_close_drawer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doSwipes:)];
     
@@ -41,6 +52,7 @@ BOOL left_active = false;
     [self.loginprogress startAnimating];
     
     [self setFeed:[[NSMutableArray alloc] init]];
+    
     [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
 }
 
@@ -98,21 +110,32 @@ BOOL left_active = false;
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     FeedTableViewCell* cell = (FeedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"");
+    if(indexPath.row == 0) return 55;
     return cell.needed_height;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"FeedTableCell";
+    if (indexPath.row == 0){
+        NSString* CellIdentifier = @"filterCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        [[[cell.contentView viewWithTag:1] layer] setCornerRadius:5];
+        [[[cell.contentView viewWithTag:1] layer]  setMasksToBounds:YES];
+        return cell;
+    }
+    
+    NSString *CellIdentifier = @"FeedTableCell";
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     [cell setAutoresizingMask: UIViewAutoresizingFlexibleHeight];
     [cell setClipsToBounds:YES];
-    
-    Feed *feedItem = [[self feed] objectAtIndex:[indexPath row]];
+    Feed *feedItem = [[self feed] objectAtIndex:[indexPath row]-1];
     [cell setFeed:feedItem];
     return cell;
 }

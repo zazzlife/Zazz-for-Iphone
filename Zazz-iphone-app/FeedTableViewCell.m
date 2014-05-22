@@ -90,7 +90,7 @@ float CELL_PADDING = 5;
         self.needed_height += label.frame.size.height + CONTENT_PADDING_BOTTOM;
     }
     [self.feedCellContentView sizeToFit];
-    [self.feedCellBackgroundView.layer setCornerRadius:15];
+    [self.feedCellBackgroundView.layer setCornerRadius:5];
     [self.feedCellBackgroundView.layer setMasksToBounds:YES];
     [self.userImage.layer setCornerRadius:25];
     [self.userImage.layer setMasksToBounds:YES];

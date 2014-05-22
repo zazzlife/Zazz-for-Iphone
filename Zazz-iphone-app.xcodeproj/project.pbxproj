@@ -39,6 +39,12 @@
 		2A6CFC8519291EE7005D3076 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8419291EE7005D3076 /* Post.m */; };
 		2A6CFC8819293039005D3076 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8719293039005D3076 /* Event.m */; };
 		2A6CFC8B19295024005D3076 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8A19295024005D3076 /* Comment.m */; };
+		2AB3E44D192D773600F72784 /* filter-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB3E44A192D773600F72784 /* filter-icon.png */; };
+		2AB3E452192D8E8400F72784 /* beer icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB3E44F192D8E8400F72784 /* beer icon.png */; };
+		2AB3E453192D8E8400F72784 /* Home_icon_general.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB3E450192D8E8400F72784 /* Home_icon_general.png */; };
+		2AB3E454192D8E8400F72784 /* left bar icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB3E451192D8E8400F72784 /* left bar icon.png */; };
+		2AB3E456192D9AD400F72784 /* feed-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB3E455192D9AD400F72784 /* feed-icon.png */; };
+		2AB3E458192D9B3E00F72784 /* feed-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB3E457192D9B3E00F72784 /* feed-small.png */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
 		5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
@@ -114,6 +120,12 @@
 		2A6CFC8719293039005D3076 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		2A6CFC8919295024005D3076 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		2A6CFC8A19295024005D3076 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		2AB3E44A192D773600F72784 /* filter-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "filter-icon.png"; path = "Images.xcassets/filter-icon.png"; sourceTree = "<group>"; };
+		2AB3E44F192D8E8400F72784 /* beer icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "beer icon.png"; path = "Images.xcassets/beer icon.png"; sourceTree = "<group>"; };
+		2AB3E450192D8E8400F72784 /* Home_icon_general.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Home_icon_general.png; path = Images.xcassets/Home_icon_general.png; sourceTree = "<group>"; };
+		2AB3E451192D8E8400F72784 /* left bar icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "left bar icon.png"; path = "Images.xcassets/left bar icon.png"; sourceTree = "<group>"; };
+		2AB3E455192D9AD400F72784 /* feed-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "feed-icon.png"; path = "Images.xcassets/feed-icon.png"; sourceTree = "<group>"; };
+		2AB3E457192D9B3E00F72784 /* feed-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "feed-small.png"; path = "Images.xcassets/feed-small.png"; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -201,6 +213,12 @@
 		2A5FAEB2191BE49200B917AB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2AB3E457192D9B3E00F72784 /* feed-small.png */,
+				2AB3E455192D9AD400F72784 /* feed-icon.png */,
+				2AB3E44F192D8E8400F72784 /* beer icon.png */,
+				2AB3E450192D8E8400F72784 /* Home_icon_general.png */,
+				2AB3E451192D8E8400F72784 /* left bar icon.png */,
+				2AB3E44A192D773600F72784 /* filter-icon.png */,
 				2A470D7D1924FDC0008DBFED /* ios7-back-icon.png */,
 				2A470D6C19244C81008DBFED /* Landing page - body.png */,
 				2A470D6D19244C81008DBFED /* Landing page - nav.png */,
@@ -431,9 +449,11 @@
 				2A470D66192435C4008DBFED /* register.png in Resources */,
 				5E8AA70618FCAED600C99D9F /* Main_iPad.storyboard in Resources */,
 				2A470D65192435C4008DBFED /* register copie(half).png in Resources */,
+				2AB3E458192D9B3E00F72784 /* feed-small.png in Resources */,
 				2A470D6F19244C81008DBFED /* Landing page - nav.png in Resources */,
 				5E8AA70B18FCAED600C99D9F /* Images.xcassets in Resources */,
 				5E8AA70318FCAED600C99D9F /* Main_iPhone.storyboard in Resources */,
+				2AB3E453192D8E8400F72784 /* Home_icon_general.png in Resources */,
 				2A470D7E1924FDC0008DBFED /* ios7-back-icon.png in Resources */,
 				2A470D61192435C4008DBFED /* Landing page (LH)1.png in Resources */,
 				2A470D68192435C4008DBFED /* Sign in.png in Resources */,
@@ -441,7 +461,11 @@
 				2A470D67192435C4008DBFED /* Sign in copie(half).png in Resources */,
 				2A470D62192435C4008DBFED /* Logo copie(half).png in Resources */,
 				2A470D51192431F4008DBFED /* Ken.jpg in Resources */,
+				2AB3E44D192D773600F72784 /* filter-icon.png in Resources */,
+				2AB3E452192D8E8400F72784 /* beer icon.png in Resources */,
+				2AB3E454192D8E8400F72784 /* left bar icon.png in Resources */,
 				2A470D60192435C4008DBFED /* Fyodor.jpg in Resources */,
+				2AB3E456192D9AD400F72784 /* feed-icon.png in Resources */,
 				2A470D52192431F4008DBFED /* Laurent.jpg in Resources */,
 				2A470D64192435C4008DBFED /* Mitchell.jpg in Resources */,
 				5E8AA6FA18FCAED600C99D9F /* InfoPlist.strings in Resources */,

@@ -25,6 +25,7 @@
 -(void)addZazzBackgorundLogo;
 -(void)removeZazzBackgroundLogo;
 
-+(AppDelegate*)getAppDelegate;
++ (AppDelegate*)getAppDelegate;
++ (UIColor *)colorFromHexString:(NSString *)hexString;
 
 @end
