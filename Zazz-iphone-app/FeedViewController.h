@@ -23,7 +23,6 @@
 @property (nonatomic, strong) NSArray *Usernames;
 @property (nonatomic, strong) NSArray *TimeStamps;
 @property (nonatomic, strong) NSArray *UserImages;
-@property IBOutlet UIActivityIndicatorView * loginprogress;
 @property IBOutlet UITableView* feedTableView;
 @property IBOutlet UIView * sideNav;
 

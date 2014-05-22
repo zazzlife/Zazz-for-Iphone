@@ -66,6 +66,10 @@ static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
     [self set_delegate:delegate];
     [[[ZazzFeed alloc] init] getMyFeedDelegate:self];
 }
+-(void) getMyFeedAfter:(NSString*)last_timestamp delegate:(id)delegate{
+    [self set_delegate:delegate];
+    [[[ZazzFeed alloc] init] getMyFeedAfter:last_timestamp delegate:self];
+}
 -(void) gotFeed:(NSMutableArray*)feedArray{
     [_delegate gotZazzFeed:feedArray];
 }

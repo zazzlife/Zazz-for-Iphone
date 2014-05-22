@@ -44,6 +44,7 @@
 -(void) gotProfile:(Profile*)profile;
 
 -(void) getMyFeedDelegate:(id)delegate;
+-(void) getMyFeedAfter:(NSString*)last_timestamp delegate:(id)delegate;
 -(void) gotFeed:(NSMutableArray*)feed;
 
 @end

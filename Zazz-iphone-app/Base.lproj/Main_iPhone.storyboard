@@ -290,16 +290,27 @@
                                             <outlet property="username" destination="6T7-gc-z1S" id="oBL-XY-Kks"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedMoreLoader" rowHeight="57" id="jHW-uj-WCX">
+                                        <rect key="frame" x="0.0" y="163" width="319" height="57"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jHW-uj-WCX" id="TyL-jm-dIV">
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="57"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" id="Kut-ih-3h6">
+                                                    <rect key="frame" x="141" y="10" width="37" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="RBc-fh-MYw" id="HvH-Xo-fwm"/>
                                     <outlet property="delegate" destination="RBc-fh-MYw" id="a9p-jI-OBT"/>
                                 </connections>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" id="8Li-F9-99G">
-                                <rect key="frame" x="0.0" y="266" width="319" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.27058823529411763" green="0.24705882352941178" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -308,7 +319,6 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="feedTableView" destination="5EX-d3-Bl7" id="2R2-Rl-Zjt"/>
-                        <outlet property="loginprogress" destination="8Li-F9-99G" id="qBQ-Oy-rPF"/>
                         <outlet property="sideNav" destination="PBV-jL-kPT" id="wka-Dq-vHz"/>
                     </connections>
                 </viewController>
