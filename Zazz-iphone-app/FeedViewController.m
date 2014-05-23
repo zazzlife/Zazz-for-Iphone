@@ -12,82 +12,75 @@
 
 @implementation FeedViewController
 
-@synthesize recognizer_close_drawer;
-@synthesize recognizer_open_drawer;
-@synthesize navigationDrawerLeftWidth;
-@synthesize navigationDrawerLeftX;
-
-@synthesize UserImages = _UserImages;
-@synthesize Usernames = _Usernames;
-@synthesize TimeStamps = _TimeStamps;
+@synthesize swipe_left;
+@synthesize swipe_right;
 
 
-BOOL left_active = false;
+bool left_active = false; // used by sideNav to indicate if it's open or not.
+bool filter_active = false; // true if filter is expanded.
+bool getting_height = false; //used by cellAtIndex and heightForRowAtIndex. True if getting height of cell to be rendered, false if cell is actually being rendered.
+bool end_of_feed = false; //true if last feed fetch returned nothing.
+bool _loaded = false; //prevents viewWillLoad from fetching initial feed multiple times.
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    
     /* IF WE MAKE TAB BAR CONTROLLER, MOVE THIS THERE INSTEAD*/
 //    self.tabBarItem.imageInsets = UIEdgeInsetsMake(10, 5, 10, 10);
 //    UITabBar *tabBar = self.tabBarController.tabBar;
 //    UITabBarItem *myItem = [tabBar.items objectAtIndex:0];
-    
 //    [myItem initWithTitle:@"" image:[UIImage imageNamed:@"Home_icon_general.png"] selectedImage:[UIImage imageNamed:@"Home_icon_general.png"]];
+    
     
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setBarTintColor:[AppDelegate colorFromHexString:@"#453F3F"]];
     
-    recognizer_open_drawer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doSwipes:)];
-    recognizer_close_drawer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doSwipes:)];
+    swipe_left = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeLeft:)];
+    swipe_right = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];
     
-    recognizer_close_drawer.direction = UISwipeGestureRecognizerDirectionLeft;
-    recognizer_open_drawer.direction = UISwipeGestureRecognizerDirectionRight;
+    swipe_left.direction = UISwipeGestureRecognizerDirectionLeft;
+    swipe_right.direction = UISwipeGestureRecognizerDirectionRight;
     
-    [self.view addGestureRecognizer:recognizer_open_drawer];
-    [self.view addGestureRecognizer:recognizer_close_drawer];
+    [self.view addGestureRecognizer:swipe_left];
+    [self.view addGestureRecognizer:swipe_right];
     
     [self setFeed:[[NSMutableArray alloc] init]];
 }
 
-bool end_of_feed = false;
--(void)gotZazzFeed:(NSMutableArray*)feed{
+-(void)gotZazzFeed:(NSMutableArray*)feed
+{
     [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     int old_count = self.feed.count;
-    if(self.feed.count == 0){
-        [self setFeed:feed];
-    }else{
-        [self.feed addObjectsFromArray:feed];
-    }
-    if(self.feed.count <= old_count){
-        end_of_feed = true;
-    }
+    [self.feed addObjectsFromArray:feed];
+    end_of_feed = (self.feed.count <= old_count);
     [[self feedTableView] reloadData];
 }
 
-BOOL _loaded = false;
--(void)viewWillAppear:(BOOL)animated{
+-(void)viewWillAppear:(BOOL)animated
+{
     if (!_loaded){
         _loaded = YES;
         [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
     }
 }
 
-
--(void)doSwipes:(UIGestureRecognizer *) sender {
+-(void)didSwipeLeft:(UIGestureRecognizer *) recognizer
+{
+    if(!left_active) return;
+    [self leftDrawerButton:nil];
+}
+-(void)didSwipeRight:(UIGestureRecognizer *) recognizer
+{
+    if(left_active) return;
     [self leftDrawerButton:nil];
 }
 
--(IBAction)leftDrawerButton:(id)sender {
+-(IBAction)leftDrawerButton:(id)sender
+{
     if (!left_active){
         [self.tabBarController.view.superview addSubview:self.sideNav];
     }
-    [self navigationDrawerAnimation];
-    
-}
--(void)navigationDrawerAnimation {
-    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDuration:-10];
@@ -103,36 +96,47 @@ BOOL _loaded = false;
     }
 }
 
+
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     if(end_of_feed) return [[self feed] count] + 1;
     return [[self feed] count] + 2;
 }
 
-bool getting_height = false;
+-(IBAction)expandFilterCell:(id)sender
+{
+    NSLog(@"EXPAND!");
+    filter_active = !filter_active;
+//    [[self.view viewWithTag:4] setHidden:!filter_active];
+    [self.feedTableView beginUpdates];
+    [self.feedTableView endUpdates];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"selected");
+}
+
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     getting_height = true;
     FeedTableViewCell* cell = (FeedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     getting_height = false;
-    if(indexPath.row == 0) return 55;
+    if(indexPath.row == 0){
+        if (filter_active) return 150;
+        return 50;
+    }
     if(indexPath.row == [self.feed count]+1){return 57;}
     return cell.needed_height;
 }
 
-
-
-int call_stack = 0;
-int lastSeen = 0;
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 //    NSLog(@"CFR: %d, %d, %d",indexPath.row, getting_height, self.feed.count);
-    lastSeen = indexPath.row;
     if (indexPath.row == 0){
         NSString* CellIdentifier = @"filterCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
