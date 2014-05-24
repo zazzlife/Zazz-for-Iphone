@@ -15,12 +15,23 @@
 @synthesize swipe_left;
 @synthesize swipe_right;
 
-
 bool left_active = false; // used by sideNav to indicate if it's open or not.
 bool filter_active = false; // true if filter is expanded.
 bool getting_height = false; //used by cellAtIndex and heightForRowAtIndex. True if getting height of cell to be rendered, false if cell is actually being rendered.
 bool end_of_feed = false; //true if last feed fetch returned nothing.
 bool _loaded = false; //prevents viewWillLoad from fetching initial feed multiple times.
+bool showPhotos= true;
+bool showEvents= true;
+
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    if (!_loaded){
+        _loaded = YES;
+        [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -32,6 +43,7 @@ bool _loaded = false; //prevents viewWillLoad from fetching initial feed multipl
 //    UITabBarItem *myItem = [tabBar.items objectAtIndex:0];
 //    [myItem initWithTitle:@"" image:[UIImage imageNamed:@"Home_icon_general.png"] selectedImage:[UIImage imageNamed:@"Home_icon_general.png"]];
     
+    [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
     [[UITabBar appearance] setBarTintColor:[AppDelegate colorFromHexString:@"#453F3F"]];
@@ -46,23 +58,42 @@ bool _loaded = false; //prevents viewWillLoad from fetching initial feed multipl
     [self.view addGestureRecognizer:swipe_right];
     
     [self setFeed:[[NSMutableArray alloc] init]];
+    [self setNoPhotoFeed:[[NSMutableArray alloc] init]];
+    [self setNoEventFeed:[[NSMutableArray alloc] init]];
+    [self setNoPhotoNoEventFeed:[[NSMutableArray alloc] init]];
 }
 
 -(void)gotZazzFeed:(NSMutableArray*)feed
 {
-    [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     int old_count = self.feed.count;
     [self.feed addObjectsFromArray:feed];
+    for(Feed* feedItem in feed){
+        if([feedItem.feedType  isEqualToString:@"Post"]){
+            [self.noEventFeed addObject:feedItem];
+            [self.noPhotoFeed addObject:feedItem];
+            [self.noPhotoNoEventFeed addObject:feedItem];
+        }
+        if([feedItem.feedType isEqualToString:@"Photo" ]){
+            [self.noEventFeed addObject:feedItem];
+        }
+        if([feedItem.feedType  isEqualToString:@"Event"]){
+            [self.noPhotoFeed addObject:feedItem];
+        }
+    }
     end_of_feed = (self.feed.count <= old_count);
     [[self feedTableView] reloadData];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    if (!_loaded){
-        _loaded = YES;
-        [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
+-(NSMutableArray*)getFilteredFeed{
+    NSMutableArray* source_feed = self.feed;
+    if(!showPhotos && showEvents){
+        source_feed = self.noPhotoFeed;
+    }else if(showPhotos && !showEvents){
+        source_feed = self.noEventFeed;
+    }else if(!showPhotos && !showEvents){
+        source_feed = self.noPhotoNoEventFeed;
     }
+    return source_feed;
 }
 
 -(void)didSwipeLeft:(UIGestureRecognizer *) recognizer
@@ -75,6 +106,9 @@ bool _loaded = false; //prevents viewWillLoad from fetching initial feed multipl
     if(left_active) return;
     [self leftDrawerButton:nil];
 }
+
+
+#pragma mark - Interface Builder Actions
 
 -(IBAction)leftDrawerButton:(id)sender
 {
@@ -96,6 +130,20 @@ bool _loaded = false; //prevents viewWillLoad from fetching initial feed multipl
     }
 }
 
+-(IBAction)expandFilterCell:(id)sender
+{
+    filter_active = !filter_active;
+    [self.feedTableView beginUpdates];
+    [self.feedTableView endUpdates];
+}
+
+-(IBAction)toggleFilter:(id)sender
+{
+    if (((UISwitch*)sender).tag == 1){  showEvents = !showEvents; }
+    else if(((UISwitch*)sender).tag == 2){ showPhotos = !showPhotos; }
+    [[self feedTableView] reloadData];
+}
+
 
 #pragma mark - Table view data source
 
@@ -106,17 +154,9 @@ bool _loaded = false; //prevents viewWillLoad from fetching initial feed multipl
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(end_of_feed) return [[self feed] count] + 1;
-    return [[self feed] count] + 2;
-}
-
--(IBAction)expandFilterCell:(id)sender
-{
-    NSLog(@"EXPAND!");
-    filter_active = !filter_active;
-//    [[self.view viewWithTag:4] setHidden:!filter_active];
-    [self.feedTableView beginUpdates];
-    [self.feedTableView endUpdates];
+    NSMutableArray* source_feed = [self getFilteredFeed];
+    if(end_of_feed) return [source_feed count] + 1;
+    return [source_feed count] + 2;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -131,30 +171,39 @@ bool _loaded = false; //prevents viewWillLoad from fetching initial feed multipl
         if (filter_active) return 150;
         return 50;
     }
-    if(indexPath.row == [self.feed count]+1){return 57;}
+    NSMutableArray* source_feed = [self getFilteredFeed];
+    if(indexPath.row == [source_feed count]+1){return 57;}
     return cell.needed_height;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    NSLog(@"CFR: %d, %d, %d",indexPath.row, getting_height, self.feed.count);
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSMutableArray* source_feed = [self getFilteredFeed];
     if (indexPath.row == 0){
         NSString* CellIdentifier = @"filterCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        [[[cell.contentView viewWithTag:1] layer] setCornerRadius:5];
-        [[[cell.contentView viewWithTag:1] layer]  setMasksToBounds:YES];
+        
+        UISwitch* eventToggle = (UISwitch*)[cell.contentView viewWithTag:1];
+        UISwitch* photoToggle = (UISwitch*)[cell.contentView viewWithTag:2];
+        
+        [eventToggle setOn:showEvents];
+        [photoToggle setOn:showPhotos];
+        
+        [[[cell.contentView viewWithTag:0] layer] setCornerRadius:5];
+        [[[cell.contentView viewWithTag:0] layer]  setMasksToBounds:YES];
         return cell;
     }
-    if(indexPath.row == [self.feed count]+1){
+    if(indexPath.row == [source_feed count]+1){
         NSString* CellIdentifier = @"feedMoreLoader";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        if(!getting_height && self.feed.count > 0){
-            NSString* last_feedId = (NSString*)[(Feed*)[self.feed objectAtIndex:indexPath.row-2] feedId];
+        if(!getting_height && source_feed.count > 0){
+            NSString* last_feedId = (NSString*)[(Feed*)[source_feed objectAtIndex:indexPath.row-2] feedId];
             [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedAfter:[NSString stringWithFormat:@"%@",last_feedId] delegate:self];
         }
         return cell;
@@ -167,7 +216,7 @@ bool _loaded = false; //prevents viewWillLoad from fetching initial feed multipl
     }
     [cell setAutoresizingMask: UIViewAutoresizingFlexibleHeight];
     [cell setClipsToBounds:YES];
-    Feed *feedItem = [[self feed] objectAtIndex:[indexPath row]-1];
+    Feed *feedItem = [source_feed objectAtIndex:[indexPath row]-1];
     [cell setFeed:feedItem];
     return cell;
 }

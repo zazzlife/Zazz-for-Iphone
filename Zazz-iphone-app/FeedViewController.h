@@ -10,10 +10,12 @@
 #import "ZazzApi.h"
 
 @interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ZazzFeedDelegate> {
-    
     UIView *navigationDrawerLeft;
 }
 @property NSMutableArray* feed;
+@property NSMutableArray* noPhotoFeed;
+@property NSMutableArray* noEventFeed;
+@property NSMutableArray* noPhotoNoEventFeed;
 
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_left;
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_right;
@@ -22,8 +24,10 @@
 @property IBOutlet UIView * sideNav;
 
 -(void)navigationDrawerAnimation;
+-(NSMutableArray*)getFilteredFeed;
 
 -(IBAction)leftDrawerButton:(id)sender;
 -(IBAction)expandFilterCell:(id)sender;
+-(IBAction)toggleFilter:(id)sender;
 
 @end

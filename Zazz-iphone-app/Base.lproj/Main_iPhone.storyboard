@@ -220,7 +220,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="319" height="146"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view autoresizesSubviews="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" restorationIdentifier="filterCell" id="jaI-oR-Y2f">
+                                                <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="filterCell" id="jaI-oR-Y2f">
                                                     <rect key="frame" x="5" y="5" width="309" height="140"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -249,12 +249,15 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view tag="4" contentMode="scaleToFill" id="8IZ-la-lhb">
-                                                            <rect key="frame" x="0.0" y="50" width="309" height="91"/>
+                                                            <rect key="frame" x="0.0" y="49" width="309" height="91"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="BRX-hv-naO" userLabel="Switch - photo">
+                                                                <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="BRX-hv-naO" userLabel="Switch - photo">
                                                                     <rect key="frame" x="15" y="50" width="51" height="31"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <connections>
+                                                                        <action selector="toggleFilter:" destination="RBc-fh-MYw" eventType="valueChanged" id="iIE-FG-9Gv"/>
+                                                                    </connections>
                                                                 </switch>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X7k-U3-LWN">
                                                                     <rect key="frame" x="77" y="55" width="112" height="21"/>
@@ -262,9 +265,12 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="CuY-hQ-jnh" userLabel="Switch - event">
+                                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="CuY-hQ-jnh" userLabel="Switch - event">
                                                                     <rect key="frame" x="15" y="11" width="51" height="31"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <connections>
+                                                                        <action selector="toggleFilter:" destination="RBc-fh-MYw" eventType="valueChanged" id="pr2-Qj-vuz"/>
+                                                                    </connections>
                                                                 </switch>
                                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Club Posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BeT-Vz-MAB">
                                                                     <rect key="frame" x="77" y="16" width="112" height="21"/>
@@ -492,7 +498,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1o3-Ik-NrB"/>
-        <segue reference="tBN-Po-aCm"/>
+        <segue reference="9Tr-Bj-WMS"/>
+        <segue reference="evi-4f-Lw8"/>
     </inferredMetricsTieBreakers>
 </document>

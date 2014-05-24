@@ -15,7 +15,7 @@
 @property Profile* user;
 @property BOOL canCurrentUserRemoveFeed;
 @property id content;
-@property NSString* feedType;
+@property NSString* feedType; //Photo, Event, Post
 @property NSMutableArray* comments;
 @property NSString* timestamp;
 
