@@ -15,7 +15,8 @@
 @synthesize swipe_left;
 @synthesize swipe_right;
 
-bool left_active = false; // used by sideNav to indicate if it's open or not.
+bool left_active = false; // used by leftNav to indicate if it's open or not.
+bool right_active = false; // used by leftNav to indicate if it's open or not.
 bool filter_active = false; // true if filter is expanded.
 bool getting_height = false; //used by cellAtIndex and heightForRowAtIndex. True if getting height of cell to be rendered, false if cell is actually being rendered.
 bool end_of_feed = false; //true if last feed fetch returned nothing.
@@ -23,15 +24,6 @@ bool _loaded = false; //prevents viewWillLoad from fetching initial feed multipl
 bool showPhotos= true;
 bool showEvents= true;
 
-
-
--(void)viewWillAppear:(BOOL)animated
-{
-    if (!_loaded){
-        _loaded = YES;
-        [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
-    }
-}
 
 - (void)viewDidLoad
 {
@@ -43,6 +35,7 @@ bool showEvents= true;
 //    UITabBarItem *myItem = [tabBar.items objectAtIndex:0];
 //    [myItem initWithTitle:@"" image:[UIImage imageNamed:@"Home_icon_general.png"] selectedImage:[UIImage imageNamed:@"Home_icon_general.png"]];
     
+    [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
     [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
@@ -61,6 +54,25 @@ bool showEvents= true;
     [self setNoPhotoFeed:[[NSMutableArray alloc] init]];
     [self setNoEventFeed:[[NSMutableArray alloc] init]];
     [self setNoPhotoNoEventFeed:[[NSMutableArray alloc] init]];
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    
+    if(!_loaded){
+        //first call is made by nav controller... too early here...
+        _loaded = true;
+        return;
+    }
+    [self.leftNav setFrame:CGRectMake(-(self.leftNav.frame.size.width), 0, self.leftNav.frame.size.width, self.view.window.frame.size.height)];
+    [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, self.rightNav.frame.size.width, self.view.window.frame.size.height)];
+    
+    [self.leftNav setHidden:false];
+    [self.rightNav setHidden:false];
+    
+    NSLog(@"%f, %f", self.view.window.frame.size.width, self.view.window.frame.size.height);
+    
+    [self.tabBarController.view.superview addSubview:self.rightNav];
+    [self.tabBarController.view.superview addSubview:self.leftNav];
 }
 
 -(void)gotZazzFeed:(NSMutableArray*)feed
@@ -98,34 +110,63 @@ bool showEvents= true;
 
 -(void)didSwipeLeft:(UIGestureRecognizer *) recognizer
 {
-    if(!left_active) return;
-    [self leftDrawerButton:nil];
+    if(right_active) return;
+    if(left_active){
+        [self leftDrawerButton:nil];
+        return;
+    }
+    //else: neither active
+    [self rightDrawerButton:nil];
 }
 -(void)didSwipeRight:(UIGestureRecognizer *) recognizer
 {
     if(left_active) return;
+    if(right_active){
+        [self rightDrawerButton:nil];
+        return;
+    }
     [self leftDrawerButton:nil];
 }
 
 
 #pragma mark - Interface Builder Actions
 
+-(IBAction)rightDrawerButton:(id)sender
+{
+    CGFloat rightNavWidth =self.rightNav.frame.size.width;
+        
+    if(left_active) [self leftDrawerButton:nil];//close left drawer first.
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDuration:-10];
+    
+    if(!right_active){
+        [self.tabBarController.view setFrame:CGRectMake(-rightNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+        [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width - rightNavWidth, 0, rightNavWidth, self.view.window.frame.size.height)];
+        right_active = true;
+    }else{
+        [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+        [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, rightNavWidth, self.view.window.frame.size.height)];
+        right_active = false;
+    }
+}
+
 -(IBAction)leftDrawerButton:(id)sender
 {
-    if (!left_active){
-        [self.tabBarController.view.superview addSubview:self.sideNav];
-    }
+    CGFloat leftNavWidth =self.leftNav.frame.size.width;
+    
+    if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDuration:-10];
     
     if(!left_active){
-        [self.tabBarController.view setFrame:CGRectMake(200, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [self.sideNav setFrame:CGRectMake(0, 0, 200, self.view.frame.size.height)];
+        [self.tabBarController.view setFrame:CGRectMake(leftNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+        [self.leftNav setFrame:CGRectMake(0, 0, leftNavWidth, self.view.window.frame.size.height)];
         left_active = true;
     }else{
-        [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [self.sideNav setFrame:CGRectMake(-200, 0, 200, self.view.frame.size.height)];
+        [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+        [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
         left_active = false;
     }
 }
@@ -193,7 +234,7 @@ bool showEvents= true;
         [photoToggle setOn:showPhotos];
         
         [[[cell.contentView viewWithTag:0] layer] setCornerRadius:5];
-        [[[cell.contentView viewWithTag:0] layer]  setMasksToBounds:YES];
+        [[[cell.contentView viewWithTag:0] layer] setMasksToBounds:YES];
         return cell;
     }
     if(indexPath.row == [source_feed count]+1){

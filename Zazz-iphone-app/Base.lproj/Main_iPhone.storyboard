@@ -163,15 +163,23 @@
             <objects>
                 <viewController id="RBc-fh-MYw" customClass="FeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="euv-dr-P4o" userLabel="ParentsView">
-                        <rect key="frame" x="0.0" y="0.0" width="319" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="319" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" id="PBV-jL-kPT" userLabel="sideNav">
-                                <rect key="frame" x="-200" y="0.0" width="200" height="568"/>
+                            <containerView hidden="YES" contentMode="scaleToFill" id="PBV-jL-kPT" userLabel="leftNav">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="9dM-CA-8wr" kind="embed" id="8vz-nE-Dow"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" contentMode="scaleToFill" id="AvK-pM-lRl" userLabel="rightNav">
+                                <rect key="frame" x="79" y="0.0" width="240" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="wzV-fg-VEe" kind="embed" id="xwj-bU-1N5"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" id="O7b-1n-2Vm" userLabel="NavView">
@@ -198,6 +206,9 @@
                                         <state key="normal" image="beer icon.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="rightDrawerButton:" destination="RBc-fh-MYw" eventType="touchUpInside" id="5Zz-Z8-4zH"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" id="SgD-RD-JRS" userLabel="Divider">
                                         <rect key="frame" x="0.0" y="56" width="319" height="1"/>
@@ -208,7 +219,7 @@
                                 <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="18" sectionFooterHeight="22" id="5EX-d3-Bl7">
-                                <rect key="frame" x="0.0" y="57" width="319" height="463"/>
+                                <rect key="frame" x="0.0" y="57" width="319" height="462"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="-50" maxX="0.0" maxY="50"/>
@@ -360,17 +371,19 @@
                         </subviews>
                         <color key="backgroundColor" red="0.27058823529411763" green="0.24705882352941178" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" tag="1" title="" image="feed-small.png" id="e5a-hQ-Jsq">
                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="feedTableView" destination="5EX-d3-Bl7" id="2R2-Rl-Zjt"/>
-                        <outlet property="sideNav" destination="PBV-jL-kPT" id="wka-Dq-vHz"/>
+                        <outlet property="leftNav" destination="PBV-jL-kPT" id="Rzh-vr-7cm"/>
+                        <outlet property="rightNav" destination="AvK-pM-lRl" id="ojk-Zn-MZ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQd-oC-OWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1434" y="246"/>
+            <point key="canvasLocation" x="1435" y="246"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="THj-41-1Rd">
@@ -482,6 +495,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f6e-dK-pMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-186" y="203"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JPy-jf-cVX">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wzV-fg-VEe" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5Tl-bS-nUa">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rightNav" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dZ2-c2-xH9">
+                                <rect key="frame" x="88" y="57" width="65" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NOE-Ec-LHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1911" y="702"/>
         </scene>
     </scenes>
     <resources>

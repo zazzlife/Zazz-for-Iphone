@@ -21,12 +21,14 @@
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_right;
 
 @property IBOutlet UITableView* feedTableView;
-@property IBOutlet UIView * sideNav;
+@property IBOutlet UIView * leftNav;
+@property IBOutlet UIView * rightNav;
 
 -(void)navigationDrawerAnimation;
 -(NSMutableArray*)getFilteredFeed;
 
 -(IBAction)leftDrawerButton:(id)sender;
+-(IBAction)rightDrawerButton:(id)sender;
 -(IBAction)expandFilterCell:(id)sender;
 -(IBAction)toggleFilter:(id)sender;
 
