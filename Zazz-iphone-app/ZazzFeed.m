@@ -33,10 +33,26 @@
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
-- (void) getFeedForUserId:(NSString *)userId delegate:(id)delegate{
-    
+
+- (void) getMyFeedAfter:(NSString*)feedId delegate:(id)delegate{
+    receivedData = [[NSMutableData alloc] init];
     [self set_delegate:delegate];
     
+    NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
+    NSString * api_action =  [[BASE_URL stringByAppendingString:@"feeds?lastFeed="] stringByAppendingString:(NSString*)feedId];
+    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
+    [request setHTTPMethod:@"GET"];
+    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
+    
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+- (void) getFeedForUserId:(NSString *)userId delegate:(id)delegate{
+
+    [self set_delegate:delegate];
+
     NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
     NSString * api_action =  [BASE_URL stringByAppendingString:[NSString stringWithFormat:@"feeds/%@",userId]];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
@@ -46,7 +62,7 @@
     [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
     
     [NSURLConnection connectionWithRequest:request delegate:self];
-    
+//
 }
 
 NSMutableData* receivedData;

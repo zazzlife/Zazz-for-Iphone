@@ -15,6 +15,7 @@
 @property ZazzApi* _delegate;
 
 - (void) getMyFeedDelegate:(id)delegate;
+- (void) getMyFeedAfter:(NSString*)last_timestamp delegate:(id)delegate;
 - (void) getFeedForUserId:(NSString*)userId delegate:(id)delegate;
 
 @end

@@ -10,27 +10,26 @@
 #import "ZazzApi.h"
 
 @interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ZazzFeedDelegate> {
-    
     UIView *navigationDrawerLeft;
 }
 @property NSMutableArray* feed;
+@property NSMutableArray* noPhotoFeed;
+@property NSMutableArray* noEventFeed;
+@property NSMutableArray* noPhotoNoEventFeed;
 
-@property (readonly, nonatomic) UISwipeGestureRecognizer *recognizer_open_drawer;
-@property (readonly, nonatomic) UISwipeGestureRecognizer *recognizer_close_drawer;
+@property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_left;
+@property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_right;
 
-@property (readonly, nonatomic) int navigationDrawerLeftX, navigationDrawerLeftWidth;
-
-@property (nonatomic, strong) NSArray *Usernames;
-@property (nonatomic, strong) NSArray *TimeStamps;
-@property (nonatomic, strong) NSArray *UserImages;
-@property IBOutlet UIActivityIndicatorView * loginprogress;
 @property IBOutlet UITableView* feedTableView;
-@property IBOutlet UIView * sideNav;
-
--(void)doSwipes:(UIGestureRecognizer *) sender;
+@property IBOutlet UIView * leftNav;
+@property IBOutlet UIView * rightNav;
 
 -(void)navigationDrawerAnimation;
+-(NSMutableArray*)getFilteredFeed;
 
 -(IBAction)leftDrawerButton:(id)sender;
+-(IBAction)rightDrawerButton:(id)sender;
+-(IBAction)expandFilterCell:(id)sender;
+-(IBAction)toggleFilter:(id)sender;
 
 @end
