@@ -77,7 +77,11 @@ bool showEvents= true;
 
 -(void)gotZazzFeed:(NSMutableArray*)feed
 {
-    int old_count = self.feed.count;
+    if([feed count] < 1){
+        end_of_feed = true;
+        [[self feedTableView] reloadData];
+        return;
+    }
     [self.feed addObjectsFromArray:feed];
     for(Feed* feedItem in feed){
         if([feedItem.feedType  isEqualToString:@"Post"]){
@@ -92,7 +96,6 @@ bool showEvents= true;
             [self.noPhotoFeed addObject:feedItem];
         }
     }
-    end_of_feed = (self.feed.count <= old_count);
     [[self feedTableView] reloadData];
 }
 
@@ -202,6 +205,7 @@ bool showEvents= true;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"selected");
+    
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -233,8 +237,10 @@ bool showEvents= true;
         [eventToggle setOn:showEvents];
         [photoToggle setOn:showPhotos];
         
-        [[[cell.contentView viewWithTag:0] layer] setCornerRadius:5];
-        [[[cell.contentView viewWithTag:0] layer] setMasksToBounds:YES];
+        [[[cell.contentView viewWithTag:5] layer] setCornerRadius:5];
+        [[[cell.contentView viewWithTag:5] layer] setMasksToBounds:YES];
+        
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         return cell;
     }
     if(indexPath.row == [source_feed count]+1){

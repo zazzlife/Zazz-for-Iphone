@@ -227,11 +227,11 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="146" id="kg7-fk-B4o">
                                         <rect key="frame" x="0.0" y="18" width="319" height="146"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kg7-fk-B4o" id="Muo-e7-tby">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" tableViewCell="kg7-fk-B4o" id="Muo-e7-tby">
                                             <rect key="frame" x="0.0" y="0.0" width="319" height="146"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="filterCell" id="jaI-oR-Y2f">
+                                                <view autoresizesSubviews="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" restorationIdentifier="filterCell" id="jaI-oR-Y2f">
                                                     <rect key="frame" x="5" y="5" width="309" height="140"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
