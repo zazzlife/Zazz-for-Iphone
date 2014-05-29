@@ -13,9 +13,7 @@
     UIView *navigationDrawerLeft;
 }
 @property NSMutableArray* feed;
-@property NSMutableArray* noPhotoFeed;
-@property NSMutableArray* noEventFeed;
-@property NSMutableArray* noPhotoNoEventFeed;
+@property NSArray* filteredFeed;
 
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_left;
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_right;

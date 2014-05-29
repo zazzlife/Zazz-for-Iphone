@@ -45,6 +45,8 @@
 		2AB3E454192D8E8400F72784 /* left bar icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB3E451192D8E8400F72784 /* left bar icon.png */; };
 		2AB3E456192D9AD400F72784 /* feed-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB3E455192D9AD400F72784 /* feed-icon.png */; };
 		2AB3E458192D9B3E00F72784 /* feed-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AB3E457192D9B3E00F72784 /* feed-small.png */; };
+		2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */; };
+		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
 		5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
@@ -126,6 +128,10 @@
 		2AB3E451192D8E8400F72784 /* left bar icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "left bar icon.png"; path = "Images.xcassets/left bar icon.png"; sourceTree = "<group>"; };
 		2AB3E455192D9AD400F72784 /* feed-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "feed-icon.png"; path = "Images.xcassets/feed-icon.png"; sourceTree = "<group>"; };
 		2AB3E457192D9B3E00F72784 /* feed-small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "feed-small.png"; path = "Images.xcassets/feed-small.png"; sourceTree = "<group>"; };
+		2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavigationViewController.h; sourceTree = "<group>"; };
+		2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
+		2AB3E4611934063700F72784 /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
+		2AB3E4621934063700F72784 /* RightNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavigationViewController.m; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -264,6 +270,10 @@
 				0DD31808191B2063003D5630 /* FeedViewController.m */,
 				0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */,
 				0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */,
+				2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */,
+				2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */,
+				2AB3E4611934063700F72784 /* RightNavigationViewController.h */,
+				2AB3E4621934063700F72784 /* RightNavigationViewController.m */,
 				2A09D71E191EF3CD00A2827F /* LoginViewController.h */,
 				2A09D71F191EF3CD00A2827F /* LoginViewController.m */,
 				2A470D3D191FE863008DBFED /* RegisterViewController.h */,
@@ -496,8 +506,10 @@
 				2A09D719191EDA3700A2827F /* Profile.m in Sources */,
 				2A5FAEBC191D5FBF00B917AB /* ZazzLogin.m in Sources */,
 				2A6CFC8819293039005D3076 /* Event.m in Sources */,
+				2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */,
 				2A6CFC8B19295024005D3076 /* Comment.m in Sources */,
 				2A09D71D191EDFB600A2827F /* Feed.m in Sources */,
+				2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */,
 				2A6CFC8519291EE7005D3076 /* Post.m in Sources */,
 				5E8AA70018FCAED600C99D9F /* AppDelegate.m in Sources */,
 				2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */,

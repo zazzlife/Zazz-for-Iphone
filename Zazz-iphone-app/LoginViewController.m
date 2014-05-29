@@ -54,7 +54,7 @@
 
 -(void) finishedZazzAuth:(BOOL)success{
    
-    NSLog(@"finishedZazzAuth - success:%s",success?"yes":"no");
+//    NSLog(@"finishedZazzAuth - success:%s",success?"yes":"no");
     
     if(success){
         [self performSegueWithIdentifier:@"loginComplete" sender:self];

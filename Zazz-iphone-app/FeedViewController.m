@@ -8,6 +8,7 @@
 
 #import "FeedViewController.h"
 #import "FeedTableViewCell.h"
+#import "Feed.h"
 #import "AppDelegate.h"
 
 @implementation FeedViewController
@@ -21,19 +22,17 @@ bool filter_active = false; // true if filter is expanded.
 bool getting_height = false; //used by cellAtIndex and heightForRowAtIndex. True if getting height of cell to be rendered, false if cell is actually being rendered.
 bool end_of_feed = false; //true if last feed fetch returned nothing.
 bool _loaded = false; //prevents viewWillLoad from fetching initial feed multiple times.
-bool showPhotos= true;
-bool showEvents= true;
+bool showPhotos= false;
+bool showEvents= false;
+bool showVideos= false;
 
 
+/*
+ The view has a sense of self and
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    /* IF WE MAKE TAB BAR CONTROLLER, MOVE THIS THERE INSTEAD*/
-//    self.tabBarItem.imageInsets = UIEdgeInsetsMake(10, 5, 10, 10);
-//    UITabBar *tabBar = self.tabBarController.tabBar;
-//    UITabBarItem *myItem = [tabBar.items objectAtIndex:0];
-//    [myItem initWithTitle:@"" image:[UIImage imageNamed:@"Home_icon_general.png"] selectedImage:[UIImage imageNamed:@"Home_icon_general.png"]];
     
     [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
     [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
@@ -51,64 +50,30 @@ bool showEvents= true;
     [self.view addGestureRecognizer:swipe_right];
     
     [self setFeed:[[NSMutableArray alloc] init]];
-    [self setNoPhotoFeed:[[NSMutableArray alloc] init]];
-    [self setNoEventFeed:[[NSMutableArray alloc] init]];
-    [self setNoPhotoNoEventFeed:[[NSMutableArray alloc] init]];
 }
 
+/* 
+ Here you can actualy use view Geometry to do calculation and add subview the the tabBar view's superview.
+ ViewDidLoad is too early for this, as the view hasn't been rendered yet, or added into it's parent tabbar container.
+ */
 -(void) viewDidAppear:(BOOL)animated{
-    
     if(!_loaded){
         //first call is made by nav controller... too early here...
         _loaded = true;
         return;
     }
-    [self.leftNav setFrame:CGRectMake(-(self.leftNav.frame.size.width), 0, self.leftNav.frame.size.width, self.view.window.frame.size.height)];
-    [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, self.rightNav.frame.size.width, self.view.window.frame.size.height)];
-    
-    [self.leftNav setHidden:false];
-    [self.rightNav setHidden:false];
-    
-    NSLog(@"%f, %f", self.view.window.frame.size.width, self.view.window.frame.size.height);
-    
-    [self.tabBarController.view.superview addSubview:self.rightNav];
-    [self.tabBarController.view.superview addSubview:self.leftNav];
 }
 
 -(void)gotZazzFeed:(NSMutableArray*)feed
 {
-    if([feed count] < 1){
+    if([feed count] <= 0){
         end_of_feed = true;
         [[self feedTableView] reloadData];
         return;
     }
     [self.feed addObjectsFromArray:feed];
-    for(Feed* feedItem in feed){
-        if([feedItem.feedType  isEqualToString:@"Post"]){
-            [self.noEventFeed addObject:feedItem];
-            [self.noPhotoFeed addObject:feedItem];
-            [self.noPhotoNoEventFeed addObject:feedItem];
-        }
-        if([feedItem.feedType isEqualToString:@"Photo" ]){
-            [self.noEventFeed addObject:feedItem];
-        }
-        if([feedItem.feedType  isEqualToString:@"Event"]){
-            [self.noPhotoFeed addObject:feedItem];
-        }
-    }
+    [self setFilteredFeed:[self getFilteredFeed]];
     [[self feedTableView] reloadData];
-}
-
--(NSMutableArray*)getFilteredFeed{
-    NSMutableArray* source_feed = self.feed;
-    if(!showPhotos && showEvents){
-        source_feed = self.noPhotoFeed;
-    }else if(showPhotos && !showEvents){
-        source_feed = self.noEventFeed;
-    }else if(!showPhotos && !showEvents){
-        source_feed = self.noPhotoNoEventFeed;
-    }
-    return source_feed;
 }
 
 -(void)didSwipeLeft:(UIGestureRecognizer *) recognizer
@@ -131,6 +96,20 @@ bool showEvents= true;
     [self leftDrawerButton:nil];
 }
 
+/* Should be optimized */
+-(NSArray*)getFilteredFeed{
+    NSIndexSet *indices = [self.feed indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        Feed* feedItem = (Feed*) obj;
+        if(!showEvents && !showPhotos && !showVideos) return true;
+        if([feedItem.feedType isEqualToString:@"Photo"] && showPhotos) return true;
+        if([feedItem.feedType isEqualToString:@"Video"] && showVideos) return true;
+        if([feedItem.feedType isEqualToString:@"Event"] && showEvents) return true;
+        return false;
+        
+    }];
+    return [self.feed objectsAtIndexes:indices];
+}
+
 
 #pragma mark - Interface Builder Actions
 
@@ -139,6 +118,11 @@ bool showEvents= true;
     CGFloat rightNavWidth =self.rightNav.frame.size.width;
         
     if(left_active) [self leftDrawerButton:nil];//close left drawer first.
+
+    [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, self.rightNav.frame.size.width, self.view.window.frame.size.height)];
+    [self.rightNav setHidden:false];
+    [self.tabBarController.view.superview addSubview:self.rightNav];
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDuration:-10];
@@ -159,6 +143,11 @@ bool showEvents= true;
     CGFloat leftNavWidth =self.leftNav.frame.size.width;
     
     if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
+    
+    [self.leftNav setFrame:CGRectMake(-(self.leftNav.frame.size.width), 0, self.leftNav.frame.size.width, self.view.window.frame.size.height)];
+    [self.leftNav setHidden:false];
+    [self.tabBarController.view.superview addSubview:self.leftNav];
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDuration:-10];
@@ -183,8 +172,10 @@ bool showEvents= true;
 
 -(IBAction)toggleFilter:(id)sender
 {
-    if (((UISwitch*)sender).tag == 1){  showEvents = !showEvents; }
+    if (((UISwitch*)sender).tag == 1){  showVideos = !showVideos; }
     else if(((UISwitch*)sender).tag == 2){ showPhotos = !showPhotos; }
+    else if(((UISwitch*)sender).tag == 3){ showEvents = !showEvents; }
+    [self setFilteredFeed:[self getFilteredFeed]];
     [[self feedTableView] reloadData];
 }
 
@@ -198,7 +189,7 @@ bool showEvents= true;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSMutableArray* source_feed = [self getFilteredFeed];
+    NSArray* source_feed = self.filteredFeed;
     if(end_of_feed) return [source_feed count] + 1;
     return [source_feed count] + 2;
 }
@@ -213,17 +204,16 @@ bool showEvents= true;
     FeedTableViewCell* cell = (FeedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     getting_height = false;
     if(indexPath.row == 0){
-        if (filter_active) return 150;
+        if (filter_active) return 170;
         return 50;
     }
-    NSMutableArray* source_feed = [self getFilteredFeed];
+    NSArray* source_feed = self.filteredFeed;
     if(indexPath.row == [source_feed count]+1){return 57;}
     return cell.needed_height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableArray* source_feed = [self getFilteredFeed];
     if (indexPath.row == 0){
         NSString* CellIdentifier = @"filterCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -231,11 +221,13 @@ bool showEvents= true;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
-        UISwitch* eventToggle = (UISwitch*)[cell.contentView viewWithTag:1];
+        UISwitch* videoToggle = (UISwitch*)[cell.contentView viewWithTag:1];
         UISwitch* photoToggle = (UISwitch*)[cell.contentView viewWithTag:2];
+        UISwitch* eventToggle = (UISwitch*)[cell.contentView viewWithTag:3];
         
-        [eventToggle setOn:showEvents];
+        [videoToggle setOn:showVideos];
         [photoToggle setOn:showPhotos];
+        [eventToggle setOn:showEvents];
         
         [[[cell.contentView viewWithTag:5] layer] setCornerRadius:5];
         [[[cell.contentView viewWithTag:5] layer] setMasksToBounds:YES];
@@ -243,14 +235,14 @@ bool showEvents= true;
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         return cell;
     }
-    if(indexPath.row == [source_feed count]+1){
+    if(indexPath.row == [self.filteredFeed count]+1){
         NSString* CellIdentifier = @"feedMoreLoader";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        if(!getting_height && source_feed.count > 0){
-            NSString* last_feedId = (NSString*)[(Feed*)[source_feed objectAtIndex:indexPath.row-2] feedId];
+        if(!getting_height && self.filteredFeed.count > 0){
+            NSString* last_feedId = (NSString*)[(Feed*)[self.filteredFeed objectAtIndex:indexPath.row - 2 ] feedId];
             [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedAfter:[NSString stringWithFormat:@"%@",last_feedId] delegate:self];
         }
         return cell;
@@ -262,8 +254,7 @@ bool showEvents= true;
         cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     [cell setAutoresizingMask: UIViewAutoresizingFlexibleHeight];
-    [cell setClipsToBounds:YES];
-    Feed *feedItem = [source_feed objectAtIndex:[indexPath row]-1];
+    Feed *feedItem = [self.filteredFeed objectAtIndex:(indexPath.row - 1)];
     [cell setFeed:feedItem];
     return cell;
 }

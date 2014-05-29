@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="hUx-pd-DBE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="hUx-pd-DBE">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -135,10 +135,10 @@
             </objects>
             <point key="canvasLocation" x="913" y="246"/>
         </scene>
-        <!--View Controller-->
+        <!--Left Navigation View Controller-->
         <scene sceneID="yI2-Nh-wch">
             <objects>
-                <viewController id="9dM-CA-8wr" sceneMemberID="viewController">
+                <viewController id="9dM-CA-8wr" customClass="LeftNavigationViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fz1-4G-5sN">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3n-To-IDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1911" y="15"/>
+            <point key="canvasLocation" x="1887" y="246"/>
         </scene>
         <!--Feed View Controller-->
         <scene sceneID="GaV-Bl-2ym">
@@ -224,15 +224,15 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="-50" maxX="0.0" maxY="50"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="146" id="kg7-fk-B4o">
-                                        <rect key="frame" x="0.0" y="18" width="319" height="146"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="170" id="kg7-fk-B4o">
+                                        <rect key="frame" x="0.0" y="18" width="319" height="170"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" contentMode="center" tableViewCell="kg7-fk-B4o" id="Muo-e7-tby">
-                                            <rect key="frame" x="0.0" y="0.0" width="319" height="146"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="319" height="170"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view autoresizesSubviews="NO" clipsSubviews="YES" tag="5" contentMode="scaleToFill" restorationIdentifier="filterCell" id="jaI-oR-Y2f">
-                                                    <rect key="frame" x="5" y="5" width="309" height="140"/>
+                                                    <rect key="frame" x="5" y="5" width="309" height="165"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nuM-aZ-FMQ">
@@ -260,31 +260,44 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view tag="4" contentMode="scaleToFill" id="8IZ-la-lhb">
-                                                            <rect key="frame" x="0.0" y="49" width="309" height="91"/>
+                                                            <rect key="frame" x="0.0" y="49" width="309" height="116"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="BRX-hv-naO" userLabel="Switch - photo">
-                                                                    <rect key="frame" x="15" y="50" width="51" height="31"/>
+                                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="d70-5T-HZO" userLabel="Switch - video">
+                                                                    <rect key="frame" x="15" y="7" width="51" height="31"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <connections>
+                                                                        <action selector="toggleFilter:" destination="RBc-fh-MYw" eventType="valueChanged" id="fbN-Zk-jX8"/>
+                                                                    </connections>
+                                                                </switch>
+                                                                <switch opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="BRX-hv-naO" userLabel="Switch - photo">
+                                                                    <rect key="frame" x="15" y="42" width="51" height="31"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <connections>
                                                                         <action selector="toggleFilter:" destination="RBc-fh-MYw" eventType="valueChanged" id="iIE-FG-9Gv"/>
                                                                     </connections>
                                                                 </switch>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X7k-U3-LWN">
-                                                                    <rect key="frame" x="77" y="55" width="112" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <switch opaque="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="CuY-hQ-jnh" userLabel="Switch - event">
-                                                                    <rect key="frame" x="15" y="11" width="51" height="31"/>
+                                                                <switch opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="CuY-hQ-jnh" userLabel="Switch - event">
+                                                                    <rect key="frame" x="15" y="78" width="51" height="31"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <connections>
                                                                         <action selector="toggleFilter:" destination="RBc-fh-MYw" eventType="valueChanged" id="pr2-Qj-vuz"/>
                                                                     </connections>
                                                                 </switch>
-                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Club Posts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BeT-Vz-MAB">
-                                                                    <rect key="frame" x="77" y="16" width="112" height="21"/>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Videos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="X7k-U3-LWN">
+                                                                    <rect key="frame" x="72" y="12" width="112" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VkM-HQ-SHF">
+                                                                    <rect key="frame" x="72" y="47" width="112" height="21"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show Club Events" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BeT-Vz-MAB">
+                                                                    <rect key="frame" x="72" y="83" width="118" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="highlightedColor"/>
@@ -293,14 +306,14 @@
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedTableCell" rowHeight="90" id="8kY-5z-YzR" customClass="FeedTableViewCell">
-                                        <rect key="frame" x="0.0" y="164" width="319" height="90"/>
+                                        <rect key="frame" x="0.0" y="188" width="319" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8kY-5z-YzR" id="XJw-hd-oho" userLabel="contentView">
                                             <rect key="frame" x="0.0" y="0.0" width="319" height="90"/>
@@ -348,7 +361,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedMoreLoader" rowHeight="57" id="jHW-uj-WCX">
-                                        <rect key="frame" x="0.0" y="254" width="319" height="57"/>
+                                        <rect key="frame" x="0.0" y="278" width="319" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jHW-uj-WCX" id="TyL-jm-dIV">
                                             <rect key="frame" x="0.0" y="0.0" width="319" height="57"/>
@@ -496,10 +509,10 @@
             </objects>
             <point key="canvasLocation" x="-186" y="203"/>
         </scene>
-        <!--View Controller-->
+        <!--Right Navigation View Controller-->
         <scene sceneID="JPy-jf-cVX">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wzV-fg-VEe" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wzV-fg-VEe" customClass="RightNavigationViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5Tl-bS-nUa">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -517,7 +530,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOE-Ec-LHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1911" y="702"/>
+            <point key="canvasLocation" x="2183" y="246"/>
         </scene>
     </scenes>
     <resources>
