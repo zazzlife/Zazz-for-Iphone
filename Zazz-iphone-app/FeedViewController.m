@@ -100,6 +100,7 @@ bool showVideos= false;
 
 /* Should be optimized */
 -(NSArray*)getFilteredFeed{
+    NSLog(@"START FILTER");
     NSIndexSet *indices = [self.feed indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         Feed* feedItem = (Feed*) obj;
         if(!showEvents && !showPhotos && !showVideos) return true;
@@ -107,8 +108,8 @@ bool showVideos= false;
         if([feedItem.feedType isEqualToString:@"Video"] && showVideos) return true;
         if([feedItem.feedType isEqualToString:@"Event"] && showEvents) return true;
         return false;
-        
     }];
+    NSLog(@"STOP");
     return [self.feed objectsAtIndexes:indices];
 }
 
@@ -208,7 +209,6 @@ bool showVideos= false;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"getting height");
     getting_height = true;
     FeedTableViewCell* cell = (FeedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     getting_height = false;
@@ -251,7 +251,7 @@ bool showVideos= false;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         if(!getting_height && self.filteredFeed.count > 0){
-            NSString* last_feedId = (NSString*)[(Feed*)[self.filteredFeed objectAtIndex:indexPath.row - 2 ] feedId];
+            NSString* last_feedId = (NSString*)[(Feed*)self.feed.lastObject feedId];
             [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedAfter:[NSString stringWithFormat:@"%@",last_feedId] delegate:self];
         }
         return cell;
