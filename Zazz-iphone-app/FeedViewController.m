@@ -250,7 +250,7 @@ bool showVideos= false;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        if(!getting_height && self.filteredFeed.count > 0){
+        if(!getting_height && !end_of_feed){
             NSString* last_feedId = (NSString*)[(Feed*)self.feed.lastObject feedId];
             [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedAfter:[NSString stringWithFormat:@"%@",last_feedId] delegate:self];
         }
