@@ -123,9 +123,10 @@ bool showVideos= false;
     [self.rightNav setHidden:false];
     [self.tabBarController.view.superview addSubview:self.rightNav];
     
+    [UIView setAnimationsEnabled:YES];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:-10];
+    [UIView setAnimationDuration:.1];
     
     if(!right_active){
         [self.tabBarController.view setFrame:CGRectMake(-rightNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
@@ -136,6 +137,7 @@ bool showVideos= false;
         [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, rightNavWidth, self.view.window.frame.size.height)];
         right_active = false;
     }
+    [UIView setAnimationsEnabled:NO];
 }
 
 -(IBAction)leftDrawerButton:(id)sender
@@ -148,9 +150,10 @@ bool showVideos= false;
     [self.leftNav setHidden:false];
     [self.tabBarController.view.superview addSubview:self.leftNav];
     
+    [UIView setAnimationsEnabled:YES];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:-10];
+    [UIView setAnimationDuration:.1];
     
     if(!left_active){
         [self.tabBarController.view setFrame:CGRectMake(leftNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
@@ -161,13 +164,16 @@ bool showVideos= false;
         [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
         left_active = false;
     }
+    [UIView setAnimationsEnabled:NO];
 }
 
 -(IBAction)expandFilterCell:(id)sender
 {
     filter_active = !filter_active;
+    [UIView setAnimationsEnabled:YES];
     [self.feedTableView beginUpdates];
     [self.feedTableView endUpdates];
+    [UIView setAnimationsEnabled:NO];
 }
 
 -(IBAction)toggleFilter:(id)sender
@@ -200,6 +206,7 @@ bool showVideos= false;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"getting height");
     getting_height = true;
     FeedTableViewCell* cell = (FeedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
     getting_height = false;
