@@ -12,6 +12,7 @@
 #import "Profile.h"
 #import "Event.h"
 #import "Post.h"
+#import "UIImage.h"
 
 @implementation FeedTableViewCell
 
@@ -69,7 +70,7 @@ float CELL_PADDING = 5;
     
     if([[feed feedType] isEqualToString:@"Photo"]){
         for(Photo* photo in (NSMutableArray*)[feed content]){
-            UIImage* image = [ZazzApi getImage:photo.photo scaledToWidth:self.tableView.frame.size.width];
+            UIImage* image = [UIImage getImage:photo.photo scaledToWidth:self.tableView.frame.size.width];
             UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
             [self.feedCellContentView addSubview:imageView];
             self.needed_height += imageView.image.size.height;

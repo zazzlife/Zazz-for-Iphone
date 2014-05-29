@@ -22,8 +22,8 @@ bool left_active = false; // used by leftNav to indicate if it's open or not.
 bool right_active = false; // used by leftNav to indicate if it's open or not.
 bool filter_active = false; // true if filter is expanded.
 bool getting_height = false; //used by cellAtIndex and heightForRowAtIndex. True if getting height of cell to be rendered, false if cell is actually being rendered.
+bool getting_feed = true; //true when a getZazzFeed call is active.
 bool end_of_feed = false; //true if last feed fetch returned nothing.
-bool _loaded = false; //prevents viewWillLoad from fetching initial feed multiple times.
 bool showPhotos= false;
 bool showEvents= false;
 bool showVideos= false;
@@ -38,11 +38,11 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 {
     [super viewDidLoad];
     
-    [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedDelegate:self];
+    [[AppDelegate zazzApi] getMyFeedDelegate:self];
     [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     
     [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setBarTintColor:[AppDelegate colorFromHexString:@"#453F3F"]];
+    [[UITabBar appearance] setBarTintColor:[UIColor colorFromHexString:@"#453F3F"]];
     
     swipe_left = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeLeft:)];
     swipe_right = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];
@@ -54,27 +54,15 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self.view addGestureRecognizer:swipe_right];
     
     [self setFeed:[[NSMutableArray alloc] init]];
-//    
-    UIColor* color = [UIColor colorFromHexString:@"#101010"];
-    UIImage* coloredImage = [UIImage imageWithColor:color width:320 andHeight:49];
-    [self.tabBarController.tabBar setBackgroundImage:coloredImage];
-    [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"post button.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"post button.png"]];
-}
-
-/* 
- Here you can actualy use view Geometry to do calculation and add subview the the tabBar view's superview.
- ViewDidLoad is too early for this, as the view hasn't been rendered yet, or added into it's parent tabbar container.
- */
--(void) viewDidAppear:(BOOL)animated{
-    if(!_loaded){
-        //first call is made by nav controller... too early here...
-        _loaded = true;
-        return;
-    }
+    
+    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:@"#101010"] width:320 andHeight:49]];
+    UIImage* tabImage = [UIImage imageNamed:@"post button.png"];
+    [self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
 }
 
 -(void)gotZazzFeed:(NSMutableArray*)feed
 {
+    getting_feed = false;
     if([feed count] <= 0){
         end_of_feed = true;
         [[self feedTableView] reloadData];
@@ -260,9 +248,10 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        if(!getting_height && !end_of_feed){
+        if(!getting_height && !end_of_feed && !getting_feed){
             NSString* last_feedId = (NSString*)[(Feed*)self.feed.lastObject feedId];
-            [[[AppDelegate getAppDelegate] zazzAPI] getMyFeedAfter:[NSString stringWithFormat:@"%@",last_feedId] delegate:self];
+            getting_feed = true;
+            [[AppDelegate zazzApi] getMyFeedAfter:[NSString stringWithFormat:@"%@",last_feedId] delegate:self];
         }
         return cell;
     }

@@ -7,26 +7,22 @@
 //
 
 #import "LeftNavigationViewController.h"
-
-@interface LeftNavigationViewController ()
-
-@end
+#import "AppDelegate.h"
+#import "Profile.h"
 
 @implementation LeftNavigationViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSLog(@"leftNaveSelfClass %@", [self class]);
+    [[AppDelegate zazzApi] getMyProfileDelegate:self];
+}
+
+-(void)gotZazzProfile:(Profile *)profile{
+    [self set_profile:profile];
+    NSLog(@"got profile: %@", profile.username);
 }
 
 - (void)didReceiveMemoryWarning

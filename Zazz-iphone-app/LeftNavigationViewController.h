@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Profile.h"
+#import "ZazzApi.h"
 
-@interface LeftNavigationViewController : UIViewController
+@interface LeftNavigationViewController : UIViewController<ZazzProfileDelegate>
+
+@property Profile* _profile;
 
 @end

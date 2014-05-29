@@ -20,12 +20,12 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property ZazzApi *zazzAPI;
+@property ZazzApi* _zazzAPI;
 @property UIImageView* zazz_logo;
 -(void)addZazzBackgorundLogo;
 -(void)removeZazzBackgroundLogo;
 
 + (AppDelegate*)getAppDelegate;
-+ (UIColor *)colorFromHexString:(NSString *)hexString;
++ (ZazzApi*)zazzApi;
 
 @end

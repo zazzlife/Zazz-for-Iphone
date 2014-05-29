@@ -11,6 +11,7 @@
 #import "Event.h"
 #import "Post.h"
 #import "Comment.h"
+#import "UIImage.h"
 
 @implementation ZazzFeed
 
@@ -85,7 +86,7 @@ NSMutableData* receivedData;
         //        NSLog(@"%@ --- %@",[feed_dict class], feed_dict);
         
         Profile *user = [[Profile alloc] init];
-        [user setPhoto:[ZazzApi getImageAtUrl:[[feed_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]]];
+        [user setPhoto:[UIImage getImageAtUrl:[[feed_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]]];
         [user setUserId:[feed_dict objectForKey:@"userId"]];
         [user setUsername:[feed_dict objectForKey:@"userDisplayName"]];
         
@@ -101,7 +102,7 @@ NSMutableData* receivedData;
         for(NSMutableDictionary* comment_dict in [feed_dict objectForKey:@"comments"]){
             Profile* fromUser = [[Profile alloc] init];
             [fromUser setUsername:[comment_dict objectForKey:@"userDisplayName"]];
-            [fromUser setPhoto:[ZazzApi getImageAtUrl:[[comment_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]]];
+            [fromUser setPhoto:[UIImage getImageAtUrl:[[comment_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]]];
             [fromUser setUserId:[comment_dict objectForKey:@"userId"]];
             Comment* comment = [[Comment alloc] init];
             [comment setUser:fromUser];
@@ -119,7 +120,7 @@ NSMutableData* receivedData;
                 [photo setUser:user];
                 [photo setDescription:(NSString*)[photo_dict objectForKey:@"description"]];
                 [photo setPhotoId:(NSString*)[photo_dict objectForKey:@"photoId"]];
-                [photo setPhoto:[ZazzApi getImageAtUrl:[[photo_dict objectForKey:@"photoLinks"] objectForKey:@"mediumLink"]]];
+                [photo setPhoto:[UIImage getImageAtUrl:[[photo_dict objectForKey:@"photoLinks"] objectForKey:@"mediumLink"]]];
                 [photos addObject:photo];
             }
             [feed setContent:photos];
@@ -133,13 +134,13 @@ NSMutableData* receivedData;
             Profile* fromUser = [[Profile alloc] init];
             [fromUser setUserId:[post_dict objectForKey:@"fromUserId"]];
             [fromUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
-            [fromUser setPhoto:[ZazzApi getImageAtUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]]];
+            [fromUser setPhoto:[UIImage getImageAtUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]]];
             [post setFromUser:fromUser];
             if([post_dict objectForKey:@"toUserId"]){
                 Profile* toUser = [[Profile alloc] init];
                 [toUser setUserId:[post_dict objectForKey:@"toUserId"]];
                 [toUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
-                [toUser setPhoto:[ZazzApi getImageAtUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]]];
+                [toUser setPhoto:[UIImage getImageAtUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]]];
                 [post setToUser:toUser];
             }
             [feed setContent:post];
@@ -160,7 +161,7 @@ NSMutableData* receivedData;
             [event setLongitude:[event_dict objectForKey:@"longitude"]];
             [event setCreatedTime:[event_dict objectForKey:@"createdTime"]];
             [event setFacebookLink:[event_dict objectForKey:@"facebookLink"]];
-            [event setImage:[ZazzApi getImageAtUrl:[[event_dict objectForKey:@"imageUrl"] objectForKey:@"mediumLink"]]];
+            [event setImage:[UIImage getImageAtUrl:[[event_dict objectForKey:@"imageUrl"] objectForKey:@"mediumLink"]]];
             [event setIsDateOnly:[[event_dict objectForKey:@"isDateOnly"] boolValue]];
             [event setIsFacebookEvent:[[event_dict objectForKey:@"isFacebookEvent"] boolValue]];
             [feed setContent:event];

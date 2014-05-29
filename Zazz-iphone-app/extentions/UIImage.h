@@ -1,5 +1,7 @@
 @interface UIImage (mxcl)
-+ (UIImage *)imageWithColor:(UIColor *)color width:(float)width andHeight:(float)height;
++ (UIImage *) imageWithColor:(UIColor *)color width:(float)width andHeight:(float)height;
++ (UIImage *) getImageAtUrl:(NSString*)photoUrl;
++ (UIImage *) getImage:(UIImage*)image scaledToWidth:(float)width;
 @end
 
 @implementation UIImage (mxcl)
@@ -15,5 +17,23 @@
     UIGraphicsEndImageContext();
     
     return image;
+}
++(UIImage *) getImageAtUrl:(NSString*)photoUrl{
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: photoUrl]];
+    UIImage * image = [UIImage imageWithData: imageData];
+    return image;
+}
++(UIImage *) getImage:(UIImage*)image scaledToWidth:(float)width{
+    float oldWidth = image.size.width;
+    float scaleFactor = width / oldWidth;
+    
+    float newHeight = image.size.height * scaleFactor;
+    float newWidth = oldWidth * scaleFactor;
+    
+    UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
+    [image drawInRect:CGRectMake(0, 0, newWidth, newHeight)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 @end

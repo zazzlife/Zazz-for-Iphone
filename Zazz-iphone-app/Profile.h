@@ -11,6 +11,8 @@
 @interface Profile : NSObject
 
 @property NSString* userId;
+@property NSString* accountType;
+@property BOOL isConfirmed;
 @property NSString* username;
 @property UIImage* photo;
 

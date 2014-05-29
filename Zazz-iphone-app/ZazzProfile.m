@@ -7,6 +7,7 @@
 //
 
 #import "ZazzProfile.h"
+#import "UIImage.h"
 
 @implementation ZazzProfile
 
@@ -40,9 +41,10 @@
     
     Profile* profile = [[Profile alloc] init];
     [profile setUserId:[array objectForKey:@"userId"]];
-    [profile setUsername:[array objectForKey:@"username"]];
-    
-    NSLog(@"TODO: Return User Profile instead of ID:%@",[profile userId]);
+    [profile setAccountType:[array objectForKey:@"accountType"]];
+    [profile setIsConfirmed:[array objectForKey:@"isConfirmed"]];
+    [profile setUsername:[array objectForKey:@"displayName"]];
+    [profile setPhoto:[UIImage getImageAtUrl:[(NSDictionary*)[array objectForKey:@"displayPhoto"] objectForKey:@"mediumLink"]]];
     
     [[self _delegate] gotProfile:profile];
 }

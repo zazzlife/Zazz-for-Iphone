@@ -46,7 +46,7 @@
 }
 
 -(IBAction)doLogin:(id)sender{
-    [[[AppDelegate getAppDelegate] zazzAPI] getAuthTokenWithUsername:_username.text andPassword:_password.text delegate:self];
+    [[AppDelegate zazzApi] getAuthTokenWithUsername:_username.text andPassword:_password.text delegate:self];
     [self.loginprogress startAnimating];
     [_password resignFirstResponder];
     [_username resignFirstResponder];

@@ -11,6 +11,8 @@
 @implementation Profile
 
 @synthesize userId;
+@synthesize accountType;
+@synthesize isConfirmed;
 @synthesize username;
 @synthesize photo;
 
