@@ -230,13 +230,9 @@ bool showVideos= false;
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         
-        UISwitch* videoToggle = (UISwitch*)[cell.contentView viewWithTag:1];
-        UISwitch* photoToggle = (UISwitch*)[cell.contentView viewWithTag:2];
-        UISwitch* eventToggle = (UISwitch*)[cell.contentView viewWithTag:3];
-        
-        [videoToggle setOn:showVideos];
-        [photoToggle setOn:showPhotos];
-        [eventToggle setOn:showEvents];
+        [(UISwitch*)[cell.contentView viewWithTag:1] setOn:showVideos];
+        [(UISwitch*)[cell.contentView viewWithTag:2] setOn:showPhotos];
+        [(UISwitch*)[cell.contentView viewWithTag:3] setOn:showEvents];
         
         [[[cell.contentView viewWithTag:5] layer] setCornerRadius:5];
         [[[cell.contentView viewWithTag:5] layer] setMasksToBounds:YES];
