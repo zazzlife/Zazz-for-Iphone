@@ -1,10 +1,10 @@
 @interface UIImage (mxcl)
-+ (UIImage *)imageWithColor:(UIColor *)color;
++ (UIImage *)imageWithColor:(UIColor *)color width:(float)width andHeight:(float)height;
 @end
 
 @implementation UIImage (mxcl)
-+ (UIImage *)imageWithColor:(UIColor *)color {
-    CGRect rect = CGRectMake(0, 0, 1, 1);
++ (UIImage *)imageWithColor:(UIColor *)color width:(float)width andHeight:(float)height{
+    CGRect rect = CGRectMake(0, 0, width, height);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     

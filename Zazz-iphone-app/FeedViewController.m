@@ -54,10 +54,10 @@ float SIDE_DRAWER_ANIMATION_DURATION = .1;
     [self.view addGestureRecognizer:swipe_right];
     
     [self setFeed:[[NSMutableArray alloc] init]];
-    
-//    UIColor* color = [UIColor colorFromHexString:@"#1B1B1B"];
-//    UIImage* coloredImage = [UIImage imageWithColor:color];
-//    [self.tabBarController.tabBar setBackgroundImage:coloredImage];
+//    
+    UIColor* color = [UIColor colorFromHexString:@"#101010"];
+    UIImage* coloredImage = [UIImage imageWithColor:color width:320 andHeight:49];
+    [self.tabBarController.tabBar setBackgroundImage:coloredImage];
     [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"post button.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"post button.png"]];
 }
 
