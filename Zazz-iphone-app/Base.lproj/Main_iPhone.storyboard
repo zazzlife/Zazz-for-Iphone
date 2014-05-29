@@ -385,7 +385,7 @@
                         <color key="backgroundColor" red="0.27058823529411763" green="0.24705882352941178" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <tabBarItem key="tabBarItem" tag="1" title="" image="feed-small.png" id="e5a-hQ-Jsq">
+                    <tabBarItem key="tabBarItem" tag="1" title="" id="e5a-hQ-Jsq">
                         <inset key="imageInsets" minX="0.0" minY="8" maxX="0.0" maxY="-8"/>
                     </tabBarItem>
                     <connections>
@@ -535,8 +535,7 @@
     </scenes>
     <resources>
         <image name="Logo copie(half).png" width="241" height="92"/>
-        <image name="beer icon.png" width="50" height="50"/>
-        <image name="feed-small.png" width="25" height="25"/>
+        <image name="beer icon.png" width="25" height="25"/>
         <image name="filter-icon.png" width="45" height="34"/>
         <image name="ios7-back-icon.png" width="512" height="512"/>
         <image name="left bar icon.png" width="100" height="100"/>

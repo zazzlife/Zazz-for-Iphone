@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zazz-iphone-app/FeedViewController.m"
-            timestampString = "423022137.10235"
+            timestampString = "423026862.094337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>

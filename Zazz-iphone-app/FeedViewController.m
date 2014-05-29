@@ -50,6 +50,8 @@ bool showVideos= false;
     [self.view addGestureRecognizer:swipe_right];
     
     [self setFeed:[[NSMutableArray alloc] init]];
+    
+    [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"post button.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"post button.png"]];
 }
 
 /* 
