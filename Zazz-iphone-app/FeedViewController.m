@@ -10,6 +10,8 @@
 #import "FeedTableViewCell.h"
 #import "Feed.h"
 #import "AppDelegate.h"
+#import "UIImage.h"
+#import "UIColor.h"
 
 @implementation FeedViewController
 
@@ -25,6 +27,8 @@ bool _loaded = false; //prevents viewWillLoad from fetching initial feed multipl
 bool showPhotos= false;
 bool showEvents= false;
 bool showVideos= false;
+
+float SIDE_DRAWER_ANIMATION_DURATION = .1;
 
 
 /*
@@ -51,6 +55,9 @@ bool showVideos= false;
     
     [self setFeed:[[NSMutableArray alloc] init]];
     
+//    UIColor* color = [UIColor colorFromHexString:@"#1B1B1B"];
+//    UIImage* coloredImage = [UIImage imageWithColor:color];
+//    [self.tabBarController.tabBar setBackgroundImage:coloredImage];
     [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"post button.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"post button.png"]];
 }
 
@@ -129,7 +136,7 @@ bool showVideos= false;
     [UIView setAnimationsEnabled:YES];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:.1];
+    [UIView setAnimationDuration:SIDE_DRAWER_ANIMATION_DURATION];
     
     if(!right_active){
         [self.tabBarController.view setFrame:CGRectMake(-rightNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
@@ -156,7 +163,7 @@ bool showVideos= false;
     [UIView setAnimationsEnabled:YES];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:.1];
+    [UIView setAnimationDuration:SIDE_DRAWER_ANIMATION_DURATION];
     
     if(!left_active){
         [self.tabBarController.view setFrame:CGRectMake(leftNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
