@@ -28,7 +28,7 @@ bool showPhotos= false;
 bool showEvents= false;
 bool showVideos= false;
 
-float SIDE_DRAWER_ANIMATION_DURATION = .1;
+float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 
 /*
@@ -75,6 +75,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .1;
 
 -(void)gotZazzFeed:(NSMutableArray*)feed
 {
+    [UIView setAnimationsEnabled:NO];
     if([feed count] <= 0){
         end_of_feed = true;
         [[self feedTableView] reloadData];
@@ -147,7 +148,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .1;
         [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, rightNavWidth, self.view.window.frame.size.height)];
         right_active = false;
     }
-    [UIView setAnimationsEnabled:NO];
 }
 
 -(IBAction)leftDrawerButton:(id)sender
@@ -174,7 +174,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .1;
         [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
         left_active = false;
     }
-    [UIView setAnimationsEnabled:NO];
 }
 
 -(IBAction)expandFilterCell:(id)sender
@@ -183,7 +182,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .1;
     [UIView setAnimationsEnabled:YES];
     [self.feedTableView beginUpdates];
     [self.feedTableView endUpdates];
-    [UIView setAnimationsEnabled:NO];
 }
 
 -(IBAction)toggleFilter:(id)sender
@@ -192,6 +190,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .1;
     else if(((UISwitch*)sender).tag == 2){ showPhotos = !showPhotos; }
     else if(((UISwitch*)sender).tag == 3){ showEvents = !showEvents; }
     [self setFilteredFeed:[self getFilteredFeed]];
+    [UIView setAnimationsEnabled:NO];
     [[self feedTableView] reloadData];
 }
 
