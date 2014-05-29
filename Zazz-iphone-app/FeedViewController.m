@@ -75,7 +75,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 -(void)gotZazzFeed:(NSMutableArray*)feed
 {
-    [UIView setAnimationsEnabled:NO];
     if([feed count] <= 0){
         end_of_feed = true;
         [[self feedTableView] reloadData];
@@ -126,62 +125,72 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 -(IBAction)rightDrawerButton:(id)sender
 {
-    CGFloat rightNavWidth =self.rightNav.frame.size.width;
-        
     if(left_active) [self leftDrawerButton:nil];//close left drawer first.
+    CGFloat rightNavWidth =self.rightNav.frame.size.width;
 
-    [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, self.rightNav.frame.size.width, self.view.window.frame.size.height)];
-    [self.rightNav setHidden:false];
-    [self.tabBarController.view.superview addSubview:self.rightNav];
-    
     [UIView setAnimationsEnabled:YES];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:SIDE_DRAWER_ANIMATION_DURATION];
-    
-    if(!right_active){
-        [self.tabBarController.view setFrame:CGRectMake(-rightNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
-        [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width - rightNavWidth, 0, rightNavWidth, self.view.window.frame.size.height)];
-        right_active = true;
-    }else{
-        [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
-        [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, rightNavWidth, self.view.window.frame.size.height)];
-        right_active = false;
-    }
+    [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
+         animations:^(void){
+             [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, self.rightNav.frame.size.width, self.view.window.frame.size.height)];
+             [self.rightNav setHidden:false];
+             [self.tabBarController.view.superview addSubview:self.rightNav];
+             if(!right_active){
+                 NSLog(@"right open");
+                 [self.tabBarController.view setFrame:CGRectMake(-rightNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+                 [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width - rightNavWidth, 0, rightNavWidth, self.view.window.frame.size.height)];
+             }else{
+                 NSLog(@"right closed");
+                 [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+                 [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, rightNavWidth, self.view.window.frame.size.height)];
+             }
+         } completion:^(BOOL completed){
+             right_active = !right_active;
+             [UIView setAnimationsEnabled:NO];
+         }
+     ];
+}
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
+    NSLog(@"animation finished");
+    [UIView setAnimationsEnabled:YES];
 }
 
 -(IBAction)leftDrawerButton:(id)sender
 {
-    CGFloat leftNavWidth =self.leftNav.frame.size.width;
-    
     if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
-    
-    [self.leftNav setFrame:CGRectMake(-(self.leftNav.frame.size.width), 0, self.leftNav.frame.size.width, self.view.window.frame.size.height)];
-    [self.leftNav setHidden:false];
-    [self.tabBarController.view.superview addSubview:self.leftNav];
-    
+    CGFloat leftNavWidth =self.leftNav.frame.size.width;
+
     [UIView setAnimationsEnabled:YES];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDuration:SIDE_DRAWER_ANIMATION_DURATION];
-    
-    if(!left_active){
-        [self.tabBarController.view setFrame:CGRectMake(leftNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
-        [self.leftNav setFrame:CGRectMake(0, 0, leftNavWidth, self.view.window.frame.size.height)];
-        left_active = true;
-    }else{
-        [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
-        [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
-        left_active = false;
-    }
+    [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
+         animations:^(void){
+             [self.leftNav setFrame:CGRectMake(-(self.leftNav.frame.size.width), 0, self.leftNav.frame.size.width, self.view.window.frame.size.height)];
+             [self.leftNav setHidden:false];
+             [self.tabBarController.view.superview addSubview:self.leftNav];
+            if(!left_active){
+                [self.tabBarController.view setFrame:CGRectMake(leftNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+                [self.leftNav setFrame:CGRectMake(0, 0, leftNavWidth, self.view.window.frame.size.height)];
+            }else{
+                [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+                [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
+            }}
+         completion:^(BOOL complete){
+             left_active = !left_active;
+             [UIView setAnimationsEnabled:NO];
+         }
+     ];
 }
 
 -(IBAction)expandFilterCell:(id)sender
 {
     filter_active = !filter_active;
+    [CATransaction begin];
+    [CATransaction setCompletionBlock:^{
+        [UIView setAnimationsEnabled:NO];
+    }];
     [UIView setAnimationsEnabled:YES];
     [self.feedTableView beginUpdates];
     [self.feedTableView endUpdates];
+    [CATransaction commit];
 }
 
 -(IBAction)toggleFilter:(id)sender
@@ -190,7 +199,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     else if(((UISwitch*)sender).tag == 2){ showPhotos = !showPhotos; }
     else if(((UISwitch*)sender).tag == 3){ showEvents = !showEvents; }
     [self setFilteredFeed:[self getFilteredFeed]];
-    [UIView setAnimationsEnabled:NO];
     [[self feedTableView] reloadData];
 }
 
