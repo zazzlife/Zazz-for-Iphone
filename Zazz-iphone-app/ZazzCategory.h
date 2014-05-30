@@ -12,6 +12,7 @@
 @interface ZazzCategory : NSObject<NSURLConnectionDataDelegate>
 
 @property ZazzApi* _delegate;
+@property NSMutableData* _receivedData;
 
 -(void)getCategoriesDelegate:(id)delegate;
 

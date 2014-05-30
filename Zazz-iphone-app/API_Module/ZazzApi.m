@@ -12,13 +12,9 @@
 #import "ZazzFeed.h"
 #import "ZazzCategory.h"
 
-static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
-
 @implementation ZazzApi
 
-+(NSString *) BASE_URL{  return BASE_URL; }
 @synthesize auth_token;
-
 NSMutableDictionary* _delegates;
 
 
@@ -116,6 +112,7 @@ NSMutableDictionary* _delegates;
     }
     return urlWithQuerystring;
 }
++(NSString *) BASE_URL{ return @"http://test.zazzlife.com/api/v1/"; }
 
 
 @end

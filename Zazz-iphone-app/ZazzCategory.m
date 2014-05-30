@@ -11,10 +11,19 @@
 
 @implementation ZazzCategory
 
+@synthesize _delegate;
+@synthesize _receivedData;
+
+-(ZazzCategory*)init{
+    if (!self){
+        self = [super init];
+    }
+    [self set_receivedData:[[NSMutableData alloc]init]];
+    return self;
+}
 
 -(void)getCategoriesDelegate:(id)delegate{
     [self set_delegate:delegate];
-    receivedData = [[NSMutableData alloc] init];
     
     NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"categories"];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
@@ -27,14 +36,13 @@
 }
 
 
-NSMutableData* receivedData;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    [receivedData appendData:data];
+    [self._receivedData appendData:data];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
-    NSDictionary *array = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil ];
+    NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:nil ];
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;

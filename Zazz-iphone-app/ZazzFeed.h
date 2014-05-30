@@ -13,6 +13,7 @@
 @interface ZazzFeed : NSObject<NSURLConnectionDataDelegate>
 
 @property ZazzApi* _delegate;
+@property NSMutableData* _receivedData;
 
 - (void) getMyFeedDelegate:(id)delegate;
 - (void) getMyFeedAfter:(NSString*)last_timestamp delegate:(id)delegate;

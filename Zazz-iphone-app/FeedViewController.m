@@ -93,7 +93,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 /* Should be optimized */
 -(NSArray*)getFilteredFeed{
-    NSLog(@"START FILTER");
     NSIndexSet *indices = [self.feed indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         Feed* feedItem = (Feed*) obj;
         if(!showEvents && !showPhotos && !showVideos) return true;
@@ -102,7 +101,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if([feedItem.feedType isEqualToString:@"Event"] && showEvents) return true;
         return false;
     }];
-    NSLog(@"STOP");
     return [self.feed objectsAtIndexes:indices];
 }
 

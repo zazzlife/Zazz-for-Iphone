@@ -16,11 +16,18 @@
 @implementation ZazzFeed
 
 @synthesize _delegate;
+@synthesize _receivedData;
 
+- (ZazzFeed*)init{
+    if (!self){
+        self = [super init];
+    }
+    [self set_receivedData:[[NSMutableData alloc]init]];
+    return self;
+}
 
 - (void) getMyFeedDelegate:(ZazzApi*)delegate{
     
-    receivedData = [[NSMutableData alloc] init];
     [self set_delegate:delegate];
     
     NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"feeds"];
@@ -36,7 +43,6 @@
 
 - (void) getMyFeedAfter:(NSString*)feedId delegate:(id)delegate{
     
-    receivedData = [[NSMutableData alloc] init];
     [self set_delegate:delegate];
     
     NSString * api_action =  [[[ZazzApi BASE_URL] stringByAppendingString:@"feeds?lastFeed="] stringByAppendingString:(NSString*)feedId];
@@ -51,7 +57,6 @@
 
 - (void) getFeedForUserId:(NSString *)userId delegate:(id)delegate{
     
-    receivedData = [[NSMutableData alloc] init];
     [self set_delegate:delegate];
 
     NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
@@ -66,18 +71,18 @@
 //
 }
 
-NSMutableData* receivedData;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    NSLog(@"datalength: %lu",receivedData.length);
-    [receivedData appendData:data];
+    [self._receivedData appendData:data];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
-    NSLog(@"final datalength: %lu",receivedData.length);
-    NSDictionary *array = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil ];
+    NSError* error = nil;
+    NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:&error ];
+    
     if(array == nil){
-        NSLog(@"JSON ERROR");
+        NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
+        NSLog(@"JSON ERROR: %@, DATA: %@", error,myString);
     }
     
     NSMutableArray *feedList = [[NSMutableArray alloc] init];
