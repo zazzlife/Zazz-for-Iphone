@@ -23,8 +23,7 @@
     receivedData = [[NSMutableData alloc] init];
     [self set_delegate:delegate];
     
-    NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
-    NSString * api_action =  [BASE_URL stringByAppendingString:@"feeds"];
+    NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"feeds"];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
@@ -36,11 +35,11 @@
 
 
 - (void) getMyFeedAfter:(NSString*)feedId delegate:(id)delegate{
+    
     receivedData = [[NSMutableData alloc] init];
     [self set_delegate:delegate];
     
-    NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
-    NSString * api_action =  [[BASE_URL stringByAppendingString:@"feeds?lastFeed="] stringByAppendingString:(NSString*)feedId];
+    NSString * api_action =  [[[ZazzApi BASE_URL] stringByAppendingString:@"feeds?lastFeed="] stringByAppendingString:(NSString*)feedId];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
@@ -51,7 +50,8 @@
 }
 
 - (void) getFeedForUserId:(NSString *)userId delegate:(id)delegate{
-
+    
+    receivedData = [[NSMutableData alloc] init];
     [self set_delegate:delegate];
 
     NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
@@ -68,15 +68,16 @@
 
 NSMutableData* receivedData;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    NSLog(@"datalength: %lu",receivedData.length);
     [receivedData appendData:data];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
+    NSLog(@"final datalength: %lu",receivedData.length);
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:receivedData options:0 error:nil ];
     if(array == nil){
         NSLog(@"JSON ERROR");
-        return;
     }
     
     NSMutableArray *feedList = [[NSMutableArray alloc] init];

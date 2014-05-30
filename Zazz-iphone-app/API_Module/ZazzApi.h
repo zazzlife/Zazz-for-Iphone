@@ -22,6 +22,10 @@
 -(void)gotZazzFeed:(NSMutableArray*)feed;
 @end
 
+@protocol ZazzCategoryDelegate <NSObject>
+-(void)gotZazzCategories:(NSMutableArray*)categories;
+@end
+
 
 @interface ZazzApi: NSObject
 
@@ -42,5 +46,8 @@
 -(void) getMyFeedDelegate:(id)delegate;
 -(void) getMyFeedAfter:(NSString*)last_timestamp delegate:(id)delegate;
 -(void) gotFeed:(NSMutableArray*)feed;
+
+-(void) getCategories:(id)delegate;
+-(void) gotCategories:(NSMutableArray*)categories;
 
 @end

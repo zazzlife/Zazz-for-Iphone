@@ -16,7 +16,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"leftNaveSelfClass %@", [self class]);
     [[AppDelegate zazzApi] getMyProfileDelegate:self];
 }
 

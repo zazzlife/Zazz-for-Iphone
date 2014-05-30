@@ -41,8 +41,9 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [[AppDelegate zazzApi] getMyFeedDelegate:self];
     [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     
-    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UITabBar appearance] setBarTintColor:[UIColor colorFromHexString:@"#453F3F"]];
+    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:@"#101010"] width:320 andHeight:49]];
+    UIImage* tabImage = [UIImage imageNamed:@"post button.png"];
+    [self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
     
     swipe_left = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeLeft:)];
     swipe_right = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];
@@ -55,9 +56,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     
     [self setFeed:[[NSMutableArray alloc] init]];
     
-    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:@"#101010"] width:320 andHeight:49]];
-    UIImage* tabImage = [UIImage imageNamed:@"post button.png"];
-    [self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
 }
 
 -(void)gotZazzFeed:(NSMutableArray*)feed

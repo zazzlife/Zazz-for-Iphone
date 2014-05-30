@@ -7,6 +7,7 @@
 //
 
 #import "RightNavigationViewController.h"
+#import "AppDelegate.h"
 
 @interface RightNavigationViewController ()
 
@@ -14,19 +15,14 @@
 
 @implementation RightNavigationViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[AppDelegate zazzApi] getCategories:self];
+}
+
+-(void)gotZazzCategories:(NSMutableArray *)categories{
+    NSLog(@"received %d Categories.",(int)categories.count);
 }
 
 - (void)didReceiveMemoryWarning

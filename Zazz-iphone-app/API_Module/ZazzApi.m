@@ -10,6 +10,7 @@
 #import "ZazzLogin.h"
 #import "ZazzProfile.h"
 #import "ZazzFeed.h"
+#import "ZazzCategory.h"
 
 static NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
 
@@ -41,9 +42,8 @@ NSMutableDictionary* _delegates;
 }
 -(void) gotLoginToken:(NSString*)token{
     [self setAuth_token:token];
-    id authDelegate = [_delegates objectForKey:@"auth"];
+    [[_delegates objectForKey:@"auth"] finishedZazzAuth:![self needAuth]];
     [_delegates removeObjectForKey:@"auth"];
-    [authDelegate finishedZazzAuth:![self needAuth]];
 }
 
 
@@ -60,9 +60,9 @@ NSMutableDictionary* _delegates;
     [[[ZazzProfile alloc] init] getProfile:userId delegate:delegate];
 }
 -(void) gotProfile:(Profile*)profile{
-    id profileDelegate = [_delegates objectForKey:@"profile"];
+    [[_delegates objectForKey:@"profile"] gotZazzProfile:profile];
     [_delegates removeObjectForKey:@"profile"];
-    [profileDelegate gotZazzProfile:profile];
+
 }
 
 
@@ -78,11 +78,22 @@ NSMutableDictionary* _delegates;
     [[[ZazzFeed alloc] init] getMyFeedAfter:last_timestamp delegate:self];
 }
 -(void) gotFeed:(NSMutableArray*)feedArray{
-    id feedDelegate = [_delegates objectForKey:@"feed"];
+    [[_delegates objectForKey:@"feed"] gotZazzFeed:feedArray];
     [_delegates removeObjectForKey:@"feed"];
-    [feedDelegate gotZazzFeed:feedArray];
 }
 
+
+/*
+ CATEGORIES
+ */
+-(void) getCategories:(id)delegate{
+    [_delegates setObject:delegate forKey:@"category"];
+    [[[ZazzCategory alloc] init] getCategoriesDelegate:self];
+}
+-(void) gotCategories:(NSMutableArray*)categories{
+    [[_delegates objectForKey:@"category"] gotZazzCategories:categories];
+    [_delegates removeObjectForKey:@"category"];
+}
 
 
 
