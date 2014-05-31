@@ -119,11 +119,9 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
              [self.rightNav setHidden:false];
              [self.tabBarController.view.superview addSubview:self.rightNav];
              if(!right_active){
-                 NSLog(@"right open");
                  [self.tabBarController.view setFrame:CGRectMake(-rightNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
                  [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width - rightNavWidth, 0, rightNavWidth, self.view.window.frame.size.height)];
              }else{
-                 NSLog(@"right closed");
                  [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
                  [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, rightNavWidth, self.view.window.frame.size.height)];
              }
