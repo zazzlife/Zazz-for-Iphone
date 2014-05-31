@@ -10,12 +10,14 @@
 #import "AppDelegate.h"
 #import "Profile.h"
 
+
 @implementation LeftNavigationViewController
 
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [[AppDelegate zazzApi] getMyProfileDelegate:self];
 }
 

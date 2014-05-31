@@ -151,15 +151,110 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="po0-Gv-0BG">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="568"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" id="po0-Gv-0BG">
+                                <rect key="frame" x="-25" y="-5" width="249" height="577"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="93J-25-N2l">
+                                <rect key="frame" x="19" y="153" width="156" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <state key="normal" title="     Notifications" image="Notifications">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4a4-2G-oW6">
+                                <rect key="frame" x="23" y="230" width="110" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="     Events" image="Calendar">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3Wn-1D-zpk">
+                                <rect key="frame" x="26" y="441" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="      Map" image="Map-Icons">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3lH-WL-mvv">
+                                <rect key="frame" x="26" y="301" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="     Follow" image="People-to-follow">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oBa-cx-JDs">
+                                <rect key="frame" x="25" y="371" width="150" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="     Clubs / Bars" image="Club-bars">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pMu-5I-2CW">
+                                <rect key="frame" x="25" y="510" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="     Invite" image="Invite">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle" id="FDJ-pA-tpo">
+                                <rect key="frame" x="20" y="503" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle" id="MHe-90-R7e">
+                                <rect key="frame" x="20" y="433" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle" id="9Aq-UN-aso">
+                                <rect key="frame" x="20" y="363" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle" id="Hmj-EA-ccW">
+                                <rect key="frame" x="20" y="293" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle" id="ZRa-5J-e8S">
+                                <rect key="frame" x="20" y="223" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Circle" id="Yja-1y-00z">
+                                <rect key="frame" x="20" y="153" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="x5v-dQ-olt" customClass="sideNavProfilePhoto">
+                                <rect key="frame" x="51" y="20" width="95" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="2aq-sk-FWV" id="5OF-zy-foG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d3n-To-IDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="f8s-uU-pwV">
+                    <connections>
+                        <outlet property="delegate" destination="9dM-CA-8wr" id="lmx-AO-uPh"/>
+                        <outlet property="searchContentsController" destination="9dM-CA-8wr" id="pzS-hn-5Dc"/>
+                        <outlet property="searchResultsDataSource" destination="9dM-CA-8wr" id="c22-LI-1K5"/>
+                        <outlet property="searchResultsDelegate" destination="9dM-CA-8wr" id="g7D-Wc-jOU"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="2aq-sk-FWV">
+                    <connections>
+                        <outlet property="delegate" destination="9dM-CA-8wr" id="dXj-M5-4ln"/>
+                        <outlet property="searchContentsController" destination="9dM-CA-8wr" id="47Z-iN-045"/>
+                        <outlet property="searchResultsDataSource" destination="9dM-CA-8wr" id="eho-fU-hIo"/>
+                        <outlet property="searchResultsDelegate" destination="9dM-CA-8wr" id="jg6-mn-D5S"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1887" y="246"/>
         </scene>
@@ -539,7 +634,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Background" width="317" height="575"/>
+        <image name="Calendar" width="30" height="30"/>
+        <image name="Circle" width="45" height="45"/>
+        <image name="Club-bars" width="30" height="30"/>
+        <image name="Invite" width="30" height="30"/>
         <image name="Logo copie(half).png" width="241" height="92"/>
+        <image name="Map-Icons" width="30" height="30"/>
+        <image name="Notifications" width="30" height="30"/>
+        <image name="People-to-follow" width="30" height="30"/>
         <image name="beer icon.png" width="25" height="25"/>
         <image name="filter-icon.png" width="45" height="34"/>
         <image name="ios7-back-icon.png" width="512" height="512"/>
