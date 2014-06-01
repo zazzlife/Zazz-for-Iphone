@@ -23,11 +23,12 @@
 @synthesize timestamp;
 @synthesize username;
 
-float CELL_HEIGHT = 150;
-float HEADER_HEIGHT = 60;
-float CONTENT_PADDING_BOTTOM = 10;
-float TEXT_CONTENT_PADDING = 10;
-float CELL_PADDING = 5;
+float CELL_HEIGHT = 150; //default height of a cell. (including outer border)
+float HEADER_HEIGHT = 60; // height of user thumbnail area.
+float CONTENT_PADDING_BOTTOM = 10; //white padding bellow photo.
+float TEXT_CONTENT_PADDING = 10; //top andbottom padding for text content.
+float CELL_PADDING_TOP = 10; //black outer edge top/bottom.
+float CELL_PADDING_SIDES = 5; //black outer edge/sides.
 
 
 -(void)resizeHeightForLabel: (UILabel*)label {
@@ -62,7 +63,7 @@ float CELL_PADDING = 5;
     [self.username setText:feed.user.username];
     [self.timestamp setText:feed.timestamp];
     [self setNeeded_height:HEADER_HEIGHT];
-    [self.feedCellBackgroundView setFrame:CGRectMake(CELL_PADDING, CELL_PADDING, self.tableView.frame.size.width - (2*CELL_PADDING), self.needed_height)];
+    [self.feedCellBackgroundView setFrame:CGRectMake(CELL_PADDING_SIDES, CELL_PADDING_TOP, self.tableView.frame.size.width - (2*CELL_PADDING_SIDES), self.needed_height)];
     [self.feedCellContentView setFrame:CGRectMake(0, HEADER_HEIGHT, self.feedCellBackgroundView.frame.size.width, 0)];
     for(UIView* view in self.feedCellContentView.subviews){
         [view removeFromSuperview];
@@ -95,8 +96,8 @@ float CELL_PADDING = 5;
     [self.feedCellBackgroundView.layer setMasksToBounds:YES];
     [self.userImage.layer setCornerRadius:25];
     [self.userImage.layer setMasksToBounds:YES];
-    [self.feedCellBackgroundView setFrame:CGRectMake(CELL_PADDING, CELL_PADDING, self.tableView.frame.size.width - (2*CELL_PADDING), self.needed_height)];
-    self.needed_height += CELL_PADDING;
+    [self.feedCellBackgroundView setFrame:CGRectMake(CELL_PADDING_SIDES, CELL_PADDING_TOP, self.tableView.frame.size.width - (2*CELL_PADDING_SIDES), self.needed_height)];
+    self.needed_height += CELL_PADDING_TOP;
 }
 
 @end
