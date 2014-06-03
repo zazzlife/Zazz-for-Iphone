@@ -23,14 +23,10 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import "CHViewController.h"
+#import "PostViewController.h"
 #import "CHTumblrMenuView.h"
 
-@interface CHViewController ()
-
-@end
-
-@implementation CHViewController
+@implementation PostViewController
 
 @synthesize menuView;
 
@@ -67,7 +63,8 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [menuView show];
+    if(!self.view.hidden)
+        [menuView show];
 }
 
 - (void)didReceiveMemoryWarning

@@ -112,24 +112,16 @@
             </objects>
             <point key="canvasLocation" x="363" y="573"/>
         </scene>
-        <!--View Controller-->
+        <!--Post View Controller-->
         <scene sceneID="R4b-Mx-xyD">
             <objects>
-                <viewController id="jgI-au-LRn" customClass="CHViewController" sceneMemberID="viewController">
+                <viewController id="jgI-au-LRn" customClass="PostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P4M-J7-MJe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" id="JtS-yc-Tog">
-                                <rect key="frame" x="0.0" y="-1" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="1Gd-iL-QL3"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmF-1v-zdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -569,15 +561,15 @@
             </objects>
             <point key="canvasLocation" x="363" y="-108"/>
         </scene>
-        <!--View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="wWh-W9-PBp">
             <objects>
-                <viewController id="Aan-C5-ZR6" sceneMemberID="viewController">
+                <viewController id="Aan-C5-ZR6" customClass="CFTabBarController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5c9-iV-Gnc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" id="Agc-ff-LMi">
+                            <containerView hidden="YES" contentMode="scaleToFill" id="Agc-ff-LMi" userLabel="postView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -585,7 +577,7 @@
                                     <segue destination="jgI-au-LRn" kind="embed" id="SYu-yP-7wn"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" id="94w-LO-muM">
+                            <containerView contentMode="scaleToFill" id="94w-LO-muM" userLabel="feedView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -593,22 +585,45 @@
                                     <segue destination="RBc-fh-MYw" kind="embed" id="mSN-y8-PpA"/>
                                 </connections>
                             </containerView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4Bn-D7-dgr">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" tag="2" contentMode="scaleToFill" id="4Bn-D7-dgr">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.1058823529" green="0.1058823529" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="StW-0X-aV6"/>
-                                    <barButtonItem title="Feed" id="of4-ZJ-4Ns"/>
+                                    <barButtonItem tag="1" image="Home_icon_general" id="of4-ZJ-4Ns" userLabel="feedButton">
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="didClickBarButton:" destination="Aan-C5-ZR6" id="01W-w8-fRy"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="isA-nt-Zs8"/>
-                                    <barButtonItem title="Post" id="NI9-Ke-ErC"/>
+                                    <barButtonItem tag="2" title="Item" id="NI9-Ke-ErC" userLabel="postButton">
+                                        <connections>
+                                            <action selector="didClickBarButton:" destination="Aan-C5-ZR6" id="PG2-Xs-aKL"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Z3P-qH-ZpQ"/>
-                                    <barButtonItem title="Profile" id="gNo-dN-GHm"/>
+                                    <barButtonItem tag="3" image="Profile_icon_general" id="gNo-dN-GHm" userLabel="profileButton">
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="didClickBarButton:" destination="Aan-C5-ZR6" id="ogZ-cr-gnM"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bsc-Yw-e1Q"/>
                                 </items>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="feedButton" destination="of4-ZJ-4Ns" id="XaF-3a-xUN"/>
+                        <outlet property="feedView" destination="94w-LO-muM" id="nw8-uW-wZX"/>
+                        <outlet property="postButton" destination="NI9-Ke-ErC" id="Q5P-8e-Wc4"/>
+                        <outlet property="postView" destination="Agc-ff-LMi" id="aLG-7H-Vnv"/>
+                        <outlet property="profileButton" destination="gNo-dN-GHm" id="1c4-qL-V6b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qB-8w-Xr6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -696,11 +711,13 @@
         <image name="Calendar" width="30" height="30"/>
         <image name="Circle" width="45" height="45"/>
         <image name="Club-bars" width="30" height="30"/>
+        <image name="Home_icon_general" width="50" height="38"/>
         <image name="Invite" width="30" height="30"/>
         <image name="Logo copie(half).png" width="241" height="92"/>
         <image name="Map-Icons" width="30" height="30"/>
         <image name="Notifications" width="30" height="30"/>
         <image name="People-to-follow" width="30" height="30"/>
+        <image name="Profile_icon_general" width="50" height="38"/>
         <image name="beer icon.png" width="25" height="25"/>
         <image name="filter-icon.png" width="45" height="34"/>
         <image name="ios7-back-icon.png" width="512" height="512"/>

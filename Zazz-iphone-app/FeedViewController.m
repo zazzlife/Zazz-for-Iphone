@@ -8,6 +8,7 @@
 
 #import "FeedViewController.h"
 #import "FeedTableViewCell.h"
+#import "CFTabBarController.h"
 #import "Feed.h"
 #import "AppDelegate.h"
 #import "UIImage.h"
@@ -109,20 +110,21 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 {
     if(left_active) [self leftDrawerButton:nil];//close left drawer first.
     CGFloat rightNavWidth =self.rightNav.frame.size.width;
-
+    UIView* tabBar = self.view.superview.superview;
+    
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
          animations:^(void){
              [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, self.rightNav.frame.size.width, self.view.window.frame.size.height)];
              [self.rightNav setHidden:false];
-             [self.tabBarController.view.superview addSubview:self.rightNav];
+             [tabBar.superview addSubview:self.rightNav];
              if(!right_active){
                  NSLog(@"right open");
-                 [self.tabBarController.view setFrame:CGRectMake(-rightNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+                 [tabBar setFrame:CGRectMake(-rightNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
                  [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width - rightNavWidth, 0, rightNavWidth, self.view.window.frame.size.height)];
              }else{
                  NSLog(@"right closed");
-                 [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+                 [tabBar setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
                  [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, rightNavWidth, self.view.window.frame.size.height)];
              }
          } completion:^(BOOL completed){
@@ -141,18 +143,19 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 {
     if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
     CGFloat leftNavWidth =self.leftNav.frame.size.width;
+    UIView* tabBar = self.view.superview.superview;
 
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
          animations:^(void){
              [self.leftNav setFrame:CGRectMake(-(self.leftNav.frame.size.width), 0, self.leftNav.frame.size.width, self.view.window.frame.size.height)];
              [self.leftNav setHidden:false];
-             [self.tabBarController.view.superview addSubview:self.leftNav];
+             [tabBar.superview addSubview:self.leftNav];
             if(!left_active){
-                [self.tabBarController.view setFrame:CGRectMake(leftNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+                [tabBar setFrame:CGRectMake(leftNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
                 [self.leftNav setFrame:CGRectMake(0, 0, leftNavWidth, self.view.window.frame.size.height)];
             }else{
-                [self.tabBarController.view setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
+                [tabBar setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
                 [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
             }}
          completion:^(BOOL complete){

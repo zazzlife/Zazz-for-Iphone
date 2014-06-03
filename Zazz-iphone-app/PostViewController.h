@@ -26,7 +26,7 @@
 #import <UIKit/UIKit.h>
 #import "CHTumblrMenuView.h"
 
-@interface CHViewController : UIViewController
+@interface PostViewController : UIViewController
 
 @property IBOutlet CHTumblrMenuView* menuView;
 
