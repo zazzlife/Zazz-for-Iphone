@@ -42,8 +42,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     
     [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:@"#101010"] width:320 andHeight:49]];
-    UIImage* tabImage = [UIImage imageNamed:@"post button.png"];
-    [self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
     
     swipe_left = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeLeft:)];
     swipe_right = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];

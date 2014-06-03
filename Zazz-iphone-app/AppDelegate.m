@@ -20,6 +20,7 @@
     return [[AppDelegate getAppDelegate] _zazzAPI];
 }
 
+
 -(void)addZazzBackgorundLogo{
     UIImage* image = [UIImage imageNamed:@"Logo"];
     [self setZazz_logo:[[UIImageView alloc] initWithImage:image]];
@@ -44,6 +45,7 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [self addZazzBackgorundLogo];
     [self set_zazzAPI:[[ZazzApi alloc] init]];
+    
     return YES;
 }
 							
