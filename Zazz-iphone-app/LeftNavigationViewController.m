@@ -17,12 +17,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [[AppDelegate zazzApi] getMyProfileDelegate:self];
 }
 
 -(void)gotZazzProfile:(Profile *)profile{
     [self set_profile:profile];
+    [self.profilePhoto setImage:[profile photo]];
+    [self.profilePhoto.layer setCornerRadius:50];
+    [self.profilePhoto.layer setMasksToBounds:YES];
     NSLog(@"got profile: %@", profile.username);
 }
 

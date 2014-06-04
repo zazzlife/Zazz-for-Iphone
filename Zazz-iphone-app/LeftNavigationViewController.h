@@ -12,6 +12,7 @@
 
 @interface LeftNavigationViewController : UIViewController<ZazzProfileDelegate>
 
+@property IBOutlet UIImageView* profilePhoto;
 @property Profile* _profile;
 
 @end

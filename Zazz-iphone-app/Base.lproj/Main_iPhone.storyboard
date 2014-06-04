@@ -232,7 +232,7 @@
                                 <rect key="frame" x="20" y="153" width="45" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="x5v-dQ-olt" customClass="sideNavProfilePhoto">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="x5v-dQ-olt">
                                 <rect key="frame" x="51" y="20" width="95" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -240,6 +240,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="profilePhoto" destination="x5v-dQ-olt" id="U9R-nG-YKr"/>
                         <outlet property="searchDisplayController" destination="2aq-sk-FWV" id="5OF-zy-foG"/>
                     </connections>
                 </viewController>
