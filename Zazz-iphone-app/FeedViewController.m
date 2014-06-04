@@ -31,7 +31,6 @@ bool showVideos= false;
 
 float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
-
 /*
  The view has a sense of self and
  */
@@ -262,6 +261,16 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     Feed *feedItem = [self.filteredFeed objectAtIndex:(indexPath.row - 1)];
     [cell setFeed:feedItem];
     return cell;
+}
+
+#pragma mark - CFTabBarViewDelegate method
+
+-(void)toggleViewHidden:(BOOL)hidden{
+    [self.view.superview setHidden:hidden];
+    if(hidden){
+        if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
+        if(left_active) [self leftDrawerButton:nil]; //close right drawer first.
+    }
 }
 
 @end

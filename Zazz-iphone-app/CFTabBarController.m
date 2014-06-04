@@ -7,31 +7,62 @@
 //
 
 #import "CFTabBarController.h"
+#import "PostViewController.h"
+#import "FeedViewController.h"
+#import "ProfileViewController.h"
+#import "UIColor.h"
 
 @implementation CFTabBarController
 
 -(void) viewDidAppear:(BOOL)animated{
-    [self.postButton setBackButtonBackgroundImage:[UIImage imageNamed:@"post button"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.postButton setImage:[UIImage imageNamed:@"post button"]];
 }
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender{
+    
+    //get indexes of eacho subViewController
+    NSArray* childControllers = self.childViewControllers;
+    int feedIdx, postIdx, profileIdx = -1;
+    int cIndex = 0;
+    for(UIViewController* childController  in childControllers){
+        if([NSStringFromClass(childController.class) isEqualToString:@"PostViewController"]){
+            postIdx = cIndex;
+        }
+        else if([NSStringFromClass(childController.class) isEqualToString:@"FeedViewController"]){
+            feedIdx = cIndex;
+        }
+        else if([NSStringFromClass(childController.class) isEqualToString:@"ProfileViewController"]){
+            profileIdx = cIndex;
+        }
+        cIndex++;
+    }
+    
     switch(sender.tag){
         case 2:
-            NSLog(@"clicked post");
-            [self.feedView setHidden:true];
-            [self.profileView setHidden:true];
-            [self.postView setHidden:false];
+            //post
+//            [self.feedView setHidden:true];
+            [(FeedViewController*)[childControllers objectAtIndex:feedIdx] toggleViewHidden:true];
+//            [self.profileView setHidden:true];
+            [(ProfileViewController*)[childControllers objectAtIndex:profileIdx] toggleViewHidden:true];
+//            [self.postView setHidden:false];
+            [(PostViewController*)[childControllers objectAtIndex:postIdx] toggleViewHidden:false];
             break;
         case 3:
-            NSLog(@"clicked profile");
-            [self.feedView setHidden:true];
-            [self.postView setHidden:true];
-            [self.profileView setHidden:false];
+            //profile
+//            [self.feedView setHidden:true];
+            [(FeedViewController*)[childControllers objectAtIndex:feedIdx] toggleViewHidden:true];
+//            [self.postView setHidden:true];
+            [(PostViewController*)[childControllers objectAtIndex:postIdx] toggleViewHidden:true];
+//            [self.profileView setHidden:false];
+            [(ProfileViewController*)[childControllers objectAtIndex:profileIdx] toggleViewHidden:false];
             break;
         default:
-            NSLog(@"clicked feed");
-            [self.profileView setHidden:true];
-            [self.postView setHidden:true];
-            [self.feedView setHidden:false];
+            //feed
+//            [self.profileView setHidden:true];
+            [(ProfileViewController*)[childControllers objectAtIndex:profileIdx] toggleViewHidden:true];
+//            [self.postView setHidden:true];
+            [(PostViewController*)[childControllers objectAtIndex:postIdx] toggleViewHidden:true];
+//            [self.feedView setHidden:false];
+            [(FeedViewController*)[childControllers objectAtIndex:feedIdx] toggleViewHidden:false];
             break;
     }
 }

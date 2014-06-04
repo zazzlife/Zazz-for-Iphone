@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Zazz-iphone-app/CFTabBarController.h"
-            timestampString = "423488729.765787"
+            timestampString = "423575769.473764"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "@interface CFTabBarController"
             landmarkType = "2">
          </BreakpointContent>

@@ -6,14 +6,16 @@
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
+@protocol CFTabBarViewDelegate <NSObject>
+-(void)toggleViewHidden:(BOOL)hidden;
+@end
+
+
 #import <Foundation/Foundation.h>
 
 @interface CFTabBarController : UIViewController
 
-@property IBOutlet UIView* feedView;
-@property IBOutlet UIView* postView;
-@property IBOutlet UIView* profileView;
-
+@property IBOutlet UIToolbar* tabBar;
 @property IBOutlet UIBarButtonItem* feedButton;
 @property IBOutlet UIBarButtonItem* postButton;
 @property IBOutlet UIBarButtonItem* profileButton;

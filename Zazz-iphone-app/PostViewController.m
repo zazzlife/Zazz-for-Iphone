@@ -62,15 +62,19 @@
     }];
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    if(!self.view.hidden)
-        [menuView show];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - CFTabBarViewDelegate method
+
+-(void)toggleViewHidden:(BOOL)hidden{
+    [self.view.superview setHidden:hidden];
+    if(!hidden){
+        [menuView show];
+    }
 }
 
 @end

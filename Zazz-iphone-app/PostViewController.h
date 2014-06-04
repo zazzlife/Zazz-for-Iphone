@@ -25,8 +25,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CHTumblrMenuView.h"
+#import "CFTabBarController.h"
 
-@interface PostViewController : UIViewController
+@interface PostViewController : UIViewController <CFTabBarViewDelegate>
 
 @property IBOutlet CHTumblrMenuView* menuView;
 
