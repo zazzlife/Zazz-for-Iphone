@@ -28,6 +28,7 @@
     NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"categories"];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
     //define request
+    NSLog(@"%@",api_action);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
     [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
     [request setHTTPMethod:@"GET"];
@@ -43,6 +44,8 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:nil ];
+    NSString* receivedDataString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",receivedDataString);
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;

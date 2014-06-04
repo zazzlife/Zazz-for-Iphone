@@ -14,6 +14,9 @@
 		2A09D719191EDA3700A2827F /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D718191EDA3700A2827F /* Profile.m */; };
 		2A09D71D191EDFB600A2827F /* Feed.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D71C191EDFB600A2827F /* Feed.m */; };
 		2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D71F191EF3CD00A2827F /* LoginViewController.m */; };
+		2A39F2DF193D5BA3002E8873 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A39F2DB193D5BA3002E8873 /* PostViewController.m */; };
+		2A39F2E0193D5BA3002E8873 /* CHTumblrMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A39F2DE193D5BA3002E8873 /* CHTumblrMenuView.m */; };
+		2A39F2E6193DEB04002E8873 /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A39F2E5193DEB04002E8873 /* CFTabBarController.m */; };
 		2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D3E191FE863008DBFED /* RegisterViewController.m */; };
 		2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7719245502008DBFED /* CustomPushSegue.m */; };
 		2A470D7B19247A09008DBFED /* CustomPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7A19247A09008DBFED /* CustomPopSegue.m */; };
@@ -27,6 +30,7 @@
 		2A6CFC8B19295024005D3076 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8A19295024005D3076 /* Comment.m */; };
 		2A7FA2A8193802F400E3B95B /* ZazzCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FA2A7193802F400E3B95B /* ZazzCategory.m */; };
 		2A7FA2AB193806DC00E3B95B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FA2AA193806DC00E3B95B /* Category.m */; };
+		2AA057D5193F451B00E1617D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA057D4193F451B00E1617D /* ProfileViewController.m */; };
 		2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */; };
 		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
@@ -68,6 +72,12 @@
 		2A09D71C191EDFB600A2827F /* Feed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Feed.m; path = "Zazz-iphone-app/Feed.m"; sourceTree = "<group>"; };
 		2A09D71E191EF3CD00A2827F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2A09D71F191EF3CD00A2827F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2A39F2DA193D5BA3002E8873 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		2A39F2DB193D5BA3002E8873 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		2A39F2DD193D5BA3002E8873 /* CHTumblrMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHTumblrMenuView.h; path = ../TumblrMenu/CHTumblrMenuView.h; sourceTree = "<group>"; };
+		2A39F2DE193D5BA3002E8873 /* CHTumblrMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHTumblrMenuView.m; path = ../TumblrMenu/CHTumblrMenuView.m; sourceTree = "<group>"; };
+		2A39F2E4193DEB04002E8873 /* CFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTabBarController.h; sourceTree = "<group>"; };
+		2A39F2E5193DEB04002E8873 /* CFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTabBarController.m; sourceTree = "<group>"; };
 		2A470D3D191FE863008DBFED /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2A470D3E191FE863008DBFED /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2A470D7619245502008DBFED /* CustomPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
@@ -95,6 +105,8 @@
 		2A7FA2A7193802F400E3B95B /* ZazzCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzCategory.m; sourceTree = "<group>"; };
 		2A7FA2A9193806DC00E3B95B /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
 		2A7FA2AA193806DC00E3B95B /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		2AA057D3193F451B00E1617D /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		2AA057D4193F451B00E1617D /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavigationViewController.h; sourceTree = "<group>"; };
 		2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
 		2AB3E4611934063700F72784 /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
@@ -179,6 +191,8 @@
 		2A47F5601936F37A001CF1AE /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				2A39F2DD193D5BA3002E8873 /* CHTumblrMenuView.h */,
+				2A39F2DE193D5BA3002E8873 /* CHTumblrMenuView.m */,
 				2A47F5611936F37A001CF1AE /* UIColor.h */,
 				2A47F5621936F37A001CF1AE /* UIImage.h */,
 			);
@@ -208,14 +222,13 @@
 		2A5FAEB8191D2BF300B917AB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0DD31807191B2063003D5630 /* FeedViewController.h */,
-				0DD31808191B2063003D5630 /* FeedViewController.m */,
-				0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */,
-				0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */,
-				2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */,
-				2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */,
-				2AB3E4611934063700F72784 /* RightNavigationViewController.h */,
-				2AB3E4621934063700F72784 /* RightNavigationViewController.m */,
+				2A39F2E4193DEB04002E8873 /* CFTabBarController.h */,
+				2A39F2E5193DEB04002E8873 /* CFTabBarController.m */,
+				2AA057D6193F453300E1617D /* Feed */,
+				2A39F2DA193D5BA3002E8873 /* PostViewController.h */,
+				2A39F2DB193D5BA3002E8873 /* PostViewController.m */,
+				2AA057D3193F451B00E1617D /* ProfileViewController.h */,
+				2AA057D4193F451B00E1617D /* ProfileViewController.m */,
 				2A09D71E191EF3CD00A2827F /* LoginViewController.h */,
 				2A09D71F191EF3CD00A2827F /* LoginViewController.m */,
 				2A470D3D191FE863008DBFED /* RegisterViewController.h */,
@@ -246,6 +259,21 @@
 				2A7FA2A7193802F400E3B95B /* ZazzCategory.m */,
 			);
 			name = Actions;
+			sourceTree = "<group>";
+		};
+		2AA057D6193F453300E1617D /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				0DD31807191B2063003D5630 /* FeedViewController.h */,
+				0DD31808191B2063003D5630 /* FeedViewController.m */,
+				0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */,
+				0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */,
+				2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */,
+				2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */,
+				2AB3E4611934063700F72784 /* RightNavigationViewController.h */,
+				2AB3E4621934063700F72784 /* RightNavigationViewController.m */,
+			);
+			name = Feed;
 			sourceTree = "<group>";
 		};
 		5E8AA6E318FCAED600C99D9F = {
@@ -425,6 +453,7 @@
 				2A09D716191E916C00A2827F /* ZazzFeed.m in Sources */,
 				0DD31809191B2063003D5630 /* FeedViewController.m in Sources */,
 				0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */,
+				2A39F2DF193D5BA3002E8873 /* PostViewController.m in Sources */,
 				2A7FA2AB193806DC00E3B95B /* Category.m in Sources */,
 				2A6CFC821929189F005D3076 /* Photo.m in Sources */,
 				2A09D719191EDA3700A2827F /* Profile.m in Sources */,
@@ -435,6 +464,7 @@
 				2A09D71D191EDFB600A2827F /* Feed.m in Sources */,
 				2A7FA2A8193802F400E3B95B /* ZazzCategory.m in Sources */,
 				2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */,
+				2A39F2E6193DEB04002E8873 /* CFTabBarController.m in Sources */,
 				2A6CFC8519291EE7005D3076 /* Post.m in Sources */,
 				5E8AA70018FCAED600C99D9F /* AppDelegate.m in Sources */,
 				2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */,
@@ -442,7 +472,9 @@
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
 				2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */,
 				2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */,
+				2AA057D5193F451B00E1617D /* ProfileViewController.m in Sources */,
 				2A5FAEC4191DC5D500B917AB /* ZazzProfile.m in Sources */,
+				2A39F2E0193D5BA3002E8873 /* CHTumblrMenuView.m in Sources */,
 				2A470D7B19247A09008DBFED /* CustomPopSegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ZazzApi.h"
+#import "CFTabBarController.h"
 
-@interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ZazzFeedDelegate> {
-    UIView *navigationDrawerLeft;
-}
+@interface FeedViewController : UIViewController
+    <UITableViewDataSource,UITableViewDelegate,ZazzFeedDelegate,CFTabBarViewDelegate>
+
 @property NSMutableArray* feed;
 @property NSArray* filteredFeed;
 
