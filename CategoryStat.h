@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ZCategory : NSObject
+@interface CategoryStat : NSObject
 
 @property NSString* category_id;
 @property NSString* name;
+@property int userCount;
 
 @end

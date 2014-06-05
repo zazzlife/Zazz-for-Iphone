@@ -6,11 +6,12 @@
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
-#import "Category.h"
+#import "CategoryStat.h"
 
-@implementation ZCategory
+@implementation CategoryStat
 
 @synthesize category_id;
 @synthesize name;
+@synthesize userCount;
 
 @end

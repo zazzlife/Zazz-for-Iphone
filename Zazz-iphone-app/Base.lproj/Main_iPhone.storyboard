@@ -119,7 +119,7 @@
                     <view key="view" contentMode="scaleToFill" id="P4M-J7-MJe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.98823535439999999" green="0.79607850309999995" blue="0.37647062539999998" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -584,14 +584,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView hidden="YES" contentMode="scaleToFill" id="Agc-ff-LMi" userLabel="postView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="jgI-au-LRn" kind="embed" id="SYu-yP-7wn"/>
-                                </connections>
-                            </containerView>
                             <containerView contentMode="scaleToFill" id="94w-LO-muM" userLabel="feedView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -606,6 +598,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="00c-U6-IMJ" kind="embed" id="ovw-wa-Yrw"/>
+                                </connections>
+                            </containerView>
+                            <containerView hidden="YES" contentMode="scaleToFill" id="Agc-ff-LMi" userLabel="postView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="jgI-au-LRn" kind="embed" id="SYu-yP-7wn"/>
                                 </connections>
                             </containerView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" tag="2" contentMode="scaleToFill" translucent="NO" id="4Bn-D7-dgr">

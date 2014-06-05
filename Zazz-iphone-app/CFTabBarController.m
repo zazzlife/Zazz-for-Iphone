@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "CFTabBarController.h"
 #import "PostViewController.h"
 #import "FeedViewController.h"
@@ -14,57 +15,60 @@
 
 @implementation CFTabBarController
 
+FeedViewController*    feedView;
+PostViewController*    postView;
+ProfileViewController* profileView;
+
+-(void)viewDidLoad{
+    
+    [[AppDelegate getAppDelegate] setAppTabBar:self];
+    
+    //set child controllers.
+    for(UIViewController* childController in self.childViewControllers){
+        if([NSStringFromClass(childController.class) isEqualToString:@"PostViewController"]){
+            postView = (PostViewController*)childController;
+            continue;
+        }
+        if([NSStringFromClass(childController.class) isEqualToString:@"FeedViewController"]){
+            feedView = (FeedViewController*)childController;
+            continue;
+        }
+        if([NSStringFromClass(childController.class) isEqualToString:@"ProfileViewController"]){
+            profileView = (ProfileViewController*)childController;
+            continue;
+        }
+    }
+}
+
 -(void) viewDidAppear:(BOOL)animated{
-    [self.postButton setImage:[UIImage imageNamed:@"post button"]];
+    UIImage* tabImage = [UIImage imageNamed:@"post button"];
+    [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
+    [self.postButton setImage:tabImage];
 }
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender{
-    
-    //get indexes of eacho subViewController
-    NSArray* childControllers = self.childViewControllers;
-    int feedIdx, postIdx, profileIdx = -1;
-    int cIndex = 0;
-    for(UIViewController* childController  in childControllers){
-        if([NSStringFromClass(childController.class) isEqualToString:@"PostViewController"]){
-            postIdx = cIndex;
-        }
-        else if([NSStringFromClass(childController.class) isEqualToString:@"FeedViewController"]){
-            feedIdx = cIndex;
-        }
-        else if([NSStringFromClass(childController.class) isEqualToString:@"ProfileViewController"]){
-            profileIdx = cIndex;
-        }
-        cIndex++;
-    }
-    
     switch(sender.tag){
-        case 2:
-            //post
-//            [self.feedView setHidden:true];
-            [(FeedViewController*)[childControllers objectAtIndex:feedIdx] toggleViewHidden:true];
-//            [self.profileView setHidden:true];
-            [(ProfileViewController*)[childControllers objectAtIndex:profileIdx] toggleViewHidden:true];
-//            [self.postView setHidden:false];
-            [(PostViewController*)[childControllers objectAtIndex:postIdx] toggleViewHidden:false];
+        case 2://post
+            //[feedView setViewHidden:true];
+            //[profileView setViewHidden:true];
+            [postView setViewHidden:false];
             break;
-        case 3:
-            //profile
-//            [self.feedView setHidden:true];
-            [(FeedViewController*)[childControllers objectAtIndex:feedIdx] toggleViewHidden:true];
-//            [self.postView setHidden:true];
-            [(PostViewController*)[childControllers objectAtIndex:postIdx] toggleViewHidden:true];
-//            [self.profileView setHidden:false];
-            [(ProfileViewController*)[childControllers objectAtIndex:profileIdx] toggleViewHidden:false];
+        case 3://profile
+            [feedView setViewHidden:true];
+            [postView setViewHidden:true];
+            [profileView setViewHidden:false];
             break;
-        default:
-            //feed
-//            [self.profileView setHidden:true];
-            [(ProfileViewController*)[childControllers objectAtIndex:profileIdx] toggleViewHidden:true];
-//            [self.postView setHidden:true];
-            [(PostViewController*)[childControllers objectAtIndex:postIdx] toggleViewHidden:true];
-//            [self.feedView setHidden:false];
-            [(FeedViewController*)[childControllers objectAtIndex:feedIdx] toggleViewHidden:false];
+        default://feed
+            [profileView setViewHidden:true];
+            [postView setViewHidden:true];
+            [feedView setViewHidden:false];
             break;
     }
+}
+
+-(void)goHome{
+    UIBarButtonItem* sender = [[UIBarButtonItem alloc]init];
+    sender.tag = 0;
+    [self didClickBarButton:sender];
 }
 
 @end

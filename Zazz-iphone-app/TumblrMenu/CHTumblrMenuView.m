@@ -24,6 +24,7 @@
 //  THE SOFTWARE.
 
 #import "CHTumblrMenuView.h"
+
 #define CHTumblrMenuViewTag 1999
 #define CHTumblrMenuViewImageHeight 90
 #define CHTumblrMenuViewTitleHeight 20
@@ -34,7 +35,7 @@
 #define CHTumblrMenuViewAnimationTime 0.36
 #define CHTumblrMenuViewAnimationInterval (CHTumblrMenuViewAnimationTime / 5)
 
-#define TumblrBlue [UIColor colorWithRed:45/255.0f green:68/255.0f blue:94/255.0f alpha:1.0]
+#define TumblrBlue [UIColor colorWithRed:45/255.0f green:68/255.0f blue:94/255.0f alpha:.8]
 
 @interface CHTumblrMenuItemButton : UIButton
 + (id)TumblrMenuItemButtonWithTitle:(NSString*)title andIcon:(UIImage*)icon andSelectedBlock:(CHTumblrMenuViewSelectedBlock)block;
@@ -42,6 +43,8 @@
 @end
 
 @implementation CHTumblrMenuItemButton
+
+CHTumblrMenuViewSelectedBlock noActionTakenBlock;
 
 + (id)TumblrMenuItemButtonWithTitle:(NSString*)title andIcon:(UIImage*)icon andSelectedBlock:(CHTumblrMenuViewSelectedBlock)block
 {
@@ -121,9 +124,7 @@
     
     offsetY += (CHTumblrMenuViewImageHeight + CHTumblrMenuViewTitleHeight + CHTumblrMenuViewVerticalPadding) * rowIndex;
 
-    
     return CGRectMake(offsetX, offsetY, CHTumblrMenuViewImageHeight, (CHTumblrMenuViewImageHeight+CHTumblrMenuViewTitleHeight));
-
 }
 
 - (void)layoutSubviews
@@ -160,13 +161,17 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self removeFromSuperview];
+        if(![NSStringFromClass(((NSObject*)sender).class) isEqualToString:@"CHTumblrMenuItemButton"]){
+            noActionTakenBlock();
+        }
     });
 }
 
 
 - (void)buttonTapped:(CHTumblrMenuItemButton*)btn
 {
-    [self dismiss:nil];
+    NSLog(@"selected");
+    [self dismiss:btn];
     double delayInSeconds = CHTumblrMenuViewAnimationTime  + CHTumblrMenuViewAnimationInterval * (buttons_.count + 1);
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
@@ -284,26 +289,17 @@
 }
 
 
-- (void)show
+- (void)showAndSetBackgroundSelectedBlock:(CHTumblrMenuViewSelectedBlock)block
 {
-    
-    UIViewController *appRootViewController;
-    UIWindow *window;
-    
-    window = [UIApplication sharedApplication].keyWindow;
-   
-        
-    appRootViewController = window.rootViewController;
-    
- 
+    noActionTakenBlock = block;
+    UIViewController *appRootViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     
     UIViewController *topViewController = appRootViewController;
-    while (topViewController.presentedViewController != nil)
-    {
+    while (topViewController.presentedViewController != nil){
         topViewController = topViewController.presentedViewController;
     }
     
-    if ([topViewController.view viewWithTag:CHTumblrMenuViewTag]) {
+    if ([topViewController.view viewWithTag:CHTumblrMenuViewTag]){
         [[topViewController.view viewWithTag:CHTumblrMenuViewTag] removeFromSuperview];
     }
     

@@ -25,7 +25,7 @@
     [self.profilePhoto setImage:[profile photo]];
     [self.profilePhoto.layer setCornerRadius:50];
     [self.profilePhoto.layer setMasksToBounds:YES];
-    NSLog(@"got profile: %@", profile.username);
+    NSLog(@"Welcome: %@", profile.username);
 }
 
 - (void)didReceiveMemoryWarning

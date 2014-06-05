@@ -25,8 +25,13 @@
 
 #import "PostViewController.h"
 #import "CHTumblrMenuView.h"
+#import "AppDelegate.h"
 
 @implementation PostViewController
+
+const int ACTION_POST = 0;
+const int ACTION_PHOTO = 1;
+const int ACTION_VIDEO = 2;
 
 @synthesize menuView;
 
@@ -34,46 +39,51 @@
 {
     [super viewDidLoad];
     
-    UIImage* tabImage = [UIImage imageNamed:@"post button.png"];
-    [self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
-    
+    __block PostViewController* blockSafeSelf = self;
     
     self.menuView = [[CHTumblrMenuView alloc] init];
     [menuView addMenuItemWithTitle:@"Text" andIcon:[UIImage imageNamed:@"post_type_bubble_text.png"] andSelectedBlock:^{
-        NSLog(@"Text selected");
+        [blockSafeSelf startAction:ACTION_POST];
     }];
     [menuView addMenuItemWithTitle:@"Photo" andIcon:[UIImage imageNamed:@"post_type_bubble_photo.png"] andSelectedBlock:^{
-        NSLog(@"Photo selected");
-    }];
-    [menuView addMenuItemWithTitle:@"Quote" andIcon:[UIImage imageNamed:@"post_type_bubble_quote.png"] andSelectedBlock:^{
-        NSLog(@"Quote selected");
-        
-    }];
-    [menuView addMenuItemWithTitle:@"Link" andIcon:[UIImage imageNamed:@"post_type_bubble_link.png"] andSelectedBlock:^{
-        NSLog(@"Link selected");
-        
-    }];
-    [menuView addMenuItemWithTitle:@"Chat" andIcon:[UIImage imageNamed:@"post_type_bubble_chat.png"] andSelectedBlock:^{
-        NSLog(@"Chat selected");
-        
+        [blockSafeSelf  startAction:ACTION_PHOTO];
     }];
     [menuView addMenuItemWithTitle:@"Video" andIcon:[UIImage imageNamed:@"post_type_bubble_video.png"] andSelectedBlock:^{
-        NSLog(@"Video selected");
+        [blockSafeSelf   startAction:ACTION_VIDEO];
     }];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)startAction:(int)action{
+    [self.view setBackgroundColor:[UIColor whiteColor]];
+    switch (action) {
+        case ACTION_PHOTO:
+            NSLog(@"photo");
+            break;
+        case ACTION_VIDEO:
+            NSLog(@"photo");
+            break;
+        case ACTION_POST:
+            NSLog(@"photo");
+            break;
+        default:
+            NSLog(@"Unknown Action: Closing PostView");
+            [self setViewHidden:true];
+            break;
+    }
 }
 
 #pragma mark - CFTabBarViewDelegate method
 
--(void)toggleViewHidden:(BOOL)hidden{
+-(void)setViewHidden:(BOOL)hidden{
     [self.view.superview setHidden:hidden];
     if(!hidden){
-        [menuView show];
+        //being shown;
+        [menuView showAndSetBackgroundSelectedBlock:^{
+            [[[AppDelegate getAppDelegate] appTabBar] goHome];
+        }];
+    }else{
+        //being hidden;
+        [self.view setBackgroundColor:[UIColor clearColor]];
     }
 }
 

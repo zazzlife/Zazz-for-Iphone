@@ -12,6 +12,7 @@
 
 @synthesize _zazzAPI;
 @synthesize zazz_logo;
+@synthesize appTabBar;
 
 +(AppDelegate*)getAppDelegate{
     return [[UIApplication sharedApplication] delegate];
@@ -21,21 +22,23 @@
 }
 
 
--(void)addZazzBackgorundLogo{
++(void)addZazzBackgroundLogo{
+    AppDelegate* app = [AppDelegate getAppDelegate];
     UIImage* image = [UIImage imageNamed:@"Logo"];
-    [self setZazz_logo:[[UIImageView alloc] initWithImage:image]];
+    [app setZazz_logo:[[UIImageView alloc] initWithImage:image]];
     int scale = 2;
-    [self.zazz_logo setFrame:CGRectMake(
-                                   ((self.window.frame.size.width/2) - (image.size.width/scale/2) ),
-                                   ((self.window.frame.size.height/4) - (image.size.height/scale/2)),
+    [app.zazz_logo setFrame:CGRectMake(
+                                   ((app.window.frame.size.width/2) - (image.size.width/scale/2) ),
+                                   ((app.window.frame.size.height/4) - (image.size.height/scale/2)),
                                    image.size.width/scale,
                                    image.size.height/scale
                                    )];
-    [self.window addSubview:zazz_logo];
+    [app.window addSubview:app.zazz_logo];
 }
 
--(void)removeZazzBackgroundLogo{
-    [self.zazz_logo removeFromSuperview];
++(void)removeZazzBackgroundLogo{
+    AppDelegate* app = [AppDelegate getAppDelegate];
+    [app.zazz_logo removeFromSuperview];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -43,7 +46,7 @@
     // Override point for customization after application launch.
     [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Landing page (LH)1"]]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [self addZazzBackgorundLogo];
+    [AppDelegate addZazzBackgroundLogo];
     [self set_zazzAPI:[[ZazzApi alloc] init]];
     
     return YES;

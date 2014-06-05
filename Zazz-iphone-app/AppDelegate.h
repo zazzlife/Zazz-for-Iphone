@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZazzApi.h"
+#import "CFTabBarController.h"
 
 
 @protocol ViewAnimationDelegate <NSObject>
@@ -22,8 +23,9 @@
 @property (strong, nonatomic) UIWindow *window;
 @property ZazzApi* _zazzAPI;
 @property UIImageView* zazz_logo;
--(void)addZazzBackgorundLogo;
--(void)removeZazzBackgroundLogo;
+@property CFTabBarController* appTabBar;
++(void)addZazzBackgroundLogo;
++(void)removeZazzBackgroundLogo;
 
 + (AppDelegate*)getAppDelegate;
 + (ZazzApi*)zazzApi;

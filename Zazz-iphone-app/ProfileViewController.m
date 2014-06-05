@@ -48,7 +48,7 @@
 
 #pragma mark - CFTabBarViewDelegate method
 
--(void)toggleViewHidden:(BOOL)hidden{
+-(void)setViewHidden:(BOOL)hidden{
     [self.view.superview setHidden:hidden];
 }
 

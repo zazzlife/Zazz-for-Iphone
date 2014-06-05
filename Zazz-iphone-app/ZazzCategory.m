@@ -7,7 +7,7 @@
 //
 
 #import "ZazzCategory.h"
-#import "Category.h"
+#import "CategoryStat.h"
 
 @implementation ZazzCategory
 
@@ -25,10 +25,10 @@
 -(void)getCategoriesDelegate:(id)delegate{
     [self set_delegate:delegate];
     
-    NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"categories"];
+    NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"categoriesstat"];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
     //define request
-    NSLog(@"%@",api_action);
+//    NSLog(@"%@",api_action);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
     [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
     [request setHTTPMethod:@"GET"];
@@ -45,7 +45,7 @@
     
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:nil ];
     NSString* receivedDataString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",receivedDataString);
+//    NSLog(@"%@",receivedDataString);
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;
@@ -54,9 +54,10 @@
     NSMutableArray *categoryList = [[NSMutableArray alloc] init];
     
     for(NSDictionary* cat_dict in array) {
-        ZCategory* category = [[ZCategory alloc ] init];
+        CategoryStat* category = [[CategoryStat alloc ] init];
         [category setCategory_id:[cat_dict objectForKey:@"id"]];
         [category setName:[cat_dict objectForKey:@"name"]];
+        [category setUserCount:[[cat_dict objectForKey:@"usersCount"] intValue]];
         [categoryList addObject:category];
     }
     

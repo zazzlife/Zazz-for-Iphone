@@ -7,7 +7,7 @@
 //
 
 @protocol CFTabBarViewDelegate <NSObject>
--(void)toggleViewHidden:(BOOL)hidden;
+-(void)setViewHidden:(BOOL)hidden;
 @end
 
 
@@ -23,5 +23,6 @@
 @property int activeView;
 
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender;
+-(void)goHome;
 
 @end

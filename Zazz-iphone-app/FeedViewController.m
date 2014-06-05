@@ -38,8 +38,8 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 {
     [super viewDidLoad];
     
+    [AppDelegate removeZazzBackgroundLogo];
     [[AppDelegate zazzApi] getMyFeedDelegate:self];
-    [[AppDelegate getAppDelegate] removeZazzBackgroundLogo];
     
     [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:@"#101010"] width:320 andHeight:49]];
     
@@ -265,7 +265,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 #pragma mark - CFTabBarViewDelegate method
 
--(void)toggleViewHidden:(BOOL)hidden{
+-(void)setViewHidden:(BOOL)hidden{
     [self.view.superview setHidden:hidden];
     if(hidden){
         if(right_active) [self rightDrawerButton:nil]; //close right drawer first.

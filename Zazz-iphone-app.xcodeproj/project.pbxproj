@@ -29,7 +29,7 @@
 		2A6CFC8819293039005D3076 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8719293039005D3076 /* Event.m */; };
 		2A6CFC8B19295024005D3076 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8A19295024005D3076 /* Comment.m */; };
 		2A7FA2A8193802F400E3B95B /* ZazzCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FA2A7193802F400E3B95B /* ZazzCategory.m */; };
-		2A7FA2AB193806DC00E3B95B /* Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FA2AA193806DC00E3B95B /* Category.m */; };
+		2A7FA2AB193806DC00E3B95B /* CategoryStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A7FA2AA193806DC00E3B95B /* CategoryStat.m */; };
 		2AA057D5193F451B00E1617D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA057D4193F451B00E1617D /* ProfileViewController.m */; };
 		2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */; };
 		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
@@ -74,8 +74,8 @@
 		2A09D71F191EF3CD00A2827F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2A39F2DA193D5BA3002E8873 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		2A39F2DB193D5BA3002E8873 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
-		2A39F2DD193D5BA3002E8873 /* CHTumblrMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHTumblrMenuView.h; path = ../TumblrMenu/CHTumblrMenuView.h; sourceTree = "<group>"; };
-		2A39F2DE193D5BA3002E8873 /* CHTumblrMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHTumblrMenuView.m; path = ../TumblrMenu/CHTumblrMenuView.m; sourceTree = "<group>"; };
+		2A39F2DD193D5BA3002E8873 /* CHTumblrMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHTumblrMenuView.h; path = TumblrMenu/CHTumblrMenuView.h; sourceTree = "<group>"; };
+		2A39F2DE193D5BA3002E8873 /* CHTumblrMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHTumblrMenuView.m; path = TumblrMenu/CHTumblrMenuView.m; sourceTree = "<group>"; };
 		2A39F2E4193DEB04002E8873 /* CFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTabBarController.h; sourceTree = "<group>"; };
 		2A39F2E5193DEB04002E8873 /* CFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTabBarController.m; sourceTree = "<group>"; };
 		2A470D3D191FE863008DBFED /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -103,8 +103,8 @@
 		2A6CFC8A19295024005D3076 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		2A7FA2A6193802F400E3B95B /* ZazzCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzCategory.h; sourceTree = "<group>"; };
 		2A7FA2A7193802F400E3B95B /* ZazzCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzCategory.m; sourceTree = "<group>"; };
-		2A7FA2A9193806DC00E3B95B /* Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Category.h; sourceTree = "<group>"; };
-		2A7FA2AA193806DC00E3B95B /* Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Category.m; sourceTree = "<group>"; };
+		2A7FA2A9193806DC00E3B95B /* CategoryStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryStat.h; sourceTree = "<group>"; };
+		2A7FA2AA193806DC00E3B95B /* CategoryStat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryStat.m; sourceTree = "<group>"; };
 		2AA057D3193F451B00E1617D /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		2AA057D4193F451B00E1617D /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavigationViewController.h; sourceTree = "<group>"; };
@@ -170,11 +170,31 @@
 				2A6CFC8719293039005D3076 /* Event.m */,
 				2A6CFC8919295024005D3076 /* Comment.h */,
 				2A6CFC8A19295024005D3076 /* Comment.m */,
-				2A7FA2A9193806DC00E3B95B /* Category.h */,
-				2A7FA2AA193806DC00E3B95B /* Category.m */,
+				2A7FA2A9193806DC00E3B95B /* CategoryStat.h */,
+				2A7FA2AA193806DC00E3B95B /* CategoryStat.m */,
 			);
 			name = Entities;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		2A23858E19408C4200F7FABD /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				2A39F2DA193D5BA3002E8873 /* PostViewController.h */,
+				2A39F2DB193D5BA3002E8873 /* PostViewController.m */,
+				2A39F2DD193D5BA3002E8873 /* CHTumblrMenuView.h */,
+				2A39F2DE193D5BA3002E8873 /* CHTumblrMenuView.m */,
+			);
+			name = Post;
+			sourceTree = "<group>";
+		};
+		2A23858F19408EDE00F7FABD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				2AA057D3193F451B00E1617D /* ProfileViewController.h */,
+				2AA057D4193F451B00E1617D /* ProfileViewController.m */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		2A470D7C19247A11008DBFED /* Segues */ = {
@@ -191,8 +211,6 @@
 		2A47F5601936F37A001CF1AE /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
-				2A39F2DD193D5BA3002E8873 /* CHTumblrMenuView.h */,
-				2A39F2DE193D5BA3002E8873 /* CHTumblrMenuView.m */,
 				2A47F5611936F37A001CF1AE /* UIColor.h */,
 				2A47F5621936F37A001CF1AE /* UIImage.h */,
 			);
@@ -225,10 +243,8 @@
 				2A39F2E4193DEB04002E8873 /* CFTabBarController.h */,
 				2A39F2E5193DEB04002E8873 /* CFTabBarController.m */,
 				2AA057D6193F453300E1617D /* Feed */,
-				2A39F2DA193D5BA3002E8873 /* PostViewController.h */,
-				2A39F2DB193D5BA3002E8873 /* PostViewController.m */,
-				2AA057D3193F451B00E1617D /* ProfileViewController.h */,
-				2AA057D4193F451B00E1617D /* ProfileViewController.m */,
+				2A23858E19408C4200F7FABD /* Post */,
+				2A23858F19408EDE00F7FABD /* Profile */,
 				2A09D71E191EF3CD00A2827F /* LoginViewController.h */,
 				2A09D71F191EF3CD00A2827F /* LoginViewController.m */,
 				2A470D3D191FE863008DBFED /* RegisterViewController.h */,
@@ -454,7 +470,7 @@
 				0DD31809191B2063003D5630 /* FeedViewController.m in Sources */,
 				0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */,
 				2A39F2DF193D5BA3002E8873 /* PostViewController.m in Sources */,
-				2A7FA2AB193806DC00E3B95B /* Category.m in Sources */,
+				2A7FA2AB193806DC00E3B95B /* CategoryStat.m in Sources */,
 				2A6CFC821929189F005D3076 /* Photo.m in Sources */,
 				2A09D719191EDA3700A2827F /* Profile.m in Sources */,
 				2A5FAEBC191D5FBF00B917AB /* ZazzLogin.m in Sources */,

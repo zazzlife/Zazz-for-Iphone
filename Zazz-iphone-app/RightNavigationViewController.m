@@ -8,6 +8,7 @@
 
 #import "RightNavigationViewController.h"
 #import "AppDelegate.h"
+#import "CategoryStat.h"
 
 @interface RightNavigationViewController ()
 
@@ -22,7 +23,9 @@
 }
 
 -(void)gotZazzCategories:(NSMutableArray *)categories{
-    NSLog(@"received %d Categories.",(int)categories.count);
+    for(CategoryStat* category in categories){
+//        NSLog(@"category_id:%@ name:%@ userCount:%d", category.category_id, category.name,category.userCount);
+    }
 }
 
 - (void)didReceiveMemoryWarning
