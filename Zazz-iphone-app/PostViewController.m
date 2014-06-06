@@ -45,11 +45,11 @@ const int ACTION_VIDEO = 2;
     [menuView addMenuItemWithTitle:@"" andIcon:[UIImage imageNamed:@"post_type_bubble_text.png"] andSelectedBlock:^{
         [blockSafeSelf startAction:ACTION_POST];
     }];
-    [menuView addMenuItemWithTitle:@"" andIcon:[UIImage imageNamed:@"post_type_bubble_photo.png"] andSelectedBlock:^{
-        [blockSafeSelf  startAction:ACTION_PHOTO];
-    }];
     [menuView addMenuItemWithTitle:@"" andIcon:[UIImage imageNamed:@"post_type_bubble_video.png"] andSelectedBlock:^{
         [blockSafeSelf   startAction:ACTION_VIDEO];
+    }];
+    [menuView addMenuItemWithTitle:@"" andIcon:[UIImage imageNamed:@"post_type_bubble_photo.png"] andSelectedBlock:^{
+        [blockSafeSelf  startAction:ACTION_PHOTO];
     }];
 }
 
@@ -60,10 +60,10 @@ const int ACTION_VIDEO = 2;
             NSLog(@"photo");
             break;
         case ACTION_VIDEO:
-            NSLog(@"photo");
+            NSLog(@"video");
             break;
         case ACTION_POST:
-            NSLog(@"photo");
+            NSLog(@"post");
             break;
         default:
             NSLog(@"Unknown Action: Closing PostView");

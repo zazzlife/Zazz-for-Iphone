@@ -24,6 +24,7 @@
 //  THE SOFTWARE.
 
 #import "CHTumblrMenuView.h"
+#import "AppDelegate.h"
 #import "UIColor.h"
 
 #define CHTumblrMenuViewTag 1999
@@ -112,22 +113,28 @@ CHTumblrMenuViewSelectedBlock noActionTakenBlock;
 - (CGRect)frameForButtonAtIndex:(NSUInteger)index
 {
     //Modify this to get the pyramid.
-    NSUInteger columnCount = 3;
-    NSUInteger columnIndex =  index % columnCount;
-
-    NSUInteger rowCount = buttons_.count / columnCount + (buttons_.count%columnCount>0?1:0);
-    NSUInteger rowIndex = index / columnCount;
-
-    CGFloat itemHeight = (CHTumblrMenuViewImageHeight + CHTumblrMenuViewTitleHeight) * rowCount + (rowCount > 1?(rowCount - 1) * CHTumblrMenuViewHorizontalMargin:0);
-    CGFloat offsetY = (self.bounds.size.height - itemHeight) / 2.0;
-    CGFloat verticalPadding = (self.bounds.size.width - CHTumblrMenuViewHorizontalMargin * 2 - CHTumblrMenuViewImageHeight * 3) / 2.0;
+    UIWindow* appWindow = [[AppDelegate getAppDelegate] window];
+    double offsetX = appWindow.frame.size.width / 2 ;
+    double offsetY = appWindow.frame.size.height / 2 ;
     
-    CGFloat offsetX = CHTumblrMenuViewHorizontalMargin;
-    offsetX += (CHTumblrMenuViewImageHeight+ verticalPadding) * columnIndex;
+    float DISTANCE_FROM_CENTER = CHTumblrMenuViewImageHeight* .6;
     
-    offsetY += (CHTumblrMenuViewImageHeight + CHTumblrMenuViewTitleHeight + CHTumblrMenuViewVerticalPadding) * rowIndex;
-
-    return CGRectMake(offsetX, offsetY, CHTumblrMenuViewImageHeight, (CHTumblrMenuViewImageHeight+CHTumblrMenuViewTitleHeight));
+    switch(index){
+        case 0: //text
+            offsetX += (-CHTumblrMenuViewImageHeight/2) + (DISTANCE_FROM_CENTER * cos(M_PI/2));
+            offsetY += (-CHTumblrMenuViewImageHeight/2) - (DISTANCE_FROM_CENTER * sin(M_PI/2));
+            break;
+        case 1: //video
+            offsetX += (-CHTumblrMenuViewImageHeight/2) - (DISTANCE_FROM_CENTER * cos((M_PI*sqrt(3))/2));
+            offsetY += (-CHTumblrMenuViewImageHeight/2) + (DISTANCE_FROM_CENTER * sin((M_PI*sqrt(3))/2));
+            break;
+        case 2: //photo
+            offsetX += (-CHTumblrMenuViewImageHeight/2) + (DISTANCE_FROM_CENTER * cos((M_PI*sqrt(3))/2));
+            offsetY += (-CHTumblrMenuViewImageHeight/2) + (DISTANCE_FROM_CENTER * sin((M_PI*sqrt(3))/2));
+            break;
+    }
+    return CGRectMake(offsetX, offsetY, CHTumblrMenuViewImageHeight, CHTumblrMenuViewImageHeight);
+    
 }
 
 - (void)layoutSubviews
@@ -173,14 +180,8 @@ CHTumblrMenuViewSelectedBlock noActionTakenBlock;
 
 - (void)buttonTapped:(CHTumblrMenuItemButton*)btn
 {
-    NSLog(@"selected");
     [self dismiss:btn];
-    double delayInSeconds = CHTumblrMenuViewAnimationTime  + CHTumblrMenuViewAnimationInterval * (buttons_.count + 1);
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        btn.selectedBlock();
-
-    });
+    btn.selectedBlock();
 }
 
 
