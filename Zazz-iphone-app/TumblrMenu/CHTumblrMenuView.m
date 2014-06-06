@@ -24,6 +24,7 @@
 //  THE SOFTWARE.
 
 #import "CHTumblrMenuView.h"
+#import "UIColor.h"
 
 #define CHTumblrMenuViewTag 1999
 #define CHTumblrMenuViewImageHeight 90
@@ -35,7 +36,8 @@
 #define CHTumblrMenuViewAnimationTime 0.36
 #define CHTumblrMenuViewAnimationInterval (CHTumblrMenuViewAnimationTime / 5)
 
-#define TumblrBlue [UIColor colorWithRed:45/255.0f green:68/255.0f blue:94/255.0f alpha:.8]
+//#define TumblrBlue [UIColor colorWithRed:45/255.0f green:68/255.0f blue:94/255.0f alpha:.8]
+#define ZazzGray [UIColor colorFromHexString:@"#1D1D1D"]
 
 @interface CHTumblrMenuItemButton : UIButton
 + (id)TumblrMenuItemButtonWithTitle:(NSString*)title andIcon:(UIImage*)icon andSelectedBlock:(CHTumblrMenuViewSelectedBlock)block;
@@ -87,7 +89,7 @@ CHTumblrMenuViewSelectedBlock noActionTakenBlock;
         [self addGestureRecognizer:ges];
         self.backgroundColor = [UIColor clearColor];
         backgroundView_ = [[UIImageView alloc] initWithFrame:self.bounds];
-        backgroundView_.backgroundColor = TumblrBlue;
+        backgroundView_.backgroundColor = [ZazzGray colorWithAlphaComponent:.9];
         backgroundView_.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         [self addSubview:backgroundView_];
         buttons_ = [[NSMutableArray alloc] initWithCapacity:6];
@@ -109,6 +111,7 @@ CHTumblrMenuViewSelectedBlock noActionTakenBlock;
 
 - (CGRect)frameForButtonAtIndex:(NSUInteger)index
 {
+    //Modify this to get the pyramid.
     NSUInteger columnCount = 3;
     NSUInteger columnIndex =  index % columnCount;
 

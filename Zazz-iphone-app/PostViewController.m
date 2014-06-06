@@ -42,13 +42,13 @@ const int ACTION_VIDEO = 2;
     __block PostViewController* blockSafeSelf = self;
     
     self.menuView = [[CHTumblrMenuView alloc] init];
-    [menuView addMenuItemWithTitle:@"Text" andIcon:[UIImage imageNamed:@"post_type_bubble_text.png"] andSelectedBlock:^{
+    [menuView addMenuItemWithTitle:@"" andIcon:[UIImage imageNamed:@"post_type_bubble_text.png"] andSelectedBlock:^{
         [blockSafeSelf startAction:ACTION_POST];
     }];
-    [menuView addMenuItemWithTitle:@"Photo" andIcon:[UIImage imageNamed:@"post_type_bubble_photo.png"] andSelectedBlock:^{
+    [menuView addMenuItemWithTitle:@"" andIcon:[UIImage imageNamed:@"post_type_bubble_photo.png"] andSelectedBlock:^{
         [blockSafeSelf  startAction:ACTION_PHOTO];
     }];
-    [menuView addMenuItemWithTitle:@"Video" andIcon:[UIImage imageNamed:@"post_type_bubble_video.png"] andSelectedBlock:^{
+    [menuView addMenuItemWithTitle:@"" andIcon:[UIImage imageNamed:@"post_type_bubble_video.png"] andSelectedBlock:^{
         [blockSafeSelf   startAction:ACTION_VIDEO];
     }];
 }
