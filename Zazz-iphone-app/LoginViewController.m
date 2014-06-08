@@ -46,24 +46,27 @@
 }
 
 -(IBAction)doLogin:(id)sender{
-    [[AppDelegate zazzApi] getAuthTokenWithUsername:_username.text andPassword:_password.text delegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthToken:) name:@"gotAuthToken" object:nil];
+    [[AppDelegate zazzApi] getAuthTokenWithUsername:_username.text andPassword:_password.text];
     [self.loginprogress startAnimating];
     [_password resignFirstResponder];
     [_username resignFirstResponder];
 }
 
--(void) finishedZazzAuth:(BOOL)success{
+-(void) gotAuthToken:(NSNotification*)notif{
    
 //    NSLog(@"finishedZazzAuth - success:%s",success?"yes":"no");
-    
-    if(success){
-        [self performSegueWithIdentifier:@"loginComplete" sender:self];
+    if (![notif.name isEqualToString:@"gotAuthToken"]) return;
+    NSString* auth_token = [notif.userInfo objectForKey:@"token"];
+    if (!auth_token){
+        UIAlertView *loginerror = [[UIAlertView alloc] initWithTitle:@"Login Failed!" message:@"Your username or password is incorrect" delegate:nil cancelButtonTitle:@"try again" otherButtonTitles:nil, nil];
+        
         [self.loginprogress stopAnimating];
+        [loginerror show];
         return;
     }
-    UIAlertView *loginerror = [[UIAlertView alloc] initWithTitle:@"Login Failed!" message:@"Your username or password is incorrect" delegate:nil cancelButtonTitle:@"try again" otherButtonTitles:nil, nil];
-    
+    [self performSegueWithIdentifier:@"loginComplete" sender:self];
     [self.loginprogress stopAnimating];
-    [loginerror show];
+    return;
 }
 @end

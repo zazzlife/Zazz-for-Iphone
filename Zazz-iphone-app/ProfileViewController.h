@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "CFTabBarController.h"
+#import "Profile.h"
 
 @interface ProfileViewController : UIViewController <CFTabBarViewDelegate>
+
+@property Profile* _profile;
 
 @end

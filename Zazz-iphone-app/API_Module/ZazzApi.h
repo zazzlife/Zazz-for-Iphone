@@ -10,23 +10,6 @@
 #import "Profile.h"
 #import "Feed.h"
 
-@protocol ZazzLoginDelegate<NSObject>
--(void)finishedZazzAuth:(BOOL)success;
-@end
-
-@protocol ZazzProfileDelegate <NSObject>
--(void)gotZazzProfile:(Profile*)profile;
-@end
-
-@protocol ZazzFeedDelegate <NSObject>
--(void)gotZazzFeed:(NSMutableArray*)feed;
-@end
-
-@protocol ZazzCategoryDelegate <NSObject>
--(void)gotZazzCategories:(NSMutableArray*)categories;
-@end
-
-
 @interface ZazzApi: NSObject
 
 @property NSString* auth_token;
@@ -36,18 +19,18 @@
 +(NSString *) getQueryStringFromDictionary:(NSDictionary *)dictionary;
 
 -(BOOL) needAuth;
--(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password delegate:(id)delegate;
--(void) gotLoginToken:(NSString*)token;
+-(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password;
+-(void) gotAuthToken:(NSString*)token;
 
--(void) getMyProfileDelegate:(id)delegate;
--(void) getProfile:(NSString*)userId delegate:(id)delegate;
+-(void) getMyProfile;
+-(void) getProfile:(NSString*)userId;
 -(void) gotProfile:(Profile*)profile;
 
--(void) getMyFeedDelegate:(id)delegate;
--(void) getMyFeedAfter:(NSString*)last_timestamp delegate:(id)delegate;
+-(void) getFeed;
+-(void) getFeedAfter:(NSString*)last_timestamp;
 -(void) gotFeed:(NSMutableArray*)feed;
 
--(void) getCategories:(id)delegate;
+-(void) getCategories;
 -(void) gotCategories:(NSMutableArray*)categories;
 
 @end

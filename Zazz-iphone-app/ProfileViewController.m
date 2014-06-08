@@ -7,26 +7,23 @@
 //
 
 #import "ProfileViewController.h"
-
-@interface ProfileViewController ()
-
-@end
+#import "AppDelegate.h"
 
 @implementation ProfileViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize _profile;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzProfile:) name:@"gotProfile" object:nil];
+}
+
+-(void)gotZazzProfile:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotProfile"]) return;
+    Profile* profile = [notif.userInfo objectForKey:@"profile"];
+    [self set_profile:profile];
+    NSLog(@"Welcome profileview: %@", profile.username);
 }
 
 - (void)didReceiveMemoryWarning

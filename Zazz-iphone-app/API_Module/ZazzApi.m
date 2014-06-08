@@ -15,15 +15,7 @@
 @implementation ZazzApi
 
 @synthesize auth_token;
-NSMutableDictionary* _delegates;
 
-
-
--(id) init{
-    [self setAuth_token:nil];
-    _delegates = [[NSMutableDictionary alloc ] init];
-    return [super init];
-}
 
 /*
  LOGIN
@@ -32,14 +24,15 @@ NSMutableDictionary* _delegates;
 -(BOOL) needAuth {
     return self.auth_token == nil;
 }
--(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password delegate:(id)delegate{
-    [_delegates setObject:delegate forKey:@"auth"];
+-(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password{
+    NSLog(@"doing Auth");
     [[[ZazzLogin alloc] init] loginWithUsername:username andPassword:password delegate:self];
 }
--(void) gotLoginToken:(NSString*)token{
+-(void) gotAuthToken:(NSString*)token{
+    NSLog(@"got Auth: %@", token);
     [self setAuth_token:token];
-    [[_delegates objectForKey:@"auth"] finishedZazzAuth:![self needAuth]];
-    [_delegates removeObjectForKey:@"auth"];
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:token forKey:@"token"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotAuthToken" object:nil userInfo:userInfo];
 }
 
 
@@ -47,48 +40,42 @@ NSMutableDictionary* _delegates;
 /*
  ME - PROFILE
  */
--(void) getMyProfileDelegate:(id)delegate{
-    [_delegates setObject:delegate forKey:@"profile"];
+-(void) getMyProfile{
     [[[ZazzProfile alloc] init] getMyProfileDelegate:self];
 }
--(void) getProfile:(NSString*)userId delegate:(id)delegate{
-    [_delegates setObject:delegate forKey:@"profile"];
-    [[[ZazzProfile alloc] init] getProfile:userId delegate:delegate];
-}
+//-(void) getProfile:(NSString*)userId{
+//    [[[ZazzProfile alloc] init] getMyProfileDelegate:<#(id)#>];
+//}
 -(void) gotProfile:(Profile*)profile{
-    [[_delegates objectForKey:@"profile"] gotZazzProfile:profile];
-    [_delegates removeObjectForKey:@"profile"];
-
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:profile forKey:@"profile"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotProfile" object:nil userInfo:userInfo];
 }
 
 
 /*
  FEED
  */
--(void) getMyFeedDelegate:(id)delegate{
-    [_delegates setObject:delegate forKey:@"feed"];
+-(void) getFeed{
     [[[ZazzFeed alloc] init] getMyFeedDelegate:self];
 }
--(void) getMyFeedAfter:(NSString*)last_timestamp delegate:(id)delegate{
-    [_delegates setObject:delegate forKey:@"feed"];
+-(void) getFeedAfter:(NSString*)last_timestamp{
     [[[ZazzFeed alloc] init] getMyFeedAfter:last_timestamp delegate:self];
 }
--(void) gotFeed:(NSMutableArray*)feedArray{
-    [[_delegates objectForKey:@"feed"] gotZazzFeed:feedArray];
-    [_delegates removeObjectForKey:@"feed"];
+-(void) gotFeed:(NSMutableArray*)feed{
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:feed forKey:@"feed"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFeed" object:nil userInfo:userInfo];
 }
 
 
 /*
  CATEGORIES
  */
--(void) getCategories:(id)delegate{
-    [_delegates setObject:delegate forKey:@"category"];
+-(void) getCategories{
     [[[ZazzCategory alloc] init] getCategoriesDelegate:self];
 }
 -(void) gotCategories:(NSMutableArray*)categories{
-    [[_delegates objectForKey:@"category"] gotZazzCategories:categories];
-    [_delegates removeObjectForKey:@"category"];
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:categories forKey:@"categories"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotCategories" object:nil userInfo:userInfo];
 }
 
 

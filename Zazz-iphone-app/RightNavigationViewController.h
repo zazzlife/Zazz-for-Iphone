@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZazzApi.h"
 
-@interface RightNavigationViewController : UIViewController<ZazzCategoryDelegate>
+@interface RightNavigationViewController : UIViewController
 
 @property NSMutableArray* categories;
 

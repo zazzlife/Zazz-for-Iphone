@@ -19,12 +19,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[AppDelegate zazzApi] getCategories:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzCategories:) name:@"gotCategories" object:nil];
+    [[AppDelegate zazzApi] getCategories];
 }
 
--(void)gotZazzCategories:(NSMutableArray *)categories{
+-(void)gotZazzCategories:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotCategories"]) return;
+    NSMutableArray* categories = [notif.userInfo objectForKey:@"categories"];
     for(CategoryStat* category in categories){
-//        NSLog(@"category_id:%@ name:%@ userCount:%d", category.category_id, category.name,category.userCount);
+        NSLog(@"category_id:%@ name:%@ userCount:%d", category.category_id, category.name,category.userCount);
+        
     }
 }
 

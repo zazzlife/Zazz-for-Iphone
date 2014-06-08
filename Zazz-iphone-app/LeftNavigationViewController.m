@@ -17,10 +17,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[AppDelegate zazzApi] getMyProfileDelegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzProfile:) name:@"gotProfile" object:nil];
 }
 
--(void)gotZazzProfile:(Profile *)profile{
+-(void)gotZazzProfile:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotProfile"]) return;
+    Profile* profile = [notif.userInfo objectForKey:@"profile"];
     [self set_profile:profile];
     [self.profilePhoto setImage:[profile photo]];
     [self.profilePhoto.layer setCornerRadius:50];

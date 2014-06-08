@@ -39,7 +39,8 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [super viewDidLoad];
     
     [AppDelegate removeZazzBackgroundLogo];
-    [[AppDelegate zazzApi] getMyFeedDelegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFeed:) name:@"gotFeed" object:nil];
+    [[AppDelegate zazzApi] getFeed];
     
     [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:@"#101010"] width:320 andHeight:49]];
     
@@ -56,8 +57,12 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     
 }
 
--(void)gotZazzFeed:(NSMutableArray*)feed
+-(void)gotZazzFeed:(NSNotification *)notif
 {
+    if (![notif.name isEqualToString:@"gotFeed"]) return;
+    NSMutableArray* feed = [notif.userInfo objectForKey:@"feed"];
+    if (!feed) return;
+    
     getting_feed = false;
     if([feed count] <= 0){
         end_of_feed = true;
@@ -247,7 +252,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if(!getting_height && !end_of_feed && !getting_feed){
             NSString* last_feedId = (NSString*)[(Feed*)self.feed.lastObject feedId];
             getting_feed = true;
-            [[AppDelegate zazzApi] getMyFeedAfter:[NSString stringWithFormat:@"%@",last_feedId] delegate:self];
+            [[AppDelegate zazzApi] getFeedAfter:[NSString stringWithFormat:@"%@",last_feedId]];
         }
         return cell;
     }

@@ -10,7 +10,7 @@
 #import "Profile.h"
 #import "ZazzApi.h"
 
-@interface LeftNavigationViewController : UIViewController<ZazzProfileDelegate>
+@interface LeftNavigationViewController : UIViewController
 
 @property IBOutlet UIImageView* profilePhoto;
 @property Profile* _profile;

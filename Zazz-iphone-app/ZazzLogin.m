@@ -44,7 +44,7 @@
     }
     
 //    NSLog(@"JUST GOT :%@",[array objectForKey:@"access_token"]);
-    [[self _delegate] gotLoginToken:[array objectForKey:@"access_token"]];
+    [[self _delegate] gotAuthToken:[array objectForKey:@"access_token"]];
 }
 
 

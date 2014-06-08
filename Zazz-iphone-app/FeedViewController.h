@@ -11,7 +11,7 @@
 #import "CFTabBarController.h"
 
 @interface FeedViewController : UIViewController
-    <UITableViewDataSource,UITableViewDelegate,ZazzFeedDelegate,CFTabBarViewDelegate>
+    <UITableViewDataSource,UITableViewDelegate, CFTabBarViewDelegate>
 
 @property NSMutableArray* feed;
 @property NSArray* filteredFeed;

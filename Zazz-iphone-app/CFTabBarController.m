@@ -21,6 +21,7 @@ ProfileViewController* profileView;
 
 -(void)viewDidLoad{
     
+    [[AppDelegate zazzApi] getMyProfile];
     [[AppDelegate getAppDelegate] setAppTabBar:self];
     
     //set child controllers.
