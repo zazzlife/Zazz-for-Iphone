@@ -26,9 +26,7 @@
     [manager downloadWithURL:[NSURL URLWithString:photoUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize){} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished){
          if (image){
              [profile setPhoto:image];
-             NSDictionary* userInfo = [NSDictionary dictionaryWithObject:profile forKey:@"profile"];
-             [[NSNotificationCenter defaultCenter] postNotificationName:@"gotProfilePhoto" object:nil userInfo:userInfo];
-             
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"gotProfile" object:profile userInfo:nil];
          }
      }];
 }

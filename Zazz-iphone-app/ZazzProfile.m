@@ -44,7 +44,7 @@
     [profile setAccountType:[array objectForKey:@"accountType"]];
     [profile setIsConfirmed:[array objectForKey:@"isConfirmed"]];
     [profile setUsername:[array objectForKey:@"displayName"]];
-//    [profile setPhoto:[UIImage getImageAtUrl:[(NSDictionary*)[array objectForKey:@"displayPhoto"] objectForKey:@"mediumLink"]]];
+    [profile setPhotoUrl:[[array objectForKey:@"displayPhoto"] objectForKey:@"mediumLink"]];
     
     [[self _delegate] gotProfile:profile];
 }

@@ -63,7 +63,7 @@ int _albumObserversCounter;
     [self.timestamp setText:feed.timestamp];
     [self.userImage setImage:feed.user.photo];
     if(feed.user.photo == nil){
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotUserImageNotification:) name:@"gotProfilePhoto" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotUserImageNotification:) name:@"gotProfile" object:nil];
     }
     [self.feedCellContentView setFrame:CGRectMake(0, CELL_HEADER_HEIGHT, self.tableView.frame.size.width-(2*CELL_PADDING_SIDES), 40)];
     for(UIView* view in self.feedCellContentView.subviews){
@@ -117,8 +117,8 @@ int _albumObserversCounter;
 }
 
 -(void)gotUserImageNotification:(NSNotification *)notif{
-    if(! [notif.name isEqualToString:@"gotProfilePhoto"]) return;
-    Profile* profile = [notif.userInfo objectForKey:@"profile"];
+    if(! [notif.name isEqualToString:@"gotProfile"]) return;
+    Profile* profile = notif.object;
     if(profile.userId != self._feed.user.userId) return;
     [self.userImage setImage:profile.photo];
 }

@@ -14,4 +14,6 @@
 @property NSString* name;
 @property int userCount;
 
+-(UIImage*)getIcon;
+
 @end

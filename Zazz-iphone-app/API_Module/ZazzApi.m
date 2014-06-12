@@ -48,8 +48,7 @@
 //    [[[ZazzProfile alloc] init] getMyProfileDelegate:<#(id)#>];
 //}
 -(void) gotProfile:(Profile*)profile{
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:profile forKey:@"profile"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotProfile" object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotMyProfile" object:profile userInfo:nil];
 }
 
 

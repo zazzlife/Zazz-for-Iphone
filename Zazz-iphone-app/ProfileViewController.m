@@ -16,12 +16,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzProfile:) name:@"gotProfile" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMyProfile:) name:@"gotMyProfile" object:nil];
 }
 
--(void)gotZazzProfile:(NSNotification*)notif{
-    if (![notif.name isEqualToString:@"gotProfile"]) return;
-    Profile* profile = [notif.userInfo objectForKey:@"profile"];
+-(void)gotMyProfile:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotMyProfile"]) return;
+    Profile* profile = notif.object;
     [self set_profile:profile];
     NSLog(@"Welcome profileview: %@", profile.username);
 }

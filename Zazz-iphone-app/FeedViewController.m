@@ -46,7 +46,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFeed:) name:@"gotFeed" object:nil];
     [[AppDelegate zazzApi] getFeed];
     
-    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:@"#101010"] width:320 andHeight:49]];
+    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:APPLICATION_GREY] width:320 andHeight:49]];
     
     swipe_left = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeLeft:)];
     swipe_right = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];

@@ -23,6 +23,7 @@ ProfileViewController* profileView;
     
     [[AppDelegate zazzApi] getMyProfile];
     [[AppDelegate getAppDelegate] setAppTabBar:self];
+    [self.tabBar setBackgroundColor:[UIColor colorFromHexString:APPLICATION_BLACK]];
     
     //set child controllers.
     for(UIViewController* childController in self.childViewControllers){

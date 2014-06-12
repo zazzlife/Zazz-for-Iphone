@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZazzApi.h"
 
-@interface RightNavigationViewController : UIViewController
+@interface RightNavigationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property NSMutableArray* categories;
 @property IBOutlet UITableView* tableView;

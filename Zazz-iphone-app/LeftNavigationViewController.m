@@ -13,21 +13,32 @@
 
 @implementation LeftNavigationViewController
 
+@synthesize _profile;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzProfile:) name:@"gotProfile" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMyProfile:) name:@"gotMyProfile" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
 }
-
--(void)gotZazzProfile:(NSNotification*)notif{
-    if (![notif.name isEqualToString:@"gotProfile"]) return;
-    Profile* profile = [notif.userInfo objectForKey:@"profile"];
+-(void)gotMyProfile:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotMyProfile"]) return;
+    Profile* profile = notif.object;
+    NSLog(@"welcome leftNav: %@",profile.username);
     [self set_profile:profile];
-//    [self.profilePhoto setImage:[profile photo]];
-    [self.profilePhoto.layer setCornerRadius:50];
-    [self.profilePhoto.layer setMasksToBounds:YES];
-    NSLog(@"Welcome: %@", profile.username);
+}
+-(void)gotAProfile:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotProfile"]) return;
+    Profile* profile = notif.object;
+    NSLog(@"userId:%@ vs %@",profile.userId, self._profile.userId);
+    if([profile.userId intValue] == [self._profile.userId intValue] && profile.photo){
+        [self set_profile:profile];
+        [self.profilePhoto setImage:profile.photo];
+        [self.profilePhoto.layer setCornerRadius:50];
+        [self.profilePhoto.layer setMasksToBounds:YES];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotProfile" object:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning
