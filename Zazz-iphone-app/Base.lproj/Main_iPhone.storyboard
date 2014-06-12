@@ -418,11 +418,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedTableCell" rowHeight="90" id="8kY-5z-YzR" customClass="FeedTableViewCell">
-                                        <rect key="frame" x="0.0" y="188" width="320" height="90"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedTableCell" rowHeight="140" id="8kY-5z-YzR" customClass="FeedTableViewCell">
+                                        <rect key="frame" x="0.0" y="188" width="320" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8kY-5z-YzR" id="XJw-hd-oho" userLabel="contentView">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="0Qe-8x-oYA" userLabel="cellBackground">
@@ -467,7 +467,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedMoreLoader" rowHeight="57" id="jHW-uj-WCX">
-                                        <rect key="frame" x="0.0" y="278" width="320" height="57"/>
+                                        <rect key="frame" x="0.0" y="328" width="320" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jHW-uj-WCX" id="TyL-jm-dIV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
@@ -728,6 +728,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="tableView" destination="R52-Ac-RXq" id="Wgk-56-sYl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOE-Ec-LHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

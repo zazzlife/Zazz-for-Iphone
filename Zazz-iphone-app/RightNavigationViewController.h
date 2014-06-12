@@ -12,5 +12,6 @@
 @interface RightNavigationViewController : UIViewController
 
 @property NSMutableArray* categories;
+@property IBOutlet UITableView* tableView;
 
 @end

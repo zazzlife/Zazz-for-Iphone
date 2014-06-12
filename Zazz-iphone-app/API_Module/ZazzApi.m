@@ -25,11 +25,12 @@
     return self.auth_token == nil;
 }
 -(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password{
-    NSLog(@"doing Auth");
     [[[ZazzLogin alloc] init] loginWithUsername:username andPassword:password delegate:self];
 }
+-(void)gotAuthError:(NSString*)error{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotAuthError" object:nil];
+}
 -(void) gotAuthToken:(NSString*)token{
-    NSLog(@"got Auth: %@", token);
     [self setAuth_token:token];
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:token forKey:@"token"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"gotAuthToken" object:nil userInfo:userInfo];
@@ -58,8 +59,8 @@
 -(void) getFeed{
     [[[ZazzFeed alloc] init] getMyFeedDelegate:self];
 }
--(void) getFeedAfter:(NSString*)last_timestamp{
-    [[[ZazzFeed alloc] init] getMyFeedAfter:last_timestamp delegate:self];
+-(void) getFeedAfter:(NSString*)feedId{
+    [[[ZazzFeed alloc] init] getMyFeedAfter:feedId delegate:self];
 }
 -(void) gotFeed:(NSMutableArray*)feed{
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:feed forKey:@"feed"];

@@ -10,6 +10,7 @@
 #import "FeedTableViewCell.h"
 #import "CFTabBarController.h"
 #import "Feed.h"
+#import "Photo.h"
 #import "AppDelegate.h"
 #import "UIImage.h"
 #import "UIColor.h"
@@ -22,12 +23,12 @@
 bool left_active = false; // used by leftNav to indicate if it's open or not.
 bool right_active = false; // used by leftNav to indicate if it's open or not.
 bool filter_active = false; // true if filter is expanded.
-bool getting_height = false; //used by cellAtIndex and heightForRowAtIndex. True if getting height of cell to be rendered, false if cell is actually being rendered.
 bool getting_feed = true; //true when a getZazzFeed call is active.
 bool end_of_feed = false; //true if last feed fetch returned nothing.
 bool showPhotos= false;
 bool showEvents= false;
 bool showVideos= false;
+NSMutableDictionary* _indexPathsToReload;
 
 float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
@@ -37,6 +38,9 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _indexPathsToReload = [[NSMutableDictionary alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotPhotoImageNotification:) name:@"gotPhotoImage" object:nil];
     
     [AppDelegate removeZazzBackgroundLogo];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFeed:) name:@"gotFeed" object:nil];
@@ -207,21 +211,31 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"selected");
+    Feed* feedItem = [self.getFilteredFeed objectAtIndex:indexPath.row - 1];
+    NSLog(@"selected feedId:%@ index:%d", feedItem.feedId, indexPath.row);
     
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    getting_height = true;
-    FeedTableViewCell* cell = (FeedTableViewCell*)[self tableView:tableView cellForRowAtIndexPath:indexPath];
-    getting_height = false;
     if(indexPath.row == 0){
         if (filter_active) return 170;
         return 50;
     }
-    NSArray* source_feed = self.filteredFeed;
-    if(indexPath.row == [source_feed count]+1){return 57;}
-    return cell.needed_height;
+    if(indexPath.row == [self.filteredFeed count]+1) return 57;
+
+    Feed *feedItem = [self.filteredFeed objectAtIndex:(indexPath.row - 1)];
+    NSString *CellIdentifier = @"FeedTableCell";
+    FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    [cell setFeed:feedItem];
+    if([cell._neededPhotoIds count] > 0){
+        for(NSString* photoId in cell._neededPhotoIds){
+            [_indexPathsToReload setObject:indexPath forKey:photoId];
+        }
+    }
+    return cell._height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -249,10 +263,10 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        if(!getting_height && !end_of_feed && !getting_feed){
-            NSString* last_feedId = (NSString*)[(Feed*)self.feed.lastObject feedId];
+        if(!end_of_feed && !getting_feed){
+            NSString* last_feedId = [NSString stringWithFormat:@"%@",[(Feed*)self.feed.lastObject feedId] ];
             getting_feed = true;
-            [[AppDelegate zazzApi] getFeedAfter:[NSString stringWithFormat:@"%@",last_feedId]];
+            [[AppDelegate zazzApi] getFeedAfter:last_feedId];
         }
         return cell;
     }
@@ -262,9 +276,9 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     if (cell == nil) {
         cell = [[FeedTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    [cell setAutoresizingMask: UIViewAutoresizingFlexibleHeight];
     Feed *feedItem = [self.filteredFeed objectAtIndex:(indexPath.row - 1)];
     [cell setFeed:feedItem];
+//    NSLog(@"rendered:%@ - %fpx",cell._feed.feedId,cell._height);
     return cell;
 }
 
@@ -276,6 +290,17 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
         if(left_active) [self leftDrawerButton:nil]; //close right drawer first.
     }
+}
+
+
+-(void)gotPhotoImageNotification:(NSNotification *)notif{
+    //only called when photo needs to be displayed and it hasn't been loaded yet.
+    //Trigger this by filtering feed by photos...
+    if(![notif.name isEqualToString:@"gotPhotoImage"]) return;
+    Photo* photo = [notif.userInfo objectForKey:@"photo"];
+    NSIndexPath* indexpath = [_indexPathsToReload objectForKey:photo.photoId];
+    if(!indexpath )return;
+    [[self feedTableView] reloadRowsAtIndexPaths:[[NSArray alloc] initWithObjects:indexpath, nil] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end

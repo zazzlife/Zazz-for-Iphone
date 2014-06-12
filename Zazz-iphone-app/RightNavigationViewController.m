@@ -16,11 +16,14 @@
 
 @implementation RightNavigationViewController
 
+@synthesize tableView;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzCategories:) name:@"gotCategories" object:nil];
     [[AppDelegate zazzApi] getCategories];
+    [[self tableView] setScrollsToTop:false];
 }
 
 -(void)gotZazzCategories:(NSNotification*)notif{

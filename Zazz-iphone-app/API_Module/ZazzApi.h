@@ -20,6 +20,7 @@
 
 -(BOOL) needAuth;
 -(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password;
+-(void) gotAuthError:(NSString*)error;
 -(void) gotAuthToken:(NSString*)token;
 
 -(void) getMyProfile;

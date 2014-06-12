@@ -15,5 +15,6 @@
 @property BOOL isConfirmed;
 @property NSString* username;
 @property UIImage* photo;
+@property NSString* photoUrl;
 
 @end

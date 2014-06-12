@@ -24,7 +24,7 @@
     if (![notif.name isEqualToString:@"gotProfile"]) return;
     Profile* profile = [notif.userInfo objectForKey:@"profile"];
     [self set_profile:profile];
-    [self.profilePhoto setImage:[profile photo]];
+//    [self.profilePhoto setImage:[profile photo]];
     [self.profilePhoto.layer setCornerRadius:50];
     [self.profilePhoto.layer setMasksToBounds:YES];
     NSLog(@"Welcome: %@", profile.username);

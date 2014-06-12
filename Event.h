@@ -24,7 +24,7 @@
 @property NSString* longitude;
 @property NSString* createdTime;
 @property NSString* facebookLink;
-@property UIImage* image;
+@property NSString* imageUrl;
 @property Profile* user;
 @property BOOL isDateOnly;
 @property BOOL isFacebookEvent;

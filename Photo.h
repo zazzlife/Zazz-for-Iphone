@@ -15,7 +15,8 @@
 @property NSString* albumId;
 @property NSString* description;
 @property Profile* user;
-@property UIImage* photo;
+@property UIImage* image;
+@property NSString* photoUrl;
 @property NSMutableArray* categories;
 
 

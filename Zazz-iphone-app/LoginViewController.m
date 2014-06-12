@@ -28,6 +28,8 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthError:) name:@"gotAuthError" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthToken:) name:@"gotAuthToken" object:nil];
     // post-load logic.
 }
 
@@ -46,27 +48,24 @@
 }
 
 -(IBAction)doLogin:(id)sender{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthToken:) name:@"gotAuthToken" object:nil];
     [[AppDelegate zazzApi] getAuthTokenWithUsername:_username.text andPassword:_password.text];
     [self.loginprogress startAnimating];
     [_password resignFirstResponder];
     [_username resignFirstResponder];
 }
 
--(void) gotAuthToken:(NSNotification*)notif{
-   
-//    NSLog(@"finishedZazzAuth - success:%s",success?"yes":"no");
-    if (![notif.name isEqualToString:@"gotAuthToken"]) return;
-    NSString* auth_token = [notif.userInfo objectForKey:@"token"];
-    if (!auth_token){
-        UIAlertView *loginerror = [[UIAlertView alloc] initWithTitle:@"Login Failed!" message:@"Your username or password is incorrect" delegate:nil cancelButtonTitle:@"try again" otherButtonTitles:nil, nil];
-        
-        [self.loginprogress stopAnimating];
-        [loginerror show];
-        return;
-    }
-    [self performSegueWithIdentifier:@"loginComplete" sender:self];
+-(void) gotAuthError:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotAuthError"]) return;
     [self.loginprogress stopAnimating];
+    UIAlertView *loginerror = [[UIAlertView alloc] initWithTitle:@"Login Failed!" message:@"Your username or password is incorrect" delegate:nil cancelButtonTitle:@"try again" otherButtonTitles:nil, nil];
+    [loginerror show];
+    return;
+}
+
+-(void) gotAuthToken:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotAuthToken"]) return;
+    [self.loginprogress stopAnimating];
+    [self performSegueWithIdentifier:@"loginComplete" sender:self];
     return;
 }
 @end

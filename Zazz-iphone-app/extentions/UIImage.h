@@ -1,6 +1,5 @@
 @interface UIImage (mxcl)
 + (UIImage *) imageWithColor:(UIColor *)color width:(float)width andHeight:(float)height;
-+ (UIImage *) getImageAtUrl:(NSString*)photoUrl;
 + (UIImage *) getImage:(UIImage*)image scaledToWidth:(float)width;
 @end
 
@@ -18,11 +17,8 @@
     
     return image;
 }
-+(UIImage *) getImageAtUrl:(NSString*)photoUrl{
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: photoUrl]];
-    UIImage * image = [UIImage imageWithData: imageData];
-    return image;
-}
+
+
 +(UIImage *) getImage:(UIImage*)image scaledToWidth:(float)width{
     float oldWidth = image.size.width;
     float scaleFactor = width / oldWidth;

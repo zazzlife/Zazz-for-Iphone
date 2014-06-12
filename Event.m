@@ -23,7 +23,7 @@
 @synthesize longitude;
 @synthesize createdTime;
 @synthesize facebookLink;
-@synthesize image;
+@synthesize imageUrl;
 @synthesize user;
 @synthesize isDateOnly;
 @synthesize isFacebookEvent;

@@ -7,6 +7,7 @@
 //
 
 #import "FeedTableViewCell.h"
+#import "UIImageView+WebCache.h"
 #import "ZazzApi.h"
 #import "Photo.h"
 #import "Profile.h"
@@ -22,14 +23,12 @@
 @synthesize userImage;
 @synthesize timestamp;
 @synthesize username;
+@synthesize _feed;
+@synthesize _height;
+@synthesize _neededPhotoIds;
 
-float CELL_HEIGHT = 150; //default height of a cell. (including outer border)
-float HEADER_HEIGHT = 60; // height of user thumbnail area.
-float CONTENT_PADDING_BOTTOM = 10; //white padding bellow photo.
-float TEXT_CONTENT_PADDING = 10; //top andbottom padding for text content.
-float CELL_PADDING_TOP = 10; //black outer edge top/bottom.
-float CELL_PADDING_SIDES = 5; //black outer edge/sides.
-
+NSMutableArray* _imageViews;
+int _albumObserversCounter;
 
 -(void)resizeHeightForLabel: (UILabel*)label {
     label.numberOfLines = 0;
@@ -57,26 +56,43 @@ float CELL_PADDING_SIDES = 5; //black outer edge/sides.
     [superview addSubview:label];
 }
 
-
 -(void)setFeed:(Feed *)feed{
-    [self.userImage setImage:feed.user.photo];
+    _height = CELL_PADDING_TOP + CELL_HEADER_HEIGHT;
+    [self set_feed:feed];
     [self.username setText:feed.user.username];
     [self.timestamp setText:feed.timestamp];
-    [self setNeeded_height:HEADER_HEIGHT];
-    [self.feedCellBackgroundView setFrame:CGRectMake(CELL_PADDING_SIDES, CELL_PADDING_TOP, self.tableView.frame.size.width - (2*CELL_PADDING_SIDES), self.needed_height)];
-    [self.feedCellContentView setFrame:CGRectMake(0, HEADER_HEIGHT, self.feedCellBackgroundView.frame.size.width, 0)];
+    [self.userImage setImage:feed.user.photo];
+    if(feed.user.photo == nil){
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotUserImageNotification:) name:@"gotProfilePhoto" object:nil];
+    }
+    [self.feedCellContentView setFrame:CGRectMake(0, CELL_HEADER_HEIGHT, self.tableView.frame.size.width-(2*CELL_PADDING_SIDES), 40)];
     for(UIView* view in self.feedCellContentView.subviews){
         [view removeFromSuperview];
     }
-    
     if([[feed feedType] isEqualToString:@"Photo"]){
+        _albumObserversCounter = 0;
         for(Photo* photo in (NSMutableArray*)[feed content]){
-            UIImage* image = [UIImage getImage:photo.photo scaledToWidth:self.tableView.frame.size.width];
-            UIImageView* imageView = [[UIImageView alloc] initWithImage:image];
+            UIImageView* imageView;
+            if(photo.image == nil){
+                if(!self._neededPhotoIds)[self set_neededPhotoIds:[[NSMutableArray alloc ]init]];
+                [self._neededPhotoIds addObject:photo.photoId];
+                imageView = [[UIImageView alloc ]init];
+                [imageView setTag:[photo.photoId intValue]];
+                [self.feedCellContentView addSubview:imageView];
+                continue;
+            }
+            UIImage* image = [UIImage getImage:photo.image scaledToWidth:self.tableView.frame.size.width];
+            imageView = [[UIImageView alloc] initWithImage:image];
+            UIView* previousImage = (UIView*)self.feedCellContentView.subviews.lastObject;
+            if (previousImage != nil) {
+                [imageView setFrame:CGRectMake(0, previousImage.frame.origin.y + previousImage.frame.size.height, self.feedCellContentView.frame.size.width, image.size.height)];
+            }else{
+                [imageView setFrame:CGRectMake(0, 0 , self.feedCellContentView.frame.size.width, image.size.height)];
+            }
+            _height += image.size.height;
+            [imageView setTag:[photo.photoId intValue]];
             [self.feedCellContentView addSubview:imageView];
-            self.needed_height += imageView.image.size.height;
         }
-        self.needed_height += CONTENT_PADDING_BOTTOM;
     }else{
         NSString* text = @"";
         if([[feed feedType] isEqualToString:@"Post"]){
@@ -84,20 +100,27 @@ float CELL_PADDING_SIDES = 5; //black outer edge/sides.
         }else if([[feed feedType] isEqualToString:@"Event"]){
             text = [(Event*)[feed content] description];
         }
-        CGRect label_frame = CGRectMake(TEXT_CONTENT_PADDING, 0, self.feedCellContentView.frame.size.width-(2*TEXT_CONTENT_PADDING), 0);
+        CGRect label_frame = CGRectMake(CELL_TEXT_CONTENT_PADDING, 0, self.feedCellContentView.frame.size.width-(2*CELL_TEXT_CONTENT_PADDING), 0);
         UILabel* label = [[UILabel alloc] initWithFrame:label_frame];
         [label setText:text];
-        [self resizeHeightForLabel:label];
         [self.feedCellContentView addSubview:label];
-        self.needed_height += label.frame.size.height + CONTENT_PADDING_BOTTOM;
+        [self resizeHeightForLabel:label];
+        _height +=label.frame.size.height;
     }
-    [self.feedCellContentView sizeToFit];
     [self.feedCellBackgroundView.layer setCornerRadius:5];
     [self.feedCellBackgroundView.layer setMasksToBounds:YES];
     [self.userImage.layer setCornerRadius:25];
     [self.userImage.layer setMasksToBounds:YES];
-    [self.feedCellBackgroundView setFrame:CGRectMake(CELL_PADDING_SIDES, CELL_PADDING_TOP, self.tableView.frame.size.width - (2*CELL_PADDING_SIDES), self.needed_height)];
-    self.needed_height += CELL_PADDING_TOP;
+    
+    [self.feedCellBackgroundView setFrame:CGRectMake(CELL_PADDING_SIDES, CELL_PADDING_TOP, self.tableView.frame.size.width - (2*CELL_PADDING_SIDES), _height - CELL_PADDING_TOP)];
+    [self.feedCellContentView setFrame:CGRectMake(0, CELL_HEADER_HEIGHT, self.feedCellBackgroundView.frame.size.width, _height - CELL_HEADER_HEIGHT - CELL_PADDING_TOP)];
+}
+
+-(void)gotUserImageNotification:(NSNotification *)notif{
+    if(! [notif.name isEqualToString:@"gotProfilePhoto"]) return;
+    Profile* profile = [notif.userInfo objectForKey:@"profile"];
+    if(profile.userId != self._feed.user.userId) return;
+    [self.userImage setImage:profile.photo];
 }
 
 @end

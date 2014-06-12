@@ -38,13 +38,17 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil ];
+    NSLog(@"got Auth");
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;
     }
-    
-//    NSLog(@"JUST GOT :%@",[array objectForKey:@"access_token"]);
-    [[self _delegate] gotAuthToken:[array objectForKey:@"access_token"]];
+    NSString* access_token = [array objectForKey:@"access_token"];
+    if(access_token == nil){
+        [[self _delegate] gotAuthError:[array objectForKey:@"error"]];
+        return;
+    }
+    [[self _delegate] gotAuthToken:access_token];
 }
 
 

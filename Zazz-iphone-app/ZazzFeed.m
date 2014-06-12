@@ -79,7 +79,6 @@
     
     NSError* error = nil;
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:&error ];
-    
     if(array == nil){
         NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
         NSLog(@"JSON ERROR: %@, DATA: %@", error,myString);
@@ -92,7 +91,7 @@
         //        NSLog(@"%@ --- %@",[feed_dict class], feed_dict);
         
         Profile *user = [[Profile alloc] init];
-        [user setPhoto:[UIImage getImageAtUrl:[[feed_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]]];
+        [user setPhotoUrl:[[feed_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
         [user setUserId:[feed_dict objectForKey:@"userId"]];
         [user setUsername:[feed_dict objectForKey:@"userDisplayName"]];
         
@@ -108,7 +107,8 @@
         for(NSMutableDictionary* comment_dict in [feed_dict objectForKey:@"comments"]){
             Profile* fromUser = [[Profile alloc] init];
             [fromUser setUsername:[comment_dict objectForKey:@"userDisplayName"]];
-            [fromUser setPhoto:[UIImage getImageAtUrl:[[comment_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]]];
+            
+            [fromUser setPhotoUrl:[[comment_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
             [fromUser setUserId:[comment_dict objectForKey:@"userId"]];
             Comment* comment = [[Comment alloc] init];
             [comment setUser:fromUser];
@@ -126,7 +126,7 @@
                 [photo setUser:user];
                 [photo setDescription:(NSString*)[photo_dict objectForKey:@"description"]];
                 [photo setPhotoId:(NSString*)[photo_dict objectForKey:@"photoId"]];
-                [photo setPhoto:[UIImage getImageAtUrl:[[photo_dict objectForKey:@"photoLinks"] objectForKey:@"mediumLink"]]];
+                [photo setPhotoUrl:[[photo_dict objectForKey:@"photoLinks"] objectForKey:@"mediumLink"]];
                 [photos addObject:photo];
             }
             [feed setContent:photos];
@@ -140,13 +140,13 @@
             Profile* fromUser = [[Profile alloc] init];
             [fromUser setUserId:[post_dict objectForKey:@"fromUserId"]];
             [fromUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
-            [fromUser setPhoto:[UIImage getImageAtUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]]];
+            [fromUser setPhotoUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]];
             [post setFromUser:fromUser];
             if([post_dict objectForKey:@"toUserId"]){
                 Profile* toUser = [[Profile alloc] init];
                 [toUser setUserId:[post_dict objectForKey:@"toUserId"]];
                 [toUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
-                [toUser setPhoto:[UIImage getImageAtUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]]];
+                [toUser setPhotoUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]];
                 [post setToUser:toUser];
             }
             [feed setContent:post];
@@ -167,7 +167,7 @@
             [event setLongitude:[event_dict objectForKey:@"longitude"]];
             [event setCreatedTime:[event_dict objectForKey:@"createdTime"]];
             [event setFacebookLink:[event_dict objectForKey:@"facebookLink"]];
-            [event setImage:[UIImage getImageAtUrl:[[event_dict objectForKey:@"imageUrl"] objectForKey:@"mediumLink"]]];
+            [event setImageUrl:[[event_dict objectForKey:@"imageUrl"] objectForKey:@"mediumLink"]];
             [event setIsDateOnly:[[event_dict objectForKey:@"isDateOnly"] boolValue]];
             [event setIsFacebookEvent:[[event_dict objectForKey:@"isFacebookEvent"] boolValue]];
             [feed setContent:event];
