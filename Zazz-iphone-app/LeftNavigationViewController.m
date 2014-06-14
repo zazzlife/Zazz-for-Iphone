@@ -31,7 +31,6 @@
 -(void)gotAProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotProfile"]) return;
     Profile* profile = notif.object;
-    NSLog(@"userId:%@ vs %@",profile.userId, self._profile.userId);
     if([profile.userId intValue] == [self._profile.userId intValue] && profile.photo){
         [self set_profile:profile];
         [self.profilePhoto setImage:profile.photo];

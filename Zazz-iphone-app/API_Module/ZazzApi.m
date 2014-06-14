@@ -99,7 +99,7 @@
     }
     return urlWithQuerystring;
 }
-+(NSString *) BASE_URL{ return @"http://test.zazzlife.com/api/v1/"; }
++(NSString *) BASE_URL{ return @"http://www.zazzlife.com/api/v1/"; }
 
 
 @end

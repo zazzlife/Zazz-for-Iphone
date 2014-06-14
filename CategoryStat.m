@@ -18,7 +18,7 @@
     int catId = [self.category_id intValue];
     switch(catId){
         case 1:
-            return [UIImage imageNamed:@"Concert_soundWave-white"];
+            return [UIImage imageNamed:@"Concert-white"];
         case 2:
             return [UIImage imageNamed:@"Drink_Special-white"];
         case 3:

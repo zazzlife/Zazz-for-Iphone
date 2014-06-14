@@ -58,7 +58,7 @@
     [imageView setImage:[category getIcon]];
     [name setText:category.name];
     [talking setText:[NSString stringWithFormat:@"%d talking about this",category.userCount]];
-    
+    [cell setSelectionStyle:UITableViewCellEditingStyleNone];
     return cell;
 }
 
