@@ -272,7 +272,10 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if (filter_active) return 170;
         return 50;
     }
-    if(indexPath.row == [self.filteredFeed count]+1) return 57;
+    if(indexPath.row == [self.filteredFeed count]+1){
+        if (end_of_feed) return 10;
+        return 57;
+    }
 
     Feed *feedItem = [self.filteredFeed objectAtIndex:(indexPath.row - 1)];
     NSString *CellIdentifier = @"FeedTableCell";
@@ -314,11 +317,12 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
+        [(UIActivityIndicatorView*)[cell viewWithTag:5] stopAnimating];
         if(!end_of_feed){
+            [(UIActivityIndicatorView*)[cell viewWithTag:5] startAnimating];
             NSString* last_feedId = [NSString stringWithFormat:@"%@",[(Feed*)self.filteredFeed.lastObject feedId] ];
             [self getFeedAfter:last_feedId];
-        }
-        return cell;
+        }        return cell;
     }
     
     NSString *CellIdentifier = @"FeedTableCell";
