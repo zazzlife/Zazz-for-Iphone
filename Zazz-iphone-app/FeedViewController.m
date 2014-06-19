@@ -115,6 +115,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 -(void)setActiveCategory:(NSString*)new_category_id{
     end_of_feed = false;
+    [self rightDrawerButton:nil];
     if(self.active_category_id == new_category_id){
         [self setActive_category_id:NULL]; //deselect the already selected cateogory.
     }else{
@@ -255,7 +256,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray* source_feed = self.filteredFeed;
+    NSArray* source_feed = [self getFilteredFeed];
 //    if(end_of_feed) return [source_feed count] + 1;
     return [source_feed count] + 2;
 }

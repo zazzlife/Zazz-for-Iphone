@@ -38,10 +38,6 @@
     return [self.categories count];
 }
 
--(void)clearCategoryFilter{
-    
-}
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
     [(FeedViewController*)self.parentViewController setActiveCategory:category.category_id];
