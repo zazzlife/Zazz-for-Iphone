@@ -8,6 +8,7 @@
 
 #import "RightNavigationViewController.h"
 #import "AppDelegate.h"
+#import "FeedViewController.h"
 #import "CategoryStat.h"
 #import "UIColor.h"
 
@@ -19,8 +20,7 @@
 
 @synthesize tableView;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad{
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzCategories:) name:@"gotCategories" object:nil];
     [[AppDelegate zazzApi] getCategories];
@@ -34,14 +34,18 @@
     [self.tableView reloadData];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.categories count];
+}
+
+-(void)clearCategoryFilter{
+    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
+    [(FeedViewController*)self.parentViewController setActiveCategory:category.category_id];
+    [self.tableView reloadData];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -55,9 +59,17 @@
     UILabel* talking = (UILabel*)[cell viewWithTag:3];
     
     CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
+    NSString* selectedCategoryId = [(FeedViewController*)self.parentViewController active_category_id];
+    UIColor* textColor = [UIColor whiteColor];
+    if(selectedCategoryId && [selectedCategoryId integerValue] == [category.category_id integerValue]){
+        textColor = [UIColor colorFromHexString:APPLICATION_YELLOW];
+        NSLog(@"color:%@",APPLICATION_YELLOW);
+    }
     [imageView setImage:[category getIcon]];
     [name setText:category.name];
+    [name setTextColor:textColor];
     [talking setText:[NSString stringWithFormat:@"%d talking about this",category.userCount]];
+    [talking setTextColor:textColor];
     [cell setSelectionStyle:UITableViewCellEditingStyleNone];
     return cell;
 }

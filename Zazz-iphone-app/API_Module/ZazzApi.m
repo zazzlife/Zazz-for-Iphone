@@ -37,7 +37,6 @@
 }
 
 
-
 /*
  ME - PROFILE
  */
@@ -61,9 +60,15 @@
 -(void) getFeedAfter:(NSString*)feedId{
     [[[ZazzFeed alloc] init] getMyFeedAfter:feedId delegate:self];
 }
+-(void) getFeedCategory:(NSString*)category_id{
+    [[[ZazzFeed alloc] init] getFeedCategory:category_id delegate:self];
+}
+-(void) getFeedCategory:(NSString*)category_id after:(NSString*)last_timestamp{
+    [[[ZazzFeed alloc] init] getFeedCategory:category_id after:last_timestamp delegate:self];
+}
 -(void) gotFeed:(NSMutableArray*)feed{
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:feed forKey:@"feed"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFeed" object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFeed" object:feed userInfo:userInfo];
 }
 
 

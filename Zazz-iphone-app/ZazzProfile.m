@@ -17,8 +17,7 @@
     
     [self set_delegate:delegate];
     
-    NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
-    NSString * api_action =  [BASE_URL stringByAppendingString:@"me"];
+    NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"me"];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
@@ -42,7 +41,7 @@
     Profile* profile = [[Profile alloc] init];
     [profile setUserId:[array objectForKey:@"userId"]];
     [profile setAccountType:[array objectForKey:@"accountType"]];
-    [profile setIsConfirmed:[array objectForKey:@"isConfirmed"]];
+    [profile setIsConfirmed:(BOOL)[array objectForKey:@"isConfirmed"]];
     [profile setUsername:[array objectForKey:@"displayName"]];
     [profile setPhotoUrl:[[array objectForKey:@"displayPhoto"] objectForKey:@"mediumLink"]];
     

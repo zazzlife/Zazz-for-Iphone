@@ -26,70 +26,83 @@
     return self;
 }
 
+//MY-FEED
 - (void) getMyFeedDelegate:(ZazzApi*)delegate{
-    
     [self set_delegate:delegate];
-    
     NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"feeds"];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
     [request setHTTPMethod:@"GET"];
     [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
-
-- (void) getMyFeedAfter:(NSString*)feedId delegate:(id)delegate{
-    
+- (void) getMyFeedAfter:(NSString*)feed_id delegate:(id)delegate{
     [self set_delegate:delegate];
-    
-    NSString * api_action =  [[[ZazzApi BASE_URL] stringByAppendingString:@"feeds?lastFeed="] stringByAppendingString:(NSString*)feedId];
+    NSString* action = [@"feeds?lastFeed=" stringByAppendingString:feed_id];
+    NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:action];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
     [request setHTTPMethod:@"GET"];
     [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
+//OTHER-USER-FEED
 - (void) getFeedForUserId:(NSString *)userId delegate:(id)delegate{
-    
     [self set_delegate:delegate];
-
-    NSString * BASE_URL = @"http://test.zazzlife.com/api/v1/";
-    NSString * api_action =  [BASE_URL stringByAppendingString:[NSString stringWithFormat:@"feeds/%@",userId]];
+    NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:[NSString stringWithFormat:@"feeds/%@",userId]];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
     [request setHTTPMethod:@"GET"];
     [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    
     [NSURLConnection connectionWithRequest:request delegate:self];
-//
 }
 
+//CATEGORIES
+- (void) getFeedCategory:(NSString*)category_id delegate:(id)delegate{
+    [self set_delegate:delegate];
+    NSString* action = [NSString stringWithFormat:@"categories/%@/feed", category_id];
+    NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:action];
+    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
+    [request setHTTPMethod:@"GET"];
+    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+
+- (void) getFeedCategory:(NSString*)category_id after:(NSString*)feed_id delegate:(id)delegate{
+    [self set_delegate:delegate];
+    NSString* action = [NSString stringWithFormat:@"categories/%@/feed?lastFeed=%@", category_id, feed_id];
+    NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:action];
+    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
+    NSLog(@"%@",api_action);
+    NSLog(@"Bearer %@",token_bearer);
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
+    [request setHTTPMethod:@"GET"];
+    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+//RESPONSE DELEGATES
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     [self._receivedData appendData:data];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
-    
     NSError* error = nil;
+//    NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",myString);
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:&error ];
     if(array == nil){
         NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
         NSLog(@"JSON ERROR: %@, DATA: %@", error,myString);
     }
-    
     NSMutableArray *feedList = [[NSMutableArray alloc] init];
     
     for(NSDictionary* feed_dict in array) {
-        
         //        NSLog(@"%@ --- %@",[feed_dict class], feed_dict);
-        
         Profile *user = [[Profile alloc] init];
         [user setPhotoUrl:[[feed_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
         [user setUserId:[feed_dict objectForKey:@"userId"]];

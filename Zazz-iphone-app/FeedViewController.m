@@ -19,11 +19,14 @@
 
 @synthesize swipe_left;
 @synthesize swipe_right;
+@synthesize active_category_id;
+@synthesize categoryFeeds;
+@synthesize filteredFeed;
 
 bool left_active = false; // used by leftNav to indicate if it's open or not.
 bool right_active = false; // used by leftNav to indicate if it's open or not.
 bool filter_active = false; // true if filter is expanded.
-bool getting_feed = true; //true when a getZazzFeed call is active.
+bool getting_feed = false; //true when a getZazzFeed call is active.
 bool end_of_feed = false; //true if last feed fetch returned nothing.
 bool showPhotos= false;
 bool showEvents= false;
@@ -40,25 +43,23 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [super viewDidLoad];
     
     _indexPathsToReload = [[NSMutableDictionary alloc] init];
+    [self setCategoryFeeds:[[NSMutableDictionary alloc] init]];
+    [self setFeed:[[NSMutableArray alloc] init]];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotPhotoImageNotification:) name:@"gotPhotoImage" object:nil];
-    
-    [AppDelegate removeZazzBackgroundLogo];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFeed:) name:@"gotFeed" object:nil];
-    [[AppDelegate zazzApi] getFeed];
     
-    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:APPLICATION_GREY] width:320 andHeight:49]];
+    [self getFeedAfter:NULL];
     
     swipe_left = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeLeft:)];
     swipe_right = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipeRight:)];
-    
     swipe_left.direction = UISwipeGestureRecognizerDirectionLeft;
     swipe_right.direction = UISwipeGestureRecognizerDirectionRight;
-    
     [self.view addGestureRecognizer:swipe_left];
     [self.view addGestureRecognizer:swipe_right];
     
-    [self setFeed:[[NSMutableArray alloc] init]];
-    
+    [AppDelegate removeZazzBackgroundLogo];
+    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:APPLICATION_GREY] width:320 andHeight:49]];
 }
 
 -(void)gotZazzFeed:(NSNotification *)notif
@@ -67,15 +68,29 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     NSMutableArray* feed = [notif.userInfo objectForKey:@"feed"];
     if (!feed) return;
     
+    end_of_feed = false;
     getting_feed = false;
+    
     if([feed count] <= 0){
         end_of_feed = true;
         [[self feedTableView] reloadData];
         return;
     }
+    if(self.active_category_id){
+        NSLog(@"active_category_id:%@",self.active_category_id);
+        NSMutableArray* catFeed = [self.categoryFeeds objectForKey:self.active_category_id];
+        if(!catFeed){
+            [self.categoryFeeds setObject:[[NSMutableArray alloc] init] forKey:self.active_category_id];
+            catFeed = [self.categoryFeeds objectForKey:self.active_category_id];
+        }
+        [catFeed addObjectsFromArray:feed];
+        [self setFilteredFeed:[self getFilteredFeed]];
+        [[self feedTableView] reloadData];
+        return;
+    }
     [self.feed addObjectsFromArray:feed];
     [self setFilteredFeed:[self getFilteredFeed]];
-    [[self feedTableView] reloadData];
+    [self.feedTableView reloadData];
 }
 
 -(void)didSwipeLeft:(UIGestureRecognizer *) recognizer
@@ -98,9 +113,24 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self leftDrawerButton:nil];
 }
 
+-(void)setActiveCategory:(NSString*)new_category_id{
+    end_of_feed = false;
+    if(self.active_category_id == new_category_id){
+        [self setActive_category_id:NULL]; //deselect the already selected cateogory.
+    }else{
+        [self setActive_category_id:new_category_id];
+    }
+    [self setFilteredFeed:[self getFilteredFeed]];
+    [self.feedTableView reloadData];
+}
+
 /* Should be optimized */
 -(NSArray*)getFilteredFeed{
-    NSIndexSet *indices = [self.feed indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+    NSMutableArray* feedToFilter = self.feed;
+    if (self.active_category_id){
+        feedToFilter = [self.categoryFeeds objectForKey:self.active_category_id];
+    }
+    NSIndexSet *indices = [feedToFilter indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         Feed* feedItem = (Feed*) obj;
         if(!showEvents && !showPhotos && !showVideos) return true;
         if([feedItem.feedType isEqualToString:@"Photo"] && showPhotos) return true;
@@ -108,7 +138,27 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if([feedItem.feedType isEqualToString:@"Event"] && showEvents) return true;
         return false;
     }];
-    return [self.feed objectsAtIndexes:indices];
+    return [feedToFilter objectsAtIndexes:indices];
+}
+
+-(void)getFeedAfter:(NSString*)feed_id{
+    if(!getting_feed){
+        getting_feed = true;
+        if(!feed_id){
+            if (!active_category_id){
+                [[AppDelegate zazzApi] getFeed];
+                return;
+            }
+            [[AppDelegate zazzApi] getFeedCategory:active_category_id];
+            return;
+        }
+        if(!active_category_id){
+            [[AppDelegate zazzApi] getFeedAfter:feed_id];
+            return;
+        }
+        [[AppDelegate zazzApi] getFeedCategory:active_category_id after:feed_id];
+        return;
+    }
 }
 
 
@@ -206,7 +256,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSArray* source_feed = self.filteredFeed;
-    if(end_of_feed) return [source_feed count] + 1;
+//    if(end_of_feed) return [source_feed count] + 1;
     return [source_feed count] + 2;
 }
 
@@ -263,10 +313,9 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
-        if(!end_of_feed && !getting_feed){
-            NSString* last_feedId = [NSString stringWithFormat:@"%@",[(Feed*)self.feed.lastObject feedId] ];
-            getting_feed = true;
-            [[AppDelegate zazzApi] getFeedAfter:last_feedId];
+        if(!end_of_feed){
+            NSString* last_feedId = [NSString stringWithFormat:@"%@",[(Feed*)self.filteredFeed.lastObject feedId] ];
+            [self getFeedAfter:last_feedId];
         }
         return cell;
     }
@@ -281,6 +330,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 //    NSLog(@"rendered:%@ - %fpx",cell._feed.feedId,cell._height);
     return cell;
 }
+
 
 #pragma mark - CFTabBarViewDelegate method
 

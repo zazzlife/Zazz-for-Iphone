@@ -10,10 +10,11 @@
 #import "ZazzApi.h"
 #import "CFTabBarController.h"
 
-@interface FeedViewController : UIViewController
-    <UITableViewDataSource,UITableViewDelegate, CFTabBarViewDelegate>
+@interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, CFTabBarViewDelegate>
 
+@property NSString* active_category_id;
 @property NSMutableArray* feed;
+@property NSMutableDictionary* categoryFeeds;
 @property NSArray* filteredFeed;
 
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_left;
@@ -30,5 +31,7 @@
 -(IBAction)rightDrawerButton:(id)sender;
 -(IBAction)expandFilterCell:(id)sender;
 -(IBAction)toggleFilter:(id)sender;
+-(void)getFeedAfter:(NSString*)feed_id;
+-(void)setActiveCategory:(NSString*)ctive_category_id;
 
 @end

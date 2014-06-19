@@ -16,7 +16,9 @@
 @property NSMutableData* _receivedData;
 
 - (void) getMyFeedDelegate:(id)delegate;
-- (void) getMyFeedAfter:(NSString*)last_timestamp delegate:(id)delegate;
+- (void) getMyFeedAfter:(NSString*)feed_id delegate:(id)delegate;
+- (void) getFeedCategory:(NSString*)category_id delegate:(id)delegate;
+- (void) getFeedCategory:(NSString*)category_id after:(NSString*)feed_id delegate:(id)delegate;
 - (void) getFeedForUserId:(NSString*)userId delegate:(id)delegate;
 
 @end

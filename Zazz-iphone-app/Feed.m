@@ -18,5 +18,8 @@
 @synthesize comments;
 @synthesize timestamp;
 
+-(BOOL)isEqual:(Feed*)feed{
+    return self.feedId == feed.feedId;
+}
 
 @end

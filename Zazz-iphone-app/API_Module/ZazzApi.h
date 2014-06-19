@@ -29,6 +29,8 @@
 
 -(void) getFeed;
 -(void) getFeedAfter:(NSString*)last_timestamp;
+-(void) getFeedCategory:(NSString*)category_id;
+-(void) getFeedCategory:(NSString*)category_id after:(NSString*)last_timestamp;
 -(void) gotFeed:(NSMutableArray*)feed;
 
 -(void) getCategories;
