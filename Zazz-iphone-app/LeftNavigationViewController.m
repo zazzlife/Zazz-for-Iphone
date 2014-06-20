@@ -13,6 +13,7 @@
 
 @implementation LeftNavigationViewController
 
+@synthesize scrollView;
 @synthesize _profile;
 
 - (void)viewDidLoad
@@ -20,6 +21,7 @@
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMyProfile:) name:@"gotMyProfile" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
+    [self.scrollView setScrollsToTop:false];
 }
 -(void)gotMyProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotMyProfile"]) return;

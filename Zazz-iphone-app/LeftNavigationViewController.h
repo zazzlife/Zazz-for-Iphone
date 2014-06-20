@@ -10,9 +10,13 @@
 #import "Profile.h"
 #import "ZazzApi.h"
 
+#define LEFT_NAV_PROFILE_PHOTO_HEIGHT 140
+
+
 @interface LeftNavigationViewController : UIViewController
 
 @property IBOutlet UIImageView* profilePhoto;
 @property Profile* _profile;
+@property IBOutlet UIScrollView* scrollView;
 
 @end
