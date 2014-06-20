@@ -31,6 +31,7 @@ bool end_of_feed = false; //true if last feed fetch returned nothing.
 bool showPhotos= false;
 bool showEvents= false;
 bool showVideos= false;
+NSString* last_feed_id;
 NSMutableDictionary* _indexPathsToReload;
 
 float SIDE_DRAWER_ANIMATION_DURATION = .3;
@@ -328,7 +329,11 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         [(UIActivityIndicatorView*)[cell viewWithTag:5] stopAnimating];
         if(!end_of_feed){
             [(UIActivityIndicatorView*)[cell viewWithTag:5] startAnimating];
-            NSString* last_feedId = [NSString stringWithFormat:@"%@",[(Feed*)self.filteredFeed.lastObject feedId] ];
+            NSMutableArray* feed = self.feed;
+            if(active_category_id){
+                feed = [categoryFeeds objectForKey:active_category_id];
+            }
+            NSString* last_feedId = [NSString stringWithFormat:@"%@",[(Feed*)feed.lastObject feedId] ];
             [self getFeedAfter:last_feedId];
         }        return cell;
     }
