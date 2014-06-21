@@ -39,6 +39,7 @@
 
 - (void) getMyFeedAfter:(NSString*)feed_id delegate:(id)delegate{
     [self set_delegate:delegate];
+    feed_id = [NSString stringWithFormat:@"%@", feed_id];
     NSString* action = [@"feeds?lastFeed=" stringByAppendingString:feed_id];
     NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:action];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
@@ -78,7 +79,6 @@
     NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:action];
     NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
     NSLog(@"%@",api_action);
-    NSLog(@"Bearer %@",token_bearer);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
     [request setHTTPMethod:@"GET"];
     [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];

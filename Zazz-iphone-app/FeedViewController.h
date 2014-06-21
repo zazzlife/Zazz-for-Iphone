@@ -32,6 +32,6 @@
 -(IBAction)expandFilterCell:(id)sender;
 -(IBAction)toggleFilter:(id)sender;
 -(void)getFeedAfter:(NSString*)feed_id;
--(void)setActiveCategory:(NSString*)ctive_category_id;
+-(BOOL)setActiveCategory:(NSString*)ctive_category_id;
 
 @end

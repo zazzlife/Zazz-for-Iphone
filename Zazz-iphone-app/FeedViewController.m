@@ -78,7 +78,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         return;
     }
     if(self.active_category_id){
-        NSLog(@"active_category_id:%@",self.active_category_id);
         NSMutableArray* catFeed = [self.categoryFeeds objectForKey:self.active_category_id];
         if(!catFeed){
             [self.categoryFeeds setObject:[[NSMutableArray alloc] init] forKey:self.active_category_id];
@@ -114,16 +113,45 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self leftDrawerButton:nil];
 }
 
--(void)setActiveCategory:(NSString*)new_category_id{
+/**
+    This function handlers adding and removing the active Category from active_category_id. 
+    Returns true if new_category_id was added, false if it was removed.
+ */
+-(BOOL)setActiveCategory:(NSString*)new_category_id{
+    BOOL retVal;
     end_of_feed = false;
-    [self rightDrawerButton:nil];
-    if(self.active_category_id == new_category_id){
-        [self setActive_category_id:NULL]; //deselect the already selected cateogory.
+    
+    NSLog(@"before - ids: %@",active_category_id);
+    NSMutableArray *ids = [[NSMutableArray alloc] initWithArray:[active_category_id componentsSeparatedByString:@","]];
+    NSUInteger index = NSNotFound;
+    for(int idx = 0; idx < ids.count; idx++){
+        NSString* anId = [ids objectAtIndex:idx];
+        if([anId intValue] == [new_category_id intValue]){
+            index = idx;
+            continue;
+        }
+    }
+    if (index == NSNotFound){
+        [ids addObject:new_category_id];
+        retVal = true;
     }else{
-        [self setActive_category_id:new_category_id];
+        [ids removeObjectAtIndex:index];
+        retVal = false;
+    }
+    NSArray* sortedIds = [ids sortedArrayUsingComparator:^NSComparisonResult(NSString* obj1, NSString* obj2) {
+        if([obj1 intValue] >  [obj2 intValue]) return 1;
+        if([obj1 intValue] <  [obj2 intValue]) return -1;
+        return 0;
+    }];
+    active_category_id = [sortedIds componentsJoinedByString:@","];
+    NSLog(@"after ids: %@", active_category_id);
+    if([active_category_id isEqualToString:@""]){
+        active_category_id = nil;
+        NSLog(@"nilled");
     }
     [self setFilteredFeed:[self getFilteredFeed]];
     [self.feedTableView reloadData];
+    return retVal;
 }
 
 /* Should be optimized */
@@ -271,6 +299,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if(indexPath.row == 0) return;
     Feed* feedItem = [self.getFilteredFeed objectAtIndex:indexPath.row - 1];
     NSLog(@"selected feedId:%@ index:%d", feedItem.feedId, indexPath.row);
     
@@ -333,9 +362,14 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
             if(active_category_id){
                 feed = [categoryFeeds objectForKey:active_category_id];
             }
-            NSString* last_feedId = [NSString stringWithFormat:@"%@",[(Feed*)feed.lastObject feedId] ];
+            Feed* lastFeed = (Feed*)feed.lastObject;
+            NSString* last_feedId = nil;
+            if (lastFeed){
+                last_feedId = lastFeed.feedId;
+            }
             [self getFeedAfter:last_feedId];
-        }        return cell;
+        }
+        return cell;
     }
     
     NSString *CellIdentifier = @"FeedTableCell";
@@ -368,7 +402,8 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     Photo* photo = [notif.userInfo objectForKey:@"photo"];
     NSIndexPath* indexpath = [_indexPathsToReload objectForKey:photo.photoId];
     if(!indexpath )return;
-    [[self feedTableView] reloadRowsAtIndexPaths:[[NSArray alloc] initWithObjects:indexpath, nil] withRowAnimation:UITableViewRowAnimationNone];
+//    [[self feedTableView] reloadRowsAtIndexPaths:[[NSArray alloc] initWithObjects:indexpath, nil] withRowAnimation:UITableViewRowAnimationNone];
+    [self.feedTableView reloadData];
 }
 
 @end

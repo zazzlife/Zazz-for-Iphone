@@ -34,14 +34,14 @@
     [self.tableView reloadData];
 }
 
--(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.categories count];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
-    [(FeedViewController*)self.parentViewController setActiveCategory:category.category_id];
-    [self.tableView reloadData];
+    bool active = [(FeedViewController*)self.parentViewController setActiveCategory:category.category_id];
+    [self tableViewCell:[self.tableView cellForRowAtIndexPath:indexPath] setSelected:active];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -53,21 +53,27 @@
     UIImageView* imageView = (UIImageView*)[cell viewWithTag:1];
     UILabel* name = (UILabel*)[cell viewWithTag:2];
     UILabel* talking = (UILabel*)[cell viewWithTag:3];
+    UIColor* textColor = [UIColor whiteColor];
+    [name setTextColor:textColor];
+    [talking setTextColor:textColor];
     
     CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
-    NSString* selectedCategoryId = [(FeedViewController*)self.parentViewController active_category_id];
-    UIColor* textColor = [UIColor whiteColor];
-    if(selectedCategoryId && [selectedCategoryId integerValue] == [category.category_id integerValue]){
-        textColor = [UIColor colorFromHexString:APPLICATION_YELLOW];
-        NSLog(@"color:%@",APPLICATION_YELLOW);
-    }
     [imageView setImage:[category getIcon]];
     [name setText:category.name];
-    [name setTextColor:textColor];
     [talking setText:[NSString stringWithFormat:@"%d talking about this",category.userCount]];
-    [talking setTextColor:textColor];
     [cell setSelectionStyle:UITableViewCellEditingStyleNone];
     return cell;
+}
+
+-(void)tableViewCell:(UITableViewCell*)cell setSelected:(BOOL)selected{
+    UIColor* textColor = [UIColor whiteColor];
+    if(selected){
+        textColor = [UIColor colorFromHexString:APPLICATION_YELLOW];
+    }
+    UILabel* name = (UILabel*)[cell viewWithTag:2];
+    UILabel* talking = (UILabel*)[cell viewWithTag:3];
+    [name setTextColor:textColor];
+    [talking setTextColor:textColor];
 }
 
 /*
