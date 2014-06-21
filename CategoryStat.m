@@ -19,9 +19,7 @@
     
     switch([self.category_id intValue]){
         case 1:{
-            UIImage *pic = [UIImage imageNamed:@"Concert-white"];
-            NSLog(@"%@",pic);
-            return pic;
+            return [UIImage imageNamed:@"Concert-white"];
         }case 2:{
             return [UIImage imageNamed:@"Drink_Special-white"];
         }case 3:{

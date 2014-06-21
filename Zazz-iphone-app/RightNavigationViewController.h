@@ -14,4 +14,6 @@
 @property NSMutableArray* categories;
 @property IBOutlet UITableView* tableView;
 
+-(IBAction)refreshClicked :(UIButton*)button;
+
 @end

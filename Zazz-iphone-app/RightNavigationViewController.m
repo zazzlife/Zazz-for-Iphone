@@ -20,8 +20,11 @@
 
 @synthesize tableView;
 
+NSMutableSet* selectedCellIndexies;
+
 - (void)viewDidLoad{
     [super viewDidLoad];
+    selectedCellIndexies = [[NSMutableSet alloc] init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzCategories:) name:@"gotCategories" object:nil];
     [[AppDelegate zazzApi] getCategories];
     [self.tableView setScrollsToTop:false];
@@ -33,6 +36,9 @@
     [self setCategories:[notif.userInfo objectForKey:@"categories"]];
     [self.tableView reloadData];
 }
+-(IBAction)refreshClicked :(UIButton*)button{
+    [[AppDelegate zazzApi] getCategories];
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.categories count];
@@ -41,7 +47,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
     bool active = [(FeedViewController*)self.parentViewController setActiveCategory:category.category_id];
-    [self tableViewCell:[self.tableView cellForRowAtIndexPath:indexPath] setSelected:active];
+    [self tableViewCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath setSelected:active];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -62,13 +68,20 @@
     [name setText:category.name];
     [talking setText:[NSString stringWithFormat:@"%d talking about this",category.userCount]];
     [cell setSelectionStyle:UITableViewCellEditingStyleNone];
+    if([selectedCellIndexies containsObject:[NSNumber numberWithLong:indexPath.row]]){
+        [self tableViewCell:cell atIndexPath:indexPath setSelected:true];
+    }
     return cell;
 }
 
--(void)tableViewCell:(UITableViewCell*)cell setSelected:(BOOL)selected{
+-(void)tableViewCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath setSelected:(BOOL)selected{
+    NSNumber* cellIndex = [NSNumber numberWithLong:indexPath.row];
     UIColor* textColor = [UIColor whiteColor];
     if(selected){
+        [selectedCellIndexies addObject:cellIndex];
         textColor = [UIColor colorFromHexString:APPLICATION_YELLOW];
+    }else{
+        [selectedCellIndexies removeObject:cellIndex];
     }
     UILabel* name = (UILabel*)[cell viewWithTag:2];
     UILabel* talking = (UILabel*)[cell viewWithTag:3];

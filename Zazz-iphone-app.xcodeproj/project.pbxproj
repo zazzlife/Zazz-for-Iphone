@@ -48,6 +48,7 @@
 		2AA057D5193F451B00E1617D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA057D4193F451B00E1617D /* ProfileViewController.m */; };
 		2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */; };
 		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
+		2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE2818B1956004E0015602F /* NotificationViewController.m */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
 		5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
@@ -157,6 +158,8 @@
 		2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
 		2AB3E4611934063700F72784 /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
 		2AB3E4621934063700F72784 /* RightNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavigationViewController.m; sourceTree = "<group>"; };
+		2AE2818A1956004E0015602F /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		2AE2818B1956004E0015602F /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -328,12 +331,10 @@
 				2A39F2E4193DEB04002E8873 /* CFTabBarController.h */,
 				2A39F2E5193DEB04002E8873 /* CFTabBarController.m */,
 				2AA057D6193F453300E1617D /* Feed */,
+				2AE281881956000A0015602F /* Notifications */,
 				2A23858E19408C4200F7FABD /* Post */,
 				2A23858F19408EDE00F7FABD /* Profile */,
-				2A09D71E191EF3CD00A2827F /* LoginViewController.h */,
-				2A09D71F191EF3CD00A2827F /* LoginViewController.m */,
-				2A470D3D191FE863008DBFED /* RegisterViewController.h */,
-				2A470D3E191FE863008DBFED /* RegisterViewController.m */,
+				2AE281891956002D0015602F /* Auth */,
 				2A470D7C19247A11008DBFED /* Segues */,
 			);
 			name = Controllers;
@@ -375,6 +376,26 @@
 				2AB3E4621934063700F72784 /* RightNavigationViewController.m */,
 			);
 			name = Feed;
+			sourceTree = "<group>";
+		};
+		2AE281881956000A0015602F /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				2AE2818A1956004E0015602F /* NotificationViewController.h */,
+				2AE2818B1956004E0015602F /* NotificationViewController.m */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		2AE281891956002D0015602F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				2A09D71E191EF3CD00A2827F /* LoginViewController.h */,
+				2A09D71F191EF3CD00A2827F /* LoginViewController.m */,
+				2A470D3D191FE863008DBFED /* RegisterViewController.h */,
+				2A470D3E191FE863008DBFED /* RegisterViewController.m */,
+			);
+			name = Auth;
 			sourceTree = "<group>";
 		};
 		5E8AA6E318FCAED600C99D9F = {
@@ -586,6 +607,7 @@
 				2A2385EC194521D300F7FABD /* UIImage+GIF.m in Sources */,
 				2A2385E7194521D300F7FABD /* SDWebImageDownloader.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
+				2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */,
 				2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */,
 				2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */,
 				2AA057D5193F451B00E1617D /* ProfileViewController.m in Sources */,
