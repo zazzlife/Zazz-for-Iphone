@@ -15,8 +15,10 @@
 @property NSString* auth_token;
 
 +(NSString *) BASE_URL;
++(NSString *) token_bearer;
 +(NSString *) urlEscapeString:(NSString *)unencodedString;
 +(NSString *) getQueryStringFromDictionary:(NSDictionary *)dictionary;
++(NSMutableURLRequest *)getRequestWithAction:(NSString*)action;
 
 -(BOOL) needAuth;
 -(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password;
@@ -24,8 +26,11 @@
 -(void) gotAuthToken:(NSString*)token;
 
 -(void) getMyProfile;
--(void) getProfile:(NSString*)userId;
+//-(void) getProfile:(NSString*)userId;
 -(void) gotProfile:(Profile*)profile;
+
+-(void) getFollowRequests;
+-(void) gotFollowRequests:(NSMutableArray*)followRequests;
 
 -(void) getFeed;
 -(void) getFeedAfter:(NSString*)last_timestamp;

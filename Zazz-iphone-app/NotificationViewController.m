@@ -7,32 +7,18 @@
 //
 
 #import "NotificationViewController.h"
-
-@interface NotificationViewController ()
-
-@end
+#import "FeedViewController.h"
 
 @implementation NotificationViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+FeedViewController* feedViewController;
+
+-(void)setParentViewController:(FeedViewController*)controller{
+    feedViewController = controller;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(IBAction)goBack:(UIButton*)backButton{
+    [feedViewController animateBackToFeedView];
 }
 
 /*

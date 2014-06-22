@@ -19,4 +19,6 @@
 @property Profile* _profile;
 @property IBOutlet UIScrollView* scrollView;
 
+-(IBAction) showNextView:(UIButton*)button;
+
 @end

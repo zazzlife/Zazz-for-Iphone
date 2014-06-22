@@ -14,18 +14,12 @@
 @synthesize _delegate;
 
 - (void) getMyProfileDelegate:(id)delegate{
-    
     [self set_delegate:delegate];
-    
-    NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"me"];
-    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
-    [request setHTTPMethod:@"GET"];
-    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    
+    NSString * action = @"me";
+    NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
+
 -(void) getProfile:(NSString *)userId delegate:(id)delegate{
     NSLog(@"TODO; IMPLEMENT GET PROFILE WITH USERID - ZazzProfile:getProfile");
 }

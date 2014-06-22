@@ -6,16 +6,28 @@
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "ZazzApi.h"
 #import "ZazzLogin.h"
 #import "ZazzProfile.h"
 #import "ZazzFeed.h"
 #import "ZazzCategory.h"
+#import "ZazzFollowRequest.h"
 
 @implementation ZazzApi
 
 @synthesize auth_token;
 
+
++(NSString*)token_bearer{
+    return [NSString stringWithFormat:@"Bearer %@", [AppDelegate zazzApi].auth_token];
+}
++(NSMutableURLRequest *)getRequestWithAction:(NSString*)action{
+    NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:action];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
+    [request setValue: [ZazzApi token_bearer] forHTTPHeaderField:@"Authorization"];
+    return request;
+}
 
 /*
  LOGIN
@@ -50,6 +62,16 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"gotMyProfile" object:profile userInfo:nil];
 }
 
+/*
+ ME - FOLLOW-REQUESTS
+ */
+-(void) getFollowRequests{
+    [[[ZazzFollowRequest alloc] init] getFollowRequestsDelegate:self];
+}
+-(void) gotFollowRequests:(NSMutableArray*)followRequests{
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:followRequests forKey:@"followRequests"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFollowRequests" object:followRequests userInfo:userInfo];
+}
 
 /*
  FEED

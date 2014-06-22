@@ -18,75 +18,42 @@
 @synthesize _delegate;
 @synthesize _receivedData;
 
-- (ZazzFeed*)init{
-    if (!self){
-        self = [super init];
-    }
-    [self set_receivedData:[[NSMutableData alloc]init]];
-    return self;
+-(void) doAction:(NSString*)action withDelegate:(id)delegate{
+    [self set_delegate:delegate];
+    NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
+    [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 //MY-FEED
 - (void) getMyFeedDelegate:(ZazzApi*)delegate{
-    [self set_delegate:delegate];
-    NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"feeds"];
-    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
-    [request setHTTPMethod:@"GET"];
-    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    [self doAction:@"feeds" withDelegate:delegate];
 }
 
 - (void) getMyFeedAfter:(NSString*)feed_id delegate:(id)delegate{
-    [self set_delegate:delegate];
-    feed_id = [NSString stringWithFormat:@"%@", feed_id];
-    NSString* action = [@"feeds?lastFeed=" stringByAppendingString:feed_id];
-    NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:action];
-    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
-    [request setHTTPMethod:@"GET"];
-    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    NSString* action = [NSString stringWithFormat:@"feeds?lastFeed=%d", [feed_id intValue]];
+    [self doAction:action withDelegate:delegate];
 }
 
 //OTHER-USER-FEED
 - (void) getFeedForUserId:(NSString *)userId delegate:(id)delegate{
-    [self set_delegate:delegate];
-    NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:[NSString stringWithFormat:@"feeds/%@",userId]];
-    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
-    [request setHTTPMethod:@"GET"];
-    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    NSString* action = [NSString stringWithFormat:@"feeds/%@",userId];
+    [self doAction:action withDelegate:delegate];
 }
 
 //CATEGORIES
 - (void) getFeedCategory:(NSString*)category_id delegate:(id)delegate{
-    [self set_delegate:delegate];
     NSString* action = [NSString stringWithFormat:@"categories/%@/feed", category_id];
-    NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:action];
-    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
-    [request setHTTPMethod:@"GET"];
-    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    [self doAction:action withDelegate:delegate];
 }
 
-
 - (void) getFeedCategory:(NSString*)category_id after:(NSString*)feed_id delegate:(id)delegate{
-    [self set_delegate:delegate];
     NSString* action = [NSString stringWithFormat:@"categories/%@/feed?lastFeed=%@", category_id, feed_id];
-    NSString * api_action = [[ZazzApi BASE_URL] stringByAppendingString:action];
-    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    NSLog(@"%@",api_action);
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
-    [request setHTTPMethod:@"GET"];
-    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    [NSURLConnection connectionWithRequest:request delegate:self];
+    [self doAction:action withDelegate:delegate];
 }
 
 //RESPONSE DELEGATES
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    if(!self._receivedData) self._receivedData = [[NSMutableData alloc]init];
     [self._receivedData appendData:data];
 }
 

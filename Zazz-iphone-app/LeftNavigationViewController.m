@@ -9,7 +9,8 @@
 #import "LeftNavigationViewController.h"
 #import "AppDelegate.h"
 #import "Profile.h"
-
+#import "NotificationViewController.h"
+#import "FeedViewController.h"
 
 @implementation LeftNavigationViewController
 
@@ -23,12 +24,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
     [self.scrollView setScrollsToTop:false];
 }
+
 -(void)gotMyProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotMyProfile"]) return;
     Profile* profile = notif.object;
     NSLog(@"welcome leftNav: %@",profile.username);
     [self set_profile:profile];
 }
+
 -(void)gotAProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotProfile"]) return;
     Profile* profile = notif.object;
@@ -41,21 +44,14 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(IBAction) showNextView:(UIButton*)button{
+    switch([button tag]){
+        case 1:{
+            [(FeedViewController*)self.parentViewController prepareForNextViewWithIdentifier:@"notificationView"];
+        }
+    }
+    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

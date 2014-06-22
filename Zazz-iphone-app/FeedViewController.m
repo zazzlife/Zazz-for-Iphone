@@ -1,4 +1,4 @@
-//
+    //
 //  FeedTableViewController.m
 //  Zazz-iphone-app
 //
@@ -33,6 +33,7 @@ bool showEvents= false;
 bool showVideos= false;
 NSString* last_feed_id;
 NSMutableDictionary* _indexPathsToReload;
+UIViewController<FeedViewControllerChild>* nextViewController;
 
 float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
@@ -154,6 +155,42 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     return retVal;
 }
 
+-(void)prepareForNextViewWithIdentifier:(NSString*)identifier{
+    if(!identifier)[self animateBackToFeedView];
+    nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+    [nextViewController setParentViewController:self];
+    [self.nextView addSubview:nextViewController.view];
+    
+    [self.nextView setFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.nextView setHidden:false];
+    
+    [UIView setAnimationsEnabled:YES];
+    [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
+                     animations:^(void){
+                         [self.nextView setFrame:self.view.frame];
+                         [self.navFeedView setFrame:CGRectMake(-self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
+                     } completion:^(BOOL completed){
+                         if(left_active) [self leftDrawerButton:nil];//close left drawer first.
+                         [UIView setAnimationsEnabled:NO];
+                     }
+     ];
+}
+
+-(void)animateBackToFeedView{
+    NSLog(@"goHome");
+    [UIView setAnimationsEnabled:YES];
+    [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
+                     animations:^(void){
+                         [self.navFeedView setFrame:self.nextView.frame];
+                         [self.nextView setFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
+                     } completion:^(BOOL completed){
+                         [UIView setAnimationsEnabled:NO];
+                         [self.nextView setHidden:true];
+                     }
+     ];
+}
+
+
 /* Should be optimized */
 -(NSArray*)getFilteredFeed{
     NSMutableArray* feedToFilter = self.feed;
@@ -194,8 +231,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 #pragma mark - Interface Builder Actions
 
--(IBAction)rightDrawerButton:(id)sender
-{
+-(IBAction)rightDrawerButton:(id)sender{
     if(left_active) [self leftDrawerButton:nil];//close left drawer first.
     CGFloat rightNavWidth =self.rightNav.frame.size.width;
     UIView* tabBar = self.view.superview.superview;
@@ -228,8 +264,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [UIView setAnimationsEnabled:YES];
 }
 
--(IBAction)leftDrawerButton:(id)sender
-{
+-(IBAction)leftDrawerButton:(id)sender{
     if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
     CGFloat leftNavWidth =self.leftNav.frame.size.width;
     UIView* tabBar = self.view.superview.superview;
@@ -254,7 +289,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
              [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
          }
          completion:^(BOOL complete){
-             NSLog(@"leftWidth: %f",self.leftNav.frame.origin.x);
              left_active = !left_active;
              [UIView setAnimationsEnabled:NO];
          }
@@ -301,7 +335,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 0) return;
     Feed* feedItem = [self.getFilteredFeed objectAtIndex:indexPath.row - 1];
-    NSLog(@"selected feedId:%@ index:%d", feedItem.feedId, indexPath.row);
+    NSLog(@"selected feedId:%@ index:%ld", feedItem.feedId, indexPath.row);
     
 }
 

@@ -14,30 +14,15 @@
 @synthesize _delegate;
 @synthesize _receivedData;
 
--(ZazzCategory*)init{
-    if (!self){
-        self = [super init];
-    }
-    [self set_receivedData:[[NSMutableData alloc]init]];
-    return self;
-}
-
 -(void)getCategoriesDelegate:(id)delegate{
     [self set_delegate:delegate];
-    
-    NSString * api_action =  [[ZazzApi BASE_URL] stringByAppendingString:@"categoriesstat"];
-    NSString * token_bearer = [NSString stringWithFormat:@"Bearer %@", [delegate auth_token]];
-    //define request
-//    NSLog(@"%@",api_action);
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: api_action ]];
-    [request setValue: token_bearer forHTTPHeaderField:@"Authorization"];
-    [request setHTTPMethod:@"GET"];
-
+    NSMutableURLRequest* request = [ZazzApi getRequestWithAction:@"categoriesstat"];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    if(!self._receivedData) self._receivedData = [[NSMutableData alloc]init];
     [self._receivedData appendData:data];
 }
 

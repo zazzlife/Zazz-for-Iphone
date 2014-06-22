@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZazzApi.h"
+#import "FeedViewController.h"
 
 @interface RightNavigationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedViewController.h"
 
-@interface NotificationViewController : UIViewController
+@interface NotificationViewController : UIViewController<FeedViewControllerChild>
+
+-(IBAction)goBack:(UIButton*)backButton;
 
 @end

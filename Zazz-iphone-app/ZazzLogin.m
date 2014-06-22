@@ -28,7 +28,7 @@
     [request setHTTPMethod:@"POST"];
     [request setValue:@"Basic hdi7o53NSeilrq7oQihy69PvH9BBQtw5QfcJy4ALBuY" forHTTPHeaderField:@"Authorization"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Current-Type"];
-    [request setValue:[NSString   stringWithFormat:@"%d", [postString length]] forHTTPHeaderField:@"Content-length"];
+    [request setValue:[NSString stringWithFormat:@"%lu",[postString length]] forHTTPHeaderField:@"Content-length"];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
     [NSURLConnection connectionWithRequest:request delegate:self];
