@@ -37,9 +37,16 @@ NSArray* requests;
     [feedViewController animateBackToFeedView];
 }
 
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(!requests) return 57;
+    if([requests count]<1) return 48;
+    return 58;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(!requests) return 1;
-    return [requests count]+1;
+    if(!requests || [requests count]<1) return 1;
+    return [requests count];
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
