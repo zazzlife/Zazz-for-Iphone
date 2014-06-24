@@ -8,10 +8,26 @@
 
 #import "NotificationViewController.h"
 #import "FeedViewController.h"
+#import "AppDelegate.h"
+#import "FollowRequest.h"
 
 @implementation NotificationViewController
 
 FeedViewController* feedViewController;
+NSArray* requests;
+
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFollowRequests:) name:@"gotFollowRequests" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
+    [[AppDelegate zazzApi] getFollowRequests];
+}
+
+-(void)gotZazzFollowRequests:(NSNotification*)notif{
+    if(![notif.name isEqualToString:@"gotFollowRequests"])return;
+    if(!requests)requests = [[NSArray alloc] initWithArray:notif.object];
+    [self.tableView reloadData];
+}
 
 -(void)setParentViewController:(FeedViewController*)controller{
     feedViewController = controller;
@@ -21,15 +37,44 @@ FeedViewController* feedViewController;
     [feedViewController animateBackToFeedView];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    if(!requests) return 1;
+    return [requests count]+1;
 }
-*/
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell;
+    if(!requests){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"waiting"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"waiting"];
+        }
+        [(UIActivityIndicatorView*)[cell viewWithTag:2] startAnimating];
+        return cell;
+    }
+    if([requests count] < 1){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"noRequests"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"noRequests"];
+        }
+        return cell;
+    }
+    cell = [tableView dequeueReusableCellWithIdentifier:@"requestCellPrototype"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"requestCellPrototype"];
+    }
+    FollowRequest* request = (FollowRequest*)[requests objectAtIndex:indexPath.row];
+    [(UILabel*)[cell viewWithTag:1] setText:request.user.username];
+    [(UILabel*)[cell viewWithTag:2] setText:request.time];
+    [(UIImageView*)[cell viewWithTag:3] setImage:request.user.photo];
+    return cell;
+    
+    
+}
+
+
+-(void)gotAProfile:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotProfile"]) return;
+    [self.tableView reloadData];
+}
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import "ZazzFollowRequest.h"
+#import "FollowRequest.h"
+#import "Profile.h"
 
 @implementation ZazzFollowRequest
 
@@ -27,13 +29,23 @@
     
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:nil ];
     NSString* receivedDataString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
-    //    NSLog(@"%@",receivedDataString);
+    NSLog(@"%@",receivedDataString);
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;
     }
     
     NSMutableArray* requests = [[NSMutableArray alloc] init];
+    for(NSDictionary* request_dict in array){
+        FollowRequest* request = [[FollowRequest alloc] init];
+        Profile* user = [[Profile alloc] init];
+        [user setUserId:[request_dict objectForKey:@"userId"]];
+        [user setUsername:[request_dict objectForKey:@"displayName"]];
+        [user setPhotoUrl:[[request_dict objectForKey:@"displayPhoto"] objectForKey:@"originalLink"]];
+        [request setUser:user];
+        [request setTime:[request_dict objectForKey:@"time"]];
+        [requests addObject:request];
+    }
     
     [self._delegate gotFollowRequests:requests];
 }

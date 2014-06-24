@@ -769,8 +769,66 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="insetFor6xAndEarlier" minX="0.0" minY="-50" maxX="0.0" maxY="50"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedMoreLoader" rowHeight="57" id="Auu-QX-IPH">
-                                        <rect key="frame" x="0.0" y="18" width="320" height="57"/>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="noRequests" selectionStyle="default" indentationWidth="10" reuseIdentifier="noRequests" rowHeight="48" id="DCR-Jv-YtJ">
+                                        <rect key="frame" x="0.0" y="18" width="320" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DCR-Jv-YtJ" id="PK4-TV-kNl">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Pending Requests" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="210-0A-DKc">
+                                                    <rect key="frame" x="76" y="13" width="168" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="requestCellPrototype" selectionStyle="default" indentationWidth="10" reuseIdentifier="requestCellPrototype" rowHeight="58" id="wMB-rd-3iG">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wMB-rd-3iG" id="JgH-QM-yz1">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="userImage" id="HW6-5A-jdL">
+                                                    <rect key="frame" x="4" y="4" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="confirmButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="GG3-fQ-onC">
+                                                    <rect key="frame" x="245" y="14" width="55" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Confirm">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="displayName" text="displayName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DY5-Dt-Qdi">
+                                                    <rect key="frame" x="62" y="9" width="122" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="time" text="time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a0h-UX-vkW">
+                                                    <rect key="frame" x="62" y="26" width="122" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="K8P-cV-LrO">
+                                                    <rect key="frame" x="192" y="14" width="44" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Reject">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="waiting" selectionStyle="default" indentationWidth="10" reuseIdentifier="waiting" rowHeight="57" id="Auu-QX-IPH">
+                                        <rect key="frame" x="0.0" y="124" width="320" height="57"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Auu-QX-IPH" id="pop-9D-0Zw">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
@@ -786,13 +844,16 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="RBc-fh-MYw" id="aUk-xM-wld"/>
-                                    <outlet property="delegate" destination="RBc-fh-MYw" id="V9G-lr-BUe"/>
+                                    <outlet property="dataSource" destination="Akq-vy-vpJ" id="urL-sQ-HG0"/>
+                                    <outlet property="delegate" destination="Akq-vy-vpJ" id="Xxo-gO-K0m"/>
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.98823535439999999" green="0.79607850309999995" blue="0.37647062539999998" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="hNz-5S-ewT" id="bre-HN-3ZQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mm-ed-JVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

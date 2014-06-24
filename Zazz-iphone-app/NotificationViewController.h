@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "FeedViewController.h"
 
-@interface NotificationViewController : UIViewController<FeedViewControllerChild>
+@interface NotificationViewController : UIViewController<FeedViewControllerChild, UITableViewDataSource, UITableViewDelegate>
 
+@property IBOutlet UISegmentedControl* segmentedControl;
+@property IBOutlet UITableView* tableView;
+
+-(IBAction)clickedSegmentedControl:(UISegmentedControl*)control;
 -(IBAction)goBack:(UIButton*)backButton;
 
 @end

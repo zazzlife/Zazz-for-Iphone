@@ -50,6 +50,7 @@
 		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
 		2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE2818B1956004E0015602F /* NotificationViewController.m */; };
 		2AE2818F195638940015602F /* ZazzFollowRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE2818E195638940015602F /* ZazzFollowRequest.m */; };
+		2AE281981957C5DE0015602F /* FollowRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE281971957C5DE0015602F /* FollowRequest.m */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
 		5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
@@ -163,6 +164,8 @@
 		2AE2818B1956004E0015602F /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		2AE2818D195638940015602F /* ZazzFollowRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzFollowRequest.h; sourceTree = "<group>"; };
 		2AE2818E195638940015602F /* ZazzFollowRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzFollowRequest.m; sourceTree = "<group>"; };
+		2AE281961957C5DE0015602F /* FollowRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowRequest.h; sourceTree = "<group>"; };
+		2AE281971957C5DE0015602F /* FollowRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowRequest.m; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -224,6 +227,8 @@
 				2A6CFC8A19295024005D3076 /* Comment.m */,
 				2A7FA2A9193806DC00E3B95B /* CategoryStat.h */,
 				2A7FA2AA193806DC00E3B95B /* CategoryStat.m */,
+				2AE281961957C5DE0015602F /* FollowRequest.h */,
+				2AE281971957C5DE0015602F /* FollowRequest.m */,
 			);
 			name = Entities;
 			path = ..;
@@ -615,6 +620,7 @@
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
 				2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */,
 				2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */,
+				2AE281981957C5DE0015602F /* FollowRequest.m in Sources */,
 				2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */,
 				2AA057D5193F451B00E1617D /* ProfileViewController.m in Sources */,
 				2A5FAEC4191DC5D500B917AB /* ZazzProfile.m in Sources */,

@@ -177,7 +177,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 }
 
 -(void)animateBackToFeedView{
-    NSLog(@"goHome");
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
                      animations:^(void){
