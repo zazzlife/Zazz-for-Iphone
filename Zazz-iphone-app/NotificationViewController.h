@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedViewController.h"
+#import "Profile.h"
 
 @interface NotificationViewController : UIViewController<FeedViewControllerChild, UITableViewDataSource, UITableViewDelegate>
 
 @property IBOutlet UISegmentedControl* segmentedControl;
 @property IBOutlet UITableView* tableView;
 
+-(IBAction)changeView:(UISegmentedControl*)sender;
 -(IBAction)clickedSegmentedControl:(UISegmentedControl*)control;
 -(IBAction)goBack:(UIButton*)backButton;
+
+-(void)set_profile:(Profile*)profile;
 
 @end

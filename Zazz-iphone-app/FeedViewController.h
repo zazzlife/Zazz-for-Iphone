@@ -38,7 +38,7 @@
 -(BOOL)setActiveCategory:(NSString*)active_category_id;
 
 //LeftDrawer SubViews
--(void)prepareForNextViewWithIdentifier:(NSString*)identifier;
+-(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier;
 -(void)animateBackToFeedView;
 
 @end

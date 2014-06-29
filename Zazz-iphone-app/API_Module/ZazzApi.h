@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Profile.h"
+#import "Post.h"
+#import "Event.h"
+#import "Photo.h"
 #import "Feed.h"
 
 @interface ZazzApi: NSObject
@@ -19,6 +22,10 @@
 +(NSString *) urlEscapeString:(NSString *)unencodedString;
 +(NSString *) getQueryStringFromDictionary:(NSDictionary *)dictionary;
 +(NSMutableURLRequest *)getRequestWithAction:(NSString*)action;
++(Post*)makePostFromDict:(NSDictionary*)post_dict;
++(Photo*)makePhotoFromDict:(NSDictionary*)photo_dict;
++(Event*)makeEventFromDict:(NSDictionary*)event_dict;
++(NSString*)formatDateString:(NSString*)dateString;
 
 -(BOOL) needAuth;
 -(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password;
@@ -28,6 +35,9 @@
 -(void) getMyProfile;
 //-(void) getProfile:(NSString*)userId;
 -(void) gotProfile:(Profile*)profile;
+
+-(void) getNotifications;
+-(void) gotNotifications:(NSMutableArray*)notifications;
 
 -(void) getFollowRequests;
 -(void) gotFollowRequests:(NSMutableArray*)followRequests;
@@ -40,5 +50,9 @@
 
 -(void) getCategories;
 -(void) gotCategories:(NSMutableArray*)categories;
+
+
+
+
 
 @end

@@ -29,6 +29,7 @@
 @property CFTabBarController* appTabBar;
 +(void)addZazzBackgroundLogo;
 +(void)removeZazzBackgroundLogo;
++(NSString*)toShortTimeStamp:(NSString*)long_timestamp;
 
 + (AppDelegate*)getAppDelegate;
 + (ZazzApi*)zazzApi;

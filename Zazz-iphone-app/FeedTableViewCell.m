@@ -60,7 +60,7 @@ int _albumObserversCounter;
     _height = CELL_PADDING_TOP + CELL_HEADER_HEIGHT;
     [self set_feed:feed];
     [self.username setText:feed.user.username];
-    [self.timestamp setText:feed.timestamp];
+    [self.timestamp setText:[ZazzApi formatDateString:feed.timestamp]];
     [self.userImage setImage:feed.user.photo];
     if(feed.user.photo == nil){
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotUserImageNotification:) name:@"gotProfile" object:nil];

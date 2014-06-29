@@ -41,6 +41,11 @@
     [app.zazz_logo removeFromSuperview];
 }
 
++(NSString*)toShortTimeStamp:(NSString*)long_timestamp{
+    NSString* short_timestamp = @"";
+    return short_timestamp;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

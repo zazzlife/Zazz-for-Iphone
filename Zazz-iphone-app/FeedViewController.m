@@ -155,12 +155,15 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     return retVal;
 }
 
--(void)prepareForNextViewWithIdentifier:(NSString*)identifier{
+NSString* active_identifier = @"";
+-(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier{
     if(!identifier)[self animateBackToFeedView];
-    nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
-    [nextViewController setParentViewController:self];
-    [self.nextView addSubview:nextViewController.view];
-    
+    if(![active_identifier isEqualToString:identifier]){
+        active_identifier = identifier;
+        nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+        [nextViewController setParentViewController:self];
+        [self.nextView addSubview:nextViewController.view];
+    }
     [self.nextView setFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.nextView setHidden:false];
     
@@ -174,6 +177,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
                          [UIView setAnimationsEnabled:NO];
                      }
      ];
+    return (UIViewController*)nextViewController;
 }
 
 -(void)animateBackToFeedView{

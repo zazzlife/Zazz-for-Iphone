@@ -102,54 +102,16 @@
         if([feed.feedType isEqualToString:@"Photo"]){
             NSMutableArray* photos = [[NSMutableArray alloc] init];
             for(NSDictionary* photo_dict in [feed_dict objectForKey:@"photos"]) {
-                Photo* photo = [[Photo alloc] init];
-                [photo setUser:user];
-                [photo setDescription:(NSString*)[photo_dict objectForKey:@"description"]];
-                [photo setPhotoId:(NSString*)[photo_dict objectForKey:@"photoId"]];
-                [photo setPhotoUrl:[[photo_dict objectForKey:@"photoLinks"] objectForKey:@"mediumLink"]];
+                Photo* photo = [ZazzApi makePhotoFromDict:photo_dict];
                 [photos addObject:photo];
             }
             [feed setContent:photos];
         }
         else if([feed.feedType isEqualToString:@"Post"]){
-            NSMutableDictionary* post_dict = [feed_dict objectForKey:@"post"];
-            Post* post = [[Post alloc] init];
-            [post setMessage:[post_dict objectForKey:@"message"]];
-            [post setTimestamp:[post_dict objectForKey:@"time"]];
-            [post setPostId:[post_dict objectForKey:@"postId"]];
-            Profile* fromUser = [[Profile alloc] init];
-            [fromUser setUserId:[post_dict objectForKey:@"fromUserId"]];
-            [fromUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
-            [fromUser setPhotoUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]];
-            [post setFromUser:fromUser];
-            if([post_dict objectForKey:@"toUserId"]){
-                Profile* toUser = [[Profile alloc] init];
-                [toUser setUserId:[post_dict objectForKey:@"toUserId"]];
-                [toUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
-                [toUser setPhotoUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]];
-                [post setToUser:toUser];
-            }
+            Post* post = [ZazzApi makePostFromDict:[feed_dict objectForKey:@"post"]];
             [feed setContent:post];
         }else if([feed.feedType isEqualToString:@"Event"]){
-            NSMutableDictionary* event_dict  = [feed_dict objectForKey:@"apiEvent"];//THIS WILL NEED TO BE FIXED FOR API V2
-            Event* event = [[Event alloc] init];
-            [event setUser:user];
-            [event setEventId:[event_dict objectForKey:@"eventId"]];
-            [event setName:[event_dict objectForKey:@"name"]];
-            [event setDescription:[event_dict objectForKey:@"description"]];
-            [event setTime:[event_dict objectForKey:@"time"]];
-            [event setUtcTime:[event_dict objectForKey:@"utcTime"]];
-            [event setLocation:[event_dict objectForKey:@"location"]];
-            [event setStreet:[event_dict objectForKey:@"street"]];
-            [event setCity:[event_dict objectForKey:@"city"]];
-            [event setPrice:[event_dict objectForKey:@"price"]];
-            [event setLatitude:[event_dict objectForKey:@"latitude"]];
-            [event setLongitude:[event_dict objectForKey:@"longitude"]];
-            [event setCreatedTime:[event_dict objectForKey:@"createdTime"]];
-            [event setFacebookLink:[event_dict objectForKey:@"facebookLink"]];
-            [event setImageUrl:[[event_dict objectForKey:@"imageUrl"] objectForKey:@"mediumLink"]];
-            [event setIsDateOnly:[[event_dict objectForKey:@"isDateOnly"] boolValue]];
-            [event setIsFacebookEvent:[[event_dict objectForKey:@"isFacebookEvent"] boolValue]];
+            Event* event = [ZazzApi makeEventFromDict:[feed_dict objectForKey:@"apiEvent"]];//THIS WILL NEED TO BE FIXED FOR API V2
             [feed setContent:event];
         }
         [feedList addObject:feed];

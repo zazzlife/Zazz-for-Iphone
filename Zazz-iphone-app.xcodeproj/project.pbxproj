@@ -48,6 +48,8 @@
 		2AA057D5193F451B00E1617D /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA057D4193F451B00E1617D /* ProfileViewController.m */; };
 		2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */; };
 		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
+		2ACC9FFE195A4A910065E604 /* ZazzNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ACC9FFD195A4A910065E604 /* ZazzNotification.m */; };
+		2ACCA001195A4B940065E604 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ACCA000195A4B940065E604 /* Notification.m */; };
 		2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE2818B1956004E0015602F /* NotificationViewController.m */; };
 		2AE2818F195638940015602F /* ZazzFollowRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE2818E195638940015602F /* ZazzFollowRequest.m */; };
 		2AE281981957C5DE0015602F /* FollowRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE281971957C5DE0015602F /* FollowRequest.m */; };
@@ -160,6 +162,10 @@
 		2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
 		2AB3E4611934063700F72784 /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
 		2AB3E4621934063700F72784 /* RightNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavigationViewController.m; sourceTree = "<group>"; };
+		2ACC9FFC195A4A910065E604 /* ZazzNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzNotification.h; sourceTree = "<group>"; };
+		2ACC9FFD195A4A910065E604 /* ZazzNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzNotification.m; sourceTree = "<group>"; };
+		2ACC9FFF195A4B940065E604 /* Notification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notification.h; sourceTree = "<group>"; };
+		2ACCA000195A4B940065E604 /* Notification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notification.m; sourceTree = "<group>"; };
 		2AE2818A1956004E0015602F /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		2AE2818B1956004E0015602F /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		2AE2818D195638940015602F /* ZazzFollowRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzFollowRequest.h; sourceTree = "<group>"; };
@@ -229,6 +235,8 @@
 				2A7FA2AA193806DC00E3B95B /* CategoryStat.m */,
 				2AE281961957C5DE0015602F /* FollowRequest.h */,
 				2AE281971957C5DE0015602F /* FollowRequest.m */,
+				2ACC9FFF195A4B940065E604 /* Notification.h */,
+				2ACCA000195A4B940065E604 /* Notification.m */,
 			);
 			name = Entities;
 			path = ..;
@@ -369,6 +377,8 @@
 				2A7FA2A7193802F400E3B95B /* ZazzCategory.m */,
 				2AE2818D195638940015602F /* ZazzFollowRequest.h */,
 				2AE2818E195638940015602F /* ZazzFollowRequest.m */,
+				2ACC9FFC195A4A910065E604 /* ZazzNotification.h */,
+				2ACC9FFD195A4A910065E604 /* ZazzNotification.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -588,6 +598,7 @@
 				2AE2818F195638940015602F /* ZazzFollowRequest.m in Sources */,
 				2A09D716191E916C00A2827F /* ZazzFeed.m in Sources */,
 				2A2385E4194521D300F7FABD /* SDImageCache.m in Sources */,
+				2ACCA001195A4B940065E604 /* Notification.m in Sources */,
 				2A2385E9194521D300F7FABD /* SDWebImageManager.m in Sources */,
 				0DD31809191B2063003D5630 /* FeedViewController.m in Sources */,
 				0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */,
@@ -604,6 +615,7 @@
 				2A2385EF194521D300F7FABD /* UIImageView+HighlightedWebCache.m in Sources */,
 				2A09D71D191EDFB600A2827F /* Feed.m in Sources */,
 				2A7FA2A8193802F400E3B95B /* ZazzCategory.m in Sources */,
+				2ACC9FFE195A4A910065E604 /* ZazzNotification.m in Sources */,
 				2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */,
 				2A39F2E6193DEB04002E8873 /* CFTabBarController.m in Sources */,
 				2A6CFC8519291EE7005D3076 /* Post.m in Sources */,

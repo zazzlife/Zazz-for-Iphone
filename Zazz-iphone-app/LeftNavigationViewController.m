@@ -45,9 +45,11 @@
 }
 
 -(IBAction) showNextView:(UIButton*)button{
+    FeedViewController* feedView = (FeedViewController*)self.parentViewController;
     switch([button tag]){
         case 1:{
-            [(FeedViewController*)self.parentViewController prepareForNextViewWithIdentifier:@"notificationView"];
+            NotificationViewController* notifController = (NotificationViewController*)[feedView prepareForNextViewWithIdentifier:@"notificationView"];
+            [notifController set_profile:self._profile];
         }
     }
     
