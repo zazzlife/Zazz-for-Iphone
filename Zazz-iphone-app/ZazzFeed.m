@@ -87,15 +87,7 @@
         //SET COMMENTS
         NSMutableArray* comments = [[NSMutableArray alloc] init];
         for(NSMutableDictionary* comment_dict in [feed_dict objectForKey:@"comments"]){
-            Profile* fromUser = [[Profile alloc] init];
-            [fromUser setUsername:[comment_dict objectForKey:@"userDisplayName"]];
-            
-            [fromUser setPhotoUrl:[[comment_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
-            [fromUser setUserId:[comment_dict objectForKey:@"userId"]];
-            Comment* comment = [[Comment alloc] init];
-            [comment setUser:fromUser];
-            [comment setTime:[comment_dict objectForKey:@"time"]];
-            [comment setIsFromCurrentUser:[[comment_dict objectForKey:@"isFromCurrentUser"] boolValue]];
+            Comment* comment = [ZazzApi makeCommentFromDict:comment_dict];
             [comments addObject:comment];
         }
         [feed setComments:comments];

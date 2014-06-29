@@ -28,8 +28,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:nil ];
-    NSString* receivedDataString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",receivedDataString);
+//    NSLog(@"%@",[[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding]);
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;

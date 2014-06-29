@@ -30,7 +30,6 @@ NSArray* notifications;
 -(void)viewDidLoad{
     [super viewDidLoad];
     seeing_requests = false;
-    NSLog(@"notif Loaded");
     [self.segmentedControl removeSegmentAtIndex:0 animated:0];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFollowRequests:) name:@"gotFollowRequests" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzNotifications:) name:@"gotNotifications" object:nil];
@@ -54,9 +53,15 @@ NSArray* notifications;
 /* TABLEVIEW DELEGATES */
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(!requests) return 57;
-    if([requests count]<1) return 48;
-    return 58;
+    switch ([self getCondition]) {
+        case CONDITION_NO_NOTIFICATIONS:
+        case CONDITION_NO_NEWS:{return 48;}
+        case CONDITION_NOTIFICATIONS_LOADING:
+        case CONDITION_NEWS_LOADING:
+        case CONDITION_HAVE_NOTIFICATIONS:
+        case CONDITION_HAVE_NEWS:
+        default:{return 58;}
+    }
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     switch ([self getCondition]) {
@@ -65,11 +70,13 @@ NSArray* notifications;
         case CONDITION_NO_NOTIFICATIONS:
         case CONDITION_NO_NEWS:{return 1;}
         case CONDITION_HAVE_NEWS:{return [notifications count];}
+        case CONDITION_HAVE_NOTIFICATIONS:
         default:{return [requests count];}
     }
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
+    
     switch ([self getCondition]) {
         case CONDITION_NOTIFICATIONS_LOADING:
         case CONDITION_NEWS_LOADING:{
@@ -95,7 +102,7 @@ NSArray* notifications;
             }
             Notification* notif = (Notification*)[notifications objectAtIndex:indexPath.row];
             for(UIView* subview in cell.contentView.subviews){
-                //            NSLog(@"tag:%ld class:%@ restorationIdentifier: %@", (long)subview.tag, subview.class, [subview restorationIdentifier]);
+//            NSLog(@"tag:%ld class:%@ restorationIdentifier: %@", (long)subview.tag, subview.class, [subview restorationIdentifier]);
                 if([[subview restorationIdentifier] isEqualToString:@"userImage"]){
                     [(UIImageView*)subview setImage:notif.user.photo];
                     continue;
@@ -121,7 +128,6 @@ NSArray* notifications;
             }
             FollowRequest* request = (FollowRequest*)[requests objectAtIndex:indexPath.row];
             for(UIView* subview in cell.contentView.subviews){
-                //        NSLog(@"tag:%ld class:%@ restorationIdentifier: %@", (long)subview.tag, subview.class, [subview restorationIdentifier]);
                 if([[subview restorationIdentifier] isEqualToString:@"userImage"]){
                     [(UIImageView*)subview setImage:request.user.photo];
                     continue;

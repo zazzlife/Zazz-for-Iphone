@@ -18,7 +18,7 @@
 -(void)getNotificationsDelegate:(id)delegate{
     [self set_delegate:delegate];
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:@"notifications"];
-    NSLog(@"norifURL: %@",[request URL] );
+//    NSLog(@"norifURL: %@",[request URL] );
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
@@ -33,7 +33,7 @@
     
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:nil ];
     NSString* receivedDataString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",receivedDataString);
+//    NSLog(@"%@",receivedDataString);
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;

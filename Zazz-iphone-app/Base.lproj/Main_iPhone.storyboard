@@ -863,15 +863,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="waiting" selectionStyle="default" indentationWidth="10" reuseIdentifier="waiting" rowHeight="57" id="Auu-QX-IPH">
-                                        <rect key="frame" x="0.0" y="182" width="320" height="57"/>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="waiting" selectionStyle="default" indentationWidth="10" reuseIdentifier="waiting" rowHeight="58" id="Auu-QX-IPH">
+                                        <rect key="frame" x="0.0" y="182" width="320" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Auu-QX-IPH" id="pop-9D-0Zw">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <activityIndicatorView opaque="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" id="MwK-O5-C8b">
-                                                    <rect key="frame" x="141" y="10" width="37" height="37"/>
+                                                <activityIndicatorView opaque="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" id="MwK-O5-C8b">
+                                                    <rect key="frame" x="142" y="10" width="37" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </activityIndicatorView>
                                             </subviews>
@@ -885,7 +885,6 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="segmentedControl" destination="9sr-aw-cKO" id="Exn-s4-b5N"/>

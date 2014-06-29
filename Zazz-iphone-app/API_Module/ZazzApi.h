@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Profile.h"
+#import "Comment.h"
 #import "Post.h"
 #import "Event.h"
 #import "Photo.h"
@@ -22,10 +23,11 @@
 +(NSString *) urlEscapeString:(NSString *)unencodedString;
 +(NSString *) getQueryStringFromDictionary:(NSDictionary *)dictionary;
 +(NSMutableURLRequest *)getRequestWithAction:(NSString*)action;
++(NSString*)formatDateString:(NSString*)dateString;
 +(Post*)makePostFromDict:(NSDictionary*)post_dict;
 +(Photo*)makePhotoFromDict:(NSDictionary*)photo_dict;
 +(Event*)makeEventFromDict:(NSDictionary*)event_dict;
-+(NSString*)formatDateString:(NSString*)dateString;
++(Comment*)makeCommentFromDict:(NSDictionary*)comment_dict;
 
 -(BOOL) needAuth;
 -(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password;

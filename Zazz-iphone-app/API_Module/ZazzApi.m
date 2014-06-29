@@ -121,9 +121,8 @@
 }
 
 +(NSString*)formatDateString:(NSString*)dateString{
-//    NSLog(@"converting: %@",dateString);
     NSMutableArray* parts = [[NSMutableArray alloc] initWithArray:[dateString componentsSeparatedByString:@"."]];
-    [parts removeLastObject];
+    if ([parts count]>1)[parts removeLastObject];
     NSString* fixedDateString = [parts componentsJoinedByString:@"."];
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss"];
@@ -138,12 +137,12 @@
     
     //get the difference
     NSTimeInterval difference = [localDate timeIntervalSinceNow] * -1;
-//    NSLog(@"%@ --> %@ --> %f",utcDate, localDate, difference);
     
     if(difference < 60) return [NSString stringWithFormat:@"%dsec",(int)difference];
     if(difference < 60*60) return [NSString stringWithFormat:@"%dm",(int)difference/(60)];
     if(difference < 60*60*24) return [NSString stringWithFormat:@"%dh",(int)difference/(60*60)];
-    return [NSString stringWithFormat:@"%dd",(int)difference/(60*60*24)];
+    if(difference < 60*60*24*365) return [NSString stringWithFormat:@"%dd",(int)difference/(60*60*24)];
+    return [NSString stringWithFormat:@"%dy",(int)difference/(60*60*24*365)];
 }
 
 +(NSString*)urlEscapeString:(NSString *)unencodedString
@@ -166,6 +165,17 @@
 }
 +(NSString *) BASE_URL{ return @"http://www.zazzlife.com/api/v1/"; }
 
++(Comment*)makeCommentFromDict:(NSDictionary*)comment_dict{
+    Profile* fromUser = [[Profile alloc] init];
+    [fromUser setUsername:[comment_dict objectForKey:@"userDisplayName"]];
+    [fromUser setPhotoUrl:[[comment_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
+    [fromUser setUserId:[comment_dict objectForKey:@"userId"]];
+    Comment* comment = [[Comment alloc] init];
+    [comment setUser:fromUser];
+    [comment setTime:[comment_dict objectForKey:@"time"]];
+    [comment setIsFromCurrentUser:[[comment_dict objectForKey:@"isFromCurrentUser"] boolValue]];
+    return comment;
+}
 +(Post*)makePostFromDict:(NSDictionary*)post_dict{
     Profile* fromUser = [[Profile alloc] init];
     [fromUser setUserId:[post_dict objectForKey:@"fromUserId"]];
