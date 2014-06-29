@@ -69,7 +69,9 @@
     NSMutableArray *feedList = [[NSMutableArray alloc] init];
     
     for(NSDictionary* feed_dict in array) {
-        //        NSLog(@"%@ --- %@",[feed_dict class], feed_dict);
+//        NSLog(@"----------- FEED_DICT -------------");
+//        NSLog(@"%@ --- %@",[feed_dict class], feed_dict);
+//        NSLog(@"----------- FEED_DICT -------------");
         Profile *user = [[Profile alloc] init];
         [user setPhotoUrl:[[feed_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
         [user setUserId:[feed_dict objectForKey:@"userId"]];

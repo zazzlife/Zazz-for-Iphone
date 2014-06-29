@@ -138,7 +138,7 @@
     
     //get the difference
     NSTimeInterval difference = [localDate timeIntervalSinceNow] * -1;
-    NSLog(@"%@ --> %@ --> %f",utcDate, localDate, difference);
+//    NSLog(@"%@ --> %@ --> %f",utcDate, localDate, difference);
     
     if(difference < 60) return [NSString stringWithFormat:@"%dsec",(int)difference];
     if(difference < 60*60) return [NSString stringWithFormat:@"%dm",(int)difference/(60)];
@@ -172,7 +172,15 @@
     [fromUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
     [fromUser setPhotoUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]];
     Post* post = [[Post alloc] init];
-    [post setMessage:[post_dict objectForKey:@"message"]];
+    NSString* message = @"";
+    for(NSDictionary* message_parts in [post_dict objectForKey:@"message"]){
+        NSString* message_text_part = [message_parts objectForKey:@"text"];
+        if([[message_parts objectForKey:@"clubId"] intValue] > 0){
+            NSLog(@"TODO link-to %@", message_text_part);
+        }
+        message = [message stringByAppendingString:message_text_part];
+    }
+    [post setMessage:message];
     [post setTimestamp:[post_dict objectForKey:@"time"]];
     [post setPostId:[post_dict objectForKey:@"postId"]];
     [post setFromUser:fromUser];
