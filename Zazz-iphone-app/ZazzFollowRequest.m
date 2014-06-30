@@ -18,6 +18,13 @@
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
+-(void)setFollowRequestsUserId:(NSString*)userId action:(BOOL)accepted{
+    NSString* action = [NSString stringWithFormat:@"followrequests/%@?action=%@",userId, accepted?@"accept":@"reject"];
+    NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
+    [request setHTTPMethod:@"DELETE"];
+    [NSURLConnection connectionWithRequest:request delegate:nil];
+}
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     if(!self._receivedData) self._receivedData = [[NSMutableData alloc]init];
@@ -28,7 +35,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:nil ];
-//    NSLog(@"%@",[[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding]);
+//    NSLog(@"%@",  [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding]);
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;

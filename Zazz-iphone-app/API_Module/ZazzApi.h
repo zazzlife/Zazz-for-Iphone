@@ -42,6 +42,7 @@
 -(void) gotNotifications:(NSMutableArray*)notifications;
 
 -(void) getFollowRequests;
+-(void) setFollowRequestsUserId:(NSString*)userId action:(BOOL)action;
 -(void) gotFollowRequests:(NSMutableArray*)followRequests;
 
 -(void) getFeed;

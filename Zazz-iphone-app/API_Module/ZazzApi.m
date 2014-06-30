@@ -69,6 +69,10 @@
 -(void) getFollowRequests{
     [[[ZazzFollowRequest alloc] init] getFollowRequestsDelegate:self];
 }
+-(void) setFollowRequestsUserId:(NSString*)userId action:(BOOL)action{
+    [[[ZazzFollowRequest alloc] init] setFollowRequestsUserId:userId action:action];
+    //response neccesary...
+}
 -(void) gotFollowRequests:(NSMutableArray*)followRequests{
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:followRequests forKey:@"followRequests"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFollowRequests" object:followRequests userInfo:userInfo];

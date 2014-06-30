@@ -15,6 +15,7 @@
 @property NSMutableData* _receivedData;
 
 -(void)getFollowRequestsDelegate:(id)delegate;
+-(void)setFollowRequestsUserId:(NSString*)userId action:(BOOL)accepted;
 
 
 @end

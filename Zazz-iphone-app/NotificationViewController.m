@@ -14,6 +14,8 @@
 
 @implementation NotificationViewController
 
+static const BOOL ACCEPT = true;
+
 static const int CONDITION_NEWS_LOADING = 0;
 static const int CONDITION_NO_NEWS = 1;
 static const int CONDITION_HAVE_NEWS = 2;
@@ -30,12 +32,14 @@ NSArray* notifications;
 -(void)viewDidLoad{
     [super viewDidLoad];
     seeing_requests = false;
+    
     [self.segmentedControl removeSegmentAtIndex:0 animated:0];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFollowRequests:) name:@"gotFollowRequests" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzNotifications:) name:@"gotNotifications" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
     [[AppDelegate zazzApi] getFollowRequests];
     [[AppDelegate zazzApi] getNotifications];
+    
 }
 
 -(IBAction)goBack:(UIButton*)backButton{
@@ -47,24 +51,14 @@ NSArray* notifications;
     if ([self.segmentedControl numberOfSegments] > 1 && [sender selectedSegmentIndex] == 0){
         seeing_requests = true;
     }
-    [self.tableView reloadData];
+    [self.tableViewController.tableView reloadData];
 }
 
 /* TABLEVIEW DELEGATES */
 
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    switch ([self getCondition]) {
-        case CONDITION_NO_NOTIFICATIONS:
-        case CONDITION_NO_NEWS:{return 48;}
-        case CONDITION_NOTIFICATIONS_LOADING:
-        case CONDITION_NEWS_LOADING:
-        case CONDITION_HAVE_NOTIFICATIONS:
-        case CONDITION_HAVE_NEWS:
-        default:{return 58;}
-    }
-}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    switch ([self getCondition]) {
+    int cond = [self getCondition];
+    switch (cond) {
         case CONDITION_NOTIFICATIONS_LOADING:
         case CONDITION_NEWS_LOADING:
         case CONDITION_NO_NOTIFICATIONS:
@@ -74,10 +68,22 @@ NSArray* notifications;
         default:{return [requests count];}
     }
 }
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    int cond = [self getCondition];
+    switch (cond) {
+        case CONDITION_NO_NOTIFICATIONS:
+        case CONDITION_NO_NEWS:{return 48;}
+        case CONDITION_NOTIFICATIONS_LOADING:
+        case CONDITION_NEWS_LOADING:
+        case CONDITION_HAVE_NOTIFICATIONS:
+        case CONDITION_HAVE_NEWS:
+        default:{return 58;}
+    }
+}
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
-    
-    switch ([self getCondition]) {
+    int cond = [self getCondition];
+    switch (cond) {
         case CONDITION_NOTIFICATIONS_LOADING:
         case CONDITION_NEWS_LOADING:{
             cell = [tableView dequeueReusableCellWithIdentifier:@"waiting"];
@@ -121,7 +127,8 @@ NSArray* notifications;
             }
             return cell;
         }
-        default:{//CONDITION_HAVE_NOTIFICATIONS
+        case CONDITION_HAVE_NOTIFICATIONS:
+        default:{
             cell = [tableView dequeueReusableCellWithIdentifier:@"requestCellPrototype"];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"requestCellPrototype"];
@@ -150,6 +157,7 @@ NSArray* notifications;
                     continue;
                 }
             }
+            NSLog(@"requestUser: %@",request.user.username);
             return cell;
         }
     }
@@ -159,16 +167,48 @@ NSArray* notifications;
 
 /* OTHER DELEGATES AND HELPERS */
 
+
+-(void)beginRefreshView:(UIRefreshControl*)refresh {
+    [refresh setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Updating"]];
+    [refresh beginRefreshing];
+    if (seeing_requests){
+        requests = nil;
+        [[AppDelegate zazzApi] getFollowRequests];
+        return;
+    }
+    notifications = nil;
+    [[AppDelegate zazzApi] getNotifications];
+}
 -(void)gotZazzNotifications:(NSNotification*)notif{
     if(![notif.name isEqualToString:@"gotNotifications"])return;
     notifications = [[NSArray alloc] initWithArray:notif.object];
-    [self.tableView reloadData];
+    [self endRefreshView];
 }
-
 -(void)gotZazzFollowRequests:(NSNotification*)notif{
     if(![notif.name isEqualToString:@"gotFollowRequests"])return;
     requests = [[NSArray alloc] initWithArray:notif.object];
-    [self.tableView reloadData];
+    [self endRefreshView];
+}
+-(void)endRefreshView{
+    NSLog(@"gotZazzFollowRequests: %lu",[requests count]);
+    [self.tableViewController.refreshControl endRefreshing];
+    [self.tableViewController.refreshControl setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Pull To Update"]];
+    [self.tableViewController.tableView reloadData];
+}
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    NSString * segueName = segue.identifier;
+    if ([segueName isEqualToString: @"embedNotificationTable"]) {
+        UITableViewController * tableViewController = (UITableViewController *) [segue destinationViewController];
+        UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+        [refresh setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Pull To Update"]];
+        [refresh addTarget:self action:@selector(beginRefreshView:) forControlEvents:UIControlEventValueChanged];
+        [tableViewController setRefreshControl:refresh];
+        [tableViewController.tableView setDelegate:self];
+        [tableViewController.tableView setDataSource:self];
+        [tableViewController.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+        [tableViewController.tableView setSeparatorInset:UIEdgeInsetsZero];
+        [self setTableViewController:tableViewController];
+    }
 }
 
 -(void)setParentViewController:(FeedViewController*)controller{
@@ -192,19 +232,21 @@ NSArray* notifications;
 -(void)clickedConfirm:(id)sender{
     CGFloat index = [sender tag];
     FollowRequest* request = [requests objectAtIndex:index];
-    NSLog(@"confirm %@",request.user.username);
+    [[AppDelegate zazzApi] setFollowRequestsUserId:request.user.userId action:ACCEPT];
+    [[AppDelegate zazzApi] getFollowRequests];
 }
 
 -(void)clickedReject:(id)sender{
     CGFloat index = [sender tag];
     FollowRequest* request = [requests objectAtIndex:index];
-    NSLog(@"reject %@",request.user.username);
+    [[AppDelegate zazzApi] setFollowRequestsUserId:request.user.userId action:!ACCEPT];
+    [[AppDelegate zazzApi] getFollowRequests];
 }
 
 
 -(void)gotAProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotProfile"]) return;
-    [self.tableView reloadData];
+    [self.tableViewController.tableView reloadData];
 }
 
 -(void)set_profile:(Profile *)profile{

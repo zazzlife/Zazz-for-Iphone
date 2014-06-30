@@ -13,10 +13,10 @@
 @interface NotificationViewController : UIViewController<FeedViewControllerChild, UITableViewDataSource, UITableViewDelegate>
 
 @property IBOutlet UISegmentedControl* segmentedControl;
-@property IBOutlet UITableView* tableView;
+
+@property UITableViewController* tableViewController;
 
 -(IBAction)changeView:(UISegmentedControl*)sender;
--(IBAction)clickedSegmentedControl:(UISegmentedControl*)control;
 -(IBAction)goBack:(UIButton*)backButton;
 
 -(void)set_profile:(Profile*)profile;
