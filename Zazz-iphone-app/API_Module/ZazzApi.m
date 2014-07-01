@@ -142,11 +142,12 @@
     //get the difference
     NSTimeInterval difference = [localDate timeIntervalSinceNow] * -1;
     
-    if(difference < 60) return [NSString stringWithFormat:@"%dsec",(int)difference];
-    if(difference < 60*60) return [NSString stringWithFormat:@"%dm",(int)difference/(60)];
-    if(difference < 60*60*24) return [NSString stringWithFormat:@"%dh",(int)difference/(60*60)];
-    if(difference < 60*60*24*365) return [NSString stringWithFormat:@"%dd",(int)difference/(60*60*24)];
-    return [NSString stringWithFormat:@"%dy",(int)difference/(60*60*24*365)];
+    if(difference < 60) return [NSString stringWithFormat:@"%d second%@ ago",(int)difference, (int)difference > 1? @"s" : @""];
+    if(difference < 60*60) return [NSString stringWithFormat:@"%d minute%@ ago",(int)difference/(60), (int)difference/(60) > 1? @"s" : @""];
+    if(difference < 60*60*24) return [NSString stringWithFormat:@"%d hour%@ ago",(int)difference/(60*60), (int)difference/(60*60) > 1? @"s" : @""];
+    if(difference < 60*60*24*30) return [NSString stringWithFormat:@"%d day%@ ago",(int)difference/(60*60*24), (int)difference/(60*60*24) > 1? @"s" : @""];
+    if(difference < 60*60*24*365) return [NSString stringWithFormat:@"%d month%@ ago",(int)difference/(60*60*24*30), (int)difference/(60*60*24*30) > 1? @"s" : @""];
+    return [NSString stringWithFormat:@"%d year%@ ago",(int)difference/(60*60*24*365), (int)difference/(60*60*24*365)>1?@"s":@"" ];
 }
 
 +(NSString*)urlEscapeString:(NSString *)unencodedString

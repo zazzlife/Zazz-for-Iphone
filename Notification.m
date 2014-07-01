@@ -12,9 +12,36 @@
 
 @synthesize notificationId;
 @synthesize user;
-@synthesize notificationType;
 @synthesize isRead;
 @synthesize time;
 @synthesize content;
+@synthesize notificationType;
+
+-(void)setNotificationTypeWithString:(NSString*)notificationString{
+    if([notificationString isEqualToString:@"FollowRequestAccepted"]){
+        self.notificationType = FollowRequestAccepted;
+        return;
+    }
+    else if([notificationString isEqualToString:@"CommentOnPhoto"]){
+        self.notificationType = CommentOnPhoto;
+        return;
+    }
+    else if([notificationString isEqualToString:@"CommentOnPost"]){
+        self.notificationType = CommentOnPost;
+        return;
+    }
+    else if([notificationString isEqualToString:@"WallPost"]){
+        self.notificationType = WallPost;
+        return;
+    }
+    else if([notificationString isEqualToString:@"CommentOnEvent"]){
+        self.notificationType = CommentOnEvent;
+        return;
+    }
+    else if([notificationString isEqualToString:@"NewEvent"]){
+        self.notificationType = NewEvent;
+        return;
+    }
+}
 
 @end

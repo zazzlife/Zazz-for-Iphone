@@ -48,18 +48,18 @@
         Notification* notification = [[Notification alloc] init];
         [notification setUser:user];
         [notification setTime:[notif_dict objectForKey:@"time"]];
-        [notification setNotificationType:[notif_dict objectForKey:@"notificationType"]];
+        [notification setNotificationTypeWithString:[notif_dict objectForKey:@"notificationType"]];
         [notification setIsRead:[notif_dict objectForKey:@"isRead"]];
         [notification setNotificationId:[notif_dict objectForKey:@"notificationId"]];
-        if([notification.notificationType isEqualToString:@"CommentOnPhoto"]){
+        if([notification notificationType] == CommentOnPhoto){
             Photo* photo = [ZazzApi makePhotoFromDict:[notif_dict objectForKey:@"photo"]];
             [notification setContent:photo];
         }
-        else if([notification.notificationType isEqualToString:@"CommentOnPost"] || [notification.notificationType isEqualToString:@"WallPost"]){
+        else if([notification notificationType] == CommentOnPost || [notification notificationType]  == WallPost){
             Post* post = [ZazzApi makePostFromDict:[notif_dict objectForKey:@"post"]];
             [notification setContent:post];
         }
-        else if([notification.notificationType isEqualToString:@"CommentOnEvent"] || [notification.notificationType isEqualToString:@"NewEvent"]){
+        else if([notification notificationType] == CommentOnEvent || [notification notificationType] == NewEvent){
             Event* event = [ZazzApi makeEventFromDict:[notif_dict objectForKey:@"apiEvent"]];//THIS WILL NEED TO BE FIXED FOR API V2
             [notification setContent:event];
         }

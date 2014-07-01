@@ -117,12 +117,81 @@ NSArray* notifications;
                     [(UILabel*)subview setText:notif.user.username];
                     continue;
                 }
-                if([[subview restorationIdentifier] isEqualToString:@"description"]){
+                if([[subview restorationIdentifier] isEqualToString:@"time"]){
                     [(UILabel*)subview setText:[ZazzApi formatDateString:notif.time]];
                     continue;
                 }
-                if([[subview restorationIdentifier] isEqualToString:@"auxView"]){
+                if([[subview restorationIdentifier] isEqualToString:@"description"]){
+                    NSString* text;
+                    NSLog(@"DISPLAYING %d from %@", notif.notificationType, notif.user.username);
+                    switch ([notif notificationType]) {
+                        case FollowRequestAccepted:
+                            text = @"Accepted your friend request";
+                            break;
+                        case CommentOnPhoto:
+                            text = @"Commented on your photo";
+                            break;
+                        case CommentOnPost:
+                            text = @"Commented on your post";
+                            break;
+                        case WallPost:
+                            text = @"Sent you a post";
+                            break;
+                        case CommentOnEvent:
+                            text = @"Commented on your event";
+                            break;
+                        case NewEvent:
+                        default:
+                            text = @"Invited you to an event";
+                            break;
+                    }
+                    [(UILabel*)subview setText:text];
                     continue;
+                }
+                if([[subview restorationIdentifier] isEqualToString:@"auxView"]){
+//                    UIImage* image = [UIImage imageNamed:@"like_in_notifications"];
+//                    UIImage* image = [UIImage imageNamed:@"tag_in_notifications"];
+                    UIImage* image;
+                    UIImageView* imageView;
+                    switch ([notif notificationType]) {
+                        case FollowRequestAccepted:
+                            image = [UIImage imageNamed:@"Packed"];
+                            imageView = [[UIImageView alloc] initWithImage:image];
+                            [imageView setFrame:subview.bounds];
+                            [subview addSubview:imageView];
+                            break;
+                        case CommentOnPhoto:
+                            image = ((Photo*)notif.content).image;
+                            imageView = [[UIImageView alloc] initWithImage:image];
+                            [imageView setFrame:subview.bounds];
+                            [subview addSubview:imageView];
+                            continue;
+                        case CommentOnPost:
+                            image = [UIImage imageNamed:@"comment_in_notifications"];
+                            imageView = [[UIImageView alloc] initWithImage:image];
+                            [imageView setFrame:subview.bounds];
+                            [subview addSubview:imageView];
+                            continue;
+                        case WallPost:
+                            image = [UIImage imageNamed:@"comment_in_notifications"];
+                            imageView = [[UIImageView alloc] initWithImage:image];
+                            [imageView setFrame:subview.bounds];
+                            [subview addSubview:imageView];
+                            continue;
+                        case CommentOnEvent:
+                            image = [UIImage imageNamed:@"newEvent_in_notifications"];
+                            imageView = [[UIImageView alloc] initWithImage:image];
+                            [imageView setFrame:subview.bounds];
+                            [subview addSubview:imageView];
+                            continue;
+                        case NewEvent:
+                        default:
+                            image = [UIImage imageNamed:@"newEvent_in_notifications"];
+                            imageView = [[UIImageView alloc] initWithImage:image];
+                            [imageView setFrame:subview.bounds];
+                            [subview addSubview:imageView];
+                            continue;
+                    }
                 }
             }
             return cell;

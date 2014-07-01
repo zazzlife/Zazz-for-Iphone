@@ -9,13 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "Profile.h"
 
+
+#define FollowRequestAccepted 0
+#define CommentOnPhoto 1
+#define CommentOnPost 2
+#define WallPost 3
+#define CommentOnEvent 4
+#define NewEvent 5
+
 @interface Notification : NSObject
 
 @property NSString* notificationId;
 @property Profile* user;
-@property NSString* notificationType;
 @property BOOL isRead;
 @property NSString* time;
 @property id content;
+@property int notificationType;
+
+-(void)setNotificationTypeWithString:(NSString*)notificationString;
 
 @end
