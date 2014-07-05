@@ -12,6 +12,10 @@
 
 @implementation TextPostViewController
 
+-(void)viewDidLoad{
+    [self.postField setInputAccessoryView:self.keyboardToolbar];
+}
+
 - (IBAction)goBack:(UIButton *)sender {
     [(PostViewController*)self.parentViewController setViewHidden:true];
     [self.view endEditing:YES];
@@ -23,6 +27,10 @@
         subview.layer.cornerRadius = 5;
         subview.layer.masksToBounds = YES;
     }
+    [self.postField becomeFirstResponder];
+}
+- (IBAction)hideKeyboard:(UIBarButtonItem *)sender {
+    [self.view endEditing:YES];
 }
 
 @end
