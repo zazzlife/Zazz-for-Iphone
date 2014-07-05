@@ -24,6 +24,7 @@
 //  THE SOFTWARE.
 
 #import "PostViewController.h"
+#import "TextPostViewController.h"
 #import "CHTumblrMenuView.h"
 #import "AppDelegate.h"
 
@@ -32,6 +33,9 @@
 const int ACTION_POST = 0;
 const int ACTION_PHOTO = 1;
 const int ACTION_VIDEO = 2;
+
+NSString* active_identifier;
+UIViewController<ChildViewController>* activePostViewController;
 
 @synthesize menuView;
 
@@ -64,6 +68,7 @@ const int ACTION_VIDEO = 2;
             break;
         case ACTION_POST:
             NSLog(@"post");
+            [self prepareForNextViewWithIdentifier:@"textPostViewController"];
             break;
         default:
             NSLog(@"Unknown Action: Closing PostView");
@@ -84,7 +89,22 @@ const int ACTION_VIDEO = 2;
     }else{
         //being hidden;
         [self.view setBackgroundColor:[UIColor clearColor]];
+        [self.postView setHidden:true];
+   
     }
 }
+
+-(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier{
+    if(![active_identifier isEqualToString:identifier]){
+        active_identifier = identifier;
+        activePostViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
+        [activePostViewController setParentViewController:self];
+        [self.postView addSubview:activePostViewController.view];
+    }
+    [self.postView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.postView setHidden:false];
+    return activePostViewController;
+}
+
 
 @end

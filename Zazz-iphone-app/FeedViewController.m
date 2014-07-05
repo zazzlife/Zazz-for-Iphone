@@ -32,8 +32,9 @@ bool showPhotos= false;
 bool showEvents= false;
 bool showVideos= false;
 NSString* last_feed_id;
+NSString* active_identifier = @""; //used to indentify which ViewController is currently inside nextView
 NSMutableDictionary* _indexPathsToReload;
-UIViewController<FeedViewControllerChild>* nextViewController;
+UIViewController<ChildViewController>* nextViewController;
 
 float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
@@ -155,7 +156,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     return retVal;
 }
 
-NSString* active_identifier = @"";
 -(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier{
     if(!identifier)[self animateBackToFeedView];
     if(![active_identifier isEqualToString:identifier]){

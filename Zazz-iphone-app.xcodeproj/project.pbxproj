@@ -39,6 +39,7 @@
 		2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */; };
 		2A5FAEBC191D5FBF00B917AB /* ZazzLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEBB191D5FBF00B917AB /* ZazzLogin.m */; };
 		2A5FAEC4191DC5D500B917AB /* ZazzProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEC3191DC5D500B917AB /* ZazzProfile.m */; };
+		2A67359A1966F18A00707224 /* TextPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6735991966F18A00707224 /* TextPostViewController.m */; };
 		2A6CFC821929189F005D3076 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC811929189F005D3076 /* Photo.m */; };
 		2A6CFC8519291EE7005D3076 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8419291EE7005D3076 /* Post.m */; };
 		2A6CFC8819293039005D3076 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6CFC8719293039005D3076 /* Event.m */; };
@@ -144,6 +145,8 @@
 		2A5FAEBD191D78E300B917AB /* ZazzLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzLogin.h; sourceTree = "<group>"; };
 		2A5FAEC2191DC5D500B917AB /* ZazzProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzProfile.h; sourceTree = "<group>"; };
 		2A5FAEC3191DC5D500B917AB /* ZazzProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzProfile.m; sourceTree = "<group>"; };
+		2A6735981966F18A00707224 /* TextPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextPostViewController.h; sourceTree = "<group>"; };
+		2A6735991966F18A00707224 /* TextPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextPostViewController.m; sourceTree = "<group>"; };
 		2A6CFC801929189F005D3076 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
 		2A6CFC811929189F005D3076 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		2A6CFC8319291EE7005D3076 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
@@ -249,6 +252,8 @@
 				2A39F2DB193D5BA3002E8873 /* PostViewController.m */,
 				2A39F2DD193D5BA3002E8873 /* CHTumblrMenuView.h */,
 				2A39F2DE193D5BA3002E8873 /* CHTumblrMenuView.m */,
+				2A6735981966F18A00707224 /* TextPostViewController.h */,
+				2A6735991966F18A00707224 /* TextPostViewController.m */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -611,6 +616,7 @@
 				2A2385E6194521D300F7FABD /* SDWebImageDecoder.m in Sources */,
 				2A6CFC8819293039005D3076 /* Event.m in Sources */,
 				2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */,
+				2A67359A1966F18A00707224 /* TextPostViewController.m in Sources */,
 				2A6CFC8B19295024005D3076 /* Comment.m in Sources */,
 				2A2385EF194521D300F7FABD /* UIImageView+HighlightedWebCache.m in Sources */,
 				2A09D71D191EDFB600A2827F /* Feed.m in Sources */,

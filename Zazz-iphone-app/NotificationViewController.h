@@ -10,7 +10,7 @@
 #import "FeedViewController.h"
 #import "Profile.h"
 
-@interface NotificationViewController : UIViewController<FeedViewControllerChild, UITableViewDataSource, UITableViewDelegate>
+@interface NotificationViewController : UIViewController<ChildViewController, UITableViewDataSource, UITableViewDelegate>
 
 @property IBOutlet UISegmentedControl* segmentedControl;
 

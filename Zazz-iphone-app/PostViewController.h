@@ -30,5 +30,6 @@
 @interface PostViewController : UIViewController <CFTabBarViewDelegate>
 
 @property IBOutlet CHTumblrMenuView* menuView;
+@property IBOutlet UIView* postView;
 
 @end

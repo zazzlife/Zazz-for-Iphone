@@ -18,7 +18,6 @@
     return image;
 }
 
-
 +(UIImage *) getImage:(UIImage*)image scaledToWidth:(float)width{
     float oldWidth = image.size.width;
     float scaleFactor = width / oldWidth;

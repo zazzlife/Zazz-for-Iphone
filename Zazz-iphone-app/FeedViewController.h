@@ -44,8 +44,8 @@
 @end
 
 
-@protocol FeedViewControllerChild <NSObject>
+@protocol ChildViewController <NSObject>
 @required
--(void)setParentViewController:(FeedViewController*)controller;
+-(void)setParentViewController:(UIViewController*)controller;
 
 @end
