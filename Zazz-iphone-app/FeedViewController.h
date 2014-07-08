@@ -27,6 +27,8 @@
 @property IBOutlet UIView * rightNav;
 @property IBOutlet UIView * nextView;
 
+@property UIImage* activePhotoDetailViewControllerImage;
+
 -(IBAction)leftDrawerButton:(id)sender;
 -(IBAction)rightDrawerButton:(id)sender;
 

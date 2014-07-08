@@ -9,6 +9,7 @@
 #import "FeedViewController.h"
 #import "FeedTableViewCell.h"
 #import "CFTabBarController.h"
+#import "PhotoDetailViewController.h"
 #import "Feed.h"
 #import "Photo.h"
 #import "AppDelegate.h"
@@ -22,6 +23,7 @@
 @synthesize active_category_id;
 @synthesize categoryFeeds;
 @synthesize filteredFeed;
+@synthesize activePhotoDetailViewControllerImage;
 
 bool left_active = false; // used by leftNav to indicate if it's open or not.
 bool right_active = false; // used by leftNav to indicate if it's open or not.
@@ -65,8 +67,13 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:APPLICATION_GREY] width:320 andHeight:49]];
 }
 
--(void)gotZazzFeed:(NSNotification *)notif
-{
+-(void)viewImage:(UIButton*)sender{
+    NSLog(@"viewImage: %@", sender.currentBackgroundImage);
+    self.activePhotoDetailViewControllerImage = sender.currentBackgroundImage;
+    [self prepareForNextViewWithIdentifier:@"PhotoDetailViewController"];
+}
+
+-(void)gotZazzFeed:(NSNotification *)notif{
     if (![notif.name isEqualToString:@"gotFeed"]) return;
     NSMutableArray* feed = [notif.userInfo objectForKey:@"feed"];
     if (!feed) return;
@@ -162,11 +169,11 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         active_identifier = identifier;
         nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
         [nextViewController setParentViewController:self];
+        [nextViewController init];
         [self.nextView addSubview:nextViewController.view];
     }
     [self.nextView setFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.nextView setHidden:false];
-    
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
                      animations:^(void){
@@ -183,13 +190,14 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 -(void)animateBackToFeedView{
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
-                     animations:^(void){
-                         [self.navFeedView setFrame:self.nextView.frame];
-                         [self.nextView setFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
-                     } completion:^(BOOL completed){
-                         [UIView setAnimationsEnabled:NO];
-                         [self.nextView setHidden:true];
-                     }
+        animations:^(void){
+            [self.navFeedView setFrame:self.nextView.frame];
+            [self.nextView setFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        }
+        completion:^(BOOL completed){
+            [UIView setAnimationsEnabled:NO];
+            [self.nextView setHidden:true];
+        }
      ];
 }
 
@@ -231,6 +239,11 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     }
 }
 
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
+    NSLog(@"animation finished");
+    [UIView setAnimationsEnabled:YES];
+}
+
 
 #pragma mark - Interface Builder Actions
 
@@ -261,12 +274,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
          }
      ];
 }
-
-- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag{
-    NSLog(@"animation finished");
-    [UIView setAnimationsEnabled:YES];
-}
-
 -(IBAction)leftDrawerButton:(id)sender{
     if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
     CGFloat leftNavWidth =self.leftNav.frame.size.width;
@@ -274,7 +281,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     if(!left_active){
         [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
     }
-
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
          animations:^(void){
@@ -297,9 +303,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
          }
      ];
 }
-
--(IBAction)expandFilterCell:(id)sender
-{
+-(IBAction)expandFilterCell:(id)sender{
     filter_active = !filter_active;
     [CATransaction begin];
     [CATransaction setCompletionBlock:^{
@@ -310,9 +314,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self.feedTableView endUpdates];
     [CATransaction commit];
 }
-
--(IBAction)toggleFilter:(id)sender
-{
+-(IBAction)toggleFilter:(id)sender{
     if (((UISwitch*)sender).tag == 1){  showVideos = !showVideos; }
     else if(((UISwitch*)sender).tag == 2){ showPhotos = !showPhotos; }
     else if(((UISwitch*)sender).tag == 3){ showEvents = !showEvents; }
@@ -323,25 +325,20 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSArray* source_feed = [self getFilteredFeed];
 //    if(end_of_feed) return [source_feed count] + 1;
     return [source_feed count] + 2;
 }
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == 0) return;
     Feed* feedItem = [self.getFilteredFeed objectAtIndex:indexPath.row - 1];
     NSLog(@"selected feedId:%@ index:%ld", feedItem.feedId, indexPath.row);
     
 }
-
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == 0){
         if (filter_active) return 170;
@@ -351,7 +348,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if (end_of_feed) return 10;
         return 57;
     }
-
     Feed *feedItem = [self.filteredFeed objectAtIndex:(indexPath.row - 1)];
     NSString *CellIdentifier = @"FeedTableCell";
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -366,9 +362,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     }
     return cell._height;
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0){
         NSString* CellIdentifier = @"filterCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -422,7 +416,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 
 #pragma mark - CFTabBarViewDelegate method
-
 -(void)setViewHidden:(BOOL)hidden{
     [self.view.superview setHidden:hidden];
     if(hidden){
@@ -430,7 +423,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
         if(left_active) [self leftDrawerButton:nil]; //close right drawer first.
     }
 }
-
 
 -(void)gotPhotoImageNotification:(NSNotification *)notif{
     //only called when photo needs to be displayed and it hasn't been loaded yet.

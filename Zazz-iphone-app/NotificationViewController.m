@@ -15,13 +15,14 @@
 @implementation NotificationViewController
 
 static const BOOL ACCEPT = true;
+static const BOOL REJECT = !ACCEPT;
 
-static const int CONDITION_NEWS_LOADING = 0;
-static const int CONDITION_NO_NEWS = 1;
-static const int CONDITION_HAVE_NEWS = 2;
-static const int CONDITION_NOTIFICATIONS_LOADING = 3;
-static const int CONDITION_NO_NOTIFICATIONS = 4;
-static const int CONDITION_HAVE_NOTIFICATIONS = 5;
+static const int CONDITION_NOTIFICATIONS_LOADING = 0;
+static const int CONDITION_NOTIFICATIONS_NONE = 1;
+static const int CONDITION_NOTIFICATIONS_SOME = 2;
+static const int CONDITION_REQUESTS_LOADING = 3;
+static const int CONDITION_REQUESTS_NONE = 4;
+static const int CONDITION_REQUESTS_SOME = 5;
 
 Profile* _profile;
 FeedViewController* feedViewController;
@@ -32,7 +33,6 @@ NSArray* notifications;
 -(void)viewDidLoad{
     [super viewDidLoad];
     seeing_requests = false;
-    
     [self.segmentedControl removeSegmentAtIndex:0 animated:0];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFollowRequests:) name:@"gotFollowRequests" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzNotifications:) name:@"gotNotifications" object:nil];
@@ -59,24 +59,24 @@ NSArray* notifications;
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     int cond = [self getCondition];
     switch (cond) {
+        case CONDITION_REQUESTS_LOADING:
         case CONDITION_NOTIFICATIONS_LOADING:
-        case CONDITION_NEWS_LOADING:
-        case CONDITION_NO_NOTIFICATIONS:
-        case CONDITION_NO_NEWS:{return 1;}
-        case CONDITION_HAVE_NEWS:{return [notifications count];}
-        case CONDITION_HAVE_NOTIFICATIONS:
+        case CONDITION_REQUESTS_NONE:
+        case CONDITION_NOTIFICATIONS_NONE:{return 1;}
+        case CONDITION_NOTIFICATIONS_SOME:{return [notifications count];}
+        case CONDITION_REQUESTS_SOME:
         default:{return [requests count];}
     }
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     int cond = [self getCondition];
     switch (cond) {
-        case CONDITION_NO_NOTIFICATIONS:
-        case CONDITION_NO_NEWS:{return 48;}
+        case CONDITION_REQUESTS_NONE:
+        case CONDITION_NOTIFICATIONS_NONE:{return 48;}
+        case CONDITION_REQUESTS_LOADING:
         case CONDITION_NOTIFICATIONS_LOADING:
-        case CONDITION_NEWS_LOADING:
-        case CONDITION_HAVE_NOTIFICATIONS:
-        case CONDITION_HAVE_NEWS:
+        case CONDITION_REQUESTS_SOME:
+        case CONDITION_NOTIFICATIONS_SOME:
         default:{return 58;}
     }
 }
@@ -84,8 +84,8 @@ NSArray* notifications;
     UITableViewCell *cell;
     int cond = [self getCondition];
     switch (cond) {
-        case CONDITION_NOTIFICATIONS_LOADING:
-        case CONDITION_NEWS_LOADING:{
+        case CONDITION_REQUESTS_LOADING:
+        case CONDITION_NOTIFICATIONS_LOADING:{
             cell = [tableView dequeueReusableCellWithIdentifier:@"waiting"];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"waiting"];
@@ -93,15 +93,15 @@ NSArray* notifications;
             [(UIActivityIndicatorView*)[cell viewWithTag:2] startAnimating];
             return cell;
         }
-        case CONDITION_NO_NOTIFICATIONS:
-        case CONDITION_NO_NEWS:{
+        case CONDITION_REQUESTS_NONE:
+        case CONDITION_NOTIFICATIONS_NONE:{
             cell = [tableView dequeueReusableCellWithIdentifier:@"noRequests"];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"noRequests"];
             }
             return cell;
         }
-        case CONDITION_HAVE_NEWS:{
+        case CONDITION_NOTIFICATIONS_SOME:{
             cell = [tableView dequeueReusableCellWithIdentifier:@"notificationCell"];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"notificationCell"];
@@ -109,7 +109,7 @@ NSArray* notifications;
             Notification* notif = (Notification*)[notifications objectAtIndex:indexPath.row];
             for(UIView* subview in cell.contentView.subviews){
 //            NSLog(@"tag:%ld class:%@ restorationIdentifier: %@", (long)subview.tag, subview.class, [subview restorationIdentifier]);
-                if([[subview restorationIdentifier] isEqualToString:@"userImage"]){
+                    if([[subview restorationIdentifier] isEqualToString:@"notifictionUserImage"]){
                     [(UIImageView*)subview setImage:notif.user.photo];
                     continue;
                 }
@@ -196,7 +196,7 @@ NSArray* notifications;
             }
             return cell;
         }
-        case CONDITION_HAVE_NOTIFICATIONS:
+        case CONDITION_REQUESTS_SOME:
         default:{
             cell = [tableView dequeueReusableCellWithIdentifier:@"requestCellPrototype"];
             if (cell == nil) {
@@ -204,7 +204,7 @@ NSArray* notifications;
             }
             FollowRequest* request = (FollowRequest*)[requests objectAtIndex:indexPath.row];
             for(UIView* subview in cell.contentView.subviews){
-                if([[subview restorationIdentifier] isEqualToString:@"userImage"]){
+                    if([[subview restorationIdentifier] isEqualToString:@"requestUserImage"]){
                     [(UIImageView*)subview setImage:request.user.photo];
                     continue;
                 }
@@ -286,16 +286,16 @@ NSArray* notifications;
 
 -(int)getCondition{
     if(!seeing_requests && !notifications){
-        return CONDITION_NEWS_LOADING;}
-    if(!seeing_requests && [notifications count]<1){
-        return CONDITION_NO_NEWS;}
-    if(!seeing_requests){
-        return CONDITION_HAVE_NEWS;}
-    if(!requests){
         return CONDITION_NOTIFICATIONS_LOADING;}
+    if(!seeing_requests && [notifications count]<1){
+        return CONDITION_NOTIFICATIONS_NONE;}
+    if(!seeing_requests){
+        return CONDITION_NOTIFICATIONS_SOME;}
+    if(!requests){
+        return CONDITION_REQUESTS_LOADING;}
     if([requests count] < 1){
-        return CONDITION_NO_NOTIFICATIONS;}
-    return CONDITION_HAVE_NOTIFICATIONS;
+        return CONDITION_REQUESTS_NONE;}
+    return CONDITION_REQUESTS_SOME;
 }
 
 -(void)clickedConfirm:(id)sender{
@@ -308,7 +308,7 @@ NSArray* notifications;
 -(void)clickedReject:(id)sender{
     CGFloat index = [sender tag];
     FollowRequest* request = [requests objectAtIndex:index];
-    [[AppDelegate zazzApi] setFollowRequestsUserId:request.user.userId action:!ACCEPT];
+    [[AppDelegate zazzApi] setFollowRequestsUserId:request.user.userId action:REJECT];
     [[AppDelegate zazzApi] getFollowRequests];
 }
 

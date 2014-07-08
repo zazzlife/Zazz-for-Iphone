@@ -28,7 +28,6 @@
 -(void)gotMyProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotMyProfile"]) return;
     Profile* profile = notif.object;
-    NSLog(@"welcome leftNav: %@",profile.username);
     [self set_profile:profile];
 }
 

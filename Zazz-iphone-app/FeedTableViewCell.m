@@ -56,6 +56,10 @@ int _albumObserversCounter;
     [superview addSubview:label];
 }
 
+-(void)clickedImage:(UIImageView*)imageView{
+    
+}
+
 -(void)setFeed:(Feed *)feed{
     _height = CELL_PADDING_TOP + CELL_HEADER_HEIGHT;
     [self set_feed:feed];
@@ -72,17 +76,22 @@ int _albumObserversCounter;
     if([[feed feedType] isEqualToString:@"Photo"]){
         _albumObserversCounter = 0;
         for(Photo* photo in (NSMutableArray*)[feed content]){
-            UIImageView* imageView;
+            UIButton* imageView;
             if(photo.image == nil){
                 if(!self._neededPhotoIds)[self set_neededPhotoIds:[[NSMutableArray alloc ]init]];
                 [self._neededPhotoIds addObject:photo.photoId];
-                imageView = [[UIImageView alloc ]init];
+                imageView = [[UIButton alloc ]init];
                 [imageView setTag:[photo.photoId intValue]];
                 [self.feedCellContentView addSubview:imageView];
                 continue;
             }
             UIImage* image = [UIImage getImage:photo.image scaledToWidth:self.tableView.frame.size.width];
-            imageView = [[UIImageView alloc] initWithImage:image];
+            imageView = [[UIButton alloc] init];
+            [imageView setBackgroundImage:image forState:UIControlStateNormal];
+            [imageView setShowsTouchWhenHighlighted:false];
+            [imageView setUserInteractionEnabled:true];
+            [imageView addTarget:self.tableView.delegate action:@selector(viewImage:) forControlEvents:UIControlEventTouchUpInside];
+            NSLog(@"cellImage: %@", imageView.currentBackgroundImage);
             UIView* previousImage = (UIView*)self.feedCellContentView.subviews.lastObject;
             if (previousImage != nil) {
                 [imageView setFrame:CGRectMake(0, previousImage.frame.origin.y + previousImage.frame.size.height, self.feedCellContentView.frame.size.width, image.size.height)];

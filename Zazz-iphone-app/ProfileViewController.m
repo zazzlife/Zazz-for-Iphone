@@ -23,7 +23,7 @@
     if (![notif.name isEqualToString:@"gotMyProfile"]) return;
     Profile* profile = notif.object;
     [self set_profile:profile];
-    NSLog(@"Welcome profileview: %@", profile.username);
+//    NSLog(@"Welcome profileview: %@", profile.username);
 }
 
 - (void)didReceiveMemoryWarning

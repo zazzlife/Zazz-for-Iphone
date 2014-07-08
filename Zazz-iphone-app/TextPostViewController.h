@@ -11,6 +11,8 @@
 
 @interface TextPostViewController : UIViewController<ChildViewController>
 
+@property IBOutlet UIView* mainView;
+@property IBOutlet UIView* helperView;
 @property IBOutlet UITextView* postField;
 @property IBOutlet UIView* keyboardToolbar;
 @property (nonatomic) UIViewController* parentViewController;

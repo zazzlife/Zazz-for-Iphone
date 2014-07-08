@@ -25,13 +25,12 @@
 }
 
 //MY-FEED
-- (void) getMyFeedDelegate:(ZazzApi*)delegate{
-    [self doAction:@"feeds" withDelegate:delegate];
-}
-
 - (void) getMyFeedAfter:(NSString*)feed_id delegate:(id)delegate{
     NSString* action = [NSString stringWithFormat:@"feeds?lastFeed=%d", [feed_id intValue]];
     [self doAction:action withDelegate:delegate];
+}
+- (void) getMyFeedDelegate:(ZazzApi*)delegate{
+    [self getMyFeedAfter:@"-1" delegate:delegate];
 }
 
 //OTHER-USER-FEED
@@ -59,8 +58,8 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSError* error = nil;
-//    NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@",myString);
+    NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
+//    NSLog(@"received: %@",myString);
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:&error ];
     if(array == nil){
         NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
