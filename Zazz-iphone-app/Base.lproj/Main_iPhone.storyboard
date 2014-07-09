@@ -183,6 +183,9 @@
                                 <segments>
                                     <segment title="User images"/>
                                     <segment title="User timeline"/>
+                                    <segment title="Top bars">
+                                        <size key="contentOffset" width="-3" height="0.0"/>
+                                    </segment>
                                 </segments>
                             </segmentedControl>
                             <navigationBar contentMode="scaleToFill" id="ny3-zg-ldU">
