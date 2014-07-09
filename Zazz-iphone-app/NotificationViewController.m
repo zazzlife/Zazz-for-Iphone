@@ -43,7 +43,7 @@ NSArray* notifications;
 }
 
 -(IBAction)goBack:(UIButton*)backButton{
-    [feedViewController animateBackToFeedView];
+    [feedViewController backToParentController];
 }
 
 -(IBAction)changeView:(UISegmentedControl*)sender{

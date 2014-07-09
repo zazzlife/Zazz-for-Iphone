@@ -13,4 +13,6 @@
 
 @property UIImageView* _imageView;
 
+-(id)initWithPhoto:(UIImage*)image andParentViewController:(UIViewController*)controller;
+
 @end

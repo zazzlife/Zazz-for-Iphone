@@ -27,8 +27,6 @@
 @property IBOutlet UIView * rightNav;
 @property IBOutlet UIView * nextView;
 
-@property UIImage* activePhotoDetailViewControllerImage;
-
 -(IBAction)leftDrawerButton:(id)sender;
 -(IBAction)rightDrawerButton:(id)sender;
 
@@ -41,7 +39,7 @@
 
 //LeftDrawer SubViews
 -(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier;
--(void)animateBackToFeedView;
+-(void)backToParentController;
 
 @end
 
@@ -49,5 +47,4 @@
 @protocol ChildViewController <NSObject>
 @required
 -(void)setParentViewController:(UIViewController*)controller;
-
 @end

@@ -23,7 +23,6 @@
 @synthesize active_category_id;
 @synthesize categoryFeeds;
 @synthesize filteredFeed;
-@synthesize activePhotoDetailViewControllerImage;
 
 bool left_active = false; // used by leftNav to indicate if it's open or not.
 bool right_active = false; // used by leftNav to indicate if it's open or not.
@@ -69,8 +68,16 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 -(void)viewImage:(UIButton*)sender{
     NSLog(@"viewImage: %@", sender.currentBackgroundImage);
-    self.activePhotoDetailViewControllerImage = sender.currentBackgroundImage;
-    [self prepareForNextViewWithIdentifier:@"PhotoDetailViewController"];
+
+    nextViewController = [[PhotoDetailViewController alloc] initWithPhoto:sender.currentBackgroundImage andParentViewController:self];
+    for (UIView *v in self.nextView.subviews) {
+        [v removeFromSuperview];
+    }
+    [self.nextView addSubview:nextViewController.view];
+    
+    active_identifier = @"";
+    [self prepareForNextViewWithIdentifier:@""];
+    
 }
 
 -(void)gotZazzFeed:(NSNotification *)notif{
@@ -164,30 +171,31 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 }
 
 -(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier{
-    if(!identifier)[self animateBackToFeedView];
+    if(!identifier)[self backToParentController];
     if(![active_identifier isEqualToString:identifier]){
         active_identifier = identifier;
         nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
         [nextViewController setParentViewController:self];
-        [nextViewController init];
+//        nextViewController = [nextViewController init];
         [self.nextView addSubview:nextViewController.view];
     }
     [self.nextView setFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.nextView setHidden:false];
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
-                     animations:^(void){
-                         [self.nextView setFrame:self.view.frame];
-                         [self.navFeedView setFrame:CGRectMake(-self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
-                     } completion:^(BOOL completed){
-                         if(left_active) [self leftDrawerButton:nil];//close left drawer first.
-                         [UIView setAnimationsEnabled:NO];
-                     }
+        animations:^(void){
+            [self.nextView setFrame:self.view.frame];
+            [self.navFeedView setFrame:CGRectMake(-self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        }
+        completion:^(BOOL completed){
+            if(left_active) [self leftDrawerButton:nil];//close left drawer first.
+            [UIView setAnimationsEnabled:NO];
+        }
      ];
     return (UIViewController*)nextViewController;
 }
 
--(void)animateBackToFeedView{
+-(void)backToParentController{
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
         animations:^(void){
