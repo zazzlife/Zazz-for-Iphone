@@ -67,17 +67,13 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 }
 
 -(void)viewImage:(UIButton*)sender{
-    NSLog(@"viewImage: %@", sender.currentBackgroundImage);
-
     nextViewController = [[PhotoDetailViewController alloc] initWithPhoto:sender.currentBackgroundImage andParentViewController:self];
     for (UIView *v in self.nextView.subviews) {
         [v removeFromSuperview];
     }
     [self.nextView addSubview:nextViewController.view];
-    
     active_identifier = @"";
     [self prepareForNextViewWithIdentifier:@""];
-    
 }
 
 -(void)gotZazzFeed:(NSNotification *)notif{

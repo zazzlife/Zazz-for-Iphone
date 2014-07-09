@@ -15,10 +15,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 
-#define HEADER_HEIGHT 320.0f
-#define HEADER_INIT_FRAME CGRectMake(0, 0, self.view.frame.size.width, HEADER_HEIGHT)
-#define TOOLBAR_INIT_FRAME CGRectMake (0, 292, 320, 22)
-
 const CGFloat kBarHeight = 50.0f;
 const CGFloat kBackgroundParallexFactor = 0.5f;
 const CGFloat kBlurFadeInFactor = 0.005f;
@@ -31,6 +27,9 @@ const CGFloat kCommentCellHeight = 50.0f;
 
 @implementation PhotoDetailViewController {
     
+    CGRect HEADER_INIT_FRAME;
+    CGRect TOOLBAR_INIT_FRAME;
+    
     UIScrollView *_mainScrollView;
     UIScrollView *_backgroundScrollView;
     UIImageView *_blurImageView;
@@ -39,6 +38,7 @@ const CGFloat kCommentCellHeight = 50.0f;
     UIView *_commentsViewContainer;
     UITableView *_commentsTableView;
     UIButton *_backButton;
+    UIImageView *_imageView;
     
     // TODO: Implement these
     UIGestureRecognizer *_leftSwipeGestureRecognizer;
@@ -75,24 +75,26 @@ const CGFloat kCommentCellHeight = 50.0f;
         _textLabel.layer.shadowColor = [UIColor blackColor].CGColor;
         _textLabel.layer.shadowRadius = 10.0f;
         _textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    
+        _imageView = [[UIImageView alloc] initWithImage:image];
+        HEADER_INIT_FRAME = _imageView.frame;
+        _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        UIView *fadeView = [[UIView alloc] initWithFrame:_imageView.frame];
+        fadeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
+        fadeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         
+        TOOLBAR_INIT_FRAME = CGRectMake (0, _imageView.frame.size.height-22, 320, 22);
         _toolBarView = [[ToolBarView alloc] initWithFrame:TOOLBAR_INIT_FRAME];
         _toolBarView.autoresizingMask =   UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
         
-        _backgroundScrollView = [[UIScrollView alloc] initWithFrame:HEADER_INIT_FRAME];
+        
+        _backgroundScrollView = [[UIScrollView alloc] initWithFrame:_imageView.frame];
         _backgroundScrollView.scrollEnabled = NO;
         _backgroundScrollView.contentSize = CGSizeMake(320, 1000);
+        [_backgroundScrollView addSubview:_imageView];
+        [_backgroundScrollView addSubview:fadeView];
         [_backgroundScrollView addSubview:_toolBarView];
         [_backgroundScrollView addSubview:_textLabel];
-        
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:HEADER_INIT_FRAME];
-        imageView.image = image;
-        imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        UIView *fadeView = [[UIView alloc] initWithFrame:imageView.frame];
-        fadeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
-        fadeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [_backgroundScrollView addSubview:imageView];
-        [_backgroundScrollView addSubview:fadeView];
         
         // Take a snapshot of the background scroll view and apply a blur to that image
         // Then add the blurred image on top of the regular image and slowly fade it in
@@ -102,7 +104,7 @@ const CGFloat kCommentCellHeight = 50.0f;
         UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        _blurImageView = [[UIImageView alloc] initWithFrame:HEADER_INIT_FRAME];
+        _blurImageView = [[UIImageView alloc] initWithFrame:_imageView.frame];
         _blurImageView.image = [img applyBlurWithRadius:12 tintColor:[UIColor colorWithWhite:0.8 alpha:0.4] saturationDeltaFactor:1.8 maskImage:nil];
         _blurImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         _blurImageView.alpha = 0;
@@ -151,7 +153,7 @@ const CGFloat kCommentCellHeight = 50.0f;
         // Here I check whether or not the user has scrolled passed the limit where I want to stick the header, if they have then I move the frame with the scroll view
         // to give it the sticky header look
         if (delta > backgroundScrollViewLimit) {
-            _backgroundScrollView.frame = (CGRect) {.origin = {0, delta - _backgroundScrollView.frame.size.height + kBarHeight}, .size = {self.view.frame.size.width, HEADER_HEIGHT}};
+            _backgroundScrollView.frame = (CGRect) {.origin = {0, delta - _backgroundScrollView.frame.size.height + kBarHeight}, .size = {self.view.frame.size.width, HEADER_INIT_FRAME.size.height}};
             _commentsViewContainer.frame = (CGRect){.origin = {0, CGRectGetMinY(_backgroundScrollView.frame) + CGRectGetHeight(_backgroundScrollView.frame)}, .size = _commentsViewContainer.frame.size };
             _commentsTableView.contentOffset = CGPointMake (0, delta - backgroundScrollViewLimit);
             CGFloat contentOffsetY = -backgroundScrollViewLimit * kBackgroundParallexFactor;
