@@ -10,6 +10,10 @@
 
 @implementation Feed
 
+const NSString* FEED_POST = @"POST";
+const NSString* FEED_PHOTO = @"Photo";
+const NSString* FEED_EVENT = @"Event";
+
 @synthesize feedId;
 @synthesize user;
 @synthesize canCurrentUserRemoveFeed;

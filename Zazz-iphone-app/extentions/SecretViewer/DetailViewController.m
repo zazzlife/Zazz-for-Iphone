@@ -6,26 +6,28 @@
 //  Copyright (c) 2014 Aaron Pang. All rights reserved.
 //
 
-#import "PhotoDetailViewController.h"
+#import "DetailViewController.h"
 #import "UIImage+ImageEffects.h"
 #import "ToolBarView.h"
 #import "UIFont+SecretFont.h"
 #import "CommentCell.h"
 #import "UIView+GradientMask.h"
+#import "Post.h"
+#import "Photo.h"
 
 #import <QuartzCore/QuartzCore.h>
 
-const CGFloat kBarHeight = 50.0f;
+const CGFloat kBarHeight = 60.0f;
 const CGFloat kBackgroundParallexFactor = 0.5f;
 const CGFloat kBlurFadeInFactor = 0.005f;
 const CGFloat kTextFadeOutFactor = 0.05f;
 const CGFloat kCommentCellHeight = 50.0f;
 
-@interface PhotoDetailViewController () <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface DetailViewController () <UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @end
 
-@implementation PhotoDetailViewController {
+@implementation DetailViewController {
     
     CGRect HEADER_INIT_FRAME;
     CGRect TOOLBAR_INIT_FRAME;
@@ -40,94 +42,96 @@ const CGFloat kCommentCellHeight = 50.0f;
     UIButton *_backButton;
     UIImageView *_imageView;
     
-    // TODO: Implement these
-    UIGestureRecognizer *_leftSwipeGestureRecognizer;
-    UIGestureRecognizer *_rightSwipeGestureRecognizer;
-    
+    Feed* _feed;
     NSMutableArray *comments;
 }
 
 -(id)initWithPhoto:(UIImage*)image andParentViewController:(UIViewController*)controller{
-    self = [super init];
-    if (self) {
-        self.parentViewController = controller;
-        
-        _mainScrollView = [[UIScrollView alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.frame];
-        _mainScrollView.delegate = self;
-        _mainScrollView.bounces = YES;
-        _mainScrollView.alwaysBounceVertical = YES;
-        _mainScrollView.contentSize = CGSizeZero;
-        _mainScrollView.showsVerticalScrollIndicator = YES;
-        _mainScrollView.scrollIndicatorInsets = UIEdgeInsetsMake(kBarHeight, 0, 0, 0);
-        [self.view addSubview:_mainScrollView];
-        
-        _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
-        [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
-        [_backButton addTarget:self.parentViewController action:@selector(backToParentController) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:_backButton];
-        
-        _textLabel = [[UILabel alloc] initWithFrame:HEADER_INIT_FRAME];
-//        [_textLabel setText:@"I love sharing secrets"];
-        [_textLabel setFont:[UIFont secretFontWithSize:22.f]];
-        [_textLabel setTextAlignment:NSTextAlignmentCenter];
-        [_textLabel setTextColor:[UIColor whiteColor]];
-        _textLabel.backgroundColor = [UIColor clearColor];
-        _textLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-        _textLabel.layer.shadowRadius = 10.0f;
-        _textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     
-        _imageView = [[UIImageView alloc] initWithImage:image];
-        HEADER_INIT_FRAME = _imageView.frame;
-        _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        UIView *fadeView = [[UIView alloc] initWithFrame:_imageView.frame];
-        fadeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
-        fadeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    if (!self) {self = [super init];}
+    
+    self.parentViewController = controller;
+    
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.frame];
+    _mainScrollView.delegate = self;
+    _mainScrollView.bounces = YES;
+    _mainScrollView.alwaysBounceVertical = YES;
+    _mainScrollView.contentSize = CGSizeZero;
+    _mainScrollView.showsVerticalScrollIndicator = YES;
+    _mainScrollView.scrollIndicatorInsets = UIEdgeInsetsMake(kBarHeight, 0, 0, 0);
+    [self.view addSubview:_mainScrollView];
+    
+    _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
+    [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
+    [_backButton addTarget:self.parentViewController action:@selector(backToParentController) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_backButton];
+    
+    _textLabel = [[UILabel alloc] initWithFrame:HEADER_INIT_FRAME];
+    UIView *fadeView = [[UIView alloc] init];
+    
+//    Post* post = (Post*)feedItem.content;
+//    [_textLabel setText:post.message];
+    [_textLabel setFont:[UIFont secretFontWithSize:22.f]];
+    [_textLabel setTextAlignment:NSTextAlignmentCenter];
+    [_textLabel setTextColor:[UIColor whiteColor]];
+    _textLabel.backgroundColor = [UIColor clearColor];
+    _textLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    _textLabel.layer.shadowRadius = 10.0f;
+    _textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+
+//    Photo* photo = (Photo*)feedItem.content;
+    _imageView = [[UIImageView alloc] initWithImage:image];
+    HEADER_INIT_FRAME = _imageView.frame;
+    _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [fadeView setFrame:_imageView.frame];
+    fadeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
+    fadeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+    
+    TOOLBAR_INIT_FRAME = CGRectMake (0, _imageView.frame.size.height-22, 320, 22);
+    _toolBarView = [[ToolBarView alloc] initWithFrame:TOOLBAR_INIT_FRAME];
+    _toolBarView.autoresizingMask =   UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
         
-        TOOLBAR_INIT_FRAME = CGRectMake (0, _imageView.frame.size.height-22, 320, 22);
-        _toolBarView = [[ToolBarView alloc] initWithFrame:TOOLBAR_INIT_FRAME];
-        _toolBarView.autoresizingMask =   UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
+    _backgroundScrollView = [[UIScrollView alloc] initWithFrame:_imageView.frame];
+    _backgroundScrollView.scrollEnabled = NO;
+    _backgroundScrollView.contentSize = CGSizeMake(320, 1000);
+    [_backgroundScrollView addSubview:_imageView];
+    [_backgroundScrollView addSubview:fadeView];
+    [_backgroundScrollView addSubview:_toolBarView];
+    [_backgroundScrollView addSubview:_textLabel];
         
-        
-        _backgroundScrollView = [[UIScrollView alloc] initWithFrame:_imageView.frame];
-        _backgroundScrollView.scrollEnabled = NO;
-        _backgroundScrollView.contentSize = CGSizeMake(320, 1000);
-        [_backgroundScrollView addSubview:_imageView];
-        [_backgroundScrollView addSubview:fadeView];
-        [_backgroundScrollView addSubview:_toolBarView];
-        [_backgroundScrollView addSubview:_textLabel];
-        
-        // Take a snapshot of the background scroll view and apply a blur to that image
-        // Then add the blurred image on top of the regular image and slowly fade it in
-        // in scrollViewDidScroll
-        UIGraphicsBeginImageContextWithOptions(_backgroundScrollView.bounds.size, _backgroundScrollView.opaque, 0.0);
-        [_backgroundScrollView.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        _blurImageView = [[UIImageView alloc] initWithFrame:_imageView.frame];
-        _blurImageView.image = [img applyBlurWithRadius:12 tintColor:[UIColor colorWithWhite:0.8 alpha:0.4] saturationDeltaFactor:1.8 maskImage:nil];
-        _blurImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _blurImageView.alpha = 0;
-        _blurImageView.backgroundColor = [UIColor clearColor];
-        [_backgroundScrollView addSubview:_blurImageView];
- 
-        _commentsViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_backgroundScrollView.frame), CGRectGetWidth(_mainScrollView.frame), CGRectGetHeight(_mainScrollView.frame) - kBarHeight )];
-        [_commentsViewContainer addGradientMaskWithStartPoint:CGPointMake(0.5, 0.0) endPoint:CGPointMake(0.5, 0.03)];
-        _commentsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_mainScrollView.frame), CGRectGetHeight(_mainScrollView.frame) - kBarHeight ) style:UITableViewStylePlain];
-        _commentsTableView.scrollEnabled = NO;
-        _commentsTableView.delegate = self;
-        _commentsTableView.dataSource = self;
-        _commentsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-        _commentsTableView.separatorColor = [UIColor clearColor];
-        
-        [_mainScrollView addSubview:_backgroundScrollView];
-        [_commentsViewContainer addSubview:_commentsTableView];
-        [_mainScrollView addSubview:_commentsViewContainer];
-        
-        // Let's put in some fake data!
-        comments = [@[@"Oh my god! Me too!", @"No way! I love secrets too!", @"I for some reason really like sharing my deepest darkest secrest to the entire world", @"More comments", @"Go Toronto Blue Jays!", @"I rather use Twitter", @"I don't get Secret", @"I don't have an iPhone", @"How are you using this then?"] mutableCopy];
-        [_toolBarView setNumberOfComments:[comments count]];
-    }
+    // Take a snapshot of the background scroll view and apply a blur to that image
+    // Then add the blurred image on top of the regular image and slowly fade it in
+    // in scrollViewDidScroll
+    UIGraphicsBeginImageContextWithOptions(_backgroundScrollView.bounds.size, _backgroundScrollView.opaque, 0.0);
+    [_backgroundScrollView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    _blurImageView = [[UIImageView alloc] initWithFrame:_imageView.frame];
+    _blurImageView.image = [img applyBlurWithRadius:12 tintColor:[UIColor colorWithWhite:0.8 alpha:0.4] saturationDeltaFactor:1.8 maskImage:nil];
+    _blurImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _blurImageView.alpha = 0;
+    _blurImageView.backgroundColor = [UIColor clearColor];
+    [_backgroundScrollView addSubview:_blurImageView];
+    
+    _commentsViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(_backgroundScrollView.frame), CGRectGetWidth(_mainScrollView.frame), CGRectGetHeight(_mainScrollView.frame) - kBarHeight )];
+    [_commentsViewContainer addGradientMaskWithStartPoint:CGPointMake(0.5, 0.0) endPoint:CGPointMake(0.5, 0.03)];
+    _commentsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_mainScrollView.frame), CGRectGetHeight(_mainScrollView.frame) - kBarHeight ) style:UITableViewStylePlain];
+    _commentsTableView.scrollEnabled = NO;
+    _commentsTableView.delegate = self;
+    _commentsTableView.dataSource = self;
+    _commentsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    _commentsTableView.separatorColor = [UIColor clearColor];
+    
+    [_mainScrollView addSubview:_backgroundScrollView];
+    [_commentsViewContainer addSubview:_commentsTableView];
+    [_mainScrollView addSubview:_commentsViewContainer];
+    
+    // Let's put in some fake data!
+    comments = [@[@"Oh my god! Me too!", @"No way! I love secrets too!", @"I for some reason really like sharing my deepest darkest secrest to the entire world", @"More comments", @"Go Toronto Blue Jays!", @"I rather use Twitter", @"I don't get Secret", @"I don't have an iPhone", @"How are you using this then?"] mutableCopy];
+    [_toolBarView setNumberOfComments:[comments count]];
+    
     return self;
 }
 

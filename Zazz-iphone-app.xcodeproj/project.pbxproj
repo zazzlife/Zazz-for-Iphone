@@ -11,7 +11,7 @@
 		0DD31809191B2063003D5630 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD31808191B2063003D5630 /* FeedViewController.m */; };
 		0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */; };
 		2A01CBA4196B156200C4B81F /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CB99196B156200C4B81F /* CommentCell.m */; };
-		2A01CBA5196B156200C4B81F /* PhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CB9B196B156200C4B81F /* PhotoDetailViewController.m */; };
+		2A01CBA5196B156200C4B81F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CB9B196B156200C4B81F /* DetailViewController.m */; };
 		2A01CBA6196B156200C4B81F /* ToolBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CB9D196B156200C4B81F /* ToolBarView.m */; };
 		2A01CBA7196B156200C4B81F /* UIFont+SecretFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CB9F196B156200C4B81F /* UIFont+SecretFont.m */; };
 		2A01CBA8196B156200C4B81F /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CBA1196B156200C4B81F /* UIImage+ImageEffects.m */; };
@@ -93,8 +93,8 @@
 		0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 		2A01CB98196B156200C4B81F /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		2A01CB99196B156200C4B81F /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
-		2A01CB9A196B156200C4B81F /* PhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoDetailViewController.h; sourceTree = "<group>"; };
-		2A01CB9B196B156200C4B81F /* PhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoDetailViewController.m; sourceTree = "<group>"; };
+		2A01CB9A196B156200C4B81F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2A01CB9B196B156200C4B81F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		2A01CB9C196B156200C4B81F /* ToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarView.h; sourceTree = "<group>"; };
 		2A01CB9D196B156200C4B81F /* ToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarView.m; sourceTree = "<group>"; };
 		2A01CB9E196B156200C4B81F /* UIFont+SecretFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SecretFont.h"; sourceTree = "<group>"; };
@@ -242,8 +242,8 @@
 			children = (
 				2A01CB98196B156200C4B81F /* CommentCell.h */,
 				2A01CB99196B156200C4B81F /* CommentCell.m */,
-				2A01CB9A196B156200C4B81F /* PhotoDetailViewController.h */,
-				2A01CB9B196B156200C4B81F /* PhotoDetailViewController.m */,
+				2A01CB9A196B156200C4B81F /* DetailViewController.h */,
+				2A01CB9B196B156200C4B81F /* DetailViewController.m */,
 				2A01CB9C196B156200C4B81F /* ToolBarView.h */,
 				2A01CB9D196B156200C4B81F /* ToolBarView.m */,
 				2A01CB9E196B156200C4B81F /* UIFont+SecretFont.h */,
@@ -642,7 +642,7 @@
 				2A4144FD19689857001C1090 /* Notification.m in Sources */,
 				2A01CBB7196B289400C4B81F /* ZazzFeed.m in Sources */,
 				2A2385E4194521D300F7FABD /* SDImageCache.m in Sources */,
-				2A01CBA5196B156200C4B81F /* PhotoDetailViewController.m in Sources */,
+				2A01CBA5196B156200C4B81F /* DetailViewController.m in Sources */,
 				2A2385E9194521D300F7FABD /* SDWebImageManager.m in Sources */,
 				0DD31809191B2063003D5630 /* FeedViewController.m in Sources */,
 				0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */,

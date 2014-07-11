@@ -9,7 +9,7 @@
 #import "FeedViewController.h"
 #import "FeedTableViewCell.h"
 #import "CFTabBarController.h"
-#import "PhotoDetailViewController.h"
+#import "DetailViewController.h"
 #import "Feed.h"
 #import "Photo.h"
 #import "AppDelegate.h"
@@ -67,7 +67,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 }
 
 -(void)viewImage:(UIButton*)sender{
-    nextViewController = [[PhotoDetailViewController alloc] initWithPhoto:sender.currentBackgroundImage andParentViewController:self];
+    nextViewController = [[DetailViewController alloc] initWithPhoto:sender.currentBackgroundImage andParentViewController:self];
     for (UIView *v in self.nextView.subviews) {
         [v removeFromSuperview];
     }

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FeedViewController.h"
 
-@interface PhotoDetailViewController: UIViewController <ChildViewController>
+@interface DetailViewController: UIViewController <ChildViewController>
 
 @property UIImageView* _imageView;
 

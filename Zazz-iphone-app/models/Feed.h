@@ -11,6 +11,10 @@
 
 @interface Feed : NSObject
 
+extern const NSString* FEED_POST;
+extern const NSString* FEED_PHOTO;
+extern const NSString* FEED_EVENT;
+
 @property NSString* feedId;
 @property Profile* user;
 @property BOOL canCurrentUserRemoveFeed;
