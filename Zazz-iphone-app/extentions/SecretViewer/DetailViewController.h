@@ -12,7 +12,8 @@
 @interface DetailViewController: UIViewController <ChildViewController>
 
 @property UIImageView* _imageView;
+@property UIViewController* delegate;
 
--(id)initWithPhoto:(UIImage*)image andParentViewController:(UIViewController*)controller;
+-(id)initWithPhoto:(UIImage*)image andDelegate:(UIViewController*)controller;
 
 @end

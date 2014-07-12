@@ -690,20 +690,20 @@
         <scene sceneID="GaV-Bl-2ym">
             <objects>
                 <viewController id="RBc-fh-MYw" customClass="FeedViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="euv-dr-P4o" userLabel="ParentsView">
+                    <view key="view" contentMode="scaleToFill" id="euv-dr-P4o" userLabel="view">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" id="YrZ-V0-1Bt" userLabel="nextView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <connections>
                                     <segue destination="bnA-wY-D9V" kind="embed" id="MSc-zY-OYh"/>
                                 </connections>
                             </containerView>
                             <containerView hidden="YES" contentMode="scaleToFill" id="PBV-jL-kPT" userLabel="leftNav">
                                 <rect key="frame" x="-200" y="0.0" width="200" height="524"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="9dM-CA-8wr" kind="embed" id="8vz-nE-Dow"/>
@@ -711,7 +711,7 @@
                             </containerView>
                             <containerView hidden="YES" contentMode="scaleToFill" id="AvK-pM-lRl" userLabel="rightNav">
                                 <rect key="frame" x="320" y="0.0" width="240" height="524"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="wzV-fg-VEe" kind="embed" id="xwj-bU-1N5"/>
@@ -719,7 +719,7 @@
                             </containerView>
                             <view contentMode="scaleToFill" restorationIdentifier="feedNavView" id="agA-Mw-geX" userLabel="navFeedView">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="O7b-1n-2Vm" userLabel="NavView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -758,8 +758,8 @@
                                         <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" canCancelContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="18" sectionFooterHeight="22" id="5EX-d3-Bl7">
-                                        <rect key="frame" x="0.0" y="57" width="320" height="468"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <rect key="frame" x="0.0" y="57" width="320" height="469"/>
+                                        <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <inset key="insetFor6xAndEarlier" minX="0.0" minY="-50" maxX="0.0" maxY="50"/>
                                         <prototypes>
@@ -925,6 +925,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.97254901959999995" green="0.75294117650000003" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" tag="1" title="" id="e5a-hQ-Jsq">
@@ -1055,6 +1056,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="RBc-fh-MYw" kind="embed" id="mSN-y8-PpA"/>
                                 </connections>
@@ -1063,6 +1065,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="00c-U6-IMJ" kind="embed" id="z3t-zf-rN2"/>
                                 </connections>
@@ -1077,6 +1080,7 @@
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.98431372549999996" green="0.74509803919999995" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <outlet property="feedButton" destination="of4-ZJ-4Ns" id="XaF-3a-xUN"/>

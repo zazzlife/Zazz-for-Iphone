@@ -66,8 +66,23 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:APPLICATION_GREY] width:320 andHeight:49]];
 }
 
+-(void)resetViewHeight:(UIView*)view{
+    
+}
+
+-(void)enableGestures{
+    swipe_left.enabled = true;
+    swipe_right.enabled = true;
+    [[[AppDelegate getAppDelegate] appTabBar] enable];
+}
+-(void)disableGestures{
+    swipe_left.enabled = false;
+    swipe_right.enabled = false;
+    [[[AppDelegate getAppDelegate] appTabBar] disable];
+}
+
 -(void)viewImage:(UIButton*)sender{
-    nextViewController = [[DetailViewController alloc] initWithPhoto:sender.currentBackgroundImage andParentViewController:self];
+    nextViewController = [[DetailViewController alloc] initWithPhoto:sender.currentBackgroundImage andDelegate:self];
     for (UIView *v in self.nextView.subviews) {
         [v removeFromSuperview];
     }
@@ -167,24 +182,30 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 }
 
 -(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier{
+    if(right_active) [self rightDrawerButton:nil];
+    if(left_active) [self leftDrawerButton:nil];
     if(!identifier)[self backToParentController];
     if(![active_identifier isEqualToString:identifier]){
         active_identifier = identifier;
         nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
         [nextViewController setParentViewController:self];
-//        nextViewController = [nextViewController init];
         [self.nextView addSubview:nextViewController.view];
     }
-    [self.nextView setFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.nextView setHidden:false];
     [UIView setAnimationsEnabled:YES];
+    UIView* tabBar = self.view.superview.superview;
+    CGFloat window_width = self.view.window.frame.size.width;
+    CGFloat window_height = self.view.window.frame.size.height;
+    
+    [self.nextView setFrame:CGRectMake(window_width, 0, window_width, window_height)];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
         animations:^(void){
-            [self.nextView setFrame:self.view.frame];
-            [self.navFeedView setFrame:CGRectMake(-self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            [self.nextView setHidden:false];
+            [tabBar.superview addSubview:self.nextView];
+            [tabBar setFrame:CGRectMake(-window_width, 0, window_width, window_height)];
+            [self.nextView setFrame:CGRectMake(0, 0, window_width, window_height)];
         }
         completion:^(BOOL completed){
-            if(left_active) [self leftDrawerButton:nil];//close left drawer first.
             [UIView setAnimationsEnabled:NO];
         }
      ];
@@ -193,15 +214,19 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
 -(void)backToParentController{
     [UIView setAnimationsEnabled:YES];
+    UIView* tabBar = self.view.superview.superview;
+    CGFloat window_width = self.view.window.frame.size.width;
+    CGFloat window_height = self.view.window.frame.size.height;
+    [self.nextView setFrame:CGRectMake(0, 0, window_width, window_height)];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
-        animations:^(void){
-            [self.navFeedView setFrame:self.nextView.frame];
-            [self.nextView setFrame:CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        }
-        completion:^(BOOL completed){
-            [UIView setAnimationsEnabled:NO];
-            [self.nextView setHidden:true];
-        }
+         animations:^(void){
+             [tabBar setFrame:CGRectMake(0, 0, window_width, window_height)];
+             [self.nextView setFrame:CGRectMake(window_width, 0, window_width, window_height)];
+         }
+         completion:^(BOOL completed){
+             [UIView setAnimationsEnabled:NO];
+             [self.nextView setHidden:true];
+         }
      ];
 }
 

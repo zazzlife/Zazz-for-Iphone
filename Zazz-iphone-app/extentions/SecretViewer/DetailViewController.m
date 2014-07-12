@@ -27,30 +27,32 @@ const CGFloat kCommentCellHeight = 50.0f;
 
 @end
 
-@implementation DetailViewController {
+@implementation DetailViewController
     
-    CGRect HEADER_INIT_FRAME;
-    CGRect TOOLBAR_INIT_FRAME;
-    
-    UIScrollView *_mainScrollView;
-    UIScrollView *_backgroundScrollView;
-    UIImageView *_blurImageView;
-    UILabel *_textLabel;
-    ToolBarView *_toolBarView;
-    UIView *_commentsViewContainer;
-    UITableView *_commentsTableView;
-    UIButton *_backButton;
-    UIImageView *_imageView;
-    
-    Feed* _feed;
-    NSMutableArray *comments;
-}
+CGRect HEADER_INIT_FRAME;
+CGRect TOOLBAR_INIT_FRAME;
 
--(id)initWithPhoto:(UIImage*)image andParentViewController:(UIViewController*)controller{
+UIScrollView *_mainScrollView;
+UIScrollView *_backgroundScrollView;
+UIImageView *_blurImageView;
+UILabel *_textLabel;
+ToolBarView *_toolBarView;
+UIView *_commentsViewContainer;
+UITableView *_commentsTableView;
+UIButton *_backButton;
+UIImageView *_imageView;
+
+NSMutableArray *comments;
+
+@synthesize delegate;
+
+
+-(id)initWithPhoto:(UIImage*)image andDelegate:(UIViewController*)delegateController{
     
     if (!self) {self = [super init];}
-    
-    self.parentViewController = controller;
+        
+    self.delegate = delegateController;
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     
     _mainScrollView = [[UIScrollView alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.frame];
     _mainScrollView.delegate = self;
@@ -63,7 +65,7 @@ const CGFloat kCommentCellHeight = 50.0f;
     
     _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
     [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
-    [_backButton addTarget:self.parentViewController action:@selector(backToParentController) forControlEvents:UIControlEventTouchUpInside];
+    [_backButton addTarget:self.delegate action:@selector(backToParentController) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_backButton];
     
     _textLabel = [[UILabel alloc] initWithFrame:HEADER_INIT_FRAME];
