@@ -69,48 +69,12 @@ BOOL enabled = true;
     return activeView;
 }
 
--(void)enable{
-    enabled = true;
-    [self.tabBar setHidden:false];
-    UIView* activeViewTest = self.getActiveChildView;
-    [activeViewTest setFrame:CGRectMake(
-                                        activeViewTest.frame.origin.x ,
-                                        activeViewTest.frame.origin.y,
-                                        activeViewTest.frame.size.width,
-                                        self.view.frame.size.height - self.tabBar.frame.size.height
-                                        )
-     ];
-    for(UIView* view in activeViewTest.subviews){
-        [view setFrame:CGRectMake(
-                                  view.frame.origin.x ,
-                                  view.frame.origin.y,
-                                  view.frame.size.width,
-                                  self.view.frame.size.height - self.tabBar.frame.size.height
-                                  )
-         ];
-    }
-}
--(void)disable{
-    enabled = false;
-    [self.tabBar setHidden:true];
-    UIView* activeViewTest = self.getActiveChildView;
-    [activeViewTest setFrame:self.view.frame];
-    for(UIView* views in activeViewTest.subviews){
-        [views setFrame:CGRectMake(
-                                   views.frame.origin.x ,
-                                   views.frame.origin.y,
-                                   views.frame.size.width,
-                                   self.view.frame.size.height
-                                   )
-         ];
-    }
-}
-
 -(void) viewDidAppear:(BOOL)animated{
     UIImage* tabImage = [UIImage imageNamed:@"post button"];
     [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
     [self.postButton setImage:tabImage];
 }
+
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender{
     if (! enabled) return;
     switch(sender.tag){

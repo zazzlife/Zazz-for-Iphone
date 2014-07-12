@@ -66,21 +66,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:APPLICATION_GREY] width:320 andHeight:49]];
 }
 
--(void)resetViewHeight:(UIView*)view{
-    
-}
-
--(void)enableGestures{
-    swipe_left.enabled = true;
-    swipe_right.enabled = true;
-    [[[AppDelegate getAppDelegate] appTabBar] enable];
-}
--(void)disableGestures{
-    swipe_left.enabled = false;
-    swipe_right.enabled = false;
-    [[[AppDelegate getAppDelegate] appTabBar] disable];
-}
-
 -(void)viewImage:(UIButton*)sender{
     nextViewController = [[DetailViewController alloc] initWithPhoto:sender.currentBackgroundImage andDelegate:self];
     for (UIView *v in self.nextView.subviews) {

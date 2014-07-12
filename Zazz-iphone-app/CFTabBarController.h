@@ -24,8 +24,6 @@
 
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender;
 
--(void)enable;
--(void)disable;
 -(void)goHome;
 
 @end
