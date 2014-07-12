@@ -197,6 +197,9 @@
                             </navigationBar>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="profilePhoto" destination="RU0-iu-mxd" id="m1K-Rk-Cdd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CV7-Uj-cWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

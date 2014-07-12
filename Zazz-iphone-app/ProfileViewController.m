@@ -17,6 +17,7 @@
 {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMyProfile:) name:@"gotMyProfile" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
 }
 
 -(void)gotMyProfile:(NSNotification*)notif{
@@ -25,6 +26,19 @@
     [self set_profile:profile];
 //    NSLog(@"Welcome profileview: %@", profile.username);
 }
+
+-(void)gotAProfile:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotProfile"]) return;
+    Profile* profile = notif.object;
+    if([profile.userId intValue] == [self._profile.userId intValue] && profile.photo){
+        [self set_profile:profile];
+        [self.profilePhoto setImage:profile.photo];
+        [self.profilePhoto.layer setCornerRadius:50];
+        [self.profilePhoto.layer setMasksToBounds:YES];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotProfile" object:nil];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {

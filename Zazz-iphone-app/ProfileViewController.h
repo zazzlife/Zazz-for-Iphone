@@ -10,8 +10,11 @@
 #import "CFTabBarController.h"
 #import "Profile.h"
 
+#define PROFILE_PAGE_PHOTO_HEIGHT 140
+
 @interface ProfileViewController : UIViewController <CFTabBarViewDelegate>
 
 @property Profile* _profile;
+@property IBOutlet UIImageView* profilePhoto;
 
 @end
