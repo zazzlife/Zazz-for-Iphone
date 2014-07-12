@@ -13,7 +13,7 @@
 @interface NotificationViewController : UIViewController<ChildViewController, UITableViewDataSource, UITableViewDelegate>
 
 @property IBOutlet UISegmentedControl* segmentedControl;
-
+@property Profile* profile;
 @property UITableViewController* tableViewController;
 
 -(IBAction)changeView:(UISegmentedControl*)sender;

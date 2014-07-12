@@ -12,10 +12,17 @@
 @implementation Profile
 
 @synthesize userId;
+@synthesize is_public;
 @synthesize accountType;
 @synthesize isConfirmed;
 @synthesize username;
 @synthesize photo;
+
+-(Profile*)init{
+    if (self = [super init])
+        self.is_public = false;
+    return self;
+}
 
 -(NSString*)photoUrl{
     return self.photoUrl;

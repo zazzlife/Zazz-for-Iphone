@@ -24,7 +24,8 @@ static const int CONDITION_REQUESTS_LOADING = 3;
 static const int CONDITION_REQUESTS_NONE = 4;
 static const int CONDITION_REQUESTS_SOME = 5;
 
-Profile* _profile;
+@synthesize profile;
+
 FeedViewController* feedViewController;
 BOOL seeing_requests = false;
 NSArray* requests;
@@ -34,6 +35,7 @@ NSArray* notifications;
     [super viewDidLoad];
     seeing_requests = false;
     [self.segmentedControl removeSegmentAtIndex:0 animated:0];
+    if(self.profile && !self.profile.is_public) [self.segmentedControl insertSegmentWithTitle:@"Requests" atIndex:0 animated:1];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFollowRequests:) name:@"gotFollowRequests" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzNotifications:) name:@"gotNotifications" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
@@ -316,13 +318,6 @@ NSArray* notifications;
 -(void)gotAProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotProfile"]) return;
     [self.tableViewController.tableView reloadData];
-}
-
--(void)set_profile:(Profile *)profile{
-    //if(profile.is_public) return;
-    if(!_profile)
-        [self.segmentedControl insertSegmentWithTitle:@"Requests" atIndex:0 animated:1];
-    _profile = profile;
 }
 
 @end

@@ -11,6 +11,7 @@
 @interface Profile : NSObject
 
 @property NSString* userId;
+@property BOOL is_public;
 @property NSString* accountType;
 @property BOOL isConfirmed;
 @property NSString* username;

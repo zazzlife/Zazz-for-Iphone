@@ -47,7 +47,7 @@
     switch([button tag]){
         case 1:{
             NotificationViewController* notifController = (NotificationViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"notificationView"];
-            [notifController set_profile:self._profile];
+            [notifController setProfile:self._profile];
             
             NSArray* objects  = [NSArray arrayWithObjects:notifController, @"notifController", nil];
             NSArray* keys  = [NSArray arrayWithObjects:@"childController", @"identifier", nil];
