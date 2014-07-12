@@ -7,6 +7,7 @@
 //
 
 #import "FeedTableViewCell.h"
+#import "DetailViewController.h"
 #import "UIImageView+WebCache.h"
 #import "ZazzApi.h"
 #import "Photo.h"
@@ -56,8 +57,20 @@ int _albumObserversCounter;
     [superview addSubview:label];
 }
 
--(void)clickedImage:(UIImageView*)imageView{
-    
+
+
+-(void)showImage:(UIButton*)imageButton{
+    DetailViewController* detailView = [[DetailViewController alloc] initWithPhoto:imageButton.currentBackgroundImage andDelegate:self];
+    NSArray* keys  =    [NSArray arrayWithObjects:
+                         @"childController",
+                         @"identifier",
+                         nil];
+    NSArray* objects  = [NSArray arrayWithObjects:
+                         detailView,
+                         [NSString stringWithFormat:@"detailView-tag%ld",imageButton.tag],
+                         nil];
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:nil userInfo:userInfo];
 }
 
 -(void)setFeed:(Feed *)feed{
@@ -90,8 +103,7 @@ int _albumObserversCounter;
             [imageView setBackgroundImage:image forState:UIControlStateNormal];
             [imageView setShowsTouchWhenHighlighted:false];
             [imageView setUserInteractionEnabled:true];
-            [imageView addTarget:self.tableView.delegate action:@selector(viewImage:) forControlEvents:UIControlEventTouchUpInside];
-            NSLog(@"cellImage: %@", imageView.currentBackgroundImage);
+            [imageView addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
             UIView* previousImage = (UIView*)self.feedCellContentView.subviews.lastObject;
             if (previousImage != nil) {
                 [imageView setFrame:CGRectMake(0, previousImage.frame.origin.y + previousImage.frame.size.height, self.feedCellContentView.frame.size.width, image.size.height)];

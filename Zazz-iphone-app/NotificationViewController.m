@@ -43,7 +43,7 @@ NSArray* notifications;
 }
 
 -(IBAction)goBack:(UIButton*)backButton{
-    [feedViewController backToParentController];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showHome" object:nil userInfo:nil];
 }
 
 -(IBAction)changeView:(UISegmentedControl*)sender{

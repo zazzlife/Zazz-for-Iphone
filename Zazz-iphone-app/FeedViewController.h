@@ -16,7 +16,7 @@
 @property NSMutableArray* feed;
 @property NSMutableDictionary* categoryFeeds;
 @property NSArray* filteredFeed;
-@property UIViewController* activeNextView;
+@property UIViewController* activeNextViewCtrl;
 
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_left;
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_right;
@@ -36,10 +36,6 @@
 -(IBAction)toggleFilter:(id)sender;
 -(void)getFeedAfter:(NSString*)feed_id;
 -(BOOL)setActiveCategory:(NSString*)active_category_id;
-
-//LeftDrawer SubViews
--(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier;
--(void)backToParentController;
 
 @end
 

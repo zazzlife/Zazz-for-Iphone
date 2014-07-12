@@ -33,7 +33,7 @@
     
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:nil ];
     NSString* receivedDataString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@",receivedDataString);
+    NSLog(@"NOTIFICATION: %@",receivedDataString);
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;

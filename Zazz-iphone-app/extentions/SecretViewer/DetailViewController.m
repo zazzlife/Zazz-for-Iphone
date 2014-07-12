@@ -65,7 +65,7 @@ NSMutableArray *comments;
     
     _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
     [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
-    [_backButton addTarget:self.delegate action:@selector(backToParentController) forControlEvents:UIControlEventTouchUpInside];
+    [_backButton addTarget:self action:@selector(leaveView:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_backButton];
     
     _textLabel = [[UILabel alloc] initWithFrame:HEADER_INIT_FRAME];
@@ -88,7 +88,6 @@ NSMutableArray *comments;
     [fadeView setFrame:_imageView.frame];
     fadeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
     fadeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
     
     TOOLBAR_INIT_FRAME = CGRectMake (0, _imageView.frame.size.height-22, 320, 22);
     _toolBarView = [[ToolBarView alloc] initWithFrame:TOOLBAR_INIT_FRAME];
@@ -135,6 +134,10 @@ NSMutableArray *comments;
     [_toolBarView setNumberOfComments:[comments count]];
     
     return self;
+}
+
+-(void)leaveView:(id)sender{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showHome" object:nil userInfo:nil];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

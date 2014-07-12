@@ -44,11 +44,16 @@
 }
 
 -(IBAction) showNextView:(UIButton*)button{
-    FeedViewController* feedView = (FeedViewController*)self.parentViewController;
     switch([button tag]){
         case 1:{
-            NotificationViewController* notifController = (NotificationViewController*)[feedView prepareForNextViewWithIdentifier:@"notificationView"];
+            NotificationViewController* notifController = (NotificationViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"notificationView"];
             [notifController set_profile:self._profile];
+            
+            NSArray* objects  = [NSArray arrayWithObjects:notifController, @"notifController", nil];
+            NSArray* keys  = [NSArray arrayWithObjects:@"childController", @"identifier", nil];
+            NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:nil userInfo:userInfo];
+            
         }
     }
     

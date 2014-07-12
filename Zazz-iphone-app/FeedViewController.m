@@ -52,6 +52,8 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotPhotoImageNotification:) name:@"gotPhotoImage" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFeed:) name:@"gotFeed" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNextView:) name:@"showNextView" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showHome:) name:@"showHome" object:nil];
     
     [self getFeedAfter:NULL];
     
@@ -64,16 +66,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     
     [AppDelegate removeZazzBackgroundLogo];
     [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:APPLICATION_GREY] width:320 andHeight:49]];
-}
-
--(void)viewImage:(UIButton*)sender{
-    nextViewController = [[DetailViewController alloc] initWithPhoto:sender.currentBackgroundImage andDelegate:self];
-    for (UIView *v in self.nextView.subviews) {
-        [v removeFromSuperview];
-    }
-    [self.nextView addSubview:nextViewController.view];
-    active_identifier = @"";
-    [self prepareForNextViewWithIdentifier:@""];
 }
 
 -(void)gotZazzFeed:(NSNotification *)notif{
@@ -166,15 +158,20 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     return retVal;
 }
 
--(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier{
+-(void)showNextView:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"showNextView"]) return;
     if(right_active) [self rightDrawerButton:nil];
     if(left_active) [self leftDrawerButton:nil];
-    if(!identifier)[self backToParentController];
-    if(![active_identifier isEqualToString:identifier]){
+    
+    UIViewController* childController = [notif.userInfo objectForKey:@"childController"];
+    NSString* identifier = [notif.userInfo objectForKey:@"identifier"];
+    
+    if(childController && (![identifier isEqualToString:active_identifier])){
+        for (UIView *v in self.nextView.subviews)
+            [v removeFromSuperview];
+        [self.nextView addSubview:childController.view];
         active_identifier = identifier;
-        nextViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
-        [nextViewController setParentViewController:self];
-        [self.nextView addSubview:nextViewController.view];
+        self.activeNextViewCtrl = childController;
     }
     [self.nextView setHidden:false];
     [UIView setAnimationsEnabled:YES];
@@ -194,10 +191,10 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
             [UIView setAnimationsEnabled:NO];
         }
      ];
-    return (UIViewController*)nextViewController;
 }
 
--(void)backToParentController{
+-(void)showHome:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"showHome"]) return;
     [UIView setAnimationsEnabled:YES];
     UIView* tabBar = self.view.superview.superview;
     CGFloat window_width = self.view.window.frame.size.width;
