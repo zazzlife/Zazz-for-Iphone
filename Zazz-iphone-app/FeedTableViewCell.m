@@ -60,7 +60,9 @@ int _albumObserversCounter;
 
 
 -(void)showImage:(UIButton*)imageButton{
-    DetailViewController* detailView = [[DetailViewController alloc] initWithPhoto:imageButton.currentBackgroundImage andDelegate:self];
+    int idx  = [imageButton.restorationIdentifier intValue];
+    Photo* photo = (Photo*)[((NSMutableArray*)[self._feed content]) objectAtIndex:idx];
+    DetailViewController* detailView = [[DetailViewController alloc] initWithPhoto:photo.image andDescription:photo.description andDelegate:(UIViewController*)self.tableView.delegate];
     NSArray* keys  =    [NSArray arrayWithObjects:
                          @"childController",
                          @"identifier",
@@ -88,31 +90,33 @@ int _albumObserversCounter;
     }
     if([[feed feedType] isEqualToString:@"Photo"]){
         _albumObserversCounter = 0;
-        for(Photo* photo in (NSMutableArray*)[feed content]){
-            UIButton* imageView;
+        for(int _photoIdx = 0; _photoIdx<((NSMutableArray*)[feed content]).count; _photoIdx++){
+            Photo* photo = [((NSMutableArray*)[feed content]) objectAtIndex:_photoIdx];
+            UIButton* imageButton;
             if(photo.image == nil){
                 if(!self._neededPhotoIds)[self set_neededPhotoIds:[[NSMutableArray alloc ]init]];
                 [self._neededPhotoIds addObject:photo.photoId];
-                imageView = [[UIButton alloc ]init];
-                [imageView setTag:[photo.photoId intValue]];
-                [self.feedCellContentView addSubview:imageView];
+                imageButton = [[UIButton alloc ]init];
+                [self.feedCellContentView addSubview:imageButton];
                 continue;
             }
             UIImage* image = [UIImage getImage:photo.image scaledToWidth:self.tableView.frame.size.width];
-            imageView = [[UIButton alloc] init];
-            [imageView setBackgroundImage:image forState:UIControlStateNormal];
-            [imageView setShowsTouchWhenHighlighted:false];
-            [imageView setUserInteractionEnabled:true];
-            [imageView addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
+            imageButton = [[UIButton alloc] init];
+            [imageButton setBackgroundImage:image forState:UIControlStateNormal];
+            [imageButton setShowsTouchWhenHighlighted:false];
+            [imageButton setUserInteractionEnabled:true];
+            [imageButton setRestorationIdentifier:[NSString stringWithFormat:@"%d",_photoIdx]];
+            NSLog(@"index: %d feed_id:%@",_photoIdx, self._feed.feedId);
+            [imageButton addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
             UIView* previousImage = (UIView*)self.feedCellContentView.subviews.lastObject;
             if (previousImage != nil) {
-                [imageView setFrame:CGRectMake(0, previousImage.frame.origin.y + previousImage.frame.size.height, self.feedCellContentView.frame.size.width, image.size.height)];
+                [imageButton setFrame:CGRectMake(0, previousImage.frame.origin.y + previousImage.frame.size.height, self.feedCellContentView.frame.size.width, image.size.height)];
             }else{
-                [imageView setFrame:CGRectMake(0, 0 , self.feedCellContentView.frame.size.width, image.size.height)];
+                [imageButton setFrame:CGRectMake(0, 0 , self.feedCellContentView.frame.size.width, image.size.height)];
             }
             _height += image.size.height;
-            [imageView setTag:[photo.photoId intValue]];
-            [self.feedCellContentView addSubview:imageView];
+            [imageButton setTag:[photo.photoId intValue]];
+            [self.feedCellContentView addSubview:imageButton];
         }
     }else{
         NSString* text = @"";

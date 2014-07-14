@@ -93,8 +93,8 @@
 		0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 		2A01CB98196B156200C4B81F /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		2A01CB99196B156200C4B81F /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
-		2A01CB9A196B156200C4B81F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		2A01CB9B196B156200C4B81F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		2A01CB9A196B156200C4B81F /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailViewController.h; path = extentions/SecretViewer/DetailViewController.h; sourceTree = "<group>"; };
+		2A01CB9B196B156200C4B81F /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailViewController.m; path = extentions/SecretViewer/DetailViewController.m; sourceTree = "<group>"; };
 		2A01CB9C196B156200C4B81F /* ToolBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolBarView.h; sourceTree = "<group>"; };
 		2A01CB9D196B156200C4B81F /* ToolBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolBarView.m; sourceTree = "<group>"; };
 		2A01CB9E196B156200C4B81F /* UIFont+SecretFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+SecretFont.h"; sourceTree = "<group>"; };
@@ -242,8 +242,6 @@
 			children = (
 				2A01CB98196B156200C4B81F /* CommentCell.h */,
 				2A01CB99196B156200C4B81F /* CommentCell.m */,
-				2A01CB9A196B156200C4B81F /* DetailViewController.h */,
-				2A01CB9B196B156200C4B81F /* DetailViewController.m */,
 				2A01CB9C196B156200C4B81F /* ToolBarView.h */,
 				2A01CB9D196B156200C4B81F /* ToolBarView.m */,
 				2A01CB9E196B156200C4B81F /* UIFont+SecretFont.h */,
@@ -391,6 +389,7 @@
 				2A39F2E5193DEB04002E8873 /* CFTabBarController.m */,
 				2AA057D6193F453300E1617D /* Feed */,
 				2AE281881956000A0015602F /* Notifications */,
+				2AEA1C811971CA3100A177F3 /* DetailView */,
 				2A23858E19408C4200F7FABD /* Post */,
 				2A23858F19408EDE00F7FABD /* Profile */,
 				2AE281891956002D0015602F /* Auth */,
@@ -459,6 +458,15 @@
 				2A470D3E191FE863008DBFED /* RegisterViewController.m */,
 			);
 			name = Auth;
+			sourceTree = "<group>";
+		};
+		2AEA1C811971CA3100A177F3 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				2A01CB9A196B156200C4B81F /* DetailViewController.h */,
+				2A01CB9B196B156200C4B81F /* DetailViewController.m */,
+			);
+			name = DetailView;
 			sourceTree = "<group>";
 		};
 		5E8AA6E318FCAED600C99D9F = {

@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ToolBarView : UIView
+
+@property UILabel* _cityLabel;
+
 - (void)setNumberOfComments:(NSInteger)comments;
+
 @end

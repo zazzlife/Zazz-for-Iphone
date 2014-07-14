@@ -11,9 +11,10 @@
 
 @interface DetailViewController: UIViewController
 
-@property UIImageView* _imageView;
 @property UIViewController* delegate;
 
--(id)initWithPhoto:(UIImage*)image andDelegate:(UIViewController*)controller;
+-(id)initWithPhoto:(UIImage*)image andDescription:(NSString*)description andDelegate:(UIViewController*)delegateController;
+-(id)initWithText:(NSString*)text andDelegate:(UIViewController*)controller;
+
 
 @end

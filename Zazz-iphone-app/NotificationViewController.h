@@ -12,13 +12,13 @@
 
 @interface NotificationViewController : UIViewController<ChildViewController, UITableViewDataSource, UITableViewDelegate>
 
-@property IBOutlet UISegmentedControl* segmentedControl;
 @property Profile* profile;
 @property UITableViewController* tableViewController;
 
+@property IBOutlet UISegmentedControl* segmentedControl;
+
 -(IBAction)changeView:(UISegmentedControl*)sender;
 -(IBAction)goBack:(UIButton*)backButton;
-
--(void)set_profile:(Profile*)profile;
+-(void)showNextView:(UIButton*)notificationIcon;
 
 @end

@@ -9,8 +9,10 @@
 #import "ToolBarView.h"
 #import "UIFont+SecretFont.h"
 
-@implementation ToolBarView {
-    UILabel *_cityLabel;
+@implementation ToolBarView
+
+@synthesize _cityLabel;
+
     UIButton *_moreButton;
     UIButton *_commentButton;
     UILabel *_commentCountLabel;
@@ -18,7 +20,7 @@
     UILabel *_likeCountLabel;
     
     NSInteger _likeCounter;
-}
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -29,7 +31,7 @@
         _likeCounter = 10;
         
         _cityLabel = [[UILabel alloc] init];
-        _cityLabel.text = @"San Francisco";
+        _cityLabel.text = @"....................";
         _cityLabel.font = [UIFont secretFontLightWithSize:14.f];
         _cityLabel.textColor = [UIColor whiteColor];
         _cityLabel.textAlignment = NSTextAlignmentLeft;
@@ -39,7 +41,12 @@
         [self addSubview:_cityLabel];
         
         // Hardcoded the frames for all of these for simplicity and quickness
-        _moreButton = [[UIButton alloc] initWithFrame:(CGRect){.origin = {CGRectGetMaxX(_cityLabel.frame) + 98, CGRectGetMinY(_cityLabel.frame) + 3}, .size = {22, 13}}];
+        _moreButton = [[UIButton alloc] initWithFrame:(CGRect){
+            .origin = {
+                CGRectGetMaxX(_cityLabel.frame) + 98, CGRectGetMinY(_cityLabel.frame) + 3
+            },
+            .size = {22, 13}
+        }];
         [_moreButton setImage:[UIImage imageNamed:@"moreButton.png"] forState:UIControlStateNormal];
         [self addSubview:_moreButton];
         

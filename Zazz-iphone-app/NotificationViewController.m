@@ -11,6 +11,11 @@
 #import "AppDelegate.h"
 #import "FollowRequest.h"
 #import "Notification.h"
+#import "Profile.h"
+#import "Photo.h"
+#import "Post.h"
+#import "Event.h"
+#import "DetailViewController.h"
 
 @implementation NotificationViewController
 
@@ -110,8 +115,11 @@ NSArray* notifications;
             }
             Notification* notif = (Notification*)[notifications objectAtIndex:indexPath.row];
             for(UIView* subview in cell.contentView.subviews){
-//            NSLog(@"tag:%ld class:%@ restorationIdentifier: %@", (long)subview.tag, subview.class, [subview restorationIdentifier]);
-                    if([[subview restorationIdentifier] isEqualToString:@"notifictionUserImage"]){
+           
+                NSLog(@"tag:%ld class:%@ restorationIdentifier: %@",
+                  (long)subview.tag, subview.class, [subview restorationIdentifier]);
+                
+                if([[subview restorationIdentifier] isEqualToString:@"notifictionUserImage"]){
                     [(UIImageView*)subview setImage:notif.user.photo];
                     continue;
                 }
@@ -125,7 +133,6 @@ NSArray* notifications;
                 }
                 if([[subview restorationIdentifier] isEqualToString:@"description"]){
                     NSString* text;
-                    NSLog(@"DISPLAYING %d from %@", notif.notificationType, notif.user.username);
                     switch ([notif notificationType]) {
                         case FollowRequestAccepted:
                             text = @"Accepted your friend request";
@@ -150,50 +157,33 @@ NSArray* notifications;
                     [(UILabel*)subview setText:text];
                     continue;
                 }
-                if([[subview restorationIdentifier] isEqualToString:@"auxView"]){
+                if([[subview restorationIdentifier] isEqualToString:@"actionButton"]){
 //                    UIImage* image = [UIImage imageNamed:@"like_in_notifications"];
 //                    UIImage* image = [UIImage imageNamed:@"tag_in_notifications"];
                     UIImage* image;
-                    UIImageView* imageView;
                     switch ([notif notificationType]) {
-                        case FollowRequestAccepted:
-                            image = [UIImage imageNamed:@"Packed"];
-                            imageView = [[UIImageView alloc] initWithImage:image];
-                            [imageView setFrame:subview.bounds];
-                            [subview addSubview:imageView];
-                            break;
                         case CommentOnPhoto:
                             image = ((Photo*)notif.content).image;
-                            imageView = [[UIImageView alloc] initWithImage:image];
-                            [imageView setFrame:subview.bounds];
-                            [subview addSubview:imageView];
-                            continue;
+                            subview.tag  = 0;
+                            break;
+                        case FollowRequestAccepted:
+                            image = [UIImage imageNamed:@"Packed"];
+                            subview.tag  = 1;
+                            break;
                         case CommentOnPost:
-                            image = [UIImage imageNamed:@"comment_in_notifications"];
-                            imageView = [[UIImageView alloc] initWithImage:image];
-                            [imageView setFrame:subview.bounds];
-                            [subview addSubview:imageView];
-                            continue;
                         case WallPost:
                             image = [UIImage imageNamed:@"comment_in_notifications"];
-                            imageView = [[UIImageView alloc] initWithImage:image];
-                            [imageView setFrame:subview.bounds];
-                            [subview addSubview:imageView];
-                            continue;
+                            break;
                         case CommentOnEvent:
-                            image = [UIImage imageNamed:@"newEvent_in_notifications"];
-                            imageView = [[UIImageView alloc] initWithImage:image];
-                            [imageView setFrame:subview.bounds];
-                            [subview addSubview:imageView];
-                            continue;
                         case NewEvent:
                         default:
                             image = [UIImage imageNamed:@"newEvent_in_notifications"];
-                            imageView = [[UIImageView alloc] initWithImage:image];
-                            [imageView setFrame:subview.bounds];
-                            [subview addSubview:imageView];
-                            continue;
+                            subview.tag  = 4;
+                            break;
                     }
+                    [(UIButton*)subview setTag:indexPath.row];
+                    [(UIButton*)subview setBackgroundImage:image forState:UIControlStateNormal];
+                    [(UIButton*)subview addTarget:self action:@selector(showNextView:) forControlEvents:UIControlEventTouchUpInside];
                 }
             }
             return cell;
@@ -219,6 +209,7 @@ NSArray* notifications;
                     continue;
                 }
                 [(UIButton*)subview setTag:indexPath.row];
+                [(UIButton*)subview setEnabled:true];
                 if([[subview restorationIdentifier] isEqualToString:@"confirmButton"]){
                     [(UIButton*)subview addTarget:self action:@selector(clickedConfirm:) forControlEvents:UIControlEventTouchDown];
                     continue;
@@ -237,7 +228,38 @@ NSArray* notifications;
 
 
 /* OTHER DELEGATES AND HELPERS */
-
+-(void)showNextView:(UIButton*)imageButton{
+    NSLog(@"clicked button %lu",imageButton.tag);
+    Notification* notif = (Notification*)[notifications objectAtIndex:imageButton.tag];
+    DetailViewController* detailView;
+    switch ([notif notificationType]) {
+        case CommentOnPhoto:{
+            UIImage* image = ((Photo*)[notif content]).image;
+            detailView = [[DetailViewController alloc] initWithPhoto:image andDescription:((Photo*)[notif content]).description andDelegate:self];
+            break;}
+        case CommentOnPost:
+        case WallPost:{
+            NSString* text = ((Post*)[notif content]).message;
+            detailView = [[DetailViewController alloc] initWithText:text andDelegate:self];
+            break;}
+        case FollowRequestAccepted:
+        case CommentOnEvent:
+        case NewEvent:
+        default:
+            return;
+    }
+    
+    NSArray* keys  =    [NSArray arrayWithObjects:
+                         @"childController",
+                         @"identifier",
+                         nil];
+    NSArray* objects  = [NSArray arrayWithObjects:
+                         detailView,
+                         [NSString stringWithFormat:@"detailView-notif%ld",imageButton.tag],
+                         nil];
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:nil userInfo:userInfo];
+}
 
 -(void)beginRefreshView:(UIRefreshControl*)refresh {
     [refresh setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Updating"]];
@@ -301,17 +323,19 @@ NSArray* notifications;
 }
 
 -(void)clickedConfirm:(id)sender{
+    [sender setEnabled:false];
     CGFloat index = [sender tag];
     FollowRequest* request = [requests objectAtIndex:index];
     [[AppDelegate zazzApi] setFollowRequestsUserId:request.user.userId action:ACCEPT];
-    [[AppDelegate zazzApi] getFollowRequests];
+    [[AppDelegate zazzApi] performSelector:@selector(getFollowRequests) withObject:nil afterDelay:.6];
 }
 
 -(void)clickedReject:(id)sender{
+    [sender setEnabled:false];
     CGFloat index = [sender tag];
     FollowRequest* request = [requests objectAtIndex:index];
     [[AppDelegate zazzApi] setFollowRequestsUserId:request.user.userId action:REJECT];
-    [[AppDelegate zazzApi] getFollowRequests];
+    [[AppDelegate zazzApi] performSelector:@selector(getFollowRequests) withObject:nil afterDelay:.6];
 }
 
 
