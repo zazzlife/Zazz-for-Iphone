@@ -8,13 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedViewController.h"
+#import "DetailViewItem.h"
 
 @interface DetailViewController: UIViewController
 
-@property UIViewController* delegate;
-
--(id)initWithPhoto:(UIImage*)image andDescription:(NSString*)description andDelegate:(UIViewController*)delegateController;
--(id)initWithText:(NSString*)text andDelegate:(UIViewController*)controller;
-
+-(id)initWithDetailItem:(DetailViewItem*)detailItem;
 
 @end

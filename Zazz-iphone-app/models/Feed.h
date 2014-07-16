@@ -15,6 +15,10 @@ extern const NSString* FEED_POST;
 extern const NSString* FEED_PHOTO;
 extern const NSString* FEED_EVENT;
 
+extern const int FEED_POST_INT;
+extern const int FEED_PHOTO_INT;
+extern const int FEED_EVENT_INT;
+
 @property NSString* feedId;
 @property Profile* user;
 @property BOOL canCurrentUserRemoveFeed;
@@ -22,5 +26,8 @@ extern const NSString* FEED_EVENT;
 @property NSString* feedType; //Photo, Event, Post
 @property NSMutableArray* comments;
 @property NSString* timestamp;
+
+-(BOOL)getFeedInt;
++(Feed*)makeFeedFromDict:(NSDictionary*)feed_dict;
 
 @end

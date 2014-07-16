@@ -14,4 +14,6 @@
 @property Profile* user;
 @property NSString* time;
 
++(FollowRequest*)makeFollowRequestFromDict:(NSDictionary*)request_dict;
+
 @end

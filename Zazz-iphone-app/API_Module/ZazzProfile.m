@@ -11,16 +11,17 @@
 
 @implementation ZazzProfile
 
-@synthesize _delegate;
+NSString* _profileId;
 
-- (void) getMyProfileDelegate:(id)delegate{
-    [self set_delegate:delegate];
+- (void) getMyProfile{
+    _profileId = @"";
     NSString * action = @"me";
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
--(void) getProfile:(NSString *)userId delegate:(id)delegate{
+-(void) getProfile:(NSString *)userId{
+    _profileId = userId;
     NSLog(@"TODO; IMPLEMENT GET PROFILE WITH USERID - ZazzProfile:getProfile");
 }
 
@@ -32,14 +33,11 @@
         return;
     }
     
-    Profile* profile = [[Profile alloc] init];
-    [profile setUserId:[array objectForKey:@"userId"]];
-    [profile setAccountType:[array objectForKey:@"accountType"]];
-    [profile setIsConfirmed:(BOOL)[array objectForKey:@"isConfirmed"]];
-    [profile setUsername:[array objectForKey:@"displayName"]];
-    [profile setPhotoUrl:[[array objectForKey:@"displayPhoto"] objectForKey:@"mediumLink"]];
+    Profile* profile = [Profile makeProfileFromDict:array];
     
-    [[self _delegate] gotProfile:profile];
+    NSMutableDictionary* userInfo= [[NSMutableDictionary alloc] init];
+    [userInfo setObject:_profileId forKey:@"profileId"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotProfile" object:profile userInfo:userInfo];
 }
 
 @end

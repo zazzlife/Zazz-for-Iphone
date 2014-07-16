@@ -227,38 +227,76 @@ NSArray* notifications;
 
 
 
+
+//
+//@property int type;
+//@property int itemId;
+//@property UIImage* photo;
+//@property NSString* description;
+//@property Profile* user;
+//@property int likes;
+//@property NSMutableArray* comments;
+
+
+
 /* OTHER DELEGATES AND HELPERS */
 -(void)showNextView:(UIButton*)imageButton{
-    NSLog(@"clicked button %lu",imageButton.tag);
     Notification* notif = (Notification*)[notifications objectAtIndex:imageButton.tag];
-    DetailViewController* detailView;
+    DetailViewController* detailViewController;
     switch ([notif notificationType]) {
         case CommentOnPhoto:{
-            UIImage* image = ((Photo*)[notif content]).image;
-            detailView = [[DetailViewController alloc] initWithPhoto:image andDescription:((Photo*)[notif content]).description andDelegate:self];
-            break;}
+            Photo* photo = (Photo*)[notif content];
+            DetailViewItem* detailItem = [[DetailViewItem alloc] init];
+            [detailItem setPhoto:photo.image];
+            [detailItem setDescription:photo.description];
+            [detailItem setType:TYPE_PHOTO];
+            [detailItem setItemId:[photo.photoId intValue]];
+            [detailItem setUser:photo.user];
+            [detailItem setLikes:0];
+            detailViewController = [[DetailViewController alloc] initWithDetailItem:detailItem];
+            break;
+        }
         case CommentOnPost:
         case WallPost:{
-            NSString* text = ((Post*)[notif content]).message;
-            detailView = [[DetailViewController alloc] initWithText:text andDelegate:self];
-            break;}
-        case FollowRequestAccepted:
+            Post* post = (Post*)[notif content];
+            DetailViewItem* detailItem = [[DetailViewItem alloc] init];
+            [detailItem setPhoto:nil];
+            [detailItem setDescription:post.message];
+            [detailItem setType:TYPE_POST];
+            [detailItem setItemId:[post.postId intValue]];
+            [detailItem setUser:post.fromUser];
+            [detailItem setLikes:0];
+            detailViewController = [[DetailViewController alloc] initWithDetailItem:detailItem];
+            break;
+        }
         case CommentOnEvent:
-        case NewEvent:
-        default:
-            return;
+        case NewEvent:{
+            Event* event = (Event*)[notif content];
+            DetailViewItem* detailItem = [[DetailViewItem alloc] init];
+            [detailItem setPhoto:nil];
+            [detailItem setDescription:event.description];
+            [detailItem setType:TYPE_EVENT];
+            [detailItem setItemId:[event.eventId intValue]];
+            [detailItem setUser:event.user];
+            [detailItem setLikes:0];
+            detailViewController = [[DetailViewController alloc] initWithDetailItem:detailItem];
+            break;
+        }
+        case FollowRequestAccepted:
+        default: return;
     }
+    
     
     NSArray* keys  =    [NSArray arrayWithObjects:
                          @"childController",
                          @"identifier",
                          nil];
     NSArray* objects  = [NSArray arrayWithObjects:
-                         detailView,
+                         detailViewController,
                          [NSString stringWithFormat:@"detailView-notif%ld",imageButton.tag],
                          nil];
     NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:detailViewController userInfo:userInfo];
 }
 
 -(void)beginRefreshView:(UIRefreshControl*)refresh {

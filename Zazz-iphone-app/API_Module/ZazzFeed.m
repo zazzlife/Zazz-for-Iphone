@@ -15,39 +15,37 @@
 
 @implementation ZazzFeed
 
-@synthesize _delegate;
 @synthesize _receivedData;
 
--(void) doAction:(NSString*)action withDelegate:(id)delegate{
-    [self set_delegate:delegate];
+-(void) doAction:(NSString*)action{
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 //MY-FEED
-- (void) getMyFeedAfter:(NSString*)feed_id delegate:(id)delegate{
+- (void) getMyFeedAfter:(NSString*)feed_id{
     NSString* action = [NSString stringWithFormat:@"feeds?lastFeed=%d", [feed_id intValue]];
-    [self doAction:action withDelegate:delegate];
+    [self doAction:action];
 }
-- (void) getMyFeedDelegate:(ZazzApi*)delegate{
-    [self getMyFeedAfter:@"-1" delegate:delegate];
+- (void) getMyFeed{
+    [self getMyFeedAfter:@"-1"];
 }
 
 //OTHER-USER-FEED
-- (void) getFeedForUserId:(NSString *)userId delegate:(id)delegate{
+- (void) getFeedForUserId:(NSString *)userId{
     NSString* action = [NSString stringWithFormat:@"feeds/%@",userId];
-    [self doAction:action withDelegate:delegate];
+    [self doAction:action];
 }
 
 //CATEGORIES
-- (void) getFeedCategory:(NSString*)category_id delegate:(id)delegate{
+- (void) getFeedCategory:(NSString*)category_id{
     NSString* action = [NSString stringWithFormat:@"categories/%@/feed", category_id];
-    [self doAction:action withDelegate:delegate];
+    [self doAction:action];
 }
 
-- (void) getFeedCategory:(NSString*)category_id after:(NSString*)feed_id delegate:(id)delegate{
+- (void) getFeedCategory:(NSString*)category_id after:(NSString*)feed_id{
     NSString* action = [NSString stringWithFormat:@"categories/%@/feed?lastFeed=%@", category_id, feed_id];
-    [self doAction:action withDelegate:delegate];
+    [self doAction:action];
 }
 
 //RESPONSE DELEGATES
@@ -58,7 +56,7 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSError* error = nil;
-    NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
+//    NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
 //    NSLog(@"received: %@",myString);
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:&error ];
     if(array == nil){
@@ -68,48 +66,12 @@
     NSMutableArray *feedList = [[NSMutableArray alloc] init];
     
     for(NSDictionary* feed_dict in array) {
-//        NSLog(@"----------- FEED_DICT -------------");
-//        NSLog(@"%@ --- %@",[feed_dict class], feed_dict);
-//        NSLog(@"----------- FEED_DICT -------------");
-        Profile *user = [[Profile alloc] init];
-        [user setPhotoUrl:[[feed_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
-        [user setUserId:[feed_dict objectForKey:@"userId"]];
-        [user setUsername:[feed_dict objectForKey:@"userDisplayName"]];
-        
-        Feed* feed = [[Feed alloc] init];
-        [feed setUser:user];
-        [feed setCanCurrentUserRemoveFeed:[[feed_dict objectForKey:@"canCurrentUserRemoveFeed"] boolValue]];
-        [feed setFeedId:[feed_dict objectForKey:@"feedId"]];
-        [feed setTimestamp:[feed_dict objectForKey:@"time"]];
-        [feed setFeedType:[feed_dict objectForKey:@"feedType"]];
-        
-        //SET COMMENTS
-        NSMutableArray* comments = [[NSMutableArray alloc] init];
-        for(NSMutableDictionary* comment_dict in [feed_dict objectForKey:@"comments"]){
-            Comment* comment = [ZazzApi makeCommentFromDict:comment_dict];
-            [comments addObject:comment];
-        }
-        [feed setComments:comments];
-        
-        //SET VARIABLE CONTENT
-        if([feed.feedType isEqualToString:@"Photo"]){
-            NSMutableArray* photos = [[NSMutableArray alloc] init];
-            for(NSDictionary* photo_dict in [feed_dict objectForKey:@"photos"]) {
-                Photo* photo = [ZazzApi makePhotoFromDict:photo_dict];
-                [photos addObject:photo];
-            }
-            [feed setContent:photos];
-        }
-        else if([feed.feedType isEqualToString:@"Post"]){
-            Post* post = [ZazzApi makePostFromDict:[feed_dict objectForKey:@"post"]];
-            [feed setContent:post];
-        }else if([feed.feedType isEqualToString:@"Event"]){
-            Event* event = [ZazzApi makeEventFromDict:[feed_dict objectForKey:@"apiEvent"]];//THIS WILL NEED TO BE FIXED FOR API V2
-            [feed setContent:event];
-        }
+        Feed* feed = [Feed makeFeedFromDict:feed_dict];
         [feedList addObject:feed];
     }
-    [[self _delegate] gotFeed:feedList];
+    
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:feedList forKey:@"feed"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFeed" object:feedList userInfo:userInfo];
 }
 
 

@@ -10,10 +10,26 @@
 
 @implementation Comment
 
+const NSString* COMMENT_TYPE_PHOTO = @"photo";
+const NSString* COMMENT_TYPE_POST = @"post";
+const NSString* COMMENT_TYPE_EVENT = @"event";
+
 @synthesize commentId;
 @synthesize user;
 @synthesize commentText;
 @synthesize isFromCurrentUser;
 @synthesize time;
+
++(Comment*)makeCommentFromDict:(NSDictionary*)comment_dict{
+    Profile* fromUser = [[Profile alloc] init];
+    [fromUser setUsername:[comment_dict objectForKey:@"userDisplayName"]];
+    [fromUser setPhotoUrl:[[comment_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
+    [fromUser setUserId:[comment_dict objectForKey:@"userId"]];
+    Comment* comment = [[Comment alloc] init];
+    [comment setUser:fromUser];
+    [comment setTime:[comment_dict objectForKey:@"time"]];
+    [comment setIsFromCurrentUser:[[comment_dict objectForKey:@"isFromCurrentUser"] boolValue]];
+    return comment;
+}
 
 @end

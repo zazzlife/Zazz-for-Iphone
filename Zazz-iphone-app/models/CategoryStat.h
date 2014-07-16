@@ -15,5 +15,5 @@
 @property int userCount;
 
 -(UIImage*)getIcon;
-
++(CategoryStat*)makeCategoryFromDict:(NSDictionary*)cat_dict;
 @end

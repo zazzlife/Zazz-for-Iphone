@@ -19,5 +19,6 @@
 @property NSString* photoUrl;
 @property NSMutableArray* categories;
 
++(Photo*)makePhotoFromDict:(NSDictionary*)photo_dict;
 
 @end

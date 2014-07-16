@@ -12,8 +12,7 @@
 
 @implementation ZazzFollowRequest
 
--(void)getFollowRequestsDelegate:(id)delegate{
-    [self set_delegate:delegate];
+-(void)getFollowRequests{
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:@"followrequests"];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -43,17 +42,12 @@
     
     NSMutableArray* requests = [[NSMutableArray alloc] init];
     for(NSDictionary* request_dict in array){
-        FollowRequest* request = [[FollowRequest alloc] init];
-        Profile* user = [[Profile alloc] init];
-        [user setUserId:[request_dict objectForKey:@"userId"]];
-        [user setUsername:[request_dict objectForKey:@"displayName"]];
-        [user setPhotoUrl:[[request_dict objectForKey:@"displayPhoto"] objectForKey:@"originalLink"]];
-        [request setUser:user];
-        [request setTime:[request_dict objectForKey:@"time"]];
+        FollowRequest* request = [FollowRequest makeFollowRequestFromDict:request_dict];
         [requests addObject:request];
     }
     
-    [self._delegate gotFollowRequests:requests];
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:requests forKey:@"followRequests"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFollowRequests" object:requests userInfo:userInfo];
 }
 
 @end

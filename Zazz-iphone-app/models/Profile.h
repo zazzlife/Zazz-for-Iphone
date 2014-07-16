@@ -18,4 +18,6 @@
 @property UIImage* photo;
 @property NSString* photoUrl;
 
++(Profile*)makeProfileFromDict:(NSDictionary*)profile_dict;
+
 @end

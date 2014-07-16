@@ -18,5 +18,6 @@
 @property Profile* toUser;
 @property NSMutableArray* categories;
 
++(Post*)makePostFromDict:(NSDictionary*)post_dict;
 
 @end

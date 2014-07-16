@@ -65,9 +65,6 @@ const CGFloat kCommentPaddingFromRight = 8.0f;
         self.likeCountImageView.image = [UIImage imageNamed:@"like_greyIcon.png"];
         self.likeCountImageView.hidden = YES;
         [self addSubview:self.likeCountImageView];
-        
-        
-
     }
     return self;
 }

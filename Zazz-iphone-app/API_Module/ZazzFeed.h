@@ -12,13 +12,12 @@
 
 @interface ZazzFeed : NSObject<NSURLConnectionDataDelegate>
 
-@property ZazzApi* _delegate;
 @property NSMutableData* _receivedData;
 
-- (void) getMyFeedDelegate:(id)delegate;
-- (void) getMyFeedAfter:(NSString*)feed_id delegate:(id)delegate;
-- (void) getFeedCategory:(NSString*)category_id delegate:(id)delegate;
-- (void) getFeedCategory:(NSString*)category_id after:(NSString*)feed_id delegate:(id)delegate;
-- (void) getFeedForUserId:(NSString*)userId delegate:(id)delegate;
+- (void) getMyFeed;
+- (void) getMyFeedAfter:(NSString*)feed_id;
+- (void) getFeedCategory:(NSString*)category_id;
+- (void) getFeedCategory:(NSString*)category_id after:(NSString*)feed_id;
+- (void) getFeedForUserId:(NSString*)userId;
 
 @end

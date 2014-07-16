@@ -11,10 +11,16 @@
 
 @interface Comment : NSObject
 
+extern const NSString* COMMENT_TYPE_PHOTO;
+extern const NSString* COMMENT_TYPE_POST;
+extern const NSString* COMMENT_TYPE_EVENT;
+
 @property NSString* commentId;
 @property Profile* user;
 @property NSString* commentText;
 @property BOOL isFromCurrentUser;
 @property NSString* time;
+
++(Comment*)makeCommentFromDict:(NSDictionary*)comment_dict;
 
 @end

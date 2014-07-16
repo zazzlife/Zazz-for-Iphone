@@ -11,11 +11,9 @@
 
 @implementation ZazzCategory
 
-@synthesize _delegate;
 @synthesize _receivedData;
 
--(void)getCategoriesDelegate:(id)delegate{
-    [self set_delegate:delegate];
+-(void)getCategories{
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:@"categoriesstat"];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -29,7 +27,7 @@
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:nil ];
-    NSString* receivedDataString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
+//    NSString* receivedDataString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
 //    NSLog(@"%@",receivedDataString);
     if(array == nil){
         NSLog(@"JSON ERROR");
@@ -39,14 +37,12 @@
     NSMutableArray *categoryList = [[NSMutableArray alloc] init];
     
     for(NSDictionary* cat_dict in array) {
-        CategoryStat* category = [[CategoryStat alloc ] init];
-        [category setCategory_id:[cat_dict objectForKey:@"id"]];
-        [category setName:[cat_dict objectForKey:@"name"]];
-        [category setUserCount:[[cat_dict objectForKey:@"usersCount"] intValue]];
+        CategoryStat* category = [CategoryStat makeCategoryFromDict:cat_dict];
         [categoryList addObject:category];
     }
     
-    [self._delegate gotCategories:categoryList];
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:categoryList forKey:@"categories"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotCategories" object:categoryList userInfo:userInfo];
 }
 
 @end

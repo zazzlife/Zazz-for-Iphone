@@ -11,9 +11,8 @@
 
 @interface ZazzNotification : NSObject
 
-@property ZazzApi* _delegate;
 @property NSMutableData* _receivedData;
 
--(void)getNotificationsDelegate:(id)delegate;
+-(void)getNotifications;
 
 @end

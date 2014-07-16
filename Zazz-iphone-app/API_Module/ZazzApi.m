@@ -14,6 +14,7 @@
 #import "ZazzCategory.h"
 #import "ZazzFollowRequest.h"
 #import "ZazzNotification.h"
+#import "ZazzComments.h"
 
 @implementation ZazzApi
 
@@ -44,58 +45,45 @@
  ME - PROFILE
  */
 -(void) getMyProfile{
-    [[[ZazzProfile alloc] init] getMyProfileDelegate:self];
+    [[[ZazzProfile alloc] init] getMyProfile];
 }
-//-(void) getProfile:(NSString*)userId{
-//    [[[ZazzProfile alloc] init] getMyProfileDelegate:<#(id)#>];
-//}
--(void) gotProfile:(Profile*)profile{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotMyProfile" object:profile userInfo:nil];
+-(void) getProfile:(NSString*)userId{
+    [[[ZazzProfile alloc] init] getProfile:userId];
 }
+
 
 /*
  ME - NOTIFICATIONS
  */
 -(void) getNotifications{
-    [[[ZazzNotification alloc] init] getNotificationsDelegate:self];
-}
--(void) gotNotifications:(NSMutableArray*)notifications{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotNotifications" object:notifications userInfo:nil];
+    [[[ZazzNotification alloc] init] getNotifications];
 }
 
 /*
  ME - FOLLOW-REQUESTS
  */
 -(void) getFollowRequests{
-    [[[ZazzFollowRequest alloc] init] getFollowRequestsDelegate:self];
+    [[[ZazzFollowRequest alloc] init] getFollowRequests];
 }
 -(void) setFollowRequestsUserId:(NSString*)userId action:(BOOL)action{
     [[[ZazzFollowRequest alloc] init] setFollowRequestsUserId:userId action:action];
     //response neccesary...
-}
--(void) gotFollowRequests:(NSMutableArray*)followRequests{
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:followRequests forKey:@"followRequests"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFollowRequests" object:followRequests userInfo:userInfo];
 }
 
 /*
  FEED
  */
 -(void) getFeed{
-    [[[ZazzFeed alloc] init] getMyFeedDelegate:self];
+    [[[ZazzFeed alloc] init] getMyFeed];
 }
 -(void) getFeedAfter:(NSString*)feedId{
-    [[[ZazzFeed alloc] init] getMyFeedAfter:feedId delegate:self];
+    [[[ZazzFeed alloc] init] getMyFeedAfter:feedId];
 }
 -(void) getFeedCategory:(NSString*)category_id{
-    [[[ZazzFeed alloc] init] getFeedCategory:category_id delegate:self];
+    [[[ZazzFeed alloc] init] getFeedCategory:category_id];
 }
 -(void) getFeedCategory:(NSString*)category_id after:(NSString*)last_timestamp{
-    [[[ZazzFeed alloc] init] getFeedCategory:category_id after:last_timestamp delegate:self];
-}
--(void) gotFeed:(NSMutableArray*)feed{
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:feed forKey:@"feed"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFeed" object:feed userInfo:userInfo];
+    [[[ZazzFeed alloc] init] getFeedCategory:category_id after:last_timestamp];
 }
 
 
@@ -103,13 +91,15 @@
  CATEGORIES
  */
 -(void) getCategories{
-    [[[ZazzCategory alloc] init] getCategoriesDelegate:self];
-}
--(void) gotCategories:(NSMutableArray*)categories{
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:categories forKey:@"categories"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotCategories" object:nil userInfo:userInfo];
+    [[[ZazzCategory alloc] init] getCategories];
 }
 
+/*
+ COMMENTS
+ */
+-(void) getCommentsFor:(NSString *)feedType andId:(NSString *)feedId{
+    [[[ZazzComments alloc] init] getCommentsFor:feedType andId:feedId];
+}
 
 
 //STATIC METHODS
@@ -169,81 +159,5 @@
     return urlWithQuerystring;
 }
 +(NSString *) BASE_URL{ return @"http://www.zazzlife.com/api/v1/"; }
-
-+(Comment*)makeCommentFromDict:(NSDictionary*)comment_dict{
-    Profile* fromUser = [[Profile alloc] init];
-    [fromUser setUsername:[comment_dict objectForKey:@"userDisplayName"]];
-    [fromUser setPhotoUrl:[[comment_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
-    [fromUser setUserId:[comment_dict objectForKey:@"userId"]];
-    Comment* comment = [[Comment alloc] init];
-    [comment setUser:fromUser];
-    [comment setTime:[comment_dict objectForKey:@"time"]];
-    [comment setIsFromCurrentUser:[[comment_dict objectForKey:@"isFromCurrentUser"] boolValue]];
-    return comment;
-}
-+(Post*)makePostFromDict:(NSDictionary*)post_dict{
-    Profile* fromUser = [[Profile alloc] init];
-    [fromUser setUserId:[post_dict objectForKey:@"fromUserId"]];
-    [fromUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
-    [fromUser setPhotoUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]];
-    Post* post = [[Post alloc] init];
-    NSString* message = @"";
-    for(NSDictionary* message_parts in [post_dict objectForKey:@"message"]){
-        NSString* message_text_part = [message_parts objectForKey:@"text"];
-        if([[message_parts objectForKey:@"clubId"] intValue] > 0){
-            NSLog(@"TODO link-to %@", message_text_part);
-        }
-        message = [message stringByAppendingString:message_text_part];
-    }
-    [post setMessage:message];
-    [post setTimestamp:[post_dict objectForKey:@"time"]];
-    [post setPostId:[post_dict objectForKey:@"postId"]];
-    [post setFromUser:fromUser];
-    if([post_dict objectForKey:@"toUserId"]){
-        Profile* toUser = [[Profile alloc] init];
-        [toUser setUserId:[post_dict objectForKey:@"toUserId"]];
-        [toUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
-        [toUser setPhotoUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]];
-        [post setToUser:toUser];
-    }
-    return post;
-}
-+(Photo*)makePhotoFromDict:(NSDictionary*)photo_dict{
-    Profile* user = [[Profile alloc] init];
-    [user setUserId:[photo_dict objectForKey:@"userId"]];
-    [user setPhotoUrl:[[photo_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
-    [user setUsername:[photo_dict objectForKey:@"userDisplayName"]];
-    Photo* photo = [[Photo alloc] init];
-    [photo setDescription:(NSString*)[photo_dict objectForKey:@"description"]];
-    [photo setPhotoId:(NSString*)[photo_dict objectForKey:@"photoId"]];
-    [photo setPhotoUrl:[[photo_dict objectForKey:@"photoLinks"] objectForKey:@"mediumLink"]];
-    [photo setUser:user];
-    return photo;
-}
-+(Event*)makeEventFromDict:(NSDictionary*)event_dict{
-    Profile* user = [[Profile alloc] init];
-    [user setUserId:[event_dict objectForKey:@"userId"]];
-    [user setPhotoUrl:[[event_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
-    [user setUsername:[event_dict objectForKey:@"userDisplayName"]];
-    Event* event = [[Event alloc] init];
-    [event setEventId:[event_dict objectForKey:@"eventId"]];
-    [event setName:[event_dict objectForKey:@"name"]];
-    [event setDescription:[event_dict objectForKey:@"description"]];
-    [event setTime:[event_dict objectForKey:@"time"]];
-    [event setUtcTime:[event_dict objectForKey:@"utcTime"]];
-    [event setLocation:[event_dict objectForKey:@"location"]];
-    [event setStreet:[event_dict objectForKey:@"street"]];
-    [event setCity:[event_dict objectForKey:@"city"]];
-    [event setPrice:[event_dict objectForKey:@"price"]];
-    [event setLatitude:[event_dict objectForKey:@"latitude"]];
-    [event setLongitude:[event_dict objectForKey:@"longitude"]];
-    [event setCreatedTime:[event_dict objectForKey:@"createdTime"]];
-    [event setFacebookLink:[event_dict objectForKey:@"facebookLink"]];
-    [event setImageUrl:[[event_dict objectForKey:@"imageUrl"] objectForKey:@"mediumLink"]];
-    [event setIsDateOnly:[[event_dict objectForKey:@"isDateOnly"] boolValue]];
-    [event setIsFacebookEvent:[[event_dict objectForKey:@"isFacebookEvent"] boolValue]];
-    [event setUser:user];
-    return event;
-}
 
 @end

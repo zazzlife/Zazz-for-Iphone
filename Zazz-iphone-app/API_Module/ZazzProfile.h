@@ -11,9 +11,7 @@
 
 @interface ZazzProfile : NSObject<NSURLConnectionDataDelegate>
 
-@property ZazzApi* _delegate;
-
-- (void) getMyProfileDelegate:(id)delegate;
-- (void) getProfile:(NSString*)userId delegate:(id)delegate;
+- (void) getMyProfile;
+- (void) getProfile:(NSString*)userId;
 
 @end

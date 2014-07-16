@@ -15,6 +15,7 @@
 #import "Event.h"
 #import "Post.h"
 #import "UIImage.h"
+#import "DetailViewItem.h"
 
 @implementation FeedTableViewCell
 
@@ -61,8 +62,16 @@ int _albumObserversCounter;
 
 -(void)showImage:(UIButton*)imageButton{
     int idx  = [imageButton.restorationIdentifier intValue];
-    Photo* photo = (Photo*)[((NSMutableArray*)[self._feed content]) objectAtIndex:idx];
-    DetailViewController* detailView = [[DetailViewController alloc] initWithPhoto:photo.image andDescription:photo.description andDelegate:(UIViewController*)self.tableView.delegate];
+    Photo* photo = [((NSMutableArray*)[self._feed content]) objectAtIndex:idx];
+    
+    DetailViewItem* detailItem = [[DetailViewItem alloc]init];
+    [detailItem setPhoto:photo.image];
+    [detailItem setComments:_feed.comments];
+    [detailItem setDescription:photo.description];
+    [detailItem setUser:_feed.user];
+    [detailItem setLikes:0];
+    DetailViewController* detailView = [[DetailViewController alloc] initWithDetailItem:detailItem];
+    
     NSArray* keys  =    [NSArray arrayWithObjects:
                          @"childController",
                          @"identifier",

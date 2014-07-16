@@ -15,8 +15,7 @@
 
 @implementation ZazzNotification
 
--(void)getNotificationsDelegate:(id)delegate{
-    [self set_delegate:delegate];
+-(void)getNotifications{
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:@"notifications"];
 //    NSLog(@"norifURL: %@",[request URL] );
     [NSURLConnection connectionWithRequest:request delegate:self];
@@ -41,33 +40,11 @@
     
     NSMutableArray* notifications = [[NSMutableArray alloc] init];
     for(NSDictionary* notif_dict in array){
-        Profile* user = [[Profile alloc] init];
-        [user setUserId:[notif_dict objectForKey:@"userId"]];
-        [user setUsername:[notif_dict objectForKey:@"displayName"]];
-        [user setPhotoUrl:[[notif_dict objectForKey:@"displayPhoto"] objectForKey:@"originalLink"]];
-        Notification* notification = [[Notification alloc] init];
-        [notification setUser:user];
-        [notification setTime:[notif_dict objectForKey:@"time"]];
-        [notification setNotificationTypeWithString:[notif_dict objectForKey:@"notificationType"]];
-        [notification setIsRead:[notif_dict objectForKey:@"isRead"]];
-        [notification setNotificationId:[notif_dict objectForKey:@"notificationId"]];
-        if([notification notificationType] == CommentOnPhoto){
-            Photo* photo = [ZazzApi makePhotoFromDict:[notif_dict objectForKey:@"photo"]];
-            [notification setContent:photo];
-        }
-        else if([notification notificationType] == CommentOnPost || [notification notificationType]  == WallPost){
-            Post* post = [ZazzApi makePostFromDict:[notif_dict objectForKey:@"post"]];
-            [notification setContent:post];
-        }
-        else if([notification notificationType] == CommentOnEvent || [notification notificationType] == NewEvent){
-            Event* event = [ZazzApi makeEventFromDict:[notif_dict objectForKey:@"apiEvent"]];//THIS WILL NEED TO BE FIXED FOR API V2
-            [notification setContent:event];
-        }
-        
+        Notification* notification = [Notification makeNotificationWithDict:notif_dict];
         [notifications addObject:notification];
     }
     
-    [self._delegate gotNotifications:notifications];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotNotifications" object:notifications userInfo:nil];
 }
 
 

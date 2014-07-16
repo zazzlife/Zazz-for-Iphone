@@ -11,10 +11,9 @@
 
 @interface ZazzFollowRequest : NSObject
 
-@property ZazzApi* _delegate;
 @property NSMutableData* _receivedData;
 
--(void)getFollowRequestsDelegate:(id)delegate;
+-(void)getFollowRequests;
 -(void)setFollowRequestsUserId:(NSString*)userId action:(BOOL)accepted;
 
 

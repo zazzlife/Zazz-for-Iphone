@@ -28,4 +28,6 @@
 
 -(void)setNotificationTypeWithString:(NSString*)notificationString;
 
++(Notification*)makeNotificationWithDict:(NSDictionary*)notif_dict;
+
 @end

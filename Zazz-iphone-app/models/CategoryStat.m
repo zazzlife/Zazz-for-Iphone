@@ -48,4 +48,13 @@
     }
 }
 
++(CategoryStat*)makeCategoryFromDict:(NSDictionary*)cat_dict{
+    CategoryStat* category = [[CategoryStat alloc] init];
+    [category setCategory_id:[cat_dict objectForKey:@"id"]];
+    [category setName:[cat_dict objectForKey:@"name"]];
+    [category setUserCount:[[cat_dict objectForKey:@"usersCount"] intValue]];
+    return category;
+}
+
+
 @end

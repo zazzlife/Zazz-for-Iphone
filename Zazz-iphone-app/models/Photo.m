@@ -36,4 +36,18 @@
 }
 
 
++(Photo*)makePhotoFromDict:(NSDictionary*)photo_dict{
+    Profile* user = [[Profile alloc] init];
+    [user setUserId:[photo_dict objectForKey:@"userId"]];
+    [user setPhotoUrl:[[photo_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
+    [user setUsername:[photo_dict objectForKey:@"userDisplayName"]];
+    Photo* photo = [[Photo alloc] init];
+    [photo setDescription:(NSString*)[photo_dict objectForKey:@"description"]];
+    [photo setPhotoId:(NSString*)[photo_dict objectForKey:@"photoId"]];
+    [photo setPhotoUrl:[[photo_dict objectForKey:@"photoLinks"] objectForKey:@"mediumLink"]];
+    [photo setUser:user];
+    return photo;
+}
+
+
 @end

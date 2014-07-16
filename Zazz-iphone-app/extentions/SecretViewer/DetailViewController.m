@@ -12,9 +12,12 @@
 #import "UIFont+SecretFont.h"
 #import "CommentCell.h"
 #import "UIView+GradientMask.h"
+
+#import "AppDelegate.h"
 #import "Post.h"
 #import "Photo.h"
 #import "UIColor.h"
+#import "DetailViewItem.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -33,6 +36,9 @@ const CGFloat kCommentCellHeight = 50.0f;
 CGRect HEADER_INIT_FRAME;
 CGRect TOOLBAR_INIT_FRAME;
 
+DetailViewItem* _detailItem;
+UIViewController* _delegate;
+
 UIScrollView *_mainScrollView;
 UIScrollView *_backgroundScrollView;
 UIImageView *_blurImageView;
@@ -43,42 +49,55 @@ UITableView *_commentsTableView;
 UIButton *_backButton;
 UIImageView *_imageView;
 
-NSMutableArray *comments;
 
-@synthesize delegate;
-
-
--(id)initWithText:(NSString*)text andDelegate:(UIViewController*)delegateController{
-    _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-    _imageView = [[UIImageView alloc] initWithImage:nil];
-    HEADER_INIT_FRAME = _textLabel.frame;
-    [_textLabel setText:text];
-    self =[self initDelegateController:delegateController];
-    [_toolBarView._cityLabel setText:@""];
-    [_toolBarView._cityLabel sizeToFit];
-    return self;
-    
-}
-
--(id)initWithPhoto:(UIImage*)image andDescription:(NSString*)description andDelegate:(UIViewController*)delegateController{
-    _imageView = [[UIImageView alloc] initWithImage:image];
-    CGFloat scale = 320/_imageView.frame.size.width;
-    [_imageView setFrame:CGRectMake(0, 0, _imageView.frame.size.width * scale, _imageView.frame.size.height * scale)];
-    _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-    [_textLabel setText:@""];
-    HEADER_INIT_FRAME = _imageView.frame;
-    _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self =[self initDelegateController:delegateController];
-    [_toolBarView._cityLabel setText:description];
-    [_toolBarView._cityLabel sizeToFit];
-    return self;
-}
-
--(id)initDelegateController:(UIViewController*)delegateController{
+-(id)initWithDetailItem:(DetailViewItem*)detailItem{
     
     if (!self) {self = [super init];}
     
-    self.delegate = delegateController;
+    _detailItem = detailItem;
+    
+    _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+    [_textLabel setText:_detailItem.description];
+    [_textLabel setFont:[UIFont secretFontWithSize:22.f]];
+    [_textLabel setTextAlignment:NSTextAlignmentCenter];
+    [_textLabel setTextColor:[UIColor whiteColor]];
+    _textLabel.backgroundColor = [UIColor clearColor];
+    _textLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    _textLabel.layer.shadowRadius = 10.0f;
+    _textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    
+    _toolBarView = [[ToolBarView alloc] init];
+    
+    if([_detailItem photo]){
+        _imageView = [[UIImageView alloc] initWithImage:_detailItem.photo];
+        CGFloat scale = 320/_imageView.frame.size.width;
+        [_imageView setFrame:CGRectMake(0, 0, _imageView.frame.size.width * scale, _imageView.frame.size.height * scale)];
+        _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        HEADER_INIT_FRAME = _imageView.frame;
+        
+        [_textLabel setText:@""];
+        TOOLBAR_INIT_FRAME = CGRectMake (0, HEADER_INIT_FRAME.size.height-22, 320, 22);
+        [_toolBarView._cityLabel setText:_detailItem.description];
+    }else{
+        _imageView = [[UIImageView alloc] initWithImage:nil];
+        HEADER_INIT_FRAME = _textLabel.frame;
+        
+        TOOLBAR_INIT_FRAME = CGRectMake (0, HEADER_INIT_FRAME.size.height-22, 320, 22);
+        [_toolBarView._cityLabel setText:@""];
+    }
+    
+    [_toolBarView setFrame:TOOLBAR_INIT_FRAME];
+    _toolBarView.autoresizingMask =   UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
+    [_toolBarView._cityLabel sizeToFit];
+    
+    _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
+    [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
+    [_backButton addTarget:self action:@selector(leaveView:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *fadeView = [[UIView alloc] init];
+    [fadeView setFrame:HEADER_INIT_FRAME];
+    fadeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
+    fadeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     _mainScrollView = [[UIScrollView alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.frame];
     _mainScrollView.delegate = self;
@@ -88,30 +107,10 @@ NSMutableArray *comments;
     _mainScrollView.showsVerticalScrollIndicator = YES;
     _mainScrollView.scrollIndicatorInsets = UIEdgeInsetsMake(kBarHeight, 0, 0, 0);
     
-    _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
-    [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
-    [_backButton addTarget:self action:@selector(leaveView:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [_textLabel setFont:[UIFont secretFontWithSize:22.f]];
-    [_textLabel setTextAlignment:NSTextAlignmentCenter];
-    [_textLabel setTextColor:[UIColor whiteColor]];
-    _textLabel.backgroundColor = [UIColor clearColor];
-    _textLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    _textLabel.layer.shadowRadius = 10.0f;
-    _textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    
-    UIView *fadeView = [[UIView alloc] init];
-    [fadeView setFrame:HEADER_INIT_FRAME];
-    fadeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3f];
-    fadeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    TOOLBAR_INIT_FRAME = CGRectMake (0, HEADER_INIT_FRAME.size.height-22, 320, 22);
-    _toolBarView = [[ToolBarView alloc] initWithFrame:TOOLBAR_INIT_FRAME];
-    _toolBarView.autoresizingMask =   UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
-    
     _backgroundScrollView = [[UIScrollView alloc] initWithFrame:HEADER_INIT_FRAME];
     _backgroundScrollView.scrollEnabled = NO;
     _backgroundScrollView.contentSize = CGSizeMake(320, 1000);
+    
     [_backgroundScrollView addSubview:_imageView];
     [_backgroundScrollView addSubview:fadeView];
     [_backgroundScrollView addSubview:_toolBarView];
@@ -141,11 +140,6 @@ NSMutableArray *comments;
     _commentsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     _commentsTableView.separatorColor = [UIColor clearColor];
     
-    
-    // Let's put in some fake data!
-    comments = [@[@"Oh my god! Me too!", @"No way! I love secrets too!", @"I for some reason really like sharing my deepest darkest secrest to the entire world", @"More comments", @"Go Toronto Blue Jays!", @"I rather use Twitter", @"I don't get Secret", @"I don't have an iPhone", @"How are you using this then?"] mutableCopy];
-    [_toolBarView setNumberOfComments:[comments count]];
-    
     [_mainScrollView addSubview:_backgroundScrollView];
     [_mainScrollView addSubview:_commentsViewContainer];
     [_commentsViewContainer addSubview:_commentsTableView];
@@ -153,8 +147,12 @@ NSMutableArray *comments;
     [self.view addSubview:_mainScrollView];
     [self.view addSubview:_backButton];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotComments:) name:@"gotComments" object:nil];
+    [[AppDelegate zazzApi] getCommentsFor:[_detailItem typeToString] andId:[NSString stringWithFormat:@"%d",detailItem.itemId]];
+    
     return self;
 }
+
 
 -(void)leaveView:(id)sender{
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showHome" object:nil userInfo:nil];
@@ -204,11 +202,12 @@ NSMutableArray *comments;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [comments count];
+    return [_detailItem.comments count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *text = [comments objectAtIndex:[indexPath row]];
+    Comment* comment = [_detailItem.comments objectAtIndex:[indexPath row]];
+    NSString *text = comment.commentText;
     CGSize requiredSize;
     if ([text respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
         CGRect rect = [text boundingRectWithSize:(CGSize){225, MAXFLOAT}
@@ -228,7 +227,8 @@ NSMutableArray *comments;
         cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"Cell %d", indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.commentLabel.frame = (CGRect) {.origin = cell.commentLabel.frame.origin, .size = {CGRectGetMinX(cell.likeButton.frame) - CGRectGetMaxY(cell.iconView.frame) - kCommentPaddingFromLeft - kCommentPaddingFromRight,[self tableView:tableView heightForRowAtIndexPath:indexPath] - kCommentCellHeight}};
-        cell.commentLabel.text = comments[indexPath.row];
+        Comment* comment = _detailItem.comments[indexPath.row];;
+        cell.commentLabel.text = comment.commentText;
         cell.timeLabel.frame = (CGRect) {.origin = {CGRectGetMinX(cell.commentLabel.frame), CGRectGetMaxY(cell.commentLabel.frame)}};
         cell.timeLabel.text = @"1d ago";
         [cell.timeLabel sizeToFit];
@@ -262,6 +262,15 @@ NSMutableArray *comments;
 #pragma mark
 - (BOOL)prefersStatusBarHidden {
     return YES;
+}
+
+-(void)gotComments:(NSNotification*)notif{
+    
+    int type = (int)[notif.userInfo objectForKey:@"type"];
+    int objId = (int)[notif.userInfo objectForKey:@"feedId"];
+    if(type != _detailItem.type || !objId != _detailItem.itemId) return;
+    _detailItem.comments = notif.object;
+    [_commentsTableView reloadData];
 }
 
 @end

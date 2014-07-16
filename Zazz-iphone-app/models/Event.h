@@ -29,4 +29,7 @@
 @property BOOL isDateOnly;
 @property BOOL isFacebookEvent;
 
+
++(Event*)makeEventFromDict:(NSDictionary*)event_dict;
+
 @end

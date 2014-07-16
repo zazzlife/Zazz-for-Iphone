@@ -30,12 +30,11 @@
         // Obviously my secret would have at least 10 likes
         _likeCounter = 10;
         
-        _cityLabel = [[UILabel alloc] init];
+        _cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0, 160, 22)];
         _cityLabel.text = @"....................";
         _cityLabel.font = [UIFont secretFontLightWithSize:14.f];
         _cityLabel.textColor = [UIColor whiteColor];
         _cityLabel.textAlignment = NSTextAlignmentLeft;
-        _cityLabel.frame = (CGRect) {.origin = {15,0}};
         _cityLabel.backgroundColor = [UIColor clearColor];
         [_cityLabel sizeToFit];
         [self addSubview:_cityLabel];
