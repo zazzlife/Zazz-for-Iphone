@@ -49,6 +49,25 @@ UITableView *_commentsTableView;
 UIButton *_backButton;
 UIImageView *_imageView;
 
+-(CGSize)frameForText:(NSString*)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode  {
+    
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = lineBreakMode;
+    
+    NSDictionary * attributes = @{NSFontAttributeName:font,
+                                  NSParagraphStyleAttributeName:paragraphStyle
+                                  };
+    
+    
+    CGRect textRect = [text boundingRectWithSize:size
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:attributes
+                                         context:nil];
+    
+    //Contains both width & height ... Needed: The height
+    return textRect.size;
+}
+
 
 -(id)initWithDetailItem:(DetailViewItem*)detailItem{
     
@@ -56,17 +75,33 @@ UIImageView *_imageView;
     
     _detailItem = detailItem;
     
-    _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+    UIView* _textLabelView = [[UIView alloc] init];
+    
+    _textLabel = [[UILabel alloc] init];
     [_textLabel setText:_detailItem.description];
-    [_textLabel setFont:[UIFont secretFontWithSize:22.f]];
+    [_textLabel setNumberOfLines:0];
+    [_textLabel setTextAlignment:NSTextAlignmentLeft];
+    [_textLabel setFont:[UIFont secretFontWithSize:18.f]];
     [_textLabel setTextAlignment:NSTextAlignmentCenter];
     [_textLabel setTextColor:[UIColor whiteColor]];
-    _textLabel.backgroundColor = [UIColor clearColor];
-    _textLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    _textLabel.layer.shadowRadius = 10.0f;
-    _textLabel.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    [_textLabel setLineBreakMode:NSLineBreakByWordWrapping];
+    [_textLabel setBackgroundColor:[UIColor clearColor]];
+    [_textLabel.layer setShadowColor:[UIColor blackColor].CGColor];
+    [_textLabel.layer setShadowRadius:10.0f];
+    
+    //Do some frame manipulation.
+    CGSize size = [self frameForText:_detailItem.description sizeWithFont:_textLabel.font constrainedToSize:CGSizeMake(170, 150) lineBreakMode:_textLabel.lineBreakMode];
+    [_textLabel setFrame:CGRectMake(80, 0, 235, size.height)];
+    [_textLabel sizeToFit];
+    [_textLabel setFrame:CGRectMake(80, 0, 235, _textLabel.frame.size.height + 100)];
+    [_textLabel setTextAlignment:NSTextAlignmentLeft];
+    
+    [_textLabelView setFrame:CGRectMake(0, 0, 320, _textLabel.frame.size.height)];
+    [_textLabelView addSubview:_textLabel];
     
     _toolBarView = [[ToolBarView alloc] init];
+    
+    UIImageView* posterPhoto;
     
     if([_detailItem photo]){
         _imageView = [[UIImageView alloc] initWithImage:_detailItem.photo];
@@ -79,8 +114,13 @@ UIImageView *_imageView;
         TOOLBAR_INIT_FRAME = CGRectMake (0, HEADER_INIT_FRAME.size.height-22, 320, 22);
         [_toolBarView._cityLabel setText:_detailItem.description];
     }else{
+        posterPhoto = [[UIImageView alloc] initWithImage:_detailItem.user.photo];
+        [posterPhoto setFrame:CGRectMake(25, 50, 50, 50)];
+        [posterPhoto.layer setCornerRadius:CGRectGetWidth(posterPhoto.frame) / 2.0f];
+        [posterPhoto.layer setMasksToBounds:YES];
+        
         _imageView = [[UIImageView alloc] initWithImage:nil];
-        HEADER_INIT_FRAME = _textLabel.frame;
+        HEADER_INIT_FRAME = _textLabelView.frame;
         
         TOOLBAR_INIT_FRAME = CGRectMake (0, HEADER_INIT_FRAME.size.height-22, 320, 22);
         [_toolBarView._cityLabel setText:@""];
@@ -114,7 +154,8 @@ UIImageView *_imageView;
     [_backgroundScrollView addSubview:_imageView];
     [_backgroundScrollView addSubview:fadeView];
     [_backgroundScrollView addSubview:_toolBarView];
-    [_backgroundScrollView addSubview:_textLabel];
+    [_backgroundScrollView addSubview:posterPhoto];
+    [_backgroundScrollView addSubview:_textLabelView];
     
     // Take a snapshot of the background scroll view and apply a blur to that image
     // Then add the blurred image on top of the regular image and slowly fade it in
@@ -165,10 +206,21 @@ UIImageView *_imageView;
     // Here is where I do the "Zooming" image and the quick fade out the text and toolbar
     if (scrollView.contentOffset.y < 0.0f) {
         delta = fabs(MIN(0.0f, _mainScrollView.contentOffset.y));
-        _backgroundScrollView.frame = CGRectMake(CGRectGetMinX(rect) - delta / 2.0f, CGRectGetMinY(rect) - delta, CGRectGetWidth(rect) + delta, CGRectGetHeight(rect) + delta);
-        _textLabel.alpha = MIN(1.0f, 1.0f - delta * kTextFadeOutFactor);
-        _toolBarView.alpha = _textLabel.alpha;
-        _toolBarView.frame = CGRectMake(CGRectGetMinX(toolbarRect) + delta / 2.0f, CGRectGetMinY(toolbarRect) + delta, CGRectGetWidth(toolbarRect), CGRectGetHeight(toolbarRect));
+        if(_detailItem.photo){
+            _backgroundScrollView.frame = CGRectMake(CGRectGetMinX(rect) - delta / 2.0f, CGRectGetMinY(rect) - delta, CGRectGetWidth(rect) + delta, CGRectGetHeight(rect) + delta);
+            _textLabel.alpha = MIN(1.0f, 1.0f - delta * kTextFadeOutFactor);
+            _toolBarView.alpha = _textLabel.alpha;
+            _toolBarView.frame = CGRectMake(CGRectGetMinX(toolbarRect) + delta / 2.0f, CGRectGetMinY(toolbarRect) + delta, CGRectGetWidth(toolbarRect), CGRectGetHeight(toolbarRect));
+        }else{
+            _backgroundScrollView.frame = CGRectMake(
+                                                    CGRectGetMinX(rect), CGRectGetMinY(rect) - delta,
+                                                    CGRectGetWidth(rect), CGRectGetHeight(rect) + delta
+            );
+            _toolBarView.frame = CGRectMake(
+                                            CGRectGetMinX(TOOLBAR_INIT_FRAME), CGRectGetMinY(TOOLBAR_INIT_FRAME) + delta,
+                                            CGRectGetWidth(TOOLBAR_INIT_FRAME), CGRectGetHeight(TOOLBAR_INIT_FRAME)
+            );
+        }
         [_commentsTableView setContentOffset:(CGPoint){0,0} animated:NO];
     } else {
         delta = _mainScrollView.contentOffset.y;
