@@ -35,6 +35,8 @@ const CGFloat kCommentCellHeight = 50.0f;
     
 CGRect HEADER_INIT_FRAME;
 CGRect TOOLBAR_INIT_FRAME;
+CGRect IMAGE_INIT_FRAME;
+CGRect TEXT_INIT_FRAME;
 
 DetailViewItem* _detailItem;
 UIViewController* _delegate;
@@ -45,6 +47,8 @@ UIImageView *_blurImageView;
 UILabel *_textLabel;
 ToolBarView *_toolBarView;
 UIView *_commentsViewContainer;
+UIView *_topContainer;
+UIView* _textLabelView;
 UITableView *_commentsTableView;
 UIButton *_backButton;
 UIImageView *_imageView;
@@ -75,60 +79,67 @@ UIImageView *_imageView;
     
     _detailItem = detailItem;
     
-    UIView* _textLabelView = [[UIView alloc] init];
-    
-    _textLabel = [[UILabel alloc] init];
-    [_textLabel setText:_detailItem.description];
-    [_textLabel setNumberOfLines:0];
-    [_textLabel setTextAlignment:NSTextAlignmentLeft];
-    [_textLabel setFont:[UIFont secretFontWithSize:18.f]];
-    [_textLabel setTextAlignment:NSTextAlignmentCenter];
-    [_textLabel setTextColor:[UIColor whiteColor]];
-    [_textLabel setLineBreakMode:NSLineBreakByWordWrapping];
-    [_textLabel setBackgroundColor:[UIColor clearColor]];
-    [_textLabel.layer setShadowColor:[UIColor blackColor].CGColor];
-    [_textLabel.layer setShadowRadius:10.0f];
-    
-    //Do some frame manipulation.
-    CGSize size = [self frameForText:_detailItem.description sizeWithFont:_textLabel.font constrainedToSize:CGSizeMake(170, 150) lineBreakMode:_textLabel.lineBreakMode];
-    [_textLabel setFrame:CGRectMake(80, 0, 235, size.height)];
-    [_textLabel sizeToFit];
-    [_textLabel setFrame:CGRectMake(80, 0, 235, _textLabel.frame.size.height + 100)];
-    [_textLabel setTextAlignment:NSTextAlignmentLeft];
-    
-    [_textLabelView setFrame:CGRectMake(0, 0, 320, _textLabel.frame.size.height)];
-    [_textLabelView addSubview:_textLabel];
-    
+    _imageView = [[UIImageView alloc] init];
+    _textLabelView = [[UIView alloc] init];
     _toolBarView = [[ToolBarView alloc] init];
     
-    UIImageView* posterPhoto;
+    [_imageView setAutoresizingMask: UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     
-    if([_detailItem photo]){
-        _imageView = [[UIImageView alloc] initWithImage:_detailItem.photo];
-        CGFloat scale = 320/_imageView.frame.size.width;
-        [_imageView setFrame:CGRectMake(0, 0, _imageView.frame.size.width * scale, _imageView.frame.size.height * scale)];
-        _imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        HEADER_INIT_FRAME = _imageView.frame;
+    if([_detailItem description]){
+    
+        _textLabel = [[UILabel alloc] init];
+        [_textLabel setText:_detailItem.description];
+        [_textLabel setNumberOfLines:0];
+        [_textLabel setTextAlignment:NSTextAlignmentLeft];
+        [_textLabel setFont:[UIFont secretFontLightWithSize:14.f]];
+        [_textLabel setTextAlignment:NSTextAlignmentCenter];
+        [_textLabel setTextColor:[UIColor whiteColor]];
+        [_textLabel setLineBreakMode:NSLineBreakByWordWrapping];
+        [_textLabel setBackgroundColor:[UIColor clearColor]];
+        [_textLabel.layer setShadowColor:[UIColor blackColor].CGColor];
+        [_textLabel.layer setShadowRadius:10.0f];
+        CGSize size = [self frameForText:_detailItem.description sizeWithFont:_textLabel.font constrainedToSize:CGSizeMake(170, 150) lineBreakMode:_textLabel.lineBreakMode];
+        [_textLabel setFrame:CGRectMake(80, 0, 150, size.height)];
+        [_textLabel sizeToFit];
+        [_textLabel setFrame:CGRectMake(80, 0, 150, _textLabel.frame.size.height + 100)];
+        [_textLabel setTextAlignment:NSTextAlignmentLeft];
+        [_textLabelView setFrame:CGRectMake(0, 0, 320, _textLabel.frame.size.height)];
         
-        [_textLabel setText:@""];
-        TOOLBAR_INIT_FRAME = CGRectMake (0, HEADER_INIT_FRAME.size.height-22, 320, 22);
-        [_toolBarView._cityLabel setText:_detailItem.description];
-    }else{
-        posterPhoto = [[UIImageView alloc] initWithImage:_detailItem.user.photo];
+        UIImageView* backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Background"]];
+        CGRect max_frame = [[UIScreen mainScreen] bounds];
+        [backgroundImage setFrame: CGRectMake(CGRectGetMinX(max_frame) - 200, CGRectGetMinY(max_frame) - 200, CGRectGetWidth(max_frame) + 400, CGRectGetHeight(max_frame)+400)];
+        
+        UIImageView* posterPhoto = [[UIImageView alloc] initWithImage:_detailItem.user.photo];
         [posterPhoto setFrame:CGRectMake(25, 50, 50, 50)];
         [posterPhoto.layer setCornerRadius:CGRectGetWidth(posterPhoto.frame) / 2.0f];
         [posterPhoto.layer setMasksToBounds:YES];
         
-        _imageView = [[UIImageView alloc] initWithImage:nil];
+        [_textLabelView addSubview:backgroundImage];
+        [_textLabelView addSubview:_textLabel];
+        [_textLabelView addSubview:posterPhoto];
+        TEXT_INIT_FRAME = _textLabelView.frame;
         HEADER_INIT_FRAME = _textLabelView.frame;
-        
-        TOOLBAR_INIT_FRAME = CGRectMake (0, HEADER_INIT_FRAME.size.height-22, 320, 22);
-        [_toolBarView._cityLabel setText:@""];
     }
     
+    if([_detailItem photo]){
+        _imageView = [[UIImageView alloc] initWithImage:_detailItem.photo];
+        CGFloat scale = 320/_imageView.frame.size.width;
+        IMAGE_INIT_FRAME = CGRectMake(0, 0, _imageView.frame.size.width * scale, _imageView.frame.size.height * scale);
+        TEXT_INIT_FRAME = CGRectMake(CGRectGetMinX(TEXT_INIT_FRAME), CGRectGetMaxY(IMAGE_INIT_FRAME), CGRectGetWidth(TEXT_INIT_FRAME), CGRectGetHeight(TEXT_INIT_FRAME));
+        
+        [_imageView setFrame:IMAGE_INIT_FRAME];
+        [_textLabelView setFrame:TEXT_INIT_FRAME];
+    }
+    
+    TOOLBAR_INIT_FRAME  = CGRectMake (0, CGRectGetMaxY(TEXT_INIT_FRAME), 320, 22);
+    HEADER_INIT_FRAME   = CGRectMake (0, 0, CGRectGetWidth(HEADER_INIT_FRAME), CGRectGetMaxY(TOOLBAR_INIT_FRAME));
+    
+    _topContainer = [[UIView alloc] initWithFrame:HEADER_INIT_FRAME];
+    
     [_toolBarView setFrame:TOOLBAR_INIT_FRAME];
+//    [_toolBarView setHidden:false];
+//    [_toolBarView._cityLabel sizeToFit];
     _toolBarView.autoresizingMask =   UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
-    [_toolBarView._cityLabel sizeToFit];
     
     _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
     [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
@@ -151,11 +162,13 @@ UIImageView *_imageView;
     _backgroundScrollView.scrollEnabled = NO;
     _backgroundScrollView.contentSize = CGSizeMake(320, 1000);
     
-    [_backgroundScrollView addSubview:_imageView];
-    [_backgroundScrollView addSubview:fadeView];
-    [_backgroundScrollView addSubview:_toolBarView];
-    [_backgroundScrollView addSubview:posterPhoto];
-    [_backgroundScrollView addSubview:_textLabelView];
+    [_topContainer addSubview:_textLabelView];
+    [_topContainer addSubview:_imageView];
+    [_topContainer addSubview:_toolBarView];
+    
+    [_backgroundScrollView addSubview:_topContainer];
+//    [_backgroundScrollView addSubview:fadeView];
+//    [_backgroundScrollView addSubview:_textLabelView];
     
     // Take a snapshot of the background scroll view and apply a blur to that image
     // Then add the blurred image on top of the regular image and slowly fade it in
@@ -189,7 +202,7 @@ UIImageView *_imageView;
     [self.view addSubview:_backButton];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotComments:) name:@"gotComments" object:nil];
-    [[AppDelegate zazzApi] getCommentsFor:[_detailItem typeToString] andId:[NSString stringWithFormat:@"%d",detailItem.itemId]];
+    [[AppDelegate zazzApi] getCommentsFor:_detailItem.type andId:[NSString stringWithFormat:@"%@",detailItem.itemId]];
     
     return self;
 }
@@ -201,48 +214,57 @@ UIImageView *_imageView;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat delta = 0.0f;
-    CGRect rect = HEADER_INIT_FRAME;
-    CGRect toolbarRect = TOOLBAR_INIT_FRAME;
     // Here is where I do the "Zooming" image and the quick fade out the text and toolbar
     if (scrollView.contentOffset.y < 0.0f) {
         delta = fabs(MIN(0.0f, _mainScrollView.contentOffset.y));
         if(_detailItem.photo){
-            _backgroundScrollView.frame = CGRectMake(CGRectGetMinX(rect) - delta / 2.0f, CGRectGetMinY(rect) - delta, CGRectGetWidth(rect) + delta, CGRectGetHeight(rect) + delta);
-            _textLabel.alpha = MIN(1.0f, 1.0f - delta * kTextFadeOutFactor);
-            _toolBarView.alpha = _textLabel.alpha;
-            _toolBarView.frame = CGRectMake(CGRectGetMinX(toolbarRect) + delta / 2.0f, CGRectGetMinY(toolbarRect) + delta, CGRectGetWidth(toolbarRect), CGRectGetHeight(toolbarRect));
+            NSLog(@"1");
+            _backgroundScrollView.frame = CGRectMake(CGRectGetMinX(HEADER_INIT_FRAME),
+                                                     CGRectGetMinY(HEADER_INIT_FRAME)-delta,
+                                                     CGRectGetWidth(HEADER_INIT_FRAME),
+                                                     CGRectGetHeight(HEADER_INIT_FRAME) + delta);
+            _imageView.frame            = CGRectMake(CGRectGetMinX(IMAGE_INIT_FRAME) - delta / 2.0f,
+                                                     CGRectGetMinY(IMAGE_INIT_FRAME),
+                                                     CGRectGetWidth(IMAGE_INIT_FRAME) + delta,
+                                                     CGRectGetHeight(IMAGE_INIT_FRAME) + delta);
+            _textLabelView.frame        = CGRectMake(CGRectGetMinX(TEXT_INIT_FRAME),
+                                                     CGRectGetMaxY(_imageView.frame),
+                                                     CGRectGetWidth(TEXT_INIT_FRAME),
+                                                     CGRectGetHeight(TEXT_INIT_FRAME));
+            _toolBarView.frame          = CGRectMake(CGRectGetMinX(TOOLBAR_INIT_FRAME),
+                                                     CGRectGetMaxY(_textLabelView.frame),
+                                                     CGRectGetWidth(TOOLBAR_INIT_FRAME),
+                                                     CGRectGetHeight(TOOLBAR_INIT_FRAME));
         }else{
+            NSLog(@"2");
             _backgroundScrollView.frame = CGRectMake(
-                                                    CGRectGetMinX(rect), CGRectGetMinY(rect) - delta,
-                                                    CGRectGetWidth(rect), CGRectGetHeight(rect) + delta
-            );
-            _toolBarView.frame = CGRectMake(
-                                            CGRectGetMinX(TOOLBAR_INIT_FRAME), CGRectGetMinY(TOOLBAR_INIT_FRAME) + delta,
-                                            CGRectGetWidth(TOOLBAR_INIT_FRAME), CGRectGetHeight(TOOLBAR_INIT_FRAME)
-            );
+                                                CGRectGetMinX(HEADER_INIT_FRAME), CGRectGetMinY(HEADER_INIT_FRAME)-delta,
+                                                CGRectGetWidth(HEADER_INIT_FRAME), CGRectGetHeight(HEADER_INIT_FRAME)+delta);
         }
         [_commentsTableView setContentOffset:(CGPoint){0,0} animated:NO];
     } else {
         delta = _mainScrollView.contentOffset.y;
-        _textLabel.alpha = 1.0f;
-        _toolBarView.alpha = _textLabel.alpha;
+//        _textLabel.alpha = 1.0f;
+//        _toolBarView.alpha = _textLabel.alpha;
         _blurImageView.alpha = MIN(1 , delta * kBlurFadeInFactor);
         _toolBarView.frame = TOOLBAR_INIT_FRAME;
         CGFloat backgroundScrollViewLimit = _backgroundScrollView.frame.size.height - kBarHeight;
         // Here I check whether or not the user has scrolled passed the limit where I want to stick the header, if they have then I move the frame with the scroll view
         // to give it the sticky header look
         if (delta > backgroundScrollViewLimit) {
+            NSLog(@"3");
             _backgroundScrollView.frame = (CGRect) {.origin = {0, delta - _backgroundScrollView.frame.size.height + kBarHeight}, .size = {self.view.frame.size.width, HEADER_INIT_FRAME.size.height}};
-            _commentsViewContainer.frame = (CGRect){.origin = {0, CGRectGetMinY(_backgroundScrollView.frame) + CGRectGetHeight(_backgroundScrollView.frame)}, .size = _commentsViewContainer.frame.size };
+            _commentsViewContainer.frame = CGRectMake(0, CGRectGetMaxY(_backgroundScrollView.frame),
+                                                      CGRectGetWidth(_commentsViewContainer.frame), CGRectGetHeight(_commentsViewContainer.frame));
             _commentsTableView.contentOffset = CGPointMake (0, delta - backgroundScrollViewLimit);
             CGFloat contentOffsetY = -backgroundScrollViewLimit * kBackgroundParallexFactor;
             [_backgroundScrollView setContentOffset:(CGPoint){0,contentOffsetY} animated:NO];
         }
         else {
-            _backgroundScrollView.frame = rect;
-            _commentsViewContainer.frame = (CGRect){.origin = {0, CGRectGetMinY(rect) + CGRectGetHeight(rect)}, .size = _commentsViewContainer.frame.size };
-            [_commentsTableView setContentOffset:(CGPoint){0,0} animated:NO];
-            [_backgroundScrollView setContentOffset:CGPointMake(0, -delta * kBackgroundParallexFactor)animated:NO];
+            NSLog(@"4");
+            _backgroundScrollView.frame = HEADER_INIT_FRAME;
+            _commentsViewContainer.frame = CGRectMake(0, CGRectGetMaxY(HEADER_INIT_FRAME), CGRectGetWidth(HEADER_INIT_FRAME), CGRectGetHeight(HEADER_INIT_FRAME));
+            [_commentsTableView setContentOffset:CGPointMake(0, 0) animated:NO];
         }
     }
 }
@@ -254,12 +276,17 @@ UIImageView *_imageView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (!_detailItem.comments)
+        return 1;
     return [_detailItem.comments count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(!_detailItem.comments){
+        return 50;
+    }
     Comment* comment = [_detailItem.comments objectAtIndex:[indexPath row]];
-    NSString *text = comment.commentText;
+    NSString *text = comment.text;
     CGSize requiredSize;
     if ([text respondsToSelector:@selector(boundingRectWithSize:options:attributes:context:)]) {
         CGRect rect = [text boundingRectWithSize:(CGSize){225, MAXFLOAT}
@@ -274,13 +301,26 @@ UIImageView *_imageView;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"Cell %d", indexPath.row]];
+    if(!_detailItem.comments){
+        NSString* identifier = @"cellLoader";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+        if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        }
+        UIActivityIndicatorView* spinner = [[UIActivityIndicatorView alloc] init];
+        [spinner setFrame:cell.frame];
+        [spinner setColor:[UIColor colorFromHexString:COLOR_ZAZZ_YELLOW]];
+        [cell addSubview:spinner];
+        [spinner startAnimating];
+        return cell;
+    }
+    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"commentView"]];
     if (!cell) {
         cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"Cell %d", indexPath.row]];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.commentLabel.frame = (CGRect) {.origin = cell.commentLabel.frame.origin, .size = {CGRectGetMinX(cell.likeButton.frame) - CGRectGetMaxY(cell.iconView.frame) - kCommentPaddingFromLeft - kCommentPaddingFromRight,[self tableView:tableView heightForRowAtIndexPath:indexPath] - kCommentCellHeight}};
         Comment* comment = _detailItem.comments[indexPath.row];;
-        cell.commentLabel.text = comment.commentText;
+        cell.commentLabel.text = comment.text;
         cell.timeLabel.frame = (CGRect) {.origin = {CGRectGetMinX(cell.commentLabel.frame), CGRectGetMaxY(cell.commentLabel.frame)}};
         cell.timeLabel.text = @"1d ago";
         [cell.timeLabel sizeToFit];
@@ -316,12 +356,15 @@ UIImageView *_imageView;
     return YES;
 }
 
+id delegate;
+
 -(void)gotComments:(NSNotification*)notif{
-    
-    int type = (int)[notif.userInfo objectForKey:@"type"];
-    int objId = (int)[notif.userInfo objectForKey:@"feedId"];
-    if(type != _detailItem.type || !objId != _detailItem.itemId) return;
+    NSString* type = [notif.userInfo objectForKey:@"type"];
+    NSString* objId = [notif.userInfo objectForKey:@"feedId"];
+    if(![type isEqualToString:_detailItem.type] || [objId intValue] != [_detailItem.itemId intValue]) return;
+    NSLog(@"gotComments");
     _detailItem.comments = notif.object;
+    [_toolBarView setNumberOfComments:[_detailItem.comments count]];
     [_commentsTableView reloadData];
 }
 

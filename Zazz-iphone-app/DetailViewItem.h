@@ -11,18 +11,12 @@
 
 @interface DetailViewItem : NSObject
 
-extern const int TYPE_POST;
-extern const int TYPE_PHOTO;
-extern const int TYPE_EVENT;
-
-@property int type;
-@property int itemId;
-@property UIImage* photo;
+@property NSString* itemId;
+@property NSString* type;
 @property NSString* description;
+@property UIImage* photo;
 @property Profile* user;
 @property int likes;
 @property NSMutableArray* comments;
-
--(NSString*)typeToString;
 
 @end

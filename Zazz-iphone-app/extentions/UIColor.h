@@ -1,3 +1,8 @@
+
+#define COLOR_ZAZZ_BLACK @"#242424"
+#define COLOR_ZAZZ_GREY @"#453F3F"
+#define COLOR_ZAZZ_YELLOW @"#F8C034"
+
 @interface UIColor (mxcl)
 + (UIColor *)colorFromHexString:(NSString *)hexString;
 @end

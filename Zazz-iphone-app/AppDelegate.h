@@ -10,10 +10,6 @@
 #import "ZazzApi.h"
 #import "CFTabBarController.h"
 
-#define APPLICATION_BLACK @"#242424"
-#define APPLICATION_GREY @"#453F3F"
-#define APPLICATION_YELLOW @"#F8C034"
-
 @protocol ViewAnimationDelegate <NSObject>
 
 -(void)viewDidFinishAnimation;

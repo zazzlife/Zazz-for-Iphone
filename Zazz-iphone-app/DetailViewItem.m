@@ -11,22 +11,4 @@
 
 @implementation DetailViewItem
 
-const int TYPE_POST = 0;
-const int TYPE_PHOTO = 1;
-const int TYPE_EVENT = 2;
-
-@synthesize type;
-
--(NSString*)typeToString{
-    switch(self.type){
-        case TYPE_POST:
-            return COMMENT_TYPE_POST;
-        case TYPE_PHOTO:
-            return COMMENT_TYPE_PHOTO;
-        case TYPE_EVENT:
-        default:
-            return COMMENT_TYPE_EVENT;
-    }
-}
-
 @end

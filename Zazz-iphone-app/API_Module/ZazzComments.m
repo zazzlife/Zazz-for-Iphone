@@ -26,6 +26,7 @@ NSString* _feedId;
     _feedType = feedType;
     _feedId = feedId;
     NSString * action = [NSString stringWithFormat:@"comments/%@s/%@?lastComment=%@", feedType, feedId, commentId];
+    NSLog(@"doing: %@",action);
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }

@@ -1200,7 +1200,6 @@
         <!--Table View Controller-->
         <scene sceneID="b1n-Ty-qTD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="O8S-gW-Djc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="sAy-rE-5pE" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dO5-XV-9k8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="512"/>
@@ -1330,6 +1329,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O8S-gW-Djc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3151" y="-494"/>
         </scene>

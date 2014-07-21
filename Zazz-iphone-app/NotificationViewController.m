@@ -16,6 +16,7 @@
 #import "Post.h"
 #import "Event.h"
 #import "DetailViewController.h"
+#import "Comment.h"
 
 @implementation NotificationViewController
 
@@ -249,8 +250,8 @@ NSArray* notifications;
             DetailViewItem* detailItem = [[DetailViewItem alloc] init];
             [detailItem setPhoto:photo.image];
             [detailItem setDescription:photo.description];
-            [detailItem setType:TYPE_PHOTO];
-            [detailItem setItemId:[photo.photoId intValue]];
+            [detailItem setType:COMMENT_TYPE_PHOTO];
+            [detailItem setItemId:photo.photoId];
             [detailItem setUser:photo.user];
             [detailItem setLikes:0];
             detailViewController = [[DetailViewController alloc] initWithDetailItem:detailItem];
@@ -262,8 +263,8 @@ NSArray* notifications;
             DetailViewItem* detailItem = [[DetailViewItem alloc] init];
             [detailItem setPhoto:nil];
             [detailItem setDescription:post.message];
-            [detailItem setType:TYPE_POST];
-            [detailItem setItemId:[post.postId intValue]];
+            [detailItem setType:COMMENT_TYPE_POST];
+            [detailItem setItemId:post.postId];
             [detailItem setUser:post.fromUser];
             [detailItem setLikes:0];
             detailViewController = [[DetailViewController alloc] initWithDetailItem:detailItem];
@@ -275,8 +276,8 @@ NSArray* notifications;
             DetailViewItem* detailItem = [[DetailViewItem alloc] init];
             [detailItem setPhoto:nil];
             [detailItem setDescription:event.description];
-            [detailItem setType:TYPE_EVENT];
-            [detailItem setItemId:[event.eventId intValue]];
+            [detailItem setType:COMMENT_TYPE_EVENT];
+            [detailItem setItemId:event.eventId];
             [detailItem setUser:event.user];
             [detailItem setLikes:0];
             detailViewController = [[DetailViewController alloc] initWithDetailItem:detailItem];

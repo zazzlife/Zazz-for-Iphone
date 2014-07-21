@@ -49,16 +49,18 @@
         [_moreButton setImage:[UIImage imageNamed:@"moreButton.png"] forState:UIControlStateNormal];
         [self addSubview:_moreButton];
         
+        
         _commentButton = [[UIButton alloc] initWithFrame:(CGRect){.origin = {CGRectGetMaxX(_moreButton.frame) + 20, CGRectGetMinY(_cityLabel.frame) + 2}, .size = {22,17}}];
         [_commentButton setImage:[UIImage imageNamed:@"commentButton.png"] forState:UIControlStateNormal];
+        [_commentButton setHidden:true];
         [self addSubview:_commentButton];
-        
         _commentCountLabel = [[UILabel alloc] init];
         _commentCountLabel.font = [UIFont secretFontLightWithSize:13.f];
         _commentCountLabel.textColor = [UIColor whiteColor];
         _commentCountLabel.textAlignment = NSTextAlignmentLeft;
         _commentCountLabel.frame = (CGRect) {.origin = {CGRectGetMaxX(_commentButton.frame) + 6, CGRectGetMinY(_cityLabel.frame) + 1}};
         _commentCountLabel.backgroundColor = [UIColor clearColor];
+        [_commentCountLabel setHidden:true];
         [self addSubview:_commentCountLabel];
         
         _likeButton = [[UIButton alloc] initWithFrame:(CGRect){.origin = {CGRectGetMaxX(_commentCountLabel.frame) + 25, CGRectGetMinY(_cityLabel.frame) + 3}, .size = {15,15}}];
@@ -67,7 +69,7 @@
 
         [_likeButton addTarget:self action:@selector(likeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:_likeButton];
-        
+
         _likeCountLabel = [[UILabel alloc] init];
         _likeCountLabel.font = [UIFont secretFontLightWithSize:13.f];
         _likeCountLabel.textColor = [UIColor whiteColor];
@@ -83,7 +85,11 @@
 }
 
 - (void)setNumberOfComments:(NSInteger)comments {
-    _commentCountLabel.text = [NSString stringWithFormat:@"%d",comments];
+    _commentCountLabel.text = [NSString stringWithFormat:@"%ld",comments];
+    if(comments > 0){
+        [_commentButton setHidden:false];
+        [_commentCountLabel setHidden:false];
+    }
     [_commentCountLabel sizeToFit];
 }
 

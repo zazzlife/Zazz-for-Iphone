@@ -17,7 +17,7 @@ extern const NSString* COMMENT_TYPE_EVENT;
 
 @property NSString* commentId;
 @property Profile* user;
-@property NSString* commentText;
+@property NSString* text;
 @property BOOL isFromCurrentUser;
 @property NSString* time;
 

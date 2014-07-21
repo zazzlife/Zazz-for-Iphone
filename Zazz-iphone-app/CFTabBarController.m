@@ -36,7 +36,7 @@ BOOL enabled = true;
     
     [[AppDelegate zazzApi] getMyProfile];
     [[AppDelegate getAppDelegate] setAppTabBar:self];
-    [self.tabBar setBackgroundColor:[UIColor colorFromHexString:APPLICATION_BLACK]];
+    [self.tabBar setBackgroundColor:[UIColor colorFromHexString:COLOR_ZAZZ_BLACK]];
     
     //set child controllers.
     for(UIViewController* childController in self.childViewControllers){

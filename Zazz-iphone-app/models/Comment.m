@@ -16,7 +16,7 @@ const NSString* COMMENT_TYPE_EVENT = @"event";
 
 @synthesize commentId;
 @synthesize user;
-@synthesize commentText;
+@synthesize text;
 @synthesize isFromCurrentUser;
 @synthesize time;
 
@@ -28,6 +28,7 @@ const NSString* COMMENT_TYPE_EVENT = @"event";
     Comment* comment = [[Comment alloc] init];
     [comment setUser:fromUser];
     [comment setTime:[comment_dict objectForKey:@"time"]];
+    [comment setText:[comment_dict objectForKey:@"commentText"]];
     [comment setIsFromCurrentUser:[[comment_dict objectForKey:@"isFromCurrentUser"] boolValue]];
     return comment;
 }

@@ -16,6 +16,7 @@
 #import "Post.h"
 #import "UIImage.h"
 #import "DetailViewItem.h"
+#import "Comment.h"
 
 @implementation FeedTableViewCell
 
@@ -66,6 +67,8 @@ int _albumObserversCounter;
     
     DetailViewItem* detailItem = [[DetailViewItem alloc]init];
     [detailItem setPhoto:photo.image];
+    [detailItem setType:COMMENT_TYPE_PHOTO];
+    [detailItem setItemId:photo.photoId];
     [detailItem setComments:_feed.comments];
     [detailItem setDescription:photo.description];
     [detailItem setUser:_feed.user];

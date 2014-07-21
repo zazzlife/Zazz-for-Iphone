@@ -15,7 +15,7 @@
 
 @implementation Feed
 
-const NSString* FEED_POST = @"POST";
+const NSString* FEED_POST = @"Post";
 const NSString* FEED_PHOTO = @"Photo";
 const NSString* FEED_EVENT = @"Event";
 

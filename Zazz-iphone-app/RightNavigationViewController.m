@@ -28,7 +28,7 @@ NSMutableSet* selectedCellIndexies;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzCategories:) name:@"gotCategories" object:nil];
     [[AppDelegate zazzApi] getCategories];
     [self.tableView setScrollsToTop:false];
-    [self.tableView setBackgroundColor:[UIColor colorFromHexString:APPLICATION_BLACK]];
+    [self.tableView setBackgroundColor:[UIColor colorFromHexString:COLOR_ZAZZ_BLACK]];
 }
 
 -(void)gotZazzCategories:(NSNotification*)notif{
@@ -79,7 +79,7 @@ NSMutableSet* selectedCellIndexies;
     UIColor* textColor = [UIColor whiteColor];
     if(selected){
         [selectedCellIndexies addObject:cellIndex];
-        textColor = [UIColor colorFromHexString:APPLICATION_YELLOW];
+        textColor = [UIColor colorFromHexString:COLOR_ZAZZ_YELLOW];
     }else{
         [selectedCellIndexies removeObject:cellIndex];
     }

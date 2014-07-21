@@ -65,7 +65,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self.view addGestureRecognizer:swipe_right];
     
     [AppDelegate removeZazzBackgroundLogo];
-    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:APPLICATION_GREY] width:320 andHeight:49]];
+    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:COLOR_ZAZZ_GREY] width:320 andHeight:49]];
 }
 
 -(void)gotZazzFeed:(NSNotification *)notif{
@@ -345,9 +345,39 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     return [source_feed count] + 2;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.row == 0) return;
+    if(indexPath.row == 0 || indexPath.row == [self.getFilteredFeed count]) return;
     Feed* feedItem = [self.getFilteredFeed objectAtIndex:indexPath.row - 1];
-    NSLog(@"selected feedId:%@ index:%ld", feedItem.feedId, indexPath.row);
+    DetailViewItem* detailItem = [[DetailViewItem alloc] init];
+    if([feedItem.feedType isEqualToString:FEED_PHOTO]){
+        Photo* photo = (Photo*)[(NSMutableArray*)[feedItem content] objectAtIndex:0];
+        [detailItem setPhoto:photo.image];
+        [detailItem setDescription:photo.description];
+        [detailItem setType:COMMENT_TYPE_PHOTO];
+        [detailItem setItemId:photo.photoId];
+        [detailItem setUser:photo.user];
+        [detailItem setLikes:0];
+    }else if([feedItem.feedType isEqualToString:FEED_POST]){
+        Post* post = (Post*)[feedItem content];
+        [detailItem setPhoto:nil];
+        [detailItem setDescription:post.message];
+        [detailItem setType:COMMENT_TYPE_POST];
+        [detailItem setItemId:post.postId];
+        [detailItem setUser:post.fromUser];
+        [detailItem setLikes:0];
+    }else if([feedItem.feedType isEqualToString:FEED_EVENT]){
+        Event* event = (Event*)[feedItem content];
+        [detailItem setPhoto:nil];
+        [detailItem setDescription:event.description];
+        [detailItem setType:COMMENT_TYPE_EVENT];
+        [detailItem setItemId:event.eventId];
+        [detailItem setUser:event.user];
+        [detailItem setLikes:0];
+    }
+    DetailViewController* detailViewController  = [[DetailViewController alloc] initWithDetailItem:detailItem];
+    NSArray* keys  =    [NSArray arrayWithObjects: @"childController",  @"identifier", nil];
+    NSArray* objects  = [NSArray arrayWithObjects: detailViewController, [NSString stringWithFormat:@"detailView-feed%@",feedItem.feedId], nil];
+    NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:detailViewController userInfo:userInfo];
     
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "UIColor.h"
 
 @interface LoginViewController ()
 
@@ -28,6 +29,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self.loginprogress setColor:[UIColor colorFromHexString:COLOR_ZAZZ_YELLOW]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthError:) name:@"gotAuthError" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthToken:) name:@"gotAuthToken" object:nil];
     // post-load logic.
