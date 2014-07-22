@@ -28,29 +28,48 @@
     if (self) {
         
         // Obviously my secret would have at least 10 likes
-        _likeCounter = 10;
+//        _likeCounter = 10;
         
-        _cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0, 160, 22)];
-        _cityLabel.text = @"....................";
-        _cityLabel.font = [UIFont secretFontLightWithSize:14.f];
-        _cityLabel.textColor = [UIColor whiteColor];
-        _cityLabel.textAlignment = NSTextAlignmentLeft;
-        _cityLabel.backgroundColor = [UIColor clearColor];
-        [_cityLabel sizeToFit];
-        [self addSubview:_cityLabel];
+//        _cityLabel = [[UILabel alloc] initWithFrame:CGRectMake(15,0, 160, 22)];
+//        _cityLabel.text = @"....................";
+//        _cityLabel.font = [UIFont secretFontLightWithSize:14.f];
+//        _cityLabel.textColor = [UIColor whiteColor];
+//        _cityLabel.textAlignment = NSTextAlignmentLeft;
+//        _cityLabel.backgroundColor = [UIColor clearColor];
+//        [_cityLabel sizeToFit];
+//        [self addSubview:_cityLabel];
         
         // Hardcoded the frames for all of these for simplicity and quickness
-        _moreButton = [[UIButton alloc] initWithFrame:(CGRect){
-            .origin = {
-                CGRectGetMaxX(_cityLabel.frame) + 98, CGRectGetMinY(_cityLabel.frame) + 3
-            },
-            .size = {22, 13}
-        }];
-        [_moreButton setImage:[UIImage imageNamed:@"moreButton.png"] forState:UIControlStateNormal];
-        [self addSubview:_moreButton];
+//        _moreButton = [[UIButton alloc] initWithFrame:(CGRect){
+//            .origin = {
+//                CGRectGetMaxX(_cityLabel.frame) + 98, CGRectGetMinY(_cityLabel.frame) + 3
+//            },
+//            .size = {22, 13}
+//        }];
+//        [_moreButton setImage:[UIImage imageNamed:@"moreButton.png"] forState:UIControlStateNormal];
+//        [self addSubview:_moreButton];
+
         
+//        CGRect _likeFrame = (CGRect){.origin = {CGRectGetMaxX(_moreButton.frame) + 20, CGRectGetMinY(_cityLabel.frame) + 2}, .size = {22,17}};
+//        _likeButton = [[UIButton alloc] _likeFrame];
+//        [_likeButton setImage:[UIImage imageNamed:@"likeButtonToolbar_unselected"] forState:UIControlStateNormal];
+//        [_likeButton setImage:[UIImage imageNamed:@"likeButtonToolbar_selected"] forState:UIControlStateSelected];
+//
+//        [_likeButton addTarget:self action:@selector(likeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+//        [self addSubview:_likeButton];
+//
+//        _likeCountLabel = [[UILabel alloc] init];
+//        _likeCountLabel.font = [UIFont secretFontLightWithSize:13.f];
+//        _likeCountLabel.textColor = [UIColor whiteColor];
+//        _likeCountLabel.textAlignment = NSTextAlignmentLeft;
+//        _likeCountLabel.frame = (CGRect) {.origin = {CGRectGetMaxX(_likeButton.frame) + 6, CGRectGetMinY(_cityLabel.frame) + 1}};
+//        _likeCountLabel.text = [NSString stringWithFormat:@"%d", _likeCounter];
+//        _likeCountLabel.backgroundColor = [UIColor clearColor];
+//        [_likeCountLabel sizeToFit];
+//        [self addSubview:_likeCountLabel];
         
-        _commentButton = [[UIButton alloc] initWithFrame:(CGRect){.origin = {CGRectGetMaxX(_moreButton.frame) + 20, CGRectGetMinY(_cityLabel.frame) + 2}, .size = {22,17}}];
+        CGRect _commentFrame = CGRectMake(CGRectGetWidth(frame) - 50, 3, 20, 15);
+        _commentButton = [[UIButton alloc] initWithFrame:_commentFrame];
         [_commentButton setImage:[UIImage imageNamed:@"commentButton.png"] forState:UIControlStateNormal];
         [_commentButton setHidden:true];
         [self addSubview:_commentButton];
@@ -62,23 +81,6 @@
         _commentCountLabel.backgroundColor = [UIColor clearColor];
         [_commentCountLabel setHidden:true];
         [self addSubview:_commentCountLabel];
-        
-        _likeButton = [[UIButton alloc] initWithFrame:(CGRect){.origin = {CGRectGetMaxX(_commentCountLabel.frame) + 25, CGRectGetMinY(_cityLabel.frame) + 3}, .size = {15,15}}];
-        [_likeButton setImage:[UIImage imageNamed:@"likeButtonToolbar_unselected"] forState:UIControlStateNormal];
-        [_likeButton setImage:[UIImage imageNamed:@"likeButtonToolbar_selected"] forState:UIControlStateSelected];
-
-        [_likeButton addTarget:self action:@selector(likeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:_likeButton];
-
-        _likeCountLabel = [[UILabel alloc] init];
-        _likeCountLabel.font = [UIFont secretFontLightWithSize:13.f];
-        _likeCountLabel.textColor = [UIColor whiteColor];
-        _likeCountLabel.textAlignment = NSTextAlignmentLeft;
-        _likeCountLabel.frame = (CGRect) {.origin = {CGRectGetMaxX(_likeButton.frame) + 6, CGRectGetMinY(_cityLabel.frame) + 1}};
-        _likeCountLabel.text = [NSString stringWithFormat:@"%d", _likeCounter];
-        _likeCountLabel.backgroundColor = [UIColor clearColor];
-        [_likeCountLabel sizeToFit];
-        [self addSubview:_likeCountLabel];
         
     }
     return self;
