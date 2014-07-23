@@ -47,7 +47,6 @@ UIImageView *_blurImageView;
 UIImageView* _posterPhoto;
 UILabel *_textLabel;
 ToolBarView *_toolBarView;
-UIView *_commentsViewContainer;
 UIView *_topContainer;
 UIView* _textLabelView;
 UITableView *_commentsTableView;
@@ -107,7 +106,7 @@ UIImageView *_imageView;
         UIImageView* backgroundImage = [[UIImageView alloc] init];
         UIImage* bkd = [UIImage imageNamed:@"Background"];
         [backgroundImage setImage:bkd];
-        [backgroundImage setBackgroundColor:[UIColor redColor]];
+//        [backgroundImage setBackgroundColor:[UIColor redColor]];
         CGRect max_frame = [[UIScreen mainScreen] bounds];
         [backgroundImage setFrame: CGRectMake(CGRectGetMinX(max_frame) - 200, CGRectGetMinY(max_frame) - 200, CGRectGetWidth(max_frame) + 400, CGRectGetHeight(max_frame)+400)];
         
@@ -132,9 +131,6 @@ UIImageView *_imageView;
         IMAGE_INIT_FRAME = CGRectMake(0, 0, _imageView.frame.size.width * scale, _imageView.frame.size.height * scale);
         TEXT_INIT_FRAME = CGRectMake(CGRectGetMinX(TEXT_INIT_FRAME), CGRectGetMaxY(IMAGE_INIT_FRAME), CGRectGetWidth(TEXT_INIT_FRAME), MAX(_textLabel.frame.size.height,60));
         
-        float height = CGRectGetHeight(TEXT_INIT_FRAME);
-        float labelHeight = _textLabel.frame.size.height;
-        
         [_imageView setFrame:IMAGE_INIT_FRAME];
         [_textLabelView setFrame:TEXT_INIT_FRAME];
     }
@@ -142,23 +138,8 @@ UIImageView *_imageView;
     TOOLBAR_INIT_FRAME  = CGRectMake (0, CGRectGetMaxY(TEXT_INIT_FRAME), 320, 22);
     HEADER_INIT_FRAME   = CGRectMake (0, 0, CGRectGetWidth(TOOLBAR_INIT_FRAME), CGRectGetMaxY(TOOLBAR_INIT_FRAME));
     
-    _topContainer = [[UIView alloc] initWithFrame:HEADER_INIT_FRAME];
-    
     _toolBarView = [[ToolBarView alloc] initWithFrame:TOOLBAR_INIT_FRAME];
-//    [_toolBarView._cityLabel sizeToFit];
-    _toolBarView.autoresizingMask =   UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin;
-    
-    _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
-    [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
-    [_backButton addTarget:self action:@selector(leaveView:) forControlEvents:UIControlEventTouchUpInside];
-    
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:[UIApplication sharedApplication].keyWindow.frame];
-    _mainScrollView.delegate = self;
-    _mainScrollView.bounces = YES;
-    _mainScrollView.alwaysBounceVertical = YES;
-    _mainScrollView.contentSize = CGSizeZero;
-    _mainScrollView.showsVerticalScrollIndicator = YES;
-    _mainScrollView.scrollIndicatorInsets = UIEdgeInsetsMake(kBarHeight, 0, 0, 0);
+    _topContainer = [[UIView alloc] initWithFrame:HEADER_INIT_FRAME];
     
     [_topContainer addSubview:_textLabelView];
     [_topContainer addSubview:_imageView];
@@ -177,32 +158,37 @@ UIImageView *_imageView;
     _blurImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _blurImageView.alpha = 0;
     _blurImageView.backgroundColor = [UIColor clearColor];
-//    
-//    UIView *fadeView = [[UIView alloc] init];
-//    [fadeView setFrame:HEADER_INIT_FRAME];
-//    fadeView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.17f];
-//    fadeView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    [_blurImageView addSubview:fadeView];
     
     [_topContainer addSubview:_blurImageView];
-
     
+    _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
+    [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
+    [_backButton addTarget:self action:@selector(leaveView:) forControlEvents:UIControlEventTouchUpInside];
     
-    _commentsViewContainer = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(HEADER_INIT_FRAME), CGRectGetWidth(_mainScrollView.frame), CGRectGetHeight(_mainScrollView.frame))];
-//    [_commentsViewContainer addGradientMaskWithStartPoint:CGPointMake(0.5, 0.0) endPoint:CGPointMake(0.5, 0.03)];
-    [_commentsViewContainer setBackgroundColor:[UIColor blueColor]];
+    CGRect _windowFrame = [UIApplication sharedApplication].keyWindow.frame;
     
-    _commentsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_mainScrollView.frame), CGRectGetHeight(_mainScrollView.frame) - kBarHeight ) style:UITableViewStylePlain];
+    _commentsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(HEADER_INIT_FRAME), CGRectGetWidth(HEADER_INIT_FRAME),CGRectGetHeight(_windowFrame)-kBarHeight) style:UITableViewStylePlain];
     _commentsTableView.scrollEnabled = NO;
     _commentsTableView.delegate = self;
     _commentsTableView.dataSource = self;
     _commentsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     _commentsTableView.separatorColor = [UIColor clearColor];
-//    [_commentsTableView setBackgroundColor:[UIColor purpleColor]];
-    [_commentsViewContainer addSubview:_commentsTableView];
+    
+    
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_windowFrame), CGRectGetHeight(_windowFrame))];
+    _mainScrollView.delegate = self;
+    _mainScrollView.bounces = YES;
+    _mainScrollView.alwaysBounceVertical = YES;
+    _mainScrollView.contentSize = CGSizeZero;
+    _mainScrollView.showsVerticalScrollIndicator = YES;
+    _mainScrollView.canCancelContentTouches = NO;
+    _mainScrollView.scrollIndicatorInsets = UIEdgeInsetsMake(kBarHeight, 0, 0, 0);
+    [_mainScrollView setContentSize:CGSizeMake(CGRectGetWidth(HEADER_INIT_FRAME), CGRectGetHeight(_windowFrame)+CGRectGetHeight(HEADER_INIT_FRAME)-kBarHeight)];
+    [_mainScrollView setContentOffset:CGPointMake(0, 0)];
+    
     
     [_mainScrollView addSubview:_topContainer];
-    [_mainScrollView addSubview:_commentsViewContainer];
+    [_mainScrollView addSubview:_commentsTableView];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:_mainScrollView];
     [self.view addSubview:_backButton];
@@ -220,59 +206,54 @@ UIImageView *_imageView;
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat delta = 0.0f;
+    [_mainScrollView setBounces:true];
     // Here is where I do the "Zooming" image and the quick fade out the text and toolbar
     if (scrollView.contentOffset.y < 0.0f) {
         delta = fabs(MIN(0.0f, _mainScrollView.contentOffset.y));
+        _topContainer.frame = CGRectMake(CGRectGetMinX(HEADER_INIT_FRAME),
+                                         CGRectGetMinY(HEADER_INIT_FRAME)-delta,
+                                         CGRectGetWidth(HEADER_INIT_FRAME),
+                                         CGRectGetHeight(HEADER_INIT_FRAME) + delta);
+        _toolBarView.frame  = CGRectMake(CGRectGetMinX(TOOLBAR_INIT_FRAME),
+                                         CGRectGetHeight(_topContainer.frame) - 22,
+                                         CGRectGetWidth(TOOLBAR_INIT_FRAME),
+                                         CGRectGetHeight(TOOLBAR_INIT_FRAME));
         if(_detailItem.photo){
-            NSLog(@"1");
-            _topContainer.frame = CGRectMake(CGRectGetMinX(HEADER_INIT_FRAME),
-                                                     CGRectGetMinY(HEADER_INIT_FRAME)-delta,
-                                                     CGRectGetWidth(HEADER_INIT_FRAME),
-                                                     CGRectGetHeight(HEADER_INIT_FRAME) + delta);
-            _imageView.frame            = CGRectMake(CGRectGetMinX(IMAGE_INIT_FRAME) - delta / 2.0f,
-                                                     CGRectGetMinY(IMAGE_INIT_FRAME),
-                                                     CGRectGetWidth(IMAGE_INIT_FRAME) + delta,
-                                                     CGRectGetHeight(IMAGE_INIT_FRAME) + delta);
-            _textLabelView.frame        = CGRectMake(CGRectGetMinX(TEXT_INIT_FRAME),
-                                                     CGRectGetMaxY(_imageView.frame),
-                                                     CGRectGetWidth(TEXT_INIT_FRAME),
-                                                     CGRectGetHeight(TEXT_INIT_FRAME));
-            _toolBarView.frame          = CGRectMake(CGRectGetMinX(TOOLBAR_INIT_FRAME),
-                                                     CGRectGetMaxY(_textLabelView.frame),
-                                                     CGRectGetWidth(TOOLBAR_INIT_FRAME),
-                                                     CGRectGetHeight(TOOLBAR_INIT_FRAME));
-        }else{
-            NSLog(@"2");
-            _topContainer.frame = CGRectMake(CGRectGetMinX(HEADER_INIT_FRAME), CGRectGetMinY(HEADER_INIT_FRAME)-delta,
-                                             CGRectGetWidth(HEADER_INIT_FRAME), CGRectGetHeight(HEADER_INIT_FRAME)+delta);
-            _toolBarView.frame          = CGRectMake(CGRectGetMinX(TOOLBAR_INIT_FRAME),
-                                                     CGRectGetHeight(_topContainer.frame) - 22,
-                                                     CGRectGetWidth(TOOLBAR_INIT_FRAME),
-                                                     CGRectGetHeight(TOOLBAR_INIT_FRAME));
+            _imageView.frame    = CGRectMake(CGRectGetMinX(IMAGE_INIT_FRAME) - delta / 2.0f,
+                                             CGRectGetMinY(IMAGE_INIT_FRAME),
+                                             CGRectGetWidth(IMAGE_INIT_FRAME) + delta,
+                                             CGRectGetHeight(IMAGE_INIT_FRAME) + delta);
+            _textLabelView.frame= CGRectMake(CGRectGetMinX(TEXT_INIT_FRAME),
+                                             CGRectGetMaxY(_imageView.frame),
+                                             CGRectGetWidth(TEXT_INIT_FRAME),
+                                             CGRectGetHeight(TEXT_INIT_FRAME));
         }
         [_commentsTableView setContentOffset:(CGPoint){0,0} animated:NO];
     } else {
+        [_mainScrollView setBounces:false];
         delta = _mainScrollView.contentOffset.y;
-        float full_height = HEADER_INIT_FRAME.size.height - kBarHeight;
-        float current_height = full_height - delta;
-        float alpha = MAX(0, current_height/full_height);
+        float content_height_init = HEADER_INIT_FRAME.size.height - kBarHeight;
+        float content_height      = content_height_init - delta;
+        float alpha = MAX(0, content_height/content_height_init);
 
 //        _textLabelView.alpha = alpha;
 //        _toolBarView.alpha = alpha;
         _blurImageView.alpha = 1-alpha;
         
         if (alpha <= 0) {
-            NSLog(@"3");
+            NSLog(@"%f",content_height);
             _topContainer.frame = CGRectMake(0, delta + kBarHeight - CGRectGetHeight(_topContainer.frame) ,
                                             CGRectGetWidth(_topContainer.frame), CGRectGetHeight(HEADER_INIT_FRAME));
-            _commentsViewContainer.frame = CGRectMake(0, CGRectGetMaxY(_topContainer.frame),
-                                                      CGRectGetWidth(_commentsViewContainer.frame), CGRectGetHeight(_commentsViewContainer.frame));
+            _commentsTableView.frame = CGRectMake(0, CGRectGetMaxY(_topContainer.frame),
+                                                      CGRectGetWidth(_commentsTableView.frame), CGRectGetHeight(_commentsTableView.frame));
+            [_commentsTableView setScrollEnabled:true];
         }
         else {
             NSLog(@"4");
+            [_commentsTableView setScrollEnabled:false];
             _toolBarView.frame = TOOLBAR_INIT_FRAME;
             _topContainer.frame = HEADER_INIT_FRAME;
-            _commentsViewContainer.frame = CGRectMake(0, CGRectGetMaxY(HEADER_INIT_FRAME), CGRectGetWidth(HEADER_INIT_FRAME), CGRectGetHeight(HEADER_INIT_FRAME));
+            _commentsTableView.frame = CGRectMake(0, CGRectGetMaxY(_topContainer.frame), CGRectGetWidth(_commentsTableView.frame), CGRectGetHeight(_commentsTableView.frame));
             [_commentsTableView setContentOffset:CGPointMake(0, 0) animated:NO];
         }
     }

@@ -13,10 +13,12 @@
 
 NSString* _feedType;
 NSString* _feedId;
+NSMutableData* _receivedData;
 
 -(void)getCommentsFor:(NSString*)feedType andId:(NSString*)feedId{
     _feedType = feedType;
     _feedId = feedId;
+    _receivedData=nil;
     NSString * action = [NSString stringWithFormat:@"comments/%@s/%@", feedType, feedId];
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
     [NSURLConnection connectionWithRequest:request delegate:self];
@@ -25,6 +27,7 @@ NSString* _feedId;
 -(void)getCommentsFor:(NSString*)feedType andId:(NSString*)feedId after:(NSString*)commentId{
     _feedType = feedType;
     _feedId = feedId;
+    _receivedData=nil;
     NSString * action = [NSString stringWithFormat:@"comments/%@s/%@?lastComment=%@", feedType, feedId, commentId];
     NSLog(@"doing: %@",action);
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
@@ -33,7 +36,14 @@ NSString* _feedId;
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    NSDictionary *comments_dict = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil ];
+    if(!_receivedData){
+        _receivedData = [[NSMutableData alloc] init];
+    }
+    [_receivedData appendData:data];
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSDictionary *comments_dict = [NSJSONSerialization JSONObjectWithData:_receivedData options:0 error:nil ];
     if(comments_dict == nil){
         NSLog(@"JSON ERROR");
         return;
