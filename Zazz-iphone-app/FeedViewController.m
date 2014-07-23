@@ -166,7 +166,8 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     UIViewController* childController = [notif.userInfo objectForKey:@"childController"];
     NSString* identifier = [notif.userInfo objectForKey:@"identifier"];
     
-    if(childController && (![identifier isEqualToString:active_identifier])){
+    if(childController){
+        NSLog(@"new view");
         for (UIView *v in self.nextView.subviews)
             [v removeFromSuperview];
         [self.nextView addSubview:childController.view];
