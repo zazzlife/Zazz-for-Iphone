@@ -18,6 +18,7 @@
 #import "Photo.h"
 #import "UIColor.h"
 #import "DetailViewItem.h"
+#import "TextFramer.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -53,26 +54,6 @@ UITableView *_commentsTableView;
 UIButton *_backButton;
 UIImageView *_imageView;
 
--(CGSize)frameForText:(NSString*)text sizeWithFont:(UIFont*)font constrainedToSize:(CGSize)size lineBreakMode:(NSLineBreakMode)lineBreakMode  {
-    
-    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
-    paragraphStyle.lineBreakMode = lineBreakMode;
-    
-    NSDictionary * attributes = @{NSFontAttributeName:font,
-                                  NSParagraphStyleAttributeName:paragraphStyle
-                                  };
-    
-    
-    CGRect textRect = [text boundingRectWithSize:size
-                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                      attributes:attributes
-                                         context:nil];
-    
-    //Contains both width & height ... Needed: The height
-    return textRect.size;
-}
-
-
 -(id)initWithDetailItem:(DetailViewItem*)detailItem{
     
     if (!self) {self = [super init];}
@@ -89,7 +70,6 @@ UIImageView *_imageView;
         _textLabel = [[UILabel alloc] init];
         [_textLabel setText:_detailItem.description];
         [_textLabel setNumberOfLines:0];
-        [_textLabel setTextAlignment:NSTextAlignmentLeft];
         [_textLabel setFont:[UIFont secretFontLightWithSize:14.f]];
         [_textLabel setTextAlignment:NSTextAlignmentLeft];
         [_textLabel setTextColor:[UIColor whiteColor]];
@@ -97,7 +77,7 @@ UIImageView *_imageView;
         [_textLabel setBackgroundColor:[UIColor clearColor]];
         [_textLabel.layer setShadowColor:[UIColor blackColor].CGColor];
         [_textLabel.layer setShadowRadius:10.0f];
-        CGSize size = [self frameForText:_detailItem.description sizeWithFont:_textLabel.font constrainedToSize:CGSizeMake(230, 120) lineBreakMode:_textLabel.lineBreakMode];
+        CGSize size = [TextFramer frameForText:_detailItem.description sizeWithFont:_textLabel.font constrainedToSize:CGSizeMake(230, 120) lineBreakMode:_textLabel.lineBreakMode];
         [_textLabel setFrame:CGRectMake(80, 0, 230, size.height)];
         [_textLabel sizeToFit];
         [_textLabel setFrame:CGRectMake(80, 50, 230, _textLabel.frame.size.height)];
@@ -304,22 +284,32 @@ UIImageView *_imageView;
         [spinner startAnimating];
         return cell;
     }
-    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:[NSString stringWithFormat:@"commentView"]];
+    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"commentView"];
+    Comment* comment = _detailItem.comments[indexPath.row];
     if (!cell) {
-        cell = [[CommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NSString stringWithFormat:@"Cell %d", indexPath.row]];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.commentLabel.frame = (CGRect) {.origin = cell.commentLabel.frame.origin, .size = {CGRectGetMinX(cell.likeButton.frame) - CGRectGetMaxY(cell.iconView.frame) - kCommentPaddingFromLeft - kCommentPaddingFromRight,[self tableView:tableView heightForRowAtIndexPath:indexPath] - kCommentCellHeight}};
-        Comment* comment = _detailItem.comments[indexPath.row];;
-        cell.commentLabel.text = comment.text;
-        cell.timeLabel.frame = (CGRect) {.origin = {CGRectGetMinX(cell.commentLabel.frame), CGRectGetMaxY(cell.commentLabel.frame)}};
-        cell.timeLabel.text = @"1d ago";
-        [cell.timeLabel sizeToFit];
-        
-        // Don't judge my magic numbers or my crappy assets!!!
-        cell.likeCountImageView.frame = CGRectMake(CGRectGetMaxX(cell.timeLabel.frame) + 7, CGRectGetMinY(cell.timeLabel.frame) + 3, 10, 10);
-        cell.likeCountImageView.image = [UIImage imageNamed:@"like_greyIcon.png"];
-        cell.likeCountLabel.frame = CGRectMake(CGRectGetMaxX(cell.likeCountImageView.frame) + 3, CGRectGetMinY(cell.timeLabel.frame), 0, CGRectGetHeight(cell.timeLabel.frame));
+        cell = [[CommentCell alloc]initWithComment:comment andReuseIdentifier:@"commentView"];
     }
+    [cell.iconView setImage: comment.user.photo];
+    [cell.commentLabel setFrame:(CGRect) {.origin = {CGRectGetMaxX(cell.iconView.frame) + 15, 15}}];
+    [cell.commentLabel setText: comment.text];
+    
+    CGSize size = [TextFramer frameForText:comment.text sizeWithFont:cell.commentLabel.font constrainedToSize:CGSizeMake(cell.frame.size.width - 50, cell.frame.size.height) lineBreakMode:cell.commentLabel.lineBreakMode];
+    [cell.commentLabel setFrame:(CGRect){   .origin = {CGRectGetMaxX(cell.iconView.frame)+ kCommentPaddingFromLeft, 5 + 10},
+        .size = {CGRectGetWidth(cell.frame) - 80,size.height}}];
+    [cell.commentLabel sizeToFit];
+    [cell.commentLabel setFrame:CGRectMake(CGRectGetMinX(cell.commentLabel.frame), CGRectGetMinY(cell.commentLabel.frame), CGRectGetWidth(cell.commentLabel.frame), CGRectGetHeight(cell.commentLabel.frame))];
+    
+    
+    
+    [cell.commentLabel sizeToFit];
+    cell.timeLabel.frame = (CGRect) {.origin = {CGRectGetMinX(cell.commentLabel.frame), CGRectGetMaxY(cell.commentLabel.frame)}};
+    [cell.timeLabel setText:[ZazzApi formatDateString:comment.time]];
+    [cell.timeLabel sizeToFit];
+    
+    // Don't judge my magic numbers or my crappy assets!!!
+    cell.likeCountImageView.frame = CGRectMake(CGRectGetMaxX(cell.timeLabel.frame) + 7, CGRectGetMinY(cell.timeLabel.frame) + 3, 10, 10);
+    cell.likeCountImageView.image = [UIImage imageNamed:@"like_greyIcon.png"];
+    cell.likeCountLabel.frame = CGRectMake(CGRectGetMaxX(cell.likeCountImageView.frame) + 3, CGRectGetMinY(cell.timeLabel.frame), 0, CGRectGetHeight(cell.timeLabel.frame));
 
     return cell;
 }

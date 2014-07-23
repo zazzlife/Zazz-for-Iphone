@@ -17,6 +17,6 @@
 @property UIImage* photo;
 @property Profile* user;
 @property int likes;
-@property NSMutableArray* comments;
+@property NSMutableArray* comments;;
 
 @end

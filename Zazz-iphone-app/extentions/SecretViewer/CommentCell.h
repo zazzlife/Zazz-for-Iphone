@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Comment.h"
+
 
 @interface CommentCell : UITableViewCell
 
@@ -19,4 +21,7 @@ extern const CGFloat kCommentPaddingFromRight;
 @property (nonatomic, strong) UILabel *likeCountLabel;
 @property (nonatomic, strong) UIImageView *likeCountImageView;
 @property (nonatomic, strong) UIButton *likeButton;
+
+-(CommentCell*)initWithComment:(Comment*)comment andReuseIdentifier:(NSString*)identifier;
+
 @end
