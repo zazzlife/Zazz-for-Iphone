@@ -14,5 +14,6 @@
 
 - (void)setNumberOfComments:(NSInteger)comments;
 - (void)setCategories:(NSMutableArray*)category_ids;
+- (void)setLikes:(int)likes;
 
 @end

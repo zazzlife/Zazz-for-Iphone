@@ -48,25 +48,6 @@
 //        [_moreButton setImage:[UIImage imageNamed:@"moreButton.png"] forState:UIControlStateNormal];
 //        [self addSubview:_moreButton];
 
-        
-//        CGRect _likeFrame = (CGRect){.origin = {CGRectGetMaxX(_moreButton.frame) + 20, CGRectGetMinY(_cityLabel.frame) + 2}, .size = {22,17}};
-//        _likeButton = [[UIButton alloc] _likeFrame];
-//        [_likeButton setImage:[UIImage imageNamed:@"likeButtonToolbar_unselected"] forState:UIControlStateNormal];
-//        [_likeButton setImage:[UIImage imageNamed:@"likeButtonToolbar_selected"] forState:UIControlStateSelected];
-//
-//        [_likeButton addTarget:self action:@selector(likeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-//        [self addSubview:_likeButton];
-//
-//        _likeCountLabel = [[UILabel alloc] init];
-//        _likeCountLabel.font = [UIFont secretFontLightWithSize:13.f];
-//        _likeCountLabel.textColor = [UIColor whiteColor];
-//        _likeCountLabel.textAlignment = NSTextAlignmentLeft;
-//        _likeCountLabel.frame = (CGRect) {.origin = {CGRectGetMaxX(_likeButton.frame) + 6, CGRectGetMinY(_cityLabel.frame) + 1}};
-//        _likeCountLabel.text = [NSString stringWithFormat:@"%d", _likeCounter];
-//        _likeCountLabel.backgroundColor = [UIColor clearColor];
-//        [_likeCountLabel sizeToFit];
-//        [self addSubview:_likeCountLabel];
-        
         CGRect _commentFrame = CGRectMake(CGRectGetWidth(frame) - 50, 3, 20, 15);
         _commentButton = [[UIButton alloc] initWithFrame:_commentFrame];
         [_commentButton setImage:[UIImage imageNamed:@"commentButton.png"] forState:UIControlStateNormal];
@@ -76,21 +57,59 @@
         _commentCountLabel.font = [UIFont secretFontLightWithSize:13.f];
         _commentCountLabel.textColor = [UIColor whiteColor];
         _commentCountLabel.textAlignment = NSTextAlignmentLeft;
-        _commentCountLabel.frame = (CGRect) {.origin = {CGRectGetMaxX(_commentButton.frame) + 6, CGRectGetMinY(_commentButton.frame) }};
+        _commentCountLabel.frame = (CGRect) {.origin = {CGRectGetMaxX(_commentFrame) + 6, CGRectGetMinY(_commentFrame) }};
         _commentCountLabel.backgroundColor = [UIColor clearColor];
         [_commentCountLabel setHidden:true];
         [self addSubview:_commentCountLabel];
+        
+        
+        CGRect _likeFrame = CGRectMake(CGRectGetMinX(_commentFrame)-80, CGRectGetMinY(_commentFrame), CGRectGetWidth(_commentFrame), CGRectGetHeight(_commentFrame));
+        _likeButton = [[UIButton alloc] initWithFrame:_likeFrame];
+        [_likeButton setImage:[UIImage imageNamed:@"likeButtonToolbar_unselected"] forState:UIControlStateNormal];
+        [_likeButton setImage:[UIImage imageNamed:@"likeButtonToolbar_selected"] forState:UIControlStateSelected];
+        [_likeButton setHidden:true];
+        [_likeButton addTarget:self action:@selector(likeButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:_likeButton];
+        _likeCountLabel = [[UILabel alloc] init];
+        _likeCountLabel.font = [UIFont secretFontLightWithSize:13.f];
+        _likeCountLabel.textColor = [UIColor whiteColor];
+        _likeCountLabel.textAlignment = NSTextAlignmentLeft;
+        _likeCountLabel.frame = (CGRect) {.origin = {CGRectGetMaxX(_likeFrame) + 6, CGRectGetMinY(_likeFrame) }};
+        _likeCountLabel.hidden = true;
+        _likeCountLabel.backgroundColor = [UIColor clearColor];
+        [self addSubview:_likeCountLabel];
     }
     return self;
 }
 
 - (void)setNumberOfComments:(NSInteger)comments {
-    _commentCountLabel.text = [NSString stringWithFormat:@"%ld",comments];
     if(comments > 0){
-        [_commentButton setHidden:false];
+        [_commentCountLabel setText:[NSString stringWithFormat:@"%ld",comments]];
+        [_commentCountLabel sizeToFit];
         [_commentCountLabel setHidden:false];
+        [_commentButton setHidden:false];
     }
-    [_commentCountLabel sizeToFit];
+}
+
+-(void)setCategories:(NSMutableArray*)category_ids{
+    CGFloat inset = 0;
+    for(NSString* category_id in category_ids){
+        CategoryStat* category = [[CategoryStat alloc] init];
+        [category setCategory_id:category_id];
+        UIImageView* imageView = [[UIImageView alloc] initWithImage:[category getIcon]];
+        imageView.frame = CGRectMake(inset+5, 0, 20, 20);
+        [self addSubview:imageView];
+        inset += 20;
+    }
+}
+
+- (void)setLikes:(int)likes{
+    if(likes>0){
+        [_likeCountLabel setText:[NSString stringWithFormat:@"%d",likes]];
+        [_likeCountLabel sizeToFit];
+        [_likeCountLabel setHidden:false];
+        [_likeButton setHidden:false];
+    }
 }
 
 - (void)likeButtonTapped:(id)sender{
@@ -121,18 +140,6 @@
         _likeCounter--;
     }
     [_likeCountLabel setText:[NSString stringWithFormat:@"%d",_likeCounter]];
-}
-
--(void)setCategories:(NSMutableArray*)category_ids{
-    CGFloat inset = 0;
-    for(NSString* category_id in category_ids){
-        CategoryStat* category = [[CategoryStat alloc] init];
-        [category setCategory_id:category_id];
-        UIImageView* imageView = [[UIImageView alloc] initWithImage:[category getIcon]];
-        imageView.frame = CGRectMake(inset+5, 0, 20, 20);
-        [self addSubview:imageView];
-        inset += 20;
-    }
 }
 
 @end

@@ -48,11 +48,11 @@ UIImageView *_blurImageView;
 UIImageView* _posterPhoto;
 UILabel *_textLabel;
 ToolBarView *_toolBarView;
-UIView *_topContainer;
+UIView* _topContainer;
 UIView* _textLabelView;
-UITableView *_commentsTableView;
-UIButton *_backButton;
-UIImageView *_imageView;
+UITableView* _commentsTableView;
+UIButton* _backButton;
+UIImageView* _imageView;
 
 -(id)initWithDetailItem:(DetailViewItem*)detailItem{
     
@@ -117,9 +117,9 @@ UIImageView *_imageView;
     _toolBarView = [[ToolBarView alloc] initWithFrame:TOOLBAR_INIT_FRAME];
     _topContainer = [[UIView alloc] initWithFrame:HEADER_INIT_FRAME];
     
-    if(detailItem.categories){
-        [_toolBarView setCategories:_detailItem.categories];
-    }
+    [_toolBarView setCategories:_detailItem.categories];
+    [_toolBarView setLikes: _detailItem.likes];
+    
     
     [_topContainer addSubview:_textLabelView];
     [_topContainer addSubview:_imageView];
