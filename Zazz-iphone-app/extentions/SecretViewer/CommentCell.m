@@ -8,7 +8,6 @@
 
 #import "CommentCell.h"
 #import "UIFont+SecretFont.h"
-#import "TextFramer.h"
 
 @implementation CommentCell {
     NSInteger _likeCount;

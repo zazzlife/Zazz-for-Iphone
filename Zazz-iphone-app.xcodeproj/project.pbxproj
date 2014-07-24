@@ -23,7 +23,6 @@
 		2A01CBBA196B289400C4B81F /* ZazzNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CBB3196B289400C4B81F /* ZazzNotification.m */; };
 		2A01CBBB196B289400C4B81F /* ZazzProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CBB5196B289400C4B81F /* ZazzProfile.m */; };
 		2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D71F191EF3CD00A2827F /* LoginViewController.m */; };
-		2A19066A197F5E3900D384F8 /* TextFramer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A190669197F5E3900D384F8 /* TextFramer.m */; };
 		2A2385E2194521D300F7FABD /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385C4194521D300F7FABD /* MKAnnotationView+WebCache.m */; };
 		2A2385E3194521D300F7FABD /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385C6194521D300F7FABD /* NSData+ImageContentType.m */; };
 		2A2385E4194521D300F7FABD /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385C8194521D300F7FABD /* SDImageCache.m */; };
@@ -120,7 +119,6 @@
 		2A01CBB5196B289400C4B81F /* ZazzProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzProfile.m; path = API_Module/ZazzProfile.m; sourceTree = "<group>"; };
 		2A09D71E191EF3CD00A2827F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2A09D71F191EF3CD00A2827F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		2A190669197F5E3900D384F8 /* TextFramer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFramer.m; sourceTree = "<group>"; };
 		2A2385C3194521D300F7FABD /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		2A2385C4194521D300F7FABD /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		2A2385C5194521D300F7FABD /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -191,11 +189,11 @@
 		2A6735991966F18A00707224 /* TextPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextPostViewController.m; sourceTree = "<group>"; };
 		2AA057D3193F451B00E1617D /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		2AA057D4193F451B00E1617D /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		2AAFF928197FE1F3001CC4CC /* UILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UILabel.h; sourceTree = "<group>"; };
 		2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavigationViewController.h; sourceTree = "<group>"; };
 		2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
 		2AB3E4611934063700F72784 /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
 		2AB3E4621934063700F72784 /* RightNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavigationViewController.m; sourceTree = "<group>"; };
-		2AD2AAB7197F5BBF000153A7 /* TextFramer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFramer.h; sourceTree = "<group>"; };
 		2AE2818A1956004E0015602F /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		2AE2818B1956004E0015602F /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		2AEA1C82197604E300A177F3 /* DetailViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewItem.h; sourceTree = "<group>"; };
@@ -363,8 +361,7 @@
 				2A2385C2194521D300F7FABD /* SDWebImage */,
 				2A47F5611936F37A001CF1AE /* UIColor.h */,
 				2A47F5621936F37A001CF1AE /* UIImage.h */,
-				2AD2AAB7197F5BBF000153A7 /* TextFramer.h */,
-				2A190669197F5E3900D384F8 /* TextFramer.m */,
+				2AAFF928197FE1F3001CC4CC /* UILabel.h */,
 			);
 			name = Extentions;
 			path = extentions;
@@ -675,7 +672,6 @@
 				2A2385E5194521D300F7FABD /* SDWebImageCompat.m in Sources */,
 				2A4144FF19689857001C1090 /* Post.m in Sources */,
 				2A2385E6194521D300F7FABD /* SDWebImageDecoder.m in Sources */,
-				2A19066A197F5E3900D384F8 /* TextFramer.m in Sources */,
 				2A01CBA7196B156200C4B81F /* UIFont+SecretFont.m in Sources */,
 				2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */,
 				2A67359A1966F18A00707224 /* TextPostViewController.m in Sources */,

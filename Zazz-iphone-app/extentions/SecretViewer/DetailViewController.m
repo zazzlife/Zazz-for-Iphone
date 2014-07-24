@@ -18,7 +18,7 @@
 #import "Photo.h"
 #import "UIColor.h"
 #import "DetailViewItem.h"
-#import "TextFramer.h"
+#import "UILabel.h"
 
 #import <QuartzCore/QuartzCore.h>
 
@@ -67,7 +67,7 @@ UIImageView *_imageView;
     
     if([_detailItem description]){
     
-        _textLabel = [[UILabel alloc] init];
+        _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(80, kBarHeight, 230, 0)];
         [_textLabel setText:_detailItem.description];
         [_textLabel setNumberOfLines:0];
         [_textLabel setFont:[UIFont secretFontLightWithSize:14.f]];
@@ -77,21 +77,17 @@ UIImageView *_imageView;
         [_textLabel setBackgroundColor:[UIColor clearColor]];
         [_textLabel.layer setShadowColor:[UIColor blackColor].CGColor];
         [_textLabel.layer setShadowRadius:10.0f];
-        CGSize size = [TextFramer frameForText:_detailItem.description sizeWithFont:_textLabel.font constrainedToSize:CGSizeMake(230, 120) lineBreakMode:_textLabel.lineBreakMode];
-        [_textLabel setFrame:CGRectMake(80, 0, 230, size.height)];
-        [_textLabel sizeToFit];
-        [_textLabel setFrame:CGRectMake(80, 50, 230, _textLabel.frame.size.height)];
+        [_textLabel resizeWithFlexibleHeight];
         [_textLabelView setFrame:CGRectMake(0, 0, 320, MAX(_textLabel.frame.size.height+50,100))];
         
         UIImageView* backgroundImage = [[UIImageView alloc] init];
         UIImage* bkd = [UIImage imageNamed:@"Background"];
         [backgroundImage setImage:bkd];
-//        [backgroundImage setBackgroundColor:[UIColor redColor]];
         CGRect max_frame = [[UIScreen mainScreen] bounds];
         [backgroundImage setFrame: CGRectMake(CGRectGetMinX(max_frame) - 200, CGRectGetMinY(max_frame) - 200, CGRectGetWidth(max_frame) + 400, CGRectGetHeight(max_frame)+400)];
         
         _posterPhoto = [[UIImageView alloc] initWithImage:_detailItem.user.photo];
-        [_posterPhoto setFrame:CGRectMake(25, 50, 50, 50)];
+        [_posterPhoto setFrame:CGRectMake(25, kBarHeight, 50, 50)];
         [_posterPhoto.layer setCornerRadius:CGRectGetWidth(_posterPhoto.frame) / 2.0f];
         [_posterPhoto.layer setMasksToBounds:YES];
         
@@ -120,6 +116,10 @@ UIImageView *_imageView;
     
     _toolBarView = [[ToolBarView alloc] initWithFrame:TOOLBAR_INIT_FRAME];
     _topContainer = [[UIView alloc] initWithFrame:HEADER_INIT_FRAME];
+    
+    if(detailItem.categories){
+        [_toolBarView setCategories:_detailItem.categories];
+    }
     
     [_topContainer addSubview:_textLabelView];
     [_topContainer addSubview:_imageView];
@@ -221,7 +221,7 @@ UIImageView *_imageView;
         _blurImageView.alpha = 1-alpha;
         
         if (alpha <= 0) {
-            NSLog(@"%f",content_height);
+//            NSLog(@"%f",content_height);
             _topContainer.frame = CGRectMake(0, delta + kBarHeight - CGRectGetHeight(_topContainer.frame) ,
                                             CGRectGetWidth(_topContainer.frame), CGRectGetHeight(HEADER_INIT_FRAME));
             _commentsTableView.frame = CGRectMake(0, CGRectGetMaxY(_topContainer.frame),
@@ -290,26 +290,14 @@ UIImageView *_imageView;
         cell = [[CommentCell alloc]initWithComment:comment andReuseIdentifier:@"commentView"];
     }
     [cell.iconView setImage: comment.user.photo];
-    [cell.commentLabel setFrame:(CGRect) {.origin = {CGRectGetMaxX(cell.iconView.frame) + 15, 15}}];
+    [cell.commentLabel setFrame:CGRectMake(CGRectGetMaxX(cell.iconView.frame)+ kCommentPaddingFromLeft, 15, cell.frame.size.width - 80, 0)];
     [cell.commentLabel setText: comment.text];
-    
-    CGSize size = [TextFramer frameForText:comment.text sizeWithFont:cell.commentLabel.font constrainedToSize:CGSizeMake(cell.frame.size.width - 50, cell.frame.size.height) lineBreakMode:cell.commentLabel.lineBreakMode];
-    [cell.commentLabel setFrame:(CGRect){   .origin = {CGRectGetMaxX(cell.iconView.frame)+ kCommentPaddingFromLeft, 5 + 10},
-        .size = {CGRectGetWidth(cell.frame) - 80,size.height}}];
-    [cell.commentLabel sizeToFit];
-    [cell.commentLabel setFrame:CGRectMake(CGRectGetMinX(cell.commentLabel.frame), CGRectGetMinY(cell.commentLabel.frame), CGRectGetWidth(cell.commentLabel.frame), CGRectGetHeight(cell.commentLabel.frame))];
-    
-    
+    [cell.commentLabel resizeWithFlexibleHeight];
     
     [cell.commentLabel sizeToFit];
     cell.timeLabel.frame = (CGRect) {.origin = {CGRectGetMinX(cell.commentLabel.frame), CGRectGetMaxY(cell.commentLabel.frame)}};
     [cell.timeLabel setText:[ZazzApi formatDateString:comment.time]];
     [cell.timeLabel sizeToFit];
-    
-    // Don't judge my magic numbers or my crappy assets!!!
-    cell.likeCountImageView.frame = CGRectMake(CGRectGetMaxX(cell.timeLabel.frame) + 7, CGRectGetMinY(cell.timeLabel.frame) + 3, 10, 10);
-    cell.likeCountImageView.image = [UIImage imageNamed:@"like_greyIcon.png"];
-    cell.likeCountLabel.frame = CGRectMake(CGRectGetMaxX(cell.likeCountImageView.frame) + 3, CGRectGetMinY(cell.timeLabel.frame), 0, CGRectGetHeight(cell.timeLabel.frame));
 
     return cell;
 }
@@ -335,8 +323,6 @@ UIImageView *_imageView;
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
-
-id delegate;
 
 -(void)gotComments:(NSNotification*)notif{
     NSString* type = [notif.userInfo objectForKey:@"type"];

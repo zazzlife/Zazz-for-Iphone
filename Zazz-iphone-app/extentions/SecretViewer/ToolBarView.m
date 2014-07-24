@@ -8,10 +8,9 @@
 
 #import "ToolBarView.h"
 #import "UIFont+SecretFont.h"
+#import "CategoryStat.h"
 
 @implementation ToolBarView
-
-@synthesize _cityLabel;
 
     UIButton *_moreButton;
     UIButton *_commentButton;
@@ -77,11 +76,10 @@
         _commentCountLabel.font = [UIFont secretFontLightWithSize:13.f];
         _commentCountLabel.textColor = [UIColor whiteColor];
         _commentCountLabel.textAlignment = NSTextAlignmentLeft;
-        _commentCountLabel.frame = (CGRect) {.origin = {CGRectGetMaxX(_commentButton.frame) + 6, CGRectGetMinY(_cityLabel.frame) + 1}};
+        _commentCountLabel.frame = (CGRect) {.origin = {CGRectGetMaxX(_commentButton.frame) + 6, CGRectGetMinY(_commentButton.frame) }};
         _commentCountLabel.backgroundColor = [UIColor clearColor];
         [_commentCountLabel setHidden:true];
         [self addSubview:_commentCountLabel];
-        
     }
     return self;
 }
@@ -123,6 +121,18 @@
         _likeCounter--;
     }
     [_likeCountLabel setText:[NSString stringWithFormat:@"%d",_likeCounter]];
+}
+
+-(void)setCategories:(NSMutableArray*)category_ids{
+    CGFloat inset = 0;
+    for(NSString* category_id in category_ids){
+        CategoryStat* category = [[CategoryStat alloc] init];
+        [category setCategory_id:category_id];
+        UIImageView* imageView = [[UIImageView alloc] initWithImage:[category getIcon]];
+        imageView.frame = CGRectMake(inset+5, 0, 20, 20);
+        [self addSubview:imageView];
+        inset += 20;
+    }
 }
 
 @end

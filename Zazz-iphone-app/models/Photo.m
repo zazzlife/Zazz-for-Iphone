@@ -45,6 +45,7 @@
     [photo setDescription:(NSString*)[photo_dict objectForKey:@"description"]];
     [photo setPhotoId:(NSString*)[photo_dict objectForKey:@"photoId"]];
     [photo setPhotoUrl:[[photo_dict objectForKey:@"photoLinks"] objectForKey:@"mediumLink"]];
+    [photo setCategories:[photo_dict objectForKey:@"categories"]];
     [photo setUser:user];
     return photo;
 }

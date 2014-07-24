@@ -13,5 +13,6 @@
 @property UILabel* _cityLabel;
 
 - (void)setNumberOfComments:(NSInteger)comments;
+- (void)setCategories:(NSMutableArray*)category_ids;
 
 @end

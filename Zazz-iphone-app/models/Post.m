@@ -27,6 +27,7 @@
     [post setMessage:message];
     [post setTimestamp:[post_dict objectForKey:@"time"]];
     [post setPostId:[post_dict objectForKey:@"postId"]];
+    [post setCategories:[post_dict objectForKey:@"categories"]];
     [post setFromUser:fromUser];
     if([post_dict objectForKey:@"toUserId"]){
         Profile* toUser = [[Profile alloc] init];

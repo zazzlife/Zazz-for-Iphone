@@ -19,6 +19,7 @@
 
 -(void) doAction:(NSString*)action{
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
+    NSLog(@"%@",action);
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
@@ -56,8 +57,8 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSError* error = nil;
-//    NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
-//    NSLog(@"received: %@",myString);
+    NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
+    NSLog(@"received: %@",myString);
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:&error ];
     if(array == nil){
         NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
