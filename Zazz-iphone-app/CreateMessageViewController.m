@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
-#import "TextPostViewController.h"
+#import "CreateMessageViewController.h"
 #import "AppDelegate.h"
 #import "PostViewController.h"
 
-@implementation TextPostViewController
+@implementation CreateMessageViewController
 
 NSString* placeholder;
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "FeedViewController.h"
 
-@interface TextPostViewController : UIViewController<ChildViewController>
+@interface CreateMessageViewController : UIViewController<ChildViewController>
 
 @property IBOutlet UIView* mainView;
 @property IBOutlet UIView* helperView;

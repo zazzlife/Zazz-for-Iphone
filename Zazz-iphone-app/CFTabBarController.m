@@ -53,6 +53,7 @@ BOOL enabled = true;
             continue;
         }
     }
+    [self.tabBar setHidden:false];
 }
 
 -(UIView*)getActiveChildView{

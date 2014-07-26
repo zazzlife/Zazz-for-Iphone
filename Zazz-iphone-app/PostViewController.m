@@ -24,9 +24,11 @@
 //  THE SOFTWARE.
 
 #import "PostViewController.h"
-#import "TextPostViewController.h"
+#import "CreateMessageViewController.h"
+#import "CreatePhotoViewController.h"
 #import "CHTumblrMenuView.h"
 #import "AppDelegate.h"
+#import "UIView.h"
 
 @implementation PostViewController
 
@@ -59,22 +61,36 @@ UIViewController<ChildViewController>* activePostViewController;
 
 -(void)startAction:(int)action{
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    NSString* identifier;
+    UIViewController<ChildViewController>* newController;
     switch (action) {
         case ACTION_PHOTO:
+            identifier = @"CreatePhotoViewController";
+            newController = [[CreatePhotoViewController alloc] init];
             NSLog(@"photo");
-            break;
-        case ACTION_VIDEO:
-            NSLog(@"video");
             break;
         case ACTION_POST:
             NSLog(@"post");
-            [self prepareForNextViewWithIdentifier:@"textPostViewController"];
+            identifier = @"CreateMessageViewController";
+            newController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
             break;
+        case ACTION_VIDEO:
         default:
             NSLog(@"Unknown Action: Closing PostView");
-            [self setViewHidden:true];
+            active_identifier = nil;
+            activePostViewController = nil;
             break;
     }
+    if(!identifier || !newController){ [self setViewHidden:true];}
+    if(![identifier isEqualToString:active_identifier]){
+        active_identifier = identifier;
+        activePostViewController = newController;
+    }
+    [activePostViewController setParentViewController:self];
+    [self.postView removeAllSubviews];
+    [self.postView addSubview:activePostViewController.view];
+    [self.postView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.postView setHidden:false];
 }
 
 #pragma mark - CFTabBarViewDelegate method
@@ -93,18 +109,5 @@ UIViewController<ChildViewController>* activePostViewController;
    
     }
 }
-
--(UIViewController*)prepareForNextViewWithIdentifier:(NSString*)identifier{
-    if(![active_identifier isEqualToString:identifier]){
-        active_identifier = identifier;
-        activePostViewController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
-        [activePostViewController setParentViewController:self];
-        [self.postView addSubview:activePostViewController.view];
-    }
-    [self.postView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [self.postView setHidden:false];
-    return activePostViewController;
-}
-
 
 @end
