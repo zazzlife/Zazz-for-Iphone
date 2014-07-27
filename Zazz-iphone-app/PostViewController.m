@@ -36,8 +36,8 @@ const int ACTION_POST = 0;
 const int ACTION_PHOTO = 1;
 const int ACTION_VIDEO = 2;
 
-NSString* active_identifier;
-UIViewController<ChildViewController>* activePostViewController;
+int active_action = -1;
+CreateMessageViewController* activePostViewController;
 
 @synthesize menuView;
 
@@ -60,37 +60,36 @@ UIViewController<ChildViewController>* activePostViewController;
 }
 
 -(void)startAction:(int)action{
-    [self.view setBackgroundColor:[UIColor whiteColor]];
-    NSString* identifier;
-    UIViewController<ChildViewController>* newController;
+    CreateMessageViewController* messageController = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateMessageViewController"];
+    [messageController setParentViewController:messageController];
+    if(active_action != action){
+        active_action = action;
+        activePostViewController = messageController;
+    }
+    [activePostViewController setHelperViewController:nil];
+    
     switch (action) {
-        case ACTION_PHOTO:
-            identifier = @"CreatePhotoViewController";
-            newController = [[CreatePhotoViewController alloc] init];
+        case ACTION_PHOTO:{
+            CreatePhotoViewController* helperViewController = [[CreatePhotoViewController alloc] init];
+            [activePostViewController setHelperViewController:helperViewController];
             NSLog(@"photo");
             break;
-        case ACTION_POST:
-            NSLog(@"post");
-            identifier = @"CreateMessageViewController";
-            newController = [self.storyboard instantiateViewControllerWithIdentifier:identifier];
-            break;
+        }
         case ACTION_VIDEO:
-        default:
-            NSLog(@"Unknown Action: Closing PostView");
-            active_identifier = nil;
-            activePostViewController = nil;
+            NSLog(@"video");
+        case ACTION_POST:
+        default:{
             break;
-    }
-    if(!identifier || !newController){ [self setViewHidden:true];}
-    if(![identifier isEqualToString:active_identifier]){
-        active_identifier = identifier;
-        activePostViewController = newController;
+        }
     }
     [activePostViewController setParentViewController:self];
     [self.postView removeAllSubviews];
     [self.postView addSubview:activePostViewController.view];
+    [self.postView setBackgroundColor:[UIColor redColor]];
     [self.postView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.postView setHidden:false];
+    
+    
 }
 
 #pragma mark - CFTabBarViewDelegate method

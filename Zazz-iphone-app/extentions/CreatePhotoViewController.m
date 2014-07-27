@@ -31,6 +31,7 @@
 #import "CTAssetsPageViewController.h"
 #import "CreatePhotoViewController.h"
 #import "FeedViewController.h"
+#import "CreateMessageViewController.h"
 
 
 @interface CreatePhotoViewController ()
@@ -46,27 +47,44 @@
 
 @implementation CreatePhotoViewController
 
+@synthesize delegate;
+int MAX_NUMBER_OF_ASSETS = 1;
+BOOL _canceled = false;
+
+-(CreatePhotoViewController*)init{
+    if(!self)self = [super init];
+    return self;
+}
+
 - (void)awakeFromNib
 {
     [super awakeFromNib];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    UIBarButtonItem *clearButton =
+-(void)viewDidLoad{
+    UIBarButtonItem *clearButton = 
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", nil)
                                      style:UIBarButtonItemStylePlain
                                     target:self
                                     action:@selector(clearAssets:)];
-
+    
     UIBarButtonItem *addButton =
     [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Pick", nil)
                                      style:UIBarButtonItemStylePlain
                                     target:self
                                     action:@selector(pickAssets:)];
-    [self pickAssets:addButton];
+    _canceled = false;
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    if(!self.assets && !_canceled) return [self pickAssets:nil];
+    if([self.delegate respondsToSelector:@selector(setMediaAttachment:)]){
+        id assets = nil;
+        if(!_canceled) assets = self.assets;
+        [self.delegate setMediaAttachment:assets];
+    }
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,6 +111,7 @@
     picker.showsCancelButton    = (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad);
     picker.delegate             = self;
     picker.selectedAssets       = [NSMutableArray arrayWithArray:self.assets];
+    [picker.view setBackgroundColor:[UIColor darkGrayColor]];
     
     // iPad
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
@@ -109,41 +128,6 @@
         [self presentViewController:picker animated:YES completion:nil];
     }
 }
-
-
-#pragma mark - Table View
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.assets.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    ALAsset *asset = [self.assets objectAtIndex:indexPath.row];
-    cell.textLabel.text = [self.dateFormatter stringFromDate:[asset valueForProperty:ALAssetPropertyDate]];
-    cell.detailTextLabel.text = [asset valueForProperty:ALAssetPropertyType];
-    cell.imageView.image = [UIImage imageWithCGImage:asset.thumbnail];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    CTAssetsPageViewController *vc = [[CTAssetsPageViewController alloc] initWithAssets:self.assets];
-    vc.pageIndex = indexPath.row;
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 
 #pragma mark - Popover Controller Delegate
 
@@ -164,11 +148,11 @@
 {
     if (self.popover != nil)
         [self.popover dismissPopoverAnimated:YES];
-    else
-        [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+//    else
+//        [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
     self.assets = [NSMutableArray arrayWithArray:assets];
-//    [self.tableView reloadData];
+    [self viewDidAppear:false];
 }
 
 - (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldEnableAsset:(ALAsset *)asset
@@ -187,11 +171,11 @@
 
 - (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldSelectAsset:(ALAsset *)asset
 {
-    if (picker.selectedAssets.count >= 10)
+    if (picker.selectedAssets.count+1 > MAX_NUMBER_OF_ASSETS)
     {
         UIAlertView *alertView =
         [[UIAlertView alloc] initWithTitle:@"Attention"
-                                   message:@"Please select not more than 10 assets"
+                                   message:@"Please select no more than 1 asset"
                                   delegate:nil
                          cancelButtonTitle:nil
                          otherButtonTitles:@"OK", nil];
@@ -211,13 +195,12 @@
         [alertView show];
     }
     
-    return (picker.selectedAssets.count < 10 && asset.defaultRepresentation != nil);
+    return (picker.selectedAssets.count+1 <= MAX_NUMBER_OF_ASSETS && asset.defaultRepresentation != nil);
 }
 
-
-
--(void)assetsPickerControllerDidCancel{
-    NSLog(@"canceled picker");
+-(void)assetsPickerControllerDidCancel:(id)sender{
+    _canceled = true;
+    [self viewDidAppear:false];
 }
 
 @end
