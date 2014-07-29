@@ -15,38 +15,40 @@
 @synthesize name;
 @synthesize userCount;
 
--(UIImage*)getIcon{
+-(NSString*)getIconName{
     
     switch([self.category_id intValue]){
         case 1:{
-            return [UIImage imageNamed:@"Concert-white"];
+            return @"Concert";
         }case 2:{
-            return [UIImage imageNamed:@"Drink_Special-white"];
+            return @"Drink_Special";
         }case 3:{
-            return [UIImage imageNamed:@"Hip_Hop_Music-white"];
+            return @"Hip_Hop_Music";
         }case 4:{
-            return [UIImage imageNamed:@"Turning_Up-white"];
+            return @"Turning_Up";
         }case 5:{
-            return [UIImage imageNamed:@"House_Party-white"];
+            return @"House_Party";
         }case 6:{
-            return [UIImage imageNamed:@"Ladies_Free-white"];
+            return @"Ladies_Free";
         }case 7:{
-            return [UIImage imageNamed:@"Live_Music_Mic-white"];
+            return @"Live_Music_Mic";
         }case 8:{
-            return [UIImage imageNamed:@"No_Cover-white"];
+            return @"No_Cover";
         }case 9:{
-            return [UIImage imageNamed:@"Open_Bar-white"];
+            return @"Open_Bar";
         }case 10:{
-            return [UIImage imageNamed:@"Packed-white"];
+            return @"Packed";
         }case 11:{
-            return [UIImage imageNamed:@"Pre_Drink-white"];
+            return @"Pre_Drink";
         }case 12:{
-            return [UIImage imageNamed:@"House_Music-white"];
+            return @"House_Music";
         }default:{
             return nil;
         }
     }
 }
+
+
 
 +(CategoryStat*)makeCategoryFromDict:(NSDictionary*)cat_dict{
     CategoryStat* category = [[CategoryStat alloc] init];

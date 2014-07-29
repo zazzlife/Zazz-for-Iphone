@@ -10,25 +10,58 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CreateMessageViewController.h"
 #import "AppDelegate.h"
+#import "UIColor.h"
+#import "UIImage.h"
 #import "UIView.h"
+#import "CategoryStat.h"
 #import "PostViewController.h"
 
 @implementation CreateMessageViewController
 
+@synthesize helperViewController;
+
 NSString* placeholder;
 BOOL haveAsset;
-UIViewController<delegated>* _helperViewController = nil;
 UIView* tempHelper;
 
+-(CreateMessageViewController*)init{
+    if(!self)self = [super init];
+    [self setHelperViewController:nil];
+    return self;
+}
 
 -(void)viewDidLoad{
     placeholder = @"Add caption";
-    NSLog(@"createMessageLoaded");
+    UIView* categoriesView = [self.view subviewWithRestorationIdentifier:@"categories"];
+    for(UIView* category in categoriesView.subviews){
+        if(![category isKindOfClass:[UIButton class]])
+            continue;
+        UIButton* category;
+        CategoryStat* catStat = [[CategoryStat alloc] init];
+        [catStat setCategory_id:[NSString stringWithFormat:@"%lu",category.tag]];
+        NSString* catName = [catStat getIconName];
+        UIImage* categoryImage = [UIImage imageNamed:catName withColor:[UIColor colorFromHexString:COLOR_ZAZZ_BLACK]];
+        [(UIButton*)category setRestorationIdentifier:catName];
+        [(UIButton*)category setImage:categoryImage forState:UIControlStateNormal];
+    }
     [self.postField setInputAccessoryView:self.keyboardToolbar];
 }
 
--(void)setHelperViewController:(UIViewController*)helperViewController{
-    _helperViewController = helperViewController;
+-(NSMutableArray*)getSelectedCatgoryIds{
+    NSMutableArray* ids =[[NSMutableArray alloc] init];
+    UIView* categoriesView = [self.view subviewWithRestorationIdentifier:@"categories"];
+    for(UIView* category in categoriesView.subviews){
+        if([category isKindOfClass:[UIButton class]] && [(UIButton*)category isSelected] ){
+            [ids addObject:[NSString stringWithFormat:@"%ld",category.tag]];
+        }
+    }
+    return ids;
+}
+
+- (IBAction)putPost:(UIButton *)sender {
+    NSMutableArray* categoryIds = [self getSelectedCatgoryIds];
+    //CREATE ZAZZ API ACTION AND HOOK IT UP!
+    NSLog(@"%@",categoryIds);
 }
 
 -(void)viewDidAppear:(BOOL)animated{
@@ -37,9 +70,9 @@ UIView* tempHelper;
         subview.layer.cornerRadius = 5;
         subview.layer.masksToBounds = YES;
     }
-    if(_helperViewController){
-        [_helperViewController setDelegate:self];
-        [self presentViewController:_helperViewController animated:false completion:^(void){}];
+    if(self.helperViewController){
+        [self.helperViewController setDelegate:self];
+        [self presentViewController:self.helperViewController animated:false completion:^(void){}];
     }else{
         [self.keyboardToolbar setHidden:false];
         [self.postField becomeFirstResponder];
@@ -56,50 +89,22 @@ UIView* tempHelper;
 }
 
 -(IBAction)pressedCategory:(UIButton*)sender{
+    [sender setSelected:!sender.selected];
     NSString* identifier = sender.restorationIdentifier;
-    if([identifier isEqualToString:@"Concert"]){
-        NSLog(@"clicked: %@",identifier);
+    UILabel* categoryLabel = (UILabel*)[sender.superview subviewWithRestorationIdentifier:[NSString stringWithFormat:@"%@_label",identifier]];
+    UIColor* selColor = [UIColor colorFromHexString:COLOR_ZAZZ_BLACK];
+    if(sender.isSelected){
+        selColor = [UIColor colorFromHexString:COLOR_ZAZZ_YELLOW];
     }
-    else if([identifier isEqualToString:@"Drink_Special"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"Hip_Hop_Music"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"Turning_Up"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"House_Party"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"Ladies_Free"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"Live_Music_Mic"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"No_Cover"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"Open_Bar"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"Packed"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"Pre_Drink"]){
-        NSLog(@"clicked: %@",identifier);
-    }
-    else if([identifier isEqualToString:@"House_Music"]){
-        NSLog(@"clicked: %@",identifier);
-    }
+    [sender setImage:[UIImage imageNamed:identifier withColor:selColor] forState:UIControlStateNormal];
+    [categoryLabel setTextColor:selColor];
     return;
 }
 
+//Called by Create<Media>ViewControllers.
 -(void)setMediaAttachment:(NSArray*)media{
     [self.keyboardToolbar setHidden:false];
     [self.postField becomeFirstResponder];
-    
     NSString* identifier = @"uploadImage";
     UIImageView* thumbView = (UIImageView*)[self.postField.superview subviewWithRestorationIdentifier:identifier];
     if (!media){
@@ -112,7 +117,6 @@ UIView* tempHelper;
         }
         return ;
     }
-    
     if(!thumbView){
         CGRect textFrame = self.postField.frame;
         thumbView = [[UIImageView alloc] init];

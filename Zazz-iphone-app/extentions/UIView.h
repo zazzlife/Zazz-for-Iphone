@@ -30,9 +30,12 @@
     }
 }
 -(UIView*)subviewWithRestorationIdentifier:(NSString*)identifier{
+    if([self.restorationIdentifier isEqualToString:identifier]){
+        return self;
+    }
     for(UIView* view in self.subviews){
-        if([view.restorationIdentifier isEqualToString:identifier])
-            return view;
+        UIView* matching_view = [view subviewWithRestorationIdentifier:identifier];
+        if(matching_view) return matching_view;
     }
     return nil;
 }

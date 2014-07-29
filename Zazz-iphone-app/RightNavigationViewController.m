@@ -11,6 +11,7 @@
 #import "FeedViewController.h"
 #import "CategoryStat.h"
 #import "UIColor.h"
+#import "UIImage.h"
 
 @interface RightNavigationViewController ()
 
@@ -64,7 +65,8 @@ NSMutableSet* selectedCellIndexies;
     [talking setTextColor:textColor];
     
     CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
-    [imageView setImage:[category getIcon]];
+    [imageView setImage:[UIImage imageNamed:[category getIconName] withColor:[UIColor colorFromHexString:COLOR_ZAZZ_WHITE]]];
+    [imageView setRestorationIdentifier:[category getIconName]];
     [name setText:category.name];
     [talking setText:[NSString stringWithFormat:@"%d talking about this",category.userCount]];
     [cell setSelectionStyle:UITableViewCellEditingStyleNone];
@@ -83,8 +85,10 @@ NSMutableSet* selectedCellIndexies;
     }else{
         [selectedCellIndexies removeObject:cellIndex];
     }
+    UIImageView* iconView = (UIImageView*)[cell viewWithTag:1];
     UILabel* name = (UILabel*)[cell viewWithTag:2];
     UILabel* talking = (UILabel*)[cell viewWithTag:3];
+    [iconView setImage:[UIImage imageNamed:[iconView restorationIdentifier] withColor:textColor]];
     [name setTextColor:textColor];
     [talking setTextColor:textColor];
 }

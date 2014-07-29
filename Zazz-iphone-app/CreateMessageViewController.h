@@ -11,16 +11,12 @@
 #import "FeedViewController.h"
 
 @protocol delegated <NSObject>
-
 @property id delegate;
-
 @end
 
 @protocol MediaReceiver <NSObject>
-
 @optional
 -(void)setMediaAttachment:(id)media;
-
 @end
 
 @interface CreateMessageViewController : UIViewController<ChildViewController,MediaReceiver>
@@ -30,7 +26,9 @@
 @property IBOutlet UITextView* postField;
 @property IBOutlet UIView* keyboardToolbar;
 @property (nonatomic) UIViewController* parentViewController;
+@property UIViewController<delegated>* helperViewController;
 
--(void)setHelperViewController:(UIViewController *)helperViewController;
+
+- (IBAction)putPost:(UIButton *)sender;
 
 @end

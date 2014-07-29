@@ -14,6 +14,6 @@
 @property NSString* name;
 @property int userCount;
 
--(UIImage*)getIcon;
+-(NSString*)getIconName;
 +(CategoryStat*)makeCategoryFromDict:(NSDictionary*)cat_dict;
 @end
