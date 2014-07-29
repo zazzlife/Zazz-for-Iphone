@@ -10,6 +10,7 @@
 #import "UIFont+SecretFont.h"
 #import "CategoryStat.h"
 #import "UIImage.h"
+#import "UIColor.h"
 
 @implementation ToolBarView
 
@@ -97,7 +98,7 @@
     for(NSString* category_id in category_ids){
         CategoryStat* category = [[CategoryStat alloc] init];
         [category setCategory_id:category_id];
-        UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[category getIconName]]];
+        UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[category getIconName] withColor:[UIColor colorFromHexString:COLOR_ZAZZ_WHITE]]];
         imageView.frame = CGRectMake(inset+5, 0, 20, 20);
         [self addSubview:imageView];
         inset += 20;
