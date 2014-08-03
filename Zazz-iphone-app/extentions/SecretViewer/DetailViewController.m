@@ -78,7 +78,6 @@ UIImageView* _imageView;
         [_textLabel.layer setShadowColor:[UIColor blackColor].CGColor];
         [_textLabel.layer setShadowRadius:10.0f];
         [_textLabel resizeWithFlexibleHeight];
-        [_textLabelView setFrame:CGRectMake(0, 0, 320, MAX(_textLabel.frame.size.height+50,100))];
         
         UIImageView* backgroundImage = [[UIImageView alloc] init];
         UIImage* bkd = [UIImage imageNamed:@"Background"];
@@ -90,6 +89,9 @@ UIImageView* _imageView;
         [_posterPhoto setFrame:CGRectMake(25, kBarHeight, 50, 50)];
         [_posterPhoto.layer setCornerRadius:CGRectGetWidth(_posterPhoto.frame) / 2.0f];
         [_posterPhoto.layer setMasksToBounds:YES];
+        
+        [_textLabelView setFrame:CGRectMake(0, 0, 320, MAX(CGRectGetMaxY(_textLabel.frame),CGRectGetMaxY(_posterPhoto.frame)))];
+        CGRect frame = _textLabelView.frame;
         
         [_textLabelView addSubview:backgroundImage];
         [_textLabelView addSubview:_textLabel];
