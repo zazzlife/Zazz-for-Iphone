@@ -25,9 +25,6 @@
 +(NSMutableURLRequest *)getRequestWithAction:(NSString*)action;
 +(NSString*)formatDateString:(NSString*)dateString;
 
-+(Photo*)makePhotoFromDict:(NSDictionary*)photo_dict;
-
-
 //API ACTIONS
 -(BOOL) needAuth;
 -(void) getAuthTokenWithUsername:(NSString*)username andPassword:(NSString*)password;
@@ -50,6 +47,9 @@
 -(void) getCategories;
 
 -(void) getCommentsFor:(NSString *)feedType andId:(NSString *)feedId;
+
+-(void)postPost:(Post*)post;
+-(void)postPhoto:(Photo*)photo;
 
 
 

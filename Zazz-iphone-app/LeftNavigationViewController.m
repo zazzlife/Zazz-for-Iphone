@@ -52,7 +52,7 @@
             NSArray* objects  = [NSArray arrayWithObjects:notifController, @"notifController", nil];
             NSArray* keys  = [NSArray arrayWithObjects:@"childController", @"identifier", nil];
             NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:nil userInfo:userInfo];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:notifController userInfo:userInfo];
             
         }
     }

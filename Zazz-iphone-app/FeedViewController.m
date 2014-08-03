@@ -14,6 +14,7 @@
 #import "Photo.h"
 #import "AppDelegate.h"
 #import "UIImage.h"
+#import "UIView.h"
 #import "UIColor.h"
 
 @implementation FeedViewController
@@ -35,7 +36,6 @@ bool showVideos= false;
 NSString* last_feed_id;
 NSString* active_identifier = @""; //used to indentify which ViewController is currently inside nextView
 NSMutableDictionary* _indexPathsToReload;
-UIViewController<ChildViewController>* nextViewController;
 
 float SIDE_DRAWER_ANIMATION_DURATION = .3;
 
@@ -68,14 +68,17 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:COLOR_ZAZZ_GREY] width:320 andHeight:49]];
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    [UIView setAnimationsEnabled:false];
+    [[AppDelegate getAppDelegate] setNavController:self.navigationController];
+}
+
 -(void)gotZazzFeed:(NSNotification *)notif{
     if (![notif.name isEqualToString:@"gotFeed"]) return;
     NSMutableArray* feed = [notif.userInfo objectForKey:@"feed"];
     if (!feed) return;
-    
     end_of_feed = false;
     getting_feed = false;
-    
     if([feed count] <= 0){
         end_of_feed = true;
         [[self feedTableView] reloadData];
@@ -97,8 +100,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self.feedTableView reloadData];
 }
 
--(void)didSwipeLeft:(UIGestureRecognizer *) recognizer
-{
+-(void)didSwipeLeft:(UIGestureRecognizer *) recognizer{
     if(right_active) return;
     if(left_active){
         [self leftDrawerButton:nil];
@@ -107,8 +109,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     //else: neither active
     [self rightDrawerButton:nil];
 }
--(void)didSwipeRight:(UIGestureRecognizer *) recognizer
-{
+-(void)didSwipeRight:(UIGestureRecognizer *) recognizer{
     if(left_active) return;
     if(right_active){
         [self rightDrawerButton:nil];
@@ -162,36 +163,10 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     if (![notif.name isEqualToString:@"showNextView"]) return;
     if(right_active) [self rightDrawerButton:nil];
     if(left_active) [self leftDrawerButton:nil];
-    
     UIViewController* childController = [notif.userInfo objectForKey:@"childController"];
-    NSString* identifier = [notif.userInfo objectForKey:@"identifier"];
-    
-    if(childController){
-        NSLog(@"new view");
-        for (UIView *v in self.nextView.subviews)
-            [v removeFromSuperview];
-        [self.nextView addSubview:childController.view];
-        active_identifier = identifier;
-        self.activeNextViewCtrl = childController;
-    }
-    [self.nextView setHidden:false];
-    [UIView setAnimationsEnabled:YES];
-    UIView* tabBar = self.view.superview.superview;
-    CGFloat window_width = self.view.window.frame.size.width;
-    CGFloat window_height = self.view.window.frame.size.height;
-    
-    [self.nextView setFrame:CGRectMake(window_width, 0, window_width, window_height)];
-    [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
-        animations:^(void){
-            [self.nextView setHidden:false];
-            [tabBar.superview addSubview:self.nextView];
-            [tabBar setFrame:CGRectMake(-window_width, 0, window_width, window_height)];
-            [self.nextView setFrame:CGRectMake(0, 0, window_width, window_height)];
-        }
-        completion:^(BOOL completed){
-            [UIView setAnimationsEnabled:NO];
-        }
-     ];
+    if(!childController) return;
+    [UIView setAnimationsEnabled:true];
+    [self.navigationController pushViewController:childController animated:YES];
 }
 
 -(void)showHome:(NSNotification*)notif{
@@ -342,7 +317,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSArray* source_feed = [self getFilteredFeed];
-//    if(end_of_feed) return [source_feed count] + 1;
     return [source_feed count] + 2;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -381,7 +355,6 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     NSArray* objects  = [NSArray arrayWithObjects: detailViewController, [NSString stringWithFormat:@"detailView-feed%@",feedItem.feedId], nil];
     NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:detailViewController userInfo:userInfo];
-    
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == 0){
@@ -406,6 +379,7 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     }
     return cell._height;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0){
         NSString* CellIdentifier = @"filterCell";

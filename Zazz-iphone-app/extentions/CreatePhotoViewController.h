@@ -3,9 +3,8 @@
 #import "FeedViewController.h"
 #import "CreateMessageViewController.h"
 
-@interface CreatePhotoViewController: UIViewController<ChildViewController, delegated>
+@interface CreatePhotoViewController: UIViewController<delegated>
 
-@property (nonatomic) UIViewController* parentViewController;
 @property id<MediaReceiver> delegate;
 
 @end

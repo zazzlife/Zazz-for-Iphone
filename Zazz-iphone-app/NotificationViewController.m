@@ -47,11 +47,11 @@ NSArray* notifications;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
     [[AppDelegate zazzApi] getFollowRequests];
     [[AppDelegate zazzApi] getNotifications];
-    
 }
 
 -(IBAction)goBack:(UIButton*)backButton{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showHome" object:nil userInfo:nil];
+    [UIView setAnimationsEnabled:true];
+    [[[AppDelegate getAppDelegate] navController] popViewControllerAnimated:true];
 }
 
 -(IBAction)changeView:(UISegmentedControl*)sender{
@@ -80,7 +80,7 @@ NSArray* notifications;
     int cond = [self getCondition];
     switch (cond) {
         case CONDITION_REQUESTS_NONE:
-        case CONDITION_NOTIFICATIONS_NONE:{return 48;}
+        case CONDITION_NOTIFICATIONS_NONE:{return 90;}
         case CONDITION_REQUESTS_LOADING:
         case CONDITION_NOTIFICATIONS_LOADING:
         case CONDITION_REQUESTS_SOME:
@@ -89,8 +89,10 @@ NSArray* notifications;
     }
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    [UIView setAnimationsEnabled:true];
     UITableViewCell *cell;
     int cond = [self getCondition];
+    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     switch (cond) {
         case CONDITION_REQUESTS_LOADING:
         case CONDITION_NOTIFICATIONS_LOADING:{
@@ -107,6 +109,7 @@ NSArray* notifications;
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"noRequests"];
             }
+            [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
             return cell;
         }
         case CONDITION_NOTIFICATIONS_SOME:{
@@ -226,20 +229,6 @@ NSArray* notifications;
     }
 }
 
-
-
-
-//
-//@property int type;
-//@property int itemId;
-//@property UIImage* photo;
-//@property NSString* description;
-//@property Profile* user;
-//@property int likes;
-//@property NSMutableArray* comments;
-
-
-
 /* OTHER DELEGATES AND HELPERS */
 -(void)showNextView:(UIButton*)imageButton{
     Notification* notif = (Notification*)[notifications objectAtIndex:imageButton.tag];
@@ -299,10 +288,11 @@ NSArray* notifications;
                          [NSString stringWithFormat:@"detailView-notif%ld",imageButton.tag],
                          nil];
     NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:detailViewController userInfo:userInfo];
+    [[[AppDelegate getAppDelegate] navController] pushViewController:detailViewController animated:true];
 }
 
 -(void)beginRefreshView:(UIRefreshControl*)refresh {
+    [UIView setAnimationsEnabled:true];
     [refresh setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Updating"]];
     [refresh beginRefreshing];
     if (seeing_requests){

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 #import "FeedViewController.h"
 
 @protocol delegated <NSObject>
@@ -19,7 +20,7 @@
 -(void)setMediaAttachment:(id)media;
 @end
 
-@interface CreateMessageViewController : UIViewController<ChildViewController,MediaReceiver>
+@interface CreateMessageViewController : UIViewController<MediaReceiver>
 
 
 @property IBOutlet UIView* mainView;
@@ -27,6 +28,7 @@
 @property IBOutlet UIView* keyboardToolbar;
 @property (nonatomic) UIViewController* parentViewController;
 @property UIViewController<delegated>* helperViewController;
+@property ALAsset* mediaAsset;
 
 
 - (IBAction)putPost:(UIButton *)sender;

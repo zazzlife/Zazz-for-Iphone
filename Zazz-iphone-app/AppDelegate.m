@@ -13,6 +13,7 @@
 @synthesize _zazzAPI;
 @synthesize zazz_logo;
 @synthesize appTabBar;
+@synthesize navController;
 
 +(AppDelegate*)getAppDelegate{
     return [[UIApplication sharedApplication] delegate];

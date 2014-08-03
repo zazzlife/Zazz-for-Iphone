@@ -22,6 +22,7 @@
 @property (strong, nonatomic) UIWindow *window;
 @property ZazzApi* _zazzAPI;
 @property UIImageView* zazz_logo;
+@property UINavigationController* navController;
 @property CFTabBarController* appTabBar;
 +(void)addZazzBackgroundLogo;
 +(void)removeZazzBackgroundLogo;

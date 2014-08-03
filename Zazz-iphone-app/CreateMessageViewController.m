@@ -19,14 +19,15 @@
 @implementation CreateMessageViewController
 
 @synthesize helperViewController;
+@synthesize mediaAsset;
 
 NSString* placeholder;
-BOOL haveAsset;
 UIView* tempHelper;
 
 -(CreateMessageViewController*)init{
     if(!self)self = [super init];
     [self setHelperViewController:nil];
+    [self setMediaAsset:nil];
     return self;
 }
 
@@ -45,6 +46,7 @@ UIView* tempHelper;
         [(UIButton*)category setImage:categoryImage forState:UIControlStateNormal];
     }
     [self.postField setInputAccessoryView:self.keyboardToolbar];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(madePost:) name:@"madePost" object:nil];
 }
 
 -(NSMutableArray*)getSelectedCatgoryIds{
@@ -60,9 +62,28 @@ UIView* tempHelper;
 
 - (IBAction)putPost:(UIButton *)sender {
     NSMutableArray* categoryIds = [self getSelectedCatgoryIds];
-    //CREATE ZAZZ API ACTION AND HOOK IT UP!
-    NSLog(@"%@",categoryIds);
+    if(self.mediaAsset){
+        CGImageRef cgImg = [[self.mediaAsset defaultRepresentation] fullResolutionImage];
+        Photo* photo = [[Photo alloc] init];
+        [photo setCategories:categoryIds];
+        [photo setImage:[UIImage imageWithCGImage:cgImg]];
+        [photo setDescription:self.postField.text];
+        [[AppDelegate zazzApi] postPhoto:photo];
+    }else{
+        Post* post = [[Post alloc] init];
+        [post setMessage:self.postField.text];
+        [post setCategories:categoryIds];
+        [[AppDelegate zazzApi] postPost:post];
+    }
+    return;
 }
+
+-(void)madePost:(NSNotification*)notif{
+    Post* post = notif.object;
+    if(!post) return;
+    [self goBack:nil];
+}
+
 
 -(void)viewDidAppear:(BOOL)animated{
     for(UIView* subview in self.view.subviews){
@@ -131,7 +152,8 @@ UIView* tempHelper;
                                             CGRectGetHeight(textFrame))];
         [self.postField.superview addSubview:thumbView];
     }
-    UIImage* pic =[UIImage imageWithCGImage:((ALAsset *)[media objectAtIndex:0]).thumbnail];
+    [self setMediaAsset:[media objectAtIndex:0]];
+    UIImage* pic =[UIImage imageWithCGImage:self.mediaAsset.thumbnail];
     [thumbView setBackgroundColor:[UIColor blackColor]];
     [thumbView setImage:pic];
 }

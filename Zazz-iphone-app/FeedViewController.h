@@ -38,9 +38,3 @@
 -(BOOL)setActiveCategory:(NSString*)active_category_id;
 
 @end
-
-
-@protocol ChildViewController <NSObject>
-@required
--(void)setParentViewController:(UIViewController*)controller;
-@end

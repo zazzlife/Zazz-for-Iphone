@@ -105,7 +105,6 @@ CreateMessageViewController* activePostViewController;
         //being hidden;
         [self.view setBackgroundColor:[UIColor clearColor]];
         [self.postView setHidden:true];
-   
     }
 }
 

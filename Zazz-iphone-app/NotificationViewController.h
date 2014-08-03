@@ -10,7 +10,7 @@
 #import "FeedViewController.h"
 #import "Profile.h"
 
-@interface NotificationViewController : UIViewController<ChildViewController, UITableViewDataSource, UITableViewDelegate>
+@interface NotificationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property Profile* profile;
 @property UITableViewController* tableViewController;

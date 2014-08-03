@@ -38,6 +38,8 @@
 		2A2385EE194521D300F7FABD /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385DD194521D300F7FABD /* UIImage+WebP.m */; };
 		2A2385EF194521D300F7FABD /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385DF194521D300F7FABD /* UIImageView+HighlightedWebCache.m */; };
 		2A2385F0194521D300F7FABD /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385E1194521D300F7FABD /* UIImageView+WebCache.m */; };
+		2A30C4521987CA5F00882C1A /* ZazzPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A30C4511987CA5F00882C1A /* ZazzPost.m */; };
+		2A30C4551987CAAD00882C1A /* ZazzPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A30C4541987CAAD00882C1A /* ZazzPhoto.m */; };
 		2A39F2DF193D5BA3002E8873 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A39F2DB193D5BA3002E8873 /* PostViewController.m */; };
 		2A39F2E6193DEB04002E8873 /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A39F2E5193DEB04002E8873 /* CFTabBarController.m */; };
 		2A4144F819689857001C1090 /* CategoryStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144E719689857001C1090 /* CategoryStat.m */; };
@@ -168,6 +170,10 @@
 		2A2385DF194521D300F7FABD /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
 		2A2385E0194521D300F7FABD /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		2A2385E1194521D300F7FABD /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		2A30C4501987CA5F00882C1A /* ZazzPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzPost.h; path = API_Module/ZazzPost.h; sourceTree = "<group>"; };
+		2A30C4511987CA5F00882C1A /* ZazzPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzPost.m; path = API_Module/ZazzPost.m; sourceTree = "<group>"; };
+		2A30C4531987CAAD00882C1A /* ZazzPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzPhoto.h; path = API_Module/ZazzPhoto.h; sourceTree = "<group>"; };
+		2A30C4541987CAAD00882C1A /* ZazzPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzPhoto.m; path = API_Module/ZazzPhoto.m; sourceTree = "<group>"; };
 		2A39F2DA193D5BA3002E8873 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		2A39F2DB193D5BA3002E8873 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		2A39F2E4193DEB04002E8873 /* CFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTabBarController.h; sourceTree = "<group>"; };
@@ -337,7 +343,7 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		2A23858E19408C4200F7FABD /* Create_FeedItem */ = {
+		2A23858E19408C4200F7FABD /* Post */ = {
 			isa = PBXGroup;
 			children = (
 				2AAFF96119828482001CC4CC /* FeedItemViewControllers */,
@@ -346,7 +352,7 @@
 				2A414501196898BE001C1090 /* CHTumblrMenuView.h */,
 				2A414502196898BE001C1090 /* CHTumblrMenuView.m */,
 			);
-			name = Create_FeedItem;
+			name = Post;
 			sourceTree = "<group>";
 		};
 		2A23858F19408EDE00F7FABD /* Profile */ = {
@@ -449,7 +455,7 @@
 				2AA057D6193F453300E1617D /* Feed */,
 				2AE281881956000A0015602F /* Notifications */,
 				2AEA1C811971CA3100A177F3 /* DetailView */,
-				2A23858E19408C4200F7FABD /* Create_FeedItem */,
+				2A23858E19408C4200F7FABD /* Post */,
 				2A23858F19408EDE00F7FABD /* Profile */,
 				2AE281891956002D0015602F /* Auth */,
 				2A470D7C19247A11008DBFED /* Segues */,
@@ -482,6 +488,10 @@
 				2A01CBB5196B289400C4B81F /* ZazzProfile.m */,
 				2AEA1C8519769E9300A177F3 /* ZazzComments.h */,
 				2AEA1C8619769E9300A177F3 /* ZazzComments.m */,
+				2A30C4501987CA5F00882C1A /* ZazzPost.h */,
+				2A30C4511987CA5F00882C1A /* ZazzPost.m */,
+				2A30C4531987CAAD00882C1A /* ZazzPhoto.h */,
+				2A30C4541987CAAD00882C1A /* ZazzPhoto.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -763,9 +773,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A2385E8194521D300F7FABD /* SDWebImageDownloaderOperation.m in Sources */,
+				2A30C4551987CAAD00882C1A /* ZazzPhoto.m in Sources */,
 				2A2385EE194521D300F7FABD /* UIImage+WebP.m in Sources */,
 				2AEA1C8719769E9300A177F3 /* ZazzComments.m in Sources */,
 				2AAFF9591981D769001CC4CC /* CTAssetsPickerConstants.m in Sources */,
+				2A30C4521987CA5F00882C1A /* ZazzPost.m in Sources */,
 				2A2385EA194521D300F7FABD /* SDWebImagePrefetcher.m in Sources */,
 				2A4144FE19689857001C1090 /* Photo.m in Sources */,
 				2A4144FD19689857001C1090 /* Notification.m in Sources */,

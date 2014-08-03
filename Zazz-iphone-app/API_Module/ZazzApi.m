@@ -15,6 +15,8 @@
 #import "ZazzFollowRequest.h"
 #import "ZazzNotification.h"
 #import "ZazzComments.h"
+#import "ZazzPost.h"
+#import "ZazzPhoto.h"
 
 @implementation ZazzApi
 
@@ -100,6 +102,20 @@
 -(void) getCommentsFor:(NSString *)feedType andId:(NSString *)feedId{
     [[[ZazzComments alloc] init] getCommentsFor:feedType andId:feedId];
 }
+
+
+/*
+ PUT ACTIONS
+ */
+-(void)postPost:(Post*)post{
+    [[[ZazzPost alloc] init] postPost:post];
+}
+-(void)postPhoto:(Photo*)photo{
+    [[[ZazzPhoto alloc] init] postPhoto:photo];
+}
+
+
+
 
 
 //STATIC METHODS

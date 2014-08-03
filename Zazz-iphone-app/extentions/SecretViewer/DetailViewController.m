@@ -181,7 +181,7 @@ UIImageView* _imageView;
 
 
 -(void)leaveView:(id)sender{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showHome" object:nil userInfo:nil];
+    [[[AppDelegate getAppDelegate] navController] popViewControllerAnimated:true];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
