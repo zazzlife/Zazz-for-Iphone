@@ -25,6 +25,7 @@
 @synthesize categoryFeeds;
 @synthesize filteredFeed;
 
+bool clear_feed = false; //used when refreshing the feed to clear all seen feeds.
 bool left_active = false; // used by leftNav to indicate if it's open or not.
 bool right_active = false; // used by leftNav to indicate if it's open or not.
 bool filter_active = false; // true if filter is expanded.
@@ -71,6 +72,8 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 -(void)viewDidAppear:(BOOL)animated{
     [UIView setAnimationsEnabled:false];
     [self resetSlidingViews];
+    [self getFeedAfter:NULL];
+    clear_feed = true;
 }
 
 -(void)resetSlidingViews{
@@ -90,6 +93,8 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     if (![notif.name isEqualToString:@"gotFeed"]) return;
     NSMutableArray* feed = [notif.userInfo objectForKey:@"feed"];
     if (!feed) return;
+    
+    if(clear_feed){[self.feed removeAllObjects]; clear_feed = false;}
     end_of_feed = false;
     getting_feed = false;
     if([feed count] <= 0){

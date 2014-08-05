@@ -91,6 +91,17 @@ id _activePicker = nil;
     }else{
         Post* post = [[Post alloc] init];
         [post setMessage:self.postField.text];
+        if([[self.postField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]<=0){
+            UIAlertView *alertView =
+            [[UIAlertView alloc] initWithTitle:@"Unable to post."
+                                       message:@"Please supply a message before posting."
+                                      delegate:nil
+                             cancelButtonTitle:nil
+                             otherButtonTitles:@"OK", nil];
+            
+            [alertView show];
+            return;
+        }
         [post setCategories:categoryIds];
         [[AppDelegate zazzApi] postPost:post];
     }
