@@ -61,4 +61,8 @@
 
 -(IBAction)doRegistration:(id)sender{}
 
+-(IBAction)goBack:(id)sender{
+    [self.navigationController popViewControllerAnimated:true];
+}
+
 @end

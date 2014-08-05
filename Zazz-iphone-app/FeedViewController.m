@@ -65,12 +65,25 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     [self.view addGestureRecognizer:swipe_right];
     
     [AppDelegate removeZazzBackgroundLogo];
-    [self.tabBarController.tabBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorFromHexString:COLOR_ZAZZ_GREY] width:320 andHeight:49]];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     [UIView setAnimationsEnabled:false];
-    [[AppDelegate getAppDelegate] setNavController:self.navigationController];
+    [self resetSlidingViews];
+}
+
+-(void)resetSlidingViews{
+    UIToolbar* tabBar = [[[AppDelegate getAppDelegate] appTabBar] tabBar];
+    CGFloat tabBarHeight = tabBar.frame.size.height;
+    [self.leftNav setFrame:CGRectMake(-CGRectGetWidth(self.leftNav.frame), 0, CGRectGetWidth(self.leftNav.frame), CGRectGetHeight(self.view.window.frame))];
+    [self.navFeedView setFrame:CGRectMake(0,0, CGRectGetWidth(self.view.window.frame), CGRectGetHeight(self.view.window.frame) - tabBarHeight)];
+    [self.rightNav setFrame:CGRectMake(CGRectGetMaxX(self.navFeedView.frame), 0, CGRectGetWidth(self.rightNav.frame), CGRectGetHeight(self.view.window.frame))];
+    [tabBar setFrame:CGRectMake(0, CGRectGetMaxY(self.navFeedView.frame),CGRectGetWidth(tabBar.frame),tabBarHeight)];
+
+    //they were hidden because the push animation looked weird when they are visible from the start.
+    [self.rightNav setHidden:false];
+    [self.leftNav setHidden:false];
 }
 
 -(void)gotZazzFeed:(NSNotification *)notif{
@@ -175,15 +188,15 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
     UIView* tabBar = self.view.superview.superview;
     CGFloat window_width = self.view.window.frame.size.width;
     CGFloat window_height = self.view.window.frame.size.height;
-    [self.nextView setFrame:CGRectMake(0, 0, window_width, window_height)];
+//    [self.nextView setFrame:CGRectMake(0, 0, window_width, window_height)];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
          animations:^(void){
              [tabBar setFrame:CGRectMake(0, 0, window_width, window_height)];
-             [self.nextView setFrame:CGRectMake(window_width, 0, window_width, window_height)];
+//             [self.nextView setFrame:CGRectMake(window_width, 0, window_width, window_height)];
          }
          completion:^(BOOL completed){
              [UIView setAnimationsEnabled:NO];
-             [self.nextView setHidden:true];
+//             [self.nextView setHidden:true];
          }
      ];
 }
@@ -237,52 +250,40 @@ float SIDE_DRAWER_ANIMATION_DURATION = .3;
 -(IBAction)rightDrawerButton:(id)sender{
     if(left_active) [self leftDrawerButton:nil];//close left drawer first.
     CGFloat rightNavWidth =self.rightNav.frame.size.width;
-    UIView* tabBar = self.view.superview.superview;
-    if(!right_active){
-        [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, rightNavWidth, self.view.window.frame.size.height)];
-    }
-    
+    UIToolbar* tabBar = [[AppDelegate getAppDelegate] appTabBar].tabBar;
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
-         animations:^(void){
-             [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, self.rightNav.frame.size.width, self.view.window.frame.size.height)];
-             [self.rightNav setHidden:false];
-             [tabBar.superview addSubview:self.rightNav];
-             if(!right_active){
-                 [tabBar setFrame:CGRectMake(-rightNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
-                 [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width - rightNavWidth, 0, rightNavWidth, self.view.window.frame.size.height)];
-             }else{
-                 [tabBar setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
-                 [self.rightNav setFrame:CGRectMake(self.view.window.frame.size.width, 0, rightNavWidth, self.view.window.frame.size.height)];
+             animations:^(void){
+                 if(!right_active){ //open it
+                     [self.rightNav setFrame:CGRectMake(CGRectGetWidth(self.view.window.frame) - rightNavWidth, 0, rightNavWidth, CGRectGetHeight(self.view.window.frame))];
+                     [self.navFeedView setFrame:CGRectMake(-rightNavWidth,0, CGRectGetWidth(self.navFeedView.frame), CGRectGetHeight(self.navFeedView.frame))];
+                     [tabBar setFrame:CGRectMake(-rightNavWidth, CGRectGetMinY(tabBar.frame),CGRectGetWidth(tabBar.frame),CGRectGetHeight(tabBar.frame))];
+                     return;
+                 }
+                 //otherwise close it
+                 [self resetSlidingViews];
              }
-         } completion:^(BOOL completed){
-             right_active = !right_active;
-             [UIView setAnimationsEnabled:NO];
-         }
+             completion:^(BOOL completed){
+                 right_active = !right_active;
+                 [UIView setAnimationsEnabled:NO];
+             }
      ];
 }
 -(IBAction)leftDrawerButton:(id)sender{
     if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
     CGFloat leftNavWidth =self.leftNav.frame.size.width;
-    UIView* tabBar = self.view.superview.superview;
-    if(!left_active){
-        [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
-    }
+    UIToolbar* tabBar = [[AppDelegate getAppDelegate] appTabBar].tabBar;
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
          animations:^(void){
-             [self.leftNav setFrame:CGRectMake(-(self.leftNav.frame.size.width), 0, self.leftNav.frame.size.width, self.view.window.frame.size.height)];
-             [self.leftNav setHidden:false];
-             [tabBar.superview addSubview:self.leftNav];
              if(!left_active){ //open it
-                [tabBar setFrame:CGRectMake(leftNavWidth, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
-                [self.leftNav setFrame:CGRectMake(0, 0, leftNavWidth, self.view.window.frame.size.height)];
-                return;
+                 [self.leftNav setFrame:CGRectMake(0, 0, leftNavWidth, self.view.window.frame.size.height)];
+                 [self.navFeedView setFrame:CGRectMake(leftNavWidth,0, CGRectGetWidth(self.navFeedView.frame), CGRectGetHeight(self.navFeedView.frame))];
+                 [tabBar setFrame:CGRectMake(leftNavWidth, CGRectGetMinY(tabBar.frame),CGRectGetWidth(tabBar.frame),CGRectGetHeight(tabBar.frame))];
+                 return;
              }
              //otherwise close it
-             [tabBar setFrame:CGRectMake(0, 0, self.view.window.frame.size.width, self.view.window.frame.size.height)];
-             [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
-             [self.leftNav setFrame:CGRectMake(-leftNavWidth, 0, leftNavWidth, self.view.window.frame.size.height)];
+             [self resetSlidingViews];
          }
          completion:^(BOOL complete){
              left_active = !left_active;

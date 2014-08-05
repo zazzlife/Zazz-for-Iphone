@@ -76,7 +76,7 @@
 		2AAFF95D1981D769001CC4CC /* CTAssetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFF9481981D769001CC4CC /* CTAssetsViewController.m */; };
 		2AAFF95E1981D769001CC4CC /* CTAssetsViewControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFF94A1981D769001CC4CC /* CTAssetsViewControllerTransition.m */; };
 		2AAFF95F1981D769001CC4CC /* NSDateFormatter+timeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFF94C1981D769001CC4CC /* NSDateFormatter+timeIntervalFormatter.m */; };
-		2AAFF9601981D769001CC4CC /* CreatePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFF94E1981D769001CC4CC /* CreatePhotoViewController.m */; };
+		2AAFF9601981D769001CC4CC /* PhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFF94E1981D769001CC4CC /* PhotoPicker.m */; };
 		2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */; };
 		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
 		2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE2818B1956004E0015602F /* NotificationViewController.m */; };
@@ -247,8 +247,8 @@
 		2AAFF94A1981D769001CC4CC /* CTAssetsViewControllerTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTAssetsViewControllerTransition.m; sourceTree = "<group>"; };
 		2AAFF94B1981D769001CC4CC /* NSDateFormatter+timeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+timeIntervalFormatter.h"; sourceTree = "<group>"; };
 		2AAFF94C1981D769001CC4CC /* NSDateFormatter+timeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+timeIntervalFormatter.m"; sourceTree = "<group>"; };
-		2AAFF94D1981D769001CC4CC /* CreatePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreatePhotoViewController.h; path = extentions/CreatePhotoViewController.h; sourceTree = "<group>"; };
-		2AAFF94E1981D769001CC4CC /* CreatePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreatePhotoViewController.m; path = extentions/CreatePhotoViewController.m; sourceTree = "<group>"; };
+		2AAFF94D1981D769001CC4CC /* PhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoPicker.h; path = extentions/PhotoPicker.h; sourceTree = "<group>"; };
+		2AAFF94E1981D769001CC4CC /* PhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoPicker.m; path = extentions/PhotoPicker.m; sourceTree = "<group>"; };
 		2AAFF9621982878D001CC4CC /* UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView.h; sourceTree = "<group>"; };
 		2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavigationViewController.h; sourceTree = "<group>"; };
 		2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
@@ -554,8 +554,8 @@
 		2AAFF96119828482001CC4CC /* FeedItemViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2AAFF94D1981D769001CC4CC /* CreatePhotoViewController.h */,
-				2AAFF94E1981D769001CC4CC /* CreatePhotoViewController.m */,
+				2AAFF94D1981D769001CC4CC /* PhotoPicker.h */,
+				2AAFF94E1981D769001CC4CC /* PhotoPicker.m */,
 				2A6735981966F18A00707224 /* CreateMessageViewController.h */,
 				2A6735991966F18A00707224 /* CreateMessageViewController.m */,
 			);
@@ -803,7 +803,7 @@
 				2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */,
 				2AAFF95E1981D769001CC4CC /* CTAssetsViewControllerTransition.m in Sources */,
 				2AAFF9531981D769001CC4CC /* CTAssetItemViewController.m in Sources */,
-				2AAFF9601981D769001CC4CC /* CreatePhotoViewController.m in Sources */,
+				2AAFF9601981D769001CC4CC /* PhotoPicker.m in Sources */,
 				2AAFF9521981D769001CC4CC /* ALAssetsGroup+isEqual.m in Sources */,
 				2A39F2E6193DEB04002E8873 /* CFTabBarController.m in Sources */,
 				2A01CBB8196B289400C4B81F /* ZazzFollowRequest.m in Sources */,

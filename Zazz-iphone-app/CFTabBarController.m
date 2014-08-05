@@ -18,7 +18,7 @@
 const int TAG_FEED_VIEW = 0;
 const int TAG_POST_VIEW = 1;
 const int TAG_PROFILE_VIEW = 2;
-int activeTagView;
+int _activeTagView = 0;
 
 
 CGRect FRAME_FULL;
@@ -30,7 +30,6 @@ ProfileViewController* profileView;
 BOOL enabled = true;
 
 -(void)viewDidLoad{
-    
     FRAME_FULL = [UIApplication sharedApplication].keyWindow.frame;
     FRAME_TABBED = CGRectMake(0, 0, FRAME_FULL.size.width, FRAME_FULL.size.height - self.tabBar.frame.size.height);
     
@@ -54,11 +53,19 @@ BOOL enabled = true;
         }
     }
     [self.tabBar setHidden:false];
+    [AppDelegate removeZazzBackgroundLogo];
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    UIImage* tabImage = [UIImage imageNamed:@"post button"];
+    [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
+    [self.postButton setImage:tabImage];
+    [postView setViewHidden:true];
 }
 
 -(UIView*)getActiveChildView{
     UIView* activeView;
-    switch(activeTagView){
+    switch(_activeTagView){
         case TAG_POST_VIEW:
             activeView = postView.view;
         case TAG_PROFILE_VIEW:
@@ -70,12 +77,6 @@ BOOL enabled = true;
     return activeView;
 }
 
--(void) viewDidAppear:(BOOL)animated{
-    UIImage* tabImage = [UIImage imageNamed:@"post button"];
-    [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
-    [self.postButton setImage:tabImage];
-}
-
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender{
     if (! enabled) return;
     switch(sender.tag){
@@ -83,20 +84,20 @@ BOOL enabled = true;
             //[feedView setViewHidden:true];
             //[profileView setViewHidden:true];
             [postView setViewHidden:false];
-            activeTagView = TAG_POST_VIEW;
+            _activeTagView = TAG_POST_VIEW;
             break;
         case 3://profile
             [feedView setViewHidden:true];
             [postView setViewHidden:true];
             [profileView setViewHidden:false];
-            activeTagView = TAG_PROFILE_VIEW;
+            _activeTagView = TAG_PROFILE_VIEW;
             break;
         case 1://feed
         default:
             [profileView setViewHidden:true];
             [postView setViewHidden:true];
             [feedView setViewHidden:false];
-            activeTagView=TAG_POST_VIEW;
+            _activeTagView=TAG_POST_VIEW;
             break;
     }
 }

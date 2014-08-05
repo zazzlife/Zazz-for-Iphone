@@ -25,7 +25,6 @@
 @property IBOutlet UIView * navFeedView;
 @property IBOutlet UIView * leftNav;
 @property IBOutlet UIView * rightNav;
-@property IBOutlet UIView * nextView;
 
 -(IBAction)leftDrawerButton:(id)sender;
 -(IBAction)rightDrawerButton:(id)sender;

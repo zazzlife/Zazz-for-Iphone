@@ -10,14 +10,10 @@
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "FeedViewController.h"
+#import "PhotoPicker.h"
 
 @protocol delegated <NSObject>
 @property id delegate;
-@end
-
-@protocol MediaReceiver <NSObject>
-@optional
--(void)setMediaAttachment:(id)media;
 @end
 
 @interface CreateMessageViewController : UIViewController<MediaReceiver>
@@ -26,10 +22,9 @@
 @property IBOutlet UIView* mainView;
 @property IBOutlet UITextView* postField;
 @property IBOutlet UIView* keyboardToolbar;
-@property (nonatomic) UIViewController* parentViewController;
 @property UIViewController<delegated>* helperViewController;
+@property BOOL presentImagePickerOnShow;
 @property ALAsset* mediaAsset;
-
 
 - (IBAction)putPost:(UIButton *)sender;
 

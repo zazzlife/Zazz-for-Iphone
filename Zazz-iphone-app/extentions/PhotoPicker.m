@@ -29,12 +29,10 @@
 
 #import "CTAssetsPickerController.h"
 #import "CTAssetsPageViewController.h"
-#import "CreatePhotoViewController.h"
-#import "FeedViewController.h"
-#import "CreateMessageViewController.h"
+#import "PhotoPicker.h"
 
 
-@interface CreatePhotoViewController ()
+@interface PhotoPicker ()
 <CTAssetsPickerControllerDelegate, UIPopoverControllerDelegate>
 
 @property (nonatomic, copy) NSArray *assets;
@@ -45,64 +43,19 @@
 
 
 
-@implementation CreatePhotoViewController
+@implementation PhotoPicker
 
 @synthesize delegate;
 int MAX_NUMBER_OF_ASSETS = 1;
 BOOL _canceled = false;
 
--(CreatePhotoViewController*)init{
+-(PhotoPicker*)initWithMediaReceiver:(UIViewController<MediaReceiver>*)mediaReiver{
     if(!self)self = [super init];
+    [self setDelegate:mediaReiver];
     return self;
 }
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-}
-
--(void)viewDidLoad{
-    UIBarButtonItem *clearButton = 
-    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Clear", nil)
-                                     style:UIBarButtonItemStylePlain
-                                    target:self
-                                    action:@selector(clearAssets:)];
-    
-    UIBarButtonItem *addButton =
-    [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Pick", nil)
-                                     style:UIBarButtonItemStylePlain
-                                    target:self
-                                    action:@selector(pickAssets:)];
-    _canceled = false;
-    
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    if(!self.assets && !_canceled) return [self pickAssets:nil];
-    if([self.delegate respondsToSelector:@selector(setMediaAttachment:)]){
-        id assets = nil;
-        if(!_canceled) assets = self.assets;
-        [self.delegate setMediaAttachment:assets];
-    }
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
-
-- (void)clearAssets:(id)sender
-{
-    if (self.assets)
-    {
-        self.assets = nil;
-//        [self.tableView reloadData];
-    }
-}
-
-- (void)pickAssets:(id)sender
-{
+- (void)pickAssets{
     if (!self.assets)
         self.assets = [[NSMutableArray alloc] init];
 
@@ -119,13 +72,13 @@ BOOL _canceled = false;
         self.popover = [[UIPopoverController alloc] initWithContentViewController:picker];
         self.popover.delegate = self;
         
-        [self.popover presentPopoverFromBarButtonItem:sender
+        [self.popover presentPopoverFromBarButtonItem:self.delegate.navigationItem.leftBarButtonItem
                              permittedArrowDirections:UIPopoverArrowDirectionAny
                                              animated:YES];
     }
     else
     {
-        [self presentViewController:picker animated:YES completion:nil];
+        [self.delegate presentViewController:picker animated:YES completion:nil];
     }
 }
 
@@ -142,17 +95,6 @@ BOOL _canceled = false;
 - (BOOL)assetsPickerController:(CTAssetsPickerController *)picker isDefaultAssetsGroup:(ALAssetsGroup *)group
 {
     return ([[group valueForProperty:ALAssetsGroupPropertyType] integerValue] == ALAssetsGroupSavedPhotos);
-}
-
-- (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
-{
-    if (self.popover != nil)
-        [self.popover dismissPopoverAnimated:YES];
-//    else
-//        [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    
-    self.assets = [NSMutableArray arrayWithArray:assets];
-    [self viewDidAppear:false];
 }
 
 - (BOOL)assetsPickerController:(CTAssetsPickerController *)picker shouldEnableAsset:(ALAsset *)asset
@@ -198,9 +140,21 @@ BOOL _canceled = false;
     return (picker.selectedAssets.count+1 <= MAX_NUMBER_OF_ASSETS && asset.defaultRepresentation != nil);
 }
 
+- (void)assetsPickerController:(CTAssetsPickerController *)picker didFinishPickingAssets:(NSArray *)assets
+{
+    if (self.popover != nil)
+        [self.popover dismissPopoverAnimated:YES];
+    //    else
+    //        [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    self.assets = [NSMutableArray arrayWithArray:assets];
+    [self.delegate setMediaAttachment:self.assets];
+    [self.delegate dismissViewControllerAnimated:true completion:nil];
+}
+
 -(void)assetsPickerControllerDidCancel:(id)sender{
-    _canceled = true;
-    [self viewDidAppear:false];
+    [self.delegate setMediaAttachment:nil];
+    [self.delegate dismissViewControllerAnimated:true completion:nil];
 }
 
 @end

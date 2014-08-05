@@ -16,6 +16,7 @@
 @interface LeftNavigationViewController : UIViewController
 
 @property IBOutlet UIImageView* profilePhoto;
+@property IBOutlet UIImageView* background;
 @property Profile* _profile;
 @property IBOutlet UIScrollView* scrollView;
 

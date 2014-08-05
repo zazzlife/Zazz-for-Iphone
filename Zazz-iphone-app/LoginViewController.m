@@ -49,6 +49,10 @@
     return YES;
 }
 
+-(IBAction)goBack:(id)sender{
+    [self.navigationController popViewControllerAnimated:true];
+}
+
 -(IBAction)doLogin:(id)sender{
     [[AppDelegate zazzApi] getAuthTokenWithUsername:_username.text andPassword:_password.text];
     [self.loginprogress startAnimating];

@@ -16,6 +16,8 @@
     UIViewController<ViewAnimationDelegate> *sourceViewController = self.sourceViewController;
     UIViewController<ViewAnimationDelegate> *destinationViewController = self.destinationViewController;
     
+    [sourceViewController resignFirstResponder];
+    
     // Add the destination view as a subview, temporarily
     [sourceViewController.view addSubview:destinationViewController.view];
     
@@ -31,7 +33,7 @@
                      animations:^{sourceViewController.view.center = CGPointMake(pageCenter.x * 3, pageCenter.y); } //slide right a screen length
                      completion:^(BOOL finished){
                          [destinationViewController.view removeFromSuperview]; // remove from temp super view
-                         [sourceViewController presentViewController:destinationViewController animated:NO completion:NULL]; // set present VC
+                         [sourceViewController.navigationController popViewControllerAnimated:NO]; // set present VC
                          if([[destinationViewController class] conformsToProtocol:@protocol(ViewAnimationDelegate)]){
                              [destinationViewController viewDidFinishAnimation];
                          }

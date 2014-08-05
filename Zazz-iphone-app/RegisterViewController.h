@@ -22,5 +22,6 @@
 -(IBAction)doRegistration:(id)sender;
 -(IBAction)userTappedBackgroud:(id)sender;
 -(IBAction)userHitReturn:(id)sender;
+-(IBAction)goBack:(id)sender;
 
 @end

@@ -32,7 +32,7 @@
                      animations:^{sourceViewController.view.center = CGPointMake(-pageCenter.x, pageCenter.y); } //slide left a screen length
                      completion:^(BOOL finished){
                          [destinationViewController.view removeFromSuperview]; // remove from temp super view
-                         [sourceViewController presentViewController:destinationViewController animated:NO completion:NULL]; // set present VC
+                         [sourceViewController.navigationController pushViewController:destinationViewController animated:NO]; // set present VC
                          if([[destinationViewController class] conformsToProtocol:@protocol(ViewAnimationDelegate)]){
                              [destinationViewController viewDidFinishAnimation];
                          }

@@ -25,7 +25,6 @@
 
 #import "PostViewController.h"
 #import "CreateMessageViewController.h"
-#import "CreatePhotoViewController.h"
 #import "CHTumblrMenuView.h"
 #import "AppDelegate.h"
 #import "UIView.h"
@@ -60,18 +59,12 @@ CreateMessageViewController* activePostViewController;
 }
 
 -(void)startAction:(int)action{
-    CreateMessageViewController* messageController = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateMessageViewController"];
-    [messageController setParentViewController:messageController];
-    if(active_action != action){
-        active_action = action;
-        activePostViewController = messageController;
-    }
-    [activePostViewController setHelperViewController:nil];
+    
+    CreateMessageViewController* createCtrl = [self.storyboard instantiateViewControllerWithIdentifier:@"CreateMessageViewController"];
     
     switch (action) {
         case ACTION_PHOTO:{
-            CreatePhotoViewController* helperViewController = [[CreatePhotoViewController alloc] init];
-            [activePostViewController setHelperViewController:helperViewController];
+            [createCtrl setPresentImagePickerOnShow:true];
             NSLog(@"photo");
             break;
         }
@@ -82,27 +75,22 @@ CreateMessageViewController* activePostViewController;
             break;
         }
     }
-    [activePostViewController setParentViewController:self];
-    [self.postView removeAllSubviews];
-    [self.postView addSubview:activePostViewController.view];
-    [self.postView setBackgroundColor:[UIColor redColor]];
-    [self.postView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [self.postView setHidden:false];
     
+    [UIView setAnimationsEnabled:true];
+    [[[AppDelegate getAppDelegate] navController] pushViewController:createCtrl animated:true];
     
 }
 
 #pragma mark - CFTabBarViewDelegate method
-
 -(void)setViewHidden:(BOOL)hidden{
     [self.view.superview setHidden:hidden];
     if(!hidden){
-        //being shown;
+        //showing
         [menuView showAndSetBackgroundSelectedBlock:^{
             [[[AppDelegate getAppDelegate] appTabBar] goHome];
         }];
     }else{
-        //being hidden;
+        //hiding
         [self.view setBackgroundColor:[UIColor clearColor]];
         [self.postView setHidden:true];
     }

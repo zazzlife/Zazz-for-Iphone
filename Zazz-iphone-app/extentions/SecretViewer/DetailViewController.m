@@ -183,7 +183,7 @@ UIImageView* _imageView;
 
 
 -(void)leaveView:(id)sender{
-    [[[AppDelegate getAppDelegate] navController] popViewControllerAnimated:true];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

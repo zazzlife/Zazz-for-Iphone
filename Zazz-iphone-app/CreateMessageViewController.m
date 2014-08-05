@@ -15,6 +15,7 @@
 #import "UIView.h"
 #import "CategoryStat.h"
 #import "PostViewController.h"
+#import "PhotoPicker.h"
 
 @implementation CreateMessageViewController
 
@@ -47,6 +48,24 @@ UIView* tempHelper;
     }
     [self.postField setInputAccessoryView:self.keyboardToolbar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(madePost:) name:@"madePost" object:nil];
+}
+
+id _activePicker = nil;
+-(void)viewDidAppear:(BOOL)animated{
+    _activePicker = nil;
+    if(self.presentImagePickerOnShow){
+        _activePicker = [[PhotoPicker alloc] initWithMediaReceiver:self];
+        [_activePicker pickAssets];
+        self.presentImagePickerOnShow = false;
+        return;
+    }
+    for(UIView* subview in self.view.subviews){
+        if(subview.tag < 200)continue;
+        subview.layer.cornerRadius = 5;
+        subview.layer.masksToBounds = YES;
+    }
+    [self.keyboardToolbar setHidden:false];
+    [self.postField becomeFirstResponder];
 }
 
 -(NSMutableArray*)getSelectedCatgoryIds{
@@ -84,24 +103,8 @@ UIView* tempHelper;
     [self goBack:nil];
 }
 
-
--(void)viewDidAppear:(BOOL)animated{
-    for(UIView* subview in self.view.subviews){
-        if(subview.tag < 200)continue;
-        subview.layer.cornerRadius = 5;
-        subview.layer.masksToBounds = YES;
-    }
-    if(self.helperViewController){
-        [self.helperViewController setDelegate:self];
-        [self presentViewController:self.helperViewController animated:false completion:^(void){}];
-    }else{
-        [self.keyboardToolbar setHidden:false];
-        [self.postField becomeFirstResponder];
-    }
-}
-
 - (IBAction)goBack:(UIButton *)sender {
-    [(PostViewController*)self.parentViewController setViewHidden:true];
+    [self.navigationController popViewControllerAnimated:true];
     [self.view endEditing:YES];
 }
 

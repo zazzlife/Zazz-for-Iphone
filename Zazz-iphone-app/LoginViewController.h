@@ -20,5 +20,6 @@
 
 
 -(IBAction)doLogin:(id)sender;
+-(IBAction)goBack:(id)sender;
 
 @end

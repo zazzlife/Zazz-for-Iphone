@@ -54,6 +54,8 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [AppDelegate addZazzBackgroundLogo];
     [self set_zazzAPI:[[ZazzApi alloc] init]];
+    UINavigationController* navController= [self.window rootViewController];
+    [self setNavController:navController];
     
     return YES;
 }
