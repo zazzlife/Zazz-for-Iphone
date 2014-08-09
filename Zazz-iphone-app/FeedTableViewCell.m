@@ -13,6 +13,7 @@
 #import "Photo.h"
 #import "Profile.h"
 #import "Event.h"
+#import "UILabel.h"
 #import "Post.h"
 #import "UIImage.h"
 #import "DetailViewItem.h"
@@ -102,6 +103,7 @@ int _albumObserversCounter;
     }
     if([[feed feedType] isEqualToString:@"Photo"]){
         _albumObserversCounter = 0;
+        CGRect contentFrame = self.contentView.frame;
         for(int _photoIdx = 0; _photoIdx<((NSMutableArray*)[feed content]).count; _photoIdx++){
             Photo* photo = [((NSMutableArray*)[feed content]) objectAtIndex:_photoIdx];
             UIButton* imageButton;
@@ -126,7 +128,11 @@ int _albumObserversCounter;
             }else{
                 [imageButton setFrame:CGRectMake(0, 0 , self.feedCellContentView.frame.size.width, image.size.height)];
             }
-            _height += image.size.height;
+            UILabel* description = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMinX(contentFrame)+ 10 ,CGRectGetMaxY(imageButton.frame)+5,CGRectGetWidth(contentFrame) - 50, 100)];
+            [description setText:photo.description];
+            [description resizeWithFlexibleHeight];
+            [self.feedCellContentView addSubview:description];
+            _height += image.size.height + (description.frame.size.height + 10);
             [imageButton setTag:[photo.photoId intValue]];
             [self.feedCellContentView addSubview:imageButton];
         }

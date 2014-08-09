@@ -15,7 +15,7 @@
 
 @implementation UILabel (fydo)
 -(UILabel*)resizeWithFlexibleHeight{
-    
+    [self setNumberOfLines:0];
     CGSize size = [self frameForText:self.text sizeWithFont:self.font constrainedToSize:CGSizeMake(self.frame.size.width, self.frame.size.height) lineBreakMode:self.lineBreakMode];
     [self setFrame:CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, size.height)];
     [self sizeToFit];
