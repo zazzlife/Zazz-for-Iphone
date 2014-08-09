@@ -12,7 +12,6 @@
 @interface ZazzPhoto : NSObject<NSURLConnectionDataDelegate>
 
 @property NSMutableData* _receivedData;
-
 -(void)postPhoto:(Photo*)photo;
 
 @end

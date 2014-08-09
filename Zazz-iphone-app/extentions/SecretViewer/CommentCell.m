@@ -79,7 +79,7 @@ const CGFloat kCommentPaddingFromRight = 8.0f;
     } else {
         _likeCount--;
     }
-    self.likeCountLabel.text = [NSString stringWithFormat:@"%d",_likeCount];
+    self.likeCountLabel.text = [NSString stringWithFormat:@"%ld",(long)_likeCount];
     [self.likeCountLabel sizeToFit];
     self.likeCountImageView.hidden = _likeCount <= 0;
     self.likeCountLabel.hidden = _likeCount <= 0;

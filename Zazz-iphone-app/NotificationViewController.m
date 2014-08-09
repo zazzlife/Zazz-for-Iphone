@@ -278,16 +278,6 @@ NSArray* notifications;
         default: return;
     }
     
-    
-    NSArray* keys  =    [NSArray arrayWithObjects:
-                         @"childController",
-                         @"identifier",
-                         nil];
-    NSArray* objects  = [NSArray arrayWithObjects:
-                         detailViewController,
-                         [NSString stringWithFormat:@"detailView-notif%ld",imageButton.tag],
-                         nil];
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
     [[[AppDelegate getAppDelegate] navController] pushViewController:detailViewController animated:true];
 }
 

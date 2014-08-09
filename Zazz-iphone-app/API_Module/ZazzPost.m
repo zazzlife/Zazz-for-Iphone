@@ -1,4 +1,4 @@
-    //
+//
 //  ZazzPost.m
 //  Zazz-iphone-app
 //
@@ -8,11 +8,10 @@
 
 #import "ZazzPost.h"
 #import "ZazzApi.h"
-#import "Post.h"
 
 @implementation ZazzPost
 
-NSMutableData* _receivedData = nil;
+@synthesize _receivedData;
 
 -(void)postPost:(Post*)post{
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:@"posts"];
@@ -40,11 +39,10 @@ NSMutableData* _receivedData = nil;
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
+
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    if(_receivedData == nil){
-        _receivedData = [[NSMutableData alloc] init];
-    }
-    [_receivedData appendData:data];
+    if(!self._receivedData) self._receivedData = [[NSMutableData alloc]init];
+    [self._receivedData appendData:data];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{

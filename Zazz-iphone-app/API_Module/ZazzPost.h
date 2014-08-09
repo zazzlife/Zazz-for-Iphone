@@ -11,6 +11,7 @@
 
 @interface ZazzPost : NSObject<NSURLConnectionDataDelegate>
 
+@property NSMutableData* _receivedData;
 -(void)postPost:(Post*)post;
 
 @end

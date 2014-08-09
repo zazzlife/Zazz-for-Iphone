@@ -169,13 +169,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Zazz-iphone-app/CreateMessageViewController.m"
-            timestampString = "428971863.319295"
+            filePath = "Zazz-iphone-app/API_Module/ZazzPost.m"
+            timestampString = "429024615.164619"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-putPost:"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "-postPost:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

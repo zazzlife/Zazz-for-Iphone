@@ -39,7 +39,6 @@
 		2A2385EF194521D300F7FABD /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385DF194521D300F7FABD /* UIImageView+HighlightedWebCache.m */; };
 		2A2385F0194521D300F7FABD /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385E1194521D300F7FABD /* UIImageView+WebCache.m */; };
 		2A30C4521987CA5F00882C1A /* ZazzPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A30C4511987CA5F00882C1A /* ZazzPost.m */; };
-		2A30C4551987CAAD00882C1A /* ZazzPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A30C4541987CAAD00882C1A /* ZazzPhoto.m */; };
 		2A39F2DF193D5BA3002E8873 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A39F2DB193D5BA3002E8873 /* PostViewController.m */; };
 		2A39F2E6193DEB04002E8873 /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A39F2E5193DEB04002E8873 /* CFTabBarController.m */; };
 		2A4144F819689857001C1090 /* CategoryStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144E719689857001C1090 /* CategoryStat.m */; };
@@ -79,6 +78,7 @@
 		2AAFF9601981D769001CC4CC /* PhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFF94E1981D769001CC4CC /* PhotoPicker.m */; };
 		2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */; };
 		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
+		2AE1DC371991C60400CC3CCF /* ZazzPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE1DC361991C60400CC3CCF /* ZazzPhoto.m */; };
 		2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE2818B1956004E0015602F /* NotificationViewController.m */; };
 		2AEA1C84197604E300A177F3 /* DetailViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C83197604E300A177F3 /* DetailViewItem.m */; };
 		2AEA1C8719769E9300A177F3 /* ZazzComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C8619769E9300A177F3 /* ZazzComments.m */; };
@@ -172,8 +172,6 @@
 		2A2385E1194521D300F7FABD /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		2A30C4501987CA5F00882C1A /* ZazzPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzPost.h; path = API_Module/ZazzPost.h; sourceTree = "<group>"; };
 		2A30C4511987CA5F00882C1A /* ZazzPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzPost.m; path = API_Module/ZazzPost.m; sourceTree = "<group>"; };
-		2A30C4531987CAAD00882C1A /* ZazzPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzPhoto.h; path = API_Module/ZazzPhoto.h; sourceTree = "<group>"; };
-		2A30C4541987CAAD00882C1A /* ZazzPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzPhoto.m; path = API_Module/ZazzPhoto.m; sourceTree = "<group>"; };
 		2A39F2DA193D5BA3002E8873 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		2A39F2DB193D5BA3002E8873 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		2A39F2E4193DEB04002E8873 /* CFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTabBarController.h; sourceTree = "<group>"; };
@@ -254,6 +252,8 @@
 		2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
 		2AB3E4611934063700F72784 /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
 		2AB3E4621934063700F72784 /* RightNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavigationViewController.m; sourceTree = "<group>"; };
+		2AE1DC351991C60400CC3CCF /* ZazzPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzPhoto.h; path = API_Module/ZazzPhoto.h; sourceTree = "<group>"; };
+		2AE1DC361991C60400CC3CCF /* ZazzPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzPhoto.m; path = API_Module/ZazzPhoto.m; sourceTree = "<group>"; };
 		2AE2818A1956004E0015602F /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		2AE2818B1956004E0015602F /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		2AEA1C82197604E300A177F3 /* DetailViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewItem.h; sourceTree = "<group>"; };
@@ -490,8 +490,8 @@
 				2AEA1C8619769E9300A177F3 /* ZazzComments.m */,
 				2A30C4501987CA5F00882C1A /* ZazzPost.h */,
 				2A30C4511987CA5F00882C1A /* ZazzPost.m */,
-				2A30C4531987CAAD00882C1A /* ZazzPhoto.h */,
-				2A30C4541987CAAD00882C1A /* ZazzPhoto.m */,
+				2AE1DC351991C60400CC3CCF /* ZazzPhoto.h */,
+				2AE1DC361991C60400CC3CCF /* ZazzPhoto.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -773,7 +773,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A2385E8194521D300F7FABD /* SDWebImageDownloaderOperation.m in Sources */,
-				2A30C4551987CAAD00882C1A /* ZazzPhoto.m in Sources */,
+				2AE1DC371991C60400CC3CCF /* ZazzPhoto.m in Sources */,
 				2A2385EE194521D300F7FABD /* UIImage+WebP.m in Sources */,
 				2AEA1C8719769E9300A177F3 /* ZazzComments.m in Sources */,
 				2AAFF9591981D769001CC4CC /* CTAssetsPickerConstants.m in Sources */,

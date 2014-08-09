@@ -141,7 +141,7 @@
     } else {
         _likeCounter--;
     }
-    [_likeCountLabel setText:[NSString stringWithFormat:@"%d",_likeCounter]];
+    [_likeCountLabel setText:[NSString stringWithFormat:@"%ld",(long)_likeCounter]];
 }
 
 @end
