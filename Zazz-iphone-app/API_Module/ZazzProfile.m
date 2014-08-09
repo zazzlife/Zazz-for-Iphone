@@ -32,7 +32,7 @@ NSString* _profileId;
         NSLog(@"JSON ERROR");
         return;
     }
-    
+        
     Profile* profile = [Profile makeProfileFromDict:array];
     
     NSMutableDictionary* userInfo= [[NSMutableDictionary alloc] init];

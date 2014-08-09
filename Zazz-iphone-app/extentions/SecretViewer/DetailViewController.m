@@ -190,7 +190,7 @@ UIImageView* _imageView;
     CGFloat delta = 0.0f;
     [_mainScrollView setBounces:true];
     // Here is where I do the "Zooming" image and the quick fade out the text and toolbar
-    if (scrollView.contentOffset.y < 0.0f) {
+    if (scrollView.contentOffset.y <= 0.0f) {
         delta = fabs(MIN(0.0f, _mainScrollView.contentOffset.y));
         _topContainer.frame = CGRectMake(CGRectGetMinX(HEADER_INIT_FRAME),
                                          CGRectGetMinY(HEADER_INIT_FRAME)-delta,
@@ -201,10 +201,14 @@ UIImageView* _imageView;
                                          CGRectGetWidth(TOOLBAR_INIT_FRAME),
                                          CGRectGetHeight(TOOLBAR_INIT_FRAME));
         if(_detailItem.photo){
-            _imageView.frame    = CGRectMake(CGRectGetMinX(IMAGE_INIT_FRAME) - delta / 2.0f,
+            float init_height =  CGRectGetHeight(IMAGE_INIT_FRAME);
+            float init_width = CGRectGetWidth(IMAGE_INIT_FRAME);
+            float new_height = init_height + delta;
+            float new_width = (init_width / init_height) * new_height;
+            _imageView.frame    = CGRectMake((init_width - new_width) / 2 ,
                                              CGRectGetMinY(IMAGE_INIT_FRAME),
-                                             CGRectGetWidth(IMAGE_INIT_FRAME) + delta,
-                                             CGRectGetHeight(IMAGE_INIT_FRAME) + delta);
+                                             new_width,
+                                             new_height);
             _textLabelView.frame= CGRectMake(CGRectGetMinX(TEXT_INIT_FRAME),
                                              CGRectGetMaxY(_imageView.frame),
                                              CGRectGetWidth(TEXT_INIT_FRAME),
@@ -223,7 +227,6 @@ UIImageView* _imageView;
         _blurImageView.alpha = 1-alpha;
         
         if (alpha <= 0) {
-//            NSLog(@"%f",content_height);
             _topContainer.frame = CGRectMake(0, delta + kBarHeight - CGRectGetHeight(_topContainer.frame) ,
                                             CGRectGetWidth(_topContainer.frame), CGRectGetHeight(HEADER_INIT_FRAME));
             _commentsTableView.frame = CGRectMake(0, CGRectGetMaxY(_topContainer.frame),
@@ -231,7 +234,6 @@ UIImageView* _imageView;
             [_commentsTableView setScrollEnabled:true];
         }
         else {
-            NSLog(@"4");
             [_commentsTableView setScrollEnabled:false];
             _toolBarView.frame = TOOLBAR_INIT_FRAME;
             _topContainer.frame = HEADER_INIT_FRAME;
