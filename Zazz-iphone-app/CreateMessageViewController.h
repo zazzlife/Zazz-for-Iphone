@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "FeedViewController.h"
 #import "PhotoPicker.h"
 
 @protocol delegated <NSObject>

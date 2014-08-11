@@ -40,7 +40,7 @@
 -(void) setFollowRequestsUserId:(NSString*)userId action:(BOOL)action;
 
 -(void) getFeed;
--(void) getFeedAfter:(NSString*)last_timestamp;
+-(void) getFeedAfter:(NSString*)feedId;
 -(void) getFeedCategory:(NSString*)category_id;
 -(void) getFeedCategory:(NSString*)category_id after:(NSString*)last_timestamp;
 

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "CFTabBarController.h"
 #import "PostViewController.h"
-#import "FeedViewController.h"
+#import "HomeViewController.h"
 #import "ProfileViewController.h"
 #import "UIColor.h"
 
@@ -24,7 +24,7 @@ int _activeTagView = 0;
 CGRect FRAME_FULL;
 CGRect FRAME_TABBED;
 
-FeedViewController*    feedView;
+HomeViewController*    homeView;
 PostViewController*    postView;
 ProfileViewController* profileView;
 BOOL enabled = true;
@@ -44,7 +44,7 @@ BOOL enabled = true;
             continue;
         }
         if([NSStringFromClass(childController.class) isEqualToString:@"FeedViewController"]){
-            feedView = (FeedViewController*)childController;
+            homeView = (HomeViewController*)childController;
             continue;
         }
         if([NSStringFromClass(childController.class) isEqualToString:@"ProfileViewController"]){
@@ -53,6 +53,7 @@ BOOL enabled = true;
         }
     }
     [self.tabBar setHidden:false];
+    CGRect tabBarFrame = self.tabBar.frame;
     [AppDelegate removeZazzBackgroundLogo];
 }
 
@@ -72,7 +73,7 @@ BOOL enabled = true;
             activeView = profileView.view;
         case TAG_FEED_VIEW:
         default:
-            activeView = feedView.view;
+            activeView = homeView.view;
     }
     return activeView;
 }
@@ -87,7 +88,7 @@ BOOL enabled = true;
             _activeTagView = TAG_POST_VIEW;
             break;
         case 3://profile
-            [feedView setViewHidden:true];
+            [homeView setViewHidden:true];
             [postView setViewHidden:true];
             [profileView setViewHidden:false];
             _activeTagView = TAG_PROFILE_VIEW;
@@ -96,7 +97,7 @@ BOOL enabled = true;
         default:
             [profileView setViewHidden:true];
             [postView setViewHidden:true];
-            [feedView setViewHidden:false];
+            [homeView setViewHidden:false];
             _activeTagView=TAG_POST_VIEW;
             break;
     }

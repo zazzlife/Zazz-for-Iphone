@@ -15,6 +15,7 @@
 #import "UIView.h"
 #import "CategoryStat.h"
 #import "PostViewController.h"
+#import "HomeViewController.h"
 #import "PhotoPicker.h"
 
 @implementation CreateMessageViewController

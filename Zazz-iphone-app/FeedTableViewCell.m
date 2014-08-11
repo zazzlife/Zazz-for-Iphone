@@ -120,7 +120,7 @@ int _albumObserversCounter;
             [imageButton setShowsTouchWhenHighlighted:false];
             [imageButton setUserInteractionEnabled:true];
             [imageButton setRestorationIdentifier:[NSString stringWithFormat:@"%d",_photoIdx]];
-            NSLog(@"index: %d feed_id:%@",_photoIdx, self._feed.feedId);
+//            NSLog(@"index: %d feed_id:%@",_photoIdx, self._feed.feedId);
             [imageButton addTarget:self action:@selector(showImage:) forControlEvents:UIControlEventTouchUpInside];
             UIView* previousImage = (UIView*)self.feedCellContentView.subviews.lastObject;
             if (previousImage != nil) {

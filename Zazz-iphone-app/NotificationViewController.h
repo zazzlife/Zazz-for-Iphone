@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FeedViewController.h"
 #import "Profile.h"
 
 @interface NotificationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>

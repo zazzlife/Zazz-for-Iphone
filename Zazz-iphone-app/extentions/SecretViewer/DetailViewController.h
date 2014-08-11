@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FeedViewController.h"
 #import "DetailViewItem.h"
 
 @interface DetailViewController: UIViewController

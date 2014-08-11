@@ -7,7 +7,6 @@
 //
 
 #import "NotificationViewController.h"
-#import "FeedViewController.h"
 #import "AppDelegate.h"
 #import "FollowRequest.h"
 #import "Notification.h"
@@ -32,7 +31,6 @@ static const int CONDITION_REQUESTS_SOME = 5;
 
 @synthesize profile;
 
-FeedViewController* feedViewController;
 BOOL seeing_requests = false;
 NSArray* requests;
 NSArray* notifications;
@@ -323,10 +321,6 @@ NSArray* notifications;
         [tableViewController.tableView setSeparatorInset:UIEdgeInsetsZero];
         [self setTableViewController:tableViewController];
     }
-}
-
--(void)setParentViewController:(FeedViewController*)controller{
-    feedViewController = controller;
 }
 
 -(int)getCondition{

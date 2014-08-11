@@ -1,7 +1,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CTAssetsPickerController.h"
-#import "FeedViewController.h"
 
 
 @protocol MediaReceiver <NSObject>

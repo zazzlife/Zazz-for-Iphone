@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "Profile.h"
 #import "NotificationViewController.h"
-#import "FeedViewController.h"
 
 @implementation LeftNavigationViewController
 

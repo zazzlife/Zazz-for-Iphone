@@ -17,14 +17,18 @@
 
 @synthesize _receivedData;
 
+NSString* categories = @"";
+NSString* feedId = @"";
+NSString* userId = @"";
+
 -(void) doAction:(NSString*)action{
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
-    NSLog(@"%@",action);
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
 //MY-FEED
 - (void) getMyFeedAfter:(NSString*)feed_id{
+    feedId = feed_id;
     NSString* action = [NSString stringWithFormat:@"feeds?lastFeed=%d", [feed_id intValue]];
     [self doAction:action];
 }
@@ -33,18 +37,22 @@
 }
 
 //OTHER-USER-FEED
-- (void) getFeedForUserId:(NSString *)userId{
-    NSString* action = [NSString stringWithFormat:@"feeds/%@",userId];
+- (void) getFeedForUserId:(NSString *)user_id{
+    userId = user_id;
+    NSString* action = [NSString stringWithFormat:@"feeds/%@",user_id];
     [self doAction:action];
 }
 
 //CATEGORIES
 - (void) getFeedCategory:(NSString*)category_id{
+    categories = category_id;
     NSString* action = [NSString stringWithFormat:@"categories/%@/feed", category_id];
     [self doAction:action];
 }
 
 - (void) getFeedCategory:(NSString*)category_id after:(NSString*)feed_id{
+    categories = category_id;
+    feedId = feed_id;
     NSString* action = [NSString stringWithFormat:@"categories/%@/feed?lastFeed=%@", category_id, feed_id];
     [self doAction:action];
 }
@@ -71,7 +79,11 @@
         [feedList addObject:feed];
     }
     
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObject:feedList forKey:@"feed"];
+    NSMutableDictionary* userInfo = [[NSMutableDictionary alloc] init];
+    [userInfo setObject:feedList forKey:@"feed"];
+    [userInfo setObject:feedId forKey:@"feed_id"];
+    [userInfo setObject:userId forKey:@"user_id"];
+    [userInfo setObject:categories forKey:@"category_ids"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"gotFeed" object:feedList userInfo:userInfo];
 }
 

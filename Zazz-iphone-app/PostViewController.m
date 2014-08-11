@@ -36,7 +36,6 @@ const int ACTION_PHOTO = 1;
 const int ACTION_VIDEO = 2;
 
 int active_action = -1;
-CreateMessageViewController* activePostViewController;
 
 @synthesize menuView;
 

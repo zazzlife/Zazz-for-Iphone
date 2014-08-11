@@ -8,7 +8,7 @@
 
 #import "RightNavigationViewController.h"
 #import "AppDelegate.h"
-#import "FeedViewController.h"
+#import "HomeViewController.h"
 #import "CategoryStat.h"
 #import "UIColor.h"
 #import "UIImage.h"
@@ -47,7 +47,7 @@ NSMutableSet* selectedCellIndexies;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
-    bool active = [(FeedViewController*)self.parentViewController setActiveCategory:category.category_id];
+    bool active = [(HomeViewController*)self.parentViewController setActiveCategory:category.category_id];
     [self tableViewCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath setSelected:active];
 }
 

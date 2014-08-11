@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB12D351922FA20001E9E26 /* QuartzCore.framework */; };
-		0DD31809191B2063003D5630 /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD31808191B2063003D5630 /* FeedViewController.m */; };
+		0DD31809191B2063003D5630 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD31808191B2063003D5630 /* HomeViewController.m */; };
 		0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */; };
 		2A01CBA4196B156200C4B81F /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CB99196B156200C4B81F /* CommentCell.m */; };
 		2A01CBA5196B156200C4B81F /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CB9B196B156200C4B81F /* DetailViewController.m */; };
@@ -80,6 +80,7 @@
 		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
 		2AE1DC371991C60400CC3CCF /* ZazzPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE1DC361991C60400CC3CCF /* ZazzPhoto.m */; };
 		2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE2818B1956004E0015602F /* NotificationViewController.m */; };
+		2AE749011996A3E0004A09CD /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE749001996A3E0004A09CD /* FeedTableViewController.m */; };
 		2AEA1C84197604E300A177F3 /* DetailViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C83197604E300A177F3 /* DetailViewItem.m */; };
 		2AEA1C8719769E9300A177F3 /* ZazzComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C8619769E9300A177F3 /* ZazzComments.m */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
@@ -109,8 +110,8 @@
 
 /* Begin PBXFileReference section */
 		0DB12D351922FA20001E9E26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		0DD31807191B2063003D5630 /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
-		0DD31808191B2063003D5630 /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		0DD31807191B2063003D5630 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		0DD31808191B2063003D5630 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
 		0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 		2A01CB98196B156200C4B81F /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentCell.h; path = extentions/SecretViewer/CommentCell.h; sourceTree = "<group>"; };
@@ -256,6 +257,8 @@
 		2AE1DC361991C60400CC3CCF /* ZazzPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzPhoto.m; path = API_Module/ZazzPhoto.m; sourceTree = "<group>"; };
 		2AE2818A1956004E0015602F /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
 		2AE2818B1956004E0015602F /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		2AE748FF1996A3E0004A09CD /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
+		2AE749001996A3E0004A09CD /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		2AEA1C82197604E300A177F3 /* DetailViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewItem.h; sourceTree = "<group>"; };
 		2AEA1C83197604E300A177F3 /* DetailViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewItem.m; sourceTree = "<group>"; };
 		2AEA1C8519769E9300A177F3 /* ZazzComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzComments.h; path = API_Module/ZazzComments.h; sourceTree = "<group>"; };
@@ -499,8 +502,10 @@
 		2AA057D6193F453300E1617D /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				0DD31807191B2063003D5630 /* FeedViewController.h */,
-				0DD31808191B2063003D5630 /* FeedViewController.m */,
+				0DD31807191B2063003D5630 /* HomeViewController.h */,
+				0DD31808191B2063003D5630 /* HomeViewController.m */,
+				2AE748FF1996A3E0004A09CD /* FeedTableViewController.h */,
+				2AE749001996A3E0004A09CD /* FeedTableViewController.m */,
 				0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */,
 				0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */,
 				2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */,
@@ -786,7 +791,7 @@
 				2AAFF9551981D769001CC4CC /* CTAssetsGroupViewCell.m in Sources */,
 				2A01CBA5196B156200C4B81F /* DetailViewController.m in Sources */,
 				2A2385E9194521D300F7FABD /* SDWebImageManager.m in Sources */,
-				0DD31809191B2063003D5630 /* FeedViewController.m in Sources */,
+				0DD31809191B2063003D5630 /* HomeViewController.m in Sources */,
 				0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */,
 				2A4144FB19689857001C1090 /* Feed.m in Sources */,
 				2A39F2DF193D5BA3002E8873 /* PostViewController.m in Sources */,
@@ -807,6 +812,7 @@
 				2AAFF9521981D769001CC4CC /* ALAssetsGroup+isEqual.m in Sources */,
 				2A39F2E6193DEB04002E8873 /* CFTabBarController.m in Sources */,
 				2A01CBB8196B289400C4B81F /* ZazzFollowRequest.m in Sources */,
+				2AE749011996A3E0004A09CD /* FeedTableViewController.m in Sources */,
 				2A01CBB6196B289400C4B81F /* ZazzCategory.m in Sources */,
 				2A01CBBB196B289400C4B81F /* ZazzProfile.m in Sources */,
 				2AEA1C84197604E300A177F3 /* DetailViewItem.m in Sources */,

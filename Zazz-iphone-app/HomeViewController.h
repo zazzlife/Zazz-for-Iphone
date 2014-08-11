@@ -9,31 +9,28 @@
 #import <UIKit/UIKit.h>
 #import "ZazzApi.h"
 #import "CFTabBarController.h"
+#import "FeedTableViewController.h"
 
-@interface FeedViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, CFTabBarViewDelegate>
+@interface HomeViewController : UIViewController<CFTabBarViewDelegate, ScrollViewDelegate>
 
-@property NSString* active_category_id;
-@property NSMutableArray* feed;
-@property NSMutableDictionary* categoryFeeds;
-@property NSArray* filteredFeed;
-@property UIViewController* activeNextViewCtrl;
+@property FeedTableViewController* feedTableViewController;
 
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_left;
 @property (readonly, nonatomic) UISwipeGestureRecognizer *swipe_right;
 
-@property IBOutlet UITableView* feedTableView;
-@property IBOutlet UIView * navFeedView;
 @property IBOutlet UIView * leftNav;
 @property IBOutlet UIView * rightNav;
+@property IBOutlet UIView* navBar;
+@property IBOutlet UIView* filterView;
+@property IBOutlet UIView* feedTableViewContainer;
+@property IBOutlet UIScrollView* centerScrollView;
 
 -(IBAction)leftDrawerButton:(id)sender;
 -(IBAction)rightDrawerButton:(id)sender;
 
 //Filter related
--(NSMutableArray*)getFilteredFeed;
 -(IBAction)expandFilterCell:(id)sender;
 -(IBAction)toggleFilter:(id)sender;
--(void)getFeedAfter:(NSString*)feed_id;
 -(BOOL)setActiveCategory:(NSString*)active_category_id;
 
 @end
