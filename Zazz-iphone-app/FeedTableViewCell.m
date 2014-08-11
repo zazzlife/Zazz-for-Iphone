@@ -74,6 +74,7 @@ int _albumObserversCounter;
     [detailItem setDescription:photo.description];
     [detailItem setUser:_feed.user];
     [detailItem setLikes:0];
+    [detailItem setCategories:photo.categories];
     DetailViewController* detailView = [[DetailViewController alloc] initWithDetailItem:detailItem];
     
     NSArray* keys  =    [NSArray arrayWithObjects:
