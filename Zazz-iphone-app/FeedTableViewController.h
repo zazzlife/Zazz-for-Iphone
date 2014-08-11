@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+
+@protocol StickyTopScrollViewDelegate <NSObject>
+
+@optional -(void)scrollViewToTopIfNeeded:(UIScrollView*)scrollView;
+
+@end
+
 @interface FeedTableViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property UIViewController* scrollDelegate;
+@property UIViewController<StickyTopScrollViewDelegate>* scrollDelegate;
 @property NSMutableDictionary* categoryFeeds;
 @property NSString* active_category_id;
 @property NSArray* filteredFeed;
@@ -23,12 +30,5 @@
 
 -(IBAction)doRefresh:(id)sender;
 -(void)getFeedAfter:(NSString*)feed_id;
-
-@end
-
-@protocol ScrollViewDelegate <NSObject>
-
-@optional
--(void)scrollViewDidScroll:(UIScrollView*)scrollView;
 
 @end

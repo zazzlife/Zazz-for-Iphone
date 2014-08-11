@@ -69,16 +69,27 @@ float FILTER_VIEW_PADDING = 7;
 
 -(void)resetSlidingViews{
     UIToolbar* tabBar = [[[AppDelegate getAppDelegate] appTabBar] tabBar];
-    CGFloat tabBarHeight = tabBar.frame.size.height;
-    [self.leftNav setFrame:CGRectMake(-CGRectGetWidth(self.leftNav.frame), 0, CGRectGetWidth(self.leftNav.frame), CGRectGetHeight(self.view.window.frame))];
+    
     CGRect windowFrame = [AppDelegate getAppDelegate].window.frame;
-    CGRect centerScrollFrame = windowFrame;
-    centerScrollFrame.size.height = centerScrollFrame.size.height - tabBar.frame.size.height;
-    [self.centerScrollView setFrame:centerScrollFrame];
-    [self.rightNav setFrame:CGRectMake(CGRectGetMaxX(self.centerScrollView.frame), 0, CGRectGetWidth(self.rightNav.frame), CGRectGetHeight(self.view.window.frame))];
-    [tabBar setFrame:CGRectMake(0, CGRectGetMaxY(self.centerScrollView.frame),CGRectGetWidth(tabBar.frame),tabBarHeight)];
-
-    //they were hidden because the push animation looked weird when they are visible from the start.
+    CGRect leftFrame = self.leftNav.frame;
+    CGRect rightFrame = self.rightNav.frame;
+    CGRect centerFrame = self.centerNav.frame;
+    CGRect tabFrame = tabBar.frame;
+    
+    CGFloat leftNavWidth = leftFrame.size.width;
+    CGFloat centerScrollWidth = centerFrame.size.width;
+    
+    leftFrame.origin.x = -leftNavWidth;
+    rightFrame.origin.x = centerScrollWidth;
+    centerFrame.origin.x = 0;
+    tabFrame.origin.x = 0;
+    
+    [self.leftNav setFrame:leftFrame];
+    [self.rightNav setFrame:rightFrame];
+    [self.centerNav setFrame:centerFrame];
+    [tabBar setFrame:tabFrame];
+    
+    //they were hidden because the push animation looked weird.
     [self.rightNav setHidden:false];
     [self.leftNav setHidden:false];
 }
@@ -177,9 +188,15 @@ float FILTER_VIEW_PADDING = 7;
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
              animations:^(void){
                  if(!right_active){ //open it
-                     [self.rightNav setFrame:CGRectMake(CGRectGetWidth(self.view.window.frame) - rightNavWidth, 0, rightNavWidth, CGRectGetHeight(self.view.window.frame))];
-                     [self.centerScrollView setFrame:CGRectMake(-rightNavWidth,0, CGRectGetWidth(self.centerScrollView.frame), CGRectGetHeight(self.view.frame))];
-                     [tabBar setFrame:CGRectMake(-rightNavWidth, CGRectGetMinY(tabBar.frame),CGRectGetWidth(tabBar.frame),CGRectGetHeight(tabBar.frame))];
+                     CGRect centerFrame = self.centerNav.frame;
+                     centerFrame.origin.x = -rightNavWidth;
+                     [self.centerNav setFrame:centerFrame];
+                     CGRect rightFrame = self.rightNav.frame;
+                     rightFrame.origin.x = CGRectGetMaxX(centerFrame);
+                     [self.rightNav setFrame:rightFrame];
+                     CGRect tabFrame = tabBar.frame;
+                     tabFrame.origin.x = -rightNavWidth;
+                     [tabBar setFrame:tabFrame];
                      return;
                  }
                  //otherwise close it
@@ -199,9 +216,15 @@ float FILTER_VIEW_PADDING = 7;
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
          animations:^(void){
              if(!left_active){ //open it
-                 [self.leftNav setFrame:CGRectMake(0, 0, leftNavWidth, self.view.window.frame.size.height)];
-                 [self.centerScrollView setFrame:CGRectMake(leftNavWidth,0, CGRectGetWidth(self.centerScrollView.frame), CGRectGetHeight(self.view.frame))];
-                 [tabBar setFrame:CGRectMake(leftNavWidth, CGRectGetMinY(tabBar.frame),CGRectGetWidth(tabBar.frame),CGRectGetHeight(tabBar.frame))];
+                 CGRect leftFrame = self.leftNav.frame;
+                 leftFrame.origin.x = 0;
+                 [self.leftNav setFrame:leftFrame];
+                 CGRect centerFrame = self.centerNav.frame;
+                 centerFrame.origin.x = leftNavWidth;
+                 [self.centerNav setFrame:centerFrame];
+                 CGRect tabFrame = tabBar.frame;
+                 tabFrame.origin.x = leftNavWidth;
+                 [tabBar setFrame:tabFrame];
                  return;
              }
              //otherwise close it
@@ -252,12 +275,18 @@ float FILTER_VIEW_PADDING = 7;
     }
 }
 
-
+-(void)scrollViewToTopIfNeeded:(UIScrollView*)scrollView{
+    float filter_bottom_y = CGRectGetMaxY(self.filterView.frame);
+    float delta = scrollView.contentOffset.y;
+    if(delta > 0 && delta < filter_bottom_y){
+        [self.centerScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+        [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    }
+}
 
 -(void)scrollViewDidScroll:(UIScrollView*)scrollView{
     float filter_view_height = self.filterView.frame.size.height;
     float delta = scrollView.contentOffset.y;
-    NSLog(@"delta:%f",delta);
     if(delta <= 0){
         [self.centerScrollView setContentOffset:CGPointMake(0, 0)];
     }

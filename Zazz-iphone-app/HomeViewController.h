@@ -11,7 +11,7 @@
 #import "CFTabBarController.h"
 #import "FeedTableViewController.h"
 
-@interface HomeViewController : UIViewController<CFTabBarViewDelegate, ScrollViewDelegate>
+@interface HomeViewController : UIViewController<CFTabBarViewDelegate, UIScrollViewDelegate, StickyTopScrollViewDelegate>
 
 @property FeedTableViewController* feedTableViewController;
 
@@ -20,10 +20,12 @@
 
 @property IBOutlet UIView * leftNav;
 @property IBOutlet UIView * rightNav;
-@property IBOutlet UIView* navBar;
-@property IBOutlet UIView* filterView;
-@property IBOutlet UIView* feedTableViewContainer;
+@property IBOutlet UIView * centerNav;
+
 @property IBOutlet UIScrollView* centerScrollView;
+@property IBOutlet UIView * navBar;
+@property IBOutlet UIView * filterView;
+@property IBOutlet UIView * feedTableViewContainer;
 
 -(IBAction)leftDrawerButton:(id)sender;
 -(IBAction)rightDrawerButton:(id)sender;

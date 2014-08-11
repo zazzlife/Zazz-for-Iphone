@@ -153,9 +153,24 @@ NSMutableDictionary* _indexPathsToReload;
     return cell;
 }
 
+
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if(decelerate)return;
+    if([self.scrollDelegate respondsToSelector:@selector(scrollViewToTopIfNeeded:)]){
+        [self.scrollDelegate scrollViewToTopIfNeeded:scrollView];
+    }
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if([self.scrollDelegate respondsToSelector:@selector(scrollViewToTopIfNeeded:)]){
+        [self.scrollDelegate scrollViewToTopIfNeeded:scrollView];
+    }
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if ([self.scrollDelegate respondsToSelector:@selector(scrollViewDidScroll:)]){
-        [(id<ScrollViewDelegate>)self.scrollDelegate scrollViewDidScroll:scrollView];
+        [(id<UIScrollViewDelegate>)self.scrollDelegate scrollViewDidScroll:scrollView];
     }
 }
 
