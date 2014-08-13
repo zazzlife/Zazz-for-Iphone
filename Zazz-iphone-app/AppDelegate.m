@@ -25,7 +25,7 @@
 
 +(void)addZazzBackgroundLogo{
     AppDelegate* app = [AppDelegate getAppDelegate];
-    UIImage* image = [UIImage imageNamed:@"Logo"];
+    UIImage* image = [UIImage imageNamed:@"zazz logo"];
     [app setZazz_logo:[[UIImageView alloc] initWithImage:image]];
     int scale = 2;
     [app.zazz_logo setFrame:CGRectMake(
@@ -34,7 +34,7 @@
                                    image.size.width/scale,
                                    image.size.height/scale
                                    )];
-    [app.window addSubview:app.zazz_logo];
+    [app.navController.view addSubview:app.zazz_logo];
 }
 
 +(void)removeZazzBackgroundLogo{
@@ -50,13 +50,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [self.window setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Landing page (LH)1"]]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [AppDelegate addZazzBackgroundLogo];
     [self set_zazzAPI:[[ZazzApi alloc] init]];
-    UINavigationController* navController= [self.window rootViewController];
+//    [self.window setBackgroundColor:];
+    [[self.window rootViewController].view setBackgroundColor:[UIColor clearColor]];
+    UINavigationController* navController = (UINavigationController*)[self.window rootViewController];
     [self setNavController:navController];
-    
+    [navController.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Register"]]];
+//    [AppDelegate addZazzBackgroundLogo];
     return YES;
 }
 							
