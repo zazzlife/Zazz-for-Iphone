@@ -25,7 +25,7 @@
 
 +(void)addZazzBackgroundLogo{
     AppDelegate* app = [AppDelegate getAppDelegate];
-    UIImage* image = [UIImage imageNamed:@"zazz logo"];
+    UIImage* image = [UIImage imageNamed:@"zazz_final_logo"];
     [app setZazz_logo:[[UIImageView alloc] initWithImage:image]];
     int scale = 2;
     [app.zazz_logo setFrame:CGRectMake(
@@ -56,8 +56,8 @@
     [[self.window rootViewController].view setBackgroundColor:[UIColor clearColor]];
     UINavigationController* navController = (UINavigationController*)[self.window rootViewController];
     [self setNavController:navController];
-    [navController.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Register"]]];
-//    [AppDelegate addZazzBackgroundLogo];
+    [navController.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+    [AppDelegate addZazzBackgroundLogo];
     return YES;
 }
 							
