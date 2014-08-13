@@ -51,6 +51,7 @@
 		2A4144FF19689857001C1090 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144F519689857001C1090 /* Post.m */; };
 		2A41450019689857001C1090 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144F719689857001C1090 /* Profile.m */; };
 		2A414503196898BE001C1090 /* CHTumblrMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A414502196898BE001C1090 /* CHTumblrMenuView.m */; };
+		2A46CCF4199C204600996D84 /* RoundedUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A46CCF3199C204600996D84 /* RoundedUIButton.m */; };
 		2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D3E191FE863008DBFED /* RegisterViewController.m */; };
 		2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7719245502008DBFED /* CustomPushSegue.m */; };
 		2A470D7B19247A09008DBFED /* CustomPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7A19247A09008DBFED /* CustomPopSegue.m */; };
@@ -197,6 +198,8 @@
 		2A4144F719689857001C1090 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Profile.m; path = "Zazz-iphone-app/models/Profile.m"; sourceTree = "<group>"; };
 		2A414501196898BE001C1090 /* CHTumblrMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHTumblrMenuView.h; path = extentions/TumblrMenu/CHTumblrMenuView.h; sourceTree = "<group>"; };
 		2A414502196898BE001C1090 /* CHTumblrMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHTumblrMenuView.m; path = extentions/TumblrMenu/CHTumblrMenuView.m; sourceTree = "<group>"; };
+		2A46CCF2199C204600996D84 /* RoundedUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedUIButton.h; sourceTree = "<group>"; };
+		2A46CCF3199C204600996D84 /* RoundedUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundedUIButton.m; sourceTree = "<group>"; };
 		2A470D3D191FE863008DBFED /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2A470D3E191FE863008DBFED /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2A470D7619245502008DBFED /* CustomPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
@@ -426,6 +429,8 @@
 				2A47F5621936F37A001CF1AE /* UIImage.h */,
 				2AAFF928197FE1F3001CC4CC /* UILabel.h */,
 				2AAFF9621982878D001CC4CC /* UIView.h */,
+				2A46CCF2199C204600996D84 /* RoundedUIButton.h */,
+				2A46CCF3199C204600996D84 /* RoundedUIButton.m */,
 			);
 			name = Extentions;
 			path = extentions;
@@ -839,6 +844,7 @@
 				2A01CBBA196B289400C4B81F /* ZazzNotification.m in Sources */,
 				2AAFF9511981D769001CC4CC /* ALAsset+isEqual.m in Sources */,
 				2A01CBA8196B156200C4B81F /* UIImage+ImageEffects.m in Sources */,
+				2A46CCF4199C204600996D84 /* RoundedUIButton.m in Sources */,
 				2A4144FA19689857001C1090 /* Event.m in Sources */,
 				2A2385E7194521D300F7FABD /* SDWebImageDownloader.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
