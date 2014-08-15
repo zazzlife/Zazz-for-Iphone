@@ -61,6 +61,7 @@ float FILTER_VIEW_PADDING = 7;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    self.view.frame;
     [self resetSlidingViews];
     [self scrollViewDidScroll:self.feedTableViewController.tableView];
     [self.filterView.layer setCornerRadius:5];
