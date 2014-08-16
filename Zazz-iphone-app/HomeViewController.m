@@ -269,8 +269,10 @@ float FILTER_VIEW_PADDING = 7;
 
 #pragma mark - CFTabBarViewDelegate method
 -(void)setViewHidden:(BOOL)hidden{
+    [self.feedTableViewController.tableView setScrollsToTop:true];
     [self.view.superview setHidden:hidden];
     if(hidden){
+        [self.feedTableViewController.tableView setScrollsToTop:false];
         if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
         if(left_active) [self leftDrawerButton:nil]; //close right drawer first.
     }

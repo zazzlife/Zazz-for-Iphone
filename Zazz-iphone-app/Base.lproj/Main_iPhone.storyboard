@@ -251,6 +251,7 @@
                     </view>
                     <connections>
                         <outlet property="profilePhoto" destination="RU0-iu-mxd" id="m1K-Rk-Cdd"/>
+                        <outlet property="scrollView" destination="3p2-oD-UwW" id="Y6L-ns-VWX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CV7-Uj-cWH" userLabel="First Responder" sceneMemberID="firstResponder"/>

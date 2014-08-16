@@ -16,5 +16,6 @@
 
 @property Profile* _profile;
 @property IBOutlet UIImageView* profilePhoto;
+@property IBOutlet UIScrollView* scrollView;
 
 @end

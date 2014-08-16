@@ -16,6 +16,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.scrollView setScrollsToTop:false];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMyProfile:) name:@"gotMyProfile" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
 }
@@ -58,9 +59,12 @@
  */
 
 #pragma mark - CFTabBarViewDelegate method
-
 -(void)setViewHidden:(BOOL)hidden{
+    [self.scrollView setScrollsToTop:true];
     [self.view.superview setHidden:hidden];
+    if(hidden){
+        [self.scrollView setScrollsToTop:false];
+    }
 }
 
 
