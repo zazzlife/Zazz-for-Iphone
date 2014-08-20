@@ -27,7 +27,7 @@
     Profile* profile = notif.object;
     [self set_profile:profile];
     [self.username setText:profile.username];
-    [self.name setText:profile.displayName]
+//    [self.name setText:profile.displayName];
 }
 
 -(void)gotAProfile:(NSNotification*)notif{
