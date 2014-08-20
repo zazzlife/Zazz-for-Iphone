@@ -7,15 +7,28 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedTableViewController.h"
 #import "CFTabBarController.h"
 #import "Profile.h"
 
 #define PROFILE_PAGE_PHOTO_HEIGHT 140
 
-@interface ProfileViewController : UIViewController <CFTabBarViewDelegate>
+@interface ProfileViewController : UIViewController <CFTabBarViewDelegate, StickyTopScrollViewDelegate>
+
+@property FeedTableViewController* feedTableViewController;
 
 @property Profile* _profile;
-@property IBOutlet UIImageView* profilePhoto;
 @property IBOutlet UIScrollView* scrollView;
+
+@property IBOutlet UIImageView* profilePhoto;
+@property IBOutlet UILabel* username;
+@property IBOutlet UILabel* name;
+@property IBOutlet UILabel* school;
+@property IBOutlet UILabel* tagline;
+@property IBOutlet UILabel* likes;
+@property IBOutlet UILabel* following;
+@property IBOutlet UILabel* followers;
+@property IBOutlet UIButton* follow;
+@property IBOutlet UISegmentedControl* filterButtons;
 
 @end

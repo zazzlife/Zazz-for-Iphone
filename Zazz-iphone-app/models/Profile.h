@@ -18,6 +18,9 @@
 @property UIImage* photo;
 @property NSString* photoUrl;
 
+@property BOOL isFullProfile;
+
+
 +(Profile*)makeProfileFromDict:(NSDictionary*)profile_dict;
 
 @end

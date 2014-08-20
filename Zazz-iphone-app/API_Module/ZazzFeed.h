@@ -18,6 +18,7 @@
 - (void) getMyFeedAfter:(NSString*)feed_id;
 - (void) getFeedCategory:(NSString*)category_id;
 - (void) getFeedCategory:(NSString*)category_id after:(NSString*)feed_id;
-- (void) getFeedForUserId:(NSString*)userId;
+- (void) getUserFeed:(NSString*)user_id;
+- (void) getUserFeed:(NSString*)user_id after:(NSString *)feedId;
 
 @end

@@ -78,8 +78,8 @@
 -(void) getFeed{
     [[[ZazzFeed alloc] init] getMyFeed];
 }
--(void) getFeedAfter:(NSString*)feedId{
-    [[[ZazzFeed alloc] init] getMyFeedAfter:feedId];
+-(void) getFeedAfter:(NSString*)feed_id{
+    [[[ZazzFeed alloc] init] getMyFeedAfter:feed_id];
 }
 -(void) getFeedCategory:(NSString*)category_id{
     [[[ZazzFeed alloc] init] getFeedCategory:category_id];
@@ -88,6 +88,12 @@
     [[[ZazzFeed alloc] init] getFeedCategory:category_id after:last_timestamp];
 }
 
+-(void) getUserFeed:(NSString*)user_id{
+    [[[ZazzFeed alloc] init] getUserFeed:user_id];
+}
+-(void) getUserFeed:(NSString*)user_id after:(NSString*)feed_id{
+    [[[ZazzFeed alloc] init] getUserFeed:user_id after:feed_id];
+}
 
 /*
  CATEGORIES

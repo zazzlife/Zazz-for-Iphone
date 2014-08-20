@@ -25,12 +25,20 @@ bool getting_feed = false; //true when a getZazzFeed call is active.
 bool simple_refresh = true; //don't append/prepend data. just refresh existing content.
 @synthesize scrollDelegate;
 @synthesize active_category_id;
+@synthesize feed_user_id;
 @synthesize categoryFeeds;
 @synthesize filteredFeed;
 @synthesize end_of_feed;
 @synthesize showEvents;
 @synthesize showPhotos;
 @synthesize showVideos;
+
+int const GET_ALL_FEED = 0;
+int const GET_ALL_FEED_AFTER = 1;
+int const GET_CAT_FEED = 2;
+int const GET_CAT_FEED_AFTER = 3;
+int const GET_ALL_MY_FEED = 4;
+int const GET_ALL_MY_FEED_AFTER = 5;
 
 NSMutableDictionary* _indexPathsToReload;
 
@@ -174,24 +182,36 @@ NSMutableDictionary* _indexPathsToReload;
     }
 }
 
+
+
 -(void)getFeedAfter:(NSString*)feed_id{
-    if(!getting_feed){
-        getting_feed = true;
-        if(!feed_id){
-            if ([self.active_category_id isEqualToString:@""]){
-                [[AppDelegate zazzApi] getFeed];
-                return;
-            }
-            [[AppDelegate zazzApi] getFeedCategory:active_category_id];
-            return;
-        }
-        if([self.active_category_id isEqualToString:@""]){
-            [[AppDelegate zazzApi] getFeedAfter:feed_id];
-            return;
-        }
-        [[AppDelegate zazzApi] getFeedCategory:active_category_id after:feed_id];
+    if(getting_feed) return;
+    
+    getting_feed = true;
+    BOOL haveCategory = ![self.active_category_id isEqualToString:@""];
+    
+    if(feed_user_id && !feed_id){
+        [[AppDelegate zazzApi] getUserFeed:feed_user_id];
         return;
     }
+    if(feed_user_id){
+        [[AppDelegate zazzApi] getUserFeed:feed_user_id after:feed_id];
+        return;
+    }
+    if(haveCategory && !feed_id){
+        [[AppDelegate zazzApi] getFeedCategory:self.active_category_id];
+        return;
+    }
+    if(haveCategory){
+        [[AppDelegate zazzApi] getFeedCategory:self.active_category_id after:feed_id];
+        return;
+    }
+    if(feed_id){
+        [[AppDelegate zazzApi] getFeedAfter:feed_id];
+        return;
+    }
+    
+    [[AppDelegate zazzApi] getFeed];
 }
 
 - (IBAction)doRefresh:(id)sender {

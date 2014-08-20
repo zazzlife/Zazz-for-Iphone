@@ -209,6 +209,7 @@ float FILTER_VIEW_PADDING = 7;
              }
      ];
 }
+
 -(IBAction)leftDrawerButton:(id)sender{
     if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
     CGFloat leftNavWidth =self.leftNav.frame.size.width;
@@ -252,7 +253,6 @@ float FILTER_VIEW_PADDING = 7;
              filter_active = !filter_active;
          }
      ];
-    
 }
 
 -(IBAction)toggleFilter:(id)sender{
@@ -269,8 +269,8 @@ float FILTER_VIEW_PADDING = 7;
 
 #pragma mark - CFTabBarViewDelegate method
 -(void)setViewHidden:(BOOL)hidden{
-    [self.feedTableViewController.tableView setScrollsToTop:true];
     [self.view.superview setHidden:hidden];
+    [self.feedTableViewController.tableView setScrollsToTop:true];
     if(hidden){
         [self.feedTableViewController.tableView setScrollsToTop:false];
         if(right_active) [self rightDrawerButton:nil]; //close right drawer first.

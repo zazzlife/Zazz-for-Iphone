@@ -152,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmF-1v-zdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1443" y="140"/>
+            <point key="canvasLocation" x="1455" y="822"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="jKU-Q4-fzj">
@@ -163,48 +163,106 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3p2-oD-UwW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="RU0-iu-mxd">
-                                        <rect key="frame" x="25" y="64" width="99" height="111"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KA6-98-1TO">
-                                        <rect key="frame" x="155" y="64" width="139" height="38"/>
+                                        <rect key="frame" x="29" y="77" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KA6-98-1TO">
+                                        <rect key="frame" x="141" y="78" width="159" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School &amp; City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HuW-78-TTO">
-                                        <rect key="frame" x="155" y="110" width="139" height="38"/>
+                                        <rect key="frame" x="141" y="107" width="154" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dwm-4f-QFa">
-                                        <rect key="frame" x="25" y="178" width="99" height="38"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dwm-4f-QFa">
+                                        <rect key="frame" x="20" y="165" width="99" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="17"/>
+                                        <color key="textColor" red="0.61597079998508042" green="0.62842793367346939" blue="0.022234056094113264" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VGB-L9-jqb">
-                                        <rect key="frame" x="207" y="182" width="78" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VGB-L9-jqb" customClass="RoundedUIButton">
+                                        <rect key="frame" x="186" y="162" width="114" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.84305245535714279" green="0.79199840390975662" blue="0.23920656635327278" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Follow">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ziI-CJ-Tlp">
-                                        <rect key="frame" x="25" y="224" width="260" height="29"/>
+                                    <view contentMode="scaleToFill" id="q5a-Eg-wWH" userLabel="infoView">
+                                        <rect key="frame" x="0.0" y="200" width="320" height="58"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xMO-YN-N9x">
+                                                <rect key="frame" x="0.0" y="39" width="100" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W2U-1j-PhF">
+                                                <rect key="frame" x="105" y="39" width="110" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="enF-Yx-O61">
+                                                <rect key="frame" x="220" y="39" width="100" height="15"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gSw-Xe-dPO">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r6s-2q-zda">
+                                                <rect key="frame" x="105" y="0.0" width="110" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E6C-gs-1ll">
+                                                <rect key="frame" x="220" y="0.0" width="100" height="37"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" id="kzA-0p-Y4L">
+                                                <rect key="frame" x="105" y="0.0" width="1" height="58"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" id="nF0-E8-1gw">
+                                                <rect key="frame" x="220" y="0.0" width="1" height="58"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="ziI-CJ-Tlp">
+                                        <rect key="frame" x="20" y="266" width="280" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <segments>
-                                            <segment title="Media"/>
-                                            <segment title="Timeline"/>
+                                            <segment title="" image="4 boxes yellow"/>
+                                            <segment title="" image="user icon"/>
                                         </segments>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" id="C7a-SP-EkX" userLabel="NavView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -245,25 +303,43 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <containerView contentMode="scaleToFill" id="N5T-x7-9Zf">
+                                        <rect key="frame" x="0.0" y="295" width="320" height="437"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="l1V-EV-eRO" kind="embed" id="mq0-t5-iGp"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.87027662627551017" green="0.87027662627551017" blue="0.87027662627551017" alpha="1" colorSpace="calibratedRGB"/>
                             </scrollView>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="filterButtons" destination="ziI-CJ-Tlp" id="r23-BW-76i"/>
+                        <outlet property="follow" destination="VGB-L9-jqb" id="OqH-Un-mPI"/>
+                        <outlet property="followers" destination="r6s-2q-zda" id="Z6C-VV-1To"/>
+                        <outlet property="following" destination="E6C-gs-1ll" id="TVb-ul-l2x"/>
+                        <outlet property="likes" destination="gSw-Xe-dPO" id="t2u-YF-lRd"/>
+                        <outlet property="name" destination="KA6-98-1TO" id="q8Z-kc-Cne"/>
                         <outlet property="profilePhoto" destination="RU0-iu-mxd" id="m1K-Rk-Cdd"/>
+                        <outlet property="school" destination="HuW-78-TTO" id="lnW-wd-hBp"/>
                         <outlet property="scrollView" destination="3p2-oD-UwW" id="Y6L-ns-VWX"/>
+                        <outlet property="tagline" destination="Dwm-4f-QFa" id="x83-63-JMJ"/>
+                        <outlet property="username" destination="7cb-vM-wcm" id="eyK-Sa-sMY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CV7-Uj-cWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1443" y="894"/>
+            <point key="canvasLocation" x="1455" y="140"/>
         </scene>
         <!--Feed Table View Controller-->
         <scene sceneID="L2h-ob-crB">
             <objects>
                 <tableViewController id="l1V-EV-eRO" customClass="FeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xzr-e9-pEs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="437"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -357,7 +433,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ky-43-08v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2366" y="-591"/>
+            <point key="canvasLocation" x="2158" y="-108"/>
         </scene>
         <!--Left Navigation View Controller-->
         <scene sceneID="yI2-Nh-wch">
@@ -496,7 +572,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2056" y="-591"/>
+            <point key="canvasLocation" x="1908" y="-565"/>
         </scene>
         <!--Create Message View Controller-->
         <scene sceneID="OgT-By-6Vw">
@@ -839,7 +915,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ti-2G-e0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="140"/>
+            <point key="canvasLocation" x="111" y="-893"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="GaV-Bl-2ym">
@@ -1024,7 +1100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQd-oC-OWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1443" y="-591"/>
+            <point key="canvasLocation" x="1455" y="-565"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="THj-41-1Rd">
@@ -1279,7 +1355,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mm-ed-JVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2366" y="140"/>
+            <point key="canvasLocation" x="548" y="-893"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="b1n-Ty-qTD">
@@ -1416,7 +1492,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O8S-gW-Djc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2756" y="168"/>
+            <point key="canvasLocation" x="930" y="-909"/>
         </scene>
         <!--Right Navigation View Controller-->
         <scene sceneID="JPy-jf-cVX">
@@ -1496,24 +1572,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOE-Ec-LHU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2741" y="-591"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="AN1-hp-3G0">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fXq-eO-5Gq" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zu8-DV-jEa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uqQ-9x-b4g" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="2501" y="-565"/>
         </scene>
     </scenes>
     <resources>
+        <image name="4 boxes yellow" width="25" height="25"/>
         <image name="@_sign_for_postingSection" width="25" height="25"/>
         <image name="Background" width="257" height="568"/>
         <image name="Calendar" width="30" height="30"/>
@@ -1543,6 +1606,7 @@
         <image name="filter-icon.png" width="45" height="34"/>
         <image name="left bar icon" width="50" height="50"/>
         <image name="settings" width="50" height="50"/>
+        <image name="user icon" width="25" height="25"/>
         <image name="yellow arrow" width="50" height="25"/>
         <image name="zazz logo" width="91" height="44"/>
     </resources>
@@ -1554,5 +1618,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="UKP-4G-Fq5"/>
         <segue reference="rQA-XQ-SRc"/>
+        <segue reference="mq0-t5-iGp"/>
     </inferredMetricsTieBreakers>
 </document>

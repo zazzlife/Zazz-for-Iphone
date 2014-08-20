@@ -408,6 +408,17 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		2A2C730C19A2CA220019E450 /* FeedTable */ = {
+			isa = PBXGroup;
+			children = (
+				2AE748FF1996A3E0004A09CD /* FeedTableViewController.h */,
+				2AE749001996A3E0004A09CD /* FeedTableViewController.m */,
+				0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */,
+				0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */,
+			);
+			name = FeedTable;
+			sourceTree = "<group>";
+		};
 		2A470D7C19247A11008DBFED /* Segues */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,13 +471,13 @@
 			children = (
 				2A39F2E4193DEB04002E8873 /* CFTabBarController.h */,
 				2A39F2E5193DEB04002E8873 /* CFTabBarController.m */,
-				2AA057D6193F453300E1617D /* Feed */,
-				2AE281881956000A0015602F /* Notifications */,
-				2AEA1C811971CA3100A177F3 /* DetailView */,
+				2AA057D6193F453300E1617D /* Home */,
 				2A23858E19408C4200F7FABD /* Post */,
 				2A23858F19408EDE00F7FABD /* Profile */,
-				2AE281891956002D0015602F /* Auth */,
-				2A470D7C19247A11008DBFED /* Segues */,
+				2A2C730C19A2CA220019E450 /* FeedTable */,
+				2AE281891956002D0015602F /* Login/Register */,
+				2AE281881956000A0015602F /* Notifications */,
+				2AEA1C811971CA3100A177F3 /* DetailView */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -504,21 +515,17 @@
 			name = Actions;
 			sourceTree = "<group>";
 		};
-		2AA057D6193F453300E1617D /* Feed */ = {
+		2AA057D6193F453300E1617D /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				0DD31807191B2063003D5630 /* HomeViewController.h */,
 				0DD31808191B2063003D5630 /* HomeViewController.m */,
-				2AE748FF1996A3E0004A09CD /* FeedTableViewController.h */,
-				2AE749001996A3E0004A09CD /* FeedTableViewController.m */,
-				0DD3180A191B2A3A003D5630 /* FeedTableViewCell.h */,
-				0DD3180B191B2A3A003D5630 /* FeedTableViewCell.m */,
 				2AB3E45E1934061700F72784 /* LeftNavigationViewController.h */,
 				2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */,
 				2AB3E4611934063700F72784 /* RightNavigationViewController.h */,
 				2AB3E4621934063700F72784 /* RightNavigationViewController.m */,
 			);
-			name = Feed;
+			name = Home;
 			sourceTree = "<group>";
 		};
 		2AAFF92B1981D769001CC4CC /* CTAssetsPickerController */ = {
@@ -581,7 +588,7 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
-		2AE281891956002D0015602F /* Auth */ = {
+		2AE281891956002D0015602F /* Login/Register */ = {
 			isa = PBXGroup;
 			children = (
 				2A09D71E191EF3CD00A2827F /* LoginViewController.h */,
@@ -589,7 +596,7 @@
 				2A470D3D191FE863008DBFED /* RegisterViewController.h */,
 				2A470D3E191FE863008DBFED /* RegisterViewController.m */,
 			);
-			name = Auth;
+			name = Login/Register;
 			sourceTree = "<group>";
 		};
 		2AEA1C811971CA3100A177F3 /* DetailView */ = {
@@ -644,6 +651,7 @@
 				5E8AA6FE18FCAED600C99D9F /* AppDelegate.h */,
 				5E8AA6FF18FCAED600C99D9F /* AppDelegate.m */,
 				2A5FAEB8191D2BF300B917AB /* Controllers */,
+				2A470D7C19247A11008DBFED /* Segues */,
 				2A09D71A191EDA5600A2827F /* Entities */,
 				2A47F5601936F37A001CF1AE /* Extentions */,
 				2A47F5631936F47A001CF1AE /* Images.xcassets */,

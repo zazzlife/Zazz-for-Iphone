@@ -43,7 +43,7 @@ BOOL enabled = true;
             postView = (PostViewController*)childController;
             continue;
         }
-        if([NSStringFromClass(childController.class) isEqualToString:@"FeedViewController"]){
+        if([NSStringFromClass(childController.class) isEqualToString:@"HomeViewController"]){
             homeView = (HomeViewController*)childController;
             continue;
         }
@@ -82,7 +82,7 @@ BOOL enabled = true;
     if (! enabled) return;
     switch(sender.tag){
         case 2://post
-            //[feedView setViewHidden:true];
+            //[homeView setViewHidden:true];
             //[profileView setViewHidden:true];
             [postView setViewHidden:false];
             _activeTagView = TAG_POST_VIEW;
@@ -95,8 +95,8 @@ BOOL enabled = true;
             break;
         case 1://feed
         default:
-            [profileView setViewHidden:true];
             [postView setViewHidden:true];
+            [profileView setViewHidden:true];
             [homeView setViewHidden:false];
             _activeTagView=TAG_POST_VIEW;
             break;

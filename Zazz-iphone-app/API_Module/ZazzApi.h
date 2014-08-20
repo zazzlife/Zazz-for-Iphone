@@ -43,6 +43,8 @@
 -(void) getFeedAfter:(NSString*)feedId;
 -(void) getFeedCategory:(NSString*)category_id;
 -(void) getFeedCategory:(NSString*)category_id after:(NSString*)last_timestamp;
+-(void) getUserFeed:(NSString*)user_id;
+-(void) getUserFeed:(NSString*)user_id after:(NSString*)feedId;
 
 -(void) getCategories;
 

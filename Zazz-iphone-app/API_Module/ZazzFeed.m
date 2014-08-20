@@ -36,13 +36,6 @@ NSString* userId = @"";
     [self getMyFeedAfter:@"-1"];
 }
 
-//OTHER-USER-FEED
-- (void) getFeedForUserId:(NSString *)user_id{
-    userId = user_id;
-    NSString* action = [NSString stringWithFormat:@"feeds/%@",user_id];
-    [self doAction:action];
-}
-
 //CATEGORIES
 - (void) getFeedCategory:(NSString*)category_id{
     categories = category_id;
@@ -56,6 +49,20 @@ NSString* userId = @"";
     NSString* action = [NSString stringWithFormat:@"categories/%@/feed?lastFeed=%@", category_id, feed_id];
     [self doAction:action];
 }
+
+
+- (void) getUserFeed:(NSString*)user_id{
+    userId = user_id;
+    NSString* action = [NSString stringWithFormat:@"feeds/%@?lastFeed=-1", user_id];
+    [self doAction:action];
+}
+- (void) getUserFeed:(NSString*)user_id after:(NSString *)feed_id{
+    userId = user_id;
+    feedId = feed_id;
+    NSString* action = [NSString stringWithFormat:@"feeds/%@?lastFeed=%@", user_id, feed_id];
+    [self doAction:action];
+}
+
 
 //RESPONSE DELEGATES
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{

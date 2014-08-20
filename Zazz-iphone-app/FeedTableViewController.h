@@ -20,6 +20,7 @@
 @property UIViewController<StickyTopScrollViewDelegate>* scrollDelegate;
 @property NSMutableDictionary* categoryFeeds;
 @property NSString* active_category_id;
+@property NSString* feed_user_id;
 @property NSArray* filteredFeed;
 
 @property bool showPhotos;
