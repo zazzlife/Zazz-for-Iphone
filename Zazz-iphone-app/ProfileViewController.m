@@ -42,7 +42,8 @@
         [self.username setText:[NSString stringWithFormat:@"@%@",profile.displayName]];
         [self.name setText:profile.userDetails.fullName];
         [self.tagline setText:profile.userDetails.major.name];
-        [self.school setText:[NSString stringWithFormat:@"%@\n%@", profile.userDetails.school.name, profile.userDetails.city.name]];
+        [self.school setText:profile.userDetails.school.name];
+        [self.city setText:profile.userDetails.city.name];
         if(!profile.isCurrentUserFollowingTargetUser){
             [self.follow setTitle:@"Following" forState:UIControlStateNormal];
         }
@@ -86,7 +87,7 @@
 
 #pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if(![segue.identifier isEqualToString:@"embedFeedViewController"]) return;
+    if(![segue.identifier isEqualToString:@"embedProfileFeedViewController"]) return;
     FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
     [self setFeedTableViewController:feedController];
     [feedController setFeed_user_id:self._profile.profile_id];

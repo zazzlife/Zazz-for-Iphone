@@ -25,6 +25,7 @@
 @property IBOutlet UILabel* username;
 @property IBOutlet UILabel* name;
 @property IBOutlet UILabel* school;
+@property IBOutlet UILabel* city;
 @property IBOutlet UILabel* tagline;
 @property IBOutlet UILabel* likes;
 @property IBOutlet UILabel* following;
