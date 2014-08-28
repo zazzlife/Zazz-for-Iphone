@@ -47,7 +47,7 @@
     [profile setProfile_id:[profile_dict objectForKey:@"id"]];
     [profile setAccountType:[profile_dict objectForKey:@"accountType"]];
     [profile setDisplayName:[profile_dict objectForKey:@"displayName"]];
-    [profile setFollowersCount:(int)[profile_dict objectForKey:@"followersCount"]];
+    [profile setFollowersCount:[profile_dict objectForKey:@"followersCount"]];
     [profile setFollowRequestAlreadySent:(BOOL)[profile_dict objectForKey:@"followRequestAlreadySent"]];
     [profile setIsSelf:(BOOL)[profile_dict objectForKey:@"isSelf"]];
     [profile setPhotoUrl:[[profile_dict objectForKey:@"displayPhoto"] objectForKey:@"mediumLink"]];

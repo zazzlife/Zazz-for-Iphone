@@ -47,8 +47,7 @@
         if(!profile.isCurrentUserFollowingTargetUser){
             [self.follow setTitle:@"Following" forState:UIControlStateNormal];
         }
-        [self.followers setText:[NSString stringWithFormat:@"%d",profile.followersCount]];
-//        [self.following setText:profile.]
+        [self.followers setText:[NSString stringWithFormat:@"%@",profile.followersCount]];
     }
 }
 

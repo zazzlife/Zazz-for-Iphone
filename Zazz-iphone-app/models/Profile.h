@@ -16,7 +16,7 @@
 @property NSString* displayName;
 @property NSString* photoUrl;
 @property UIImage* image;
-@property int followersCount;
+@property NSString* followersCount;
 @property NSMutableArray* feeds;
 @property NSMutableArray* photos;
 @property NSMutableArray* weeklies;
