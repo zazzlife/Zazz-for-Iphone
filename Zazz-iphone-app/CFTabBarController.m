@@ -33,7 +33,7 @@ BOOL enabled = true;
     FRAME_FULL = [UIApplication sharedApplication].keyWindow.frame;
     FRAME_TABBED = CGRectMake(0, 0, FRAME_FULL.size.width, FRAME_FULL.size.height - self.tabBar.frame.size.height);
     
-    [[AppDelegate zazzApi] getMyProfile];
+    [[AppDelegate zazzApi] getMe];
     [[AppDelegate getAppDelegate] setAppTabBar:self];
     [self.tabBar setBackgroundColor:[UIColor colorFromHexString:COLOR_ZAZZ_BLACK]];
     

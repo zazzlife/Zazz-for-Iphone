@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Profile.h"
+#import "User.h"
 
 @interface Comment : NSObject
 
@@ -16,7 +16,7 @@ extern const NSString* COMMENT_TYPE_POST;
 extern const NSString* COMMENT_TYPE_EVENT;
 
 @property NSString* commentId;
-@property Profile* user;
+@property User* user;
 @property NSString* text;
 @property BOOL isFromCurrentUser;
 @property NSString* time;

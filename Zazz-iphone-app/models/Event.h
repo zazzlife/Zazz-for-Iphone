@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Profile.h"
+#import "User.h"
 
 @interface Event : NSObject
 
@@ -25,7 +25,7 @@
 @property NSString* createdTime;
 @property NSString* facebookLink;
 @property NSString* imageUrl;
-@property Profile* user;
+@property User* user;
 @property BOOL isDateOnly;
 @property BOOL isFacebookEvent;
 

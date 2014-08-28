@@ -12,30 +12,31 @@
 
 @implementation ProfileViewController
 
+@synthesize user_id;
 @synthesize _profile;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self.scrollView setScrollsToTop:false];
     [self.scrollView setAlwaysBounceVertical:false];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMyProfile:) name:@"gotMyProfile" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMe:) name:@"gotMe" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotProfile:) name:@"gotProfile" object:nil];
 }
 
--(void)gotMyProfile:(NSNotification*)notif{
-    if (![notif.name isEqualToString:@"gotMyProfile"]) return;
-    Profile* profile = notif.object;
-    [self set_profile:profile];
-    [self.username setText:profile.username];
-//    [self.name setText:profile.displayName];
+-(void)gotMe:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotMe"]) return;
+    User* user = notif.object;
+    [self setUser_id:user.userId];
+    [[AppDelegate zazzApi] getProfile:user_id];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotME" object:nil];
 }
 
--(void)gotAProfile:(NSNotification*)notif{
+-(void)gotProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotProfile"]) return;
     Profile* profile = notif.object;
-    if([profile.userId intValue] == [self._profile.userId intValue] && profile.photo){
+    if([profile.profile_id intValue] == [self.user_id intValue] && profile.image){
         [self set_profile:profile];
-        [self.profilePhoto setImage:profile.photo];
+        [self.profilePhoto setImage:profile.image];
         [self.profilePhoto.layer setCornerRadius:self.profilePhoto.frame.size.height / 2];
         [self.profilePhoto.layer setMasksToBounds:YES];
         [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotProfile" object:nil];
@@ -80,7 +81,7 @@
     if(![segue.identifier isEqualToString:@"embedFeedViewController"]) return;
     FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
     [self setFeedTableViewController:feedController];
-    [feedController setFeed_user_id:self._profile.userId];
+    [feedController setFeed_user_id:self._profile.profile_id];
     [feedController setScrollDelegate:self];
 }
 

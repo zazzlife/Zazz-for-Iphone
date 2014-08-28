@@ -7,7 +7,7 @@
 //
 
 #import "Feed.h"
-#import "Profile.h"
+#import "User.h"
 #import "Post.h"
 #import "Comment.h"
 #import "Photo.h"
@@ -46,7 +46,7 @@ const int FEED_EVENT_INT = 2;
 
 +(Feed*)makeFeedFromDict:(NSDictionary*)feed_dict{
     
-    Profile *user = [[Profile alloc] init];
+    User *user = [[User alloc] init];
     [user setPhotoUrl:[[feed_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
     [user setUserId:[feed_dict objectForKey:@"userId"]];
     [user setUsername:[feed_dict objectForKey:@"userDisplayName"]];

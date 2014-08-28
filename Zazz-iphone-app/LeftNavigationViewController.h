@@ -17,7 +17,7 @@
 
 @property IBOutlet UIImageView* profilePhoto;
 @property IBOutlet UIImageView* background;
-@property Profile* _profile;
+@property User* _user;
 @property IBOutlet UIScrollView* scrollView;
 
 -(IBAction) showNextView:(UIButton*)button;

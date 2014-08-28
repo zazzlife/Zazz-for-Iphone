@@ -15,7 +15,7 @@
 
 +(FollowRequest*)makeFollowRequestFromDict:(NSDictionary*)request_dict{
     FollowRequest* request = [[FollowRequest alloc] init];
-    Profile* user = [[Profile alloc] init];
+    User* user = [[User alloc] init];
     [user setUserId:[request_dict objectForKey:@"userId"]];
     [user setUsername:[request_dict objectForKey:@"displayName"]];
     [user setPhotoUrl:[[request_dict objectForKey:@"displayPhoto"] objectForKey:@"originalLink"]];

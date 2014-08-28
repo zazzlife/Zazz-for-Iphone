@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Profile.h"
+#import "User.h"
 
 @interface Feed : NSObject
 
@@ -20,7 +20,8 @@ extern const int FEED_PHOTO_INT;
 extern const int FEED_EVENT_INT;
 
 @property NSString* feedId;
-@property Profile* user;
+@property NSString* userId;
+@property User* user;
 @property BOOL canCurrentUserRemoveFeed;
 @property id content;
 @property NSString* feedType; //Photo, Event, Post

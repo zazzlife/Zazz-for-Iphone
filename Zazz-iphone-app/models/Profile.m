@@ -11,18 +11,21 @@
 
 @implementation Profile
 
-@synthesize userId;
-@synthesize is_public;
+@synthesize profile_id;
 @synthesize accountType;
-@synthesize isConfirmed;
-@synthesize username;
-@synthesize photo;
-
--(Profile*)init{
-    if (self = [super init])
-        self.is_public = false;
-    return self;
-}
+@synthesize displayName;
+//@synthesize photoUrl;
+@synthesize image;
+@synthesize followersCount;
+@synthesize feeds;
+@synthesize photos;
+@synthesize weeklies;
+@synthesize userDetails;
+//@property ClubDetails* clubDetails;
+@synthesize followRequestAlreadySent;
+@synthesize isSelf;
+@synthesize isCurrentUserFollowingTargetUser;
+@synthesize isTargetUserFollowingCurrentUser;
 
 -(NSString*)photoUrl{
     return self.photoUrl;
@@ -32,7 +35,7 @@
     __block Profile *profile = self;
     [manager downloadWithURL:[NSURL URLWithString:photoUrl] options:0 progress:^(NSInteger receivedSize, NSInteger expectedSize){} completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished){
          if (image){
-             [profile setPhoto:image];
+             [profile setImage:image];
              [[NSNotificationCenter defaultCenter] postNotificationName:@"gotProfile" object:profile userInfo:nil];
          }
      }];
@@ -40,10 +43,18 @@
 
 +(Profile*)makeProfileFromDict:(NSDictionary*)profile_dict{
     Profile* profile = [[Profile alloc] init];
-    [profile setUserId:[profile_dict objectForKey:@"userId"]];
+    
+    [profile setProfile_id:[profile_dict objectForKey:@"userId"]];
     [profile setAccountType:[profile_dict objectForKey:@"accountType"]];
-    [profile setIsConfirmed:(BOOL)[profile_dict objectForKey:@"isConfirmed"]];
-    [profile setUsername:[profile_dict objectForKey:@"displayName"]];
+    [profile setDisplayName:[profile_dict objectForKey:@"displayName"]];
+    [profile setFollowersCount:(int)[profile_dict objectForKey:@"followersCount"]];
+    [profile setFollowRequestAlreadySent:(BOOL)[profile_dict objectForKey:@"followRequestAlreadySent"]];
+    [profile setIsSelf:(BOOL)[profile_dict objectForKey:@"isSelf"]];
+    [profile setIsCurrentUserFollowingTargetUser:(BOOL)[profile_dict objectForKey:@"isCurrentUserFollowingTargetUser"]];
+    [profile setIsTargetUserFollowingCurrentUser:(BOOL)[profile_dict objectForKey:@"isTargetUserFollowingCurrentUser"]];
+    if([profile.accountType isEqualToString:@"User"]){
+        [profile setUserDetails:[UserDetails makeUserDetailsFromDict:[profile_dict objectForKey:@"userDetails"]]];
+    }
     [profile setPhotoUrl:[[profile_dict objectForKey:@"displayPhoto"] objectForKey:@"mediumLink"]];
     return profile;
 }

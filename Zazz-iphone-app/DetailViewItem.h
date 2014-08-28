@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Profile.h"
+#import "User.h"
 
 @interface DetailViewItem : NSObject
 
@@ -15,7 +15,7 @@
 @property NSString* type;
 @property NSString* description;
 @property UIImage* photo;
-@property Profile* user;
+@property User* user;
 @property int likes;
 @property NSMutableArray* categories;
 @property NSMutableArray* comments;

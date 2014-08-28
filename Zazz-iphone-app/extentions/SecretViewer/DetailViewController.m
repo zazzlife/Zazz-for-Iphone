@@ -85,7 +85,7 @@ UIImageView* _imageView;
         CGRect max_frame = [[UIScreen mainScreen] bounds];
         [backgroundImage setFrame: CGRectMake(CGRectGetMinX(max_frame) - 200, CGRectGetMinY(max_frame) - 200, CGRectGetWidth(max_frame) + 400, CGRectGetHeight(max_frame)+400)];
         
-        _posterPhoto = [[UIImageView alloc] initWithImage:_detailItem.user.photo];
+        _posterPhoto = [[UIImageView alloc] initWithImage:_detailItem.user.image];
         [_posterPhoto setFrame:CGRectMake(25, kBarHeight, 50, 50)];
         [_posterPhoto.layer setCornerRadius:CGRectGetWidth(_posterPhoto.frame) / 2.0f];
         [_posterPhoto.layer setMasksToBounds:YES];
@@ -293,7 +293,7 @@ UIImageView* _imageView;
     if (!cell) {
         cell = [[CommentCell alloc]initWithComment:comment andReuseIdentifier:@"commentView"];
     }
-    [cell.iconView setImage: comment.user.photo];
+    [cell.iconView setImage: comment.user.image];
     [cell.commentLabel setFrame:CGRectMake(CGRectGetMaxX(cell.iconView.frame)+ kCommentPaddingFromLeft, 15, cell.frame.size.width - 80, 0)];
     [cell.commentLabel setText: comment.text];
     [cell.commentLabel resizeWithFlexibleHeight];

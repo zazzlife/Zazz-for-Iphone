@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Profile.h"
+#import "User.h"
 
 @interface FollowRequest : NSObject
 
-@property Profile* user;
+@property User* user;
 @property NSString* time;
 
 +(FollowRequest*)makeFollowRequestFromDict:(NSDictionary*)request_dict;

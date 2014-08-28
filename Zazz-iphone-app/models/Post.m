@@ -11,7 +11,7 @@
 @implementation Post
 
 +(Post*)makePostFromDict:(NSDictionary*)post_dict{
-    Profile* fromUser = [[Profile alloc] init];
+    User* fromUser = [[User alloc] init];
     [fromUser setUserId:[post_dict objectForKey:@"fromUserId"]];
     [fromUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
     [fromUser setPhotoUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]];
@@ -30,7 +30,7 @@
     [post setCategories:[post_dict objectForKey:@"categories"]];
     [post setFromUser:fromUser];
     if([post_dict objectForKey:@"toUserId"]){
-        Profile* toUser = [[Profile alloc] init];
+        User* toUser = [[User alloc] init];
         [toUser setUserId:[post_dict objectForKey:@"toUserId"]];
         [toUser setUsername:[post_dict objectForKey:@"fromUserDisplayName"]];
         [toUser setPhotoUrl:[[post_dict objectForKey:@"fromUserDisplayPhoto"] objectForKey:@"mediumLink"]];

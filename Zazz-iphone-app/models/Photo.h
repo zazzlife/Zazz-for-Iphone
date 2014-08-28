@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Profile.h"
+#import "User.h"
 
 @interface Photo : NSObject
 
 @property NSString* photoId;
 @property NSString* albumId;
 @property NSString* description;
-@property Profile* user;
+@property User* user;
 @property UIImage* image;
 @property NSString* photoUrl;
 @property NSMutableArray* categories;

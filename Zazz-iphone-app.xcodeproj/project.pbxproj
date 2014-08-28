@@ -23,6 +23,10 @@
 		2A01CBBA196B289400C4B81F /* ZazzNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CBB3196B289400C4B81F /* ZazzNotification.m */; };
 		2A01CBBB196B289400C4B81F /* ZazzProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A01CBB5196B289400C4B81F /* ZazzProfile.m */; };
 		2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A09D71F191EF3CD00A2827F /* LoginViewController.m */; };
+		2A15422619ADFC86006216B8 /* GenericModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A15422319ADFC86006216B8 /* GenericModel.m */; };
+		2A15422719ADFC86006216B8 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A15422519ADFC86006216B8 /* Profile.m */; };
+		2A15422A19ADFD47006216B8 /* ZazzMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A15422919ADFD47006216B8 /* ZazzMe.m */; };
+		2A15422D19ADFF26006216B8 /* UserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A15422C19ADFF26006216B8 /* UserDetails.m */; };
 		2A2385E2194521D300F7FABD /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385C4194521D300F7FABD /* MKAnnotationView+WebCache.m */; };
 		2A2385E3194521D300F7FABD /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385C6194521D300F7FABD /* NSData+ImageContentType.m */; };
 		2A2385E4194521D300F7FABD /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385C8194521D300F7FABD /* SDImageCache.m */; };
@@ -49,7 +53,7 @@
 		2A4144FD19689857001C1090 /* Notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144F119689857001C1090 /* Notification.m */; };
 		2A4144FE19689857001C1090 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144F319689857001C1090 /* Photo.m */; };
 		2A4144FF19689857001C1090 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144F519689857001C1090 /* Post.m */; };
-		2A41450019689857001C1090 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144F719689857001C1090 /* Profile.m */; };
+		2A41450019689857001C1090 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144F719689857001C1090 /* User.m */; };
 		2A414503196898BE001C1090 /* CHTumblrMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A414502196898BE001C1090 /* CHTumblrMenuView.m */; };
 		2A46CCF4199C204600996D84 /* RoundedUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A46CCF3199C204600996D84 /* RoundedUIButton.m */; };
 		2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D3E191FE863008DBFED /* RegisterViewController.m */; };
@@ -141,6 +145,14 @@
 		2A01CBB5196B289400C4B81F /* ZazzProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzProfile.m; path = API_Module/ZazzProfile.m; sourceTree = "<group>"; };
 		2A09D71E191EF3CD00A2827F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		2A09D71F191EF3CD00A2827F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		2A15422219ADFC86006216B8 /* GenericModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GenericModel.h; path = "Zazz-iphone-app/models/GenericModel.h"; sourceTree = "<group>"; };
+		2A15422319ADFC86006216B8 /* GenericModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GenericModel.m; path = "Zazz-iphone-app/models/GenericModel.m"; sourceTree = "<group>"; };
+		2A15422419ADFC86006216B8 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Profile.h; path = "Zazz-iphone-app/models/Profile.h"; sourceTree = "<group>"; };
+		2A15422519ADFC86006216B8 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Profile.m; path = "Zazz-iphone-app/models/Profile.m"; sourceTree = "<group>"; };
+		2A15422819ADFD47006216B8 /* ZazzMe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzMe.h; path = API_Module/ZazzMe.h; sourceTree = "<group>"; };
+		2A15422919ADFD47006216B8 /* ZazzMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzMe.m; path = API_Module/ZazzMe.m; sourceTree = "<group>"; };
+		2A15422B19ADFF26006216B8 /* UserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDetails.h; path = "Zazz-iphone-app/models/UserDetails.h"; sourceTree = "<group>"; };
+		2A15422C19ADFF26006216B8 /* UserDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDetails.m; path = "Zazz-iphone-app/models/UserDetails.m"; sourceTree = "<group>"; };
 		2A2385C3194521D300F7FABD /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		2A2385C4194521D300F7FABD /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		2A2385C5194521D300F7FABD /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -194,8 +206,8 @@
 		2A4144F319689857001C1090 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = "Zazz-iphone-app/models/Photo.m"; sourceTree = "<group>"; };
 		2A4144F419689857001C1090 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Post.h; path = "Zazz-iphone-app/models/Post.h"; sourceTree = "<group>"; };
 		2A4144F519689857001C1090 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Post.m; path = "Zazz-iphone-app/models/Post.m"; sourceTree = "<group>"; };
-		2A4144F619689857001C1090 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Profile.h; path = "Zazz-iphone-app/models/Profile.h"; sourceTree = "<group>"; };
-		2A4144F719689857001C1090 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Profile.m; path = "Zazz-iphone-app/models/Profile.m"; sourceTree = "<group>"; };
+		2A4144F619689857001C1090 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = "Zazz-iphone-app/models/User.h"; sourceTree = "<group>"; };
+		2A4144F719689857001C1090 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = "Zazz-iphone-app/models/User.m"; sourceTree = "<group>"; };
 		2A414501196898BE001C1090 /* CHTumblrMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHTumblrMenuView.h; path = extentions/TumblrMenu/CHTumblrMenuView.h; sourceTree = "<group>"; };
 		2A414502196898BE001C1090 /* CHTumblrMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHTumblrMenuView.m; path = extentions/TumblrMenu/CHTumblrMenuView.m; sourceTree = "<group>"; };
 		2A46CCF2199C204600996D84 /* RoundedUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundedUIButton.h; sourceTree = "<group>"; };
@@ -323,9 +335,17 @@
 			path = SecretViewer;
 			sourceTree = "<group>";
 		};
-		2A09D71A191EDA5600A2827F /* Entities */ = {
+		2A09D71A191EDA5600A2827F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2A15422219ADFC86006216B8 /* GenericModel.h */,
+				2A15422319ADFC86006216B8 /* GenericModel.m */,
+				2A4144F619689857001C1090 /* User.h */,
+				2A4144F719689857001C1090 /* User.m */,
+				2A15422419ADFC86006216B8 /* Profile.h */,
+				2A15422519ADFC86006216B8 /* Profile.m */,
+				2A15422B19ADFF26006216B8 /* UserDetails.h */,
+				2A15422C19ADFF26006216B8 /* UserDetails.m */,
 				2A4144E619689857001C1090 /* CategoryStat.h */,
 				2A4144E719689857001C1090 /* CategoryStat.m */,
 				2A4144E819689857001C1090 /* Comment.h */,
@@ -342,10 +362,8 @@
 				2A4144F319689857001C1090 /* Photo.m */,
 				2A4144F419689857001C1090 /* Post.h */,
 				2A4144F519689857001C1090 /* Post.m */,
-				2A4144F619689857001C1090 /* Profile.h */,
-				2A4144F719689857001C1090 /* Profile.m */,
 			);
-			name = Entities;
+			name = Models;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -430,7 +448,7 @@
 			name = Segues;
 			sourceTree = "<group>";
 		};
-		2A47F5601936F37A001CF1AE /* Extentions */ = {
+		2A47F5601936F37A001CF1AE /* ext */ = {
 			isa = PBXGroup;
 			children = (
 				2AAFF92B1981D769001CC4CC /* CTAssetsPickerController */,
@@ -443,7 +461,7 @@
 				2A46CCF2199C204600996D84 /* RoundedUIButton.h */,
 				2A46CCF3199C204600996D84 /* RoundedUIButton.m */,
 			);
-			name = Extentions;
+			name = ext;
 			path = extentions;
 			sourceTree = "<group>";
 		};
@@ -482,14 +500,6 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		2A5FAEB9191D5AA700B917AB /* Modules */ = {
-			isa = PBXGroup;
-			children = (
-				2A5FAEB6191BF7D200B917AB /* API */,
-			);
-			name = Modules;
-			sourceTree = "<group>";
-		};
 		2A5FAEBE191D791B00B917AB /* Actions */ = {
 			isa = PBXGroup;
 			children = (
@@ -505,6 +515,8 @@
 				2A01CBB3196B289400C4B81F /* ZazzNotification.m */,
 				2A01CBB4196B289400C4B81F /* ZazzProfile.h */,
 				2A01CBB5196B289400C4B81F /* ZazzProfile.m */,
+				2A15422819ADFD47006216B8 /* ZazzMe.h */,
+				2A15422919ADFD47006216B8 /* ZazzMe.m */,
 				2AEA1C8519769E9300A177F3 /* ZazzComments.h */,
 				2AEA1C8619769E9300A177F3 /* ZazzComments.m */,
 				2A30C4501987CA5F00882C1A /* ZazzPost.h */,
@@ -652,11 +664,11 @@
 				5E8AA6FF18FCAED600C99D9F /* AppDelegate.m */,
 				2A5FAEB8191D2BF300B917AB /* Controllers */,
 				2A470D7C19247A11008DBFED /* Segues */,
-				2A09D71A191EDA5600A2827F /* Entities */,
-				2A47F5601936F37A001CF1AE /* Extentions */,
-				2A47F5631936F47A001CF1AE /* Images.xcassets */,
-				2A5FAEB9191D5AA700B917AB /* Modules */,
+				2A09D71A191EDA5600A2827F /* Models */,
+				2A5FAEB6191BF7D200B917AB /* API */,
 				2A5FAEB7191D2BE500B917AB /* Storyboards */,
+				2A47F5631936F47A001CF1AE /* Images.xcassets */,
+				2A47F5601936F37A001CF1AE /* ext */,
 				5E8AA6F618FCAED600C99D9F /* Supporting Files */,
 			);
 			path = "Zazz-iphone-app";
@@ -798,6 +810,7 @@
 				2A2385EE194521D300F7FABD /* UIImage+WebP.m in Sources */,
 				2AEA1C8719769E9300A177F3 /* ZazzComments.m in Sources */,
 				2AAFF9591981D769001CC4CC /* CTAssetsPickerConstants.m in Sources */,
+				2A15422A19ADFD47006216B8 /* ZazzMe.m in Sources */,
 				2A30C4521987CA5F00882C1A /* ZazzPost.m in Sources */,
 				2A2385EA194521D300F7FABD /* SDWebImagePrefetcher.m in Sources */,
 				2A4144FE19689857001C1090 /* Photo.m in Sources */,
@@ -805,6 +818,8 @@
 				2A01CBB7196B289400C4B81F /* ZazzFeed.m in Sources */,
 				2A2385E4194521D300F7FABD /* SDImageCache.m in Sources */,
 				2AAFF9551981D769001CC4CC /* CTAssetsGroupViewCell.m in Sources */,
+				2A15422D19ADFF26006216B8 /* UserDetails.m in Sources */,
+				2A15422619ADFC86006216B8 /* GenericModel.m in Sources */,
 				2A01CBA5196B156200C4B81F /* DetailViewController.m in Sources */,
 				2A2385E9194521D300F7FABD /* SDWebImageManager.m in Sources */,
 				0DD31809191B2063003D5630 /* HomeViewController.m in Sources */,
@@ -818,6 +833,7 @@
 				2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */,
 				2AAFF95A1981D769001CC4CC /* CTAssetsPickerController.m in Sources */,
 				2AAFF9561981D769001CC4CC /* CTAssetsGroupViewController.m in Sources */,
+				2A15422719ADFC86006216B8 /* Profile.m in Sources */,
 				2A67359A1966F18A00707224 /* CreateMessageViewController.m in Sources */,
 				2A2385EF194521D300F7FABD /* UIImageView+HighlightedWebCache.m in Sources */,
 				2A4144F819689857001C1090 /* CategoryStat.m in Sources */,
@@ -839,7 +855,7 @@
 				2A2385E2194521D300F7FABD /* MKAnnotationView+WebCache.m in Sources */,
 				2A2385E3194521D300F7FABD /* NSData+ImageContentType.m in Sources */,
 				2A2385EB194521D300F7FABD /* UIButton+WebCache.m in Sources */,
-				2A41450019689857001C1090 /* Profile.m in Sources */,
+				2A41450019689857001C1090 /* User.m in Sources */,
 				2A2385F0194521D300F7FABD /* UIImageView+WebCache.m in Sources */,
 				2AAFF9541981D769001CC4CC /* CTAssetScrollView.m in Sources */,
 				2A4144FC19689857001C1090 /* FollowRequest.m in Sources */,

@@ -30,7 +30,7 @@
 
 
 +(Event*)makeEventFromDict:(NSDictionary*)event_dict{
-    Profile* user = [[Profile alloc] init];
+    User* user = [[User alloc] init];
     [user setUserId:[event_dict objectForKey:@"userId"]];
     [user setPhotoUrl:[[event_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
     [user setUsername:[event_dict objectForKey:@"userDisplayName"]];

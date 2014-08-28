@@ -10,44 +10,36 @@
 #import "AppDelegate.h"
 #import "Profile.h"
 #import "NotificationViewController.h"
+#import "UIImageView+WebCache.h"
 
 @implementation LeftNavigationViewController
 
 @synthesize scrollView;
-@synthesize _profile;
+@synthesize _user;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMyProfile:) name:@"gotMyProfile" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMe:) name:@"gotMe" object:nil];
     self.background.autoresizingMask = (UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleWidth);
     [self.scrollView setScrollsToTop:false];
 }
 
--(void)gotMyProfile:(NSNotification*)notif{
-    if (![notif.name isEqualToString:@"gotMyProfile"]) return;
-    Profile* profile = notif.object;
-    [self set_profile:profile];
-}
-
--(void)gotAProfile:(NSNotification*)notif{
-    if (![notif.name isEqualToString:@"gotProfile"]) return;
-    Profile* profile = notif.object;
-    if([profile.userId intValue] == [self._profile.userId intValue] && profile.photo){
-        [self set_profile:profile];
-        [self.profilePhoto setImage:profile.photo];
-        [self.profilePhoto.layer setCornerRadius:50];
-        [self.profilePhoto.layer setMasksToBounds:YES];
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotProfile" object:nil];
-    }
+-(void)gotMe:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"gotMe"]) return;
+    User* user = notif.object;
+    [self set_user:user];
+    [self.profilePhoto setImageWithURL:[NSURL URLWithString:user.photoUrl]];
+    [self.profilePhoto.layer setCornerRadius:50];
+    [self.profilePhoto.layer setMasksToBounds:YES];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotMe" object:nil];
 }
 
 -(IBAction) showNextView:(UIButton*)button{
     switch([button tag]){
         case 1:{
             NotificationViewController* notifController = (NotificationViewController*)[self.storyboard instantiateViewControllerWithIdentifier:@"notificationView"];
-            [notifController setProfile:self._profile];
+            [notifController setUser:self._user];
             
             NSArray* objects  = [NSArray arrayWithObjects:notifController, @"notifController", nil];
             NSArray* keys  = [NSArray arrayWithObjects:@"childController", @"identifier", nil];

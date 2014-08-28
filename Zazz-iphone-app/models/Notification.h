@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Profile.h"
+#import "User.h"
 
 
 #define FollowRequestAccepted 0
@@ -20,7 +20,7 @@
 @interface Notification : NSObject
 
 @property NSString* notificationId;
-@property Profile* user;
+@property User* user;
 @property BOOL isRead;
 @property NSString* time;
 @property id content;

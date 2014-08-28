@@ -7,33 +7,34 @@
 //
 
 #import "ZazzProfile.h"
-#import "UIImage.h"
+#import "Profile.h"
 
 @implementation ZazzProfile
 
 NSString* _profileId;
+NSMutableData* _recievedData;
 
-- (void) getMyProfile{
-    _profileId = @"";
-    NSString * action = @"me";
+-(void) getProfile:(NSString *)userId{
+    _profileId = userId;
+    NSString* action = [[NSString alloc] initWithFormat:@"users/%@/profile",userId];
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
--(void) getProfile:(NSString *)userId{
-    _profileId = userId;
-    NSLog(@"TODO; IMPLEMENT GET PROFILE WITH USERID - ZazzProfile:getProfile");
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    if(!_recievedData) _recievedData = [[NSMutableData alloc]init];
+    [_recievedData appendData:data];
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSDictionary *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil ];
-    if(array == nil){
+    NSDictionary *profile_dict = [NSJSONSerialization JSONObjectWithData:_recievedData options:0 error:nil ];
+    if(profile_dict == nil){
         NSLog(@"JSON ERROR");
         return;
     }
-        
-    Profile* profile = [Profile makeProfileFromDict:array];
+    
+    Profile* profile = [Profile makeProfileFromDict:profile_dict];
     
     NSMutableDictionary* userInfo= [[NSMutableDictionary alloc] init];
     [userInfo setObject:_profileId forKey:@"profileId"];

@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Profile.h"
+#import "User.h"
 
 @interface Post : NSObject
 
 @property NSString* postId;
 @property NSString* timestamp;
 @property NSString* message;
-@property Profile* fromUser;
-@property Profile* toUser;
+@property User* fromUser;
+@property User* toUser;
 @property NSMutableArray* categories;
 
 +(Post*)makePostFromDict:(NSDictionary*)post_dict;

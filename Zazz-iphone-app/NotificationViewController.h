@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Profile.h"
+#import "User.h"
 
 @interface NotificationViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
-@property Profile* profile;
+@property User* user;
 @property UITableViewController* tableViewController;
 
 @property IBOutlet UISegmentedControl* segmentedControl;

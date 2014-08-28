@@ -8,19 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Profile : NSObject
+@interface User: NSObject
 
 @property NSString* userId;
 @property BOOL is_public;
 @property NSString* accountType;
 @property BOOL isConfirmed;
 @property NSString* username;
-@property UIImage* photo;
+@property UIImage* image;
 @property NSString* photoUrl;
 
-@property BOOL isFullProfile;
-
-
-+(Profile*)makeProfileFromDict:(NSDictionary*)profile_dict;
++(User*)makeUserFormDict:(NSDictionary*)user_dict;
 
 @end

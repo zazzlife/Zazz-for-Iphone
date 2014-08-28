@@ -10,6 +10,7 @@
 #import "ZazzApi.h"
 #import "ZazzLogin.h"
 #import "ZazzProfile.h"
+#import "ZazzMe.h"
 #import "ZazzFeed.h"
 #import "ZazzCategory.h"
 #import "ZazzFollowRequest.h"
@@ -44,23 +45,17 @@
 
 
 /*
- ME - PROFILE
+ ME - USER
  */
--(void) getMyProfile{
-    [[[ZazzProfile alloc] init] getMyProfile];
+-(void) getMe{
+    [[[ZazzMe alloc] init] getMe];
 }
--(void) getProfile:(NSString*)userId{
-    [[[ZazzProfile alloc] init] getProfile:userId];
-}
-
-
 /*
  ME - NOTIFICATIONS
  */
 -(void) getNotifications{
     [[[ZazzNotification alloc] init] getNotifications];
 }
-
 /*
  ME - FOLLOW-REQUESTS
  */
@@ -70,6 +65,13 @@
 -(void) setFollowRequestsUserId:(NSString*)userId action:(BOOL)action{
     [[[ZazzFollowRequest alloc] init] setFollowRequestsUserId:userId action:action];
     //response neccesary...
+}
+
+/*
+PROFILE
+ */
+-(void) getProfile:(NSString*)profileId{
+    [[[ZazzProfile alloc] init] getProfile:profileId];
 }
 
 /*

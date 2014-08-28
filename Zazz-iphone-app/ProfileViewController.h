@@ -17,6 +17,7 @@
 
 @property FeedTableViewController* feedTableViewController;
 
+@property NSString* user_id;
 @property Profile* _profile;
 @property IBOutlet UIScrollView* scrollView;
 

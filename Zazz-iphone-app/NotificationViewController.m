@@ -29,7 +29,7 @@ static const int CONDITION_REQUESTS_LOADING = 3;
 static const int CONDITION_REQUESTS_NONE = 4;
 static const int CONDITION_REQUESTS_SOME = 5;
 
-@synthesize profile;
+@synthesize user;
 
 BOOL seeing_requests = false;
 NSArray* requests;
@@ -39,7 +39,7 @@ NSArray* notifications;
     [super viewDidLoad];
     seeing_requests = false;
     [self.segmentedControl removeSegmentAtIndex:0 animated:0];
-    if(self.profile && !self.profile.is_public) [self.segmentedControl insertSegmentWithTitle:@"Requests" atIndex:0 animated:1];
+    if(self.user && !self.user.is_public) [self.segmentedControl insertSegmentWithTitle:@"Requests" atIndex:0 animated:1];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFollowRequests:) name:@"gotFollowRequests" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzNotifications:) name:@"gotNotifications" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAProfile:) name:@"gotProfile" object:nil];
@@ -122,7 +122,7 @@ NSArray* notifications;
                   (long)subview.tag, subview.class, [subview restorationIdentifier]);
                 
                 if([[subview restorationIdentifier] isEqualToString:@"notifictionUserImage"]){
-                    [(UIImageView*)subview setImage:notif.user.photo];
+                    [(UIImageView*)subview setImage:notif.user.image];
                     continue;
                 }
                 if([[subview restorationIdentifier] isEqualToString:@"displayName"]){
@@ -199,7 +199,7 @@ NSArray* notifications;
             FollowRequest* request = (FollowRequest*)[requests objectAtIndex:indexPath.row];
             for(UIView* subview in cell.contentView.subviews){
                     if([[subview restorationIdentifier] isEqualToString:@"requestUserImage"]){
-                    [(UIImageView*)subview setImage:request.user.photo];
+                    [(UIImageView*)subview setImage:request.user.image];
                     continue;
                 }
                 if([[subview restorationIdentifier] isEqualToString:@"nameLabel"]){

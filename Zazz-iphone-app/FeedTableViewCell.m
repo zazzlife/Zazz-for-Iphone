@@ -18,6 +18,7 @@
 #import "UIImage.h"
 #import "DetailViewItem.h"
 #import "Comment.h"
+#import "UIImageView+WebCache.h"
 
 @implementation FeedTableViewCell
 
@@ -94,8 +95,8 @@ int _albumObserversCounter;
     [self set_feed:feed];
     [self.username setText:feed.user.username];
     [self.timestamp setText:[ZazzApi formatDateString:feed.timestamp]];
-    [self.userImage setImage:feed.user.photo];
-    if(feed.user.photo == nil){
+    [self.userImage setImageWithURL:feed.user.photoUrl];
+    if(feed.user.image == nil){
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotUserImageNotification:) name:@"gotProfile" object:nil];
     }
     [self.feedCellContentView setFrame:CGRectMake(0, CELL_HEADER_HEIGHT, self.tableView.frame.size.width-(2*CELL_PADDING_SIDES), 40)];
@@ -163,8 +164,8 @@ int _albumObserversCounter;
 -(void)gotUserImageNotification:(NSNotification *)notif{
     if(! [notif.name isEqualToString:@"gotProfile"]) return;
     Profile* profile = notif.object;
-    if(profile.userId != self._feed.user.userId) return;
-    [self.userImage setImage:profile.photo];
+    if(profile.profile_id != self._feed.user.userId) return;
+    [self.userImage setImage:profile.image];
 }
 
 @end

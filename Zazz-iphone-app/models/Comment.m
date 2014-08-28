@@ -21,7 +21,7 @@ const NSString* COMMENT_TYPE_EVENT = @"event";
 @synthesize time;
 
 +(Comment*)makeCommentFromDict:(NSDictionary*)comment_dict{
-    Profile* fromUser = [[Profile alloc] init];
+    User* fromUser = [[User alloc] init];
     [fromUser setUsername:[comment_dict objectForKey:@"userDisplayName"]];
     [fromUser setPhotoUrl:[[comment_dict objectForKey:@"userDisplayPhoto"] objectForKey:@"mediumLink"]];
     [fromUser setUserId:[comment_dict objectForKey:@"userId"]];

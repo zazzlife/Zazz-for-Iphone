@@ -49,7 +49,7 @@
 
 +
 (Notification*)makeNotificationWithDict:(NSDictionary*)notif_dict{
-    Profile* user = [[Profile alloc] init];
+    User* user = [[User alloc] init];
     [user setUserId:[notif_dict objectForKey:@"userId"]];
     [user setUsername:[notif_dict objectForKey:@"displayName"]];
     [user setPhotoUrl:[[notif_dict objectForKey:@"displayPhoto"] objectForKey:@"originalLink"]];
@@ -58,7 +58,7 @@
     [notification setUser:user];
     [notification setTime:[notif_dict objectForKey:@"time"]];
     [notification setNotificationTypeWithString:[notif_dict objectForKey:@"notificationType"]];
-    [notification setIsRead:[notif_dict objectForKey:@"isRead"]];
+    [notification setIsRead:(BOOL)[notif_dict objectForKey:@"isRead"]];
     [notification setNotificationId:[notif_dict objectForKey:@"notificationId"]];
     if([notification notificationType] == CommentOnPhoto){
         Photo* photo = [Photo makePhotoFromDict:[notif_dict objectForKey:@"photo"]];
