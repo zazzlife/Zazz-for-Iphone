@@ -16,6 +16,7 @@
 #import "Event.h"
 #import "DetailViewController.h"
 #import "Comment.h"
+#import "UIImageView+WebCache.h"
 
 @implementation NotificationViewController
 
@@ -122,7 +123,7 @@ NSArray* notifications;
                   (long)subview.tag, subview.class, [subview restorationIdentifier]);
                 
                 if([[subview restorationIdentifier] isEqualToString:@"notifictionUserImage"]){
-                    [(UIImageView*)subview setImage:notif.user.image];
+                    [(UIImageView*)subview setImageWithURL:[NSURL URLWithString:notif.user.photoUrl]];
                     continue;
                 }
                 if([[subview restorationIdentifier] isEqualToString:@"displayName"]){
@@ -199,7 +200,7 @@ NSArray* notifications;
             FollowRequest* request = (FollowRequest*)[requests objectAtIndex:indexPath.row];
             for(UIView* subview in cell.contentView.subviews){
                     if([[subview restorationIdentifier] isEqualToString:@"requestUserImage"]){
-                    [(UIImageView*)subview setImage:request.user.image];
+                    [(UIImageView*)subview setImageWithURL:[NSURL URLWithString:request.user.photoUrl]];
                     continue;
                 }
                 if([[subview restorationIdentifier] isEqualToString:@"nameLabel"]){
