@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "FeedTableViewController.h"
 #import "AppDelegate.h"
+#import "UIImageView+WebCache.h"
 
 @implementation ProfileViewController
 
@@ -28,18 +29,25 @@
     User* user = notif.object;
     [self setUser_id:user.userId];
     [[AppDelegate zazzApi] getProfile:user_id];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotME" object:nil];
 }
 
 -(void)gotProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotProfile"]) return;
     Profile* profile = notif.object;
-    if([profile.profile_id intValue] == [self.user_id intValue] && profile.image){
+    if([profile.profile_id intValue] == [self.user_id intValue]){
         [self set_profile:profile];
-        [self.profilePhoto setImage:profile.image];
+        [self.profilePhoto setImageWithURL:profile.photoUrl];
         [self.profilePhoto.layer setCornerRadius:self.profilePhoto.frame.size.height / 2];
         [self.profilePhoto.layer setMasksToBounds:YES];
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotProfile" object:nil];
+        [self.username setText:[NSString stringWithFormat:@"@%@",profile.displayName]];
+        [self.name setText:profile.userDetails.fullName];
+        [self.tagline setText:profile.userDetails.major.name];
+        [self.school setText:[NSString stringWithFormat:@"%@\n%@", profile.userDetails.school.name, profile.userDetails.city.name]];
+        if(!profile.isCurrentUserFollowingTargetUser){
+            [self.follow setTitle:@"Following" forState:UIControlStateNormal];
+        }
+        [self.followers setText:[NSString stringWithFormat:@"%d",profile.followersCount]];
+//        [self.following setText:profile.]
     }
 }
 
