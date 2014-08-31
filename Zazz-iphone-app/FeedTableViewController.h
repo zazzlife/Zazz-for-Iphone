@@ -14,7 +14,6 @@
 @optional -(void)scrollViewToTopIfNeeded:(UIScrollView*)scrollView;
 
 @end
-
 @interface FeedTableViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate>
 
 @property UIViewController<StickyTopScrollViewDelegate>* scrollDelegate;
@@ -30,6 +29,7 @@
 @property BOOL end_of_feed;
 
 -(IBAction)doRefresh:(id)sender;
+-(void)initFeedViewController;
 -(void)getFeedAfter:(NSString*)feed_id;
 
 @end

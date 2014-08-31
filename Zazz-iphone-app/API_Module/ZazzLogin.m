@@ -38,7 +38,6 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil ];
-    NSLog(@"got Auth");
     if(array == nil){
         NSLog(@"JSON ERROR");
         return;

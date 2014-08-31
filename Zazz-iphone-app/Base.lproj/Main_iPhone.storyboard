@@ -315,7 +315,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="l1V-EV-eRO" kind="embed" identifier="embedProfileFeedViewController" id="mq0-t5-iGp"/>
+                                            <segue destination="l1V-EV-eRO" kind="embed" identifier="embedProfileFeedViewController" id="UqG-YO-jn2"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -448,19 +448,19 @@
             <objects>
                 <viewController id="9dM-CA-8wr" customClass="LeftNavigationViewController" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="Fz1-4G-5sN">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" id="po0-Gv-0BG">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="480"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" indicatorStyle="white" canCancelContentTouches="NO" bouncesZoom="NO" id="fS1-2S-aDl">
-                                <rect key="frame" x="0.0" y="121" width="200" height="359"/>
+                                <rect key="frame" x="0.0" y="121" width="320" height="359"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="5VS-4E-Rfe">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="428"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="428"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="93J-25-N2l">
@@ -1507,7 +1507,7 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="wzV-fg-VEe" customClass="RightNavigationViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5Tl-bS-nUa">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wwl-5G-4Va">
@@ -1518,16 +1518,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="R52-Ac-RXq">
-                                <rect key="frame" x="0.0" y="55" width="240" height="425"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="425"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="categoryCell" id="erz-XV-aXN">
-                                        <rect key="frame" x="0.0" y="22" width="240" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="erz-XV-aXN" id="AKx-zS-Pv9">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Ex1-QV-PsW">
@@ -1625,7 +1625,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="UKP-4G-Fq5"/>
-        <segue reference="rQA-XQ-SRc"/>
-        <segue reference="mq0-t5-iGp"/>
+        <segue reference="iV8-IV-tkt"/>
+        <segue reference="UqG-YO-jn2"/>
     </inferredMetricsTieBreakers>
 </document>

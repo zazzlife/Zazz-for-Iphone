@@ -39,6 +39,7 @@
 }
 -(void) gotAuthToken:(NSString*)token{
     [self setAuth_token:token];
+    NSLog(@"Session Token: %@",token);
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:token forKey:@"token"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"gotAuthToken" object:nil userInfo:userInfo];
 }
@@ -128,7 +129,8 @@ PROFILE
 
 //STATIC METHODS
 
-+(NSString*)token_bearer{
++(NSString*)token_bearer
+{
     return [NSString stringWithFormat:@"Bearer %@", [AppDelegate zazzApi].auth_token];
 }
 +(NSMutableURLRequest *)getRequestWithAction:(NSString*)action{
@@ -137,8 +139,8 @@ PROFILE
     [request setValue: [ZazzApi token_bearer] forHTTPHeaderField:@"Authorization"];
     return request;
 }
-
-+(NSString*)formatDateString:(NSString*)dateString{
++(NSString*)formatDateString:(NSString*)dateString
+{
     NSMutableArray* parts = [[NSMutableArray alloc] initWithArray:[dateString componentsSeparatedByString:@"."]];
     if ([parts count]>1)[parts removeLastObject];
     NSString* fixedDateString = [parts componentsJoinedByString:@"."];
@@ -163,7 +165,6 @@ PROFILE
     if(difference < 60*60*24*365) return [NSString stringWithFormat:@"%d month%@ ago",(int)difference/(60*60*24*30), (int)difference/(60*60*24*30) > 1? @"s" : @""];
     return [NSString stringWithFormat:@"%d year%@ ago",(int)difference/(60*60*24*365), (int)difference/(60*60*24*365)>1?@"s":@"" ];
 }
-
 +(NSString*)urlEscapeString:(NSString *)unencodedString
 {
     CFStringRef originalStringRef = (__bridge_retained CFStringRef)unencodedString;

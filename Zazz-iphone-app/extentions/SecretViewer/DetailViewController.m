@@ -63,6 +63,12 @@ UIImageView* _imageView;
     
     _imageView = [[UIImageView alloc] init];
     _textLabelView = [[UIView alloc] init];
+    _toolBarView = [[ToolBarView alloc] init];
+    _topContainer = [[UIView alloc] init];
+    _blurImageView = [[UIImageView alloc] init];
+    _backButton = [[UIButton alloc] init];
+    _commentsTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _mainScrollView = [[UIScrollView alloc] init];
     
     [_imageView setAutoresizingMask: UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
     
@@ -101,8 +107,8 @@ UIImageView* _imageView;
         TEXT_INIT_FRAME = _textLabelView.frame;
     }
     
-    if([_detailItem photo]){
-        _imageView = [[UIImageView alloc] initWithImage:_detailItem.photo];
+    if(_detailItem.image){
+        _imageView = [[UIImageView alloc] initWithImage:_detailItem.image];
         CGFloat scale = 320/_imageView.frame.size.width;
         
         [_textLabel setFrame:CGRectMake(CGRectGetMinX(_textLabel.frame), 10, CGRectGetWidth(_textLabel.frame), CGRectGetHeight(_textLabel.frame))];
@@ -118,8 +124,8 @@ UIImageView* _imageView;
     TOOLBAR_INIT_FRAME  = CGRectMake (0, CGRectGetMaxY(TEXT_INIT_FRAME), 320, 22);
     HEADER_INIT_FRAME   = CGRectMake (0, 0, CGRectGetWidth(TOOLBAR_INIT_FRAME), CGRectGetMaxY(TOOLBAR_INIT_FRAME));
     
-    _toolBarView = [[ToolBarView alloc] initWithFrame:TOOLBAR_INIT_FRAME];
-    _topContainer = [[UIView alloc] initWithFrame:HEADER_INIT_FRAME];
+    [_toolBarView setFrame:TOOLBAR_INIT_FRAME];
+    [_topContainer setFrame:HEADER_INIT_FRAME];
     
     [_toolBarView setCategories:_detailItem.categories];
     [_toolBarView setLikes: _detailItem.likes];
@@ -137,36 +143,35 @@ UIImageView* _imageView;
     UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    _blurImageView = [[UIImageView alloc] initWithFrame:HEADER_INIT_FRAME];
-    _blurImageView.image = [img applyBlurWithRadius:12 tintColor:[UIColor colorWithWhite:0.8 alpha:0.4] saturationDeltaFactor:1.8 maskImage:nil];
-    _blurImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    _blurImageView.alpha = 0;
-    _blurImageView.backgroundColor = [UIColor clearColor];
+    [_blurImageView setFrame:HEADER_INIT_FRAME];
+    [_blurImageView setImage:[img applyBlurWithRadius:12 tintColor:[UIColor colorWithWhite:0.8 alpha:0.4] saturationDeltaFactor:1.8 maskImage:nil]];
+    [_blurImageView setAutoresizingMask: (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+    [_blurImageView setAlpha:0];
+    [_blurImageView setBackgroundColor:[UIColor clearColor]];
     
     [_topContainer addSubview:_blurImageView];
     
-    _backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 24, 56, 25)];
+    [_backButton setFrame:CGRectMake(0, 24, 56, 25)];
     [_backButton setBackgroundImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
     [_backButton addTarget:self action:@selector(leaveView:) forControlEvents:UIControlEventTouchUpInside];
     
     CGRect _windowFrame = [UIApplication sharedApplication].keyWindow.frame;
     
-    _commentsTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(HEADER_INIT_FRAME), CGRectGetWidth(HEADER_INIT_FRAME),CGRectGetHeight(_windowFrame)-kBarHeight) style:UITableViewStylePlain];
-    _commentsTableView.scrollEnabled = NO;
-    _commentsTableView.delegate = self;
-    _commentsTableView.dataSource = self;
-    _commentsTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    _commentsTableView.separatorColor = [UIColor clearColor];
+    [_commentsTableView setFrame:CGRectMake(0, CGRectGetHeight(HEADER_INIT_FRAME), CGRectGetWidth(HEADER_INIT_FRAME),CGRectGetHeight(_windowFrame)-kBarHeight)];
+    [_commentsTableView setScrollEnabled:NO];
+    [_commentsTableView setDelegate:self];
+    [_commentsTableView setDataSource:self];
+    [_commentsTableView setTableFooterView: [[UIView alloc] initWithFrame:CGRectZero]];
+    [_commentsTableView setSeparatorColor: [UIColor clearColor]];
     
-    
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_windowFrame), CGRectGetHeight(_windowFrame))];
-    _mainScrollView.delegate = self;
-    _mainScrollView.bounces = YES;
-    _mainScrollView.alwaysBounceVertical = YES;
-    _mainScrollView.contentSize = CGSizeZero;
-    _mainScrollView.showsVerticalScrollIndicator = YES;
-    _mainScrollView.canCancelContentTouches = NO;
-    _mainScrollView.scrollIndicatorInsets = UIEdgeInsetsMake(kBarHeight, 0, 0, 0);
+    [_mainScrollView setFrame:CGRectMake(0, 0, CGRectGetWidth(_windowFrame), CGRectGetHeight(_windowFrame))];
+    [_mainScrollView setDelegate:self];
+    [_mainScrollView setBounces:YES];
+    [_mainScrollView setAlwaysBounceVertical:YES];
+    [_mainScrollView setContentSize:CGSizeZero ];
+    [_mainScrollView setShowsVerticalScrollIndicator: YES];
+    [_mainScrollView setCanCancelContentTouches:NO];
+    [_mainScrollView setScrollIndicatorInsets:UIEdgeInsetsMake(kBarHeight, 0, 0, 0)];
     [_mainScrollView setContentSize:CGSizeMake(CGRectGetWidth(HEADER_INIT_FRAME), CGRectGetHeight(_windowFrame)+CGRectGetHeight(HEADER_INIT_FRAME)-kBarHeight)];
     [_mainScrollView setContentOffset:CGPointMake(0, 0)];
     
@@ -202,7 +207,7 @@ UIImageView* _imageView;
                                          CGRectGetHeight(_topContainer.frame) - 22,
                                          CGRectGetWidth(TOOLBAR_INIT_FRAME),
                                          CGRectGetHeight(TOOLBAR_INIT_FRAME));
-        if(_detailItem.photo){
+        if(_imageView.image){
             float init_height =  CGRectGetHeight(IMAGE_INIT_FRAME);
             float init_width = CGRectGetWidth(IMAGE_INIT_FRAME);
             float new_height = init_height + delta;

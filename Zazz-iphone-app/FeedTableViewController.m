@@ -22,7 +22,7 @@
 
 bool prepend_feed = false; //used when refreshing the feed to clear all seen feeds.
 bool getting_feed = false; //true when a getZazzFeed call is active.
-bool simple_refresh = true; //don't append/prepend data. just refresh existing content.
+bool simple_refresh = false; //don't append/prepend data. just refresh existing content.
 @synthesize scrollDelegate;
 @synthesize active_category_id;
 @synthesize feed_user_id;
@@ -42,10 +42,7 @@ int const GET_ALL_MY_FEED_AFTER = 5;
 
 NSMutableDictionary* _indexPathsToReload;
 
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+-(void)initFeedViewController{
     prepend_feed = true;
     end_of_feed = false;
     showEvents = false;
@@ -60,29 +57,30 @@ NSMutableDictionary* _indexPathsToReload;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFeed:) name:@"gotFeed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotPhotoImageNotification:) name:@"gotPhotoImage" object:nil];
-}
-
--(void)viewDidAppear:(BOOL)animated{
+    
     [self doRefresh:self.refreshControl];
 }
 
 #pragma mark - Table view data source
-
+//#SECTIONS
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     NSArray* newFilteredFeed = [self getActiveFeed];
     [self setFilteredFeed:newFilteredFeed];
     return 1;
 }
+//#ROWS
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if(prepend_feed || end_of_feed) return [self.filteredFeed count];
-    return [self.filteredFeed count] + 1;
+    int count = [self.filteredFeed count];
+    if(end_of_feed || prepend_feed) return count;
+    return count + 1;
 }
+//did-SELECT
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     Feed* feedItem = [self.filteredFeed objectAtIndex:indexPath.row];
     DetailViewItem* detailItem = [[DetailViewItem alloc] init];
     if([feedItem.feedType isEqualToString:FEED_PHOTO]){
         Photo* photo = (Photo*)[(NSMutableArray*)[feedItem content] objectAtIndex:0];
-        [detailItem setPhoto:photo.image];
+        [detailItem setImage:photo.image];
         [detailItem setDescription:photo.description];
         [detailItem setCategories:photo.categories];
         [detailItem setType:COMMENT_TYPE_PHOTO];
@@ -91,7 +89,7 @@ NSMutableDictionary* _indexPathsToReload;
         [detailItem setLikes:0];
     }else if([feedItem.feedType isEqualToString:FEED_POST]){
         Post* post = (Post*)[feedItem content];
-        [detailItem setPhoto:nil];
+        [detailItem setImage:nil];
         [detailItem setDescription:post.message];
         [detailItem setCategories:post.categories];
         [detailItem setType:COMMENT_TYPE_POST];
@@ -100,7 +98,7 @@ NSMutableDictionary* _indexPathsToReload;
         [detailItem setLikes:0];
     }else if([feedItem.feedType isEqualToString:FEED_EVENT]){
         Event* event = (Event*)[feedItem content];
-        [detailItem setPhoto:nil];
+        [detailItem setImage:nil];
         [detailItem setDescription:event.description];
         [detailItem setType:COMMENT_TYPE_EVENT];
         [detailItem setItemId:event.eventId];
@@ -113,6 +111,7 @@ NSMutableDictionary* _indexPathsToReload;
     NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:detailViewController userInfo:userInfo];
 }
+//HEIGHT
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.row == [self.filteredFeed count]){
         return 44;
@@ -132,7 +131,7 @@ NSMutableDictionary* _indexPathsToReload;
     }
     return cell._height;
 }
-
+//CELL
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row == [self.filteredFeed count]){
         NSString *CellIdentifier = @"FeedFetchMoreCell";
@@ -188,7 +187,7 @@ NSMutableDictionary* _indexPathsToReload;
     if(getting_feed) return;
     
     getting_feed = true;
-    BOOL haveCategory = ![self.active_category_id isEqualToString:@""];
+    BOOL haveCategory =  !(!self.active_category_id || [self.active_category_id isEqualToString:@""]);
     
     if(feed_user_id && !feed_id){
         [[AppDelegate zazzApi] getUserFeed:feed_user_id];
@@ -225,13 +224,17 @@ NSMutableDictionary* _indexPathsToReload;
     Photo* photo = [notif.userInfo objectForKey:@"photo"];
     NSIndexPath* indexpath = [_indexPathsToReload objectForKey:photo.photoId];
     if(!indexpath )return;
-    simple_refresh = true;
+    
+    NSLog(@"index: %d - %d",indexpath.section,indexpath.row);
+    
     [self.tableView reloadData];
-    simple_refresh = false;
 }
 
 -(void)gotZazzFeed:(NSNotification *)notif{
     if (![notif.name isEqualToString:@"gotFeed"]) return;
+    NSString* notif_feed_user_id = [NSString stringWithFormat:@"%@",[notif.userInfo objectForKey:@"user_id"]];
+    NSString* self_feed_user_id = [NSString stringWithFormat:@"%@",feed_user_id];
+    if(feed_user_id && ![self_feed_user_id isEqualToString:notif_feed_user_id])return;
     NSMutableArray* feed = [notif.userInfo objectForKey:@"feed"];
     NSString* category_ids = [notif.userInfo objectForKey:@"category_ids"];
     [self.refreshControl endRefreshing];
@@ -240,20 +243,23 @@ NSMutableDictionary* _indexPathsToReload;
     getting_feed = false;
     
     if(prepend_feed){
-        NSMutableArray* feedItemsToPrepend = [[NSMutableArray alloc] init];
+        NSMutableArray* newFeedItems = [[NSMutableArray alloc] init];
         NSMutableArray* currentFeed = [self.categoryFeeds objectForKey:self.active_category_id];
         Feed* curTopFeedItem = (Feed*)[currentFeed firstObject];
         if(!curTopFeedItem){
-            feedItemsToPrepend = feed;
+            newFeedItems = feed;
         }
         else{
             for(Feed* newFeedItem in feed){
-                if(newFeedItem.feedId == curTopFeedItem.feedId) break;
-                [feedItemsToPrepend addObject:newFeedItem];
+                if([[NSString stringWithFormat:@"%@",newFeedItem.feedId] isEqualToString:[NSString stringWithFormat:@"%@",curTopFeedItem.feedId]]){
+                    break;
+                }
+                [newFeedItems addObject:newFeedItem];
             }
         }
-        [feedItemsToPrepend addObjectsFromArray:currentFeed];
-        [self.categoryFeeds setObject:feedItemsToPrepend forKey:self.active_category_id];
+        [newFeedItems addObjectsFromArray:currentFeed];
+        [self.categoryFeeds removeObjectForKey:self.active_category_id];
+        [self.categoryFeeds setObject:newFeedItems forKey:self.active_category_id];
         prepend_feed = false;
     }else if([feed count] <= 0){
         self.end_of_feed = true;
@@ -268,8 +274,8 @@ NSMutableDictionary* _indexPathsToReload;
         }
         [catFeed addObjectsFromArray:feed];
     }
+    [self.tableView setDelegate:self];
     [self.tableView reloadData];
-    return;
 }
 
 //Returns the active categories feed based on the selected filters.

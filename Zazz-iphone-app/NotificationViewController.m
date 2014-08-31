@@ -236,7 +236,7 @@ NSArray* notifications;
         case CommentOnPhoto:{
             Photo* photo = (Photo*)[notif content];
             DetailViewItem* detailItem = [[DetailViewItem alloc] init];
-            [detailItem setPhoto:photo.image];
+            [detailItem setImage:photo.image];
             [detailItem setDescription:photo.description];
             [detailItem setCategories:photo.categories];
             [detailItem setType:COMMENT_TYPE_PHOTO];
@@ -250,7 +250,7 @@ NSArray* notifications;
         case WallPost:{
             Post* post = (Post*)[notif content];
             DetailViewItem* detailItem = [[DetailViewItem alloc] init];
-            [detailItem setPhoto:nil];
+            [detailItem setImage:nil];
             [detailItem setDescription:post.message];
             [detailItem setCategories:post.categories];
             [detailItem setType:COMMENT_TYPE_POST];
@@ -264,7 +264,7 @@ NSArray* notifications;
         case NewEvent:{
             Event* event = (Event*)[notif content];
             DetailViewItem* detailItem = [[DetailViewItem alloc] init];
-            [detailItem setPhoto:nil];
+            [detailItem setImage:nil];
             [detailItem setDescription:event.description];
             [detailItem setType:COMMENT_TYPE_EVENT];
             [detailItem setItemId:event.eventId];

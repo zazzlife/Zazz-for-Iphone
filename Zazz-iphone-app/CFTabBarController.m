@@ -103,9 +103,6 @@ BOOL enabled = true;
     }
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-}
-
 -(void)goHome{
     UIBarButtonItem* sender = [[UIBarButtonItem alloc]init];
     sender.tag = 0;

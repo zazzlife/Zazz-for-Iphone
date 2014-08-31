@@ -27,6 +27,8 @@
 		2A15422719ADFC86006216B8 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A15422519ADFC86006216B8 /* Profile.m */; };
 		2A15422A19ADFD47006216B8 /* ZazzMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A15422919ADFD47006216B8 /* ZazzMe.m */; };
 		2A15422D19ADFF26006216B8 /* UserDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A15422C19ADFF26006216B8 /* UserDetails.m */; };
+		2A15423319B13F93006216B8 /* CustomPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A15423119B13F93006216B8 /* CustomPopSegue.m */; };
+		2A15423419B13F93006216B8 /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A15423219B13F93006216B8 /* CustomPushSegue.m */; };
 		2A2385E2194521D300F7FABD /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385C4194521D300F7FABD /* MKAnnotationView+WebCache.m */; };
 		2A2385E3194521D300F7FABD /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385C6194521D300F7FABD /* NSData+ImageContentType.m */; };
 		2A2385E4194521D300F7FABD /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385C8194521D300F7FABD /* SDImageCache.m */; };
@@ -57,8 +59,6 @@
 		2A414503196898BE001C1090 /* CHTumblrMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A414502196898BE001C1090 /* CHTumblrMenuView.m */; };
 		2A46CCF4199C204600996D84 /* RoundedUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A46CCF3199C204600996D84 /* RoundedUIButton.m */; };
 		2A470D3F191FE863008DBFED /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D3E191FE863008DBFED /* RegisterViewController.m */; };
-		2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7719245502008DBFED /* CustomPushSegue.m */; };
-		2A470D7B19247A09008DBFED /* CustomPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A470D7A19247A09008DBFED /* CustomPopSegue.m */; };
 		2A47F5641936F47A001CF1AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A47F5631936F47A001CF1AE /* Images.xcassets */; };
 		2A5FAEB5191BF7CA00B917AB /* ZazzApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FAEB4191BF7CA00B917AB /* ZazzApi.m */; };
 		2A67359A1966F18A00707224 /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A6735991966F18A00707224 /* CreateMessageViewController.m */; };
@@ -153,6 +153,9 @@
 		2A15422919ADFD47006216B8 /* ZazzMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzMe.m; path = API_Module/ZazzMe.m; sourceTree = "<group>"; };
 		2A15422B19ADFF26006216B8 /* UserDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserDetails.h; path = "Zazz-iphone-app/models/UserDetails.h"; sourceTree = "<group>"; };
 		2A15422C19ADFF26006216B8 /* UserDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserDetails.m; path = "Zazz-iphone-app/models/UserDetails.m"; sourceTree = "<group>"; };
+		2A15422E19B13D4A006216B8 /* EmbedFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbedFeedViewController.h; sourceTree = "<group>"; };
+		2A15423119B13F93006216B8 /* CustomPopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopSegue.m; sourceTree = "<group>"; };
+		2A15423219B13F93006216B8 /* CustomPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPushSegue.m; sourceTree = "<group>"; };
 		2A2385C3194521D300F7FABD /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		2A2385C4194521D300F7FABD /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		2A2385C5194521D300F7FABD /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -215,9 +218,7 @@
 		2A470D3D191FE863008DBFED /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		2A470D3E191FE863008DBFED /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		2A470D7619245502008DBFED /* CustomPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
-		2A470D7719245502008DBFED /* CustomPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPushSegue.m; sourceTree = "<group>"; };
 		2A470D7919247A09008DBFED /* CustomPopSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopSegue.h; sourceTree = "<group>"; };
-		2A470D7A19247A09008DBFED /* CustomPopSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopSegue.m; sourceTree = "<group>"; };
 		2A47F5611936F37A001CF1AE /* UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor.h; sourceTree = "<group>"; };
 		2A47F5621936F37A001CF1AE /* UIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImage.h; sourceTree = "<group>"; };
 		2A47F5631936F47A001CF1AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -440,10 +441,11 @@
 		2A470D7C19247A11008DBFED /* Segues */ = {
 			isa = PBXGroup;
 			children = (
-				2A470D7619245502008DBFED /* CustomPushSegue.h */,
-				2A470D7719245502008DBFED /* CustomPushSegue.m */,
 				2A470D7919247A09008DBFED /* CustomPopSegue.h */,
-				2A470D7A19247A09008DBFED /* CustomPopSegue.m */,
+				2A15423119B13F93006216B8 /* CustomPopSegue.m */,
+				2A470D7619245502008DBFED /* CustomPushSegue.h */,
+				2A15423219B13F93006216B8 /* CustomPushSegue.m */,
+				2A15422E19B13D4A006216B8 /* EmbedFeedViewController.h */,
 			);
 			name = Segues;
 			sourceTree = "<group>";
@@ -821,6 +823,7 @@
 				2A15422D19ADFF26006216B8 /* UserDetails.m in Sources */,
 				2A15422619ADFC86006216B8 /* GenericModel.m in Sources */,
 				2A01CBA5196B156200C4B81F /* DetailViewController.m in Sources */,
+				2A15423419B13F93006216B8 /* CustomPushSegue.m in Sources */,
 				2A2385E9194521D300F7FABD /* SDWebImageManager.m in Sources */,
 				0DD31809191B2063003D5630 /* HomeViewController.m in Sources */,
 				0DD3180C191B2A3A003D5630 /* FeedTableViewCell.m in Sources */,
@@ -840,6 +843,7 @@
 				2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */,
 				2AAFF95E1981D769001CC4CC /* CTAssetsViewControllerTransition.m in Sources */,
 				2AAFF9531981D769001CC4CC /* CTAssetItemViewController.m in Sources */,
+				2A15423319B13F93006216B8 /* CustomPopSegue.m in Sources */,
 				2AAFF9601981D769001CC4CC /* PhotoPicker.m in Sources */,
 				2AAFF9521981D769001CC4CC /* ALAssetsGroup+isEqual.m in Sources */,
 				2A39F2E6193DEB04002E8873 /* CFTabBarController.m in Sources */,
@@ -875,7 +879,6 @@
 				2AAFF95B1981D769001CC4CC /* CTAssetsSupplementaryView.m in Sources */,
 				2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */,
 				2AAFF95C1981D769001CC4CC /* CTAssetsViewCell.m in Sources */,
-				2A470D7819245502008DBFED /* CustomPushSegue.m in Sources */,
 				2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */,
 				2A01CBA4196B156200C4B81F /* CommentCell.m in Sources */,
 				2A01CBB9196B289400C4B81F /* ZazzLogin.m in Sources */,
@@ -883,7 +886,6 @@
 				2A414503196898BE001C1090 /* CHTumblrMenuView.m in Sources */,
 				2AAFF95D1981D769001CC4CC /* CTAssetsViewController.m in Sources */,
 				2AAFF9571981D769001CC4CC /* CTAssetsPageViewController.m in Sources */,
-				2A470D7B19247A09008DBFED /* CustomPopSegue.m in Sources */,
 				2AAFF94F1981D769001CC4CC /* ALAsset+accessibilityLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -305,6 +305,7 @@ float FILTER_VIEW_PADDING = 7;
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if(![segue.identifier isEqualToString:@"embedFeedViewController"]) return;
     FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
+    [feedController initFeedViewController];
     [self setFeedTableViewController:feedController];
     [feedController setScrollDelegate:self];
 }

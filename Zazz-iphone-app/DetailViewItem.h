@@ -14,7 +14,7 @@
 @property NSString* itemId;
 @property NSString* type;
 @property NSString* description;
-@property UIImage* photo;
+@property UIImage* image;
 @property User* user;
 @property int likes;
 @property NSMutableArray* categories;

@@ -13,6 +13,7 @@
 
 @synthesize photoId;
 @synthesize albumId;
+//@synthesize photoUrl;
 @synthesize description;
 @synthesize user;
 @synthesize image;

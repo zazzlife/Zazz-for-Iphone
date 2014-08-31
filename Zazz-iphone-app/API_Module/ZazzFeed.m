@@ -22,6 +22,7 @@ NSString* feedId = @"";
 NSString* userId = @"";
 
 -(void) doAction:(NSString*)action{
+    NSLog(@"action: %@",action);
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
@@ -53,7 +54,7 @@ NSString* userId = @"";
 
 - (void) getUserFeed:(NSString*)user_id{
     userId = user_id;
-    NSString* action = [NSString stringWithFormat:@"feeds/%@?lastFeed=-1", user_id];
+    NSString* action = [NSString stringWithFormat:@"feeds/%@", user_id];
     [self doAction:action];
 }
 - (void) getUserFeed:(NSString*)user_id after:(NSString *)feed_id{
@@ -73,7 +74,7 @@ NSString* userId = @"";
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSError* error = nil;
     NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"received: %@",myString);
+//    NSLog(@"received: %@",myString);
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:self._receivedData options:0 error:&error ];
     if(array == nil){
         NSString *myString = [[NSString alloc] initWithData:self._receivedData encoding:NSUTF8StringEncoding];

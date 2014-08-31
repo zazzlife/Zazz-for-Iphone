@@ -68,7 +68,7 @@ int _albumObserversCounter;
     Photo* photo = [((NSMutableArray*)[self._feed content]) objectAtIndex:idx];
     
     DetailViewItem* detailItem = [[DetailViewItem alloc]init];
-    [detailItem setPhoto:photo.image];
+    [detailItem setImage:photo.image];
     [detailItem setType:COMMENT_TYPE_PHOTO];
     [detailItem setItemId:photo.photoId];
     [detailItem setComments:_feed.comments];
@@ -95,10 +95,7 @@ int _albumObserversCounter;
     [self set_feed:feed];
     [self.username setText:feed.user.username];
     [self.timestamp setText:[ZazzApi formatDateString:feed.timestamp]];
-    [self.userImage setImageWithURL:feed.user.photoUrl];
-    if(feed.user.image == nil){
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotUserImageNotification:) name:@"gotProfile" object:nil];
-    }
+    [self.userImage setImageWithURL:[NSURL URLWithString:feed.user.photoUrl]];
     [self.feedCellContentView setFrame:CGRectMake(0, CELL_HEADER_HEIGHT, self.tableView.frame.size.width-(2*CELL_PADDING_SIDES), 40)];
     for(UIView* view in self.feedCellContentView.subviews){
         [view removeFromSuperview];
@@ -160,12 +157,12 @@ int _albumObserversCounter;
     [self.feedCellBackgroundView setFrame:CGRectMake(CELL_PADDING_SIDES, CELL_PADDING_TOP, self.tableView.frame.size.width - (2*CELL_PADDING_SIDES), _height - CELL_PADDING_TOP)];
     [self.feedCellContentView setFrame:CGRectMake(0, CELL_HEADER_HEIGHT, self.feedCellBackgroundView.frame.size.width, _height - CELL_HEADER_HEIGHT - CELL_PADDING_TOP)];
 }
-
--(void)gotUserImageNotification:(NSNotification *)notif{
-    if(! [notif.name isEqualToString:@"gotProfile"]) return;
-    Profile* profile = notif.object;
-    if(profile.profile_id != self._feed.user.userId) return;
-    [self.userImage setImage:profile.image];
-}
+//
+//-(void)gotUserImageNotification:(NSNotification *)notif{
+//    if(! [notif.name isEqualToString:@"gotProfile"]) return;
+//    Profile* profile = notif.object;
+//    if(profile.profile_id != self._feed.user.userId) return;
+//    [self.userImage setImage:profile.image];
+//}
 
 @end
