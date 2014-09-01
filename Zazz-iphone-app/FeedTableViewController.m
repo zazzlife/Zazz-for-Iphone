@@ -32,6 +32,8 @@ bool simple_refresh = false; //don't append/prepend data. just refresh existing 
 @synthesize showEvents;
 @synthesize showPhotos;
 @synthesize showVideos;
+@synthesize showPosts;
+
 
 int const GET_ALL_FEED = 0;
 int const GET_ALL_FEED_AFTER = 1;
@@ -48,6 +50,7 @@ NSMutableDictionary* _indexPathsToReload;
     showEvents = false;
     showPhotos = false;
     showVideos = false;
+    showPosts = false;
     
     _indexPathsToReload = [[NSMutableDictionary alloc] init];
     
@@ -284,10 +287,11 @@ NSMutableDictionary* _indexPathsToReload;
     if(![activeFeed count]) return activeFeed;
     NSIndexSet* activeIndexs = [activeFeed indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
         Feed* feedItem = (Feed*) obj;
-        if(!showEvents && !showPhotos && !showVideos) return true;
+        if(!showPosts && !showEvents && !showPhotos && !showVideos) return true;
         if([feedItem.feedType isEqualToString:@"Photo"] && showPhotos) return true;
         if([feedItem.feedType isEqualToString:@"Video"] && showVideos) return true;
         if([feedItem.feedType isEqualToString:@"Event"] && showEvents) return true;
+        if([feedItem.feedType isEqualToString:@"Post"] && showPosts) return true;
         return false;
     }];
     return [activeFeed objectsAtIndexes:activeIndexs];

@@ -32,5 +32,10 @@
 @property IBOutlet UILabel* followers;
 @property IBOutlet UIButton* follow;
 @property IBOutlet UISegmentedControl* filterButtons;
+@property IBOutlet UIView* postFeedView;
+@property IBOutlet UIView* mediaFeedView;
+
+
+-(IBAction)changeFeed:(UISegmentedControl*)sender;
 
 @end

@@ -270,6 +270,9 @@
                                             <segment title="" image="user icon"/>
                                         </segments>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="changeFeed:" destination="00c-U6-IMJ" eventType="valueChanged" id="wrj-lZ-fKh"/>
+                                        </connections>
                                     </segmentedControl>
                                     <view contentMode="scaleToFill" id="C7a-SP-EkX" userLabel="NavView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
@@ -310,12 +313,20 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
-                                    <containerView contentMode="scaleToFill" id="N5T-x7-9Zf">
+                                    <containerView contentMode="scaleToFill" id="N5T-x7-9Zf" userLabel="postView">
                                         <rect key="frame" x="0.0" y="295" width="320" height="437"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="l1V-EV-eRO" kind="embed" identifier="embedProfileFeedViewController" id="UqG-YO-jn2"/>
+                                        </connections>
+                                    </containerView>
+                                    <containerView hidden="YES" contentMode="scaleToFill" id="Ddu-ie-v5G" userLabel="mediaView">
+                                        <rect key="frame" x="0.0" y="295" width="320" height="437"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="t5d-pf-eQ2" kind="embed" identifier="embedProfileFeedMediaViewController" id="Cne-Hu-UST"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -330,7 +341,9 @@
                         <outlet property="followers" destination="r6s-2q-zda" id="Z6C-VV-1To"/>
                         <outlet property="following" destination="E6C-gs-1ll" id="TVb-ul-l2x"/>
                         <outlet property="likes" destination="gSw-Xe-dPO" id="t2u-YF-lRd"/>
+                        <outlet property="mediaFeedView" destination="Ddu-ie-v5G" id="yTk-OO-k7S"/>
                         <outlet property="name" destination="KA6-98-1TO" id="q8Z-kc-Cne"/>
+                        <outlet property="postFeedView" destination="N5T-x7-9Zf" id="suU-eJ-uUl"/>
                         <outlet property="profilePhoto" destination="RU0-iu-mxd" id="m1K-Rk-Cdd"/>
                         <outlet property="school" destination="HuW-78-TTO" id="lnW-wd-hBp"/>
                         <outlet property="scrollView" destination="3p2-oD-UwW" id="Y6L-ns-VWX"/>
@@ -441,7 +454,48 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ky-43-08v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2158" y="-108"/>
+            <point key="canvasLocation" x="1997" y="14"/>
+        </scene>
+        <!--Media Feed View Controller-->
+        <scene sceneID="KeF-DL-dtj">
+            <objects>
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="t5d-pf-eQ2" customClass="MediaFeedViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uDM-Zk-lgU">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="437"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lfi-ym-iQX">
+                            <size key="itemSize" width="104" height="104"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="epG-mr-L8u">
+                                <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qIs-iz-F8c">
+                                            <rect key="frame" x="0.0" y="0.0" width="104" height="104"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="t5d-pf-eQ2" id="Kb6-mR-oej"/>
+                            <outlet property="delegate" destination="t5d-pf-eQ2" id="zZR-dj-vSU"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vk1-B2-UKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1997" y="538"/>
         </scene>
         <!--Left Navigation View Controller-->
         <scene sceneID="yI2-Nh-wch">
@@ -580,7 +634,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1908" y="-565"/>
+            <point key="canvasLocation" x="1997" y="-565"/>
         </scene>
         <!--Create Message View Controller-->
         <scene sceneID="OgT-By-6Vw">

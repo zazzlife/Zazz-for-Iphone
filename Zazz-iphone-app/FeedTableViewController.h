@@ -22,6 +22,7 @@
 @property NSString* feed_user_id;
 @property NSArray* filteredFeed;
 
+@property bool showPosts;
 @property bool showPhotos;
 @property bool showEvents;
 @property bool showVideos;

@@ -28,6 +28,17 @@
     [self scrollViewDidScroll:self.feedTableViewController.tableView];
 }
 
+-(IBAction)changeFeed:(UISegmentedControl*)sender{
+    int segment = [sender selectedSegmentIndex];
+    if(segment == 0){
+        [self.mediaFeedView setHidden:false];
+        [self.postFeedView setHidden:true];
+    }else{
+        [self.mediaFeedView setHidden:true];
+        [self.postFeedView setHidden:false];
+    }
+}
+
 -(void)gotMe:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotMe"]) return;
     User* user = notif.object;
@@ -91,10 +102,13 @@
 
 #pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if(![segue.identifier isEqualToString:@"embedProfileFeedViewController"]) return;
-    FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
-    [self setFeedTableViewController:feedController];
-    [self embedFeedTableViewController];
+    if([segue.identifier isEqualToString:@"embedProfileFeedViewController"]){
+        FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
+        [self setFeedTableViewController:feedController];
+        [self embedFeedTableViewController];
+    }else if([segue.identifier isEqualToString:@"embedProfileFeedMediaViewController"]){
+        NSLog(@"included media");
+    }
 }
 
 -(void)embedFeedTableViewController{
@@ -103,6 +117,7 @@
     [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
     [self.feedTableViewController setScrollDelegate:self];
     [self.feedTableViewController initFeedViewController];
+    [self.feedTableViewController setShowPosts:true];
 }
 
 
