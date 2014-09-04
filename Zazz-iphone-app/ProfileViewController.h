@@ -10,12 +10,14 @@
 #import "FeedTableViewController.h"
 #import "CFTabBarController.h"
 #import "Profile.h"
+#import "MediaFeedViewController.h"
 
 #define PROFILE_PAGE_PHOTO_HEIGHT 140
 
 @interface ProfileViewController : UIViewController <CFTabBarViewDelegate, StickyTopScrollViewDelegate>
 
 @property FeedTableViewController* feedTableViewController;
+@property MediaFeedViewController* mediaFeedViewController;
 
 @property NSString* user_id;
 @property Profile* _profile;
@@ -34,6 +36,7 @@
 @property IBOutlet UISegmentedControl* filterButtons;
 @property IBOutlet UIView* postFeedView;
 @property IBOutlet UIView* mediaFeedView;
+@property IBOutlet UIView* topContainer;
 
 
 -(IBAction)changeFeed:(UISegmentedControl*)sender;

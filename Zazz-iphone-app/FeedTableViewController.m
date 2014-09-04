@@ -164,7 +164,6 @@ NSMutableDictionary* _indexPathsToReload;
 }
 
 
-
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
     if(decelerate)return;
     if([self.scrollDelegate respondsToSelector:@selector(scrollViewToTopIfNeeded:)]){
@@ -176,6 +175,16 @@ NSMutableDictionary* _indexPathsToReload;
     if([self.scrollDelegate respondsToSelector:@selector(scrollViewToTopIfNeeded:)]){
         [self.scrollDelegate scrollViewToTopIfNeeded:scrollView];
     }
+}
+
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+//    if(scrollView.contentOffset.y){
+//        [scrollView setScrollEnabled:true];
+//        [scrollView setScrollsToTop:true];
+//        [scrollView setContentOffset:CGPointMake(0, 0)];
+//        id<UIScrollViewDelegate> delegateScroll = self.scrollDelegate;
+//        [delegateScroll scrollViewDidScroll:scrollView];
+//    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -228,8 +237,6 @@ NSMutableDictionary* _indexPathsToReload;
     NSIndexPath* indexpath = [_indexPathsToReload objectForKey:photo.photoId];
     if(!indexpath )return;
     
-    NSLog(@"index: %d - %d",indexpath.section,indexpath.row);
-    
     [self.tableView reloadData];
 }
 
@@ -278,6 +285,7 @@ NSMutableDictionary* _indexPathsToReload;
         [catFeed addObjectsFromArray:feed];
     }
     [self.tableView setDelegate:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"feedDataSourceUpdated" object:nil];
     [self.tableView reloadData];
 }
 

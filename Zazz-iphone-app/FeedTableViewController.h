@@ -32,5 +32,6 @@
 -(IBAction)doRefresh:(id)sender;
 -(void)initFeedViewController;
 -(void)getFeedAfter:(NSString*)feed_id;
+-(NSArray*)getActiveFeed;
 
 @end

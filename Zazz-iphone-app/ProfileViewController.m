@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "FeedTableViewController.h"
+#import "MediaFeedViewController.h"
 #import "AppDelegate.h"
 #import "UIImageView+WebCache.h"
 
@@ -25,17 +26,32 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self scrollViewDidScroll:self.feedTableViewController.tableView];
+    [self.scrollView setContentOffset:CGPointMake(0, 0)];
+//    [self scrollViewDidScroll:self.feedTableViewController.tableView];
 }
 
 -(IBAction)changeFeed:(UISegmentedControl*)sender{
     int segment = [sender selectedSegmentIndex];
     if(segment == 0){
+        [self.feedTableViewController setShowPosts:false];
+        [self.feedTableViewController setShowEvents:false];
+        [self.feedTableViewController setShowPhotos:true];
+        [self.feedTableViewController setShowVideos:true];
+        [self.mediaFeedViewController.collectionView reloadData];
         [self.mediaFeedView setHidden:false];
+        [self.mediaFeedViewController.collectionView setScrollEnabled:true];
         [self.postFeedView setHidden:true];
+        [self.feedTableViewController.tableView setScrollEnabled:false];
     }else{
+        [self.feedTableViewController setShowPosts:true];
+        [self.feedTableViewController setShowEvents:true];
+        [self.feedTableViewController setShowPhotos:false];
+        [self.feedTableViewController setShowVideos:false];
+        [self.feedTableViewController.tableView reloadData];
         [self.mediaFeedView setHidden:true];
+        [self.mediaFeedViewController.collectionView setScrollEnabled:false];
         [self.postFeedView setHidden:false];
+        [self.feedTableViewController.tableView setScrollEnabled:true];
     }
 }
 
@@ -72,30 +88,32 @@
     [self.view.superview setHidden:hidden];
     [self.feedTableViewController.tableView setScrollsToTop:true ];
     if(hidden){
+        [self.mediaFeedViewController.collectionView setScrollsToTop:false];
         [self.feedTableViewController.tableView setScrollsToTop:false ];
     }
 }
 
-
--(void)scrollViewToTopIfNeeded:(UIScrollView*)scrollView{
-    float filter_bottom_y = CGRectGetMaxY(self.filterButtons.frame);
-    float delta = scrollView.contentOffset.y;
-    if(delta > 0 && delta < filter_bottom_y){
-        [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-        [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-    }
-}
+/* SCROLL DELEGATION BROKEN... TODO-fix it */
+//-(void)scrollViewToTopIfNeeded:(UIScrollView*)scrollView{
+//    float filter_bottom_y = CGRectGetMaxY(self.topContainer.frame);
+//    float delta = scrollView.contentOffset.y;
+//    if(delta > 0 && delta < filter_bottom_y){
+//        [self.scrollView setContentOffset:CGPointZero animated:YES];
+//        [scrollView setContentOffset:CGPointZero animated:YES];
+//    }
+//}
 
 -(void)scrollViewDidScroll:(UIScrollView*)scrollView{
+    float filter_view_height = CGRectGetMaxY(self.topContainer.frame);
     float delta = scrollView.contentOffset.y;
     if(delta <= 0){
-        [self.scrollView setContentOffset:CGPointMake(0, 0)];
+        [self.scrollView setContentOffset:CGPointZero];
     }
-    else if(delta < CGRectGetMaxY(self.filterButtons.frame)){
+    else if(delta < filter_view_height){
         [self.scrollView setContentOffset:CGPointMake(0, delta)];
     }
-    else if (delta >= CGRectGetMaxY(self.filterButtons.frame)){
-        [self.scrollView setContentOffset:CGPointMake(0, CGRectGetMaxY(self.filterButtons.frame))];
+    else if (delta >= filter_view_height){
+        [self.scrollView setContentOffset:CGPointMake(0, CGRectGetMaxY(self.topContainer.frame))];
     }
 }
 
@@ -103,21 +121,26 @@
 #pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"embedProfileFeedViewController"]){
-        FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
-        [self setFeedTableViewController:feedController];
-        [self embedFeedTableViewController];
+        [self setFeedTableViewController:(FeedTableViewController*)segue.destinationViewController];
     }else if([segue.identifier isEqualToString:@"embedProfileFeedMediaViewController"]){
-        NSLog(@"included media");
+        [self setMediaFeedViewController:(MediaFeedViewController*)segue.destinationViewController];
     }
+    [self embedFeedTableViewController];
 }
 
 -(void)embedFeedTableViewController{
-    if(!(self.feedTableViewController && self._profile))
+    if(!(self.feedTableViewController && self._profile && self.mediaFeedViewController))
         return;
+    
     [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
     [self.feedTableViewController setScrollDelegate:self];
     [self.feedTableViewController initFeedViewController];
     [self.feedTableViewController setShowPosts:true];
+    
+    [self.mediaFeedViewController setScrollDelegate:self];
+    [self.mediaFeedViewController setFeedTableViewController:self.feedTableViewController];
+    [self.mediaFeedViewController viewDidEmbed];
+    
 }
 
 

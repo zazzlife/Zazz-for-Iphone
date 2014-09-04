@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FeedTableViewController.h"
 
-@interface MediaFeedViewController : UICollectionViewController
+@interface MediaFeedViewController : UICollectionViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+
+@property UIViewController<StickyTopScrollViewDelegate>* scrollDelegate;
+@property FeedTableViewController* feedTableViewController;
+
+-(void)viewDidEmbed;
 
 @end

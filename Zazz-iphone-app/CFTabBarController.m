@@ -15,10 +15,10 @@
 
 @implementation CFTabBarController
 
-const int TAG_FEED_VIEW = 0;
-const int TAG_POST_VIEW = 1;
-const int TAG_PROFILE_VIEW = 2;
-int _activeTagView = 0;
+const int TAG_FEED_VIEW = 1;
+const int TAG_POST_VIEW = 2;
+const int TAG_PROFILE_VIEW = 3;
+int _activeTagView = 1;
 
 
 CGRect FRAME_FULL;
@@ -55,27 +55,16 @@ BOOL enabled = true;
     [self.tabBar setHidden:false];
     CGRect tabBarFrame = self.tabBar.frame;
     [AppDelegate removeZazzBackgroundLogo];
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated{
     UIImage* tabImage = [UIImage imageNamed:@"post button"];
     [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
     [self.postButton setImage:tabImage];
-    [postView setViewHidden:true];
-}
-
--(UIView*)getActiveChildView{
-    UIView* activeView;
-    switch(_activeTagView){
-        case TAG_POST_VIEW:
-            activeView = postView.view;
-        case TAG_PROFILE_VIEW:
-            activeView = profileView.view;
-        case TAG_FEED_VIEW:
-        default:
-            activeView = homeView.view;
+    if(_activeTagView == TAG_FEED_VIEW){
+        [self goHome];
     }
-    return activeView;
 }
 
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender{
@@ -98,7 +87,7 @@ BOOL enabled = true;
             [postView setViewHidden:true];
             [profileView setViewHidden:true];
             [homeView setViewHidden:false];
-            _activeTagView=TAG_POST_VIEW;
+            _activeTagView=TAG_FEED_VIEW;
             break;
     }
 }

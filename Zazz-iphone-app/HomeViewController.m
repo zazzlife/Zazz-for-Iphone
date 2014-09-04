@@ -270,11 +270,12 @@ float FILTER_VIEW_PADDING = 7;
 #pragma mark - CFTabBarViewDelegate method
 -(void)setViewHidden:(BOOL)hidden{
     [self.view.superview setHidden:hidden];
-    [self.feedTableViewController.tableView setScrollsToTop:true];
     if(hidden){
         [self.feedTableViewController.tableView setScrollsToTop:false];
         if(right_active) [self rightDrawerButton:nil]; //close right drawer first.
         if(left_active) [self leftDrawerButton:nil]; //close right drawer first.
+    }else{
+        [self.feedTableViewController.tableView setScrollsToTop:true];
     }
 }
 
@@ -282,21 +283,21 @@ float FILTER_VIEW_PADDING = 7;
     float filter_bottom_y = CGRectGetMaxY(self.filterView.frame);
     float delta = scrollView.contentOffset.y;
     if(delta > 0 && delta < filter_bottom_y){
-        [self.centerScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-        [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+        [self.centerScrollView setContentOffset:CGPointZero animated:YES];
+        [scrollView setContentOffset:CGPointZero animated:YES];
     }
 }
 
 -(void)scrollViewDidScroll:(UIScrollView*)scrollView{
-    float filter_view_height = self.filterView.frame.size.height;
+    float filter_view_height = CGRectGetMaxY(self.filterView.frame);
     float delta = scrollView.contentOffset.y;
     if(delta <= 0){
-        [self.centerScrollView setContentOffset:CGPointMake(0, 0)];
+        [self.centerScrollView setContentOffset:CGPointZero];
     }
-    else if(delta < CGRectGetMaxY(self.filterView.frame)){
+    else if(delta < filter_view_height){
         [self.centerScrollView setContentOffset:CGPointMake(0, delta)];
     }
-    else if (delta >= CGRectGetMaxY(self.filterView.frame)){
+    else if (delta >= filter_view_height){
         [self.centerScrollView setContentOffset:CGPointMake(0, CGRectGetMaxY(self.filterView.frame))];
     }
 }
