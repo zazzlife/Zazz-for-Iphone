@@ -86,7 +86,7 @@ int active_action = -1;
     if(!hidden){
         //showing
         [menuView showAndSetBackgroundSelectedBlock:^{
-            [[[AppDelegate getAppDelegate] appTabBar] goHome];
+            [self setViewHidden:true];
         }];
     }else{
         //hiding

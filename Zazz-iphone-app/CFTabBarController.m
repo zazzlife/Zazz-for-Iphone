@@ -74,7 +74,7 @@ BOOL enabled = true;
             //[homeView setViewHidden:true];
             //[profileView setViewHidden:true];
             [postView setViewHidden:false];
-            _activeTagView = TAG_POST_VIEW;
+//            _activeTagView = TAG_POST_VIEW;
             break;
         case 3://profile
             [homeView setViewHidden:true];
