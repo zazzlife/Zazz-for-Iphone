@@ -60,8 +60,13 @@ NSMutableDictionary* _indexPathsToReload;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotZazzFeed:) name:@"gotFeed" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotPhotoImageNotification:) name:@"gotPhotoImage" object:nil];
-    
-    [self doRefresh:self.refreshControl];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    if(self.scrollDelegate){
+        //this view is embeded and has a parent.
+        [self doRefresh:self.refreshControl];
+    }
 }
 
 #pragma mark - Table view data source
