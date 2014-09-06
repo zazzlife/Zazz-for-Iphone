@@ -79,7 +79,10 @@
         if(!profile.isCurrentUserFollowingTargetUser){
             [self.follow setTitle:@"Following" forState:UIControlStateNormal];
         }
-        [self embedFeedTableViewController];
+        if(self.feedTableViewController){
+            [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
+            [self.feedTableViewController doRefresh:nil];
+        }
     }
 }
 
@@ -122,25 +125,17 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"embedProfileFeedViewController"]){
         [self setFeedTableViewController:(FeedTableViewController*)segue.destinationViewController];
+        [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
+        [self.feedTableViewController setRequire_feed_user_id:true];
+        [self.feedTableViewController setScrollDelegate:self];
+        [self.feedTableViewController setShowPosts:true];
+        [self.feedTableViewController viewDidEmbed];
     }else if([segue.identifier isEqualToString:@"embedProfileFeedMediaViewController"]){
         [self setMediaFeedViewController:(MediaFeedViewController*)segue.destinationViewController];
+        [self.mediaFeedViewController setScrollDelegate:self];
+        [self.mediaFeedViewController setFeedTableViewController:self.feedTableViewController];
+        [self.mediaFeedViewController viewDidEmbed];
     }
-    [self embedFeedTableViewController];
-}
-
--(void)embedFeedTableViewController{
-    if(!(self.feedTableViewController && self._profile && self.mediaFeedViewController))
-        return;
-    
-    [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
-    [self.feedTableViewController setScrollDelegate:self];
-    [self.feedTableViewController initFeedViewController];
-    [self.feedTableViewController setShowPosts:true];
-    
-    [self.mediaFeedViewController setScrollDelegate:self];
-    [self.mediaFeedViewController setFeedTableViewController:self.feedTableViewController];
-    [self.mediaFeedViewController viewDidEmbed];
-    
 }
 
 

@@ -692,9 +692,9 @@
 		5E8AA6F618FCAED600C99D9F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5E8AA6F718FCAED600C99D9F /* Zazz-iphone-app-Info.plist */,
 				5E8AA6F818FCAED600C99D9F /* InfoPlist.strings */,
 				5E8AA6FB18FCAED600C99D9F /* main.m */,
+				5E8AA6F718FCAED600C99D9F /* Zazz-iphone-app-Info.plist */,
 				5E8AA6FD18FCAED600C99D9F /* Zazz-iphone-app-Prefix.pch */,
 			);
 			name = "Supporting Files";

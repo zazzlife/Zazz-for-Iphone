@@ -19,18 +19,19 @@
 @property UIViewController<StickyTopScrollViewDelegate>* scrollDelegate;
 @property NSMutableDictionary* categoryFeeds;
 @property NSString* active_category_id;
-@property NSString* feed_user_id;
 @property NSArray* filteredFeed;
+@property NSString* feed_user_id;
+
+@property bool end_of_feed;
+@property bool require_feed_user_id;
 
 @property bool showPosts;
 @property bool showPhotos;
 @property bool showEvents;
 @property bool showVideos;
 
-@property BOOL end_of_feed;
-
 -(IBAction)doRefresh:(id)sender;
--(void)initFeedViewController;
+-(void)viewDidEmbed;
 -(void)getFeedAfter:(NSString*)feed_id;
 -(NSArray*)getActiveFeed;
 

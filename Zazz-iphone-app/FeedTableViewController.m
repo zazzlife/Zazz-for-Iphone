@@ -23,6 +23,7 @@
 bool prepend_feed = false; //used when refreshing the feed to clear all seen feeds.
 bool getting_feed = false; //true when a getZazzFeed call is active.
 bool simple_refresh = false; //don't append/prepend data. just refresh existing content.
+
 @synthesize scrollDelegate;
 @synthesize active_category_id;
 @synthesize feed_user_id;
@@ -44,13 +45,9 @@ int const GET_ALL_MY_FEED_AFTER = 5;
 
 NSMutableDictionary* _indexPathsToReload;
 
--(void)initFeedViewController{
+-(void)viewDidEmbed{
     prepend_feed = true;
     end_of_feed = false;
-    showEvents = false;
-    showPhotos = false;
-    showVideos = false;
-    showPosts = false;
     
     _indexPathsToReload = [[NSMutableDictionary alloc] init];
     
@@ -63,7 +60,7 @@ NSMutableDictionary* _indexPathsToReload;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    if(self.scrollDelegate){
+    if([self scrollDelegate]){
         //this view is embeded and has a parent.
         [self doRefresh:self.refreshControl];
     }
@@ -247,6 +244,7 @@ NSMutableDictionary* _indexPathsToReload;
 
 -(void)gotZazzFeed:(NSNotification *)notif{
     if (![notif.name isEqualToString:@"gotFeed"]) return;
+    if (self.require_feed_user_id && !self.feed_user_id) return;
     NSString* notif_feed_user_id = [NSString stringWithFormat:@"%@",[notif.userInfo objectForKey:@"user_id"]];
     NSString* self_feed_user_id = [NSString stringWithFormat:@"%@",feed_user_id];
     if(feed_user_id && ![self_feed_user_id isEqualToString:notif_feed_user_id])return;
