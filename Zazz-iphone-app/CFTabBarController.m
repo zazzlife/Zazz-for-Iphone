@@ -62,9 +62,9 @@ BOOL enabled = true;
     UIImage* tabImage = [UIImage imageNamed:@"post button"];
     [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
     [self.postButton setImage:tabImage];
-    if(_activeTagView == TAG_FEED_VIEW){
-        [self goHome];
-    }
+    UIBarButtonItem* simButton = [[UIBarButtonItem alloc] init];
+    [simButton setTag:_activeTagView];
+    [self didClickBarButton:simButton];
 }
 
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender{
@@ -90,12 +90,6 @@ BOOL enabled = true;
             _activeTagView=TAG_FEED_VIEW;
             break;
     }
-}
-
--(void)goHome{
-    UIBarButtonItem* sender = [[UIBarButtonItem alloc]init];
-    sender.tag = 0;
-    [self didClickBarButton:sender];
 }
 
 @end

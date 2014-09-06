@@ -166,6 +166,45 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="436"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" id="C7a-SP-EkX" userLabel="NavView">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uds-ne-e7J">
+                                                <rect key="frame" x="4" y="9" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="left bar icon">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="leftDrawerButton:" destination="RBc-fh-MYw" eventType="touchUpInside" id="JMd-yl-Akp"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="b1S-2r-EpJ">
+                                                <rect key="frame" x="268" y="9" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="settings">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="rightDrawerButton:" destination="RBc-fh-MYw" eventType="touchUpInside" id="lOp-2f-RMg"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" id="VS3-DA-7yE" userLabel="Divider">
+                                                <rect key="frame" x="0.0" y="56" width="319" height="1"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" red="0.98823535439999999" green="0.79607850309999995" blue="0.37647062539999998" alpha="1" colorSpace="deviceRGB"/>
+                                            </view>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="7cb-vM-wcm">
+                                                <rect key="frame" x="62" y="14" width="196" height="39"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="23"/>
+                                                <color key="textColor" red="0.88994738520408168" green="0.80715514158856638" blue="0.15921657464325492" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                     <view contentMode="scaleToFill" id="JhR-mo-cIF" userLabel="topContainer">
                                         <rect key="frame" x="0.0" y="57" width="320" height="239"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -280,45 +319,6 @@
                                             </segmentedControl>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" id="C7a-SP-EkX" userLabel="NavView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Uds-ne-e7J">
-                                                <rect key="frame" x="4" y="9" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="left bar icon">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="leftDrawerButton:" destination="RBc-fh-MYw" eventType="touchUpInside" id="JMd-yl-Akp"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="b1S-2r-EpJ">
-                                                <rect key="frame" x="268" y="9" width="50" height="50"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="settings">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="rightDrawerButton:" destination="RBc-fh-MYw" eventType="touchUpInside" id="lOp-2f-RMg"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" id="VS3-DA-7yE" userLabel="Divider">
-                                                <rect key="frame" x="0.0" y="56" width="319" height="1"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.98823535439999999" green="0.79607850309999995" blue="0.37647062539999998" alpha="1" colorSpace="deviceRGB"/>
-                                            </view>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="7cb-vM-wcm">
-                                                <rect key="frame" x="62" y="14" width="196" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="23"/>
-                                                <color key="textColor" red="0.88994738520408168" green="0.80715514158856638" blue="0.15921657464325492" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <containerView contentMode="scaleToFill" id="N5T-x7-9Zf" userLabel="postView">
                                         <rect key="frame" x="0.0" y="295" width="320" height="436"/>
