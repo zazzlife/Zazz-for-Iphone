@@ -11,11 +11,17 @@
 #import "MediaFeedViewController.h"
 #import "AppDelegate.h"
 #import "UIImageView+WebCache.h"
+#import "PhotoPicker.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "Photo.h"
+
 
 @implementation ProfileViewController
 
 @synthesize user_id;
 @synthesize _profile;
+
+PhotoPicker* _activePicker;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -138,5 +144,50 @@
     }
 }
 
+-(IBAction)changeProfileImage:(UIButton*)sender{
+    _activePicker = [[PhotoPicker alloc] initWithMediaReceiver:self];
+    [_activePicker pickAssets];
+}
+
+//Called by Create<Media>ViewControllers.
+-(void)setMediaAttachment:(NSArray*)media{
+    if (!media) return;
+    ALAsset* mediaAsset = [media objectAtIndex:0];
+    ALAssetRepresentation* representation = [mediaAsset defaultRepresentation];
+    // Retrieve the image orientation from the ALAsset
+    UIImageOrientation orientation = UIImageOrientationUp;
+    NSNumber* orientationValue = [mediaAsset valueForProperty:@"ALAssetPropertyOrientation"];
+    if (orientationValue != nil) {
+        orientation = [orientationValue intValue];
+    }
+    CGFloat scale  = 1;
+    UIImage* pic = [UIImage imageWithCGImage:[representation fullResolutionImage]
+                                         scale:scale orientation:orientation];
+    RSKImageCropViewController* imageCropVC = [[RSKImageCropViewController alloc] initWithImage:pic];
+    imageCropVC.delegate = self;
+    [self.navigationController pushViewController:imageCropVC animated:YES];
+}
+
+- (void)imageCropViewControllerDidCancelCrop:(RSKImageCropViewController *)controller{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// The original image has been cropped.
+- (void)imageCropViewController:(RSKImageCropViewController *)controller didCropImage:(UIImage *)croppedImage{
+    [self.profilePhoto setImage:croppedImage];
+    [self.navigationController popViewControllerAnimated:YES];
+    // upload the photo.
+    Photo* photo = [[Photo alloc] init];
+    [photo setImage:croppedImage];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadedPhoto:) name:@"madePost" object:nil];
+    [[AppDelegate zazzApi] postPhoto:photo];
+}
+
+-(void)uploadedPhoto:(NSNotification*)notif{
+    if (![notif.name isEqualToString:@"madePost"]) return;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"madePost" object:nil];
+    Photo* photo = notif.object;
+    [[AppDelegate zazzApi] setProfilePic:photo.photoId];
+}
 
 @end

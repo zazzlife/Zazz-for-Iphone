@@ -89,6 +89,10 @@
 		2AE749011996A3E0004A09CD /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE749001996A3E0004A09CD /* FeedTableViewController.m */; };
 		2AEA1C84197604E300A177F3 /* DetailViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C83197604E300A177F3 /* DetailViewItem.m */; };
 		2AEA1C8719769E9300A177F3 /* ZazzComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C8619769E9300A177F3 /* ZazzComments.m */; };
+		2AFED73219D723B200636689 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED72B19D723B200636689 /* RSKImageCropViewController.m */; };
+		2AFED73319D723B200636689 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED72D19D723B200636689 /* RSKImageScrollView.m */; };
+		2AFED73419D723B200636689 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED72F19D723B200636689 /* RSKTouchView.m */; };
+		2AFED73519D723B200636689 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED73119D723B200636689 /* UIImage+FixOrientation.m */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
 		5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
@@ -282,6 +286,15 @@
 		2AEA1C83197604E300A177F3 /* DetailViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewItem.m; sourceTree = "<group>"; };
 		2AEA1C8519769E9300A177F3 /* ZazzComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzComments.h; path = API_Module/ZazzComments.h; sourceTree = "<group>"; };
 		2AEA1C8619769E9300A177F3 /* ZazzComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzComments.m; path = API_Module/ZazzComments.m; sourceTree = "<group>"; };
+		2AFED72919D723B200636689 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
+		2AFED72A19D723B200636689 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
+		2AFED72B19D723B200636689 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
+		2AFED72C19D723B200636689 /* RSKImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageScrollView.h; sourceTree = "<group>"; };
+		2AFED72D19D723B200636689 /* RSKImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageScrollView.m; sourceTree = "<group>"; };
+		2AFED72E19D723B200636689 /* RSKTouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKTouchView.h; sourceTree = "<group>"; };
+		2AFED72F19D723B200636689 /* RSKTouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKTouchView.m; sourceTree = "<group>"; };
+		2AFED73019D723B200636689 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		2AFED73119D723B200636689 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -466,6 +479,7 @@
 		2A47F5601936F37A001CF1AE /* ext */ = {
 			isa = PBXGroup;
 			children = (
+				2AFED72819D723B200636689 /* RSKImageCropper */,
 				2AAFF92B1981D769001CC4CC /* CTAssetsPickerController */,
 				2A01CB97196B156200C4B81F /* SecretViewer */,
 				2A2385C2194521D300F7FABD /* SDWebImage */,
@@ -639,6 +653,22 @@
 				2A01CB9D196B156200C4B81F /* ToolBarView.m */,
 			);
 			name = DetailView;
+			sourceTree = "<group>";
+		};
+		2AFED72819D723B200636689 /* RSKImageCropper */ = {
+			isa = PBXGroup;
+			children = (
+				2AFED72919D723B200636689 /* RSKImageCropper.h */,
+				2AFED72A19D723B200636689 /* RSKImageCropViewController.h */,
+				2AFED72B19D723B200636689 /* RSKImageCropViewController.m */,
+				2AFED72C19D723B200636689 /* RSKImageScrollView.h */,
+				2AFED72D19D723B200636689 /* RSKImageScrollView.m */,
+				2AFED72E19D723B200636689 /* RSKTouchView.h */,
+				2AFED72F19D723B200636689 /* RSKTouchView.m */,
+				2AFED73019D723B200636689 /* UIImage+FixOrientation.h */,
+				2AFED73119D723B200636689 /* UIImage+FixOrientation.m */,
+			);
+			path = RSKImageCropper;
 			sourceTree = "<group>";
 		};
 		5E8AA6E318FCAED600C99D9F = {
@@ -823,10 +853,12 @@
 				2A2385E8194521D300F7FABD /* SDWebImageDownloaderOperation.m in Sources */,
 				2AE1DC371991C60400CC3CCF /* ZazzPhoto.m in Sources */,
 				2A2385EE194521D300F7FABD /* UIImage+WebP.m in Sources */,
+				2AFED73419D723B200636689 /* RSKTouchView.m in Sources */,
 				2AEA1C8719769E9300A177F3 /* ZazzComments.m in Sources */,
 				2AAFF9591981D769001CC4CC /* CTAssetsPickerConstants.m in Sources */,
 				2A15422A19ADFD47006216B8 /* ZazzMe.m in Sources */,
 				2A30C4521987CA5F00882C1A /* ZazzPost.m in Sources */,
+				2AFED73219D723B200636689 /* RSKImageCropViewController.m in Sources */,
 				2A2385EA194521D300F7FABD /* SDWebImagePrefetcher.m in Sources */,
 				2A4144FE19689857001C1090 /* Photo.m in Sources */,
 				2A4144FD19689857001C1090 /* Notification.m in Sources */,
@@ -846,6 +878,7 @@
 				2A4144FF19689857001C1090 /* Post.m in Sources */,
 				2A2385E6194521D300F7FABD /* SDWebImageDecoder.m in Sources */,
 				2A01CBA7196B156200C4B81F /* UIFont+SecretFont.m in Sources */,
+				2AFED73519D723B200636689 /* UIImage+FixOrientation.m in Sources */,
 				2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */,
 				2AAFF95A1981D769001CC4CC /* CTAssetsPickerController.m in Sources */,
 				2AAFF9561981D769001CC4CC /* CTAssetsGroupViewController.m in Sources */,
@@ -855,6 +888,7 @@
 				2A4144F819689857001C1090 /* CategoryStat.m in Sources */,
 				2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */,
 				2AAFF95E1981D769001CC4CC /* CTAssetsViewControllerTransition.m in Sources */,
+				2AFED73319D723B200636689 /* RSKImageScrollView.m in Sources */,
 				2AAFF9531981D769001CC4CC /* CTAssetItemViewController.m in Sources */,
 				2A15423319B13F93006216B8 /* CustomPopSegue.m in Sources */,
 				2AAFF9601981D769001CC4CC /* PhotoPicker.m in Sources */,

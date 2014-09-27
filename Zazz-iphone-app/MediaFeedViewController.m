@@ -21,9 +21,6 @@
     [self.collectionView setScrollEnabled:true];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(feedDataSourceUpdated:) name:@"feedDataSourceUpdated" object:nil];
 }
-//-(void)viewDidAppear:(BOOL)animated{
-//    [self.collectionView setContentOffset:CGPointZero];
-//}
     
 -(void)feedDataSourceUpdated:(NSNotification*)notif{
     if(![notif.name isEqualToString:@"feedDataSourceUpdated"]) return;

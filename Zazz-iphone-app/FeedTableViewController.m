@@ -34,6 +34,7 @@ bool simple_refresh = false; //don't append/prepend data. just refresh existing 
 @synthesize showPhotos;
 @synthesize showVideos;
 @synthesize showPosts;
+@synthesize require_feed_user_id;
 
 
 int const GET_ALL_FEED = 0;
@@ -245,8 +246,10 @@ NSMutableDictionary* _indexPathsToReload;
 -(void)gotZazzFeed:(NSNotification *)notif{
     if (![notif.name isEqualToString:@"gotFeed"]) return;
     if (self.require_feed_user_id && !self.feed_user_id) return;
+    
     NSString* notif_feed_user_id = [NSString stringWithFormat:@"%@",[notif.userInfo objectForKey:@"user_id"]];
     NSString* self_feed_user_id = [NSString stringWithFormat:@"%@",feed_user_id];
+    
     if(feed_user_id && ![self_feed_user_id isEqualToString:notif_feed_user_id])return;
     NSMutableArray* feed = [notif.userInfo objectForKey:@"feed"];
     NSString* category_ids = [notif.userInfo objectForKey:@"category_ids"];

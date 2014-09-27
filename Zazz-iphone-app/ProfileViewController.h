@@ -11,10 +11,12 @@
 #import "CFTabBarController.h"
 #import "Profile.h"
 #import "MediaFeedViewController.h"
+#import "PhotoPicker.h"
+#import "RSKImageCropViewController.h"
 
 #define PROFILE_PAGE_PHOTO_HEIGHT 140
 
-@interface ProfileViewController : UIViewController <CFTabBarViewDelegate, StickyTopScrollViewDelegate>
+@interface ProfileViewController : UIViewController <CFTabBarViewDelegate, StickyTopScrollViewDelegate, MediaReceiver,RSKImageCropViewControllerDelegate>
 
 @property FeedTableViewController* feedTableViewController;
 @property MediaFeedViewController* mediaFeedViewController;
@@ -23,6 +25,7 @@
 @property Profile* _profile;
 @property IBOutlet UIScrollView* scrollView;
 
+@property IBOutlet UIButton* changeImageButton;
 @property IBOutlet UIImageView* profilePhoto;
 @property IBOutlet UILabel* username;
 @property IBOutlet UILabel* name;
@@ -40,5 +43,6 @@
 
 
 -(IBAction)changeFeed:(UISegmentedControl*)sender;
+-(IBAction)changeProfileImage:(UIButton*)sender;
 
 @end

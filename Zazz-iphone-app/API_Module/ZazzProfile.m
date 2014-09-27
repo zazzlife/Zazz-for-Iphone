@@ -12,7 +12,7 @@
 @implementation ZazzProfile
 
 NSString* _profileId;
-NSMutableData* _recievedData;
+NSMutableData* _receivedData;
 
 -(void) getProfile:(NSString *)userId{
     _profileId = userId;
@@ -21,14 +21,28 @@ NSMutableData* _recievedData;
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
+- (void) setProfilePic:(NSString*)photoId{
+    NSString* action = [[NSString alloc] initWithFormat:@"user/profilepic/%@",photoId];
+    NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
+    [request setHTTPMethod:@"PUT"];
+    [request setValue:@"0" forHTTPHeaderField:@"Content-Length"];
+    //No CALLBACK!
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    if(!_recievedData) _recievedData = [[NSMutableData alloc]init];
-    [_recievedData appendData:data];
+    if(!_receivedData) _receivedData = [[NSMutableData alloc]init];
+    [_receivedData appendData:data];
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSDictionary *profile_dict = [NSJSONSerialization JSONObjectWithData:_recievedData options:0 error:nil ];
+    NSError* error = nil;
+    NSString *myString = [[NSString alloc] initWithData:_receivedData encoding:NSUTF8StringEncoding];
+    NSLog(@"received: %@",myString);
+    if(!_receivedData){return;}
+    
+    NSDictionary *profile_dict = [NSJSONSerialization JSONObjectWithData:_receivedData options:0 error:nil ];
     if(profile_dict == nil){
         NSLog(@"JSON ERROR");
         return;

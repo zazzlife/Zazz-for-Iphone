@@ -33,6 +33,7 @@
 
 -(void) getMe;
 -(void) getProfile:(NSString*)profileId;
+-(void) setProfilePic:(NSString*)photoId;
 
 -(void) getNotifications;
 

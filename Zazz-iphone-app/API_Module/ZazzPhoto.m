@@ -35,7 +35,8 @@
         else
             categories = [categories stringByAppendingString:[NSString stringWithFormat:@",%@",categorId]];
     }
-    NSMutableDictionary* form = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary* form = [[NSMutableDictionary alloc] init];\
+    if(!photo.description) [photo setDescription:@""];
     [form setObject:categories forKey:@"categories"];
     [form setObject:photo.description forKey:@"description"];
     [form setObject:@"True" forKey:@"showInFeed"];
@@ -64,16 +65,20 @@
     
     [request setHTTPBody:body];
     
-    NSString *postLength = [NSString stringWithFormat:@"%lu", [body length]];
+    NSString *postLength = [NSString stringWithFormat:@"%lu", (unsigned long)[body length]];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     
-    NSLog(@"curl %@ -X %@ -H \"Authorization:%@\" -H \"Content-Type:%@\" -d '%@' ",
+    NSData* data = request.HTTPBody;
+    
+    NSLog(@"curl %@ -X %@ -H \"Authorization:%@\" -h \"Content-Length:%@\" -H \"Content-Type:%@\" -d '%@' ",
           request.URL,
           request.HTTPMethod,
           [request valueForHTTPHeaderField:@"Authorization"],
+          [request valueForHTTPHeaderField:@"Content-Length"],
           [request valueForHTTPHeaderField:@"Content-Type"],
-          [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding]
+          [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]
     );
+    
     
     [NSURLConnection connectionWithRequest:request delegate:self];
 }

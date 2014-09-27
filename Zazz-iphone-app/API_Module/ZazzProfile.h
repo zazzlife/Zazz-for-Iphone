@@ -12,5 +12,6 @@
 @interface ZazzProfile : NSObject<NSURLConnectionDataDelegate>
 
 - (void) getProfile:(NSString*)userId;
+- (void) setProfilePic:(NSString*)photoId;
 
 @end

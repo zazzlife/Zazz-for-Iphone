@@ -60,10 +60,10 @@ BOOL _canceled = false;
         self.assets = [[NSMutableArray alloc] init];
 
     CTAssetsPickerController *picker = [[CTAssetsPickerController alloc] init];
-    picker.assetsFilter         = [ALAssetsFilter allAssets];
-    picker.showsCancelButton    = (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad);
-    picker.delegate             = self;
-    picker.selectedAssets       = [NSMutableArray arrayWithArray:self.assets];
+    [picker setAssetsFilter:[ALAssetsFilter allAssets]];
+    [picker setShowsCancelButton:(UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad)];
+    [picker setDelegate:self];
+    [picker setSelectedAssets:[NSMutableArray arrayWithArray:self.assets]];
     [picker.view setBackgroundColor:[UIColor darkGrayColor]];
     
     // iPad

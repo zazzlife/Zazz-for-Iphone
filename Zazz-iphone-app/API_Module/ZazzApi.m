@@ -74,6 +74,9 @@ PROFILE
 -(void) getProfile:(NSString*)profileId{
     [[[ZazzProfile alloc] init] getProfile:profileId];
 }
+-(void) setProfilePic:(NSString*)photoId{
+    [[[ZazzProfile alloc] init] setProfilePic:photoId];
+}
 
 /*
  FEED
