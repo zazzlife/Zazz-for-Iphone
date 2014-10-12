@@ -84,11 +84,13 @@
 		2AAFF9601981D769001CC4CC /* PhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AAFF94E1981D769001CC4CC /* PhotoPicker.m */; };
 		2AB3E4601934061700F72784 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */; };
 		2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB3E4621934063700F72784 /* RightNavigationViewController.m */; };
+		2AD540B319EA1557004E7C9A /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AD540B219EA1557004E7C9A /* TagViewController.m */; };
 		2AE1DC371991C60400CC3CCF /* ZazzPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE1DC361991C60400CC3CCF /* ZazzPhoto.m */; };
 		2AE2818C1956004E0015602F /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE2818B1956004E0015602F /* NotificationViewController.m */; };
 		2AE749011996A3E0004A09CD /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AE749001996A3E0004A09CD /* FeedTableViewController.m */; };
 		2AEA1C84197604E300A177F3 /* DetailViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C83197604E300A177F3 /* DetailViewItem.m */; };
 		2AEA1C8719769E9300A177F3 /* ZazzComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C8619769E9300A177F3 /* ZazzComments.m */; };
+		2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */; };
 		2AFED73219D723B200636689 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED72B19D723B200636689 /* RSKImageCropViewController.m */; };
 		2AFED73319D723B200636689 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED72D19D723B200636689 /* RSKImageScrollView.m */; };
 		2AFED73419D723B200636689 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED72F19D723B200636689 /* RSKTouchView.m */; };
@@ -99,7 +101,6 @@
 		5E8AA6FA18FCAED600C99D9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E8AA6F818FCAED600C99D9F /* InfoPlist.strings */; };
 		5E8AA6FC18FCAED600C99D9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AA6FB18FCAED600C99D9F /* main.m */; };
 		5E8AA70018FCAED600C99D9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AA6FF18FCAED600C99D9F /* AppDelegate.m */; };
-		5E8AA70318FCAED600C99D9F /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8AA70118FCAED600C99D9F /* Main_iPhone.storyboard */; };
 		5E8AA70618FCAED600C99D9F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8AA70418FCAED600C99D9F /* Main_iPad.storyboard */; };
 		5E8AA71218FCAED700C99D9F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA71118FCAED700C99D9F /* XCTest.framework */; };
 		5E8AA71318FCAED700C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
@@ -276,6 +277,8 @@
 		2AB3E45F1934061700F72784 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
 		2AB3E4611934063700F72784 /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
 		2AB3E4621934063700F72784 /* RightNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavigationViewController.m; sourceTree = "<group>"; };
+		2AC66F0219E9E4D70094F138 /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
+		2AD540B219EA1557004E7C9A /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
 		2AE1DC351991C60400CC3CCF /* ZazzPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzPhoto.h; path = API_Module/ZazzPhoto.h; sourceTree = "<group>"; };
 		2AE1DC361991C60400CC3CCF /* ZazzPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzPhoto.m; path = API_Module/ZazzPhoto.m; sourceTree = "<group>"; };
 		2AE2818A1956004E0015602F /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
@@ -286,6 +289,7 @@
 		2AEA1C83197604E300A177F3 /* DetailViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewItem.m; sourceTree = "<group>"; };
 		2AEA1C8519769E9300A177F3 /* ZazzComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzComments.h; path = API_Module/ZazzComments.h; sourceTree = "<group>"; };
 		2AEA1C8619769E9300A177F3 /* ZazzComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzComments.m; path = API_Module/ZazzComments.m; sourceTree = "<group>"; };
+		2AFB430719EA664E0004BA9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		2AFED72919D723B200636689 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
 		2AFED72A19D723B200636689 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
 		2AFED72B19D723B200636689 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
@@ -305,7 +309,6 @@
 		5E8AA6FD18FCAED600C99D9F /* Zazz-iphone-app-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zazz-iphone-app-Prefix.pch"; sourceTree = "<group>"; };
 		5E8AA6FE18FCAED600C99D9F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5E8AA6FF18FCAED600C99D9F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5E8AA70218FCAED600C99D9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		5E8AA70518FCAED600C99D9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		5E8AA71018FCAED700C99D9F /* Zazz-iphone-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zazz-iphone-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA71118FCAED700C99D9F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -507,7 +510,7 @@
 		2A5FAEB7191D2BE500B917AB /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				5E8AA70118FCAED600C99D9F /* Main_iPhone.storyboard */,
+				2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */,
 				5E8AA70418FCAED600C99D9F /* Main_iPad.storyboard */,
 			);
 			name = Storyboards;
@@ -616,6 +619,8 @@
 				2AAFF94E1981D769001CC4CC /* PhotoPicker.m */,
 				2A6735981966F18A00707224 /* CreateMessageViewController.h */,
 				2A6735991966F18A00707224 /* CreateMessageViewController.m */,
+				2AC66F0219E9E4D70094F138 /* TagViewController.h */,
+				2AD540B219EA1557004E7C9A /* TagViewController.m */,
 			);
 			name = FeedItemViewControllers;
 			sourceTree = "<group>";
@@ -829,8 +834,8 @@
 			files = (
 				2AAFF9581981D769001CC4CC /* CTAssetsPicker.xcassets in Resources */,
 				5E8AA70618FCAED600C99D9F /* Main_iPad.storyboard in Resources */,
+				2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */,
 				2A47F5641936F47A001CF1AE /* Images.xcassets in Resources */,
-				5E8AA70318FCAED600C99D9F /* Main_iPhone.storyboard in Resources */,
 				5E8AA6FA18FCAED600C99D9F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -929,6 +934,7 @@
 				2AAFF95C1981D769001CC4CC /* CTAssetsViewCell.m in Sources */,
 				2A09D720191EF3CD00A2827F /* LoginViewController.m in Sources */,
 				2A01CBA4196B156200C4B81F /* CommentCell.m in Sources */,
+				2AD540B319EA1557004E7C9A /* TagViewController.m in Sources */,
 				2A01CBB9196B289400C4B81F /* ZazzLogin.m in Sources */,
 				2AA057D5193F451B00E1617D /* ProfileViewController.m in Sources */,
 				2A414503196898BE001C1090 /* CHTumblrMenuView.m in Sources */,
@@ -957,20 +963,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AFB430719EA664E0004BA9B /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
 		5E8AA6F818FCAED600C99D9F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5E8AA6F918FCAED600C99D9F /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		5E8AA70118FCAED600C99D9F /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E8AA70218FCAED600C99D9F /* Base */,
-			);
-			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 		5E8AA70418FCAED600C99D9F /* Main_iPad.storyboard */ = {

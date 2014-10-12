@@ -71,8 +71,6 @@ BOOL enabled = true;
     if (! enabled) return;
     switch(sender.tag){
         case 2://post
-            //[homeView setViewHidden:true];
-            //[profileView setViewHidden:true];
             [postView setViewHidden:false];
 //            _activeTagView = TAG_POST_VIEW;
             break;
