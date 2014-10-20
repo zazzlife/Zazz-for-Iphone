@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="961-x4-DZY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="961-x4-DZY">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -152,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmF-1v-zdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1455" y="822"/>
+            <point key="canvasLocation" x="1455" y="862"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="jKU-Q4-fzj">
@@ -163,7 +164,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3p2-oD-UwW">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                                <rect key="frame" x="-1" y="-1" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="C7a-SP-EkX" userLabel="NavView">
@@ -331,7 +332,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <containerView contentMode="scaleToFill" id="N5T-x7-9Zf" userLabel="postView">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="524"/>
+                                        <rect key="frame" x="0.0" y="294" width="320" height="524"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -339,7 +340,7 @@
                                         </connections>
                                     </containerView>
                                     <containerView hidden="YES" contentMode="scaleToFill" id="Ddu-ie-v5G" userLabel="mediaView">
-                                        <rect key="frame" x="0.0" y="295" width="320" height="524"/>
+                                        <rect key="frame" x="0.0" y="294" width="320" height="524"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -351,6 +352,7 @@
                             </scrollView>
                         </subviews>
                     </view>
+                    <navigationItem key="navigationItem" id="hCl-l6-XIT"/>
                     <connections>
                         <outlet property="city" destination="ibl-d8-f3i" id="7KC-BF-r0l"/>
                         <outlet property="filterButtons" destination="ziI-CJ-Tlp" id="r23-BW-76i"/>
@@ -415,6 +417,13 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ODD-aC-909">
+                                                    <rect key="frame" x="0.0" y="0.0" width="55" height="53"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </view>
@@ -425,6 +434,7 @@
                                 <connections>
                                     <outlet property="feedCellBackgroundView" destination="FXg-6C-UkU" id="0Yn-c0-upJ"/>
                                     <outlet property="feedCellContentView" destination="3fi-hs-El7" id="LXy-A2-AjC"/>
+                                    <outlet property="profileButton" destination="ODD-aC-909" id="vYM-hS-xVN"/>
                                     <outlet property="timestamp" destination="gAA-I6-gVO" id="xqA-vf-aPm"/>
                                     <outlet property="userImage" destination="oWp-Xu-Ywf" id="8YJ-Ge-0iZ"/>
                                     <outlet property="username" destination="Syj-AN-OlZ" id="3bv-l9-See"/>
@@ -472,7 +482,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ky-43-08v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1997" y="14"/>
+            <point key="canvasLocation" x="1985" y="140"/>
         </scene>
         <!--Media Feed View Controller-->
         <scene sceneID="KeF-DL-dtj">
@@ -529,7 +539,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vk1-B2-UKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1997" y="538"/>
+            <point key="canvasLocation" x="1985" y="840"/>
         </scene>
         <!--Left Navigation View Controller-->
         <scene sceneID="yI2-Nh-wch">

@@ -135,6 +135,7 @@ PhotoPicker* _activePicker;
         [self.feedTableViewController setRequire_feed_user_id:true];
         [self.feedTableViewController setScrollDelegate:self];
         [self.feedTableViewController setShowPosts:true];
+        [self.feedTableViewController setShowsProfileOnUserPhotoSelect:false];
         [self.feedTableViewController viewDidEmbed];
     }else if([segue.identifier isEqualToString:@"embedProfileFeedMediaViewController"]){
         [self setMediaFeedViewController:(MediaFeedViewController*)segue.destinationViewController];

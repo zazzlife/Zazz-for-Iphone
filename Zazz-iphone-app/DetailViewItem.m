@@ -11,4 +11,13 @@
 
 @implementation DetailViewItem
 
+@synthesize itemId;
+@synthesize type;
+@synthesize description;
+@synthesize image;
+@synthesize user;
+@synthesize likes;
+@synthesize categories;
+@synthesize comments;
+
 @end

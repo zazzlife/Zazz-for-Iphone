@@ -10,29 +10,29 @@
 	<string>Zazz-iphone-app</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DF7E17C2-297F-4570-A62F-4FA9D0D95D2B</key>
+		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
 		<string>https://github.com/zazzlife/Zazz-for-Iphone.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Zazz-iphone-app.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DF7E17C2-297F-4570-A62F-4FA9D0D95D2B</key>
+		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/zazzlife/Zazz-for-Iphone.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DF7E17C2-297F-4570-A62F-4FA9D0D95D2B</string>
+	<string>250330D51C1DE5341A0555CA63E6F3997BA852E0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DF7E17C2-297F-4570-A62F-4FA9D0D95D2B</string>
+			<string>250330D51C1DE5341A0555CA63E6F3997BA852E0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Zazz-for-Iphone</string>
 		</dict>

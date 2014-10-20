@@ -47,6 +47,7 @@ UIView* tempHelper;
         [(UIButton*)category setRestorationIdentifier:catName];
         [(UIButton*)category setImage:categoryImage forState:UIControlStateNormal];
     }
+    [self.keyboardToolbar removeFromSuperview];
     [self.postField setInputAccessoryView:self.keyboardToolbar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(madePost:) name:@"madePost" object:nil];
 }
