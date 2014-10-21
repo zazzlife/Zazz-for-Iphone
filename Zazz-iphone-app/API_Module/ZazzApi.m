@@ -18,6 +18,7 @@
 #import "ZazzComments.h"
 #import "ZazzPost.h"
 #import "ZazzPhoto.h"
+#import "ZazzFollow.h"
 
 @implementation ZazzApi
 
@@ -60,6 +61,9 @@
 /*
  ME - FOLLOW-REQUESTS
  */
+-(void)getFollows{
+    [[[ZazzFollow alloc] init] getFollows];
+}
 -(void) getFollowRequests{
     [[[ZazzFollowRequest alloc] init] getFollowRequests];
 }

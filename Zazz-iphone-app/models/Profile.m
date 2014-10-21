@@ -8,6 +8,8 @@
 
 #import "Profile.h"
 #import "SDWebImageManager.h"
+#import "Feed.h"
+#import "Photo.h"
 
 @implementation Profile
 
@@ -55,6 +57,12 @@
     [profile setIsTargetUserFollowingCurrentUser:(BOOL)[profile_dict objectForKey:@"isTargetUserFollowingCurrentUser"]];
     if([profile.accountType isEqualToString:@"User"]){
         [profile setUserDetails:[UserDetails makeUserDetailsFromDict:[profile_dict objectForKey:@"userDetails"]]];
+    }
+    for(NSMutableDictionary* feed_dict in [profile_dict objectForKey:@"feeds"]){
+        [profile.feeds addObject:[Feed makeFeedFromDict:feed_dict]];
+    }
+    for(NSMutableDictionary* photo_dict in [profile_dict objectForKey:@"photos"]){
+        [profile.photos addObject:[Photo makePhotoFromDict:photo_dict]];
     }
     return profile;
 }

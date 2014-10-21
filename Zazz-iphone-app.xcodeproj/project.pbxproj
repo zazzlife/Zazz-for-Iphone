@@ -91,6 +91,9 @@
 		2AEA1C84197604E300A177F3 /* DetailViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C83197604E300A177F3 /* DetailViewItem.m */; };
 		2AEA1C8719769E9300A177F3 /* ZazzComments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AEA1C8619769E9300A177F3 /* ZazzComments.m */; };
 		2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */; };
+		2AFB430B19EC161E0004BA9B /* SearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB430A19EC161E0004BA9B /* SearchResult.m */; };
+		2AFB430E19ECB42C0004BA9B /* Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB430D19ECB42C0004BA9B /* Follow.m */; };
+		2AFB431119ECB5EF0004BA9B /* ZazzFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB431019ECB5EF0004BA9B /* ZazzFollow.m */; };
 		2AFED73219D723B200636689 /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED72B19D723B200636689 /* RSKImageCropViewController.m */; };
 		2AFED73319D723B200636689 /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED72D19D723B200636689 /* RSKImageScrollView.m */; };
 		2AFED73419D723B200636689 /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AFED72F19D723B200636689 /* RSKTouchView.m */; };
@@ -290,6 +293,12 @@
 		2AEA1C8519769E9300A177F3 /* ZazzComments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzComments.h; path = API_Module/ZazzComments.h; sourceTree = "<group>"; };
 		2AEA1C8619769E9300A177F3 /* ZazzComments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzComments.m; path = API_Module/ZazzComments.m; sourceTree = "<group>"; };
 		2AFB430719EA664E0004BA9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		2AFB430919EC161E0004BA9B /* SearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResult.h; sourceTree = "<group>"; };
+		2AFB430A19EC161E0004BA9B /* SearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResult.m; sourceTree = "<group>"; };
+		2AFB430C19ECB42C0004BA9B /* Follow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Follow.h; sourceTree = "<group>"; };
+		2AFB430D19ECB42C0004BA9B /* Follow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Follow.m; sourceTree = "<group>"; };
+		2AFB430F19ECB5EF0004BA9B /* ZazzFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZazzFollow.h; path = API_Module/ZazzFollow.h; sourceTree = "<group>"; };
+		2AFB431019ECB5EF0004BA9B /* ZazzFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzFollow.m; path = API_Module/ZazzFollow.m; sourceTree = "<group>"; };
 		2AFED72919D723B200636689 /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
 		2AFED72A19D723B200636689 /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
 		2AFED72B19D723B200636689 /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
@@ -382,6 +391,8 @@
 				2A4144F319689857001C1090 /* Photo.m */,
 				2A4144F419689857001C1090 /* Post.h */,
 				2A4144F519689857001C1090 /* Post.m */,
+				2AFB430C19ECB42C0004BA9B /* Follow.h */,
+				2AFB430D19ECB42C0004BA9B /* Follow.m */,
 			);
 			name = Models;
 			path = ..;
@@ -555,6 +566,8 @@
 				2A30C4511987CA5F00882C1A /* ZazzPost.m */,
 				2AE1DC351991C60400CC3CCF /* ZazzPhoto.h */,
 				2AE1DC361991C60400CC3CCF /* ZazzPhoto.m */,
+				2AFB430F19ECB5EF0004BA9B /* ZazzFollow.h */,
+				2AFB431019ECB5EF0004BA9B /* ZazzFollow.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -621,6 +634,8 @@
 				2A6735991966F18A00707224 /* CreateMessageViewController.m */,
 				2AC66F0219E9E4D70094F138 /* TagViewController.h */,
 				2AD540B219EA1557004E7C9A /* TagViewController.m */,
+				2AFB430919EC161E0004BA9B /* SearchResult.h */,
+				2AFB430A19EC161E0004BA9B /* SearchResult.m */,
 			);
 			name = FeedItemViewControllers;
 			sourceTree = "<group>";
@@ -905,6 +920,8 @@
 				2A01CBB6196B289400C4B81F /* ZazzCategory.m in Sources */,
 				2A01CBBB196B289400C4B81F /* ZazzProfile.m in Sources */,
 				2AEA1C84197604E300A177F3 /* DetailViewItem.m in Sources */,
+				2AFB431119ECB5EF0004BA9B /* ZazzFollow.m in Sources */,
+				2AFB430B19EC161E0004BA9B /* SearchResult.m in Sources */,
 				2A2385ED194521D300F7FABD /* UIImage+MultiFormat.m in Sources */,
 				2AAFF9501981D769001CC4CC /* ALAsset+assetType.m in Sources */,
 				5E8AA70018FCAED600C99D9F /* AppDelegate.m in Sources */,
@@ -924,6 +941,7 @@
 				2A2385EC194521D300F7FABD /* UIImage+GIF.m in Sources */,
 				2A01CBBA196B289400C4B81F /* ZazzNotification.m in Sources */,
 				2AAFF9511981D769001CC4CC /* ALAsset+isEqual.m in Sources */,
+				2AFB430E19ECB42C0004BA9B /* Follow.m in Sources */,
 				2A01CBA8196B156200C4B81F /* UIImage+ImageEffects.m in Sources */,
 				2A46CCF4199C204600996D84 /* RoundedUIButton.m in Sources */,
 				2A4144FA19689857001C1090 /* Event.m in Sources */,

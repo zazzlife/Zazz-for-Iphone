@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TagViewController:UIViewController
+@interface TagViewController:UIViewController<UITableViewDataSource>
 
 @property int tag;
+@property NSMutableArray* dataSource;
+
+@property IBOutlet UITextField* searchFeild;
+@property IBOutlet UIImageView* searchImage;
 @property IBOutlet UILabel* titleLabel;
 
 - (IBAction)goBack:(UIButton *)sender;

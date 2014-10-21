@@ -18,7 +18,6 @@
 #import "UIImage.h"
 #import "DetailViewItem.h"
 #import "Comment.h"
-#import "UIImageView+WebCache.h"
 
 @implementation FeedTableViewCell
 

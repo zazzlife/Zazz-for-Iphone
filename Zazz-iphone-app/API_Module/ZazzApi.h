@@ -37,6 +37,7 @@
 
 -(void) getNotifications;
 
+-(void) getFollows;
 -(void) getFollowRequests;
 -(void) setFollowRequestsUserId:(NSString*)userId action:(BOOL)action;
 
