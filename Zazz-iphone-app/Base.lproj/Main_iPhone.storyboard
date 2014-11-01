@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="961-x4-DZY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="961-x4-DZY">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -158,7 +158,7 @@
         <!--Profile View Controller-->
         <scene sceneID="jKU-Q4-fzj">
             <objects>
-                <viewController id="00c-U6-IMJ" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="00c-U6-IMJ" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zkQ-ht-uwO">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -358,11 +358,13 @@
                         <outlet property="follow" destination="VGB-L9-jqb" id="OqH-Un-mPI"/>
                         <outlet property="followers" destination="r6s-2q-zda" id="Z6C-VV-1To"/>
                         <outlet property="following" destination="E6C-gs-1ll" id="TVb-ul-l2x"/>
+                        <outlet property="leftBarButton" destination="Uds-ne-e7J" id="0aN-J2-i9r"/>
                         <outlet property="likes" destination="gSw-Xe-dPO" id="t2u-YF-lRd"/>
                         <outlet property="mediaFeedView" destination="Ddu-ie-v5G" id="yTk-OO-k7S"/>
                         <outlet property="name" destination="KA6-98-1TO" id="q8Z-kc-Cne"/>
                         <outlet property="postFeedView" destination="N5T-x7-9Zf" id="suU-eJ-uUl"/>
                         <outlet property="profilePhoto" destination="RU0-iu-mxd" id="m1K-Rk-Cdd"/>
+                        <outlet property="rightBarButton" destination="b1S-2r-EpJ" id="4Tn-8s-Wv9"/>
                         <outlet property="school" destination="HuW-78-TTO" id="lnW-wd-hBp"/>
                         <outlet property="scrollView" destination="3p2-oD-UwW" id="Y6L-ns-VWX"/>
                         <outlet property="tagline" destination="Dwm-4f-QFa" id="x83-63-JMJ"/>
@@ -416,6 +418,13 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gtv-sV-BWc">
+                                                    <rect key="frame" x="7" y="5" width="48" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                         </view>
@@ -426,6 +435,7 @@
                                 <connections>
                                     <outlet property="feedCellBackgroundView" destination="FXg-6C-UkU" id="0Yn-c0-upJ"/>
                                     <outlet property="feedCellContentView" destination="3fi-hs-El7" id="LXy-A2-AjC"/>
+                                    <outlet property="profileButton" destination="Gtv-sV-BWc" id="YwJ-Oc-hV7"/>
                                     <outlet property="timestamp" destination="gAA-I6-gVO" id="xqA-vf-aPm"/>
                                     <outlet property="userImage" destination="oWp-Xu-Ywf" id="8YJ-Ge-0iZ"/>
                                     <outlet property="username" destination="Syj-AN-OlZ" id="3bv-l9-See"/>
@@ -997,7 +1007,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ti-2G-e0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1026" y="1553"/>
+            <point key="canvasLocation" x="684" y="1202"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="GaV-Bl-2ym">
@@ -1632,7 +1642,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="is_selected" id="zCZ-va-HjG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="62" height="61.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="name" text="FullName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AXU-xC-XOi">
@@ -1650,7 +1660,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="photo" image="CheckMark_for_invite_BLUE" id="NKG-CK-UgI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="62" height="61.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1683,7 +1693,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1466" y="1553"/>
+            <point key="canvasLocation" x="1124" y="1202"/>
         </scene>
         <!--Right Navigation View Controller-->
         <scene sceneID="JPy-jf-cVX">
@@ -1806,9 +1816,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Ot1-7k-b8p"/>
         <segue reference="f36-XF-QiU"/>
         <segue reference="rQA-XQ-SRc"/>
+        <segue reference="UqG-YO-jn2"/>
         <segue reference="upl-AT-HmV"/>
     </inferredMetricsTieBreakers>
 </document>

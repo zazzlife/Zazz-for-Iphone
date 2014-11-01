@@ -26,6 +26,8 @@
 @property IBOutlet UIScrollView* scrollView;
 
 @property IBOutlet UIButton* changeImageButton;
+@property IBOutlet UIButton* leftBarButton;
+@property IBOutlet UIButton* rightBarButton;
 @property IBOutlet UIImageView* profilePhoto;
 @property IBOutlet UILabel* username;
 @property IBOutlet UILabel* name;
@@ -41,8 +43,10 @@
 @property IBOutlet UIView* mediaFeedView;
 @property IBOutlet UIView* topContainer;
 
-
 -(IBAction)changeFeed:(UISegmentedControl*)sender;
 -(IBAction)changeProfileImage:(UIButton*)sender;
+
+-(void)enableBackButton;
+-(void)setProfile:(Profile*)profile;
 
 @end

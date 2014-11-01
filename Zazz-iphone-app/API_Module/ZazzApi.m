@@ -78,6 +78,11 @@ PROFILE
 -(void) getProfile:(NSString*)profileId{
     [[[ZazzProfile alloc] init] getProfile:profileId];
 }
+-(void) getProfile:(NSString*)profileId withNotificationName:(NSString*)notifName{
+    ZazzProfile* profileFetcher = [[ZazzProfile alloc] init];
+    [profileFetcher setNotificationName:notifName];
+    [profileFetcher getProfile:profileId];
+}
 -(void) setProfilePic:(NSString*)photoId{
     [[[ZazzProfile alloc] init] setProfilePic:photoId];
 }

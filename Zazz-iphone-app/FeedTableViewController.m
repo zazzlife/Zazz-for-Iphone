@@ -9,6 +9,8 @@
 #import "FeedTableViewController.h"
 #import "FeedTableViewCell.h"
 #import "DetailViewController.h"
+#import "ProfileViewController.h"
+#import "Profile.h"
 #import "AppDelegate.h"
 #import "Feed.h"
 #import "UIView.h"
@@ -163,6 +165,7 @@ NSMutableDictionary* _indexPathsToReload;
     [cell setTableView:tableView];
     Feed* feedItem = [self.filteredFeed objectAtIndex:(indexPath.row)];
     [cell setFeed:feedItem];
+    [cell.profileButton addTarget:self action:@selector(showProfile:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
@@ -293,6 +296,24 @@ NSMutableDictionary* _indexPathsToReload;
     [self.tableView setDelegate:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"feedDataSourceUpdated" object:nil];
     [self.tableView reloadData];
+}
+
+-(void)showProfile:(UIButton*)profilePic{
+    NSString* user_id = @(profilePic.tag).stringValue;
+    NSString* notifName = @"showUserProfile";
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotProfile:) name:notifName object:nil];
+    [[AppDelegate zazzApi] getProfile:user_id withNotificationName:notifName];
+}
+
+-(void)gotProfile:(NSNotification*)notif{
+    if(![notif.name isEqualToString:@"showUserProfile"])return;
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"showUserProfile" object:nil];
+    Profile* profile = notif.object;
+    ProfileViewController* profileController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
+    //    [profileController setUser_id:profile.profile_id];
+    [profileController enableBackButton];
+    [[[AppDelegate getAppDelegate] navController] pushViewController:profileController animated:true];
+    [profileController setProfile:profile];
 }
 
 //Returns the active categories feed based on the selected filters.

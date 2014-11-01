@@ -24,6 +24,7 @@
 @property IBOutlet UIView* feedCellContentView;
 @property IBOutlet UILabel* timestamp;
 @property IBOutlet UILabel* username;
+@property IBOutlet UIButton* profileButton;
 @property Feed* _feed;
 @property float _height;
 @property NSMutableArray* _neededPhotoIds;
