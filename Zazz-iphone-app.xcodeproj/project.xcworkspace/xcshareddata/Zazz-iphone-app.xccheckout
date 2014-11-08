@@ -14,7 +14,7 @@
 		<string>https://github.com/zazzlife/Zazz-for-Iphone.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Zazz-iphone-app.xcodeproj/project.xcworkspace</string>
+	<string>Zazz-iphone-app.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>

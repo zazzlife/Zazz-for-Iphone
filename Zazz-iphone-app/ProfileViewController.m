@@ -82,6 +82,10 @@ PhotoPicker* _activePicker;
         [self.school setText:profile.userDetails.school.name];
         [self.city setText:profile.userDetails.city.name];
         [self.followers setText:[NSString stringWithFormat:@"%@",profile.followersCount]];
+        if(profile.isSelf){
+            [self.changeImageButton setHidden:false];
+            [self.follow setHidden:true];
+        }
         if(!profile.isCurrentUserFollowingTargetUser){
             [self.follow setTitle:@"Following" forState:UIControlStateNormal];
         }
@@ -148,6 +152,10 @@ PhotoPicker* _activePicker;
 -(IBAction)changeProfileImage:(UIButton*)sender{
     _activePicker = [[PhotoPicker alloc] initWithMediaReceiver:self];
     [_activePicker pickAssets];
+}
+
+-(IBAction)followClicked:(UIButton*)sender{
+    [[AppDelegate zazzApi] sendFollowRequest:self._profile.profile_id];
 }
 
 //Called by Create<Media>ViewControllers.

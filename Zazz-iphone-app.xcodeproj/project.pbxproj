@@ -46,6 +46,7 @@
 		2A2385F0194521D300F7FABD /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A2385E1194521D300F7FABD /* UIImageView+WebCache.m */; };
 		2A30C4521987CA5F00882C1A /* ZazzPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A30C4511987CA5F00882C1A /* ZazzPost.m */; };
 		2A32DF2919B3FA5700679E8A /* MediaFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A32DF2819B3FA5700679E8A /* MediaFeedViewController.m */; };
+		2A33C1381A06CABC004FB490 /* ZazzFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A33C1371A06CABC004FB490 /* ZazzFollow.m */; };
 		2A39F2DF193D5BA3002E8873 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A39F2DB193D5BA3002E8873 /* PostViewController.m */; };
 		2A39F2E6193DEB04002E8873 /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A39F2E5193DEB04002E8873 /* CFTabBarController.m */; };
 		2A4144F819689857001C1090 /* CategoryStat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A4144E719689857001C1090 /* CategoryStat.m */; };
@@ -196,6 +197,8 @@
 		2A30C4511987CA5F00882C1A /* ZazzPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzPost.m; path = API_Module/ZazzPost.m; sourceTree = "<group>"; };
 		2A32DF2719B3FA5700679E8A /* MediaFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFeedViewController.h; sourceTree = "<group>"; };
 		2A32DF2819B3FA5700679E8A /* MediaFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFeedViewController.m; sourceTree = "<group>"; };
+		2A33C1371A06CABC004FB490 /* ZazzFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZazzFollow.m; path = API_Module/ZazzFollow.m; sourceTree = "<group>"; };
+		2A33C1391A06CACF004FB490 /* ZazzFollow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZazzFollow.h; sourceTree = "<group>"; };
 		2A39F2DA193D5BA3002E8873 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		2A39F2DB193D5BA3002E8873 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		2A39F2E4193DEB04002E8873 /* CFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTabBarController.h; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 				2A30C4511987CA5F00882C1A /* ZazzPost.m */,
 				2AE1DC351991C60400CC3CCF /* ZazzPhoto.h */,
 				2AE1DC361991C60400CC3CCF /* ZazzPhoto.m */,
+				2A33C1391A06CACF004FB490 /* ZazzFollow.h */,
+				2A33C1371A06CABC004FB490 /* ZazzFollow.m */,
 			);
 			name = Actions;
 			sourceTree = "<group>";
@@ -881,6 +886,7 @@
 				2AFED73519D723B200636689 /* UIImage+FixOrientation.m in Sources */,
 				2AB3E4631934063700F72784 /* RightNavigationViewController.m in Sources */,
 				2AAFF95A1981D769001CC4CC /* CTAssetsPickerController.m in Sources */,
+				2A33C1381A06CABC004FB490 /* ZazzFollow.m in Sources */,
 				2AAFF9561981D769001CC4CC /* CTAssetsGroupViewController.m in Sources */,
 				2A15422719ADFC86006216B8 /* Profile.m in Sources */,
 				2A67359A1966F18A00707224 /* CreateMessageViewController.m in Sources */,
