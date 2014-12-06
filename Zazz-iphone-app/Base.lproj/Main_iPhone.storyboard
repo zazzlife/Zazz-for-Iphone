@@ -153,11 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmF-1v-zdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
             <point key="canvasLocation" x="1466" y="838"/>
-=======
-            <point key="canvasLocation" x="1455" y="862"/>
->>>>>>> origin/feature/profile-view
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="jKU-Q4-fzj">
@@ -168,7 +164,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3p2-oD-UwW">
-                                <rect key="frame" x="-1" y="-1" width="320" height="524"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" id="C7a-SP-EkX" userLabel="NavView">
@@ -218,6 +214,16 @@
                                                 <rect key="frame" x="29" y="20" width="80" height="80"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="changeProfileImageOverlayButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I6Z-vX-eTq">
+                                                <rect key="frame" x="29" y="20" width="80" height="80"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="changeProfileImage:" destination="00c-U6-IMJ" eventType="touchUpInside" id="Rg9-qT-lge"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" id="KA6-98-1TO">
                                                 <rect key="frame" x="141" y="21" width="159" height="23"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -254,9 +260,6 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="followClicked:" destination="00c-U6-IMJ" eventType="touchUpInside" id="gPF-VR-La7"/>
-                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" id="q5a-Eg-wWH" userLabel="infoView">
                                                 <rect key="frame" x="0.0" y="143" width="320" height="58"/>
@@ -325,21 +328,11 @@
                                                     <action selector="changeFeed:" destination="00c-U6-IMJ" eventType="valueChanged" id="wrj-lZ-fKh"/>
                                                 </connections>
                                             </segmentedControl>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" restorationIdentifier="changeProfileImageOverlayButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="I6Z-vX-eTq">
-                                                <rect key="frame" x="29" y="20" width="80" height="80"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="changeProfileImage:" destination="00c-U6-IMJ" eventType="touchUpInside" id="Rg9-qT-lge"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <containerView contentMode="scaleToFill" id="N5T-x7-9Zf" userLabel="postView">
-                                        <rect key="frame" x="0.0" y="294" width="320" height="524"/>
+                                        <rect key="frame" x="0.0" y="295" width="320" height="524"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -347,7 +340,7 @@
                                         </connections>
                                     </containerView>
                                     <containerView hidden="YES" contentMode="scaleToFill" id="Ddu-ie-v5G" userLabel="mediaView">
-                                        <rect key="frame" x="0.0" y="294" width="320" height="524"/>
+                                        <rect key="frame" x="0.0" y="295" width="320" height="524"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -359,9 +352,7 @@
                             </scrollView>
                         </subviews>
                     </view>
-                    <navigationItem key="navigationItem" id="hCl-l6-XIT"/>
                     <connections>
-                        <outlet property="changeImageButton" destination="I6Z-vX-eTq" id="6hJ-4c-c4D"/>
                         <outlet property="city" destination="ibl-d8-f3i" id="7KC-BF-r0l"/>
                         <outlet property="filterButtons" destination="ziI-CJ-Tlp" id="r23-BW-76i"/>
                         <outlet property="follow" destination="VGB-L9-jqb" id="OqH-Un-mPI"/>
@@ -427,13 +418,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-<<<<<<< HEAD
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gtv-sV-BWc">
                                                     <rect key="frame" x="7" y="5" width="48" height="50"/>
-=======
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ODD-aC-909">
-                                                    <rect key="frame" x="0.0" y="0.0" width="55" height="53"/>
->>>>>>> origin/feature/profile-view
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -449,11 +435,7 @@
                                 <connections>
                                     <outlet property="feedCellBackgroundView" destination="FXg-6C-UkU" id="0Yn-c0-upJ"/>
                                     <outlet property="feedCellContentView" destination="3fi-hs-El7" id="LXy-A2-AjC"/>
-<<<<<<< HEAD
                                     <outlet property="profileButton" destination="Gtv-sV-BWc" id="YwJ-Oc-hV7"/>
-=======
-                                    <outlet property="profileButton" destination="ODD-aC-909" id="vYM-hS-xVN"/>
->>>>>>> origin/feature/profile-view
                                     <outlet property="timestamp" destination="gAA-I6-gVO" id="xqA-vf-aPm"/>
                                     <outlet property="userImage" destination="oWp-Xu-Ywf" id="8YJ-Ge-0iZ"/>
                                     <outlet property="username" destination="Syj-AN-OlZ" id="3bv-l9-See"/>
@@ -501,11 +483,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Ky-43-08v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
             <point key="canvasLocation" x="2275" y="140"/>
-=======
-            <point key="canvasLocation" x="1985" y="140"/>
->>>>>>> origin/feature/profile-view
         </scene>
         <!--Media Feed View Controller-->
         <scene sceneID="KeF-DL-dtj">
@@ -562,11 +540,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vk1-B2-UKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
             <point key="canvasLocation" x="1887" y="478"/>
-=======
-            <point key="canvasLocation" x="1985" y="840"/>
->>>>>>> origin/feature/profile-view
         </scene>
         <!--Left Navigation View Controller-->
         <scene sceneID="yI2-Nh-wch">

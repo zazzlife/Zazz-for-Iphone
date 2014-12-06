@@ -2,26 +2,18 @@
 //  ZazzFollow.m
 //  Zazz-iphone-app
 //
-<<<<<<< HEAD
 //  Created by Fyodor Wolf on 10/13/14.
-=======
-//  Created by Fyodor Wolf on 11/2/14.
->>>>>>> origin/feature/profile-view
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
 #import "ZazzFollow.h"
 #import "ZazzApi.h"
-<<<<<<< HEAD
 #import "Follow.h"
-=======
->>>>>>> origin/feature/profile-view
 
 @implementation ZazzFollow
 
 @synthesize _receivedData;
 
-<<<<<<< HEAD
 -(void)getFollows{
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:@"follows"];
     NSLog(@"curl %@ -X %@ -H \"Authorization:%@\" ",
@@ -54,14 +46,3 @@
 }
 
 @end
-=======
--(void)sendFollowRequest:(NSString*)userId{
-    NSString* action = [[NSString alloc] initWithFormat:@"follows/%@",userId];
-    NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
-    [request setHTTPMethod:@"POST"];
-    [NSURLConnection connectionWithRequest:request delegate:nil];
-}
-
-
-@end
->>>>>>> origin/feature/profile-view

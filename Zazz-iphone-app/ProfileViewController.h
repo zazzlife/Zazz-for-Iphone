@@ -45,7 +45,6 @@
 
 -(IBAction)changeFeed:(UISegmentedControl*)sender;
 -(IBAction)changeProfileImage:(UIButton*)sender;
--(IBAction)followClicked:(UIButton*)sender;
 
 -(void)enableBackButton;
 -(void)setProfile:(Profile*)profile;

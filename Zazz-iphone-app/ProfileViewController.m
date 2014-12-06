@@ -74,7 +74,6 @@ PhotoPicker* _activePicker;
     if (![notif.name isEqualToString:@"gotProfile"]) return;
     Profile* profile = notif.object;
     if([profile.profile_id intValue] == [self.user_id intValue]){
-<<<<<<< HEAD
         [self setProfile:profile];
     }
 }
@@ -96,29 +95,6 @@ PhotoPicker* _activePicker;
     if(self.feedTableViewController){
         [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
         [self.feedTableViewController doRefresh:nil];
-=======
-        [self set_profile:profile];
-        [self.profilePhoto setImageWithURL:[NSURL URLWithString:profile.photoUrl]];
-        [self.profilePhoto.layer setCornerRadius:self.profilePhoto.frame.size.height / 2];
-        [self.profilePhoto.layer setMasksToBounds:YES];
-        [self.username setText:[NSString stringWithFormat:@"@%@",profile.displayName]];
-        [self.name setText:profile.userDetails.fullName];
-        [self.tagline setText:profile.userDetails.major.name];
-        [self.school setText:profile.userDetails.school.name];
-        [self.city setText:profile.userDetails.city.name];
-        [self.followers setText:[NSString stringWithFormat:@"%@",profile.followersCount]];
-        if(profile.isSelf){
-            [self.changeImageButton setHidden:false];
-            [self.follow setHidden:true];
-        }
-        if(!profile.isCurrentUserFollowingTargetUser){
-            [self.follow setTitle:@"Following" forState:UIControlStateNormal];
-        }
-        if(self.feedTableViewController){
-            [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
-            [self.feedTableViewController doRefresh:nil];
-        }
->>>>>>> origin/feature/profile-view
     }
 }
 
@@ -165,7 +141,6 @@ PhotoPicker* _activePicker;
         [self.feedTableViewController setRequire_feed_user_id:true];
         [self.feedTableViewController setScrollDelegate:self];
         [self.feedTableViewController setShowPosts:true];
-        [self.feedTableViewController setShowsProfileOnUserPhotoSelect:false];
         [self.feedTableViewController viewDidEmbed];
     }else if([segue.identifier isEqualToString:@"embedProfileFeedMediaViewController"]){
         [self setMediaFeedViewController:(MediaFeedViewController*)segue.destinationViewController];
@@ -178,10 +153,6 @@ PhotoPicker* _activePicker;
 -(IBAction)changeProfileImage:(UIButton*)sender{
     _activePicker = [[PhotoPicker alloc] initWithMediaReceiver:self];
     [_activePicker pickAssets];
-}
-
--(IBAction)followClicked:(UIButton*)sender{
-    [[AppDelegate zazzApi] sendFollowRequest:self._profile.profile_id];
 }
 
 //Called by Create<Media>ViewControllers.

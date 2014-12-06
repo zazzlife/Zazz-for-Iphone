@@ -29,7 +29,6 @@
 @property bool showPhotos;
 @property bool showEvents;
 @property bool showVideos;
-@property bool showsProfileOnUserPhotoSelect;
 
 -(IBAction)doRefresh:(id)sender;
 -(void)viewDidEmbed;
