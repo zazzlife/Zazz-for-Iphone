@@ -18,13 +18,6 @@
 #import "UIImage.h"
 #import "DetailViewItem.h"
 #import "Comment.h"
-<<<<<<< HEAD
-=======
-#import "UIImageView+WebCache.h"
-#import "Feed.h"
-#import "AppDelegate.h"
-#import "ProfileViewController.h"
->>>>>>> origin/feature/profile-view
 
 @implementation FeedTableViewCell
 
@@ -37,7 +30,6 @@
 @synthesize _feed;
 @synthesize _height;
 @synthesize _neededPhotoIds;
-@synthesize profileButton;
 
 NSMutableArray* _imageViews;
 int _albumObserversCounter;
@@ -58,12 +50,11 @@ int _albumObserversCounter;
         labelFrame.size = expectedFrame.size;
         labelFrame.size.height = ceil(labelFrame.size.height); //iOS7 is not rounding up to the nearest whole number
     } else {
-        NSLog(@"Fatal Error on FeedTableViewCell:resizeHeightForLabel:%@",label);
-//#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
-//        labelFrame.size = [label.text sizeWithFont:label.font
-//                                 constrainedToSize:CGSizeMake(label.frame.size.width, 9999)
-//                                     lineBreakMode:label.lineBreakMode];
-//#pragma GCC diagnostic warning "-Wdeprecated-declarations"
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+        labelFrame.size = [label.text sizeWithFont:label.font
+                                 constrainedToSize:CGSizeMake(label.frame.size.width, 9999)
+                                     lineBreakMode:label.lineBreakMode];
+#pragma GCC diagnostic warning "-Wdeprecated-declarations"
     }
     label.frame = labelFrame;
     [superview addSubview:label];
@@ -168,46 +159,6 @@ int _albumObserversCounter;
     
 }
 
-<<<<<<< HEAD
-=======
--(void)didSelectContent:(id)content{
-    Feed* feedItem = self._feed;
-    DetailViewItem* detailItem = [[DetailViewItem alloc] init];
-    if([feedItem.feedType isEqualToString:FEED_PHOTO]){
-        Photo* photo = (Photo*)[(NSMutableArray*)[feedItem content] objectAtIndex:0];
-        [detailItem setImage:photo.image];
-        [detailItem setDescription:photo.description];
-        [detailItem setCategories:photo.categories];
-        [detailItem setType:COMMENT_TYPE_PHOTO];
-        [detailItem setItemId:photo.photoId];
-        [detailItem setUser:photo.user];
-        [detailItem setLikes:0];
-    }else if([feedItem.feedType isEqualToString:FEED_POST]){
-        Post* post = (Post*)[feedItem content];
-        [detailItem setImage:nil];
-        [detailItem setDescription:post.message];
-        [detailItem setCategories:post.categories];
-        [detailItem setType:COMMENT_TYPE_POST];
-        [detailItem setItemId:post.postId];
-        [detailItem setUser:post.fromUser];
-        [detailItem setLikes:0];
-    }else if([feedItem.feedType isEqualToString:FEED_EVENT]){
-        Event* event = (Event*)[feedItem content];
-        [detailItem setImage:nil];
-        [detailItem setDescription:event.description];
-        [detailItem setType:COMMENT_TYPE_EVENT];
-        [detailItem setItemId:event.eventId];
-        [detailItem setUser:event.user];
-        [detailItem setLikes:0];
-    }
-    DetailViewController* detailViewController  = [[DetailViewController alloc] initWithDetailItem:detailItem];
-    NSArray* keys  =    [NSArray arrayWithObjects: @"childController",  @"identifier", nil];
-    NSArray* objects  = [NSArray arrayWithObjects: detailViewController, [NSString stringWithFormat:@"detailView-feed%@",feedItem.feedId], nil];
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:detailViewController userInfo:userInfo];
-}
-
->>>>>>> origin/feature/profile-view
 //
 //-(void)gotUserImageNotification:(NSNotification *)notif{
 //    if(! [notif.name isEqualToString:@"gotProfile"]) return;

@@ -47,11 +47,6 @@ UIView* tempHelper;
         [(UIButton*)category setRestorationIdentifier:catName];
         [(UIButton*)category setImage:categoryImage forState:UIControlStateNormal];
     }
-<<<<<<< HEAD
-=======
-    [self.keyboardToolbar removeFromSuperview];
-    [self.postField setInputAccessoryView:self.keyboardToolbar];
->>>>>>> origin/feature/profile-view
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(madePost:) name:@"madePost" object:nil];
     [self.keyboardToolbar removeFromSuperview];
     [self.postField setInputAccessoryView:self.keyboardToolbar];

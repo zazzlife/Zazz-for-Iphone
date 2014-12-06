@@ -11,11 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
-<<<<<<< HEAD
 		<string>https://fedyanyet:d7AyvFTkHho2nVZBNHjPrmxv%23zUk,E@github.com/zazzlife/Zazz-for-Iphone.git</string>
-=======
-		<string>https://github.com/zazzlife/Zazz-for-Iphone.git</string>
->>>>>>> origin/feature/profile-view
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Zazz-iphone-app.xcodeproj</string>

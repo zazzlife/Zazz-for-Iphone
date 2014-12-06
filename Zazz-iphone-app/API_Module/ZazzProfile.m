@@ -33,12 +33,7 @@ NSMutableData* _receivedData;
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
     [request setHTTPMethod:@"PUT"];
     [request setValue:@"0" forHTTPHeaderField:@"Content-Length"];
-    NSLog(@"curl %@ -X %@ -H \"Authorization:%@\" -h \"Content-Length:%@\"",
-          request.URL,
-          request.HTTPMethod,
-          [request valueForHTTPHeaderField:@"Authorization"],
-          [request valueForHTTPHeaderField:@"Content-Length"]
-    );
+    //No CALLBACK!
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
