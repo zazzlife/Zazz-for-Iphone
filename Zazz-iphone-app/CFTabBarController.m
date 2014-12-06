@@ -58,7 +58,7 @@ BOOL enabled = true;
     
 }
 
--(void) viewDidAppear:(BOOL)animated{
+-(void) viewWillAppear:(BOOL)animated{
     UIImage* tabImage = [UIImage imageNamed:@"post button"];
     [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
     [self.postButton setImage:tabImage];
