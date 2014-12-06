@@ -12,6 +12,7 @@
 #import "ProfileViewController.h"
 #import "Profile.h"
 #import "AppDelegate.h"
+#import "ProfileViewController.h"
 #import "Feed.h"
 #import "UIView.h"
 #import "UIColor.h"
@@ -37,7 +38,7 @@ bool simple_refresh = false; //don't append/prepend data. just refresh existing 
 @synthesize showVideos;
 @synthesize showPosts;
 @synthesize require_feed_user_id;
-
+@synthesize showsProfileOnUserPhotoSelect;
 
 int const GET_ALL_FEED = 0;
 int const GET_ALL_FEED_AFTER = 1;
@@ -81,43 +82,6 @@ NSMutableDictionary* _indexPathsToReload;
     int count = [self.filteredFeed count];
     if(end_of_feed || prepend_feed) return count;
     return count + 1;
-}
-//did-SELECT
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    Feed* feedItem = [self.filteredFeed objectAtIndex:indexPath.row];
-    DetailViewItem* detailItem = [[DetailViewItem alloc] init];
-    if([feedItem.feedType isEqualToString:FEED_PHOTO]){
-        Photo* photo = (Photo*)[(NSMutableArray*)[feedItem content] objectAtIndex:0];
-        [detailItem setImage:photo.image];
-        [detailItem setDescription:photo.description];
-        [detailItem setCategories:photo.categories];
-        [detailItem setType:COMMENT_TYPE_PHOTO];
-        [detailItem setItemId:photo.photoId];
-        [detailItem setUser:photo.user];
-        [detailItem setLikes:0];
-    }else if([feedItem.feedType isEqualToString:FEED_POST]){
-        Post* post = (Post*)[feedItem content];
-        [detailItem setImage:nil];
-        [detailItem setDescription:post.message];
-        [detailItem setCategories:post.categories];
-        [detailItem setType:COMMENT_TYPE_POST];
-        [detailItem setItemId:post.postId];
-        [detailItem setUser:post.fromUser];
-        [detailItem setLikes:0];
-    }else if([feedItem.feedType isEqualToString:FEED_EVENT]){
-        Event* event = (Event*)[feedItem content];
-        [detailItem setImage:nil];
-        [detailItem setDescription:event.description];
-        [detailItem setType:COMMENT_TYPE_EVENT];
-        [detailItem setItemId:event.eventId];
-        [detailItem setUser:event.user];
-        [detailItem setLikes:0];
-    }
-    DetailViewController* detailViewController  = [[DetailViewController alloc] initWithDetailItem:detailItem];
-    NSArray* keys  =    [NSArray arrayWithObjects: @"childController",  @"identifier", nil];
-    NSArray* objects  = [NSArray arrayWithObjects: detailViewController, [NSString stringWithFormat:@"detailView-feed%@",feedItem.feedId], nil];
-    NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:detailViewController userInfo:userInfo];
 }
 //HEIGHT
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -165,7 +129,12 @@ NSMutableDictionary* _indexPathsToReload;
     [cell setTableView:tableView];
     Feed* feedItem = [self.filteredFeed objectAtIndex:(indexPath.row)];
     [cell setFeed:feedItem];
+<<<<<<< HEAD
     [cell.profileButton addTarget:self action:@selector(showProfile:) forControlEvents:UIControlEventTouchUpInside];
+=======
+    [cell.profileButton setTag:[feedItem.user.userId intValue]];
+    [cell.profileButton addTarget:self action:@selector(didSelectProfile:) forControlEvents:UIControlEventTouchUpInside];
+>>>>>>> origin/feature/profile-view
     return cell;
 }
 
@@ -331,5 +300,20 @@ NSMutableDictionary* _indexPathsToReload;
     }];
     return [activeFeed objectsAtIndexes:activeIndexs];
 }
+
+-(void)didSelectProfile:(UIButton*)button{
+    if (!self.showsProfileOnUserPhotoSelect) return;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotProfile:) name:@"gotProfile" object:nil];
+    [[AppDelegate zazzApi] getProfile:[NSString stringWithFormat:@"%d", button.tag]];
+}
+
+-(void)gotProfile:(NSNotification*)notif{
+    if ([notif.name isEqualToString:@"gotProfile"]) return;
+    Profile* profile = notif.object;
+    ProfileViewController* profileController = [[ProfileViewController alloc] init];
+    [profileController set_profile:profile];
+    [self.navigationController pushViewController:profileController animated:true];
+}
+
 
 @end

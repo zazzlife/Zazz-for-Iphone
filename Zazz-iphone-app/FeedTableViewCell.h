@@ -28,6 +28,7 @@
 @property Feed* _feed;
 @property float _height;
 @property NSMutableArray* _neededPhotoIds;
+@property IBOutlet UIButton* profileButton;
 
 -(void)setFeed:(Feed *)feed;
 -(CGRect)cellBackgroundFrame;

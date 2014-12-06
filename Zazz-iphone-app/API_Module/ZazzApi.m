@@ -14,6 +14,7 @@
 #import "ZazzFeed.h"
 #import "ZazzCategory.h"
 #import "ZazzFollowRequest.h"
+#import "ZazzFollow.h"
 #import "ZazzNotification.h"
 #import "ZazzComments.h"
 #import "ZazzPost.h"
@@ -70,6 +71,9 @@
 -(void) setFollowRequestsUserId:(NSString*)userId action:(BOOL)action{
     [[[ZazzFollowRequest alloc] init] setFollowRequestsUserId:userId action:action];
     //response neccesary...
+}
+-(void) sendFollowRequest:(NSString*)userId{
+    [[[ZazzFollow alloc] init] sendFollowRequest:userId];
 }
 
 /*
