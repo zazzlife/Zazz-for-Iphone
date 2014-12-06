@@ -27,8 +27,10 @@ PhotoPicker* _activePicker;
     [super viewDidLoad];
     [self.scrollView setScrollsToTop:false];
     [self.scrollView setAlwaysBounceVertical:false];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMe:) name:@"gotMe" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotProfile:) name:@"gotProfile" object:nil];
+    if(!self.user_id)
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMe:) name:@"gotMe" object:nil];
+    if(!self._profile)
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotProfile:) name:@"gotProfile" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -72,23 +74,27 @@ PhotoPicker* _activePicker;
     if (![notif.name isEqualToString:@"gotProfile"]) return;
     Profile* profile = notif.object;
     if([profile.profile_id intValue] == [self.user_id intValue]){
-        [self set_profile:profile];
-        [self.profilePhoto setImageWithURL:[NSURL URLWithString:profile.photoUrl]];
-        [self.profilePhoto.layer setCornerRadius:self.profilePhoto.frame.size.height / 2];
-        [self.profilePhoto.layer setMasksToBounds:YES];
-        [self.username setText:[NSString stringWithFormat:@"@%@",profile.displayName]];
-        [self.name setText:profile.userDetails.fullName];
-        [self.tagline setText:profile.userDetails.major.name];
-        [self.school setText:profile.userDetails.school.name];
-        [self.city setText:profile.userDetails.city.name];
-        [self.followers setText:[NSString stringWithFormat:@"%@",profile.followersCount]];
-        if(!profile.isCurrentUserFollowingTargetUser){
-            [self.follow setTitle:@"Following" forState:UIControlStateNormal];
-        }
-        if(self.feedTableViewController){
-            [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
-            [self.feedTableViewController doRefresh:nil];
-        }
+        [self setProfile:profile];
+    }
+}
+
+-(void)setProfile:(Profile*)profile{
+    [self set_profile:profile];
+    [self.profilePhoto setImageWithURL:[NSURL URLWithString:profile.photoUrl]];
+    [self.profilePhoto.layer setCornerRadius:self.profilePhoto.frame.size.height / 2];
+    [self.profilePhoto.layer setMasksToBounds:YES];
+    [self.username setText:[NSString stringWithFormat:@"@%@",profile.displayName]];
+    [self.name setText:profile.userDetails.fullName];
+    [self.tagline setText:profile.userDetails.major.name];
+    [self.school setText:profile.userDetails.school.name];
+    [self.city setText:profile.userDetails.city.name];
+    [self.followers setText:[NSString stringWithFormat:@"%@",profile.followersCount]];
+    if(!profile.isCurrentUserFollowingTargetUser){
+        [self.follow setTitle:@"Following" forState:UIControlStateNormal];
+    }
+    if(self.feedTableViewController){
+        [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
+        [self.feedTableViewController doRefresh:nil];
     }
 }
 
@@ -188,6 +194,18 @@ PhotoPicker* _activePicker;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"madePost" object:nil];
     Photo* photo = notif.object;
     [[AppDelegate zazzApi] setProfilePic:photo.photoId];
+}
+
+-(void)enableBackButton{
+    //assume it's full screen.
+    [self.view setFrame:[[UIScreen mainScreen] bounds]];
+    [self.scrollView setFrame:self.view.frame];
+    [self.leftBarButton setImage:[UIImage imageNamed:@"yellow arrow"] forState:UIControlStateNormal];
+    [self.leftBarButton addTarget:self action:@selector(goBack:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)goBack:(UIButton*)button{
+    [[[AppDelegate getAppDelegate] navController] popViewControllerAnimated:YES];
 }
 
 @end

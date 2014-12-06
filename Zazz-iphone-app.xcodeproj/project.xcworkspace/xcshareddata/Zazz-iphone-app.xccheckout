@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>0CDAD266-CE80-467D-9794-8505E34DC192</string>
+	<string>0C097986-2EAE-4D25-A28F-11647244198A</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Zazz-iphone-app</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>DF7E17C2-297F-4570-A62F-4FA9D0D95D2B</key>
-		<string>https://github.com/zazzlife/Zazz-for-Iphone.git</string>
+		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
+		<string>https://fedyanyet:d7AyvFTkHho2nVZBNHjPrmxv%23zUk,E@github.com/zazzlife/Zazz-for-Iphone.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Zazz-iphone-app.xcodeproj/project.xcworkspace</string>
+	<string>Zazz-iphone-app.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>DF7E17C2-297F-4570-A62F-4FA9D0D95D2B</key>
+		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/zazzlife/Zazz-for-Iphone.git</string>
+	<string>https://fedyanyet:d7AyvFTkHho2nVZBNHjPrmxv%23zUk,E@github.com/zazzlife/Zazz-for-Iphone.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>DF7E17C2-297F-4570-A62F-4FA9D0D95D2B</string>
+	<string>250330D51C1DE5341A0555CA63E6F3997BA852E0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>DF7E17C2-297F-4570-A62F-4FA9D0D95D2B</string>
+			<string>250330D51C1DE5341A0555CA63E6F3997BA852E0</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Zazz-for-Iphone</string>
 		</dict>

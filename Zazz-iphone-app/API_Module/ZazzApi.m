@@ -18,6 +18,7 @@
 #import "ZazzComments.h"
 #import "ZazzPost.h"
 #import "ZazzPhoto.h"
+#import "ZazzFollow.h"
 
 @implementation ZazzApi
 
@@ -60,6 +61,9 @@
 /*
  ME - FOLLOW-REQUESTS
  */
+-(void)getFollows{
+    [[[ZazzFollow alloc] init] getFollows];
+}
 -(void) getFollowRequests{
     [[[ZazzFollowRequest alloc] init] getFollowRequests];
 }
@@ -73,6 +77,11 @@ PROFILE
  */
 -(void) getProfile:(NSString*)profileId{
     [[[ZazzProfile alloc] init] getProfile:profileId];
+}
+-(void) getProfile:(NSString*)profileId withNotificationName:(NSString*)notifName{
+    ZazzProfile* profileFetcher = [[ZazzProfile alloc] init];
+    [profileFetcher setNotificationName:notifName];
+    [profileFetcher getProfile:profileId];
 }
 -(void) setProfilePic:(NSString*)photoId{
     [[[ZazzProfile alloc] init] setProfilePic:photoId];

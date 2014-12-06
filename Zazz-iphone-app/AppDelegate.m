@@ -54,8 +54,8 @@
 //    [self.window setBackgroundColor:];
     [[self.window rootViewController].view setBackgroundColor:[UIColor clearColor]];
     UINavigationController* navController = (UINavigationController*)[self.window rootViewController];
-    [self setNavController:navController];
     [navController.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+    self.navController = navController;
     [AppDelegate addZazzBackgroundLogo];
     return YES;
 }

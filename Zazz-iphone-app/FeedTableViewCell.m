@@ -18,7 +18,6 @@
 #import "UIImage.h"
 #import "DetailViewItem.h"
 #import "Comment.h"
-#import "UIImageView+WebCache.h"
 
 @implementation FeedTableViewCell
 
@@ -156,7 +155,10 @@ int _albumObserversCounter;
     
     [self.feedCellBackgroundView setFrame:CGRectMake(CELL_PADDING_SIDES, CELL_PADDING_TOP, self.tableView.frame.size.width - (2*CELL_PADDING_SIDES), _height - CELL_PADDING_TOP)];
     [self.feedCellContentView setFrame:CGRectMake(0, CELL_HEADER_HEIGHT, self.feedCellBackgroundView.frame.size.width, _height - CELL_HEADER_HEIGHT - CELL_PADDING_TOP)];
+    [self.profileButton setTag:[feed.user.userId integerValue]];
+    
 }
+
 //
 //-(void)gotUserImageNotification:(NSNotification *)notif{
 //    if(! [notif.name isEqualToString:@"gotProfile"]) return;

@@ -47,8 +47,9 @@ UIView* tempHelper;
         [(UIButton*)category setRestorationIdentifier:catName];
         [(UIButton*)category setImage:categoryImage forState:UIControlStateNormal];
     }
-    [self.postField setInputAccessoryView:self.keyboardToolbar];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(madePost:) name:@"madePost" object:nil];
+    [self.keyboardToolbar removeFromSuperview];
+    [self.postField setInputAccessoryView:self.keyboardToolbar];
 }
 
 id _activePicker = nil;
@@ -65,8 +66,13 @@ id _activePicker = nil;
         subview.layer.cornerRadius = 5;
         subview.layer.masksToBounds = YES;
     }
-    [self.keyboardToolbar setHidden:false];
     [self.postField becomeFirstResponder];
+}
+
+
+
+- (IBAction)hideKeyboard:(UIBarButtonItem *)sender {
+    [self.postField resignFirstResponder];
 }
 
 -(NSMutableArray*)getSelectedCatgoryIds{
@@ -109,6 +115,16 @@ id _activePicker = nil;
     return;
 }
 
+-(void)tagUsers:(UIButton*)sender{
+    
+}
+-(void)tagPlace:(UIButton*)sender{
+    
+}
+-(void)shareUsers:(UIButton*)sender{
+    
+}
+
 -(void)madePost:(NSNotification*)notif{
     Post* post = notif.object;
     if(!post) return;
@@ -117,10 +133,6 @@ id _activePicker = nil;
 
 - (IBAction)goBack:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:true];
-    [self.view endEditing:YES];
-}
-
-- (IBAction)hideKeyboard:(UIBarButtonItem *)sender {
     [self.view endEditing:YES];
 }
 
@@ -171,6 +183,10 @@ id _activePicker = nil;
     UIImage* pic =[UIImage imageWithCGImage:self.mediaAsset.thumbnail];
     [thumbView setBackgroundColor:[UIColor blackColor]];
     [thumbView setImage:pic];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton*)sender{
+    [segue.destinationViewController setTag:sender.tag];
 }
 
 @end

@@ -11,13 +11,20 @@
 
 @implementation ZazzProfile
 
+@synthesize notificationName;
+
 NSString* _profileId;
 NSMutableData* _receivedData;
 
 -(void) getProfile:(NSString *)userId{
+    _receivedData = nil;
     _profileId = userId;
     NSString* action = [[NSString alloc] initWithFormat:@"users/%@/profile",userId];
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
+    NSLog(@"curl %@ -X %@ -H \"Authorization:%@\" -H ",
+          request.URL,
+          request.HTTPMethod,
+          [request valueForHTTPHeaderField:@"Authorization"]);
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
@@ -52,7 +59,12 @@ NSMutableData* _receivedData;
     
     NSMutableDictionary* userInfo= [[NSMutableDictionary alloc] init];
     [userInfo setObject:_profileId forKey:@"profileId"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"gotProfile" object:profile userInfo:userInfo];
+    
+    NSString* notifName = @"gotProfile";
+    if (self.notificationName){
+        notifName = self.notificationName;
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:notifName object:profile userInfo:userInfo];
 }
 
 @end
