@@ -17,7 +17,6 @@
 
 -(void)getNotifications{
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:@"notifications"];
-//    NSLog(@"norifURL: %@",[request URL] );
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
