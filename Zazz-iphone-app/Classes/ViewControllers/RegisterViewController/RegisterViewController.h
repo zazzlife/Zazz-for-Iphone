@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-@interface RegisterViewController : UIViewController<ViewAnimationDelegate>
+
+@interface RegisterViewController : UIViewController<ViewAnimationDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate> {
+    NSArray* genders;
+    NSString* genderStr;
+}
 
 
 @property IBOutlet UITextField* firstName;
@@ -18,6 +22,7 @@
 @property IBOutlet UITextField* username;
 @property IBOutlet UIPickerView* type;
 @property IBOutlet UITextField* password;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *registerProgress;
 
 -(IBAction)doRegistration:(id)sender;
 -(IBAction)userTappedBackgroud:(id)sender;

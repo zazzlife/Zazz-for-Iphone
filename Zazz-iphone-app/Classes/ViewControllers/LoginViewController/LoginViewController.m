@@ -30,9 +30,14 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self.loginprogress setColor:[UIColor colorFromHexString:COLOR_ZAZZ_YELLOW]];
+
+    // post-load logic.
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthError:) name:@"gotAuthError" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthToken:) name:@"gotAuthToken" object:nil];
-    // post-load logic.
 }
 
 - (void)viewDidFinishAnimation{
@@ -73,5 +78,11 @@
     [self.loginprogress stopAnimating];
     [self performSegueWithIdentifier:@"loginComplete" sender:self];
     return;
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotAuthError" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotAuthToken" object:nil];
 }
 @end

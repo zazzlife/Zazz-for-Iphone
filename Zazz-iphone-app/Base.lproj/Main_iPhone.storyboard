@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="961-x4-DZY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="961-x4-DZY">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -35,17 +35,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="userHitReturn:" destination="C83-6H-Om6" eventType="editingDidEndOnExit" id="Xxl-Mh-mrs"/>
                                     <action selector="userHitReturn:" destination="p5l-vh-bdz" eventType="editingDidEndOnExit" id="rcf-fE-CyE"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" id="gBO-Nj-OBV">
-                                <rect key="frame" x="20" y="468" width="280" height="30"/>
+                                <rect key="frame" x="20" y="300" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <connections>
+                                    <action selector="userHitReturn:" destination="C83-6H-Om6" eventType="editingDidEndOnExit" id="Sok-iG-adU"/>
                                     <action selector="userHitReturn:" destination="p5l-vh-bdz" eventType="editingDidEndOnExit" id="aFv-eA-lDW"/>
+                                    <outlet property="delegate" destination="C83-6H-Om6" id="nRK-Ny-wY9"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" id="KPQ-hr-Ujf">
@@ -56,12 +59,9 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="userHitReturn:" destination="p5l-vh-bdz" eventType="editingDidEndOnExit" id="DHg-fR-FpC"/>
+                                    <action selector="userHitReturn:" destination="C83-6H-Om6" eventType="editingDidEndOnExit" id="XNk-p3-3Ej"/>
                                 </connections>
                             </textField>
-                            <pickerView contentMode="scaleToFill" id="x1A-Xs-WNp">
-                                <rect key="frame" x="0.0" y="298" width="320" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" id="Dya-RD-wUP">
                                 <rect key="frame" x="20" y="184" width="139" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -69,6 +69,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="userHitReturn:" destination="C83-6H-Om6" eventType="editingDidEndOnExit" id="752-Re-NOH"/>
                                     <action selector="userHitReturn:" destination="p5l-vh-bdz" eventType="editingDidEndOnExit" id="kOk-Mo-Mye"/>
                                 </connections>
                             </textField>
@@ -79,6 +80,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="userHitReturn:" destination="C83-6H-Om6" eventType="editingDidEndOnExit" id="ORo-0v-3CW"/>
                                     <action selector="userHitReturn:" destination="p5l-vh-bdz" eventType="editingDidEndOnExit" id="aMh-y8-HM8"/>
                                 </connections>
                             </textField>
@@ -110,9 +112,24 @@
                                 <color key="textColor" red="0.98431372549999996" green="0.74509803919999995" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="zCl-Lc-DLG">
+                                <rect key="frame" x="142" y="108" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
+                            <pickerView contentMode="scaleToFill" id="x1A-Xs-WNp">
+                                <rect key="frame" x="0.0" y="343" width="320" height="90"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="C83-6H-Om6" id="Wmq-aJ-dOi"/>
+                                    <outlet property="delegate" destination="C83-6H-Om6" id="1bX-yr-586"/>
+                                </connections>
+                            </pickerView>
                         </subviews>
+                        <gestureRecognizers/>
                         <connections>
-                            <action selector="userTappedBackgroud:" destination="p5l-vh-bdz" eventType="touchDown" id="dud-5t-fRa"/>
+                            <outletCollection property="gestureRecognizers" destination="PaT-jr-OL5" appends="YES" id="VZX-0A-8OY"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="SbW-5H-9VG"/>
@@ -121,12 +138,18 @@
                         <outlet property="firstName" destination="Dya-RD-wUP" id="6Ia-hn-w74"/>
                         <outlet property="lastName" destination="psZ-Yi-weg" id="8mp-oL-vNz"/>
                         <outlet property="password" destination="gBO-Nj-OBV" id="M7E-vd-fBR"/>
+                        <outlet property="registerProgress" destination="zCl-Lc-DLG" id="TxT-Rv-d4V"/>
                         <outlet property="type" destination="x1A-Xs-WNp" id="X0a-8U-I0q"/>
                         <outlet property="username" destination="KPQ-hr-Ujf" id="jsk-AU-15B"/>
-                        <segue destination="Aan-C5-ZR6" kind="custom" identifier="goToFeed" customClass="CustomPushSegue" id="UKP-4G-Fq5"/>
+                        <segue destination="Aan-C5-ZR6" kind="custom" identifier="registerComplete" customClass="CustomPushSegue" id="UKP-4G-Fq5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5l-vh-bdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="PaT-jr-OL5">
+                    <connections>
+                        <action selector="userTappedBackgroud:" destination="C83-6H-Om6" id="oRA-n1-bq9"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="345" y="813"/>
         </scene>
@@ -1642,7 +1665,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="is_selected" id="zCZ-va-HjG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="123"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="702" height="184.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="name" text="FullName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AXU-xC-XOi">
@@ -1660,7 +1683,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="photo" image="CheckMark_for_invite_BLUE" id="NKG-CK-UgI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="123"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="702" height="184.5"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -1816,8 +1839,8 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="f36-XF-QiU"/>
-        <segue reference="rQA-XQ-SRc"/>
+        <segue reference="UKP-4G-Fq5"/>
+        <segue reference="pi9-kU-8t2"/>
         <segue reference="UqG-YO-jn2"/>
         <segue reference="upl-AT-HmV"/>
     </inferredMetricsTieBreakers>

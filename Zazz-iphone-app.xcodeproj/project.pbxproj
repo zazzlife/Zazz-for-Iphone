@@ -77,15 +77,6 @@
 		667D091F1A37814500A12ABE /* ZazzApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08761A37814400A12ABE /* ZazzApi.m */; };
 		667D09201A37814500A12ABE /* CustomPopSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D087A1A37814400A12ABE /* CustomPopSegue.m */; };
 		667D09211A37814500A12ABE /* CustomPushSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D087D1A37814400A12ABE /* CustomPushSegue.m */; };
-		667D09221A37814500A12ABE /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08821A37814400A12ABE /* AFHTTPRequestOperation.m */; };
-		667D09231A37814500A12ABE /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08841A37814400A12ABE /* AFHTTPRequestOperationManager.m */; };
-		667D09241A37814500A12ABE /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08861A37814400A12ABE /* AFHTTPSessionManager.m */; };
-		667D09251A37814500A12ABE /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08891A37814500A12ABE /* AFNetworkReachabilityManager.m */; };
-		667D09261A37814500A12ABE /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D088B1A37814500A12ABE /* AFSecurityPolicy.m */; };
-		667D09271A37814500A12ABE /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D088D1A37814500A12ABE /* AFURLConnectionOperation.m */; };
-		667D09281A37814500A12ABE /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D088F1A37814500A12ABE /* AFURLRequestSerialization.m */; };
-		667D09291A37814500A12ABE /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08911A37814500A12ABE /* AFURLResponseSerialization.m */; };
-		667D092A1A37814500A12ABE /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08931A37814500A12ABE /* AFURLSessionManager.m */; };
 		667D092B1A37814500A12ABE /* RSKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08971A37814500A12ABE /* RSKImageCropViewController.m */; };
 		667D092C1A37814500A12ABE /* RSKImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08991A37814500A12ABE /* RSKImageScrollView.m */; };
 		667D092D1A37814500A12ABE /* RSKTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D089B1A37814500A12ABE /* RSKTouchView.m */; };
@@ -119,6 +110,7 @@
 		667D09491A37814500A12ABE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08E31A37814500A12ABE /* RegisterViewController.m */; };
 		667D094A1A37814500A12ABE /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08E61A37814500A12ABE /* CFTabBarController.m */; };
 		667D094B1A37814500A12ABE /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08E91A37814500A12ABE /* TagViewController.m */; };
+		667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D094D1A379D9B00A12ABE /* ZazzRegister.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -265,25 +257,6 @@
 		667D087C1A37814400A12ABE /* CustomPushSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPushSegue.h; sourceTree = "<group>"; };
 		667D087D1A37814400A12ABE /* CustomPushSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPushSegue.m; sourceTree = "<group>"; };
 		667D087E1A37814400A12ABE /* EmbedFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmbedFeedViewController.h; sourceTree = "<group>"; };
-		667D08811A37814400A12ABE /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		667D08821A37814400A12ABE /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		667D08831A37814400A12ABE /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
-		667D08841A37814400A12ABE /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
-		667D08851A37814400A12ABE /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
-		667D08861A37814400A12ABE /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
-		667D08871A37814400A12ABE /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
-		667D08881A37814500A12ABE /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
-		667D08891A37814500A12ABE /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
-		667D088A1A37814500A12ABE /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
-		667D088B1A37814500A12ABE /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
-		667D088C1A37814500A12ABE /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		667D088D1A37814500A12ABE /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		667D088E1A37814500A12ABE /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
-		667D088F1A37814500A12ABE /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
-		667D08901A37814500A12ABE /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
-		667D08911A37814500A12ABE /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
-		667D08921A37814500A12ABE /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
-		667D08931A37814500A12ABE /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		667D08951A37814500A12ABE /* RSKImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropper.h; sourceTree = "<group>"; };
 		667D08961A37814500A12ABE /* RSKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSKImageCropViewController.h; sourceTree = "<group>"; };
 		667D08971A37814500A12ABE /* RSKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSKImageCropViewController.m; sourceTree = "<group>"; };
@@ -352,6 +325,8 @@
 		667D08E61A37814500A12ABE /* CFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTabBarController.m; sourceTree = "<group>"; };
 		667D08E81A37814500A12ABE /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
 		667D08E91A37814500A12ABE /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
+		667D094C1A379D9B00A12ABE /* ZazzRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzRegister.h; sourceTree = "<group>"; };
+		667D094D1A379D9B00A12ABE /* ZazzRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzRegister.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -879,6 +854,8 @@
 				667D08711A37814400A12ABE /* ZazzMe.m */,
 				667D08721A37814400A12ABE /* ZazzProfile.h */,
 				667D08731A37814400A12ABE /* ZazzProfile.m */,
+				667D094C1A379D9B00A12ABE /* ZazzRegister.h */,
+				667D094D1A379D9B00A12ABE /* ZazzRegister.m */,
 			);
 			path = UserManager;
 			sourceTree = "<group>";
@@ -923,37 +900,10 @@
 		667D087F1A37814400A12ABE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				667D08801A37814400A12ABE /* AFNetworking */,
 				667D08941A37814500A12ABE /* RSKImageCropper */,
 				667D089E1A37814500A12ABE /* SDWebImage */,
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		667D08801A37814400A12ABE /* AFNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				667D08811A37814400A12ABE /* AFHTTPRequestOperation.h */,
-				667D08821A37814400A12ABE /* AFHTTPRequestOperation.m */,
-				667D08831A37814400A12ABE /* AFHTTPRequestOperationManager.h */,
-				667D08841A37814400A12ABE /* AFHTTPRequestOperationManager.m */,
-				667D08851A37814400A12ABE /* AFHTTPSessionManager.h */,
-				667D08861A37814400A12ABE /* AFHTTPSessionManager.m */,
-				667D08871A37814400A12ABE /* AFNetworking.h */,
-				667D08881A37814500A12ABE /* AFNetworkReachabilityManager.h */,
-				667D08891A37814500A12ABE /* AFNetworkReachabilityManager.m */,
-				667D088A1A37814500A12ABE /* AFSecurityPolicy.h */,
-				667D088B1A37814500A12ABE /* AFSecurityPolicy.m */,
-				667D088C1A37814500A12ABE /* AFURLConnectionOperation.h */,
-				667D088D1A37814500A12ABE /* AFURLConnectionOperation.m */,
-				667D088E1A37814500A12ABE /* AFURLRequestSerialization.h */,
-				667D088F1A37814500A12ABE /* AFURLRequestSerialization.m */,
-				667D08901A37814500A12ABE /* AFURLResponseSerialization.h */,
-				667D08911A37814500A12ABE /* AFURLResponseSerialization.m */,
-				667D08921A37814500A12ABE /* AFURLSessionManager.h */,
-				667D08931A37814500A12ABE /* AFURLSessionManager.m */,
-			);
-			path = AFNetworking;
 			sourceTree = "<group>";
 		};
 		667D08941A37814500A12ABE /* RSKImageCropper */ = {
@@ -1278,7 +1228,6 @@
 				667D091D1A37814500A12ABE /* ZazzMe.m in Sources */,
 				667D08F41A37814500A12ABE /* CTAssetsPageViewController.m in Sources */,
 				667D08F91A37814500A12ABE /* CTAssetsViewCell.m in Sources */,
-				667D09271A37814500A12ABE /* AFURLConnectionOperation.m in Sources */,
 				667D09161A37814500A12ABE /* ZazzFeed.m in Sources */,
 				667D09321A37814500A12ABE /* SDWebImageCompat.m in Sources */,
 				667D08F21A37814500A12ABE /* CTAssetsGroupViewCell.m in Sources */,
@@ -1297,8 +1246,6 @@
 				667D09011A37814500A12ABE /* PhotoPicker.m in Sources */,
 				667D08F61A37814500A12ABE /* CTAssetsPickerConstants.m in Sources */,
 				667D09141A37814500A12ABE /* ZazzCategory.m in Sources */,
-				667D09221A37814500A12ABE /* AFHTTPRequestOperation.m in Sources */,
-				667D09251A37814500A12ABE /* AFNetworkReachabilityManager.m in Sources */,
 				667D090D1A37814500A12ABE /* Notification.m in Sources */,
 				667D090C1A37814500A12ABE /* GenericModel.m in Sources */,
 				667D093B1A37814500A12ABE /* UIImage+WebP.m in Sources */,
@@ -1308,12 +1255,10 @@
 				667D090E1A37814500A12ABE /* Photo.m in Sources */,
 				667D09411A37814500A12ABE /* HomeViewController.m in Sources */,
 				667D09181A37814500A12ABE /* ZazzFollowRequest.m in Sources */,
-				667D09291A37814500A12ABE /* AFURLResponseSerialization.m in Sources */,
 				667D091E1A37814500A12ABE /* ZazzProfile.m in Sources */,
 				667D09451A37814500A12ABE /* RightNavigationViewController.m in Sources */,
 				667D092E1A37814500A12ABE /* UIImage+FixOrientation.m in Sources */,
 				667D09081A37814500A12ABE /* Event.m in Sources */,
-				667D09261A37814500A12ABE /* AFSecurityPolicy.m in Sources */,
 				667D08EE1A37814500A12ABE /* ALAsset+isEqual.m in Sources */,
 				667D09071A37814500A12ABE /* Comment.m in Sources */,
 				667D090A1A37814500A12ABE /* Follow.m in Sources */,
@@ -1325,11 +1270,11 @@
 				667D09491A37814500A12ABE /* RegisterViewController.m in Sources */,
 				667D08F01A37814500A12ABE /* CTAssetItemViewController.m in Sources */,
 				667D09471A37814500A12ABE /* PostViewController.m in Sources */,
+				667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */,
 				667D09171A37814500A12ABE /* ZazzFollow.m in Sources */,
 				667D09441A37814500A12ABE /* LeftNavigationViewController.m in Sources */,
 				667D093F1A37814500A12ABE /* DetailViewController.m in Sources */,
 				667D09301A37814500A12ABE /* NSData+ImageContentType.m in Sources */,
-				667D09241A37814500A12ABE /* AFHTTPSessionManager.m in Sources */,
 				667D08EB1A37814500A12ABE /* CommentCell.m in Sources */,
 				667D09461A37814500A12ABE /* NotificationViewController.m in Sources */,
 				667D090F1A37814500A12ABE /* Post.m in Sources */,
@@ -1345,7 +1290,6 @@
 				667D092F1A37814500A12ABE /* MKAnnotationView+WebCache.m in Sources */,
 				667D09311A37814500A12ABE /* SDImageCache.m in Sources */,
 				667D093C1A37814500A12ABE /* UIImageView+HighlightedWebCache.m in Sources */,
-				667D092A1A37814500A12ABE /* AFURLSessionManager.m in Sources */,
 				667D09111A37814500A12ABE /* SearchResult.m in Sources */,
 				667D08ED1A37814500A12ABE /* ALAsset+assetType.m in Sources */,
 				667D09481A37814500A12ABE /* ProfileViewController.m in Sources */,
@@ -1353,9 +1297,7 @@
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
 				667D08FA1A37814500A12ABE /* CTAssetsViewController.m in Sources */,
 				667D09341A37814500A12ABE /* SDWebImageDownloader.m in Sources */,
-				667D09281A37814500A12ABE /* AFURLRequestSerialization.m in Sources */,
 				667D093D1A37814500A12ABE /* UIImageView+WebCache.m in Sources */,
-				667D09231A37814500A12ABE /* AFHTTPRequestOperationManager.m in Sources */,
 				667D08EC1A37814500A12ABE /* ALAsset+accessibilityLabel.m in Sources */,
 				667D092C1A37814500A12ABE /* RSKImageScrollView.m in Sources */,
 				667D09061A37814500A12ABE /* CategoryStat.m in Sources */,

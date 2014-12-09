@@ -31,6 +31,8 @@
 -(void) gotAuthError:(NSString*)error;
 -(void) gotAuthToken:(NSString*)token;
 
+-(void)registerWithDict:(NSDictionary*)dict;
+
 -(void) getMe;
 -(void) getProfile:(NSString*)profileId;
 -(void) getProfile:(NSString*)profileId withNotificationName:(NSString*)notifName;

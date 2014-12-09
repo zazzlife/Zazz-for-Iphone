@@ -19,6 +19,7 @@
 #import "ZazzPost.h"
 #import "ZazzPhoto.h"
 #import "ZazzFollow.h"
+#import "ZazzRegister.h"
 
 @implementation ZazzApi
 
@@ -43,6 +44,14 @@
     NSLog(@"Session Token: %@",token);
     NSDictionary* userInfo = [NSDictionary dictionaryWithObject:token forKey:@"token"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"gotAuthToken" object:nil userInfo:userInfo];
+}
+
+/*
+ REGISTER
+ */
+
+-(void)registerWithDict:(NSDictionary *)dict {
+    [[[ZazzRegister alloc] init] registerWithDict:dict delegate:self];
 }
 
 
@@ -195,6 +204,11 @@ PROFILE
     }
     return urlWithQuerystring;
 }
-+(NSString *) BASE_URL{ return @"http://www.zazzlife.com/api/v1/"; }
++(NSString *) BASE_URL{
+    // Test
+   // return @"http://test.zazzlife.com/api/v1/";
+    // Prod
+    return @"http://www.zazzlife.com/api/v1/";
+}
 
 @end
