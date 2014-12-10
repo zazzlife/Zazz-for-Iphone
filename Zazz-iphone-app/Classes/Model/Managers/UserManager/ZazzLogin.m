@@ -39,6 +39,7 @@
 {
     NSDictionary *array = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil ];
     if(array == nil){
+        [[self _delegate] gotAuthError:[array objectForKey:@"error"]];
         NSLog(@"JSON ERROR");
         return;
     }

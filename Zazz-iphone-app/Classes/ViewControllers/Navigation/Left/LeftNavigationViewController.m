@@ -27,12 +27,13 @@
 
 -(void)gotMe:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotMe"]) return;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotMe" object:nil];
     User* user = notif.object;
     [self set_user:user];
     [self.profilePhoto setImageWithURL:[NSURL URLWithString:user.photoUrl]];
     [self.profilePhoto.layer setCornerRadius:50];
     [self.profilePhoto.layer setMasksToBounds:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotMe" object:nil];
+    
 }
 
 -(IBAction) showNextView:(UIButton*)button{

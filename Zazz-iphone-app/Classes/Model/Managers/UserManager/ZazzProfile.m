@@ -26,6 +26,7 @@ NSMutableData* _receivedData;
           request.HTTPMethod,
           [request valueForHTTPHeaderField:@"Authorization"]);
     [NSURLConnection connectionWithRequest:request delegate:self];
+    
 }
 
 - (void) setProfilePic:(NSString*)photoId{
@@ -33,7 +34,6 @@ NSMutableData* _receivedData;
     NSMutableURLRequest* request = [ZazzApi getRequestWithAction:action];
     [request setHTTPMethod:@"PUT"];
     [request setValue:@"0" forHTTPHeaderField:@"Content-Length"];
-    //No CALLBACK!
     [NSURLConnection connectionWithRequest:request delegate:self];
 }
 
@@ -49,7 +49,10 @@ NSMutableData* _receivedData;
     NSLog(@"received: %@",myString);
     if(!_receivedData){return;}
     
-    NSDictionary *profile_dict = [NSJSONSerialization JSONObjectWithData:_receivedData options:0 error:nil ];
+    NSDictionary *profile_dict = [NSJSONSerialization JSONObjectWithData:_receivedData options:0 error:&error ];
+    _receivedData = nil;
+    NSLog(@"%@", error);
+
     if(profile_dict == nil){
         NSLog(@"JSON ERROR");
         return;

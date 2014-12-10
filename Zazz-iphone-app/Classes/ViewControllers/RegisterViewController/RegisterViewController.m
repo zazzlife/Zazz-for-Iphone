@@ -163,6 +163,7 @@
 
 -(void) gotAuthToken:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotAuthToken"]) return;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotAuthToken" object:nil];
     [self.registerProgress stopAnimating];
     [self performSegueWithIdentifier:@"registerComplete" sender:self];
     return;

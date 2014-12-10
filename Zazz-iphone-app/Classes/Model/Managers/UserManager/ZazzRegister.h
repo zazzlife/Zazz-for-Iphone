@@ -3,7 +3,7 @@
 //  Zazz-iphone-app
 //
 //  Created by Serdar ÇINAR on 09/12/14.
-//  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
+//  Copyright (c) 2014 Hasan Serdar ÇINAR. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

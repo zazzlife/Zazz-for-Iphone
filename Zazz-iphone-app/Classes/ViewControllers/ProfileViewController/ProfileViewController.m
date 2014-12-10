@@ -65,6 +65,7 @@ PhotoPicker* _activePicker;
 
 -(void)gotMe:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotMe"]) return;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotMe" object:nil];
     User* user = notif.object;
     [self setUser_id:user.userId];
     [[AppDelegate zazzApi] getProfile:user_id];
@@ -72,6 +73,7 @@ PhotoPicker* _activePicker;
 
 -(void)gotProfile:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotProfile"]) return;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotProfile" object:nil];
     Profile* profile = notif.object;
     if([profile.profile_id intValue] == [self.user_id intValue]){
         [self setProfile:profile];

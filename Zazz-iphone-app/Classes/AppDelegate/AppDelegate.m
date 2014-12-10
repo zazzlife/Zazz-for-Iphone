@@ -51,11 +51,10 @@
     // Override point for customization after application launch.
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [self set_zazzAPI:[[ZazzApi alloc] init]];
-//    [self.window setBackgroundColor:];
     [[self.window rootViewController].view setBackgroundColor:[UIColor clearColor]];
-    UINavigationController* navController = (UINavigationController*)[self.window rootViewController];
-    [navController.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
-    self.navController = navController;
+    UINavigationController* navController1 = (UINavigationController*)[self.window rootViewController];
+    [navController1.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+    self.navController = navController1;
     [AppDelegate addZazzBackgroundLogo];
     return YES;
 }

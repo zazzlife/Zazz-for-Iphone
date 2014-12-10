@@ -1160,7 +1160,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Mitchell Sorkin";
+				ORGANIZATIONNAME = "Hasan Serdar ÇINAR";
 				TargetAttributes = {
 					5E8AA6EB18FCAED600C99D9F = {
 						DevelopmentTeam = KWHKZ7NN2A;
@@ -1450,6 +1450,7 @@
 				INFOPLIST_FILE = "Zazz-iphone-app/Zazz-iphone-app-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1466,6 +1467,7 @@
 				INFOPLIST_FILE = "Zazz-iphone-app/Zazz-iphone-app-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

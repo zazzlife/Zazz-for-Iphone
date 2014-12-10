@@ -75,6 +75,7 @@
 
 -(void) gotAuthToken:(NSNotification*)notif{
     if (![notif.name isEqualToString:@"gotAuthToken"]) return;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotAuthToken" object:nil];
     [self.loginprogress stopAnimating];
     [self performSegueWithIdentifier:@"loginComplete" sender:self];
     return;
