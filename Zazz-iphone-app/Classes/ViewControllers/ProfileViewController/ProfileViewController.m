@@ -78,6 +78,8 @@ PhotoPicker* _activePicker;
     if([profile.profile_id intValue] == [self.user_id intValue]){
         [self setProfile:profile];
     }
+    
+   //Following example => [[AppDelegate zazzApi] setUserToFollow:@"83" action:YES];
 }
 
 -(void)setProfile:(Profile*)profile{

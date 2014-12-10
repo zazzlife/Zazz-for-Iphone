@@ -43,6 +43,7 @@
 -(void) getFollows;
 -(void) getFollowRequests;
 -(void) setFollowRequestsUserId:(NSString*)userId action:(BOOL)action;
+-(void)setUserToFollow:(NSString *)userId action:(BOOL)follow;
 
 -(void) getFeed;
 -(void) getFeedAfter:(NSString*)feedId;

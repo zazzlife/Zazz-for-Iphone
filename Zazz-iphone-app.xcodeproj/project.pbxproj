@@ -111,6 +111,7 @@
 		667D094A1A37814500A12ABE /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08E61A37814500A12ABE /* CFTabBarController.m */; };
 		667D094B1A37814500A12ABE /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08E91A37814500A12ABE /* TagViewController.m */; };
 		667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D094D1A379D9B00A12ABE /* ZazzRegister.m */; };
+		667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,6 +328,8 @@
 		667D08E91A37814500A12ABE /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
 		667D094C1A379D9B00A12ABE /* ZazzRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzRegister.h; sourceTree = "<group>"; };
 		667D094D1A379D9B00A12ABE /* ZazzRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzRegister.m; sourceTree = "<group>"; };
+		667D0A191A38F8F100A12ABE /* ZazzSendFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzSendFollow.h; sourceTree = "<group>"; };
+		667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzSendFollow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -821,6 +824,8 @@
 				667D08621A37814400A12ABE /* ZazzFollow.m */,
 				667D08631A37814400A12ABE /* ZazzFollowRequest.h */,
 				667D08641A37814400A12ABE /* ZazzFollowRequest.m */,
+				667D0A191A38F8F100A12ABE /* ZazzSendFollow.h */,
+				667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */,
 			);
 			path = FollowManager;
 			sourceTree = "<group>";
@@ -1282,6 +1287,7 @@
 				667D09001A37814500A12ABE /* UIImage+ImageEffects.m in Sources */,
 				667D094A1A37814500A12ABE /* CFTabBarController.m in Sources */,
 				667D09091A37814500A12ABE /* Feed.m in Sources */,
+				667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */,
 				667D093E1A37814500A12ABE /* CreateMessageViewController.m in Sources */,
 				667D09391A37814500A12ABE /* UIImage+GIF.m in Sources */,
 				667D09421A37814500A12ABE /* LoginViewController.m in Sources */,

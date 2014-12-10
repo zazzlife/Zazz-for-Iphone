@@ -20,6 +20,7 @@
 #import "ZazzPhoto.h"
 #import "ZazzFollow.h"
 #import "ZazzRegister.h"
+#import "ZazzSendFollow.h"
 
 @implementation ZazzApi
 
@@ -79,6 +80,10 @@
 -(void) setFollowRequestsUserId:(NSString*)userId action:(BOOL)action{
     [[[ZazzFollowRequest alloc] init] setFollowRequestsUserId:userId action:action];
     //response neccesary...
+}
+
+-(void)setUserToFollow:(NSString *)userId action:(BOOL)follow {
+    [[[ZazzSendFollow alloc] init] setUserToFollow:userId action:follow];
 }
 
 /*
@@ -200,7 +205,12 @@ PROFILE
     for (id key in dictionary) {
         NSString *keyString = [key description];
         NSString *valueString = [[dictionary objectForKey:key] description];
-        [urlWithQuerystring appendFormat:@"&%@=%@", [self urlEscapeString:valueString], [self urlEscapeString:keyString]];
+        if ([urlWithQuerystring isEqualToString:@""]) {
+            [urlWithQuerystring appendFormat:@"%@=%@", [self urlEscapeString:valueString], [self urlEscapeString:keyString]];
+        } else {
+           [urlWithQuerystring appendFormat:@"&%@=%@", [self urlEscapeString:valueString], [self urlEscapeString:keyString]];
+        }
+        
     }
     return urlWithQuerystring;
 }

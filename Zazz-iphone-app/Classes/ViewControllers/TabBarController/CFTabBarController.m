@@ -56,6 +56,8 @@ BOOL enabled = true;
     CGRect tabBarFrame = self.tabBar.frame;
     [AppDelegate removeZazzBackgroundLogo];
     
+    
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated{

@@ -307,10 +307,9 @@ NSMutableDictionary* _indexPathsToReload;
 
 -(void)gotProfile:(NSNotification*)notif{
     if(![notif.name isEqualToString:@"showUserProfile"])return;
-    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"showUserProfile" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"showUserProfile" object:nil];
     Profile* profile = notif.object;
     ProfileViewController* profileController = [self.storyboard instantiateViewControllerWithIdentifier:@"ProfileViewController"];
-    //    [profileController setUser_id:profile.profile_id];
     [profileController enableBackButton];
     [[[AppDelegate getAppDelegate] navController] pushViewController:profileController animated:true];
     [profileController setProfile:profile];
