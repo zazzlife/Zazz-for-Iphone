@@ -16,11 +16,8 @@
 
 // Application's Master Controls
 
-// Application's Buttons
-
-// Application's Icons
-
-// Application's Items
+// Application's Images
+#define kImage_BG_Login                                                                             [[UIImage imageNamed:@"BG_Login"] resizableImageWithCapInsets:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)]
 
 // Application's Fonts
 

@@ -10,6 +10,8 @@
 	<string>Zazz-iphone-app</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>09578281DF5C4AF22B048A988902501CB2BBC846</key>
+		<string>bitbucket.org:FiisionStudio/ios-concept-keywords.git</string>
 		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
 		<string>zazz:zazzlife/Zazz-for-Iphone.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>Zazz-iphone-app.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>09578281DF5C4AF22B048A988902501CB2BBC846</key>
+		<string>../../../../Workspaces/GitHub/Objective-C/Keywords</string>
 		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
 		<string>../..</string>
 	</dict>
@@ -28,6 +32,14 @@
 	<string>250330D51C1DE5341A0555CA63E6F3997BA852E0</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>09578281DF5C4AF22B048A988902501CB2BBC846</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Keywords</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

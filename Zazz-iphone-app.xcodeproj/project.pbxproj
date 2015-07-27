@@ -101,7 +101,6 @@
 		BEBB09F41B65F1BF00A621B9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09CD1B65F1BF00A621B9 /* DetailViewController.m */; };
 		BEBB09F51B65F1BF00A621B9 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */; };
 		BEBB09F61B65F1BF00A621B9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D31B65F1BF00A621B9 /* HomeViewController.m */; };
-		BEBB09F71B65F1BF00A621B9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D61B65F1BF00A621B9 /* LoginViewController.m */; };
 		BEBB09F81B65F1BF00A621B9 /* MediaFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D91B65F1BF00A621B9 /* MediaFeedViewController.m */; };
 		BEBB09F91B65F1BF00A621B9 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09DD1B65F1BF00A621B9 /* LeftNavigationViewController.m */; };
 		BEBB09FA1B65F1BF00A621B9 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E01B65F1BF00A621B9 /* RightNavigationViewController.m */; };
@@ -125,6 +124,7 @@
 		BEBB0A261B66082400A621B9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1A1B66082400A621B9 /* Roboto-Regular.ttf */; };
 		BEBB0A271B66082400A621B9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1B1B66082400A621B9 /* Roboto-Thin.ttf */; };
 		BEBB0A281B66082400A621B9 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1C1B66082400A621B9 /* Roboto-ThinItalic.ttf */; };
+		BEBB0A2C1B66213F00A621B9 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0A2B1B66213F00A621B9 /* LoginController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -321,8 +321,6 @@
 		BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		BEBB09D21B65F1BF00A621B9 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		BEBB09D31B65F1BF00A621B9 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		BEBB09D51B65F1BF00A621B9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		BEBB09D61B65F1BF00A621B9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		BEBB09D81B65F1BF00A621B9 /* MediaFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFeedViewController.h; sourceTree = "<group>"; };
 		BEBB09D91B65F1BF00A621B9 /* MediaFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFeedViewController.m; sourceTree = "<group>"; };
 		BEBB09DC1B65F1BF00A621B9 /* LeftNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavigationViewController.h; sourceTree = "<group>"; };
@@ -360,6 +358,8 @@
 		BEBB0A1A1B66082400A621B9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		BEBB0A1B1B66082400A621B9 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		BEBB0A1C1B66082400A621B9 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		BEBB0A2A1B66213F00A621B9 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		BEBB0A2B1B66213F00A621B9 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -999,7 +999,6 @@
 				BEBB09CB1B65F1BF00A621B9 /* DetailViewController */,
 				BEBB09CE1B65F1BF00A621B9 /* FeedTableViewController */,
 				BEBB09D11B65F1BF00A621B9 /* HomeViewController */,
-				BEBB09D41B65F1BF00A621B9 /* Login View Controller */,
 				BEBB09D71B65F1BF00A621B9 /* MediaFeedViewController */,
 				BEBB09DA1B65F1BF00A621B9 /* Navigation */,
 				BEBB09E11B65F1BF00A621B9 /* NotificationViewController */,
@@ -1046,16 +1045,6 @@
 				BEBB09D31B65F1BF00A621B9 /* HomeViewController.m */,
 			);
 			path = HomeViewController;
-			sourceTree = "<group>";
-		};
-		BEBB09D41B65F1BF00A621B9 /* Login View Controller */ = {
-			isa = PBXGroup;
-			children = (
-				BEBB09D51B65F1BF00A621B9 /* LoginViewController.h */,
-				BEBB09D61B65F1BF00A621B9 /* LoginViewController.m */,
-			);
-			name = "Login View Controller";
-			path = LoginViewController;
 			sourceTree = "<group>";
 		};
 		BEBB09D71B65F1BF00A621B9 /* MediaFeedViewController */ = {
@@ -1152,6 +1141,7 @@
 			isa = PBXGroup;
 			children = (
 				BEBB0A0B1B66048300A621B9 /* Landing Page */,
+				BEBB0A291B66213F00A621B9 /* Login */,
 			);
 			path = "Authentication Flow";
 			sourceTree = "<group>";
@@ -1191,6 +1181,15 @@
 			);
 			name = Fonts;
 			path = Resources/Fonts;
+			sourceTree = "<group>";
+		};
+		BEBB0A291B66213F00A621B9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BEBB0A2A1B66213F00A621B9 /* LoginController.h */,
+				BEBB0A2B1B66213F00A621B9 /* LoginController.m */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1332,6 +1331,7 @@
 				667D091A1A37814500A12ABE /* ZazzPhoto.m in Sources */,
 				667D08FE1A37814500A12ABE /* FeedTableViewCell.m in Sources */,
 				667D092D1A37814500A12ABE /* RSKTouchView.m in Sources */,
+				BEBB0A2C1B66213F00A621B9 /* LoginController.m in Sources */,
 				BEBB09F61B65F1BF00A621B9 /* HomeViewController.m in Sources */,
 				BEBB09FB1B65F1BF00A621B9 /* NotificationViewController.m in Sources */,
 				667D09051A37814500A12ABE /* CHTumblrMenuView.m in Sources */,
@@ -1373,7 +1373,6 @@
 				667D09001A37814500A12ABE /* UIImage+ImageEffects.m in Sources */,
 				667D09091A37814500A12ABE /* Feed.m in Sources */,
 				667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */,
-				BEBB09F71B65F1BF00A621B9 /* LoginViewController.m in Sources */,
 				667D09391A37814500A12ABE /* UIImage+GIF.m in Sources */,
 				BEBB09F91B65F1BF00A621B9 /* LeftNavigationViewController.m in Sources */,
 				BEBB09FF1B65F1BF00A621B9 /* CFTabBarController.m in Sources */,

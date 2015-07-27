@@ -1,7 +1,8 @@
-#import "LandingPageController.h"
+#import "LoginController.h"
+#import "UIColor.h"
 
 
-@interface LandingPageController () {
+@interface LoginController () {
 }
 
 
@@ -14,8 +15,7 @@
 
 @end
 
-
-@implementation LandingPageController
+@implementation LoginController
 
 
 #pragma mark - Class's constructors
@@ -38,7 +38,7 @@
 #pragma mark - Cleanup memory
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
+    
 #if !__has_feature(objc_arc)
     [super dealloc];
 #endif
@@ -46,7 +46,7 @@
 
 
 #pragma mark - View's lifecycle
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
     [self _visualize];
 }
@@ -54,16 +54,16 @@
     [super viewWillAppear:animated];
     [self _localize];
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
-- (void)viewDidAppear:(BOOL)animated {
+-(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 - (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
+    [super viewWillDisappear:animated];
 }
 - (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
+    [super viewDidDisappear:animated];
 }
 
 
@@ -104,6 +104,9 @@
 
 #pragma mark - View's key pressed event handlers
 - (IBAction)keyPressed:(id)sender {
+    if (sender == _loginButton) {
+        [[AppDelegate zazzApi] getAuthTokenWithUsername:_usernameTextField.text andPassword:_passwordTextField.text];
+    }
 }
 
 
@@ -115,16 +118,42 @@
 
 #pragma mark - Class's private methods
 - (void)_init {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthError:) name:@"gotAuthError" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthToken:) name:@"gotAuthToken" object:nil];
 }
 - (void)_localize {
 }
 - (void)_visualize {
-    _registerButton.layer.cornerRadius = 5.0f;
-    _signinButton.layer.cornerRadius = 5.0f;
+    _loginImageView.image = kImage_BG_Login;
+    _loginButton.layer.cornerRadius = 5.0f;
 }
 
 
 #pragma mark - Class's notification handlers
+- (void)gotAuthError:(NSNotification*)notif {
+    if (![notif.name isEqualToString:@"gotAuthError"]) return;
+    
+    UIAlertView *loginerror = [[UIAlertView alloc] initWithTitle:@"Login Failed!" message:@"Your username or password is incorrect" delegate:nil cancelButtonTitle:@"try again" otherButtonTitles:nil, nil];
+    [loginerror show];
+}
+
+- (void)gotAuthToken:(NSNotification*)notif {
+    if (![notif.name isEqualToString:@"gotAuthToken"]) return;
+    [self performSegueWithIdentifier:@"loginComplete" sender:self];
+}
+
+
+#pragma mark - UITextFieldDelegate's members
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == _usernameTextField) {
+        [_passwordTextField becomeFirstResponder];
+    }
+    else if (textField == _passwordTextField) {
+        [textField resignFirstResponder];
+        [self keyPressed:_loginButton];
+    }
+    return YES;
+}
 
 
 @end
