@@ -21,7 +21,6 @@
 		5E8AA71418FCAED700C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
 		5E8AA71C18FCAED700C99D9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E8AA71A18FCAED700C99D9F /* InfoPlist.strings */; };
 		5E8AA71E18FCAED700C99D9F /* Zazz_iphone_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AA71D18FCAED700C99D9F /* Zazz_iphone_appTests.m */; };
-		667D08EA1A37814500A12ABE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D07E31A37814400A12ABE /* AppDelegate.m */; };
 		667D08EB1A37814500A12ABE /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D07E71A37814400A12ABE /* CommentCell.m */; };
 		667D08EC1A37814500A12ABE /* ALAsset+accessibilityLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D07EA1A37814400A12ABE /* ALAsset+accessibilityLabel.m */; };
 		667D08ED1A37814500A12ABE /* ALAsset+assetType.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D07EC1A37814400A12ABE /* ALAsset+assetType.m */; };
@@ -96,22 +95,36 @@
 		667D093B1A37814500A12ABE /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08B91A37814500A12ABE /* UIImage+WebP.m */; };
 		667D093C1A37814500A12ABE /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08BB1A37814500A12ABE /* UIImageView+HighlightedWebCache.m */; };
 		667D093D1A37814500A12ABE /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08BD1A37814500A12ABE /* UIImageView+WebCache.m */; };
-		667D093E1A37814500A12ABE /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08C11A37814500A12ABE /* CreateMessageViewController.m */; };
-		667D093F1A37814500A12ABE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08C41A37814500A12ABE /* DetailViewController.m */; };
-		667D09401A37814500A12ABE /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08C71A37814500A12ABE /* FeedTableViewController.m */; };
-		667D09411A37814500A12ABE /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08CA1A37814500A12ABE /* HomeViewController.m */; };
-		667D09421A37814500A12ABE /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08CD1A37814500A12ABE /* LoginViewController.m */; };
-		667D09431A37814500A12ABE /* MediaFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08D01A37814500A12ABE /* MediaFeedViewController.m */; };
-		667D09441A37814500A12ABE /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08D41A37814500A12ABE /* LeftNavigationViewController.m */; };
-		667D09451A37814500A12ABE /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08D71A37814500A12ABE /* RightNavigationViewController.m */; };
-		667D09461A37814500A12ABE /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08DA1A37814500A12ABE /* NotificationViewController.m */; };
-		667D09471A37814500A12ABE /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08DD1A37814500A12ABE /* PostViewController.m */; };
-		667D09481A37814500A12ABE /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08E01A37814500A12ABE /* ProfileViewController.m */; };
-		667D09491A37814500A12ABE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08E31A37814500A12ABE /* RegisterViewController.m */; };
-		667D094A1A37814500A12ABE /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08E61A37814500A12ABE /* CFTabBarController.m */; };
-		667D094B1A37814500A12ABE /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08E91A37814500A12ABE /* TagViewController.m */; };
 		667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D094D1A379D9B00A12ABE /* ZazzRegister.m */; };
 		667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */; };
+		BEBB09F31B65F1BF00A621B9 /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09CA1B65F1BF00A621B9 /* CreateMessageViewController.m */; };
+		BEBB09F41B65F1BF00A621B9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09CD1B65F1BF00A621B9 /* DetailViewController.m */; };
+		BEBB09F51B65F1BF00A621B9 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */; };
+		BEBB09F61B65F1BF00A621B9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D31B65F1BF00A621B9 /* HomeViewController.m */; };
+		BEBB09F71B65F1BF00A621B9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D61B65F1BF00A621B9 /* LoginViewController.m */; };
+		BEBB09F81B65F1BF00A621B9 /* MediaFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D91B65F1BF00A621B9 /* MediaFeedViewController.m */; };
+		BEBB09F91B65F1BF00A621B9 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09DD1B65F1BF00A621B9 /* LeftNavigationViewController.m */; };
+		BEBB09FA1B65F1BF00A621B9 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E01B65F1BF00A621B9 /* RightNavigationViewController.m */; };
+		BEBB09FB1B65F1BF00A621B9 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E31B65F1BF00A621B9 /* NotificationViewController.m */; };
+		BEBB09FC1B65F1BF00A621B9 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E61B65F1BF00A621B9 /* PostViewController.m */; };
+		BEBB09FD1B65F1BF00A621B9 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E91B65F1BF00A621B9 /* ProfileViewController.m */; };
+		BEBB09FE1B65F1BF00A621B9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09EC1B65F1BF00A621B9 /* RegisterViewController.m */; };
+		BEBB09FF1B65F1BF00A621B9 /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09EF1B65F1BF00A621B9 /* CFTabBarController.m */; };
+		BEBB0A001B65F1BF00A621B9 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09F21B65F1BF00A621B9 /* TagViewController.m */; };
+		BEBB0A061B66036A00A621B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0A051B66036A00A621B9 /* AppDelegate.m */; };
+		BEBB0A0E1B66048300A621B9 /* LandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0A0D1B66048300A621B9 /* LandingPageController.m */; };
+		BEBB0A1D1B66082400A621B9 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A111B66082400A621B9 /* Roboto-Black.ttf */; };
+		BEBB0A1E1B66082400A621B9 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A121B66082400A621B9 /* Roboto-BlackItalic.ttf */; };
+		BEBB0A1F1B66082400A621B9 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A131B66082400A621B9 /* Roboto-Bold.ttf */; };
+		BEBB0A201B66082400A621B9 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A141B66082400A621B9 /* Roboto-BoldItalic.ttf */; };
+		BEBB0A211B66082400A621B9 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A151B66082400A621B9 /* Roboto-Italic.ttf */; };
+		BEBB0A221B66082400A621B9 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A161B66082400A621B9 /* Roboto-Light.ttf */; };
+		BEBB0A231B66082400A621B9 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A171B66082400A621B9 /* Roboto-LightItalic.ttf */; };
+		BEBB0A241B66082400A621B9 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A181B66082400A621B9 /* Roboto-Medium.ttf */; };
+		BEBB0A251B66082400A621B9 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A191B66082400A621B9 /* Roboto-MediumItalic.ttf */; };
+		BEBB0A261B66082400A621B9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1A1B66082400A621B9 /* Roboto-Regular.ttf */; };
+		BEBB0A271B66082400A621B9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1B1B66082400A621B9 /* Roboto-Thin.ttf */; };
+		BEBB0A281B66082400A621B9 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1C1B66082400A621B9 /* Roboto-ThinItalic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,8 +155,6 @@
 		5E8AA71918FCAED700C99D9F /* Zazz-iphone-appTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Zazz-iphone-appTests-Info.plist"; sourceTree = "<group>"; };
 		5E8AA71B18FCAED700C99D9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E8AA71D18FCAED700C99D9F /* Zazz_iphone_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Zazz_iphone_appTests.m; sourceTree = "<group>"; };
-		667D07E21A37814400A12ABE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		667D07E31A37814400A12ABE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		667D07E61A37814400A12ABE /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		667D07E71A37814400A12ABE /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		667D07E91A37814400A12ABE /* ALAsset+accessibilityLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+accessibilityLabel.h"; sourceTree = "<group>"; };
@@ -298,38 +309,57 @@
 		667D08BB1A37814500A12ABE /* UIImageView+HighlightedWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+HighlightedWebCache.m"; sourceTree = "<group>"; };
 		667D08BC1A37814500A12ABE /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		667D08BD1A37814500A12ABE /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
-		667D08C01A37814500A12ABE /* CreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMessageViewController.h; sourceTree = "<group>"; };
-		667D08C11A37814500A12ABE /* CreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMessageViewController.m; sourceTree = "<group>"; };
-		667D08C31A37814500A12ABE /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		667D08C41A37814500A12ABE /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		667D08C61A37814500A12ABE /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
-		667D08C71A37814500A12ABE /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
-		667D08C91A37814500A12ABE /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		667D08CA1A37814500A12ABE /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		667D08CC1A37814500A12ABE /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		667D08CD1A37814500A12ABE /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		667D08CF1A37814500A12ABE /* MediaFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFeedViewController.h; sourceTree = "<group>"; };
-		667D08D01A37814500A12ABE /* MediaFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFeedViewController.m; sourceTree = "<group>"; };
-		667D08D31A37814500A12ABE /* LeftNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavigationViewController.h; sourceTree = "<group>"; };
-		667D08D41A37814500A12ABE /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
-		667D08D61A37814500A12ABE /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
-		667D08D71A37814500A12ABE /* RightNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavigationViewController.m; sourceTree = "<group>"; };
-		667D08D91A37814500A12ABE /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
-		667D08DA1A37814500A12ABE /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
-		667D08DC1A37814500A12ABE /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
-		667D08DD1A37814500A12ABE /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
-		667D08DF1A37814500A12ABE /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		667D08E01A37814500A12ABE /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		667D08E21A37814500A12ABE /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		667D08E31A37814500A12ABE /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		667D08E51A37814500A12ABE /* CFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTabBarController.h; sourceTree = "<group>"; };
-		667D08E61A37814500A12ABE /* CFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTabBarController.m; sourceTree = "<group>"; };
-		667D08E81A37814500A12ABE /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
-		667D08E91A37814500A12ABE /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
 		667D094C1A379D9B00A12ABE /* ZazzRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzRegister.h; sourceTree = "<group>"; };
 		667D094D1A379D9B00A12ABE /* ZazzRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzRegister.m; sourceTree = "<group>"; };
 		667D0A191A38F8F100A12ABE /* ZazzSendFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzSendFollow.h; sourceTree = "<group>"; };
 		667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzSendFollow.m; sourceTree = "<group>"; };
+		BEBB09C91B65F1BF00A621B9 /* CreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMessageViewController.h; sourceTree = "<group>"; };
+		BEBB09CA1B65F1BF00A621B9 /* CreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMessageViewController.m; sourceTree = "<group>"; };
+		BEBB09CC1B65F1BF00A621B9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		BEBB09CD1B65F1BF00A621B9 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		BEBB09CF1B65F1BF00A621B9 /* FeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
+		BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
+		BEBB09D21B65F1BF00A621B9 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		BEBB09D31B65F1BF00A621B9 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		BEBB09D51B65F1BF00A621B9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		BEBB09D61B65F1BF00A621B9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		BEBB09D81B65F1BF00A621B9 /* MediaFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFeedViewController.h; sourceTree = "<group>"; };
+		BEBB09D91B65F1BF00A621B9 /* MediaFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFeedViewController.m; sourceTree = "<group>"; };
+		BEBB09DC1B65F1BF00A621B9 /* LeftNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavigationViewController.h; sourceTree = "<group>"; };
+		BEBB09DD1B65F1BF00A621B9 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
+		BEBB09DF1B65F1BF00A621B9 /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
+		BEBB09E01B65F1BF00A621B9 /* RightNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightNavigationViewController.m; sourceTree = "<group>"; };
+		BEBB09E21B65F1BF00A621B9 /* NotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationViewController.h; sourceTree = "<group>"; };
+		BEBB09E31B65F1BF00A621B9 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
+		BEBB09E51B65F1BF00A621B9 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
+		BEBB09E61B65F1BF00A621B9 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
+		BEBB09E81B65F1BF00A621B9 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		BEBB09E91B65F1BF00A621B9 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		BEBB09EB1B65F1BF00A621B9 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		BEBB09EC1B65F1BF00A621B9 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		BEBB09EE1B65F1BF00A621B9 /* CFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTabBarController.h; sourceTree = "<group>"; };
+		BEBB09EF1B65F1BF00A621B9 /* CFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTabBarController.m; sourceTree = "<group>"; };
+		BEBB09F11B65F1BF00A621B9 /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
+		BEBB09F21B65F1BF00A621B9 /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
+		BEBB0A011B66035400A621B9 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		BEBB0A021B66035400A621B9 /* Localize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Localize.h; sourceTree = "<group>"; };
+		BEBB0A031B66035400A621B9 /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resources.h; sourceTree = "<group>"; };
+		BEBB0A041B66036A00A621B9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BEBB0A051B66036A00A621B9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BEBB0A0C1B66048300A621B9 /* LandingPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageController.h; sourceTree = "<group>"; };
+		BEBB0A0D1B66048300A621B9 /* LandingPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageController.m; sourceTree = "<group>"; };
+		BEBB0A111B66082400A621B9 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		BEBB0A121B66082400A621B9 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		BEBB0A131B66082400A621B9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		BEBB0A141B66082400A621B9 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		BEBB0A151B66082400A621B9 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		BEBB0A161B66082400A621B9 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		BEBB0A171B66082400A621B9 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		BEBB0A181B66082400A621B9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		BEBB0A191B66082400A621B9 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		BEBB0A1A1B66082400A621B9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		BEBB0A1B1B66082400A621B9 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		BEBB0A1C1B66082400A621B9 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,8 +430,15 @@
 		5E8AA6F518FCAED600C99D9F /* Zazz-iphone-app */ = {
 			isa = PBXGroup;
 			children = (
+				BEBB0A011B66035400A621B9 /* Config.h */,
+				BEBB0A021B66035400A621B9 /* Localize.h */,
+				BEBB0A031B66035400A621B9 /* Resources.h */,
+				BEBB0A041B66036A00A621B9 /* AppDelegate.h */,
+				BEBB0A051B66036A00A621B9 /* AppDelegate.m */,
+				BEBB09C71B65F1BF00A621B9 /* View Controllers */,
 				667D07E01A37814400A12ABE /* Classes */,
 				2A5FAEB7191D2BE500B917AB /* Storyboards */,
+				BEBB0A0F1B66079600A621B9 /* Resources */,
 				2A47F5631936F47A001CF1AE /* Images.xcassets */,
 				5E8AA6F618FCAED600C99D9F /* Supporting Files */,
 			);
@@ -440,23 +477,12 @@
 		667D07E01A37814400A12ABE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				667D07E11A37814400A12ABE /* AppDelegate */,
 				667D07E41A37814400A12ABE /* CustomViews */,
 				667D082A1A37814400A12ABE /* Model */,
 				667D08771A37814400A12ABE /* Segues */,
 				667D087F1A37814400A12ABE /* Utility */,
-				667D08BE1A37814500A12ABE /* ViewControllers */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		667D07E11A37814400A12ABE /* AppDelegate */ = {
-			isa = PBXGroup;
-			children = (
-				667D07E21A37814400A12ABE /* AppDelegate.h */,
-				667D07E31A37814400A12ABE /* AppDelegate.m */,
-			);
-			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		667D07E41A37814400A12ABE /* CustomViews */ = {
@@ -965,159 +991,206 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
-		667D08BE1A37814500A12ABE /* ViewControllers */ = {
+		BEBB09C71B65F1BF00A621B9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				667D08BF1A37814500A12ABE /* CreateMessageViewController */,
-				667D08C21A37814500A12ABE /* DetailViewController */,
-				667D08C51A37814500A12ABE /* FeedTableViewController */,
-				667D08C81A37814500A12ABE /* HomeViewController */,
-				667D08CB1A37814500A12ABE /* LoginViewController */,
-				667D08CE1A37814500A12ABE /* MediaFeedViewController */,
-				667D08D11A37814500A12ABE /* Navigation */,
-				667D08D81A37814500A12ABE /* NotificationViewController */,
-				667D08DB1A37814500A12ABE /* PostViewController */,
-				667D08DE1A37814500A12ABE /* ProfileViewController */,
-				667D08E11A37814500A12ABE /* RegisterViewController */,
-				667D08E41A37814500A12ABE /* TabBarController */,
-				667D08E71A37814500A12ABE /* TagViewController */,
+				BEBB0A0A1B66048300A621B9 /* Authentication Flow */,
+				BEBB09C81B65F1BF00A621B9 /* CreateMessageViewController */,
+				BEBB09CB1B65F1BF00A621B9 /* DetailViewController */,
+				BEBB09CE1B65F1BF00A621B9 /* FeedTableViewController */,
+				BEBB09D11B65F1BF00A621B9 /* HomeViewController */,
+				BEBB09D41B65F1BF00A621B9 /* Login View Controller */,
+				BEBB09D71B65F1BF00A621B9 /* MediaFeedViewController */,
+				BEBB09DA1B65F1BF00A621B9 /* Navigation */,
+				BEBB09E11B65F1BF00A621B9 /* NotificationViewController */,
+				BEBB09E41B65F1BF00A621B9 /* PostViewController */,
+				BEBB09E71B65F1BF00A621B9 /* ProfileViewController */,
+				BEBB09EA1B65F1BF00A621B9 /* RegisterViewController */,
+				BEBB09ED1B65F1BF00A621B9 /* TabBarController */,
+				BEBB09F01B65F1BF00A621B9 /* TagViewController */,
 			);
-			path = ViewControllers;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		667D08BF1A37814500A12ABE /* CreateMessageViewController */ = {
+		BEBB09C81B65F1BF00A621B9 /* CreateMessageViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08C01A37814500A12ABE /* CreateMessageViewController.h */,
-				667D08C11A37814500A12ABE /* CreateMessageViewController.m */,
+				BEBB09C91B65F1BF00A621B9 /* CreateMessageViewController.h */,
+				BEBB09CA1B65F1BF00A621B9 /* CreateMessageViewController.m */,
 			);
 			path = CreateMessageViewController;
 			sourceTree = "<group>";
 		};
-		667D08C21A37814500A12ABE /* DetailViewController */ = {
+		BEBB09CB1B65F1BF00A621B9 /* DetailViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08C31A37814500A12ABE /* DetailViewController.h */,
-				667D08C41A37814500A12ABE /* DetailViewController.m */,
+				BEBB09CC1B65F1BF00A621B9 /* DetailViewController.h */,
+				BEBB09CD1B65F1BF00A621B9 /* DetailViewController.m */,
 			);
 			path = DetailViewController;
 			sourceTree = "<group>";
 		};
-		667D08C51A37814500A12ABE /* FeedTableViewController */ = {
+		BEBB09CE1B65F1BF00A621B9 /* FeedTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08C61A37814500A12ABE /* FeedTableViewController.h */,
-				667D08C71A37814500A12ABE /* FeedTableViewController.m */,
+				BEBB09CF1B65F1BF00A621B9 /* FeedTableViewController.h */,
+				BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */,
 			);
 			path = FeedTableViewController;
 			sourceTree = "<group>";
 		};
-		667D08C81A37814500A12ABE /* HomeViewController */ = {
+		BEBB09D11B65F1BF00A621B9 /* HomeViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08C91A37814500A12ABE /* HomeViewController.h */,
-				667D08CA1A37814500A12ABE /* HomeViewController.m */,
+				BEBB09D21B65F1BF00A621B9 /* HomeViewController.h */,
+				BEBB09D31B65F1BF00A621B9 /* HomeViewController.m */,
 			);
 			path = HomeViewController;
 			sourceTree = "<group>";
 		};
-		667D08CB1A37814500A12ABE /* LoginViewController */ = {
+		BEBB09D41B65F1BF00A621B9 /* Login View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				667D08CC1A37814500A12ABE /* LoginViewController.h */,
-				667D08CD1A37814500A12ABE /* LoginViewController.m */,
+				BEBB09D51B65F1BF00A621B9 /* LoginViewController.h */,
+				BEBB09D61B65F1BF00A621B9 /* LoginViewController.m */,
 			);
+			name = "Login View Controller";
 			path = LoginViewController;
 			sourceTree = "<group>";
 		};
-		667D08CE1A37814500A12ABE /* MediaFeedViewController */ = {
+		BEBB09D71B65F1BF00A621B9 /* MediaFeedViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08CF1A37814500A12ABE /* MediaFeedViewController.h */,
-				667D08D01A37814500A12ABE /* MediaFeedViewController.m */,
+				BEBB09D81B65F1BF00A621B9 /* MediaFeedViewController.h */,
+				BEBB09D91B65F1BF00A621B9 /* MediaFeedViewController.m */,
 			);
 			path = MediaFeedViewController;
 			sourceTree = "<group>";
 		};
-		667D08D11A37814500A12ABE /* Navigation */ = {
+		BEBB09DA1B65F1BF00A621B9 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				667D08D21A37814500A12ABE /* Left */,
-				667D08D51A37814500A12ABE /* Right */,
+				BEBB09DB1B65F1BF00A621B9 /* Left */,
+				BEBB09DE1B65F1BF00A621B9 /* Right */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
 		};
-		667D08D21A37814500A12ABE /* Left */ = {
+		BEBB09DB1B65F1BF00A621B9 /* Left */ = {
 			isa = PBXGroup;
 			children = (
-				667D08D31A37814500A12ABE /* LeftNavigationViewController.h */,
-				667D08D41A37814500A12ABE /* LeftNavigationViewController.m */,
+				BEBB09DC1B65F1BF00A621B9 /* LeftNavigationViewController.h */,
+				BEBB09DD1B65F1BF00A621B9 /* LeftNavigationViewController.m */,
 			);
 			path = Left;
 			sourceTree = "<group>";
 		};
-		667D08D51A37814500A12ABE /* Right */ = {
+		BEBB09DE1B65F1BF00A621B9 /* Right */ = {
 			isa = PBXGroup;
 			children = (
-				667D08D61A37814500A12ABE /* RightNavigationViewController.h */,
-				667D08D71A37814500A12ABE /* RightNavigationViewController.m */,
+				BEBB09DF1B65F1BF00A621B9 /* RightNavigationViewController.h */,
+				BEBB09E01B65F1BF00A621B9 /* RightNavigationViewController.m */,
 			);
 			path = Right;
 			sourceTree = "<group>";
 		};
-		667D08D81A37814500A12ABE /* NotificationViewController */ = {
+		BEBB09E11B65F1BF00A621B9 /* NotificationViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08D91A37814500A12ABE /* NotificationViewController.h */,
-				667D08DA1A37814500A12ABE /* NotificationViewController.m */,
+				BEBB09E21B65F1BF00A621B9 /* NotificationViewController.h */,
+				BEBB09E31B65F1BF00A621B9 /* NotificationViewController.m */,
 			);
 			path = NotificationViewController;
 			sourceTree = "<group>";
 		};
-		667D08DB1A37814500A12ABE /* PostViewController */ = {
+		BEBB09E41B65F1BF00A621B9 /* PostViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08DC1A37814500A12ABE /* PostViewController.h */,
-				667D08DD1A37814500A12ABE /* PostViewController.m */,
+				BEBB09E51B65F1BF00A621B9 /* PostViewController.h */,
+				BEBB09E61B65F1BF00A621B9 /* PostViewController.m */,
 			);
 			path = PostViewController;
 			sourceTree = "<group>";
 		};
-		667D08DE1A37814500A12ABE /* ProfileViewController */ = {
+		BEBB09E71B65F1BF00A621B9 /* ProfileViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08DF1A37814500A12ABE /* ProfileViewController.h */,
-				667D08E01A37814500A12ABE /* ProfileViewController.m */,
+				BEBB09E81B65F1BF00A621B9 /* ProfileViewController.h */,
+				BEBB09E91B65F1BF00A621B9 /* ProfileViewController.m */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
-		667D08E11A37814500A12ABE /* RegisterViewController */ = {
+		BEBB09EA1B65F1BF00A621B9 /* RegisterViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08E21A37814500A12ABE /* RegisterViewController.h */,
-				667D08E31A37814500A12ABE /* RegisterViewController.m */,
+				BEBB09EB1B65F1BF00A621B9 /* RegisterViewController.h */,
+				BEBB09EC1B65F1BF00A621B9 /* RegisterViewController.m */,
 			);
 			path = RegisterViewController;
 			sourceTree = "<group>";
 		};
-		667D08E41A37814500A12ABE /* TabBarController */ = {
+		BEBB09ED1B65F1BF00A621B9 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08E51A37814500A12ABE /* CFTabBarController.h */,
-				667D08E61A37814500A12ABE /* CFTabBarController.m */,
+				BEBB09EE1B65F1BF00A621B9 /* CFTabBarController.h */,
+				BEBB09EF1B65F1BF00A621B9 /* CFTabBarController.m */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";
 		};
-		667D08E71A37814500A12ABE /* TagViewController */ = {
+		BEBB09F01B65F1BF00A621B9 /* TagViewController */ = {
 			isa = PBXGroup;
 			children = (
-				667D08E81A37814500A12ABE /* TagViewController.h */,
-				667D08E91A37814500A12ABE /* TagViewController.m */,
+				BEBB09F11B65F1BF00A621B9 /* TagViewController.h */,
+				BEBB09F21B65F1BF00A621B9 /* TagViewController.m */,
 			);
 			path = TagViewController;
+			sourceTree = "<group>";
+		};
+		BEBB0A0A1B66048300A621B9 /* Authentication Flow */ = {
+			isa = PBXGroup;
+			children = (
+				BEBB0A0B1B66048300A621B9 /* Landing Page */,
+			);
+			path = "Authentication Flow";
+			sourceTree = "<group>";
+		};
+		BEBB0A0B1B66048300A621B9 /* Landing Page */ = {
+			isa = PBXGroup;
+			children = (
+				BEBB0A0C1B66048300A621B9 /* LandingPageController.h */,
+				BEBB0A0D1B66048300A621B9 /* LandingPageController.m */,
+			);
+			path = "Landing Page";
+			sourceTree = "<group>";
+		};
+		BEBB0A0F1B66079600A621B9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BEBB0A101B66082400A621B9 /* Fonts */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BEBB0A101B66082400A621B9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BEBB0A111B66082400A621B9 /* Roboto-Black.ttf */,
+				BEBB0A121B66082400A621B9 /* Roboto-BlackItalic.ttf */,
+				BEBB0A131B66082400A621B9 /* Roboto-Bold.ttf */,
+				BEBB0A141B66082400A621B9 /* Roboto-BoldItalic.ttf */,
+				BEBB0A151B66082400A621B9 /* Roboto-Italic.ttf */,
+				BEBB0A161B66082400A621B9 /* Roboto-Light.ttf */,
+				BEBB0A171B66082400A621B9 /* Roboto-LightItalic.ttf */,
+				BEBB0A181B66082400A621B9 /* Roboto-Medium.ttf */,
+				BEBB0A191B66082400A621B9 /* Roboto-MediumItalic.ttf */,
+				BEBB0A1A1B66082400A621B9 /* Roboto-Regular.ttf */,
+				BEBB0A1B1B66082400A621B9 /* Roboto-Thin.ttf */,
+				BEBB0A1C1B66082400A621B9 /* Roboto-ThinItalic.ttf */,
+			);
+			name = Fonts;
+			path = Resources/Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1199,11 +1272,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEBB0A271B66082400A621B9 /* Roboto-Thin.ttf in Resources */,
+				BEBB0A241B66082400A621B9 /* Roboto-Medium.ttf in Resources */,
+				BEBB0A201B66082400A621B9 /* Roboto-BoldItalic.ttf in Resources */,
 				667D08F51A37814500A12ABE /* CTAssetsPicker.xcassets in Resources */,
+				BEBB0A231B66082400A621B9 /* Roboto-LightItalic.ttf in Resources */,
+				BEBB0A251B66082400A621B9 /* Roboto-MediumItalic.ttf in Resources */,
 				5E8AA70618FCAED600C99D9F /* Main_iPad.storyboard in Resources */,
+				BEBB0A221B66082400A621B9 /* Roboto-Light.ttf in Resources */,
 				2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */,
+				BEBB0A1E1B66082400A621B9 /* Roboto-BlackItalic.ttf in Resources */,
+				BEBB0A281B66082400A621B9 /* Roboto-ThinItalic.ttf in Resources */,
 				2A47F5641936F47A001CF1AE /* Images.xcassets in Resources */,
 				5E8AA6FA18FCAED600C99D9F /* InfoPlist.strings in Resources */,
+				BEBB0A211B66082400A621B9 /* Roboto-Italic.ttf in Resources */,
+				BEBB0A261B66082400A621B9 /* Roboto-Regular.ttf in Resources */,
+				BEBB0A1F1B66082400A621B9 /* Roboto-Bold.ttf in Resources */,
+				BEBB0A1D1B66082400A621B9 /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1224,6 +1309,7 @@
 			files = (
 				667D09211A37814500A12ABE /* CustomPushSegue.m in Sources */,
 				667D09361A37814500A12ABE /* SDWebImageManager.m in Sources */,
+				BEBB09FC1B65F1BF00A621B9 /* PostViewController.m in Sources */,
 				667D091B1A37814500A12ABE /* ZazzPost.m in Sources */,
 				667D09371A37814500A12ABE /* SDWebImagePrefetcher.m in Sources */,
 				667D090B1A37814500A12ABE /* FollowRequest.m in Sources */,
@@ -1232,18 +1318,25 @@
 				667D093A1A37814500A12ABE /* UIImage+MultiFormat.m in Sources */,
 				667D091D1A37814500A12ABE /* ZazzMe.m in Sources */,
 				667D08F41A37814500A12ABE /* CTAssetsPageViewController.m in Sources */,
+				BEBB09F81B65F1BF00A621B9 /* MediaFeedViewController.m in Sources */,
 				667D08F91A37814500A12ABE /* CTAssetsViewCell.m in Sources */,
 				667D09161A37814500A12ABE /* ZazzFeed.m in Sources */,
 				667D09321A37814500A12ABE /* SDWebImageCompat.m in Sources */,
 				667D08F21A37814500A12ABE /* CTAssetsGroupViewCell.m in Sources */,
+				BEBB09F41B65F1BF00A621B9 /* DetailViewController.m in Sources */,
+				BEBB09F51B65F1BF00A621B9 /* FeedTableViewController.m in Sources */,
 				667D08FF1A37814500A12ABE /* UIView+GradientMask.m in Sources */,
 				667D09201A37814500A12ABE /* CustomPopSegue.m in Sources */,
-				667D09401A37814500A12ABE /* FeedTableViewController.m in Sources */,
+				BEBB0A061B66036A00A621B9 /* AppDelegate.m in Sources */,
 				667D09331A37814500A12ABE /* SDWebImageDecoder.m in Sources */,
 				667D091A1A37814500A12ABE /* ZazzPhoto.m in Sources */,
 				667D08FE1A37814500A12ABE /* FeedTableViewCell.m in Sources */,
 				667D092D1A37814500A12ABE /* RSKTouchView.m in Sources */,
+				BEBB09F61B65F1BF00A621B9 /* HomeViewController.m in Sources */,
+				BEBB09FB1B65F1BF00A621B9 /* NotificationViewController.m in Sources */,
 				667D09051A37814500A12ABE /* CHTumblrMenuView.m in Sources */,
+				BEBB0A0E1B66048300A621B9 /* LandingPageController.m in Sources */,
+				BEBB09F31B65F1BF00A621B9 /* CreateMessageViewController.m in Sources */,
 				667D09121A37814500A12ABE /* User.m in Sources */,
 				667D08FD1A37814500A12ABE /* DetailViewItem.m in Sources */,
 				667D08FC1A37814500A12ABE /* NSDateFormatter+timeIntervalFormatter.m in Sources */,
@@ -1254,43 +1347,36 @@
 				667D090D1A37814500A12ABE /* Notification.m in Sources */,
 				667D090C1A37814500A12ABE /* GenericModel.m in Sources */,
 				667D093B1A37814500A12ABE /* UIImage+WebP.m in Sources */,
+				BEBB09FA1B65F1BF00A621B9 /* RightNavigationViewController.m in Sources */,
 				667D09021A37814500A12ABE /* RoundedUIButton.m in Sources */,
 				667D092B1A37814500A12ABE /* RSKImageCropViewController.m in Sources */,
 				667D09191A37814500A12ABE /* ZazzNotification.m in Sources */,
 				667D090E1A37814500A12ABE /* Photo.m in Sources */,
-				667D09411A37814500A12ABE /* HomeViewController.m in Sources */,
 				667D09181A37814500A12ABE /* ZazzFollowRequest.m in Sources */,
 				667D091E1A37814500A12ABE /* ZazzProfile.m in Sources */,
-				667D09451A37814500A12ABE /* RightNavigationViewController.m in Sources */,
 				667D092E1A37814500A12ABE /* UIImage+FixOrientation.m in Sources */,
 				667D09081A37814500A12ABE /* Event.m in Sources */,
+				BEBB09FE1B65F1BF00A621B9 /* RegisterViewController.m in Sources */,
 				667D08EE1A37814500A12ABE /* ALAsset+isEqual.m in Sources */,
 				667D09071A37814500A12ABE /* Comment.m in Sources */,
 				667D090A1A37814500A12ABE /* Follow.m in Sources */,
 				667D08EF1A37814500A12ABE /* ALAssetsGroup+isEqual.m in Sources */,
 				667D09101A37814500A12ABE /* Profile.m in Sources */,
-				667D09431A37814500A12ABE /* MediaFeedViewController.m in Sources */,
-				667D08EA1A37814500A12ABE /* AppDelegate.m in Sources */,
 				667D08F81A37814500A12ABE /* CTAssetsSupplementaryView.m in Sources */,
-				667D09491A37814500A12ABE /* RegisterViewController.m in Sources */,
 				667D08F01A37814500A12ABE /* CTAssetItemViewController.m in Sources */,
-				667D09471A37814500A12ABE /* PostViewController.m in Sources */,
 				667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */,
 				667D09171A37814500A12ABE /* ZazzFollow.m in Sources */,
-				667D09441A37814500A12ABE /* LeftNavigationViewController.m in Sources */,
-				667D093F1A37814500A12ABE /* DetailViewController.m in Sources */,
 				667D09301A37814500A12ABE /* NSData+ImageContentType.m in Sources */,
 				667D08EB1A37814500A12ABE /* CommentCell.m in Sources */,
-				667D09461A37814500A12ABE /* NotificationViewController.m in Sources */,
 				667D090F1A37814500A12ABE /* Post.m in Sources */,
 				667D09381A37814500A12ABE /* UIButton+WebCache.m in Sources */,
 				667D09001A37814500A12ABE /* UIImage+ImageEffects.m in Sources */,
-				667D094A1A37814500A12ABE /* CFTabBarController.m in Sources */,
 				667D09091A37814500A12ABE /* Feed.m in Sources */,
 				667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */,
-				667D093E1A37814500A12ABE /* CreateMessageViewController.m in Sources */,
+				BEBB09F71B65F1BF00A621B9 /* LoginViewController.m in Sources */,
 				667D09391A37814500A12ABE /* UIImage+GIF.m in Sources */,
-				667D09421A37814500A12ABE /* LoginViewController.m in Sources */,
+				BEBB09F91B65F1BF00A621B9 /* LeftNavigationViewController.m in Sources */,
+				BEBB09FF1B65F1BF00A621B9 /* CFTabBarController.m in Sources */,
 				667D08F11A37814500A12ABE /* CTAssetScrollView.m in Sources */,
 				667D091F1A37814500A12ABE /* ZazzApi.m in Sources */,
 				667D092F1A37814500A12ABE /* MKAnnotationView+WebCache.m in Sources */,
@@ -1298,7 +1384,8 @@
 				667D093C1A37814500A12ABE /* UIImageView+HighlightedWebCache.m in Sources */,
 				667D09111A37814500A12ABE /* SearchResult.m in Sources */,
 				667D08ED1A37814500A12ABE /* ALAsset+assetType.m in Sources */,
-				667D09481A37814500A12ABE /* ProfileViewController.m in Sources */,
+				BEBB0A001B65F1BF00A621B9 /* TagViewController.m in Sources */,
+				BEBB09FD1B65F1BF00A621B9 /* ProfileViewController.m in Sources */,
 				667D08F71A37814500A12ABE /* CTAssetsPickerController.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
 				667D08FA1A37814500A12ABE /* CTAssetsViewController.m in Sources */,
@@ -1312,7 +1399,6 @@
 				667D09131A37814500A12ABE /* UserDetails.m in Sources */,
 				667D08FB1A37814500A12ABE /* CTAssetsViewControllerTransition.m in Sources */,
 				667D09031A37814500A12ABE /* UIFont+SecretFont.m in Sources */,
-				667D094B1A37814500A12ABE /* TagViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

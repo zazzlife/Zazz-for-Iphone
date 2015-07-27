@@ -48,14 +48,14 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
-    // Override point for customization after application launch.
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [self set_zazzAPI:[[ZazzApi alloc] init]];
-    [[self.window rootViewController].view setBackgroundColor:[UIColor clearColor]];
-    UINavigationController* navController1 = (UINavigationController*)[self.window rootViewController];
-    [navController1.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
-    self.navController = navController1;
-    [AppDelegate addZazzBackgroundLogo];
+//    // Override point for customization after application launch.
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [self set_zazzAPI:[[ZazzApi alloc] init]];
+//    [[self.window rootViewController].view setBackgroundColor:[UIColor clearColor]];
+//    UINavigationController* navController1 = (UINavigationController*)[self.window rootViewController];
+//    [navController1.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
+//    self.navController = navController1;
+//    [AppDelegate addZazzBackgroundLogo];
     return YES;
 }
 							
