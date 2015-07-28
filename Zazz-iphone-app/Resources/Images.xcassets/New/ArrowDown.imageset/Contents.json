@@ -3,7 +3,6 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "grey arrow.png"
     },
     {
       "idiom" : "universal",
@@ -12,7 +11,8 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "grey arrow@3x.png"
     }
   ],
   "info" : {

@@ -14,6 +14,14 @@
 @interface ExtraInfoController : UIViewController {
 
 @private
+    __weak IBOutlet UIButton *_ageButton;
+    __weak IBOutlet UIButton *_maleButton;
+    __weak IBOutlet UIButton *_femaleButton;
+    __weak IBOutlet UIButton *_finishButton;
+    
+    __weak IBOutlet UILabel *_genderLabel;
+    __weak IBOutlet UIImageView *_maleImageView;
+    __weak IBOutlet UIImageView *_femaleImageView;
 }
 
 

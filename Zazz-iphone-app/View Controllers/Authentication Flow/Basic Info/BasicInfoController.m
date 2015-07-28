@@ -122,6 +122,7 @@
 - (void)_localize {
 }
 - (void)_visualize {
+    _nextButton.layer.cornerRadius = kCornerRadius;
 }
 
 

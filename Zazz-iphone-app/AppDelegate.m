@@ -163,6 +163,12 @@
         [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:navBack];
         [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:-2.0f forBarMetrics:UIBarMetricsDefault];
     }
+    
+    // Customize textfield
+    __autoreleasing UIImage *textField = [[UIImage imageNamed:@"BG_TextField"] resizableImageWithCapInsets:UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f)];
+    [[UITextField appearance] setTextColor:FwiColorWithRGB(0x4e4e4e)];
+    [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
+    [[UITextField appearance] setBackground:textField];
 }
 
 - (void)_handleOpenURLWithAccessToken:(FBAccessTokenData *)token {

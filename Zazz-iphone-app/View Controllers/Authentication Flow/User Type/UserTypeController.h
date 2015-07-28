@@ -14,6 +14,8 @@
 @interface UserTypeController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 
 @private
+    __weak IBOutlet UIImageView *_taglineImageView;
+    __weak IBOutlet UIImageView *_promoterImageView;
     __weak IBOutlet UIButton *_taglineButton;
     __weak IBOutlet UIButton *_promoterButton;
     __weak IBOutlet UIButton *_doneButton;

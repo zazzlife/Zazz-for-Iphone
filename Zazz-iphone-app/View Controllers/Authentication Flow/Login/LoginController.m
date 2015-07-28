@@ -125,7 +125,10 @@
 }
 - (void)_visualize {
     _loginImageView.image = kImage_BG_Login;
-    _loginButton.layer.cornerRadius = 5.0f;
+    _loginButton.layer.cornerRadius = kCornerRadius;
+    
+    _usernameTextField.background = nil;
+    _passwordTextField.background = nil;
 }
 
 

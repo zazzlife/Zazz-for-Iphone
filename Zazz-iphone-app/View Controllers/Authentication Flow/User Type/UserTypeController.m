@@ -56,6 +56,8 @@ static NSString * const _Identifier = @"Cell";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self _localize];
+    
+    [self keyPressed:_taglineButton];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -100,11 +102,34 @@ static NSString * const _Identifier = @"Cell";
 
 #pragma mark - View's transition event handler
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    __autoreleasing UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
 }
 
 
 #pragma mark - View's key pressed event handlers
 - (IBAction)keyPressed:(id)sender {
+    if (sender == _taglineButton) {
+        _taglineImageView.image  = kImage_Check;
+        _promoterImageView.image = nil;
+        
+        // Define list
+        
+        // Reload table
+        [_tableView reloadData];
+    }
+    else if (sender == _promoterButton) {
+        _taglineImageView.image  = nil;
+        _promoterImageView.image = kImage_Check;
+        
+        // Define list
+        
+        // Reload table
+        [_tableView reloadData];
+    }
+    else if (sender == _doneButton) {
+        [self performSegueWithIdentifier:kSegue_PresentExtraInfoView sender:nil];
+    }
 }
 
 
@@ -120,6 +145,15 @@ static NSString * const _Identifier = @"Cell";
 - (void)_localize {
 }
 - (void)_visualize {
+    _taglineImageView.layer.borderWidth = 1.0f;
+    _taglineImageView.layer.cornerRadius = 3.0f;
+    _taglineImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+    
+    _promoterImageView.layer.borderWidth = 1.0f;
+    _promoterImageView.layer.cornerRadius = 3.0f;
+    _promoterImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+    
+    _doneButton.layer.cornerRadius = kCornerRadius;
 }
 
 

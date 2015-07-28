@@ -146,7 +146,7 @@
 - (void)_localize {
 }
 - (void)_visualize {
-    _registerButton.layer.cornerRadius = 5.0f;
+    _registerButton.layer.cornerRadius = kCornerRadius;
 }
 
 

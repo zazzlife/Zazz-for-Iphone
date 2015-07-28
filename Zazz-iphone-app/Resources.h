@@ -16,9 +16,13 @@
 #define kColor_BG_Overlay                                                                           FwiColorWithRGBA(0x000000b3)
 
 // Application's Master Controls
+#define kCornerRadius                                                                               5.0f
 
 // Application's Images
 #define kImage_BG_Login                                                                             [[UIImage imageNamed:@"BG_Login"] resizableImageWithCapInsets:UIEdgeInsetsMake(10.0f, 10.0f, 10.0f, 10.0f)]
+#define kImage_BG_TextField                                                                         [[UIImage imageNamed:@"BG_TextField"] resizableImageWithCapInsets:UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f)]
+
+#define kImage_Check                                                                                [UIImage imageNamed:@"Check"]
 
 // Application's Fonts
 

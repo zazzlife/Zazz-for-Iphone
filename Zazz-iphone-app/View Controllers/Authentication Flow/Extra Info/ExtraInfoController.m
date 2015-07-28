@@ -102,6 +102,16 @@
 
 #pragma mark - View's key pressed event handlers
 - (IBAction)keyPressed:(id)sender {
+    if (sender == _maleButton) {
+        _maleImageView.image  = kImage_Check;
+        _femaleImageView.image = nil;
+    }
+    else if (sender == _femaleButton) {
+        _maleImageView.image  = nil;
+        _femaleImageView.image = kImage_Check;
+    }
+    else if (sender == _finishButton) {
+    }
 }
 
 
@@ -117,6 +127,17 @@
 - (void)_localize {
 }
 - (void)_visualize {
+    _maleImageView.layer.borderWidth = 1.0f;
+    _maleImageView.layer.cornerRadius = 3.0f;
+    _maleImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+    
+    _femaleImageView.layer.borderWidth = 1.0f;
+    _femaleImageView.layer.cornerRadius = 3.0f;
+    _femaleImageView.layer.borderColor = [[UIColor blackColor] CGColor];
+    
+    [_ageButton setBackgroundImage:kImage_BG_TextField forState:UIControlStateNormal];
+    [_ageButton setBackgroundImage:kImage_BG_TextField forState:UIControlStateHighlighted];
+    _finishButton.layer.cornerRadius = kCornerRadius;
 }
 
 
