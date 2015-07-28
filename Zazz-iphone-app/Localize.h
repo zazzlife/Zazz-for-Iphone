@@ -42,6 +42,7 @@
 
 /** Normal text. */
 // A
+#define kText_AppName                                                                               @"Zazz"
 // B
 // C
 // D
@@ -53,6 +54,7 @@
 // J
 // K
 // L
+#define kText_Loading                                                                               @"Loading, please wait..."
 // M
 // N
 // O

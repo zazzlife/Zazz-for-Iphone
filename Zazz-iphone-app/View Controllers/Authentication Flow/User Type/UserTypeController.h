@@ -11,9 +11,14 @@
 #import <UIKit/UIKit.h>
 
 
-@interface UserTypeController : UIViewController {
+@interface UserTypeController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 
 @private
+    __weak IBOutlet UIButton *_taglineButton;
+    __weak IBOutlet UIButton *_promoterButton;
+    __weak IBOutlet UIButton *_doneButton;
+    
+    __weak IBOutlet UITableView *_tableView;
 }
 
 

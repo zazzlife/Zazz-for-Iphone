@@ -18,6 +18,9 @@
 @implementation UserTypeController
 
 
+static NSString * const _Identifier = @"Cell";
+
+
 #pragma mark - Class's constructors
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
@@ -121,6 +124,24 @@
 
 
 #pragma mark - Class's notification handlers
+
+
+#pragma mark - UITableViewDataSource's members
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:_Identifier];
+    return cell;
+}
+
+
+#pragma mark - UITableViewDelegate's members
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 30.0f;
+}
 
 
 @end

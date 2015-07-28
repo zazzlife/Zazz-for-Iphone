@@ -11,10 +11,18 @@
 #import <UIKit/UIKit.h>
 
 
-@interface BasicInfoController : UIViewController {
+@interface BasicInfoController : UIViewController <UITextFieldDelegate> {
 
 @private
+    __weak IBOutlet UITextField *_usernameTextField;
+    __weak IBOutlet UITextField *_emailTextField;
+    __weak IBOutlet UITextField *_confirmTextField;
+    __weak IBOutlet UITextField *_passwordTextField;
+    
+    __weak IBOutlet UIButton *_nextButton;
 }
+
+@property (nonatomic, strong) id<FBGraphUser> user;
 
 
 // View's key pressed event handlers

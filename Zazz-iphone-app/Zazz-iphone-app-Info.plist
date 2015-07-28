@@ -48,6 +48,17 @@
 	<false/>
 	<key>FacebookAppID</key>
 	<string>433721150040606</string>
+	<key>FacebookDisplayName</key>
+	<string>Zazz</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb433721150040606</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Roboto-Black.ttf</string>

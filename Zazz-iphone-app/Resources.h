@@ -13,6 +13,7 @@
 
 
 // Application's colors
+#define kColor_BG_Overlay                                                                           FwiColorWithRGBA(0x000000b3)
 
 // Application's Master Controls
 

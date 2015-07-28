@@ -97,11 +97,16 @@
 
 #pragma mark - View's transition event handler
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    __autoreleasing UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
 }
 
 
 #pragma mark - View's key pressed event handlers
 - (IBAction)keyPressed:(id)sender {
+    if (sender == _nextButton) {
+        [self performSegueWithIdentifier:kSegue_PresentUserTypeView sender:nil];
+    }
 }
 
 

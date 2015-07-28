@@ -10,23 +10,15 @@
 #import "AppDelegate.h"
 
 
-@interface RegisterViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate> {
-    NSArray* genders;
-    NSString* genderStr;
+@interface RegisterViewController : UIViewController<FBLoginViewDelegate> {
+    
+@private
+    __weak IBOutlet FBLoginView *_facebookView;
+    __weak IBOutlet UIButton *_registerButton;
 }
 
 
-@property IBOutlet UITextField* firstName;
-@property IBOutlet UITextField* lastName;
-@property IBOutlet UITextField* email;
-@property IBOutlet UITextField* username;
-@property IBOutlet UIPickerView* type;
-@property IBOutlet UITextField* password;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *registerProgress;
-
--(IBAction)doRegistration:(id)sender;
--(IBAction)userTappedBackgroud:(id)sender;
--(IBAction)userHitReturn:(id)sender;
--(IBAction)goBack:(id)sender;
+// View's key pressed event handlers
+- (IBAction)keyPressed:(id)sender;
 
 @end

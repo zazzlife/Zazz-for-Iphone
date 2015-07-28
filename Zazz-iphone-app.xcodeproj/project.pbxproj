@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB12D351922FA20001E9E26 /* QuartzCore.framework */; };
-		2A47F5641936F47A001CF1AE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A47F5631936F47A001CF1AE /* Images.xcassets */; };
 		2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
@@ -97,6 +96,11 @@
 		BE6043BD1B67392300B9B84F /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B31B67392300B9B84F /* LoginController.m */; };
 		BE6043BE1B67392300B9B84F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B61B67392300B9B84F /* RegisterViewController.m */; };
 		BE6043BF1B67392300B9B84F /* UserTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B91B67392300B9B84F /* UserTypeController.m */; };
+		BE6043C11B673F8E00B9B84F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6043C01B673F8E00B9B84F /* Images.xcassets */; };
+		BE6043C31B6740E800B9B84F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE6043C21B6740E800B9B84F /* FacebookSDK.framework */; };
+		BE6043CB1B67614F00B9B84F /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043C71B67614F00B9B84F /* SVIndefiniteAnimatedView.m */; };
+		BE6043CD1B67614F00B9B84F /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043CA1B67614F00B9B84F /* SVProgressHUD.m */; };
+		BE6043CF1B67616300B9B84F /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BE6043CE1B67616300B9B84F /* SVProgressHUD.bundle */; };
 		BEBB09F31B65F1BF00A621B9 /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09CA1B65F1BF00A621B9 /* CreateMessageViewController.m */; };
 		BEBB09F41B65F1BF00A621B9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09CD1B65F1BF00A621B9 /* DetailViewController.m */; };
 		BEBB09F51B65F1BF00A621B9 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */; };
@@ -126,7 +130,6 @@
 
 /* Begin PBXFileReference section */
 		0DB12D351922FA20001E9E26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		2A47F5631936F47A001CF1AE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2AFB430719EA664E0004BA9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -306,6 +309,13 @@
 		BE6043B61B67392300B9B84F /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		BE6043B81B67392300B9B84F /* UserTypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTypeController.h; sourceTree = "<group>"; };
 		BE6043B91B67392300B9B84F /* UserTypeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTypeController.m; sourceTree = "<group>"; };
+		BE6043C01B673F8E00B9B84F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
+		BE6043C21B6740E800B9B84F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		BE6043C61B67614F00B9B84F /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		BE6043C71B67614F00B9B84F /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		BE6043C91B67614F00B9B84F /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		BE6043CA1B67614F00B9B84F /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		BE6043CE1B67616300B9B84F /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = Libraries/SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
 		BEBB09C91B65F1BF00A621B9 /* CreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMessageViewController.h; sourceTree = "<group>"; };
 		BEBB09CA1B65F1BF00A621B9 /* CreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMessageViewController.m; sourceTree = "<group>"; };
 		BEBB09CC1B65F1BF00A621B9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -354,6 +364,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE6043C31B6740E800B9B84F /* FacebookSDK.framework in Frameworks */,
 				0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */,
 				5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */,
 				5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */,
@@ -364,12 +375,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A5FAEB7191D2BE500B917AB /* Storyboards */ = {
+		2A5FAEB7191D2BE500B917AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */,
 			);
-			name = Storyboards;
+			name = Views;
 			sourceTree = "<group>";
 		};
 		5E8AA6E318FCAED600C99D9F = {
@@ -392,6 +403,7 @@
 		5E8AA6EE18FCAED600C99D9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE6043C21B6740E800B9B84F /* FacebookSDK.framework */,
 				0DB12D351922FA20001E9E26 /* QuartzCore.framework */,
 				5E8AA6EF18FCAED600C99D9F /* Foundation.framework */,
 				5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */,
@@ -410,9 +422,9 @@
 				BEBB0A051B66036A00A621B9 /* AppDelegate.m */,
 				BEBB09C71B65F1BF00A621B9 /* View Controllers */,
 				667D07E01A37814400A12ABE /* Classes */,
-				2A5FAEB7191D2BE500B917AB /* Storyboards */,
+				2A5FAEB7191D2BE500B917AB /* Views */,
+				BE6043C41B67614F00B9B84F /* Libraries */,
 				BEBB0A0F1B66079600A621B9 /* Resources */,
-				2A47F5631936F47A001CF1AE /* Images.xcassets */,
 				5E8AA6F618FCAED600C99D9F /* Supporting Files */,
 			);
 			path = "Zazz-iphone-app";
@@ -1000,6 +1012,25 @@
 			path = "User Type";
 			sourceTree = "<group>";
 		};
+		BE6043C41B67614F00B9B84F /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				BE6043C51B67614F00B9B84F /* SVProgressHUD */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		BE6043C51B67614F00B9B84F /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				BE6043C91B67614F00B9B84F /* SVProgressHUD.h */,
+				BE6043CA1B67614F00B9B84F /* SVProgressHUD.m */,
+				BE6043C61B67614F00B9B84F /* SVIndefiniteAnimatedView.h */,
+				BE6043C71B67614F00B9B84F /* SVIndefiniteAnimatedView.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		BEBB09C71B65F1BF00A621B9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1152,7 +1183,9 @@
 		BEBB0A0F1B66079600A621B9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BE6043CE1B67616300B9B84F /* SVProgressHUD.bundle */,
 				BEBB0A101B66082400A621B9 /* Fonts */,
+				BE6043C01B673F8E00B9B84F /* Images.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1235,6 +1268,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEBB0A271B66082400A621B9 /* Roboto-Thin.ttf in Resources */,
+				BE6043C11B673F8E00B9B84F /* Images.xcassets in Resources */,
+				BE6043CF1B67616300B9B84F /* SVProgressHUD.bundle in Resources */,
 				BEBB0A241B66082400A621B9 /* Roboto-Medium.ttf in Resources */,
 				BEBB0A201B66082400A621B9 /* Roboto-BoldItalic.ttf in Resources */,
 				667D08F51A37814500A12ABE /* CTAssetsPicker.xcassets in Resources */,
@@ -1244,7 +1279,6 @@
 				2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */,
 				BEBB0A1E1B66082400A621B9 /* Roboto-BlackItalic.ttf in Resources */,
 				BEBB0A281B66082400A621B9 /* Roboto-ThinItalic.ttf in Resources */,
-				2A47F5641936F47A001CF1AE /* Images.xcassets in Resources */,
 				5E8AA6FA18FCAED600C99D9F /* InfoPlist.strings in Resources */,
 				BEBB0A211B66082400A621B9 /* Roboto-Italic.ttf in Resources */,
 				BEBB0A261B66082400A621B9 /* Roboto-Regular.ttf in Resources */,
@@ -1302,6 +1336,7 @@
 				667D09141A37814500A12ABE /* ZazzCategory.m in Sources */,
 				667D090D1A37814500A12ABE /* Notification.m in Sources */,
 				667D090C1A37814500A12ABE /* GenericModel.m in Sources */,
+				BE6043CD1B67614F00B9B84F /* SVProgressHUD.m in Sources */,
 				667D093B1A37814500A12ABE /* UIImage+WebP.m in Sources */,
 				BEBB09FA1B65F1BF00A621B9 /* RightNavigationViewController.m in Sources */,
 				667D09021A37814500A12ABE /* RoundedUIButton.m in Sources */,
@@ -1319,6 +1354,7 @@
 				667D08EF1A37814500A12ABE /* ALAssetsGroup+isEqual.m in Sources */,
 				667D09101A37814500A12ABE /* Profile.m in Sources */,
 				667D08F81A37814500A12ABE /* CTAssetsSupplementaryView.m in Sources */,
+				BE6043CB1B67614F00B9B84F /* SVIndefiniteAnimatedView.m in Sources */,
 				667D08F01A37814500A12ABE /* CTAssetItemViewController.m in Sources */,
 				667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */,
 				667D09171A37814500A12ABE /* ZazzFollow.m in Sources */,
@@ -1414,6 +1450,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "968a5e6c-b7e1-4c06-b048-ed52d48c8448";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1447,6 +1484,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PROVISIONING_PROFILE = "e6958306-4198-4d25-a6b6-f0f5cf8ad63d";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1459,6 +1497,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
 				INFOPLIST_FILE = "Zazz-iphone-app/Zazz-iphone-app-Info.plist";
@@ -1473,6 +1515,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
 				INFOPLIST_FILE = "Zazz-iphone-app/Zazz-iphone-app-Info.plist";

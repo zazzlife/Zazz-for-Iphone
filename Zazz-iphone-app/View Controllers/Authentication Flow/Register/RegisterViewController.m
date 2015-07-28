@@ -1,179 +1,177 @@
-//
-//  RegisterViewController.m
-//  Zazz-iphone-app
-//
-//  Created by Fyodor Wolf on 5/11/14.
-//  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
-//
-
 #import "RegisterViewController.h"
+#import "BasicInfoController.h"
 
 
-@interface RegisterViewController ()
+@interface RegisterViewController () {
+}
+
+@property (nonatomic, assign) BOOL isForwarded;
+@property (nonatomic, strong) id<FBGraphUser> user;
+
+
+/** Initialize class's private variables. */
+- (void)_init;
+/** Localize UI components. */
+- (void)_localize;
+/** Visualize all view's components. */
+- (void)_visualize;
+
+/** Handle app did become active. */
+- (void)_handleApplicationDidBecomeActiveNotification:(NSNotification *)notification;
 
 @end
 
 
 @implementation RegisterViewController
 
-@synthesize firstName;
-@synthesize lastName;
-@synthesize email;
-@synthesize username;
-@synthesize password;
-@synthesize type;
 
-- (void)viewDidFinishAnimation{
-    [self.firstName becomeFirstResponder];
+#pragma mark - Class's constructors
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self _init];
+    }
+    return self;
+}
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        [self _init];
+    }
+    return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+#pragma mark - Cleanup memory
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    genders = [NSArray arrayWithObjects:@"Male", @"Female", @"Other", nil];
-    genderStr = @"";
-    [type selectRow:0 inComponent:0 animated:NO];
+#if !__has_feature(objc_arc)
+    [super dealloc];
+#endif
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+#pragma mark - View's lifecycle
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self _visualize];
+    
+    _facebookView.publishPermissions = @[@"publish_actions", @"public_profile", @"user_friends", @"email"];
+}
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self _localize];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthError:) name:@"gotAuthError" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthToken:) name:@"gotAuthToken" object:nil];
-}
--(void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotAuthError" object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotAuthToken" object:nil];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-#pragma mark User Actions
-
--(void)userHitReturn:(id)sender {
-    [self removeKeyboard];
-}
-
--(IBAction)userTappedBackgroud:(id)sender {
-    [self removeKeyboard];
-}
-
--(void)removeKeyboard {
-    for(UITextField* txtF in self.view.subviews) {
-        if ([txtF isKindOfClass:[UITextField class]]) {
-            [txtF resignFirstResponder];
-        }
-    }
-}
-
--(IBAction)doRegistration:(id)sender{
-    for(UITextField* txtF in self.view.subviews) {
-        if ([txtF isKindOfClass:[UITextField class]]) {
-            txtF.text = [txtF.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-            if ([txtF.text  isEqualToString:@""]) {
-                [txtF becomeFirstResponder];
-                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Zazz" message:@"Please fill all of the fields." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-                [alert show];
-                return;
-            }
-            [txtF resignFirstResponder];
-        }
-    }
-    if ([genderStr isEqualToString:@""]) {
-        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Zazz" message:@"Please choose your gender." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
-        return;
-    }
-    NSDictionary* parameters = @{username.text:@"username",
-                                 email.text:@"email",
-                                 password.text:@"password",
-                                 genderStr:@"Gender",
-                                 [firstName.text stringByAppendingFormat:@"+%@", lastName.text]:@"fullName",
-                                 @"User":@"accountType"
-                                 };
-    NSLog(@"%@", parameters);
-    [[AppDelegate zazzApi] registerWithDict:parameters];
-    [self.registerProgress startAnimating];
-}
-
--(IBAction)goBack:(id)sender{
-    [self.navigationController popViewControllerAnimated:true];
-}
-
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    if (textField == password) {
-        if (textField.text.length + string.length <= 20) {
-            return YES;
-        }
-        
-        return NO;
-    }
-    return YES;
     
+    // Move forward if user is available
+    if (self.user && !_isForwarded) {
+        _isForwarded = YES;
+        [self performSegueWithIdentifier:kSegue_PresentBasicInfoView sender:nil];
+    }
 }
-
-#pragma mark Picker 
-
--(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
-
--(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return genders.count;
-}
-
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return genders[row];
-}
-
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    genderStr = genders[row];
-}
-
--(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
-    return 30;
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
 }
 
 
-
-#pragma mark Auth
--(void) gotAuthError:(NSNotification*)notif{
-    if (![notif.name isEqualToString:@"gotAuthError"]) return;
-    [self.registerProgress stopAnimating];
-    UIAlertView *loginerror = [[UIAlertView alloc] initWithTitle:@"Register Failed!" message:@"Registration failed" delegate:nil cancelButtonTitle:@"Try Again" otherButtonTitles:nil, nil];
-    [loginerror show];
-    return;
+#pragma mark - View's memory handler
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
--(void) gotAuthToken:(NSNotification*)notif{
-    if (![notif.name isEqualToString:@"gotAuthToken"]) return;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"gotAuthToken" object:nil];
-    [self.registerProgress stopAnimating];
-    [self performSegueWithIdentifier:@"registerComplete" sender:self];
-    return;
+
+#pragma mark - View's orientation handler
+- (BOOL)shouldAutorotate {
+    return YES;
 }
+- (NSUInteger)supportedInterfaceOrientations {
+    return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
+}
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+}
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+}
+
+
+#pragma mark - View's status handler
+- (BOOL)prefersStatusBarHidden {
+    return NO;
+}
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+
+#pragma mark - View's transition event handler
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    __autoreleasing UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backItem;
+    
+    if ([segue.destinationViewController isKindOfClass:[BasicInfoController class]]) {
+        __weak BasicInfoController *controller = (BasicInfoController *) segue.destinationViewController;
+        controller.user = _user;
+    }
+}
+
+
+#pragma mark - View's key pressed event handlers
+- (IBAction)keyPressed:(id)sender {
+    if (sender == _registerButton) {
+        [self performSegueWithIdentifier:kSegue_PresentBasicInfoView sender:nil];
+    }
+}
+
+
+#pragma mark - Class's properties
+
+
+#pragma mark - Class's public methods
+
+
+#pragma mark - Class's private methods
+- (void)_init {
+    _isForwarded = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_handleApplicationDidBecomeActiveNotification:) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+- (void)_localize {
+}
+- (void)_visualize {
+    _registerButton.layer.cornerRadius = 5.0f;
+}
+
+
+#pragma mark - Class's notification handlers
+- (void)_handleApplicationDidBecomeActiveNotification:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self viewDidAppear:YES];
+    });
+}
+
+
+#pragma mark - FBLoginViewDelegate's members
+- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
+    self.user = user;
+    
+    if (self.isBeingPresented) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self performSegueWithIdentifier:kSegue_PresentBasicInfoView sender:nil];
+        });
+    }
+}
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    _isForwarded = NO;
+    self.user = nil;
+}
+
 
 @end

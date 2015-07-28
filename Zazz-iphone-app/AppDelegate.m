@@ -9,6 +9,9 @@
 /** Override default controls. */
 - (void)_customAppearance;
 
+/** Handle Facebook call back. */
+- (void)_handleOpenURLWithAccessToken:(FBAccessTokenData *)token;
+
 @end
 
 
@@ -59,6 +62,20 @@
     [self _customAppearance];
     return YES;
 }
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                    fallbackHandler:^(FBAppCall *call) {
+                        if (call.accessTokenData) {
+                            if ([FBSession activeSession].isOpen) {
+                                DLog(@"INFO: Ignoring new access token because current session is open.");
+                            }
+                            else {
+                                [self _handleOpenURLWithAccessToken:call.accessTokenData];
+                            }
+                        }
+                    }];
+}
 
 
 #pragma mark - Cleanup memory
@@ -79,8 +96,12 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
 }
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBAppEvents activateApp];
+    [FBAppCall handleDidBecomeActive];
 }
+
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [FBSession.activeSession close];
 }
 
 
@@ -125,6 +146,12 @@
 - (void)_customAppearance {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+    // Customize progress hub
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeBlack];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setBackgroundColor:kColor_BG_Overlay];
+    
+    // Customize navigation bar
     __autoreleasing UIImage *navBar = [[UIImage imageNamed:@"BG_NavBar"] resizableImageWithCapInsets:UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f)];
     [[UINavigationBar appearance] setBackgroundImage:navBar forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:FwiColorWithRGB(0xffbf00),
@@ -136,6 +163,56 @@
         [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:navBack];
         [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:-2.0f forBarMetrics:UIBarMetricsDefault];
     }
+}
+
+- (void)_handleOpenURLWithAccessToken:(FBAccessTokenData *)token {
+    // Initialize a new blank session instance...
+    __autoreleasing FBSession *sessionFromToken = [[FBSession alloc] initWithAppID:nil
+                                                                       permissions:nil
+                                                                   defaultAudience:FBSessionDefaultAudienceNone
+                                                                   urlSchemeSuffix:nil
+                                                                tokenCacheStrategy:[FBSessionTokenCachingStrategy nullCacheInstance]];
+    [FBSession setActiveSession:sessionFromToken];
+    
+    // And open it from the supplied token.
+    [sessionFromToken openFromAccessTokenData:token
+                            completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                                if (error) {
+                                    NSString *alertMessage = nil;
+                                    
+                                    if ([FBErrorUtility shouldNotifyUserForError:error]) {
+                                        alertMessage = [FBErrorUtility userMessageForError:error];
+                                    }
+                                    else {
+                                        switch ([FBErrorUtility errorCategoryForError:error]) {
+                                            case FBErrorCategoryAuthenticationReopenSession: {
+                                                alertMessage = @"Your current session is no longer valid. Please log in again.";
+                                                break;
+                                            }
+                                            case FBErrorCategoryUserCancelled: {
+                                                break;
+                                            }
+                                            default: {
+                                                alertMessage = @"Error. Please try again later.";
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    if (alertMessage) {
+//                                        [self presentAlertWithTitle:kText_ConceptKeywords message:alertMessage];
+                                    }
+                                }
+                            }];
+}
+
+
+#pragma mark - Class's notification handlers
+
+
+#pragma mark - UIAlertViewDelegate's members
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    _alertView = nil;
 }
 
 
