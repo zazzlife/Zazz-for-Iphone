@@ -1,7 +1,7 @@
-#import "LandingPageController.h"
+#import "UserTypeController.h"
 
 
-@interface LandingPageController () {
+@interface UserTypeController () {
 }
 
 
@@ -15,7 +15,7 @@
 @end
 
 
-@implementation LandingPageController
+@implementation UserTypeController
 
 
 #pragma mark - Class's constructors
@@ -53,8 +53,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self _localize];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -93,14 +91,12 @@
     return NO;
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 
 #pragma mark - View's transition event handler
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    __autoreleasing UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
-    self.navigationItem.backBarButtonItem = backItem;
 }
 
 
@@ -121,8 +117,6 @@
 - (void)_localize {
 }
 - (void)_visualize {
-    _registerButton.layer.cornerRadius = 5.0f;
-    _signinButton.layer.cornerRadius = 5.0f;
 }
 
 

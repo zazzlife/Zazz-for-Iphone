@@ -10,16 +10,16 @@
 #import "ZazzApi.h"
 #import "CFTabBarController.h"
 
-@protocol ViewAnimationDelegate <NSObject>
 
--(void)viewDidFinishAnimation;
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+}
 
-@end
+// Query iOS Version
+@property (nonatomic, assign, readonly) NSInteger osVersion;
 
+// Application controllers
+@property (nonatomic, strong) UIWindow *window;
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
 @property ZazzApi* _zazzAPI;
 @property UIImageView* zazz_logo;
 @property UINavigationController* navController;
@@ -30,5 +30,12 @@
 
 + (AppDelegate*)getAppDelegate;
 + (ZazzApi*)zazzApi;
+
+
+/** Present alert message. */
+- (void)presentAlertWithTitle:(NSString *)title message:(NSString *)message;
+- (void)presentAlertWithTitle:(NSString *)title message:(NSString *)message delegate:(id<UIAlertViewDelegate>)delegate;
+- (void)presentAlertWithTitle:(NSString *)title message:(NSString *)message delegate:(id<UIAlertViewDelegate>)delegate cancelTitle:(NSString *)cancelTitle;
+- (void)presentAlertWithTitle:(NSString *)title message:(NSString *)message delegate:(id<UIAlertViewDelegate>)delegate cancelTitle:(NSString *)cancelTitle confirmTitle:(NSString *)confirmTitle;
 
 @end

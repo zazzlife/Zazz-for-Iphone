@@ -216,7 +216,7 @@ PROFILE
 }
 +(NSString *) BASE_URL{
     // Test
-   // return @"http://test.zazzlife.com/api/v1/";
+//    return @"http://test.zazzlife.com/api/v1/";
     // Prod
     return @"http://www.zazzlife.com/api/v1/";
 }

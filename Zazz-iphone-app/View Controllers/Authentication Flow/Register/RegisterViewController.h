@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 
 
-@interface RegisterViewController : UIViewController<ViewAnimationDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate> {
+@interface RegisterViewController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate> {
     NSArray* genders;
     NSString* genderStr;
 }

@@ -15,12 +15,6 @@
 		5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
 		5E8AA6FA18FCAED600C99D9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E8AA6F818FCAED600C99D9F /* InfoPlist.strings */; };
 		5E8AA6FC18FCAED600C99D9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AA6FB18FCAED600C99D9F /* main.m */; };
-		5E8AA70618FCAED600C99D9F /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8AA70418FCAED600C99D9F /* Main_iPad.storyboard */; };
-		5E8AA71218FCAED700C99D9F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA71118FCAED700C99D9F /* XCTest.framework */; };
-		5E8AA71318FCAED700C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
-		5E8AA71418FCAED700C99D9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F318FCAED600C99D9F /* UIKit.framework */; };
-		5E8AA71C18FCAED700C99D9F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5E8AA71A18FCAED700C99D9F /* InfoPlist.strings */; };
-		5E8AA71E18FCAED700C99D9F /* Zazz_iphone_appTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E8AA71D18FCAED700C99D9F /* Zazz_iphone_appTests.m */; };
 		667D08EB1A37814500A12ABE /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D07E71A37814400A12ABE /* CommentCell.m */; };
 		667D08EC1A37814500A12ABE /* ALAsset+accessibilityLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D07EA1A37814400A12ABE /* ALAsset+accessibilityLabel.m */; };
 		667D08ED1A37814500A12ABE /* ALAsset+assetType.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D07EC1A37814400A12ABE /* ALAsset+assetType.m */; };
@@ -97,6 +91,12 @@
 		667D093D1A37814500A12ABE /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08BD1A37814500A12ABE /* UIImageView+WebCache.m */; };
 		667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D094D1A379D9B00A12ABE /* ZazzRegister.m */; };
 		667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */; };
+		BE6043BA1B67392300B9B84F /* BasicInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043AA1B67392300B9B84F /* BasicInfoController.m */; };
+		BE6043BB1B67392300B9B84F /* ExtraInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043AD1B67392300B9B84F /* ExtraInfoController.m */; };
+		BE6043BC1B67392300B9B84F /* LandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B01B67392300B9B84F /* LandingPageController.m */; };
+		BE6043BD1B67392300B9B84F /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B31B67392300B9B84F /* LoginController.m */; };
+		BE6043BE1B67392300B9B84F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B61B67392300B9B84F /* RegisterViewController.m */; };
+		BE6043BF1B67392300B9B84F /* UserTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B91B67392300B9B84F /* UserTypeController.m */; };
 		BEBB09F31B65F1BF00A621B9 /* CreateMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09CA1B65F1BF00A621B9 /* CreateMessageViewController.m */; };
 		BEBB09F41B65F1BF00A621B9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09CD1B65F1BF00A621B9 /* DetailViewController.m */; };
 		BEBB09F51B65F1BF00A621B9 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */; };
@@ -107,11 +107,9 @@
 		BEBB09FB1B65F1BF00A621B9 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E31B65F1BF00A621B9 /* NotificationViewController.m */; };
 		BEBB09FC1B65F1BF00A621B9 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E61B65F1BF00A621B9 /* PostViewController.m */; };
 		BEBB09FD1B65F1BF00A621B9 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E91B65F1BF00A621B9 /* ProfileViewController.m */; };
-		BEBB09FE1B65F1BF00A621B9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09EC1B65F1BF00A621B9 /* RegisterViewController.m */; };
 		BEBB09FF1B65F1BF00A621B9 /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09EF1B65F1BF00A621B9 /* CFTabBarController.m */; };
 		BEBB0A001B65F1BF00A621B9 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09F21B65F1BF00A621B9 /* TagViewController.m */; };
 		BEBB0A061B66036A00A621B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0A051B66036A00A621B9 /* AppDelegate.m */; };
-		BEBB0A0E1B66048300A621B9 /* LandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0A0D1B66048300A621B9 /* LandingPageController.m */; };
 		BEBB0A1D1B66082400A621B9 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A111B66082400A621B9 /* Roboto-Black.ttf */; };
 		BEBB0A1E1B66082400A621B9 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A121B66082400A621B9 /* Roboto-BlackItalic.ttf */; };
 		BEBB0A1F1B66082400A621B9 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A131B66082400A621B9 /* Roboto-Bold.ttf */; };
@@ -124,18 +122,7 @@
 		BEBB0A261B66082400A621B9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1A1B66082400A621B9 /* Roboto-Regular.ttf */; };
 		BEBB0A271B66082400A621B9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1B1B66082400A621B9 /* Roboto-Thin.ttf */; };
 		BEBB0A281B66082400A621B9 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1C1B66082400A621B9 /* Roboto-ThinItalic.ttf */; };
-		BEBB0A2C1B66213F00A621B9 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0A2B1B66213F00A621B9 /* LoginController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		5E8AA71518FCAED700C99D9F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5E8AA6E418FCAED600C99D9F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5E8AA6EB18FCAED600C99D9F;
-			remoteInfo = "Zazz-iphone-app";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0DB12D351922FA20001E9E26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -149,12 +136,6 @@
 		5E8AA6F918FCAED600C99D9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5E8AA6FB18FCAED600C99D9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5E8AA6FD18FCAED600C99D9F /* Zazz-iphone-app-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zazz-iphone-app-Prefix.pch"; sourceTree = "<group>"; };
-		5E8AA70518FCAED600C99D9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		5E8AA71018FCAED700C99D9F /* Zazz-iphone-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zazz-iphone-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E8AA71118FCAED700C99D9F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		5E8AA71918FCAED700C99D9F /* Zazz-iphone-appTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Zazz-iphone-appTests-Info.plist"; sourceTree = "<group>"; };
-		5E8AA71B18FCAED700C99D9F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5E8AA71D18FCAED700C99D9F /* Zazz_iphone_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Zazz_iphone_appTests.m; sourceTree = "<group>"; };
 		667D07E61A37814400A12ABE /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		667D07E71A37814400A12ABE /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		667D07E91A37814400A12ABE /* ALAsset+accessibilityLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALAsset+accessibilityLabel.h"; sourceTree = "<group>"; };
@@ -313,6 +294,18 @@
 		667D094D1A379D9B00A12ABE /* ZazzRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzRegister.m; sourceTree = "<group>"; };
 		667D0A191A38F8F100A12ABE /* ZazzSendFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzSendFollow.h; sourceTree = "<group>"; };
 		667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzSendFollow.m; sourceTree = "<group>"; };
+		BE6043A91B67392300B9B84F /* BasicInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoController.h; sourceTree = "<group>"; };
+		BE6043AA1B67392300B9B84F /* BasicInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoController.m; sourceTree = "<group>"; };
+		BE6043AC1B67392300B9B84F /* ExtraInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraInfoController.h; sourceTree = "<group>"; };
+		BE6043AD1B67392300B9B84F /* ExtraInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtraInfoController.m; sourceTree = "<group>"; };
+		BE6043AF1B67392300B9B84F /* LandingPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageController.h; sourceTree = "<group>"; };
+		BE6043B01B67392300B9B84F /* LandingPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageController.m; sourceTree = "<group>"; };
+		BE6043B21B67392300B9B84F /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		BE6043B31B67392300B9B84F /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		BE6043B51B67392300B9B84F /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		BE6043B61B67392300B9B84F /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		BE6043B81B67392300B9B84F /* UserTypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTypeController.h; sourceTree = "<group>"; };
+		BE6043B91B67392300B9B84F /* UserTypeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTypeController.m; sourceTree = "<group>"; };
 		BEBB09C91B65F1BF00A621B9 /* CreateMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateMessageViewController.h; sourceTree = "<group>"; };
 		BEBB09CA1B65F1BF00A621B9 /* CreateMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateMessageViewController.m; sourceTree = "<group>"; };
 		BEBB09CC1B65F1BF00A621B9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -333,8 +326,6 @@
 		BEBB09E61B65F1BF00A621B9 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
 		BEBB09E81B65F1BF00A621B9 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		BEBB09E91B65F1BF00A621B9 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		BEBB09EB1B65F1BF00A621B9 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		BEBB09EC1B65F1BF00A621B9 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		BEBB09EE1B65F1BF00A621B9 /* CFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTabBarController.h; sourceTree = "<group>"; };
 		BEBB09EF1B65F1BF00A621B9 /* CFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTabBarController.m; sourceTree = "<group>"; };
 		BEBB09F11B65F1BF00A621B9 /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
@@ -344,8 +335,6 @@
 		BEBB0A031B66035400A621B9 /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resources.h; sourceTree = "<group>"; };
 		BEBB0A041B66036A00A621B9 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BEBB0A051B66036A00A621B9 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BEBB0A0C1B66048300A621B9 /* LandingPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandingPageController.h; sourceTree = "<group>"; };
-		BEBB0A0D1B66048300A621B9 /* LandingPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageController.m; sourceTree = "<group>"; };
 		BEBB0A111B66082400A621B9 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
 		BEBB0A121B66082400A621B9 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
 		BEBB0A131B66082400A621B9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -358,8 +347,6 @@
 		BEBB0A1A1B66082400A621B9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		BEBB0A1B1B66082400A621B9 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		BEBB0A1C1B66082400A621B9 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
-		BEBB0A2A1B66213F00A621B9 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
-		BEBB0A2B1B66213F00A621B9 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,16 +361,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5E8AA70D18FCAED600C99D9F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5E8AA71218FCAED700C99D9F /* XCTest.framework in Frameworks */,
-				5E8AA71418FCAED700C99D9F /* UIKit.framework in Frameworks */,
-				5E8AA71318FCAED700C99D9F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -391,7 +368,6 @@
 			isa = PBXGroup;
 			children = (
 				2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */,
-				5E8AA70418FCAED600C99D9F /* Main_iPad.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -400,9 +376,8 @@
 			isa = PBXGroup;
 			children = (
 				5E8AA6F518FCAED600C99D9F /* Zazz-iphone-app */,
-				5E8AA71718FCAED700C99D9F /* Zazz-iphone-appTests */,
-				5E8AA6EE18FCAED600C99D9F /* Frameworks */,
 				5E8AA6ED18FCAED600C99D9F /* Products */,
+				5E8AA6EE18FCAED600C99D9F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -410,7 +385,6 @@
 			isa = PBXGroup;
 			children = (
 				5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */,
-				5E8AA71018FCAED700C99D9F /* Zazz-iphone-appTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -422,7 +396,6 @@
 				5E8AA6EF18FCAED600C99D9F /* Foundation.framework */,
 				5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */,
 				5E8AA6F318FCAED600C99D9F /* UIKit.framework */,
-				5E8AA71118FCAED700C99D9F /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -452,24 +425,6 @@
 				5E8AA6FB18FCAED600C99D9F /* main.m */,
 				5E8AA6F718FCAED600C99D9F /* Zazz-iphone-app-Info.plist */,
 				5E8AA6FD18FCAED600C99D9F /* Zazz-iphone-app-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5E8AA71718FCAED700C99D9F /* Zazz-iphone-appTests */ = {
-			isa = PBXGroup;
-			children = (
-				5E8AA71D18FCAED700C99D9F /* Zazz_iphone_appTests.m */,
-				5E8AA71818FCAED700C99D9F /* Supporting Files */,
-			);
-			path = "Zazz-iphone-appTests";
-			sourceTree = "<group>";
-		};
-		5E8AA71818FCAED700C99D9F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5E8AA71918FCAED700C99D9F /* Zazz-iphone-appTests-Info.plist */,
-				5E8AA71A18FCAED700C99D9F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -991,6 +946,60 @@
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
+		BE6043A81B67392300B9B84F /* Basic Info */ = {
+			isa = PBXGroup;
+			children = (
+				BE6043A91B67392300B9B84F /* BasicInfoController.h */,
+				BE6043AA1B67392300B9B84F /* BasicInfoController.m */,
+			);
+			path = "Basic Info";
+			sourceTree = "<group>";
+		};
+		BE6043AB1B67392300B9B84F /* Extra Info */ = {
+			isa = PBXGroup;
+			children = (
+				BE6043AC1B67392300B9B84F /* ExtraInfoController.h */,
+				BE6043AD1B67392300B9B84F /* ExtraInfoController.m */,
+			);
+			path = "Extra Info";
+			sourceTree = "<group>";
+		};
+		BE6043AE1B67392300B9B84F /* Landing Page */ = {
+			isa = PBXGroup;
+			children = (
+				BE6043AF1B67392300B9B84F /* LandingPageController.h */,
+				BE6043B01B67392300B9B84F /* LandingPageController.m */,
+			);
+			path = "Landing Page";
+			sourceTree = "<group>";
+		};
+		BE6043B11B67392300B9B84F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				BE6043B21B67392300B9B84F /* LoginController.h */,
+				BE6043B31B67392300B9B84F /* LoginController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		BE6043B41B67392300B9B84F /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				BE6043B51B67392300B9B84F /* RegisterViewController.h */,
+				BE6043B61B67392300B9B84F /* RegisterViewController.m */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		BE6043B71B67392300B9B84F /* User Type */ = {
+			isa = PBXGroup;
+			children = (
+				BE6043B81B67392300B9B84F /* UserTypeController.h */,
+				BE6043B91B67392300B9B84F /* UserTypeController.m */,
+			);
+			path = "User Type";
+			sourceTree = "<group>";
+		};
 		BEBB09C71B65F1BF00A621B9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1004,7 +1013,6 @@
 				BEBB09E11B65F1BF00A621B9 /* NotificationViewController */,
 				BEBB09E41B65F1BF00A621B9 /* PostViewController */,
 				BEBB09E71B65F1BF00A621B9 /* ProfileViewController */,
-				BEBB09EA1B65F1BF00A621B9 /* RegisterViewController */,
 				BEBB09ED1B65F1BF00A621B9 /* TabBarController */,
 				BEBB09F01B65F1BF00A621B9 /* TagViewController */,
 			);
@@ -1110,15 +1118,6 @@
 			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
-		BEBB09EA1B65F1BF00A621B9 /* RegisterViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BEBB09EB1B65F1BF00A621B9 /* RegisterViewController.h */,
-				BEBB09EC1B65F1BF00A621B9 /* RegisterViewController.m */,
-			);
-			path = RegisterViewController;
-			sourceTree = "<group>";
-		};
 		BEBB09ED1B65F1BF00A621B9 /* TabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1140,19 +1139,14 @@
 		BEBB0A0A1B66048300A621B9 /* Authentication Flow */ = {
 			isa = PBXGroup;
 			children = (
-				BEBB0A0B1B66048300A621B9 /* Landing Page */,
-				BEBB0A291B66213F00A621B9 /* Login */,
+				BE6043A81B67392300B9B84F /* Basic Info */,
+				BE6043AB1B67392300B9B84F /* Extra Info */,
+				BE6043AE1B67392300B9B84F /* Landing Page */,
+				BE6043B11B67392300B9B84F /* Login */,
+				BE6043B41B67392300B9B84F /* Register */,
+				BE6043B71B67392300B9B84F /* User Type */,
 			);
 			path = "Authentication Flow";
-			sourceTree = "<group>";
-		};
-		BEBB0A0B1B66048300A621B9 /* Landing Page */ = {
-			isa = PBXGroup;
-			children = (
-				BEBB0A0C1B66048300A621B9 /* LandingPageController.h */,
-				BEBB0A0D1B66048300A621B9 /* LandingPageController.m */,
-			);
-			path = "Landing Page";
 			sourceTree = "<group>";
 		};
 		BEBB0A0F1B66079600A621B9 /* Resources */ = {
@@ -1183,15 +1177,6 @@
 			path = Resources/Fonts;
 			sourceTree = "<group>";
 		};
-		BEBB0A291B66213F00A621B9 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				BEBB0A2A1B66213F00A621B9 /* LoginController.h */,
-				BEBB0A2B1B66213F00A621B9 /* LoginController.m */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1212,24 +1197,6 @@
 			productReference = 5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5E8AA70F18FCAED600C99D9F /* Zazz-iphone-appTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5E8AA72418FCAED700C99D9F /* Build configuration list for PBXNativeTarget "Zazz-iphone-appTests" */;
-			buildPhases = (
-				5E8AA70C18FCAED600C99D9F /* Sources */,
-				5E8AA70D18FCAED600C99D9F /* Frameworks */,
-				5E8AA70E18FCAED600C99D9F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5E8AA71618FCAED700C99D9F /* PBXTargetDependency */,
-			);
-			name = "Zazz-iphone-appTests";
-			productName = "Zazz-iphone-appTests";
-			productReference = 5E8AA71018FCAED700C99D9F /* Zazz-iphone-appTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1241,9 +1208,6 @@
 				TargetAttributes = {
 					5E8AA6EB18FCAED600C99D9F = {
 						DevelopmentTeam = KWHKZ7NN2A;
-					};
-					5E8AA70F18FCAED600C99D9F = {
-						TestTargetID = 5E8AA6EB18FCAED600C99D9F;
 					};
 				};
 			};
@@ -1261,7 +1225,6 @@
 			projectRoot = "";
 			targets = (
 				5E8AA6EB18FCAED600C99D9F /* Zazz-iphone-app */,
-				5E8AA70F18FCAED600C99D9F /* Zazz-iphone-appTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1277,7 +1240,6 @@
 				667D08F51A37814500A12ABE /* CTAssetsPicker.xcassets in Resources */,
 				BEBB0A231B66082400A621B9 /* Roboto-LightItalic.ttf in Resources */,
 				BEBB0A251B66082400A621B9 /* Roboto-MediumItalic.ttf in Resources */,
-				5E8AA70618FCAED600C99D9F /* Main_iPad.storyboard in Resources */,
 				BEBB0A221B66082400A621B9 /* Roboto-Light.ttf in Resources */,
 				2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */,
 				BEBB0A1E1B66082400A621B9 /* Roboto-BlackItalic.ttf in Resources */,
@@ -1288,14 +1250,6 @@
 				BEBB0A261B66082400A621B9 /* Roboto-Regular.ttf in Resources */,
 				BEBB0A1F1B66082400A621B9 /* Roboto-Bold.ttf in Resources */,
 				BEBB0A1D1B66082400A621B9 /* Roboto-Black.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5E8AA70E18FCAED600C99D9F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5E8AA71C18FCAED700C99D9F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1311,6 +1265,7 @@
 				BEBB09FC1B65F1BF00A621B9 /* PostViewController.m in Sources */,
 				667D091B1A37814500A12ABE /* ZazzPost.m in Sources */,
 				667D09371A37814500A12ABE /* SDWebImagePrefetcher.m in Sources */,
+				BE6043BB1B67392300B9B84F /* ExtraInfoController.m in Sources */,
 				667D090B1A37814500A12ABE /* FollowRequest.m in Sources */,
 				667D08F31A37814500A12ABE /* CTAssetsGroupViewController.m in Sources */,
 				667D09151A37814500A12ABE /* ZazzComments.m in Sources */,
@@ -1319,6 +1274,7 @@
 				667D08F41A37814500A12ABE /* CTAssetsPageViewController.m in Sources */,
 				BEBB09F81B65F1BF00A621B9 /* MediaFeedViewController.m in Sources */,
 				667D08F91A37814500A12ABE /* CTAssetsViewCell.m in Sources */,
+				BE6043BF1B67392300B9B84F /* UserTypeController.m in Sources */,
 				667D09161A37814500A12ABE /* ZazzFeed.m in Sources */,
 				667D09321A37814500A12ABE /* SDWebImageCompat.m in Sources */,
 				667D08F21A37814500A12ABE /* CTAssetsGroupViewCell.m in Sources */,
@@ -1331,13 +1287,13 @@
 				667D091A1A37814500A12ABE /* ZazzPhoto.m in Sources */,
 				667D08FE1A37814500A12ABE /* FeedTableViewCell.m in Sources */,
 				667D092D1A37814500A12ABE /* RSKTouchView.m in Sources */,
-				BEBB0A2C1B66213F00A621B9 /* LoginController.m in Sources */,
 				BEBB09F61B65F1BF00A621B9 /* HomeViewController.m in Sources */,
 				BEBB09FB1B65F1BF00A621B9 /* NotificationViewController.m in Sources */,
+				BE6043BC1B67392300B9B84F /* LandingPageController.m in Sources */,
 				667D09051A37814500A12ABE /* CHTumblrMenuView.m in Sources */,
-				BEBB0A0E1B66048300A621B9 /* LandingPageController.m in Sources */,
 				BEBB09F31B65F1BF00A621B9 /* CreateMessageViewController.m in Sources */,
 				667D09121A37814500A12ABE /* User.m in Sources */,
+				BE6043BA1B67392300B9B84F /* BasicInfoController.m in Sources */,
 				667D08FD1A37814500A12ABE /* DetailViewItem.m in Sources */,
 				667D08FC1A37814500A12ABE /* NSDateFormatter+timeIntervalFormatter.m in Sources */,
 				667D09351A37814500A12ABE /* SDWebImageDownloaderOperation.m in Sources */,
@@ -1355,8 +1311,8 @@
 				667D09181A37814500A12ABE /* ZazzFollowRequest.m in Sources */,
 				667D091E1A37814500A12ABE /* ZazzProfile.m in Sources */,
 				667D092E1A37814500A12ABE /* UIImage+FixOrientation.m in Sources */,
+				BE6043BD1B67392300B9B84F /* LoginController.m in Sources */,
 				667D09081A37814500A12ABE /* Event.m in Sources */,
-				BEBB09FE1B65F1BF00A621B9 /* RegisterViewController.m in Sources */,
 				667D08EE1A37814500A12ABE /* ALAsset+isEqual.m in Sources */,
 				667D09071A37814500A12ABE /* Comment.m in Sources */,
 				667D090A1A37814500A12ABE /* Follow.m in Sources */,
@@ -1388,6 +1344,7 @@
 				667D08F71A37814500A12ABE /* CTAssetsPickerController.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
 				667D08FA1A37814500A12ABE /* CTAssetsViewController.m in Sources */,
+				BE6043BE1B67392300B9B84F /* RegisterViewController.m in Sources */,
 				667D09341A37814500A12ABE /* SDWebImageDownloader.m in Sources */,
 				667D093D1A37814500A12ABE /* UIImageView+WebCache.m in Sources */,
 				667D08EC1A37814500A12ABE /* ALAsset+accessibilityLabel.m in Sources */,
@@ -1401,23 +1358,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5E8AA70C18FCAED600C99D9F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5E8AA71E18FCAED700C99D9F /* Zazz_iphone_appTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		5E8AA71618FCAED700C99D9F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5E8AA6EB18FCAED600C99D9F /* Zazz-iphone-app */;
-			targetProxy = 5E8AA71518FCAED700C99D9F /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */ = {
@@ -1432,22 +1373,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				5E8AA6F918FCAED600C99D9F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		5E8AA70418FCAED600C99D9F /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E8AA70518FCAED600C99D9F /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
-		5E8AA71A18FCAED700C99D9F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E8AA71B18FCAED700C99D9F /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1557,46 +1482,6 @@
 			};
 			name = Release;
 		};
-		5E8AA72518FCAED700C99D9F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Zazz-iphone-app.app/Zazz-iphone-app";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Zazz-iphone-appTests/Zazz-iphone-appTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		5E8AA72618FCAED700C99D9F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Zazz-iphone-app.app/Zazz-iphone-app";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
-				INFOPLIST_FILE = "Zazz-iphone-appTests/Zazz-iphone-appTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1614,15 +1499,6 @@
 			buildConfigurations = (
 				5E8AA72218FCAED700C99D9F /* Debug */,
 				5E8AA72318FCAED700C99D9F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5E8AA72418FCAED700C99D9F /* Build configuration list for PBXNativeTarget "Zazz-iphone-appTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5E8AA72518FCAED700C99D9F /* Debug */,
-				5E8AA72618FCAED700C99D9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

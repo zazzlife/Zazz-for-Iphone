@@ -1,12 +1,16 @@
-//
-//  AppDelegate.m
-//  Zazz-iphone-app
-//
-//  Created by Mitchell Sorkin on 4/14/14.
-//  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
-//
-
 #import "AppDelegate.h"
+
+
+@interface AppDelegate () <UIAlertViewDelegate> {
+    
+    UIAlertView *_alertView;
+}
+
+/** Override default controls. */
+- (void)_customAppearance;
+
+@end
+
 
 @implementation AppDelegate
 
@@ -47,43 +51,92 @@
     return short_timestamp;
 }
 
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
-//    // Override point for customization after application launch.
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-//    [self set_zazzAPI:[[ZazzApi alloc] init]];
-//    [[self.window rootViewController].view setBackgroundColor:[UIColor clearColor]];
-//    UINavigationController* navController1 = (UINavigationController*)[self.window rootViewController];
-//    [navController1.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]]];
-//    self.navController = navController1;
-//    [AppDelegate addZazzBackgroundLogo];
+    if (![[UIDevice currentDevice] respondsToSelector:@selector(isMultitaskingSupported)] || ![[UIDevice currentDevice] isMultitaskingSupported]) return NO;
+    
+    // Apply custom theme
+    [self _customAppearance];
     return YES;
 }
-							
-- (void)applicationWillResignActive:(UIApplication *)application
-{
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+
+#pragma mark - Cleanup memory
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+#if !__has_feature(objc_arc)
+    [super dealloc];
+#endif
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
-{
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+#pragma mark - Application's lifecycle
+- (void)applicationWillResignActive:(UIApplication *)application {
+}
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+}
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+}
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+}
+- (void)applicationWillTerminate:(UIApplication *)application {
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
+#pragma mark - Class's properties
+- (NSInteger)osVersion {
+    return [[[UIDevice currentDevice] systemVersion] integerValue];
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application
-{
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+#pragma mark - Class's public methods
+- (void)presentAlertWithTitle:(NSString *)title message:(NSString *)message {
+    /* Condition validation */
+    if (_alertView) return;
+    [self presentAlertWithTitle:title message:message delegate:nil];
+}
+- (void)presentAlertWithTitle:(NSString *)title message:(NSString *)message delegate:(id<UIAlertViewDelegate>)delegate {
+    /* Condition validation */
+    if (_alertView) return;
+//    [self presentAlertWithTitle:title message:message delegate:delegate cancelTitle:kText_Dismiss];
+}
+- (void)presentAlertWithTitle:(NSString *)title message:(NSString *)message delegate:(id<UIAlertViewDelegate>)delegate cancelTitle:(NSString *)cancelTitle {
+    /* Condition validation */
+    if (_alertView) return;
+    [self presentAlertWithTitle:title message:message delegate:delegate cancelTitle:cancelTitle confirmTitle:nil];
+}
+- (void)presentAlertWithTitle:(NSString *)title message:(NSString *)message delegate:(id<UIAlertViewDelegate>)delegate cancelTitle:(NSString *)cancelTitle confirmTitle:(NSString *)confirmTitle {
+    /* Condition validation */
+    if (_alertView) return;
+    
+    @synchronized (self) {
+        _alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:(delegate ? delegate : self) cancelButtonTitle:cancelTitle otherButtonTitles:confirmTitle, nil];
+        
+        // Present alert view
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [_alertView show];
+        });
+    }
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+#pragma mark - Class's private methods
+- (void)_customAppearance {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    __autoreleasing UIImage *navBar = [[UIImage imageNamed:@"BG_NavBar"] resizableImageWithCapInsets:UIEdgeInsetsMake(5.0f, 5.0f, 5.0f, 5.0f)];
+    [[UINavigationBar appearance] setBackgroundImage:navBar forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:FwiColorWithRGB(0xffbf00),
+                                                           NSFontAttributeName:[UIFont fontWithName:@"Roboto-Light" size:20.0f]}];
+    
+    if (self.osVersion >= 7) {
+        __autoreleasing UIImage *navBack = [[UIImage imageNamed:@"Nav_Back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [[UINavigationBar appearance] setBackIndicatorImage:navBack];
+        [[UINavigationBar appearance] setBackIndicatorTransitionMaskImage:navBack];
+        [[UINavigationBar appearance] setTitleVerticalPositionAdjustment:-2.0f forBarMetrics:UIBarMetricsDefault];
+    }
 }
+
 
 @end

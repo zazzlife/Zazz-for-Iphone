@@ -27,7 +27,10 @@
 // Define flow
 
 // Define view
+#define kSegue_PresentBasicInfoView                         @"presentBasicInfoView"
+#define kSegue_PresentExtraInfoView                         @"presentExtraInfoView"
 #define kSegue_PresentLoginView                             @"presentLoginView"
+#define kSegue_PresentUserTypeView                          @"presentUserTypeView"
 
 // Define notification
 

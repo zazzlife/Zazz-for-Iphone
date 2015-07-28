@@ -8,9 +8,11 @@
 
 #import "RegisterViewController.h"
 
+
 @interface RegisterViewController ()
 
 @end
+
 
 @implementation RegisterViewController
 
@@ -41,6 +43,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotAuthError:) name:@"gotAuthError" object:nil];
