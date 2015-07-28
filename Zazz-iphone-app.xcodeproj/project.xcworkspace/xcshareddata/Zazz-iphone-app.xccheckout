@@ -20,7 +20,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>09578281DF5C4AF22B048A988902501CB2BBC846</key>
-		<string>../../../../Workspaces/GitHub/Objective-C/Keywords</string>
+		<string>../../../Workspaces/GitHub/Objective-C/Keywords</string>
 		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
 		<string>../..</string>
 	</dict>
