@@ -1,0 +1,31 @@
+#import <Availability.h>
+
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    // Facebook
+    #import <FacebookSDK/FacebookSDK.h>
+
+    // SVProgressHUB
+    #import "SVProgressHUD.h"
+
+    // FwiCore
+    #import "FwiCore.h"
+    #import "FwiData.h"
+
+    // Project's Defined
+    #import "Config.h"
+    #import "Localize.h"
+    #import "Resources.h"
+    #import "Global.h"
+
+    #import "AppDelegate.h"
+    #import "NetworkManager.h"
+    #import "BaseFormController.h"
+#endif

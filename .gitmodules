@@ -1,0 +1,6 @@
+[submodule "FwiCore"]
+	path = FwiCore
+	url = https://github.com/phuc0302/objc-core
+[submodule "FwiData"]
+	path = FwiData
+	url = https://github.com/phuc0302/objc-data
