@@ -30,43 +30,43 @@ ProfileViewController* profileView;
 BOOL enabled = true;
 
 -(void)viewDidLoad{
-    FRAME_FULL = [UIApplication sharedApplication].keyWindow.frame;
-    FRAME_TABBED = CGRectMake(0, 0, FRAME_FULL.size.width, FRAME_FULL.size.height - self.tabBar.frame.size.height);
-    
-    [[AppDelegate zazzApi] getMe];
-    [[AppDelegate getAppDelegate] setAppTabBar:self];
-    [self.tabBar setBackgroundColor:[UIColor colorFromHexString:COLOR_ZAZZ_BLACK]];
-    
-    //set child controllers.
-    for(UIViewController* childController in self.childViewControllers){
-        if([NSStringFromClass(childController.class) isEqualToString:@"PostViewController"]){
-            postView = (PostViewController*)childController;
-            continue;
-        }
-        if([NSStringFromClass(childController.class) isEqualToString:@"HomeViewController"]){
-            homeView = (HomeViewController*)childController;
-            continue;
-        }
-        if([NSStringFromClass(childController.class) isEqualToString:@"ProfileViewController"]){
-            profileView = (ProfileViewController*)childController;
-            continue;
-        }
-    }
-    [self.tabBar setHidden:false];
-    CGRect tabBarFrame = self.tabBar.frame;
-    [AppDelegate removeZazzBackgroundLogo];
+//    FRAME_FULL = [UIApplication sharedApplication].keyWindow.frame;
+//    FRAME_TABBED = CGRectMake(0, 0, FRAME_FULL.size.width, FRAME_FULL.size.height - self.tabBar.frame.size.height);
+//    
+//    [[AppDelegate zazzApi] getMe];
+//    [[AppDelegate getAppDelegate] setAppTabBar:self];
+//    [self.tabBar setBackgroundColor:[UIColor colorFromHexString:COLOR_ZAZZ_BLACK]];
+//    
+//    //set child controllers.
+//    for(UIViewController* childController in self.childViewControllers){
+//        if([NSStringFromClass(childController.class) isEqualToString:@"PostViewController"]){
+//            postView = (PostViewController*)childController;
+//            continue;
+//        }
+//        if([NSStringFromClass(childController.class) isEqualToString:@"HomeViewController"]){
+//            homeView = (HomeViewController*)childController;
+//            continue;
+//        }
+//        if([NSStringFromClass(childController.class) isEqualToString:@"ProfileViewController"]){
+//            profileView = (ProfileViewController*)childController;
+//            continue;
+//        }
+//    }
+//    [self.tabBar setHidden:false];
+//    CGRect tabBarFrame = self.tabBar.frame;
+//    [AppDelegate removeZazzBackgroundLogo];
     
     
     
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    UIImage* tabImage = [UIImage imageNamed:@"post button"];
-    [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
-    [self.postButton setImage:tabImage];
-    UIBarButtonItem* simButton = [[UIBarButtonItem alloc] init];
-    [simButton setTag:_activeTagView];
-    [self didClickBarButton:simButton];
+//    UIImage* tabImage = [UIImage imageNamed:@"post button"];
+//    [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
+//    [self.postButton setImage:tabImage];
+//    UIBarButtonItem* simButton = [[UIBarButtonItem alloc] init];
+//    [simButton setTag:_activeTagView];
+//    [self didClickBarButton:simButton];
 }
 
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender{

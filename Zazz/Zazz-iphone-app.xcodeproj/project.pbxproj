@@ -92,7 +92,6 @@
 		667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */; };
 		BE0321C11B69C8A30028A691 /* libFwiCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321BF1B69C8A30028A691 /* libFwiCore.a */; };
 		BE0321C21B69C8A30028A691 /* libFwiData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321C01B69C8A30028A691 /* libFwiData.a */; };
-		BE0321C41B69CCEF0028A691 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321C31B69CCEF0028A691 /* FacebookSDK.framework */; };
 		BE0321C61B69CD000028A691 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321C51B69CD000028A691 /* libz.1.2.5.dylib */; };
 		BE0321C91B69D7050028A691 /* UserTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0321C81B69D7050028A691 /* UserTypeCell.m */; };
 		BE0321CD1B69FD1A0028A691 /* BaseFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0321CC1B69FD1A0028A691 /* BaseFormController.m */; };
@@ -100,6 +99,8 @@
 		BE0321D81B6A20D20028A691 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0321D51B6A20D20028A691 /* NetworkManager.m */; };
 		BE0321DA1B6A24DE0028A691 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321D91B6A24DE0028A691 /* Security.framework */; };
 		BE0321DC1B6A24E40028A691 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321DB1B6A24E40028A691 /* SystemConfiguration.framework */; };
+		BE1CE7701B6B499200980EB0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1CE76F1B6B499200980EB0 /* FacebookSDK.framework */; };
+		BE1CE79C1B6B880500980EB0 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1CE79B1B6B880500980EB0 /* ProfileViewController.m */; };
 		BE6043BA1B67392300B9B84F /* BasicInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043AA1B67392300B9B84F /* BasicInfoController.m */; };
 		BE6043BB1B67392300B9B84F /* ExtraInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043AD1B67392300B9B84F /* ExtraInfoController.m */; };
 		BE6043BC1B67392300B9B84F /* LandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B01B67392300B9B84F /* LandingPageController.m */; };
@@ -119,7 +120,6 @@
 		BEBB09FA1B65F1BF00A621B9 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E01B65F1BF00A621B9 /* RightNavigationViewController.m */; };
 		BEBB09FB1B65F1BF00A621B9 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E31B65F1BF00A621B9 /* NotificationViewController.m */; };
 		BEBB09FC1B65F1BF00A621B9 /* PostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E61B65F1BF00A621B9 /* PostViewController.m */; };
-		BEBB09FD1B65F1BF00A621B9 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E91B65F1BF00A621B9 /* ProfileViewController.m */; };
 		BEBB09FF1B65F1BF00A621B9 /* CFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09EF1B65F1BF00A621B9 /* CFTabBarController.m */; };
 		BEBB0A001B65F1BF00A621B9 /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09F21B65F1BF00A621B9 /* TagViewController.m */; };
 		BEBB0A061B66036A00A621B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0A051B66036A00A621B9 /* AppDelegate.m */; };
@@ -308,7 +308,6 @@
 		667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzSendFollow.m; sourceTree = "<group>"; };
 		BE0321BF1B69C8A30028A691 /* libFwiCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFwiCore.a; path = "../FwiCore/build/Debug-iphoneos/libFwiCore.a"; sourceTree = "<group>"; };
 		BE0321C01B69C8A30028A691 /* libFwiData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFwiData.a; path = "../FwiData/build/Debug-iphoneos/libFwiData.a"; sourceTree = "<group>"; };
-		BE0321C31B69CCEF0028A691 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		BE0321C51B69CD000028A691 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		BE0321C71B69D7050028A691 /* UserTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTypeCell.h; sourceTree = "<group>"; };
 		BE0321C81B69D7050028A691 /* UserTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTypeCell.m; sourceTree = "<group>"; };
@@ -320,6 +319,9 @@
 		BE0321D51B6A20D20028A691 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		BE0321D91B6A24DE0028A691 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BE0321DB1B6A24E40028A691 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BE1CE76F1B6B499200980EB0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
+		BE1CE79A1B6B880500980EB0 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		BE1CE79B1B6B880500980EB0 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		BE6043A91B67392300B9B84F /* BasicInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoController.h; sourceTree = "<group>"; };
 		BE6043AA1B67392300B9B84F /* BasicInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoController.m; sourceTree = "<group>"; };
 		BE6043AC1B67392300B9B84F /* ExtraInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraInfoController.h; sourceTree = "<group>"; };
@@ -356,8 +358,6 @@
 		BEBB09E31B65F1BF00A621B9 /* NotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationViewController.m; sourceTree = "<group>"; };
 		BEBB09E51B65F1BF00A621B9 /* PostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostViewController.h; sourceTree = "<group>"; };
 		BEBB09E61B65F1BF00A621B9 /* PostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostViewController.m; sourceTree = "<group>"; };
-		BEBB09E81B65F1BF00A621B9 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		BEBB09E91B65F1BF00A621B9 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		BEBB09EE1B65F1BF00A621B9 /* CFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFTabBarController.h; sourceTree = "<group>"; };
 		BEBB09EF1B65F1BF00A621B9 /* CFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFTabBarController.m; sourceTree = "<group>"; };
 		BEBB09F11B65F1BF00A621B9 /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
@@ -386,10 +386,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE1CE7701B6B499200980EB0 /* FacebookSDK.framework in Frameworks */,
 				BE0321DC1B6A24E40028A691 /* SystemConfiguration.framework in Frameworks */,
 				BE0321DA1B6A24DE0028A691 /* Security.framework in Frameworks */,
 				BE0321C61B69CD000028A691 /* libz.1.2.5.dylib in Frameworks */,
-				BE0321C41B69CCEF0028A691 /* FacebookSDK.framework in Frameworks */,
 				BE0321C11B69C8A30028A691 /* libFwiCore.a in Frameworks */,
 				BE0321C21B69C8A30028A691 /* libFwiData.a in Frameworks */,
 				5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */,
@@ -430,13 +430,13 @@
 		5E8AA6EE18FCAED600C99D9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE1CE76F1B6B499200980EB0 /* FacebookSDK.framework */,
 				BE0321DB1B6A24E40028A691 /* SystemConfiguration.framework */,
 				BE0321D91B6A24DE0028A691 /* Security.framework */,
 				5E8AA6F318FCAED600C99D9F /* UIKit.framework */,
 				5E8AA6EF18FCAED600C99D9F /* Foundation.framework */,
 				0DB12D351922FA20001E9E26 /* QuartzCore.framework */,
 				5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */,
-				BE0321C31B69CCEF0028A691 /* FacebookSDK.framework */,
 				BE0321BF1B69C8A30028A691 /* libFwiCore.a */,
 				BE0321C01B69C8A30028A691 /* libFwiData.a */,
 				BE0321C51B69CD000028A691 /* libz.1.2.5.dylib */,
@@ -1019,6 +1019,23 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		BE1CE7981B6B880500980EB0 /* Authenticated Flow */ = {
+			isa = PBXGroup;
+			children = (
+				BE1CE7991B6B880500980EB0 /* Profile */,
+			);
+			path = "Authenticated Flow";
+			sourceTree = "<group>";
+		};
+		BE1CE7991B6B880500980EB0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BE1CE79A1B6B880500980EB0 /* ProfileViewController.h */,
+				BE1CE79B1B6B880500980EB0 /* ProfileViewController.m */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		BE6043A81B67392300B9B84F /* Basic Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -1098,6 +1115,7 @@
 			isa = PBXGroup;
 			children = (
 				BE0321CA1B69FD1A0028A691 /* Common */,
+				BE1CE7981B6B880500980EB0 /* Authenticated Flow */,
 				BEBB0A0A1B66048300A621B9 /* Authentication Flow */,
 				BEBB09C81B65F1BF00A621B9 /* CreateMessageViewController */,
 				BEBB09CB1B65F1BF00A621B9 /* DetailViewController */,
@@ -1107,7 +1125,6 @@
 				BEBB09DA1B65F1BF00A621B9 /* Navigation */,
 				BEBB09E11B65F1BF00A621B9 /* NotificationViewController */,
 				BEBB09E41B65F1BF00A621B9 /* PostViewController */,
-				BEBB09E71B65F1BF00A621B9 /* ProfileViewController */,
 				BEBB09ED1B65F1BF00A621B9 /* TabBarController */,
 				BEBB09F01B65F1BF00A621B9 /* TagViewController */,
 			);
@@ -1202,15 +1219,6 @@
 				BEBB09E61B65F1BF00A621B9 /* PostViewController.m */,
 			);
 			path = PostViewController;
-			sourceTree = "<group>";
-		};
-		BEBB09E71B65F1BF00A621B9 /* ProfileViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BEBB09E81B65F1BF00A621B9 /* ProfileViewController.h */,
-				BEBB09E91B65F1BF00A621B9 /* ProfileViewController.m */,
-			);
-			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
 		BEBB09ED1B65F1BF00A621B9 /* TabBarController */ = {
@@ -1375,6 +1383,7 @@
 				BE6043BF1B67392300B9B84F /* UserTypeController.m in Sources */,
 				667D09161A37814500A12ABE /* ZazzFeed.m in Sources */,
 				667D09321A37814500A12ABE /* SDWebImageCompat.m in Sources */,
+				BE1CE79C1B6B880500980EB0 /* ProfileViewController.m in Sources */,
 				667D08F21A37814500A12ABE /* CTAssetsGroupViewCell.m in Sources */,
 				BEBB09F41B65F1BF00A621B9 /* DetailViewController.m in Sources */,
 				BEBB09F51B65F1BF00A621B9 /* FeedTableViewController.m in Sources */,
@@ -1442,7 +1451,6 @@
 				667D09111A37814500A12ABE /* SearchResult.m in Sources */,
 				667D08ED1A37814500A12ABE /* ALAsset+assetType.m in Sources */,
 				BEBB0A001B65F1BF00A621B9 /* TagViewController.m in Sources */,
-				BEBB09FD1B65F1BF00A621B9 /* ProfileViewController.m in Sources */,
 				667D08F71A37814500A12ABE /* CTAssetsPickerController.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
 				667D08FA1A37814500A12ABE /* CTAssetsViewController.m in Sources */,
@@ -1572,6 +1580,9 @@
 					/Users/phuc/Documents/Workspaces,
 					"-",
 					Outsources/Zazz,
+					/Users/phuc/Documents/Workspaces,
+					"-",
+					Outsources/Zazz,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
@@ -1598,6 +1609,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
+					/Users/phuc/Documents/Workspaces,
+					"-",
+					Outsources/Zazz,
 					/Users/phuc/Documents/Workspaces,
 					"-",
 					Outsources/Zazz,

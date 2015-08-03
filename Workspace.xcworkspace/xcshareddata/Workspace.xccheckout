@@ -26,9 +26,9 @@
 		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
 		<string>..</string>
 		<key>56B8BCECA1D71EE4FD67466DD4209543241EC891</key>
-		<string>../FwiData/</string>
+		<string>../FwiData</string>
 		<key>58F7C91978A24AEFAA7BE2033DF7A19248DB323A</key>
-		<string>../FwiCore/</string>
+		<string>../FwiCore</string>
 		<key>61ae61d0-7715-4cdd-a4f7-c14b3eba3940++1164</key>
 		<string>../../2.0.2</string>
 	</dict>

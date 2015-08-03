@@ -71,7 +71,7 @@
                                 <string key="text">Discover new people &amp;
 places to party</string>
                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMt-7X-8eo" userLabel="featureView">
@@ -275,7 +275,7 @@ places to party</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfb-fk-pFX" userLabel="descriptionLabel">
                                 <rect key="frame" x="151" y="121" width="17.5" height="20"/>
                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -483,7 +483,7 @@ places to party</string>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZF-Jq-MgE" userLabel="titleLabel">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="51"/>
                                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2S-4V-Yia" userLabel="imageView">
@@ -611,7 +611,7 @@ places to party</string>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender:" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="fjw-t8-dxa" userLabel="genderLabel">
                                 <rect key="frame" x="20" y="65" width="280" height="40"/>
                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1cw-Xk-8H5" userLabel="maleImageView">
@@ -762,6 +762,22 @@ places to party</string>
             </objects>
             <point key="canvasLocation" x="974" y="3930"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AmU-df-n1a">
+            <objects>
+                <navigationController id="hTr-Mi-Rfp" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R3c-3D-gAv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="00c-U6-IMJ" kind="relationship" relationship="rootViewController" id="Khe-RD-Rlq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iCf-tY-cVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="363" y="3230"/>
+        </scene>
         <!--Profile View Controller-->
         <scene sceneID="jKU-Q4-fzj">
             <objects>
@@ -777,40 +793,6 @@ places to party</string>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3p2-oD-UwW">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7a-SP-EkX" userLabel="NavView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="56"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uds-ne-e7J">
-                                                <rect key="frame" x="4" y="9" width="50" height="50"/>
-                                                <state key="normal" image="left bar icon">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="leftDrawerButton:" destination="RBc-fh-MYw" eventType="touchUpInside" id="JMd-yl-Akp"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1S-2r-EpJ">
-                                                <rect key="frame" x="268" y="9" width="50" height="50"/>
-                                                <state key="normal" image="settings">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="rightDrawerButton:" destination="RBc-fh-MYw" eventType="touchUpInside" id="lOp-2f-RMg"/>
-                                                </connections>
-                                            </button>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VS3-DA-7yE" userLabel="Divider">
-                                                <rect key="frame" x="0.0" y="56" width="319" height="1"/>
-                                                <color key="backgroundColor" red="0.98823535439999999" green="0.79607850309999995" blue="0.37647062539999998" alpha="1" colorSpace="deviceRGB"/>
-                                            </view>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7cb-vM-wcm">
-                                                <rect key="frame" x="62" y="14" width="196" height="39"/>
-                                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="23"/>
-                                                <color key="textColor" red="0.88994738520408168" green="0.80715514158856638" blue="0.15921657464325492" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JhR-mo-cIF" userLabel="topContainer">
                                         <rect key="frame" x="0.0" y="57" width="320" height="239"/>
                                         <subviews>
@@ -937,29 +919,34 @@ places to party</string>
                             </scrollView>
                         </subviews>
                     </view>
+                    <navigationItem key="navigationItem" id="PSp-pI-Mmm">
+                        <barButtonItem key="leftBarButtonItem" image="HamburgerMenu" id="qW9-C6-367">
+                            <color key="tintColor" red="0.9882352941176471" green="0.80000000000000004" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="Settings" id="med-f3-QnQ">
+                            <color key="tintColor" red="0.98823529409999999" green="0.80000000000000004" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="city" destination="ibl-d8-f3i" id="7KC-BF-r0l"/>
                         <outlet property="filterButtons" destination="ziI-CJ-Tlp" id="r23-BW-76i"/>
                         <outlet property="follow" destination="VGB-L9-jqb" id="OqH-Un-mPI"/>
                         <outlet property="followers" destination="r6s-2q-zda" id="Z6C-VV-1To"/>
                         <outlet property="following" destination="E6C-gs-1ll" id="TVb-ul-l2x"/>
-                        <outlet property="leftBarButton" destination="Uds-ne-e7J" id="0aN-J2-i9r"/>
                         <outlet property="likes" destination="gSw-Xe-dPO" id="t2u-YF-lRd"/>
                         <outlet property="mediaFeedView" destination="Ddu-ie-v5G" id="yTk-OO-k7S"/>
                         <outlet property="name" destination="KA6-98-1TO" id="q8Z-kc-Cne"/>
                         <outlet property="postFeedView" destination="N5T-x7-9Zf" id="suU-eJ-uUl"/>
                         <outlet property="profilePhoto" destination="RU0-iu-mxd" id="m1K-Rk-Cdd"/>
-                        <outlet property="rightBarButton" destination="b1S-2r-EpJ" id="4Tn-8s-Wv9"/>
                         <outlet property="school" destination="HuW-78-TTO" id="lnW-wd-hBp"/>
                         <outlet property="scrollView" destination="3p2-oD-UwW" id="Y6L-ns-VWX"/>
                         <outlet property="tagline" destination="Dwm-4f-QFa" id="x83-63-JMJ"/>
                         <outlet property="topContainer" destination="JhR-mo-cIF" id="AZf-5A-FhK"/>
-                        <outlet property="username" destination="7cb-vM-wcm" id="eyK-Sa-sMY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CV7-Uj-cWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963" y="3230"/>
+            <point key="canvasLocation" x="1019" y="3230"/>
         </scene>
         <!--Feed Table View Controller-->
         <scene sceneID="L2h-ob-crB">
@@ -1116,7 +1103,7 @@ places to party</string>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vk1-B2-UKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1395" y="3569"/>
+            <point key="canvasLocation" x="1441" y="3682"/>
         </scene>
         <!--Left Navigation View Controller-->
         <scene sceneID="yI2-Nh-wch">
@@ -1728,14 +1715,6 @@ places to party</string>
                                     <segue destination="RBc-fh-MYw" kind="embed" identifier="homeView" id="KEf-i4-jZH"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vBl-PU-rL7" userLabel="profileView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="00c-U6-IMJ" kind="embed" identifier="profileView" id="z3t-zf-rN2"/>
-                                </connections>
-                            </containerView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bn-D7-dgr">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
@@ -1771,6 +1750,14 @@ places to party</string>
                                     <segue destination="jgI-au-LRn" kind="embed" identifier="postView" id="SYu-yP-7wn"/>
                                 </connections>
                             </containerView>
+                            <containerView hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vBl-PU-rL7" userLabel="profileView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <segue destination="hTr-Mi-Rfp" kind="embed" identifier="profileView" id="YyA-gB-7hm"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.98431372549999996" green="0.74509803919999995" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1784,7 +1771,7 @@ places to party</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qB-8w-Xr6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="526" y="3548"/>
+            <point key="canvasLocation" x="0.0" y="1832"/>
         </scene>
         <!--Notification View Controller-->
         <scene sceneID="Be5-Uc-wRO">
@@ -2166,6 +2153,7 @@ places to party</string>
         <image name="Concert" width="38" height="38"/>
         <image name="Drink_Special" width="38" height="38"/>
         <image name="Features" width="255" height="295"/>
+        <image name="HamburgerMenu" width="30" height="30"/>
         <image name="Hip_Hop_Music" width="38" height="38"/>
         <image name="Home_icon_general" width="50" height="38"/>
         <image name="House_Music" width="49" height="49"/>
@@ -2180,6 +2168,7 @@ places to party</string>
         <image name="Packed" width="38" height="38"/>
         <image name="Pre_Drink" width="38" height="38"/>
         <image name="Profile_icon_general" width="50" height="38"/>
+        <image name="Settings" width="30" height="30"/>
         <image name="TagPerson_icon_for_postingSection" width="38" height="38"/>
         <image name="Turning_Up" width="38" height="38"/>
         <image name="Zazz" width="130" height="40"/>
@@ -2187,7 +2176,6 @@ places to party</string>
         <image name="beer icon" width="25" height="25"/>
         <image name="filter-icon.png" width="45" height="34"/>
         <image name="left bar icon" width="50" height="50"/>
-        <image name="settings" width="50" height="50"/>
         <image name="user icon" width="25" height="25"/>
         <image name="yellow arrow" width="50" height="25"/>
         <image name="zazz logo" width="91" height="44"/>
@@ -2198,9 +2186,9 @@ places to party</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lA7-tX-wYK"/>
         <segue reference="f36-XF-QiU"/>
-        <segue reference="Ot1-7k-b8p"/>
+        <segue reference="UqG-YO-jn2"/>
+        <segue reference="kZW-vP-tDK"/>
         <segue reference="upl-AT-HmV"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -49,6 +49,11 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self _visualize];
+    
+#if DEBUG
+    _usernameTextField.text = @"phuctran0302";
+    _passwordTextField.text = @"P@ssw0rd";
+#endif
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
