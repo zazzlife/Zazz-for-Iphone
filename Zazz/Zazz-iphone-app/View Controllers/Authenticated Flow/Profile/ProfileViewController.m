@@ -16,6 +16,20 @@
 #import "Photo.h"
 
 
+@interface ProfileViewController () {
+}
+
+
+/** Initialize class's private variables. */
+- (void)_init;
+/** Localize UI components. */
+- (void)_localize;
+/** Visualize all view's components. */
+- (void)_visualize;
+
+@end
+
+
 @implementation ProfileViewController
 
 @synthesize user_id;
@@ -23,8 +37,40 @@
 
 PhotoPicker* _activePicker;
 
+
+#pragma mark - Class's constructors
+//- (id)initWithCoder:(NSCoder *)aDecoder {
+//    self = [super initWithCoder:aDecoder];
+//    if (self) {
+//        [self _init];
+//    }
+//    return self;
+//}
+//
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        [self _init];
+//    }
+//    return self;
+//}
+
+
+#pragma mark - Cleanup memory
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+#if !__has_feature(objc_arc)
+    [super dealloc];
+#endif
+}
+
+
+#pragma mark - View's lifecycle
 - (void)viewDidLoad{
     [super viewDidLoad];
+    //[self _visualize];
+    
     [self.scrollView setScrollsToTop:false];
     [self.scrollView setAlwaysBounceVertical:false];
     if(!self.user_id)
@@ -35,6 +81,7 @@ PhotoPicker* _activePicker;
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.scrollView setContentOffset:CGPointMake(0, 0)];
+    
 //    [self scrollViewDidScroll:self.feedTableViewController.tableView];
 }
 

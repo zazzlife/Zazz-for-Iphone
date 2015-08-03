@@ -48,7 +48,7 @@
 #pragma mark - View's lifecycle
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self _visualize];
+    [self _visualize];////gdefregr
     
 #if DEBUG
     _usernameTextField.text = @"phuctran0302";
@@ -133,7 +133,7 @@
         __autoreleasing NSString *urlString  = [NSString stringWithFormat:_g_ServiceLogin, _g_Hostname];
         __autoreleasing FwiRequest *request  = [kNetworkManager prepareRequestWithURL:[NSURL URLWithString:urlString] method:kMethodType_Post params:params];
         
-        [SVProgressHUD showWithStatus:kText_Registering];
+        [SVProgressHUD showWithStatus:kText_Loading];
         [kNetworkManager sendRequest:request handleError:YES completion:^(FwiJson *responseMessage, NSError *error, FwiNetworkStatus statusCode) {
             [SVProgressHUD dismiss];
             
@@ -143,7 +143,6 @@
         }];
     }
 }
-
 
 #pragma mark - Class's properties
 

@@ -4,3 +4,6 @@
 [submodule "FwiData"]
 	path = FwiData
 	url = https://github.com/phuc0302/objc-data
+[submodule "Zazz-doc"]
+	path = Zazz-doc
+	url = git@github.com:zazzlife/api-docs.git

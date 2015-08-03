@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB12D351922FA20001E9E26 /* QuartzCore.framework */; };
+		0FE8FF891B6F17E100753719 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE8FF881B6F17E100753719 /* FacebookSDK.framework */; };
 		2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
 		5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */; };
@@ -99,7 +100,6 @@
 		BE0321D81B6A20D20028A691 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0321D51B6A20D20028A691 /* NetworkManager.m */; };
 		BE0321DA1B6A24DE0028A691 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321D91B6A24DE0028A691 /* Security.framework */; };
 		BE0321DC1B6A24E40028A691 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321DB1B6A24E40028A691 /* SystemConfiguration.framework */; };
-		BE1CE7701B6B499200980EB0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1CE76F1B6B499200980EB0 /* FacebookSDK.framework */; };
 		BE1CE79C1B6B880500980EB0 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1CE79B1B6B880500980EB0 /* ProfileViewController.m */; };
 		BE6043BA1B67392300B9B84F /* BasicInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043AA1B67392300B9B84F /* BasicInfoController.m */; };
 		BE6043BB1B67392300B9B84F /* ExtraInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043AD1B67392300B9B84F /* ExtraInfoController.m */; };
@@ -139,6 +139,7 @@
 
 /* Begin PBXFileReference section */
 		0DB12D351922FA20001E9E26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0FE8FF881B6F17E100753719 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		2AFB430719EA664E0004BA9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8AA6EF18FCAED600C99D9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -319,7 +320,6 @@
 		BE0321D51B6A20D20028A691 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
 		BE0321D91B6A24DE0028A691 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BE0321DB1B6A24E40028A691 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		BE1CE76F1B6B499200980EB0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		BE1CE79A1B6B880500980EB0 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		BE1CE79B1B6B880500980EB0 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		BE6043A91B67392300B9B84F /* BasicInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoController.h; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE1CE7701B6B499200980EB0 /* FacebookSDK.framework in Frameworks */,
+				0FE8FF891B6F17E100753719 /* FacebookSDK.framework in Frameworks */,
 				BE0321DC1B6A24E40028A691 /* SystemConfiguration.framework in Frameworks */,
 				BE0321DA1B6A24DE0028A691 /* Security.framework in Frameworks */,
 				BE0321C61B69CD000028A691 /* libz.1.2.5.dylib in Frameworks */,
@@ -430,7 +430,7 @@
 		5E8AA6EE18FCAED600C99D9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BE1CE76F1B6B499200980EB0 /* FacebookSDK.framework */,
+				0FE8FF881B6F17E100753719 /* FacebookSDK.framework */,
 				BE0321DB1B6A24E40028A691 /* SystemConfiguration.framework */,
 				BE0321D91B6A24DE0028A691 /* Security.framework */,
 				5E8AA6F318FCAED600C99D9F /* UIKit.framework */,
@@ -1583,6 +1583,7 @@
 					/Users/phuc/Documents/Workspaces,
 					"-",
 					Outsources/Zazz,
+					/Users/luan/Documents/Workspace/Zazz,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
@@ -1615,6 +1616,7 @@
 					/Users/phuc/Documents/Workspaces,
 					"-",
 					Outsources/Zazz,
+					/Users/luan/Documents/Workspace/Zazz,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
