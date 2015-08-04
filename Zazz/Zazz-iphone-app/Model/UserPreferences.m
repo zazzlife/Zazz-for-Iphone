@@ -22,12 +22,11 @@
     self = [super init];
     if (self) {
         // Initialize AES Key
-        _key = [AesKey keystoreWithIdentifier:@"__iwitness.aes.key"];
+        _key = [AesKey keystoreWithIdentifier:@"__zazz.aes.key"];
         if (![_key inKeystore]) {
             NSString *randomData = [[NSString randomIdentifier] stringByReplacingOccurrencesOfString:@"-" withString:@""];
-            _key = [AesKey keystoreWithIdentifier:@"__iwitness.aes.key" data:[randomData toData]];
+            _key = [AesKey keystoreWithIdentifier:@"__zazz.aes.key" data:[randomData toData]];
         }
-        [_key retain];
 
         // Initialize preferences
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -107,8 +106,6 @@
     [self setExpiredTime:nil];
     [self setAccessToken:nil];
     [self setRefreshToken:nil];
-    
-    [self setEventId:nil];
     [self save];
 }
 
@@ -141,59 +138,39 @@
 
 
 - (NSString *)clientId {
-    return @"1ef28784-23f8-11e4-b8aa-000c29c9a052";
+    return @"";
 }
 
 - (NSString *)clientSecret {
-    return @"26b30aba-23f8-11e4-b8aa-000c29c9a052";
+    return @"";
 }
 
 - (NSString *)currentUsername {
     return [self objectForKey:@"_currentUsername"];
 }
 - (void)setCurrentUsername:(NSString *)currentUsername {
-    if (!currentUsername || currentUsername.length == 0) {
-        [_preferences removeObjectForKey:@"_currentUsername"];
-    }
-    else {
-        [self setValue:currentUsername key:@"_currentUsername"];
-    }
+    [self setValue:currentUsername key:@"_currentUsername"];
 }
 
 - (NSString *)currentProfileId {
     return [self objectForKey:@"_currentProfileId"];
 }
 - (void)setCurrentProfileId:(NSString *)currentProfileId {
-    if (!currentProfileId || currentProfileId.length == 0) {
-        [_preferences removeObjectForKey:@"_currentProfileId"];
-    }
-    else {
-        [self setValue:currentProfileId key:@"_currentProfileId"];
-    }
+    [self setValue:currentProfileId key:@"_currentProfileId"];
 }
 
 - (NSString *)tokenType {
     return [self objectForKey:@"_tokenType"];
 }
 - (void)setTokenType:(NSString *)tokenType {
-    if (!tokenType || tokenType.length == 0) {
-        [_preferences removeObjectForKey:@"_tokenType"];
-    }
-    else {
-        [self setValue:tokenType key:@"_tokenType"];
-    }
+    [self setValue:tokenType key:@"_tokenType"];
 }
 
 - (NSDate *)expiredTime {
     return [self objectForKey:@"_expiredTime"];
 }
 - (void)setExpiredTime:(NSDate *)expiredTime {
-    if (!expiredTime) {
-        [_preferences removeObjectForKey:@"_expiredTime"];
-    }
-    else {
-        [self setValue:expiredTime key:@"_expiredTime"];
-    }
+    [self setValue:expiredTime key:@"_expiredTime"];
 }
 
 - (NSString *)accessToken {
@@ -222,96 +199,7 @@
     return [self objectForKey:@"_refreshToken"];
 }
 - (void)setRefreshToken:(NSString *)refreshToken {
-    if (!refreshToken || refreshToken.length == 0) {
-        [_preferences removeObjectForKey:@"_refreshToken"];
-    }
-    else {
-        [self setValue:refreshToken key:@"_refreshToken"];
-    }
-}
-
-
-@end
-
-
-@implementation UserPreferences (UserProfile)
-
-
-- (BOOL)isFirstLogin {
-    NSNumber *isFirstLogin = [self objectForKey:[NSString stringWithFormat:@"%@/_isFirstLogin", [self currentProfileId]]];
-    return (isFirstLogin ? [isFirstLogin boolValue] : YES);
-}
-- (void)setFirstLogin:(BOOL)isFirstLogin {
-    [self setValue:[NSNumber numberWithBool:isFirstLogin] key:[NSString stringWithFormat:@"%@/_isFirstLogin", [self currentProfileId]]];
-}
-
-- (BOOL)isFirstRegistered {
-    NSNumber *isFirstRegistered = [self objectForKey:[NSString stringWithFormat:@"%@/_isFirstRegistered", [self currentProfileId]]];
-    return (isFirstRegistered ? [isFirstRegistered boolValue] : NO);
-}
-
-- (void)setFirstRegistered:(BOOL)isFirstRegistered {
-    [self setValue:[NSNumber numberWithBool:isFirstRegistered] key:[NSString stringWithFormat:@"%@/_isFirstRegistered", [self currentProfileId]]];
-}
-
-- (NSString *)eventId {
-    return [self objectForKey:[NSString stringWithFormat:@"%@/_eventId", [self currentProfileId]]];
-}
-- (void)setEventId:(NSString *)eventId {
-    if (!eventId || eventId.length == 0) {
-        [_preferences removeObjectForKey:[NSString stringWithFormat:@"%@/_eventId", [self currentProfileId]]];
-    }
-    else {
-        [self setValue:eventId key:[NSString stringWithFormat:@"%@/_eventId", [self currentProfileId]]];
-    }
-}
-
-
-@end
-
-
-@implementation UserPreferences (UserSettings)
-
-
-- (BOOL)enableShake {
-    NSNumber *enableShake = [self objectForKey:[NSString stringWithFormat:@"%@/_enableShake", [self currentProfileId]]];
-    return (enableShake ? [enableShake boolValue] : YES);
-}
-- (void)setEnableShake:(BOOL)enableShake {
-    /* Condition validation */
-    if (![self currentProfileId] || [self currentProfileId].length == 0) return;
-    [self setValue:[NSNumber numberWithBool:enableShake] key:[NSString stringWithFormat:@"%@/_enableShake", [self currentProfileId]]];
-}
-
-- (BOOL)enableTorch {
-    NSNumber *enableTorch = [self objectForKey:[NSString stringWithFormat:@"%@/_enableTorch", [self currentProfileId]]];
-    return (enableTorch ? [enableTorch boolValue] : YES);
-}
-- (void)setEnableTorch:(BOOL)enableTorch {
-    /* Condition validation */
-    if (![self currentProfileId] || [self currentProfileId].length == 0) return;
-    [self setValue:[NSNumber numberWithBool:enableTorch] key:[NSString stringWithFormat:@"%@/_enableTorch", [self currentProfileId]]];
-}
-
-- (NSString *)emergencyPhone {
-    NSString *emergencyPhone = [self objectForKey:[NSString stringWithFormat:@"%@/_emergencyPhone", [self currentProfileId]]];
-    return (emergencyPhone ? emergencyPhone : @"United States of America");
-}
-- (void)setEmergencyPhone:(NSString *)emergencyPhone {
-    /* Condition validation */
-    if (![self currentProfileId] || [self currentProfileId].length == 0) return;
-    [self setValue:emergencyPhone key:[NSString stringWithFormat:@"%@/_emergencyPhone", [self currentProfileId]]];
-}
-
-
-- (NSInteger)recordTime {
-    NSNumber *recordTime = [self objectForKey:[NSString stringWithFormat:@"%@/_recordTime", [self currentProfileId]]];
-    return (recordTime ? [recordTime integerValue] : 300);
-}
-- (void)setRecordTime:(NSInteger)recordTime {
-    /* Condition validation */
-    if (![self currentProfileId] || [self currentProfileId].length == 0) return;
-    [self setValue:[NSNumber numberWithInteger:recordTime] key:[NSString stringWithFormat:@"%@/_recordTime", [self currentProfileId]]];
+    [self setValue:refreshToken key:@"_refreshToken"];
 }
 
 

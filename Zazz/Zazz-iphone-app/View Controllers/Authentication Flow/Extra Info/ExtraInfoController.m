@@ -145,7 +145,16 @@
             [SVProgressHUD dismiss];
             
             if (FwiNetworkStatusIsSuccces(statusCode)) {
-                [self.navigationController performSegueWithIdentifier:kSegue_PresentAuthenticatedFlow sender:nil];
+                [kPreferences setCurrentUsername:_info[@"username"]];
+                [kPreferences setTokenType:[[responseMessage jsonWithPath:@"token_type"] getString]];
+                [kPreferences setAccessToken:[[responseMessage jsonWithPath:@"access_token"] getString]];
+                [kPreferences setRefreshToken:[[responseMessage jsonWithPath:@"refresh_token"] getString]];
+                
+                __autoreleasing NSDate *currentTime = [NSDate date];
+                __autoreleasing NSDate *expiredTime = [currentTime dateByAddingTimeInterval:[[[responseMessage jsonWithPath:@"expires_in"] getNumber] doubleValue]];
+                [kPreferences setExpiredTime:expiredTime];
+                [kPreferences save];
+                [self.navigationController dismissViewControllerAnimated:YES completion:nil];
             }
         }];
     }

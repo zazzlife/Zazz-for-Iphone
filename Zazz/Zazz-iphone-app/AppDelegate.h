@@ -10,6 +10,7 @@
 #import "ZazzApi.h"
 #import "CFTabBarController.h"
 @class NetworkManager;
+@class UserPreferences;
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
@@ -21,6 +22,8 @@
 // Application controllers
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic, strong, readonly) NetworkManager *networkManager;
+@property (nonatomic, strong, readonly) UserPreferences *preferences;
+
 
 @property ZazzApi* _zazzAPI;
 @property UIImageView* zazz_logo;

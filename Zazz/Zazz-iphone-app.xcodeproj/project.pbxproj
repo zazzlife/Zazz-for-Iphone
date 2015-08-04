@@ -90,8 +90,6 @@
 		667D093D1A37814500A12ABE /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08BD1A37814500A12ABE /* UIImageView+WebCache.m */; };
 		667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D094D1A379D9B00A12ABE /* ZazzRegister.m */; };
 		667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */; };
-		BE0321C11B69C8A30028A691 /* libFwiCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321BF1B69C8A30028A691 /* libFwiCore.a */; };
-		BE0321C21B69C8A30028A691 /* libFwiData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321C01B69C8A30028A691 /* libFwiData.a */; };
 		BE0321C61B69CD000028A691 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321C51B69CD000028A691 /* libz.1.2.5.dylib */; };
 		BE0321C91B69D7050028A691 /* UserTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0321C81B69D7050028A691 /* UserTypeCell.m */; };
 		BE0321CD1B69FD1A0028A691 /* BaseFormController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE0321CC1B69FD1A0028A691 /* BaseFormController.m */; };
@@ -101,11 +99,19 @@
 		BE0321DC1B6A24E40028A691 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321DB1B6A24E40028A691 /* SystemConfiguration.framework */; };
 		BE1CE7701B6B499200980EB0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1CE76F1B6B499200980EB0 /* FacebookSDK.framework */; };
 		BE1CE79C1B6B880500980EB0 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1CE79B1B6B880500980EB0 /* ProfileViewController.m */; };
+		BE1FE9491B7092C600CD35A1 /* libFwiCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1FE9471B7092C600CD35A1 /* libFwiCore.a */; };
+		BE1FE94A1B7092C600CD35A1 /* libFwiData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE1FE9481B7092C600CD35A1 /* libFwiData.a */; };
+		BE1FE9551B709B8800CD35A1 /* AesKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1FE94D1B709B8800CD35A1 /* AesKey.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BE1FE9561B709B8800CD35A1 /* FwiCacheFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1FE9501B709B8800CD35A1 /* FwiCacheFolder.m */; };
+		BE1FE9571B709B8800CD35A1 /* FwiCacheHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1FE9521B709B8800CD35A1 /* FwiCacheHandler.m */; };
+		BE1FE9581B709B8800CD35A1 /* FwiImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1FE9541B709B8800CD35A1 /* FwiImage.m */; };
+		BE1FE95B1B709EDB00CD35A1 /* UserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1FE95A1B709EDB00CD35A1 /* UserPreferences.m */; };
+		BE1FE9611B70A06400CD35A1 /* UserServices.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1FE9601B70A06400CD35A1 /* UserServices.m */; };
 		BE6043BA1B67392300B9B84F /* BasicInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043AA1B67392300B9B84F /* BasicInfoController.m */; };
 		BE6043BB1B67392300B9B84F /* ExtraInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043AD1B67392300B9B84F /* ExtraInfoController.m */; };
 		BE6043BC1B67392300B9B84F /* LandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B01B67392300B9B84F /* LandingPageController.m */; };
 		BE6043BD1B67392300B9B84F /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B31B67392300B9B84F /* LoginController.m */; };
-		BE6043BE1B67392300B9B84F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B61B67392300B9B84F /* RegisterViewController.m */; };
+		BE6043BE1B67392300B9B84F /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B61B67392300B9B84F /* RegisterController.m */; };
 		BE6043BF1B67392300B9B84F /* UserTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B91B67392300B9B84F /* UserTypeController.m */; };
 		BE6043C11B673F8E00B9B84F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6043C01B673F8E00B9B84F /* Images.xcassets */; };
 		BE6043CB1B67614F00B9B84F /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043C71B67614F00B9B84F /* SVIndefiniteAnimatedView.m */; };
@@ -306,8 +312,6 @@
 		667D094D1A379D9B00A12ABE /* ZazzRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzRegister.m; sourceTree = "<group>"; };
 		667D0A191A38F8F100A12ABE /* ZazzSendFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzSendFollow.h; sourceTree = "<group>"; };
 		667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzSendFollow.m; sourceTree = "<group>"; };
-		BE0321BF1B69C8A30028A691 /* libFwiCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFwiCore.a; path = "../FwiCore/build/Debug-iphoneos/libFwiCore.a"; sourceTree = "<group>"; };
-		BE0321C01B69C8A30028A691 /* libFwiData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFwiData.a; path = "../FwiData/build/Debug-iphoneos/libFwiData.a"; sourceTree = "<group>"; };
 		BE0321C51B69CD000028A691 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		BE0321C71B69D7050028A691 /* UserTypeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTypeCell.h; sourceTree = "<group>"; };
 		BE0321C81B69D7050028A691 /* UserTypeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTypeCell.m; sourceTree = "<group>"; };
@@ -322,6 +326,20 @@
 		BE1CE76F1B6B499200980EB0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		BE1CE79A1B6B880500980EB0 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		BE1CE79B1B6B880500980EB0 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		BE1FE9471B7092C600CD35A1 /* libFwiCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFwiCore.a; path = "../FwiCore/build/Debug-iphoneos/libFwiCore.a"; sourceTree = "<group>"; };
+		BE1FE9481B7092C600CD35A1 /* libFwiData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFwiData.a; path = "../FwiData/build/Debug-iphoneos/libFwiData.a"; sourceTree = "<group>"; };
+		BE1FE94C1B709B8800CD35A1 /* AesKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AesKey.h; sourceTree = "<group>"; };
+		BE1FE94D1B709B8800CD35A1 /* AesKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AesKey.m; sourceTree = "<group>"; };
+		BE1FE94F1B709B8800CD35A1 /* FwiCacheFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiCacheFolder.h; sourceTree = "<group>"; };
+		BE1FE9501B709B8800CD35A1 /* FwiCacheFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiCacheFolder.m; sourceTree = "<group>"; };
+		BE1FE9511B709B8800CD35A1 /* FwiCacheHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiCacheHandler.h; sourceTree = "<group>"; };
+		BE1FE9521B709B8800CD35A1 /* FwiCacheHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiCacheHandler.m; sourceTree = "<group>"; };
+		BE1FE9531B709B8800CD35A1 /* FwiImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiImage.h; sourceTree = "<group>"; };
+		BE1FE9541B709B8800CD35A1 /* FwiImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiImage.m; sourceTree = "<group>"; };
+		BE1FE9591B709EDB00CD35A1 /* UserPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferences.h; sourceTree = "<group>"; };
+		BE1FE95A1B709EDB00CD35A1 /* UserPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferences.m; sourceTree = "<group>"; };
+		BE1FE95F1B70A06400CD35A1 /* UserServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserServices.h; sourceTree = "<group>"; };
+		BE1FE9601B70A06400CD35A1 /* UserServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserServices.m; sourceTree = "<group>"; };
 		BE6043A91B67392300B9B84F /* BasicInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicInfoController.h; sourceTree = "<group>"; };
 		BE6043AA1B67392300B9B84F /* BasicInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicInfoController.m; sourceTree = "<group>"; };
 		BE6043AC1B67392300B9B84F /* ExtraInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtraInfoController.h; sourceTree = "<group>"; };
@@ -330,8 +348,8 @@
 		BE6043B01B67392300B9B84F /* LandingPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageController.m; sourceTree = "<group>"; };
 		BE6043B21B67392300B9B84F /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		BE6043B31B67392300B9B84F /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
-		BE6043B51B67392300B9B84F /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		BE6043B61B67392300B9B84F /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		BE6043B51B67392300B9B84F /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
+		BE6043B61B67392300B9B84F /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
 		BE6043B81B67392300B9B84F /* UserTypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTypeController.h; sourceTree = "<group>"; };
 		BE6043B91B67392300B9B84F /* UserTypeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTypeController.m; sourceTree = "<group>"; };
 		BE6043C01B673F8E00B9B84F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
@@ -386,12 +404,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE1CE7701B6B499200980EB0 /* FacebookSDK.framework in Frameworks */,
 				BE0321DC1B6A24E40028A691 /* SystemConfiguration.framework in Frameworks */,
 				BE0321DA1B6A24DE0028A691 /* Security.framework in Frameworks */,
+				BE1FE9491B7092C600CD35A1 /* libFwiCore.a in Frameworks */,
+				BE1FE94A1B7092C600CD35A1 /* libFwiData.a in Frameworks */,
+				BE1CE7701B6B499200980EB0 /* FacebookSDK.framework in Frameworks */,
 				BE0321C61B69CD000028A691 /* libz.1.2.5.dylib in Frameworks */,
-				BE0321C11B69C8A30028A691 /* libFwiCore.a in Frameworks */,
-				BE0321C21B69C8A30028A691 /* libFwiData.a in Frameworks */,
 				5E8AA6F418FCAED600C99D9F /* UIKit.framework in Frameworks */,
 				5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */,
 				5E8AA6F218FCAED600C99D9F /* CoreGraphics.framework in Frameworks */,
@@ -430,6 +448,8 @@
 		5E8AA6EE18FCAED600C99D9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE1FE9471B7092C600CD35A1 /* libFwiCore.a */,
+				BE1FE9481B7092C600CD35A1 /* libFwiData.a */,
 				BE1CE76F1B6B499200980EB0 /* FacebookSDK.framework */,
 				BE0321DB1B6A24E40028A691 /* SystemConfiguration.framework */,
 				BE0321D91B6A24DE0028A691 /* Security.framework */,
@@ -437,8 +457,6 @@
 				5E8AA6EF18FCAED600C99D9F /* Foundation.framework */,
 				0DB12D351922FA20001E9E26 /* QuartzCore.framework */,
 				5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */,
-				BE0321BF1B69C8A30028A691 /* libFwiCore.a */,
-				BE0321C01B69C8A30028A691 /* libFwiData.a */,
 				BE0321C51B69CD000028A691 /* libz.1.2.5.dylib */,
 			);
 			name = Frameworks;
@@ -1006,6 +1024,10 @@
 			children = (
 				BE0321CF1B6A20D20028A691 /* Global.h */,
 				BE0321D01B6A20D20028A691 /* Global.m */,
+				BE1FE95F1B70A06400CD35A1 /* UserServices.h */,
+				BE1FE9601B70A06400CD35A1 /* UserServices.m */,
+				BE1FE9591B709EDB00CD35A1 /* UserPreferences.h */,
+				BE1FE95A1B709EDB00CD35A1 /* UserPreferences.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1034,6 +1056,28 @@
 				BE1CE79B1B6B880500980EB0 /* ProfileViewController.m */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		BE1FE94B1B709B8800CD35A1 /* AesKey */ = {
+			isa = PBXGroup;
+			children = (
+				BE1FE94C1B709B8800CD35A1 /* AesKey.h */,
+				BE1FE94D1B709B8800CD35A1 /* AesKey.m */,
+			);
+			path = AesKey;
+			sourceTree = "<group>";
+		};
+		BE1FE94E1B709B8800CD35A1 /* Cache Image */ = {
+			isa = PBXGroup;
+			children = (
+				BE1FE9531B709B8800CD35A1 /* FwiImage.h */,
+				BE1FE9541B709B8800CD35A1 /* FwiImage.m */,
+				BE1FE94F1B709B8800CD35A1 /* FwiCacheFolder.h */,
+				BE1FE9501B709B8800CD35A1 /* FwiCacheFolder.m */,
+				BE1FE9511B709B8800CD35A1 /* FwiCacheHandler.h */,
+				BE1FE9521B709B8800CD35A1 /* FwiCacheHandler.m */,
+			);
+			path = "Cache Image";
 			sourceTree = "<group>";
 		};
 		BE6043A81B67392300B9B84F /* Basic Info */ = {
@@ -1075,8 +1119,8 @@
 		BE6043B41B67392300B9B84F /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				BE6043B51B67392300B9B84F /* RegisterViewController.h */,
-				BE6043B61B67392300B9B84F /* RegisterViewController.m */,
+				BE6043B51B67392300B9B84F /* RegisterController.h */,
+				BE6043B61B67392300B9B84F /* RegisterController.m */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -1095,6 +1139,8 @@
 		BE6043C41B67614F00B9B84F /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BE1FE94B1B709B8800CD35A1 /* AesKey */,
+				BE1FE94E1B709B8800CD35A1 /* Cache Image */,
 				BE6043C51B67614F00B9B84F /* SVProgressHUD */,
 			);
 			path = Libraries;
@@ -1366,9 +1412,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE1FE9561B709B8800CD35A1 /* FwiCacheFolder.m in Sources */,
 				667D09211A37814500A12ABE /* CustomPushSegue.m in Sources */,
 				667D09361A37814500A12ABE /* SDWebImageManager.m in Sources */,
 				BEBB09FC1B65F1BF00A621B9 /* PostViewController.m in Sources */,
+				BE1FE9551B709B8800CD35A1 /* AesKey.m in Sources */,
 				667D091B1A37814500A12ABE /* ZazzPost.m in Sources */,
 				667D09371A37814500A12ABE /* SDWebImagePrefetcher.m in Sources */,
 				BE6043BB1B67392300B9B84F /* ExtraInfoController.m in Sources */,
@@ -1391,6 +1439,7 @@
 				667D09201A37814500A12ABE /* CustomPopSegue.m in Sources */,
 				BEBB0A061B66036A00A621B9 /* AppDelegate.m in Sources */,
 				667D09331A37814500A12ABE /* SDWebImageDecoder.m in Sources */,
+				BE1FE95B1B709EDB00CD35A1 /* UserPreferences.m in Sources */,
 				BE0321CD1B69FD1A0028A691 /* BaseFormController.m in Sources */,
 				667D091A1A37814500A12ABE /* ZazzPhoto.m in Sources */,
 				667D08FE1A37814500A12ABE /* FeedTableViewCell.m in Sources */,
@@ -1408,6 +1457,7 @@
 				667D09011A37814500A12ABE /* PhotoPicker.m in Sources */,
 				667D08F61A37814500A12ABE /* CTAssetsPickerConstants.m in Sources */,
 				667D09141A37814500A12ABE /* ZazzCategory.m in Sources */,
+				BE1FE9571B709B8800CD35A1 /* FwiCacheHandler.m in Sources */,
 				667D090D1A37814500A12ABE /* Notification.m in Sources */,
 				667D090C1A37814500A12ABE /* GenericModel.m in Sources */,
 				BE6043CD1B67614F00B9B84F /* SVProgressHUD.m in Sources */,
@@ -1420,6 +1470,7 @@
 				667D090E1A37814500A12ABE /* Photo.m in Sources */,
 				667D09181A37814500A12ABE /* ZazzFollowRequest.m in Sources */,
 				667D091E1A37814500A12ABE /* ZazzProfile.m in Sources */,
+				BE1FE9581B709B8800CD35A1 /* FwiImage.m in Sources */,
 				667D092E1A37814500A12ABE /* UIImage+FixOrientation.m in Sources */,
 				BE6043BD1B67392300B9B84F /* LoginController.m in Sources */,
 				667D09081A37814500A12ABE /* Event.m in Sources */,
@@ -1454,7 +1505,7 @@
 				667D08F71A37814500A12ABE /* CTAssetsPickerController.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
 				667D08FA1A37814500A12ABE /* CTAssetsViewController.m in Sources */,
-				BE6043BE1B67392300B9B84F /* RegisterViewController.m in Sources */,
+				BE6043BE1B67392300B9B84F /* RegisterController.m in Sources */,
 				667D09341A37814500A12ABE /* SDWebImageDownloader.m in Sources */,
 				667D093D1A37814500A12ABE /* UIImageView+WebCache.m in Sources */,
 				667D08EC1A37814500A12ABE /* ALAsset+accessibilityLabel.m in Sources */,
@@ -1467,6 +1518,7 @@
 				667D08FB1A37814500A12ABE /* CTAssetsViewControllerTransition.m in Sources */,
 				BE0321C91B69D7050028A691 /* UserTypeCell.m in Sources */,
 				667D09031A37814500A12ABE /* UIFont+SecretFont.m in Sources */,
+				BE1FE9611B70A06400CD35A1 /* UserServices.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1577,12 +1629,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/phuc/Documents/Workspaces,
-					"-",
-					Outsources/Zazz,
-					/Users/phuc/Documents/Workspaces,
-					"-",
-					Outsources/Zazz,
+					"${SRCROOT}/../",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
@@ -1609,12 +1656,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/phuc/Documents/Workspaces,
-					"-",
-					Outsources/Zazz,
-					/Users/phuc/Documents/Workspaces,
-					"-",
-					Outsources/Zazz,
+					"${SRCROOT}/../",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";

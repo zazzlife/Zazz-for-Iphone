@@ -61,6 +61,10 @@ BOOL enabled = true;
 }
 
 -(void) viewDidAppear:(BOOL)animated{
+    if (![kPreferences accessToken]) {
+        [self performSegueWithIdentifier:kSegue_PresentAuthenticationFlow sender:nil];
+    }
+    
 //    UIImage* tabImage = [UIImage imageNamed:@"post button"];
 //    [(UITabBarItem*)self.tabBarItem setFinishedSelectedImage:tabImage withFinishedUnselectedImage:tabImage];
 //    [self.postButton setImage:tabImage];
