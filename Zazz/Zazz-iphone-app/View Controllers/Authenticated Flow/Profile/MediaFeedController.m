@@ -55,7 +55,7 @@ static NSString * const _Identifier = @"Cell";
     
     
     //create array of image
-    self.imageArray = [NSArray arrayWithObjects:@"iPad76.png","iPad76.png", "iPad76.png", "iPad76.png", "iPad76.png", nil];
+//    self.imageArray /= [NSArray arrayWithObjects:@"iPad76.png","iPad76.png", "iPad76.png", "iPad76.png", "iPad76.png", nil];
     
     
     

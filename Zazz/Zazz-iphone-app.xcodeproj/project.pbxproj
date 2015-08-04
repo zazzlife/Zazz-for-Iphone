@@ -107,7 +107,6 @@
 		BE6043BB1B67392300B9B84F /* ExtraInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043AD1B67392300B9B84F /* ExtraInfoController.m */; };
 		BE6043BC1B67392300B9B84F /* LandingPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B01B67392300B9B84F /* LandingPageController.m */; };
 		BE6043BD1B67392300B9B84F /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B31B67392300B9B84F /* LoginController.m */; };
-		BE6043BE1B67392300B9B84F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B61B67392300B9B84F /* RegisterViewController.m */; };
 		BE6043BF1B67392300B9B84F /* UserTypeController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043B91B67392300B9B84F /* UserTypeController.m */; };
 		BE6043C11B673F8E00B9B84F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE6043C01B673F8E00B9B84F /* Images.xcassets */; };
 		BE6043CB1B67614F00B9B84F /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6043C71B67614F00B9B84F /* SVIndefiniteAnimatedView.m */; };
@@ -136,6 +135,13 @@
 		BEBB0A261B66082400A621B9 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1A1B66082400A621B9 /* Roboto-Regular.ttf */; };
 		BEBB0A271B66082400A621B9 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1B1B66082400A621B9 /* Roboto-Thin.ttf */; };
 		BEBB0A281B66082400A621B9 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0A1C1B66082400A621B9 /* Roboto-ThinItalic.ttf */; };
+		BECE97251B70B0B700B0E7D2 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = BECE97241B70B0B700B0E7D2 /* RegisterController.m */; };
+		BECE972A1B70B11500B0E7D2 /* UserPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = BECE97271B70B11500B0E7D2 /* UserPreferences.m */; };
+		BECE972B1B70B11500B0E7D2 /* UserServices.m in Sources */ = {isa = PBXBuildFile; fileRef = BECE97291B70B11500B0E7D2 /* UserServices.m */; };
+		BECE97361B70B13A00B0E7D2 /* AesKey.m in Sources */ = {isa = PBXBuildFile; fileRef = BECE972E1B70B13A00B0E7D2 /* AesKey.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BECE97371B70B13A00B0E7D2 /* FwiCacheFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = BECE97311B70B13A00B0E7D2 /* FwiCacheFolder.m */; };
+		BECE97381B70B13A00B0E7D2 /* FwiCacheHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = BECE97331B70B13A00B0E7D2 /* FwiCacheHandler.m */; };
+		BECE97391B70B13A00B0E7D2 /* FwiImage.m in Sources */ = {isa = PBXBuildFile; fileRef = BECE97351B70B13A00B0E7D2 /* FwiImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -335,8 +341,6 @@
 		BE6043B01B67392300B9B84F /* LandingPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandingPageController.m; sourceTree = "<group>"; };
 		BE6043B21B67392300B9B84F /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		BE6043B31B67392300B9B84F /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
-		BE6043B51B67392300B9B84F /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		BE6043B61B67392300B9B84F /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		BE6043B81B67392300B9B84F /* UserTypeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTypeController.h; sourceTree = "<group>"; };
 		BE6043B91B67392300B9B84F /* UserTypeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTypeController.m; sourceTree = "<group>"; };
 		BE6043C01B673F8E00B9B84F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
@@ -382,6 +386,20 @@
 		BEBB0A1A1B66082400A621B9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		BEBB0A1B1B66082400A621B9 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		BEBB0A1C1B66082400A621B9 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		BECE97231B70B0B700B0E7D2 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
+		BECE97241B70B0B700B0E7D2 /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+		BECE97261B70B11500B0E7D2 /* UserPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferences.h; sourceTree = "<group>"; };
+		BECE97271B70B11500B0E7D2 /* UserPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferences.m; sourceTree = "<group>"; };
+		BECE97281B70B11500B0E7D2 /* UserServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserServices.h; sourceTree = "<group>"; };
+		BECE97291B70B11500B0E7D2 /* UserServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserServices.m; sourceTree = "<group>"; };
+		BECE972D1B70B13A00B0E7D2 /* AesKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AesKey.h; sourceTree = "<group>"; };
+		BECE972E1B70B13A00B0E7D2 /* AesKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AesKey.m; sourceTree = "<group>"; };
+		BECE97301B70B13A00B0E7D2 /* FwiCacheFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiCacheFolder.h; sourceTree = "<group>"; };
+		BECE97311B70B13A00B0E7D2 /* FwiCacheFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiCacheFolder.m; sourceTree = "<group>"; };
+		BECE97321B70B13A00B0E7D2 /* FwiCacheHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiCacheHandler.h; sourceTree = "<group>"; };
+		BECE97331B70B13A00B0E7D2 /* FwiCacheHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiCacheHandler.m; sourceTree = "<group>"; };
+		BECE97341B70B13A00B0E7D2 /* FwiImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiImage.h; sourceTree = "<group>"; };
+		BECE97351B70B13A00B0E7D2 /* FwiImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,9 +407,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0FE8FF891B6F17E100753719 /* FacebookSDK.framework in Frameworks */,
 				BE0321DC1B6A24E40028A691 /* SystemConfiguration.framework in Frameworks */,
 				BE0321DA1B6A24DE0028A691 /* Security.framework in Frameworks */,
+				0FE8FF891B6F17E100753719 /* FacebookSDK.framework in Frameworks */,
 				BE0321C61B69CD000028A691 /* libz.1.2.5.dylib in Frameworks */,
 				BE0321C11B69C8A30028A691 /* libFwiCore.a in Frameworks */,
 				BE0321C21B69C8A30028A691 /* libFwiData.a in Frameworks */,
@@ -1009,6 +1027,10 @@
 			children = (
 				BE0321CF1B6A20D20028A691 /* Global.h */,
 				BE0321D01B6A20D20028A691 /* Global.m */,
+				BECE97281B70B11500B0E7D2 /* UserServices.h */,
+				BECE97291B70B11500B0E7D2 /* UserServices.m */,
+				BECE97261B70B11500B0E7D2 /* UserPreferences.h */,
+				BECE97271B70B11500B0E7D2 /* UserPreferences.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1082,8 +1104,8 @@
 		BE6043B41B67392300B9B84F /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				BE6043B51B67392300B9B84F /* RegisterViewController.h */,
-				BE6043B61B67392300B9B84F /* RegisterViewController.m */,
+				BECE97231B70B0B700B0E7D2 /* RegisterController.h */,
+				BECE97241B70B0B700B0E7D2 /* RegisterController.m */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -1102,6 +1124,8 @@
 		BE6043C41B67614F00B9B84F /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				BECE972C1B70B13A00B0E7D2 /* AesKey */,
+				BECE972F1B70B13A00B0E7D2 /* Cache Image */,
 				BE6043C51B67614F00B9B84F /* SVProgressHUD */,
 			);
 			path = Libraries;
@@ -1279,6 +1303,28 @@
 			path = Resources/Fonts;
 			sourceTree = "<group>";
 		};
+		BECE972C1B70B13A00B0E7D2 /* AesKey */ = {
+			isa = PBXGroup;
+			children = (
+				BECE972D1B70B13A00B0E7D2 /* AesKey.h */,
+				BECE972E1B70B13A00B0E7D2 /* AesKey.m */,
+			);
+			path = AesKey;
+			sourceTree = "<group>";
+		};
+		BECE972F1B70B13A00B0E7D2 /* Cache Image */ = {
+			isa = PBXGroup;
+			children = (
+				BECE97301B70B13A00B0E7D2 /* FwiCacheFolder.h */,
+				BECE97311B70B13A00B0E7D2 /* FwiCacheFolder.m */,
+				BECE97321B70B13A00B0E7D2 /* FwiCacheHandler.h */,
+				BECE97331B70B13A00B0E7D2 /* FwiCacheHandler.m */,
+				BECE97341B70B13A00B0E7D2 /* FwiImage.h */,
+				BECE97351B70B13A00B0E7D2 /* FwiImage.m */,
+			);
+			path = "Cache Image";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1377,6 +1423,7 @@
 				667D08F41A37814500A12ABE /* CTAssetsPageViewController.m in Sources */,
 				667D08F91A37814500A12ABE /* CTAssetsViewCell.m in Sources */,
 				BE6043BF1B67392300B9B84F /* UserTypeController.m in Sources */,
+				BECE97251B70B0B700B0E7D2 /* RegisterController.m in Sources */,
 				667D09161A37814500A12ABE /* ZazzFeed.m in Sources */,
 				667D09321A37814500A12ABE /* SDWebImageCompat.m in Sources */,
 				BE1CE79C1B6B880500980EB0 /* ProfileViewController.m in Sources */,
@@ -1387,6 +1434,7 @@
 				667D09201A37814500A12ABE /* CustomPopSegue.m in Sources */,
 				BEBB0A061B66036A00A621B9 /* AppDelegate.m in Sources */,
 				667D09331A37814500A12ABE /* SDWebImageDecoder.m in Sources */,
+				BECE97371B70B13A00B0E7D2 /* FwiCacheFolder.m in Sources */,
 				BE0321CD1B69FD1A0028A691 /* BaseFormController.m in Sources */,
 				667D091A1A37814500A12ABE /* ZazzPhoto.m in Sources */,
 				667D08FE1A37814500A12ABE /* FeedTableViewCell.m in Sources */,
@@ -1397,6 +1445,7 @@
 				667D09051A37814500A12ABE /* CHTumblrMenuView.m in Sources */,
 				BEBB09F31B65F1BF00A621B9 /* CreateMessageViewController.m in Sources */,
 				667D09121A37814500A12ABE /* User.m in Sources */,
+				BECE972A1B70B11500B0E7D2 /* UserPreferences.m in Sources */,
 				BE6043BA1B67392300B9B84F /* BasicInfoController.m in Sources */,
 				667D08FD1A37814500A12ABE /* DetailViewItem.m in Sources */,
 				667D08FC1A37814500A12ABE /* NSDateFormatter+timeIntervalFormatter.m in Sources */,
@@ -1406,6 +1455,7 @@
 				667D09141A37814500A12ABE /* ZazzCategory.m in Sources */,
 				667D090D1A37814500A12ABE /* Notification.m in Sources */,
 				667D090C1A37814500A12ABE /* GenericModel.m in Sources */,
+				BECE97361B70B13A00B0E7D2 /* AesKey.m in Sources */,
 				BE6043CD1B67614F00B9B84F /* SVProgressHUD.m in Sources */,
 				667D093B1A37814500A12ABE /* UIImage+WebP.m in Sources */,
 				BEBB09FA1B65F1BF00A621B9 /* RightNavigationViewController.m in Sources */,
@@ -1430,13 +1480,16 @@
 				667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */,
 				667D09171A37814500A12ABE /* ZazzFollow.m in Sources */,
 				667D09301A37814500A12ABE /* NSData+ImageContentType.m in Sources */,
+				BECE97381B70B13A00B0E7D2 /* FwiCacheHandler.m in Sources */,
 				667D08EB1A37814500A12ABE /* CommentCell.m in Sources */,
 				667D090F1A37814500A12ABE /* Post.m in Sources */,
 				667D09381A37814500A12ABE /* UIButton+WebCache.m in Sources */,
 				667D09001A37814500A12ABE /* UIImage+ImageEffects.m in Sources */,
 				667D09091A37814500A12ABE /* Feed.m in Sources */,
 				667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */,
+				BECE97391B70B13A00B0E7D2 /* FwiImage.m in Sources */,
 				667D09391A37814500A12ABE /* UIImage+GIF.m in Sources */,
+				BECE972B1B70B11500B0E7D2 /* UserServices.m in Sources */,
 				BEBB09F91B65F1BF00A621B9 /* LeftNavigationViewController.m in Sources */,
 				BEBB09FF1B65F1BF00A621B9 /* CFTabBarController.m in Sources */,
 				667D08F11A37814500A12ABE /* CTAssetScrollView.m in Sources */,
@@ -1452,7 +1505,6 @@
 				667D08F71A37814500A12ABE /* CTAssetsPickerController.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
 				667D08FA1A37814500A12ABE /* CTAssetsViewController.m in Sources */,
-				BE6043BE1B67392300B9B84F /* RegisterViewController.m in Sources */,
 				667D09341A37814500A12ABE /* SDWebImageDownloader.m in Sources */,
 				667D093D1A37814500A12ABE /* UIImageView+WebCache.m in Sources */,
 				667D08EC1A37814500A12ABE /* ALAsset+accessibilityLabel.m in Sources */,
@@ -1508,6 +1560,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mitchell Sorkin (72MNY9FZA7)";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/../";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1551,6 +1604,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Mitchell Sorkin (KWHKZ7NN2A)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = "${SRCROOT}/../";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1573,16 +1627,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/phuc/Documents/Workspaces,
-					"-",
-					Outsources/Zazz,
-					/Users/phuc/Documents/Workspaces,
-					"-",
-					Outsources/Zazz,
-					/Users/luan/Documents/Workspace/Zazz,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
 				INFOPLIST_FILE = "Zazz-iphone-app/Zazz-iphone-app-Info.plist";
@@ -1606,16 +1651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/phuc/Documents/Workspaces,
-					"-",
-					Outsources/Zazz,
-					/Users/phuc/Documents/Workspaces,
-					"-",
-					Outsources/Zazz,
-					/Users/luan/Documents/Workspace/Zazz,
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Zazz-iphone-app/Zazz-iphone-app-Prefix.pch";
 				INFOPLIST_FILE = "Zazz-iphone-app/Zazz-iphone-app-Info.plist";

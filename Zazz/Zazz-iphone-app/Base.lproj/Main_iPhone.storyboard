@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="961-x4-DZY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Aan-C5-ZR6">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -27,13 +27,13 @@
         <!--Navigation Controller-->
         <scene sceneID="Wu3-eu-4Vt">
             <objects>
-                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="961-x4-DZY" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ogp-ho-mQX">
+                <navigationController definesPresentationContext="YES" id="961-x4-DZY" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="ogp-ho-mQX">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
                         <segue destination="hUx-pd-DBE" kind="relationship" relationship="rootViewController" id="rQA-XQ-SRc"/>
-                        <segue destination="Aan-C5-ZR6" kind="modal" identifier="presentAuthenticatedFlow" modalTransitionStyle="crossDissolve" id="ZFl-Jd-EP3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sO4-Ii-1tD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -49,7 +49,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hrl-zt-GOK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" restorationIdentifier="rooter" id="cMg-1P-Oyd">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASm-If-XJ1" userLabel="topView">
@@ -75,10 +75,10 @@ places to party</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nMt-7X-8eo" userLabel="featureView">
-                                <rect key="frame" x="0.0" y="145" width="320" height="368"/>
+                                <rect key="frame" x="0.0" y="145" width="320" height="304"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Features" translatesAutoresizingMaskIntoConstraints="NO" id="yRv-PZ-0V7" userLabel="imageView">
-                                        <rect key="frame" x="32" y="37" width="255" height="295"/>
+                                        <rect key="frame" x="32" y="5" width="255" height="295"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -88,7 +88,7 @@ places to party</string>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24F-Vt-gYT" userLabel="registerButton">
-                                <rect key="frame" x="20" y="513" width="130" height="35"/>
+                                <rect key="frame" x="20" y="449" width="130" height="35"/>
                                 <color key="backgroundColor" red="0.074509803921568626" green="0.49411764705882355" blue="0.96862745098039216" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="5eC-Cx-0Mh"/>
@@ -104,7 +104,7 @@ places to party</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Br6-fS-twk" userLabel="signinButton">
-                                <rect key="frame" x="170" y="513" width="130" height="35"/>
+                                <rect key="frame" x="170" y="449" width="130" height="35"/>
                                 <color key="backgroundColor" red="0.9960784912109375" green="0.99215692281723022" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Sign In">
@@ -225,13 +225,11 @@ places to party</string>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="tgP-D9-cxU"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="_loginButton" destination="vov-w5-kGN" id="4qL-7q-vMJ"/>
                         <outlet property="_loginImageView" destination="Zhj-SX-dM0" id="BAf-hJ-ujK"/>
                         <outlet property="_passwordTextField" destination="iKX-sP-Bol" id="Ads-wJ-AMo"/>
                         <outlet property="_usernameTextField" destination="fqw-gF-FVS" id="f2q-Nf-z6o"/>
-                        <segue destination="Aan-C5-ZR6" kind="modal" identifier="presentAuthenticatedFlow" modalTransitionStyle="crossDissolve" id="f36-XF-QiU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hF3-5b-md3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -241,7 +239,7 @@ places to party</string>
         <!--Register-->
         <scene sceneID="2Ue-aI-agf">
             <objects>
-                <viewController id="C83-6H-Om6" customClass="RegisterViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterController" id="C83-6H-Om6" customClass="RegisterController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cPi-LN-eHB"/>
                         <viewControllerLayoutGuide type="bottom" id="gXm-yW-GDX"/>
@@ -273,7 +271,7 @@ places to party</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfb-fk-pFX" userLabel="descriptionLabel">
-                                <rect key="frame" x="151" y="121" width="18" height="20"/>
+                                <rect key="frame" x="151" y="121" width="17.5" height="20"/>
                                 <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -292,12 +290,8 @@ places to party</string>
                             <constraint firstItem="lFV-AH-o35" firstAttribute="trailing" secondItem="4JZ-6w-l9g" secondAttribute="trailing" id="mwt-AE-mfG"/>
                             <constraint firstItem="4JZ-6w-l9g" firstAttribute="top" secondItem="Qfb-fk-pFX" secondAttribute="bottom" constant="30" id="vJJ-lp-oLQ"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="PaT-jr-OL5" appends="YES" id="VZX-0A-8OY"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Register" id="SbW-5H-9VG"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <outlet property="_facebookView" destination="lFV-AH-o35" id="qJg-3k-p3i"/>
                         <outlet property="_registerButton" destination="4JZ-6w-l9g" id="24s-rE-QYc"/>
@@ -306,11 +300,6 @@ places to party</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p5l-vh-bdz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="PaT-jr-OL5">
-                    <connections>
-                        <action selector="userTappedBackgroud:" destination="C83-6H-Om6" id="oRA-n1-bq9"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1000" y="0.0"/>
         </scene>
@@ -1787,6 +1776,7 @@ places to party</string>
                         <outlet property="postButton" destination="NI9-Ke-ErC" id="Q5P-8e-Wc4"/>
                         <outlet property="profileButton" destination="gNo-dN-GHm" id="1c4-qL-V6b"/>
                         <outlet property="tabBar" destination="4Bn-D7-dgr" id="8NC-Nr-toI"/>
+                        <segue destination="961-x4-DZY" kind="modal" identifier="presentAuthenticationFlow" modalTransitionStyle="crossDissolve" id="7wd-Hr-M3O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qB-8w-Xr6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2205,9 +2195,8 @@ places to party</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ZFl-Jd-EP3"/>
+        <segue reference="kZW-vP-tDK"/>
         <segue reference="UqG-YO-jn2"/>
-        <segue reference="lA7-tX-wYK"/>
         <segue reference="upl-AT-HmV"/>
     </inferredMetricsTieBreakers>
 </document>
