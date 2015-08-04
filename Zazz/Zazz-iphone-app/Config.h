@@ -14,6 +14,7 @@
 
 #define kAppDelegate                                        (AppDelegate *) [[UIApplication sharedApplication] delegate]
 #define kNetworkManager                                     [kAppDelegate networkManager]
+#define kPreferences                                        [kAppDelegate preferences]
 
 // Animation configuration
 #define kAnimation_Option                                   UIViewAnimationOptionCurveEaseOut
@@ -26,6 +27,7 @@
 #define kAnimation_iOS7_Velocity                            5.00f
 
 // Define flow
+#define kSegue_PresentAuthenticationFlow                    @"presentAuthenticationFlow"
 #define kSegue_PresentAuthenticatedFlow                     @"presentAuthenticatedFlow"
 
 // Define view

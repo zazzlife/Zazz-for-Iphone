@@ -10,22 +10,26 @@
 	<string>Zazz-iphone-app</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>09578281DF5C4AF22B048A988902501CB2BBC846</key>
-		<string>bitbucket.org:FiisionStudio/ios-concept-keywords.git</string>
 		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
-		<string>zazz:zazzlife/Zazz-for-Iphone.git</string>
+		<string>qds-zazz:zazzlife/Zazz-for-Iphone.git</string>
+		<key>56B8BCECA1D71EE4FD67466DD4209543241EC891</key>
+		<string>https://github.com/phuc0302/objc-data</string>
+		<key>58F7C91978A24AEFAA7BE2033DF7A19248DB323A</key>
+		<string>https://github.com/phuc0302/objc-core</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Zazz-iphone-app.xcodeproj</string>
+	<string>Zazz/Zazz-iphone-app.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>09578281DF5C4AF22B048A988902501CB2BBC846</key>
-		<string>../../../Workspaces/GitHub/Objective-C/Keywords</string>
 		<key>250330D51C1DE5341A0555CA63E6F3997BA852E0</key>
-		<string>../..</string>
+		<string>../../..</string>
+		<key>56B8BCECA1D71EE4FD67466DD4209543241EC891</key>
+		<string>../../..FwiData/</string>
+		<key>58F7C91978A24AEFAA7BE2033DF7A19248DB323A</key>
+		<string>../../..FwiCore/</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>zazz:zazzlife/Zazz-for-Iphone.git</string>
+	<string>qds-zazz:zazzlife/Zazz-for-Iphone.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -36,9 +40,17 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>09578281DF5C4AF22B048A988902501CB2BBC846</string>
+			<string>58F7C91978A24AEFAA7BE2033DF7A19248DB323A</string>
 			<key>IDESourceControlWCCName</key>
-			<string>Keywords</string>
+			<string>FwiCore</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>56B8BCECA1D71EE4FD67466DD4209543241EC891</string>
+			<key>IDESourceControlWCCName</key>
+			<string>FwiData</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

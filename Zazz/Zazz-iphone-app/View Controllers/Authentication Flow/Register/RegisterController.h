@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 
 
-@interface RegisterViewController : UIViewController<FBLoginViewDelegate> {
+@interface RegisterController : UIViewController<FBLoginViewDelegate> {
     
 @private
     __weak IBOutlet FBLoginView *_facebookView;

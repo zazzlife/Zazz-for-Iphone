@@ -1,8 +1,8 @@
-#import "RegisterViewController.h"
+#import "RegisterController.h"
 #import "BasicInfoController.h"
 
 
-@interface RegisterViewController () {
+@interface RegisterController () {
 }
 
 @property (nonatomic, assign) BOOL isForwarded;
@@ -22,7 +22,7 @@
 @end
 
 
-@implementation RegisterViewController
+@implementation RegisterController
 
 
 #pragma mark - Class's constructors
@@ -57,7 +57,7 @@
     [super viewDidLoad];
     [self _visualize];
     
-    _facebookView.publishPermissions = @[@"publish_actions", @"public_profile", @"user_friends", @"email"];
+    _facebookView.publishPermissions = @[@"public_profile", @"email"];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

@@ -18,7 +18,7 @@
 @implementation AppDelegate
 
 
-@synthesize networkManager = _networkManager;
+@synthesize networkManager=_networkManager, preferences=_preferences;
 
 
 @synthesize _zazzAPI;
@@ -61,12 +61,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     if (![[UIDevice currentDevice] respondsToSelector:@selector(isMultitaskingSupported)] || ![[UIDevice currentDevice] isMultitaskingSupported]) return NO;
+    [self _customAppearance];
+    
+    // Initialize preferences
+    _preferences = [[UserPreferences alloc] init];
     
     // Initialize network manager
     _networkManager = [[NetworkManager alloc] init];
     
-    // Apply custom theme
-    [self _customAppearance];
     return YES;
 }
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {

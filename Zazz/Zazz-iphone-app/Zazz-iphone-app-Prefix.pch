@@ -8,6 +8,9 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import <Security/Security.h>
+    #import <CommonCrypto/CommonHMAC.h>
+    #import <CommonCrypto/CommonCryptor.h>
 
     // Facebook
     #import <FacebookSDK/FacebookSDK.h>
@@ -27,5 +30,6 @@
 
     #import "AppDelegate.h"
     #import "NetworkManager.h"
+    #import "UserPreferences.h"
     #import "BaseFormController.h"
 #endif

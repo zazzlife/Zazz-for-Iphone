@@ -40,11 +40,13 @@
 - (FwiRequest *)prepareRequestWithURL:(NSURL *)url method:(FwiMethodType)method params:(NSDictionary *)params {
     FwiRequest *urlRequest = [FwiRequest requestWithURL:url methodType:method];
 
-//    // Grant access type
-//    NSURL *reserveURL = generateURL(kService_Authorization);
-//    if ([kUserPreferences accessToken] && ![url isEqual:reserveURL]) {
+    // Grant access type
+    if ([kPreferences tokenType] && [kPreferences accessToken]) {
+        [urlRequest setValue:[NSString stringWithFormat:@"%@ %@", [kPreferences tokenType], [kPreferences accessToken]] forHTTPHeaderField:@"Authorization"];
+    }
+    else {
         [urlRequest setValue:@"Basic hdi7o53NSeilrq7oQihy69PvH9BBQtw5QfcJy4ALBuY" forHTTPHeaderField:@"Authorization"];
-//    }
+    }
     
     // Insert data parameters if available
     if (params) {
