@@ -8,7 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "FeedTableViewController.h"
-#import "MediaFeedViewController.h"
+#import "MediaFeedController.h"
 #import "AppDelegate.h"
 #import "UIImageView+WebCache.h"
 #import "PhotoPicker.h"
@@ -194,10 +194,10 @@ PhotoPicker* _activePicker;
         [self.feedTableViewController setShowPosts:true];
         [self.feedTableViewController viewDidEmbed];
     }else if([segue.identifier isEqualToString:@"embedProfileFeedMediaViewController"]){
-        [self setMediaFeedViewController:(MediaFeedViewController*)segue.destinationViewController];
-        [self.mediaFeedViewController setScrollDelegate:self];
-        [self.mediaFeedViewController setFeedTableViewController:self.feedTableViewController];
-        [self.mediaFeedViewController viewDidEmbed];
+//        [self setMediaFeedViewController:(MediaFeedViewController*)segue.destinationViewController];
+//        [self.mediaFeedViewController setScrollDelegate:self];
+//        [self.mediaFeedViewController setFeedTableViewController:self.feedTableViewController];
+//        [self.mediaFeedViewController viewDidEmbed];
     }
 }
 

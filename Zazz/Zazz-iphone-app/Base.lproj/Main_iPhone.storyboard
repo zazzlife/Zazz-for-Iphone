@@ -912,27 +912,28 @@ places to party</string>
                                     <constraint firstItem="r6s-2q-zda" firstAttribute="leading" secondItem="gSw-Xe-dPO" secondAttribute="trailing" constant="1" id="xMT-RC-Sfo"/>
                                 </constraints>
                             </view>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5T-x7-9Zf" userLabel="postView">
-                                <rect key="frame" x="0.0" y="192" width="320" height="332"/>
+                            <containerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5T-x7-9Zf" userLabel="postView">
+                                <rect key="frame" x="0.0" y="240" width="320" height="284"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="l1V-EV-eRO" kind="embed" identifier="embedProfileFeedViewController" id="UqG-YO-jn2"/>
                                 </connections>
                             </containerView>
-                            <containerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddu-ie-v5G" userLabel="mediaView">
-                                <rect key="frame" x="0.0" y="192" width="320" height="332"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="85p-bh-RIP">
+                                <rect key="frame" x="20" y="202" width="280" height="29"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="" image="user icon"/>
+                                </segments>
+                            </segmentedControl>
+                            <containerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddu-ie-v5G" userLabel="mediaView">
+                                <rect key="frame" x="0.0" y="240" width="320" height="284"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="t5d-pf-eQ2" kind="embed" identifier="embedProfileFeedMediaViewController" id="Cne-Hu-UST"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="85p-bh-RIP">
-                                <rect key="frame" x="20" y="202" width="280" height="29"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Dwm-4f-QFa" firstAttribute="top" secondItem="jyC-Jd-Fyg" secondAttribute="bottom" constant="25" id="2R9-Am-xwW"/>
@@ -956,7 +957,6 @@ places to party</string>
                             <constraint firstAttribute="trailing" secondItem="q5a-Eg-wWH" secondAttribute="trailing" id="Mkc-gU-6jt"/>
                             <constraint firstItem="Ddu-ie-v5G" firstAttribute="bottom" secondItem="N5T-x7-9Zf" secondAttribute="bottom" id="Q23-8d-rCH"/>
                             <constraint firstItem="N5T-x7-9Zf" firstAttribute="leading" secondItem="zkQ-ht-uwO" secondAttribute="leading" id="S0r-A3-Air"/>
-                            <constraint firstItem="N5T-x7-9Zf" firstAttribute="top" secondItem="q5a-Eg-wWH" secondAttribute="bottom" id="SWh-sh-NQ6"/>
                             <constraint firstItem="I6Z-vX-eTq" firstAttribute="leading" secondItem="jyC-Jd-Fyg" secondAttribute="leading" id="T3j-bK-d1c"/>
                             <constraint firstItem="Ddu-ie-v5G" firstAttribute="leading" secondItem="N5T-x7-9Zf" secondAttribute="leading" id="U4A-vb-6qd"/>
                             <constraint firstItem="85p-bh-RIP" firstAttribute="top" secondItem="q5a-Eg-wWH" secondAttribute="bottom" constant="10" id="WGA-Ke-OeD"/>
@@ -965,6 +965,7 @@ places to party</string>
                             <constraint firstAttribute="trailing" secondItem="85p-bh-RIP" secondAttribute="trailing" constant="20" id="osl-c0-vub"/>
                             <constraint firstItem="Ddu-ie-v5G" firstAttribute="trailing" secondItem="N5T-x7-9Zf" secondAttribute="trailing" id="oxA-S2-Gae"/>
                             <constraint firstItem="f8B-IN-Kfo" firstAttribute="top" secondItem="N5T-x7-9Zf" secondAttribute="bottom" id="uZ3-7x-TW1"/>
+                            <constraint firstItem="N5T-x7-9Zf" firstAttribute="top" secondItem="85p-bh-RIP" secondAttribute="bottom" constant="10" id="x60-Pt-LtK"/>
                             <constraint firstAttribute="trailing" secondItem="VGB-L9-jqb" secondAttribute="trailing" constant="15" id="xpq-8Y-ymm"/>
                             <constraint firstItem="HuW-78-TTO" firstAttribute="top" secondItem="KA6-98-1TO" secondAttribute="bottom" constant="5" id="y1D-xQ-TYx"/>
                         </constraints>
@@ -999,7 +1000,7 @@ places to party</string>
             <objects>
                 <tableViewController id="l1V-EV-eRO" customClass="FeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xzr-e9-pEs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="332"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1089,14 +1090,14 @@ places to party</string>
             </objects>
             <point key="canvasLocation" x="1783" y="3230"/>
         </scene>
-        <!--Media Feed View Controller-->
+        <!--Media Feed Controller-->
         <scene sceneID="KeF-DL-dtj">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="t5d-pf-eQ2" customClass="MediaFeedViewController" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MediaFeedController" autoresizesArchivedViewToFullSize="NO" id="t5d-pf-eQ2" customClass="MediaFeedController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uDM-Zk-lgU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="332"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="284"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.92157738359999997" blue="0.1197872495" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lfi-ym-iQX">
                             <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1104,39 +1105,25 @@ places to party</string>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="collectionViewCell" reuseIdentifier="collectionViewCell" id="epG-mr-L8u">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="epG-mr-L8u" customClass="MediaFeedCell">
                                 <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="mediaImage" translatesAutoresizingMaskIntoConstraints="NO" id="qIs-iz-F8c">
-                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        </imageView>
-                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                            </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="collectionSpinnerCell" reuseIdentifier="collectionSpinnerCell" id="BdD-65-mXW">
-                                <rect key="frame" x="110" y="0.0" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
+                                <color key="backgroundColor" red="0.35285150498604256" green="0.21189568244759349" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </collectionViewCell>
                         </cells>
                         <connections>
-                            <outlet property="dataSource" destination="t5d-pf-eQ2" id="Kb6-mR-oej"/>
-                            <outlet property="delegate" destination="t5d-pf-eQ2" id="zZR-dj-vSU"/>
+                            <outlet property="dataSource" destination="t5d-pf-eQ2" id="7fk-k6-T3h"/>
                         </connections>
                     </collectionView>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vk1-B2-UKP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1500" y="3721.5"/>
+            <point key="canvasLocation" x="1510" y="3678"/>
         </scene>
         <!--Left Navigation View Controller-->
         <scene sceneID="yI2-Nh-wch">
@@ -2208,6 +2195,7 @@ places to party</string>
         <image name="beer icon" width="25" height="25"/>
         <image name="filter-icon.png" width="45" height="34"/>
         <image name="left bar icon" width="50" height="50"/>
+        <image name="user icon" width="25" height="25"/>
         <image name="yellow arrow" width="50" height="25"/>
         <image name="zazz logo" width="91" height="44"/>
     </resources>

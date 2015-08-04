@@ -10,7 +10,7 @@
 #import "FeedTableViewController.h"
 #import "CFTabBarController.h"
 #import "Profile.h"
-#import "MediaFeedViewController.h"
+#import "MediaFeedController.h"
 #import "PhotoPicker.h"
 #import "RSKImageCropViewController.h"
 
@@ -19,7 +19,7 @@
 @interface ProfileViewController : UIViewController <CFTabBarViewDelegate, StickyTopScrollViewDelegate, MediaReceiver,RSKImageCropViewControllerDelegate>
 
 @property FeedTableViewController* feedTableViewController;
-@property MediaFeedViewController* mediaFeedViewController;
+@property MediaFeedController* mediaFeedViewController;
 
 @property NSString* user_id;
 @property Profile* _profile;

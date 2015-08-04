@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB12D351922FA20001E9E26 /* QuartzCore.framework */; };
+		0FCFBBB31B70980E008FC34D /* MediaFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFBBB21B70980E008FC34D /* MediaFeedController.m */; };
+		0FCFBBB61B7098B4008FC34D /* MediaFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFBBB51B7098B4008FC34D /* MediaFeedCell.m */; };
 		0FE8FF891B6F17E100753719 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE8FF881B6F17E100753719 /* FacebookSDK.framework */; };
 		2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
@@ -115,7 +117,6 @@
 		BEBB09F41B65F1BF00A621B9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09CD1B65F1BF00A621B9 /* DetailViewController.m */; };
 		BEBB09F51B65F1BF00A621B9 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */; };
 		BEBB09F61B65F1BF00A621B9 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D31B65F1BF00A621B9 /* HomeViewController.m */; };
-		BEBB09F81B65F1BF00A621B9 /* MediaFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09D91B65F1BF00A621B9 /* MediaFeedViewController.m */; };
 		BEBB09F91B65F1BF00A621B9 /* LeftNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09DD1B65F1BF00A621B9 /* LeftNavigationViewController.m */; };
 		BEBB09FA1B65F1BF00A621B9 /* RightNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E01B65F1BF00A621B9 /* RightNavigationViewController.m */; };
 		BEBB09FB1B65F1BF00A621B9 /* NotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEBB09E31B65F1BF00A621B9 /* NotificationViewController.m */; };
@@ -139,6 +140,10 @@
 
 /* Begin PBXFileReference section */
 		0DB12D351922FA20001E9E26 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		0FCFBBB11B70980E008FC34D /* MediaFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFeedController.h; sourceTree = "<group>"; };
+		0FCFBBB21B70980E008FC34D /* MediaFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFeedController.m; sourceTree = "<group>"; };
+		0FCFBBB41B7098B4008FC34D /* MediaFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFeedCell.h; sourceTree = "<group>"; };
+		0FCFBBB51B7098B4008FC34D /* MediaFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFeedCell.m; sourceTree = "<group>"; };
 		0FE8FF881B6F17E100753719 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		2AFB430719EA664E0004BA9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -348,8 +353,6 @@
 		BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		BEBB09D21B65F1BF00A621B9 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		BEBB09D31B65F1BF00A621B9 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		BEBB09D81B65F1BF00A621B9 /* MediaFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFeedViewController.h; sourceTree = "<group>"; };
-		BEBB09D91B65F1BF00A621B9 /* MediaFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFeedViewController.m; sourceTree = "<group>"; };
 		BEBB09DC1B65F1BF00A621B9 /* LeftNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftNavigationViewController.h; sourceTree = "<group>"; };
 		BEBB09DD1B65F1BF00A621B9 /* LeftNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftNavigationViewController.m; sourceTree = "<group>"; };
 		BEBB09DF1B65F1BF00A621B9 /* RightNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightNavigationViewController.h; sourceTree = "<group>"; };
@@ -1032,6 +1035,10 @@
 			children = (
 				BE1CE79A1B6B880500980EB0 /* ProfileViewController.h */,
 				BE1CE79B1B6B880500980EB0 /* ProfileViewController.m */,
+				0FCFBBB11B70980E008FC34D /* MediaFeedController.h */,
+				0FCFBBB21B70980E008FC34D /* MediaFeedController.m */,
+				0FCFBBB41B7098B4008FC34D /* MediaFeedCell.h */,
+				0FCFBBB51B7098B4008FC34D /* MediaFeedCell.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1121,7 +1128,6 @@
 				BEBB09CB1B65F1BF00A621B9 /* DetailViewController */,
 				BEBB09CE1B65F1BF00A621B9 /* FeedTableViewController */,
 				BEBB09D11B65F1BF00A621B9 /* HomeViewController */,
-				BEBB09D71B65F1BF00A621B9 /* MediaFeedViewController */,
 				BEBB09DA1B65F1BF00A621B9 /* Navigation */,
 				BEBB09E11B65F1BF00A621B9 /* NotificationViewController */,
 				BEBB09E41B65F1BF00A621B9 /* PostViewController */,
@@ -1165,15 +1171,6 @@
 				BEBB09D31B65F1BF00A621B9 /* HomeViewController.m */,
 			);
 			path = HomeViewController;
-			sourceTree = "<group>";
-		};
-		BEBB09D71B65F1BF00A621B9 /* MediaFeedViewController */ = {
-			isa = PBXGroup;
-			children = (
-				BEBB09D81B65F1BF00A621B9 /* MediaFeedViewController.h */,
-				BEBB09D91B65F1BF00A621B9 /* MediaFeedViewController.m */,
-			);
-			path = MediaFeedViewController;
 			sourceTree = "<group>";
 		};
 		BEBB09DA1B65F1BF00A621B9 /* Navigation */ = {
@@ -1378,7 +1375,6 @@
 				667D093A1A37814500A12ABE /* UIImage+MultiFormat.m in Sources */,
 				667D091D1A37814500A12ABE /* ZazzMe.m in Sources */,
 				667D08F41A37814500A12ABE /* CTAssetsPageViewController.m in Sources */,
-				BEBB09F81B65F1BF00A621B9 /* MediaFeedViewController.m in Sources */,
 				667D08F91A37814500A12ABE /* CTAssetsViewCell.m in Sources */,
 				BE6043BF1B67392300B9B84F /* UserTypeController.m in Sources */,
 				667D09161A37814500A12ABE /* ZazzFeed.m in Sources */,
@@ -1446,10 +1442,12 @@
 				667D08F11A37814500A12ABE /* CTAssetScrollView.m in Sources */,
 				667D091F1A37814500A12ABE /* ZazzApi.m in Sources */,
 				667D092F1A37814500A12ABE /* MKAnnotationView+WebCache.m in Sources */,
+				0FCFBBB31B70980E008FC34D /* MediaFeedController.m in Sources */,
 				667D09311A37814500A12ABE /* SDImageCache.m in Sources */,
 				667D093C1A37814500A12ABE /* UIImageView+HighlightedWebCache.m in Sources */,
 				667D09111A37814500A12ABE /* SearchResult.m in Sources */,
 				667D08ED1A37814500A12ABE /* ALAsset+assetType.m in Sources */,
+				0FCFBBB61B7098B4008FC34D /* MediaFeedCell.m in Sources */,
 				BEBB0A001B65F1BF00A621B9 /* TagViewController.m in Sources */,
 				667D08F71A37814500A12ABE /* CTAssetsPickerController.m in Sources */,
 				5E8AA6FC18FCAED600C99D9F /* main.m in Sources */,
