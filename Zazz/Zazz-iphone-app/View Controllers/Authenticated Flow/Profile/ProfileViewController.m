@@ -71,6 +71,10 @@ PhotoPicker* _activePicker;
     [super viewDidLoad];
     //[self _visualize];
     
+    //    //URL profile Photo
+    //    NSURL *url = [NSURL URLWithString:@"http://bestinspired.com/wp-content/uploads/2015/05/Nature-Wallpaper2.jpg"];
+    //    [_profileView downloadImageFromUrl:url];
+    
     [self.scrollView setScrollsToTop:false];
     [self.scrollView setAlwaysBounceVertical:false];
     if(!self.user_id)
@@ -82,8 +86,29 @@ PhotoPicker* _activePicker;
 -(void)viewWillAppear:(BOOL)animated{
     [self.scrollView setContentOffset:CGPointMake(0, 0)];
     
-//    [self scrollViewDidScroll:self.feedTableViewController.tableView];
+    //    [self scrollViewDidScroll:self.feedTableViewController.tableView];
 }
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // Only send request when user is authenticated
+    if ([kPreferences accessToken]) {
+        __autoreleasing NSString *urlString = [NSString stringWithFormat:_g_ServiceProfile, _g_Hostname, [kPreferences currentUsername]];
+        __autoreleasing NSURL *url = [NSURL URLWithString:urlString];
+        
+        __autoreleasing FwiRequest *request = [kNetworkManager prepareRequestWithURL:url method:kMethodType_Get params:nil];
+        
+        [SVProgressHUD showWithStatus:kText_Loading];
+        [kNetworkManager sendRequest:request handleError:YES completion:^(FwiJson *responseMessage, NSError *error, FwiNetworkStatus statusCode) {
+            if (FwiNetworkStatusIsSuccces(statusCode)) {
+                //DLog(@"%@", responseMessage);
+            }
+            
+            [SVProgressHUD dismiss];
+        }];
+    }
+}
+
 
 -(IBAction)changeFeed:(UISegmentedControl*)sender{
     int segment = [sender selectedSegmentIndex];
@@ -126,7 +151,7 @@ PhotoPicker* _activePicker;
         [self setProfile:profile];
     }
     
-   //Following example => [[AppDelegate zazzApi] setUserToFollow:@"83" action:YES];
+    //Following example => [[AppDelegate zazzApi] setUserToFollow:@"83" action:YES];
 }
 
 -(void)setProfile:(Profile*)profile{
@@ -146,6 +171,35 @@ PhotoPicker* _activePicker;
     if(self.feedTableViewController){
         [self.feedTableViewController setFeed_user_id:self._profile.profile_id];
         [self.feedTableViewController doRefresh:nil];
+    }
+}
+
+- (IBAction)segmentChanged:(id)sender {
+    if (sender == _segmentView && _segmentView.selectedSegmentIndex == 0) {
+        _mediaFeedView.hidden = NO;
+        _mediaFeedView.alpha = 0.0f;
+        
+        [UIView animateWithDuration:0.3f
+                         animations:^{
+                             _mediaFeedView.alpha = 1.0f;
+                             _postFeedView.alpha  = 0.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             _postFeedView.hidden = YES;
+                         }];
+    }
+    else if (sender == _segmentView && _segmentView.selectedSegmentIndex == 1) {
+        _postFeedView.hidden = NO;
+        _postFeedView.alpha = 0.0f;
+        
+        [UIView animateWithDuration:0.3f
+                         animations:^{
+                             _mediaFeedView.alpha = 0.0f;
+                             _postFeedView.alpha  = 1.0f;
+                         }
+                         completion:^(BOOL finished) {
+                             _mediaFeedView.hidden = YES;
+                         }];
     }
 }
 
@@ -194,10 +248,10 @@ PhotoPicker* _activePicker;
         [self.feedTableViewController setShowPosts:true];
         [self.feedTableViewController viewDidEmbed];
     }else if([segue.identifier isEqualToString:@"embedProfileFeedMediaViewController"]){
-//        [self setMediaFeedViewController:(MediaFeedViewController*)segue.destinationViewController];
-//        [self.mediaFeedViewController setScrollDelegate:self];
-//        [self.mediaFeedViewController setFeedTableViewController:self.feedTableViewController];
-//        [self.mediaFeedViewController viewDidEmbed];
+        [self setMediaFeedViewController:(MediaFeedController*)segue.destinationViewController];
+        //        [self.mediaFeedViewController setScrollDelegate:self];
+        //        [self.mediaFeedViewController setFeedTableViewController:self.feedTableViewController];
+        //        [self.mediaFeedViewController viewDidEmbed];
     }
 }
 
@@ -219,7 +273,7 @@ PhotoPicker* _activePicker;
     }
     CGFloat scale  = 1;
     UIImage* pic = [UIImage imageWithCGImage:[representation fullResolutionImage]
-                                         scale:scale orientation:orientation];
+                                       scale:scale orientation:orientation];
     RSKImageCropViewController* imageCropVC = [[RSKImageCropViewController alloc] initWithImage:pic];
     imageCropVC.delegate = self;
     [self.navigationController pushViewController:imageCropVC animated:YES];

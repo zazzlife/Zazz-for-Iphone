@@ -49,6 +49,12 @@
     [self _visualize];
 }
 
+- (void)visualizeCellWithImageUrl:(NSURL *)imageUrl {
+    /* Condition validation */
+    if (!imageUrl) return;
+    [_imageView downloadImageFromUrl:imageUrl];
+}
+
 
 #pragma mark - Class's private methods
 - (void)_init {

@@ -21,6 +21,7 @@
     // FwiCore
     #import "FwiCore.h"
     #import "FwiData.h"
+    #import "FwiImage.h"
 
     // Project's Defined
     #import "Config.h"

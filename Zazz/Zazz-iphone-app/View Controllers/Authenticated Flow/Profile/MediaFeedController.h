@@ -10,12 +10,12 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface MediaFeedController : UICollectionViewController {
     
 @private
+
 }
 
-@property (nonatomic, strong) NSArray *imageArray;
+
 
 @end

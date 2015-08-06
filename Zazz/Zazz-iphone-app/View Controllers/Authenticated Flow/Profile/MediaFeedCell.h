@@ -12,9 +12,12 @@
 
 
 @interface MediaFeedCell : UICollectionViewCell {
+
+@private
+    __weak IBOutlet FwiImage *_imageView;
 }
 
 
-//- (void)visualizeCellWithInfo
+- (void)visualizeCellWithImageUrl:(NSURL *)imageUrl;
 
 @end

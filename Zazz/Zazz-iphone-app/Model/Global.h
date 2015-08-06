@@ -14,6 +14,7 @@
 
 FOUNDATION_EXPORT NSString *_g_Hostname;
 FOUNDATION_EXPORT NSString *_g_ServiceLogin;
+FOUNDATION_EXPORT NSString *_g_ServiceProfile;
 FOUNDATION_EXPORT NSString *_g_ServiceRegister;
 
 

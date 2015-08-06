@@ -16,7 +16,12 @@
 
 #define PROFILE_PAGE_PHOTO_HEIGHT 140
 
-@interface ProfileViewController : UIViewController <CFTabBarViewDelegate, StickyTopScrollViewDelegate, MediaReceiver,RSKImageCropViewControllerDelegate>
+@interface ProfileViewController : UIViewController <CFTabBarViewDelegate, StickyTopScrollViewDelegate, MediaReceiver,RSKImageCropViewControllerDelegate> {
+
+@private
+    __weak IBOutlet FwiImage *_profileView;
+    __weak IBOutlet UISegmentedControl *_segmentView;
+}
 
 @property FeedTableViewController* feedTableViewController;
 @property MediaFeedController* mediaFeedViewController;
@@ -48,5 +53,7 @@
 
 -(void)enableBackButton;
 -(void)setProfile:(Profile*)profile;
+
+- (IBAction)segmentChanged:(id)sender;
 
 @end

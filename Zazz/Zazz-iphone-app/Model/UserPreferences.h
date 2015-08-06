@@ -4,11 +4,6 @@
 @interface UserPreferences : NSObject {
 }
 
-
-/** Load/Save object value. */
-- (id)objectForKey:(NSString *)key;
-- (void)setValue:(id)value key:(NSString *)key;
-
 /** Reset user's preferences */
 - (void)reset;
 /** Save user's preferences. */

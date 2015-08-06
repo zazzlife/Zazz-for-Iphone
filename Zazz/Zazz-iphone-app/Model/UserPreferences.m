@@ -81,7 +81,7 @@
 
 
 #pragma mark - Class's public methods
-- (id)objectForKey:(NSString *)key {
+- (id)valueForKey:(NSString *)key {
     return _preferences[key];
 }
 - (void)setValue:(id)value key:(NSString *)key {
@@ -146,35 +146,35 @@
 }
 
 - (NSString *)currentUsername {
-    return [self objectForKey:@"_currentUsername"];
+    return [self valueForKey:@"_currentUsername"];
 }
 - (void)setCurrentUsername:(NSString *)currentUsername {
     [self setValue:currentUsername key:@"_currentUsername"];
 }
 
 - (NSString *)currentProfileId {
-    return [self objectForKey:@"_currentProfileId"];
+    return [self valueForKey:@"_currentProfileId"];
 }
 - (void)setCurrentProfileId:(NSString *)currentProfileId {
     [self setValue:currentProfileId key:@"_currentProfileId"];
 }
 
 - (NSString *)tokenType {
-    return [self objectForKey:@"_tokenType"];
+    return [self valueForKey:@"_tokenType"];
 }
 - (void)setTokenType:(NSString *)tokenType {
     [self setValue:tokenType key:@"_tokenType"];
 }
 
 - (NSDate *)expiredTime {
-    return [self objectForKey:@"_expiredTime"];
+    return [self valueForKey:@"_expiredTime"];
 }
 - (void)setExpiredTime:(NSDate *)expiredTime {
     [self setValue:expiredTime key:@"_expiredTime"];
 }
 
 - (NSString *)accessToken {
-    return [self objectForKey:@"_accessToken"];
+    return [self valueForKey:@"_accessToken"];
 }
 - (void)setAccessToken:(NSString *)accessToken {
     if (!accessToken || accessToken.length == 0) {
@@ -196,7 +196,7 @@
 }
 
 - (NSString *)refreshToken {
-    return [self objectForKey:@"_refreshToken"];
+    return [self valueForKey:@"_refreshToken"];
 }
 - (void)setRefreshToken:(NSString *)refreshToken {
     [self setValue:refreshToken key:@"_refreshToken"];

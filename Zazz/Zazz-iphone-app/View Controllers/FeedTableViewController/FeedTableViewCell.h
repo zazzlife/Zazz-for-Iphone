@@ -19,9 +19,9 @@
 @interface FeedTableViewCell : UITableViewCell
 
 @property IBOutlet UITableView* tableView;
-@property IBOutlet UIImageView* userImage;
+@property IBOutlet FwiImage *userImage;
 @property IBOutlet UIView* feedCellBackgroundView;
-@property IBOutlet UIView* feedCellContentView;
+@property IBOutlet FwiImage* feedCellContentView;
 @property IBOutlet UILabel* timestamp;
 @property IBOutlet UILabel* username;
 @property IBOutlet UIButton* profileButton;
@@ -31,5 +31,8 @@
 
 -(void)setFeed:(Feed *)feed;
 -(CGRect)cellBackgroundFrame;
+
+- (void)visualizeCellWithUserImage:(NSURL *)imageUrl;
+- (void)visualizeCellWithContent:(NSURL *)imageUrl;
 
 @end

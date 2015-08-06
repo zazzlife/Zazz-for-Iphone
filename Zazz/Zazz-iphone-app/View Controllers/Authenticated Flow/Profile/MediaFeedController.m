@@ -1,10 +1,8 @@
 #import "MediaFeedController.h"
 #import "MediaFeedCell.h"
 
-
 @interface MediaFeedController () {
 }
-
 
 /** Initialize class's private variables. */
 - (void)_init;
@@ -44,6 +42,9 @@ static NSString * const _Identifier = @"Cell";
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
 #if !__has_feature(objc_arc)
+    [_mediaFeedPhoto release];
+    [_mediaFeedPhoto release];
+    [_mediaFeedPhoto release];
     [super dealloc];
 #endif
 }
@@ -53,15 +54,9 @@ static NSString * const _Identifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    //create array of image
-//    self.imageArray /= [NSArray arrayWithObjects:@"iPad76.png","iPad76.png", "iPad76.png", "iPad76.png", "iPad76.png", nil];
-    
-    
-    
     [self _visualize];
     
-
+    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -136,21 +131,13 @@ static NSString * const _Identifier = @"Cell";
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 5;
+    return 3;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     __autoreleasing MediaFeedCell *cell = (MediaFeedCell *)[collectionView dequeueReusableCellWithReuseIdentifier:_Identifier forIndexPath:indexPath];
+    __autoreleasing NSURL *url = [NSURL URLWithString:@"http://bestinspired.com/wp-content/uploads/2015/05/Nature-Wallpaper2.jpg"];
     
-    //test
-    UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,100,100)];
-    imgView.contentMode = UIViewContentModeScaleAspectFit;
-    imgView.clipsToBounds = YES;
-    imgView.image = [self.imageArray objectAtIndex:indexPath.row];
-    [cell addSubview:imgView];
-    
-    
-    
-    
+    [cell visualizeCellWithImageUrl:url];
     return cell;
 }
 

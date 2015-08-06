@@ -10,6 +10,7 @@
 		0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB12D351922FA20001E9E26 /* QuartzCore.framework */; };
 		0FCFBBB31B70980E008FC34D /* MediaFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFBBB21B70980E008FC34D /* MediaFeedController.m */; };
 		0FCFBBB61B7098B4008FC34D /* MediaFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFBBB51B7098B4008FC34D /* MediaFeedCell.m */; };
+		0FD4E3451B71E3D80044D466 /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD4E3441B71E3D80044D466 /* FeedTableViewCell.m */; };
 		0FE8FF891B6F17E100753719 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE8FF881B6F17E100753719 /* FacebookSDK.framework */; };
 		2AFB430819EA664E0004BA9B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */; };
 		5E8AA6F018FCAED600C99D9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E8AA6EF18FCAED600C99D9F /* Foundation.framework */; };
@@ -36,7 +37,6 @@
 		667D08FB1A37814500A12ABE /* CTAssetsViewControllerTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08071A37814400A12ABE /* CTAssetsViewControllerTransition.m */; };
 		667D08FC1A37814500A12ABE /* NSDateFormatter+timeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08091A37814400A12ABE /* NSDateFormatter+timeIntervalFormatter.m */; };
 		667D08FD1A37814500A12ABE /* DetailViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08111A37814400A12ABE /* DetailViewItem.m */; };
-		667D08FE1A37814500A12ABE /* FeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08141A37814400A12ABE /* FeedTableViewCell.m */; };
 		667D08FF1A37814500A12ABE /* UIView+GradientMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08171A37814400A12ABE /* UIView+GradientMask.m */; };
 		667D09001A37814500A12ABE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D081A1A37814400A12ABE /* UIImage+ImageEffects.m */; };
 		667D09011A37814500A12ABE /* PhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D081D1A37814400A12ABE /* PhotoPicker.m */; };
@@ -150,6 +150,8 @@
 		0FCFBBB21B70980E008FC34D /* MediaFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFeedController.m; sourceTree = "<group>"; };
 		0FCFBBB41B7098B4008FC34D /* MediaFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFeedCell.h; sourceTree = "<group>"; };
 		0FCFBBB51B7098B4008FC34D /* MediaFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFeedCell.m; sourceTree = "<group>"; };
+		0FD4E3431B71E3D80044D466 /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
+		0FD4E3441B71E3D80044D466 /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 		0FE8FF881B6F17E100753719 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		2AFB430719EA664E0004BA9B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		5E8AA6EC18FCAED600C99D9F /* Zazz-iphone-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Zazz-iphone-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,8 +203,6 @@
 		667D080E1A37814400A12ABE /* UIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIView.h; sourceTree = "<group>"; };
 		667D08101A37814400A12ABE /* DetailViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewItem.h; sourceTree = "<group>"; };
 		667D08111A37814400A12ABE /* DetailViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewItem.m; sourceTree = "<group>"; };
-		667D08131A37814400A12ABE /* FeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedTableViewCell.h; sourceTree = "<group>"; };
-		667D08141A37814400A12ABE /* FeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewCell.m; sourceTree = "<group>"; };
 		667D08161A37814400A12ABE /* UIView+GradientMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GradientMask.h"; sourceTree = "<group>"; };
 		667D08171A37814400A12ABE /* UIView+GradientMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GradientMask.m"; sourceTree = "<group>"; };
 		667D08191A37814400A12ABE /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
@@ -514,7 +514,6 @@
 				667D07E81A37814400A12ABE /* CTAssetsPickerController */,
 				667D080A1A37814400A12ABE /* Customs */,
 				667D080F1A37814400A12ABE /* DetailViewItem */,
-				667D08121A37814400A12ABE /* FeedTableViewCell */,
 				667D08151A37814400A12ABE /* GradientMask */,
 				667D08181A37814400A12ABE /* ImageEffects */,
 				667D081B1A37814400A12ABE /* PhotoPicker */,
@@ -593,15 +592,6 @@
 				667D08111A37814400A12ABE /* DetailViewItem.m */,
 			);
 			path = DetailViewItem;
-			sourceTree = "<group>";
-		};
-		667D08121A37814400A12ABE /* FeedTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				667D08131A37814400A12ABE /* FeedTableViewCell.h */,
-				667D08141A37814400A12ABE /* FeedTableViewCell.m */,
-			);
-			path = FeedTableViewCell;
 			sourceTree = "<group>";
 		};
 		667D08151A37814400A12ABE /* GradientMask */ = {
@@ -1184,6 +1174,8 @@
 			children = (
 				BEBB09CF1B65F1BF00A621B9 /* FeedTableViewController.h */,
 				BEBB09D01B65F1BF00A621B9 /* FeedTableViewController.m */,
+				0FD4E3431B71E3D80044D466 /* FeedTableViewCell.h */,
+				0FD4E3441B71E3D80044D466 /* FeedTableViewCell.m */,
 			);
 			path = FeedTableViewController;
 			sourceTree = "<group>";
@@ -1437,7 +1429,6 @@
 				BECE97371B70B13A00B0E7D2 /* FwiCacheFolder.m in Sources */,
 				BE0321CD1B69FD1A0028A691 /* BaseFormController.m in Sources */,
 				667D091A1A37814500A12ABE /* ZazzPhoto.m in Sources */,
-				667D08FE1A37814500A12ABE /* FeedTableViewCell.m in Sources */,
 				667D092D1A37814500A12ABE /* RSKTouchView.m in Sources */,
 				BEBB09F61B65F1BF00A621B9 /* HomeViewController.m in Sources */,
 				BEBB09FB1B65F1BF00A621B9 /* NotificationViewController.m in Sources */,
@@ -1475,6 +1466,7 @@
 				667D08EF1A37814500A12ABE /* ALAssetsGroup+isEqual.m in Sources */,
 				667D09101A37814500A12ABE /* Profile.m in Sources */,
 				667D08F81A37814500A12ABE /* CTAssetsSupplementaryView.m in Sources */,
+				0FD4E3451B71E3D80044D466 /* FeedTableViewCell.m in Sources */,
 				BE6043CB1B67614F00B9B84F /* SVIndefiniteAnimatedView.m in Sources */,
 				667D08F01A37814500A12ABE /* CTAssetItemViewController.m in Sources */,
 				667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */,
