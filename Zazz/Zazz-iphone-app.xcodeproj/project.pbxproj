@@ -4,9 +4,7 @@
 	classes = {
 	};
 	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
+	objects = ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"gin PBXBuildFile section */
 		0DB12D361922FA20001E9E26 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DB12D351922FA20001E9E26 /* QuartzCore.framework */; };
 		0FCFBBB31B70980E008FC34D /* MediaFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFBBB21B70980E008FC34D /* MediaFeedController.m */; };
 		0FCFBBB61B7098B4008FC34D /* MediaFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCFBBB51B7098B4008FC34D /* MediaFeedCell.m */; };
@@ -93,6 +91,8 @@
 		667D093D1A37814500A12ABE /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D08BD1A37814500A12ABE /* UIImageView+WebCache.m */; };
 		667D094E1A379D9B00A12ABE /* ZazzRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D094D1A379D9B00A12ABE /* ZazzRegister.m */; };
 		667D0A1B1A38F8F100A12ABE /* ZazzSendFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */; };
+		BE01DC7F1B6A312700708976 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE01DC7E1B6A312700708976 /* FacebookSDK.framework */; };
+		BE01DC821B6A334400708976 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE01DC801B6A334400708976 /* Main_iPad.storyboard */; };
 		BE0321C11B69C8A30028A691 /* libFwiCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321BF1B69C8A30028A691 /* libFwiCore.a */; };
 		BE0321C21B69C8A30028A691 /* libFwiData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321C01B69C8A30028A691 /* libFwiData.a */; };
 		BE0321C61B69CD000028A691 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0321C51B69CD000028A691 /* libz.1.2.5.dylib */; };
@@ -318,6 +318,8 @@
 		667D094D1A379D9B00A12ABE /* ZazzRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzRegister.m; sourceTree = "<group>"; };
 		667D0A191A38F8F100A12ABE /* ZazzSendFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZazzSendFollow.h; sourceTree = "<group>"; };
 		667D0A1A1A38F8F100A12ABE /* ZazzSendFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZazzSendFollow.m; sourceTree = "<group>"; };
+		BE01DC7E1B6A312700708976 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
+		BE01DC811B6A334400708976 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		BE0321BF1B69C8A30028A691 /* libFwiCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFwiCore.a; path = "../FwiCore/build/Debug-iphoneos/libFwiCore.a"; sourceTree = "<group>"; };
 		BE0321C01B69C8A30028A691 /* libFwiData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libFwiData.a; path = "../FwiData/build/Debug-iphoneos/libFwiData.a"; sourceTree = "<group>"; };
 		BE0321C51B69CD000028A691 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
@@ -407,6 +409,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE01DC7F1B6A312700708976 /* FacebookSDK.framework in Frameworks */,
 				BE0321DC1B6A24E40028A691 /* SystemConfiguration.framework in Frameworks */,
 				BE0321DA1B6A24DE0028A691 /* Security.framework in Frameworks */,
 				0FE8FF891B6F17E100753719 /* FacebookSDK.framework in Frameworks */,
@@ -427,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				2AFB430619EA664E0004BA9B /* Main_iPhone.storyboard */,
+				BE01DC801B6A334400708976 /* Main_iPad.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -458,6 +462,7 @@
 				5E8AA6EF18FCAED600C99D9F /* Foundation.framework */,
 				0DB12D351922FA20001E9E26 /* QuartzCore.framework */,
 				5E8AA6F118FCAED600C99D9F /* CoreGraphics.framework */,
+				BE01DC7E1B6A312700708976 /* FacebookSDK.framework */,
 				BE0321BF1B69C8A30028A691 /* libFwiCore.a */,
 				BE0321C01B69C8A30028A691 /* libFwiData.a */,
 				BE0321C51B69CD000028A691 /* libz.1.2.5.dylib */,
@@ -1352,7 +1357,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Hasan Serdar ÇINAR";
+				ORGANIZATIONNAME = "Mitchell Sorkin";
 				TargetAttributes = {
 					5E8AA6EB18FCAED600C99D9F = {
 						DevelopmentTeam = KWHKZ7NN2A;
@@ -1385,6 +1390,7 @@
 				BEBB0A271B66082400A621B9 /* Roboto-Thin.ttf in Resources */,
 				BE6043C11B673F8E00B9B84F /* Images.xcassets in Resources */,
 				BE6043CF1B67616300B9B84F /* SVProgressHUD.bundle in Resources */,
+				BE01DC821B6A334400708976 /* Main_iPad.storyboard in Resources */,
 				BEBB0A241B66082400A621B9 /* Roboto-Medium.ttf in Resources */,
 				BEBB0A201B66082400A621B9 /* Roboto-BoldItalic.ttf in Resources */,
 				667D08F51A37814500A12ABE /* CTAssetsPicker.xcassets in Resources */,
@@ -1537,6 +1543,14 @@
 				5E8AA6F918FCAED600C99D9F /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BE01DC801B6A334400708976 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE01DC811B6A334400708976 /* Base */,
+			);
+			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
