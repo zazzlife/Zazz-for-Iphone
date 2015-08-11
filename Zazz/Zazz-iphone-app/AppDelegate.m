@@ -86,7 +86,6 @@
                     }];
 }
 
-
 #pragma mark - Cleanup memory
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -95,7 +94,6 @@
     [super dealloc];
 #endif
 }
-
 
 #pragma mark - Application's lifecycle
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -113,12 +111,10 @@
     [FBSession.activeSession close];
 }
 
-
 #pragma mark - Class's properties
 - (NSInteger)osVersion {
     return [[[UIDevice currentDevice] systemVersion] integerValue];
 }
-
 
 #pragma mark - Class's public methods
 - (void)presentAlertWithTitle:(NSString *)title message:(NSString *)message {
@@ -144,7 +140,6 @@
         });
     }
 }
-
 
 #pragma mark - Class's private methods
 - (void)_customAppearance {
@@ -224,6 +219,5 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     _alertView = nil;
 }
-
 
 @end

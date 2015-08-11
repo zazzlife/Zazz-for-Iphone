@@ -71,16 +71,12 @@ PhotoPicker* _activePicker;
     [super viewDidLoad];
     //[self _visualize];
     
-    //    //URL profile Photo
-    //    NSURL *url = [NSURL URLWithString:@"http://bestinspired.com/wp-content/uploads/2015/05/Nature-Wallpaper2.jpg"];
-    //    [_profileView downloadImageFromUrl:url];
-    
     [self.scrollView setScrollsToTop:false];
     [self.scrollView setAlwaysBounceVertical:false];
-    if(!self.user_id)
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMe:) name:@"gotMe" object:nil];
-    if(!self._profile)
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotProfile:) name:@"gotProfile" object:nil];
+//    if(!self.user_id)
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotMe:) name:@"gotMe" object:nil];
+//    if(!self._profile)
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gotProfile:) name:@"gotProfile" object:nil];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -88,20 +84,23 @@ PhotoPicker* _activePicker;
     
     //    [self scrollViewDidScroll:self.feedTableViewController.tableView];
 }
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
     // Only send request when user is authenticated
     if ([kPreferences accessToken]) {
-        __autoreleasing NSString *urlString = [NSString stringWithFormat:_g_ServiceProfile, _g_Hostname, [kPreferences currentUsername]];
+        __autoreleasing NSString *urlString = [NSString stringWithFormat:_g_ServiceProfile, _g_Hostname, [kPreferences currentProfileId]];
         __autoreleasing NSURL *url = [NSURL URLWithString:urlString];
+        
+        NSLog(@"Profile ID: %@", [kPreferences currentProfileId]);
         
         __autoreleasing FwiRequest *request = [kNetworkManager prepareRequestWithURL:url method:kMethodType_Get params:nil];
         
         [SVProgressHUD showWithStatus:kText_Loading];
         [kNetworkManager sendRequest:request handleError:YES completion:^(FwiJson *responseMessage, NSError *error, FwiNetworkStatus statusCode) {
             if (FwiNetworkStatusIsSuccces(statusCode)) {
-                //DLog(@"%@", responseMessage);
+                DLog(@"%@", responseMessage);
             }
             
             [SVProgressHUD dismiss];

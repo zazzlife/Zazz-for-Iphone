@@ -33,7 +33,6 @@
     [self.profilePhoto setImageWithURL:[NSURL URLWithString:user.photoUrl]];
     [self.profilePhoto.layer setCornerRadius:50];
     [self.profilePhoto.layer setMasksToBounds:YES];
-    
 }
 
 -(IBAction) showNextView:(UIButton*)button{

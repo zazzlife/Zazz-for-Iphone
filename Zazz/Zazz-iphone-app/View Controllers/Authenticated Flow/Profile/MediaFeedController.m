@@ -131,13 +131,14 @@ static NSString * const _Identifier = @"Cell";
     return 1;
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    return 1;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     __autoreleasing MediaFeedCell *cell = (MediaFeedCell *)[collectionView dequeueReusableCellWithReuseIdentifier:_Identifier forIndexPath:indexPath];
     __autoreleasing NSURL *url = [NSURL URLWithString:@"http://bestinspired.com/wp-content/uploads/2015/05/Nature-Wallpaper2.jpg"];
     
     [cell visualizeCellWithImageUrl:url];
+    
     return cell;
 }
 

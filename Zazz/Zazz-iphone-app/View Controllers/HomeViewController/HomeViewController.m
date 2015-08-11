@@ -266,7 +266,6 @@ float FILTER_VIEW_PADDING = 7;
     [self.feedTableViewController.tableView reloadData];
 }
 
-
 #pragma mark - CFTabBarViewDelegate method
 -(void)setViewHidden:(BOOL)hidden{
     [self.view.superview setHidden:hidden];
@@ -301,7 +300,6 @@ float FILTER_VIEW_PADDING = 7;
         [self.centerScrollView setContentOffset:CGPointMake(0, CGRectGetMaxY(self.filterView.frame))];
     }
 }
-
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if(![segue.identifier isEqualToString:@"embedFeedViewController"]) return;

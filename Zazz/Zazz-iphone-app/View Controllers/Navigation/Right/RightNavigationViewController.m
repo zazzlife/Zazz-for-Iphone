@@ -42,13 +42,14 @@ NSMutableSet* selectedCellIndexies;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.categories count];
+    return 10;
+    //return [self.categories count];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
-    bool active = [(HomeViewController*)self.parentViewController setActiveCategory:category.category_id];
-    [self tableViewCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath setSelected:active];
+//    CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
+//    bool active = [(HomeViewController*)self.parentViewController setActiveCategory:category.category_id];
+//    [self tableViewCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath setSelected:active];
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -57,22 +58,22 @@ NSMutableSet* selectedCellIndexies;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    UIImageView* imageView = (UIImageView*)[cell viewWithTag:1];
-    UILabel* name = (UILabel*)[cell viewWithTag:2];
-    UILabel* talking = (UILabel*)[cell viewWithTag:3];
-    UIColor* textColor = [UIColor whiteColor];
-    [name setTextColor:textColor];
-    [talking setTextColor:textColor];
-    
-    CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
-    [imageView setImage:[UIImage imageNamed:[category getIconName] withColor:[UIColor colorFromHexString:COLOR_ZAZZ_WHITE]]];
-    [imageView setRestorationIdentifier:[category getIconName]];
-    [name setText:category.name];
-    [talking setText:[NSString stringWithFormat:@"%d talking about this",category.userCount]];
-    [cell setSelectionStyle:UITableViewCellEditingStyleNone];
-    if([selectedCellIndexies containsObject:[NSNumber numberWithLong:indexPath.row]]){
-        [self tableViewCell:cell atIndexPath:indexPath setSelected:true];
-    }
+//    UIImageView* imageView = (UIImageView*)[cell viewWithTag:1];
+//    UILabel* name = (UILabel*)[cell viewWithTag:2];
+//    UILabel* talking = (UILabel*)[cell viewWithTag:3];
+//    UIColor* textColor = [UIColor whiteColor];
+//    [name setTextColor:textColor];
+//    [talking setTextColor:textColor];
+//    
+//    CategoryStat* category = [self.categories objectAtIndex:indexPath.row];
+//    [imageView setImage:[UIImage imageNamed:[category getIconName] withColor:[UIColor colorFromHexString:COLOR_ZAZZ_WHITE]]];
+//    [imageView setRestorationIdentifier:[category getIconName]];
+//    [name setText:category.name];
+//    [talking setText:[NSString stringWithFormat:@"%d talking about this",category.userCount]];
+//    [cell setSelectionStyle:UITableViewCellEditingStyleNone];
+//    if([selectedCellIndexies containsObject:[NSNumber numberWithLong:indexPath.row]]){
+//        [self tableViewCell:cell atIndexPath:indexPath setSelected:true];
+//    }
     return cell;
 }
 

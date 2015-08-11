@@ -303,7 +303,7 @@ NSArray* notifications;
     [self endRefreshView];
 }
 -(void)endRefreshView{
-    NSLog(@"gotZazzFollowRequests: %lu",[requests count]);
+    NSLog(@"gotZazzFollowRequests: %lu",(unsigned long)[requests count]);
     [self.tableViewController.refreshControl endRefreshing];
     [self.tableViewController.refreshControl setAttributedTitle:[[NSAttributedString alloc] initWithString:@"Pull To Update"]];
     [self.tableViewController.tableView reloadData];

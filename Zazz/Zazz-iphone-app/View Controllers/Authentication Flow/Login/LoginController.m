@@ -106,7 +106,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 }
 
-
 #pragma mark - View's key pressed event handlers
 - (IBAction)keyPressed:(id)sender {
     if (sender == _loginButton) {
@@ -130,15 +129,19 @@
                                                  @"username":username,
                                                  @"password":password,
                                                  @"scope":@"full"};
+        
         __autoreleasing NSString *urlString  = [NSString stringWithFormat:_g_ServiceLogin, _g_Hostname];
         __autoreleasing FwiRequest *request  = [kNetworkManager prepareRequestWithURL:[NSURL URLWithString:urlString] method:kMethodType_Post params:params];
         
         [SVProgressHUD showWithStatus:kText_Loading];
+        
         [kNetworkManager sendRequest:request handleError:YES completion:^(FwiJson *responseMessage, NSError *error, FwiNetworkStatus statusCode) {
             [SVProgressHUD dismiss];
             
             if (FwiNetworkStatusIsSuccces(statusCode)) {
                 [kPreferences setCurrentUsername:[_usernameTextField.text trim]];
+                
+                [kPreferences setCurrentProfileId:[[[responseMessage jsonWithPath:@"userId"] getNumber] description]];
                 [kPreferences setTokenType:[[responseMessage jsonWithPath:@"token_type"] getString]];
                 [kPreferences setAccessToken:[[responseMessage jsonWithPath:@"access_token"] getString]];
                 [kPreferences setRefreshToken:[[responseMessage jsonWithPath:@"refresh_token"] getString]];
@@ -200,6 +203,5 @@
     }
     return YES;
 }
-
 
 @end

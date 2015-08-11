@@ -146,6 +146,8 @@
             
             if (FwiNetworkStatusIsSuccces(statusCode)) {
                 [kPreferences setCurrentUsername:_info[@"username"]];
+                
+                [kPreferences setCurrentProfileId:[[[responseMessage jsonWithPath:@"userId"] getNumber] description]];
                 [kPreferences setTokenType:[[responseMessage jsonWithPath:@"token_type"] getString]];
                 [kPreferences setAccessToken:[[responseMessage jsonWithPath:@"access_token"] getString]];
                 [kPreferences setRefreshToken:[[responseMessage jsonWithPath:@"refresh_token"] getString]];
