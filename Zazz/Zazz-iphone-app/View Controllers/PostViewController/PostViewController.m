@@ -69,7 +69,11 @@ int active_action = -1;
         }
         case ACTION_VIDEO:
             NSLog(@"video");
+            break;
         case ACTION_POST:
+            NSLog(@"post");
+            [self post];
+            break;
         default:{
             break;
         }
@@ -77,7 +81,6 @@ int active_action = -1;
     
     [UIView setAnimationsEnabled:true];
     [[[AppDelegate getAppDelegate] navController] pushViewController:createCtrl animated:true];
-    
 }
 
 #pragma mark - CFTabBarViewDelegate method
@@ -92,6 +95,18 @@ int active_action = -1;
         //hiding
         [self.view setBackgroundColor:[UIColor clearColor]];
         [self.postView setHidden:true];
+    }
+}
+
+#pragma mark - perform segue
+-(void)post
+{
+    NSLog(@"request to present post 1");
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(postViewControllerDidRequestToPresentPost:)]) {
+        [_delegate postViewControllerDidRequestToPresentPost:self];
+        
+        NSLog(@"request to present post 2");
     }
 }
 

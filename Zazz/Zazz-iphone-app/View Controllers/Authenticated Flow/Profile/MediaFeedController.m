@@ -36,7 +36,6 @@ static NSString * const _Identifier = @"Cell";
     return self;
 }
 
-
 #pragma mark - Cleanup memory
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -49,14 +48,10 @@ static NSString * const _Identifier = @"Cell";
 #endif
 }
 
-
 #pragma mark - View's lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self _visualize];
-    
-    
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -72,12 +67,10 @@ static NSString * const _Identifier = @"Cell";
     [super viewDidDisappear:animated];
 }
 
-
 #pragma mark - View's memory handler
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
 
 #pragma mark - View's orientation handler
 - (BOOL)shouldAutorotate {
@@ -93,7 +86,6 @@ static NSString * const _Identifier = @"Cell";
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
-
 #pragma mark - View's status handler
 - (BOOL)prefersStatusBarHidden {
     return NO;
@@ -102,17 +94,13 @@ static NSString * const _Identifier = @"Cell";
     return UIStatusBarStyleDefault;
 }
 
-
 #pragma mark - View's transition event handler
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 }
 
-
 #pragma mark - Class's properties
 
-
 #pragma mark - Class's public methods
-
 
 #pragma mark - Class's private methods
 - (void)_init {
@@ -122,9 +110,7 @@ static NSString * const _Identifier = @"Cell";
 - (void)_visualize {
 }
 
-
 #pragma mark - Class's notification handlers
-
 
 #pragma mark - UICollectionViewDataSource's members
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -133,6 +119,7 @@ static NSString * const _Identifier = @"Cell";
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 1;
 }
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     __autoreleasing MediaFeedCell *cell = (MediaFeedCell *)[collectionView dequeueReusableCellWithReuseIdentifier:_Identifier forIndexPath:indexPath];
     __autoreleasing NSURL *url = [NSURL URLWithString:@"http://bestinspired.com/wp-content/uploads/2015/05/Nature-Wallpaper2.jpg"];
@@ -142,11 +129,9 @@ static NSString * const _Identifier = @"Cell";
     return cell;
 }
 
-
 #pragma mark - UICollectionViewDelegate's members
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
 }
-
 
 #pragma mark - UICollectionViewDelegateFlowLayout's members
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -158,6 +143,5 @@ static NSString * const _Identifier = @"Cell";
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
     return 0.0f;
 }
-
 
 @end

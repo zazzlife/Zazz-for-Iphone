@@ -41,7 +41,7 @@ UIView* tempHelper;
             continue;
         UIButton* category;
         CategoryStat* catStat = [[CategoryStat alloc] init];
-        [catStat setCategory_id:[NSString stringWithFormat:@"%lu",category.tag]];
+        [catStat setCategory_id:[NSString stringWithFormat:@"%lu",(long)category.tag]];
         NSString* catName = [catStat getIconName];
         UIImage* categoryImage = [UIImage imageNamed:catName withColor:[UIColor colorFromHexString:COLOR_ZAZZ_BLACK]];
         [(UIButton*)category setRestorationIdentifier:catName];
@@ -69,8 +69,6 @@ id _activePicker = nil;
     [self.postField becomeFirstResponder];
 }
 
-
-
 - (IBAction)hideKeyboard:(UIBarButtonItem *)sender {
     [self.postField resignFirstResponder];
 }
@@ -80,7 +78,7 @@ id _activePicker = nil;
     UIView* categoriesView = [self.view subviewWithRestorationIdentifier:@"categories"];
     for(UIView* category in categoriesView.subviews){
         if([category isKindOfClass:[UIButton class]] && [(UIButton*)category isSelected] ){
-            [ids addObject:[NSString stringWithFormat:@"%ld",category.tag]];
+            [ids addObject:[NSString stringWithFormat:@"%ld",(long)category.tag]];
         }
     }
     return ids;

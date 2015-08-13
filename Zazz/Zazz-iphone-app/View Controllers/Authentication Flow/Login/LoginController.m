@@ -177,7 +177,6 @@
     _passwordTextField.background = nil;
 }
 
-
 #pragma mark - Class's notification handlers
 - (void)gotAuthError:(NSNotification*)notif {
     if (![notif.name isEqualToString:@"gotAuthError"]) return;
@@ -190,7 +189,6 @@
     if (![notif.name isEqualToString:@"gotAuthToken"]) return;
     [self performSegueWithIdentifier:@"loginComplete" sender:self];
 }
-
 
 #pragma mark - UITextFieldDelegate's members
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {

@@ -54,7 +54,6 @@ BOOL enabled = true;
     [self.tabBar setHidden:false];
     CGRect tabBarFrame = self.tabBar.frame;
     [AppDelegate removeZazzBackgroundLogo];
-    
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -77,7 +76,7 @@ BOOL enabled = true;
     
     switch(sender.tag){
         case 2://post
-            [postView setViewHidden:false];
+//            [postView setViewHidden:false];
             _activeTagView = TAG_POST_VIEW;
             
             break;
@@ -90,7 +89,9 @@ BOOL enabled = true;
             profileView.view.hidden = NO;
             profileView.view.alpha = 0.0f;
             
-            [UIView animateWithDuration:0.1f
+            _activeTagView = TAG_PROFILE_VIEW;
+            
+            [UIView animateWithDuration:0.3f
                              animations:^{
                                  postView.view.alpha = 0.0f;
                                  profileView.view.alpha = 1.0f;
@@ -100,29 +101,11 @@ BOOL enabled = true;
                                  postView.view.hidden = YES;
                                  homeView.view.hidden = YES;
                                  
-                                 _activeTagView = TAG_PROFILE_VIEW;
                              }];
             
             break;
         case 1://feed
             
-            homeView.view.hidden = NO;
-            homeView.view.alpha = 0.0f;
-            
-            [UIView animateWithDuration:0.1f
-                             animations:^{
-                                 postView.view.alpha = 0.0f;
-                                 profileView.view.alpha = 0.0f;
-                                 homeView.view.alpha = 1.0f;
-                                 
-                             }
-                             completion:^(BOOL finished) {
-                                 postView.view.hidden = YES;
-                                 profileView.view.hidden = YES;
-                                 
-                                 _activeTagView = TAG_FEED_VIEW;
-                             }];
-            //break;
         default:
             //            [postView setViewHidden:true];
             //            [profileView setViewHidden:true];
@@ -132,7 +115,9 @@ BOOL enabled = true;
             homeView.view.hidden = NO;
             homeView.view.alpha = 0.0f;
             
-            [UIView animateWithDuration:0.1f
+            _activeTagView = TAG_FEED_VIEW;
+            
+            [UIView animateWithDuration:0.3f
                              animations:^{
                                  postView.view.alpha = 0.0f;
                                  profileView.view.alpha = 0.0f;
@@ -143,12 +128,10 @@ BOOL enabled = true;
                                  postView.view.hidden = YES;
                                  profileView.view.hidden = YES;
                                  
-                                 _activeTagView = TAG_FEED_VIEW;
                              }];
             
             break;
     }
-    
 }
 
 @end

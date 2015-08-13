@@ -10,6 +10,7 @@
 #import "ZazzApi.h"
 #import "CFTabBarController.h"
 #import "FeedTableViewController.h"
+#import "PostViewController.h"
 
 @interface HomeViewController : UIViewController<CFTabBarViewDelegate, UIScrollViewDelegate, StickyTopScrollViewDelegate>
 

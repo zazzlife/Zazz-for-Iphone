@@ -10,7 +10,6 @@
 -(void)setViewHidden:(BOOL)hidden;
 @end
 
-
 #import <Foundation/Foundation.h>
 
 @interface CFTabBarController : UIViewController

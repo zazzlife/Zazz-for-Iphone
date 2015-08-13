@@ -164,7 +164,6 @@ NSMutableDictionary* _indexPathsToReload;
     NSString *CellIdentifier = @"FeedTableCell";
     FeedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    
     NSURL *url = [NSURL URLWithString:@"http://www.universalwallpapers.com/static/images/nature-background-wallpaper.jpg"];
     
     [cell visualizeCellWithUserImage:url];

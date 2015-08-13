@@ -42,7 +42,7 @@ NSMutableSet* selectedCellIndexies;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 5;
     //return [self.categories count];
 }
 
@@ -80,6 +80,7 @@ NSMutableSet* selectedCellIndexies;
 -(void)tableViewCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath setSelected:(BOOL)selected{
     NSNumber* cellIndex = [NSNumber numberWithLong:indexPath.row];
     UIColor* textColor = [UIColor whiteColor];
+    
     if(selected){
         [selectedCellIndexies addObject:cellIndex];
         textColor = [UIColor colorFromHexString:COLOR_ZAZZ_YELLOW];

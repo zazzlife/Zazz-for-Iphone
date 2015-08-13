@@ -46,10 +46,9 @@
             NSDictionary* userInfo = [NSDictionary dictionaryWithObjects:objects forKeys:keys];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"showNextView" object:notifController userInfo:userInfo];
             
+            NSLog(@"LEFT 1");
         }
     }
-    
 }
-
 
 @end

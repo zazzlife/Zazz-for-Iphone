@@ -93,7 +93,6 @@
     [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 }
 
-
 #pragma mark - View's status handler
 - (BOOL)prefersStatusBarHidden {
     return NO;
@@ -101,7 +100,6 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleDefault;
 }
-
 
 #pragma mark - View's transition event handler
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -114,7 +112,6 @@
         controller.info = _info;
     }
 }
-
 
 #pragma mark - View's key pressed event handlers
 - (IBAction)keyPressed:(id)sender {

@@ -726,7 +726,7 @@ places to party</string>
         <!--Post View Controller-->
         <scene sceneID="R4b-Mx-xyD">
             <objects>
-                <viewController id="jgI-au-LRn" customClass="PostViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostViewController" id="jgI-au-LRn" customClass="PostViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F3H-Ai-h2M"/>
                         <viewControllerLayoutGuide type="bottom" id="LXu-y2-Owj"/>
@@ -749,7 +749,7 @@ places to party</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmF-1v-zdh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="3930"/>
+            <point key="canvasLocation" x="-446" y="2476"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AmU-df-n1a">
@@ -1170,6 +1170,9 @@ places to party</string>
                                                 <state key="normal" title="     Events" image="Calendar">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="showNextView:" destination="9dM-CA-8wr" eventType="touchUpInside" id="Vdd-dU-MpP"/>
+                                                </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Circle" translatesAutoresizingMaskIntoConstraints="NO" id="ZRa-5J-e8S">
                                                 <rect key="frame" x="21" y="90" width="45" height="45"/>
@@ -1197,7 +1200,7 @@ places to party</string>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Circle" translatesAutoresizingMaskIntoConstraints="NO" id="oqq-RC-EEz">
                                                 <rect key="frame" x="21" y="160" width="45" height="45"/>
                                             </imageView>
-                                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTt-I1-j9c">
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTt-I1-j9c">
                                                 <rect key="frame" x="25" y="168" width="114" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <state key="normal" title="     People" image="People-to-follow">
@@ -1552,6 +1555,7 @@ places to party</string>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="GN7-7u-MY3"/>
                     <connections>
                         <outlet property="keyboardToolbar" destination="wiu-T1-AIk" id="6Br-zt-0yk"/>
                         <outlet property="mainView" destination="gyS-Cy-hZD" id="jFy-FV-JxM"/>
@@ -1560,7 +1564,7 @@ places to party</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ti-2G-e0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="192" y="4294"/>
+            <point key="canvasLocation" x="-836" y="2328"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="GaV-Bl-2ym">
@@ -1601,7 +1605,7 @@ places to party</string>
                                                         <rect key="frame" x="106" y="12" width="106" height="45"/>
                                                     </imageView>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HY5-l0-RWe">
-                                                        <rect key="frame" x="4" y="10" width="50" height="50"/>
+                                                        <rect key="frame" x="4" y="11" width="50" height="50"/>
                                                         <state key="normal" image="left bar icon">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
@@ -1724,9 +1728,18 @@ places to party</string>
                         <outlet property="leftNav" destination="PBV-jL-kPT" id="Rzh-vr-7cm"/>
                         <outlet property="navBar" destination="O7b-1n-2Vm" id="tu9-P6-Gcn"/>
                         <outlet property="rightNav" destination="AvK-pM-lRl" id="ojk-Zn-MZ6"/>
+                        <outlet property="searchDisplayController" destination="nPr-JO-qv6" id="Ser-QT-89z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RQd-oC-OWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="nPr-JO-qv6">
+                    <connections>
+                        <outlet property="delegate" destination="RBc-fh-MYw" id="of9-ZW-ijs"/>
+                        <outlet property="searchContentsController" destination="RBc-fh-MYw" id="CRN-Ac-TDi"/>
+                        <outlet property="searchResultsDataSource" destination="RBc-fh-MYw" id="5UW-V2-7uU"/>
+                        <outlet property="searchResultsDelegate" destination="RBc-fh-MYw" id="BPZ-b1-Ki8"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="963" y="2535"/>
         </scene>
@@ -1821,6 +1834,7 @@ places to party</string>
                         <outlet property="profileButton" destination="gNo-dN-GHm" id="1c4-qL-V6b"/>
                         <outlet property="tabBar" destination="4Bn-D7-dgr" id="8NC-Nr-toI"/>
                         <segue destination="961-x4-DZY" kind="modal" identifier="presentAuthenticationFlow" modalTransitionStyle="crossDissolve" id="7wd-Hr-M3O"/>
+                        <segue destination="L51-ey-Iex" kind="push" identifier="presentShareView" id="iFn-3W-VGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qB-8w-Xr6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2113,7 +2127,7 @@ places to party</string>
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="632" y="4294"/>
+            <point key="canvasLocation" x="-836" y="3016"/>
         </scene>
         <!--Right Navigation View Controller-->
         <scene sceneID="JPy-jf-cVX">
@@ -2129,11 +2143,11 @@ places to party</string>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwl-5G-4Va">
                                 <rect key="frame" x="77" y="20" width="143" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
                                 <color key="textColor" red="0.88922427398989901" green="0.71781039827188164" blue="0.11576163468666466" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="R52-Ac-RXq">
+                            <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="R52-Ac-RXq">
                                 <rect key="frame" x="0.0" y="55" width="240" height="513"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2145,21 +2159,23 @@ places to party</string>
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwa-Zv-f1c">
-                                                    <rect key="frame" x="71" y="2" width="149" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwa-Zv-f1c">
+                                                    <rect key="frame" x="71" y="18" width="149" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="# talking about this" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2Y-hR-3ha">
-                                                    <rect key="frame" x="71" y="20" width="149" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <rect key="frame" x="71" y="35" width="149" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ZazzLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Ex1-QV-PsW">
-                                                    <rect key="frame" x="13" y="3" width="43" height="43"/>
+                                                    <rect key="frame" x="13" y="14" width="43" height="43"/>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -2179,7 +2195,7 @@ places to party</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.14117647058823529" green="0.14117647058823529" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -2240,7 +2256,7 @@ places to party</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="upl-AT-HmV"/>
+        <segue reference="dJf-R3-vZD"/>
         <segue reference="Ot1-7k-b8p"/>
         <segue reference="lA7-tX-wYK"/>
     </inferredMetricsTieBreakers>

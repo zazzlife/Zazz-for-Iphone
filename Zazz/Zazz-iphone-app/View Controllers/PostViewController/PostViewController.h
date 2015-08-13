@@ -27,9 +27,24 @@
 #import "CHTumblrMenuView.h"
 #import "CFTabBarController.h"
 
-@interface PostViewController : UIViewController <CFTabBarViewDelegate>
+
+@protocol PostViewControllerDelegate;
+
+
+@interface PostViewController : UIViewController  {
+}
+
+@property (nonatomic, weak) id<PostViewControllerDelegate> delegate;
 
 @property IBOutlet CHTumblrMenuView* menuView;
 @property IBOutlet UIView* postView;
+
+@end
+
+@protocol PostViewControllerDelegate <NSObject>
+
+@optional
+
+- (void)postViewControllerDidRequestToPresentPost:(PostViewController *)controller;
 
 @end

@@ -1,4 +1,4 @@
-        //
+//
 //  FeedTableViewController.m
 //  Zazz-iphone-app
 //
@@ -17,7 +17,8 @@
 #import "UIView.h"
 #import "UIColor.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <PostViewControllerDelegate> {
+}
 
 @property NSString* active_category_id;
 
@@ -61,7 +62,7 @@ float FILTER_VIEW_PADDING = 7;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    self.view.frame;
+    //self.view.frame;
     [self resetSlidingViews];
     [self scrollViewDidScroll:self.feedTableViewController.tableView];
     [self.filterView.layer setCornerRadius:5];
@@ -113,8 +114,8 @@ float FILTER_VIEW_PADDING = 7;
 }
 
 /**
-    This function handlers adding and removing the active Category from active_category_id. 
-    Returns true if new_category_id was added, false if it was removed.
+ This function handlers adding and removing the active Category from active_category_id.
+ Returns true if new_category_id was added, false if it was removed.
  */
 -(BOOL)setActiveCategory:(NSString*)new_category_id{
     BOOL retVal;
@@ -166,18 +167,17 @@ float FILTER_VIEW_PADDING = 7;
     UIView* tabBar = self.view.superview.superview;
     CGFloat window_width = self.view.window.frame.size.width;
     CGFloat window_height = self.view.window.frame.size.height;
-//    [self.nextView setFrame:CGRectMake(0, 0, window_width, window_height)];
+    //    [self.nextView setFrame:CGRectMake(0, 0, window_width, window_height)];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
-         animations:^(void){
-             [tabBar setFrame:CGRectMake(0, 0, window_width, window_height)];
-//             [self.nextView setFrame:CGRectMake(window_width, 0, window_width, window_height)];
-         }
-         completion:^(BOOL completed){
-//             [self.nextView setHidden:true];
-         }
+                     animations:^(void){
+                         [tabBar setFrame:CGRectMake(0, 0, window_width, window_height)];
+                         //             [self.nextView setFrame:CGRectMake(window_width, 0, window_width, window_height)];
+                     }
+                     completion:^(BOOL completed){
+                         //             [self.nextView setHidden:true];
+                     }
      ];
 }
-
 
 #pragma mark - Interface Builder Actions
 
@@ -187,26 +187,26 @@ float FILTER_VIEW_PADDING = 7;
     UIToolbar* tabBar = [[AppDelegate getAppDelegate] appTabBar].tabBar;
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
-             animations:^(void){
-                 if(!right_active){ //open it
-                     CGRect centerFrame = self.centerNav.frame;
-                     centerFrame.origin.x = -rightNavWidth;
-                     [self.centerNav setFrame:centerFrame];
-                     CGRect rightFrame = self.rightNav.frame;
-                     rightFrame.origin.x = CGRectGetMaxX(centerFrame);
-                     [self.rightNav setFrame:rightFrame];
-                     CGRect tabFrame = tabBar.frame;
-                     tabFrame.origin.x = -rightNavWidth;
-                     [tabBar setFrame:tabFrame];
-                     return;
-                 }
-                 //otherwise close it
-                 [self resetSlidingViews];
-             }
-             completion:^(BOOL completed){
-                 right_active = !right_active;
-//                 [UIView setAnimationsEnabled:NO];
-             }
+                     animations:^(void){
+                         if(!right_active){ //open it
+                             CGRect centerFrame = self.centerNav.frame;
+                             centerFrame.origin.x = -rightNavWidth;
+                             [self.centerNav setFrame:centerFrame];
+                             CGRect rightFrame = self.rightNav.frame;
+                             rightFrame.origin.x = CGRectGetMaxX(centerFrame);
+                             [self.rightNav setFrame:rightFrame];
+                             CGRect tabFrame = tabBar.frame;
+                             tabFrame.origin.x = -rightNavWidth;
+                             [tabBar setFrame:tabFrame];
+                             return;
+                         }
+                         //otherwise close it
+                         [self resetSlidingViews];
+                     }
+                     completion:^(BOOL completed){
+                         right_active = !right_active;
+                         //                 [UIView setAnimationsEnabled:NO];
+                     }
      ];
 }
 
@@ -216,42 +216,42 @@ float FILTER_VIEW_PADDING = 7;
     UIToolbar* tabBar = [[AppDelegate getAppDelegate] appTabBar].tabBar;
     [UIView setAnimationsEnabled:YES];
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
-         animations:^(void){
-             if(!left_active){ //open it
-                 CGRect leftFrame = self.leftNav.frame;
-                 leftFrame.origin.x = 0;
-                 [self.leftNav setFrame:leftFrame];
-                 CGRect centerFrame = self.centerNav.frame;
-                 centerFrame.origin.x = leftNavWidth;
-                 [self.centerNav setFrame:centerFrame];
-                 CGRect tabFrame = tabBar.frame;
-                 tabFrame.origin.x = leftNavWidth;
-                 [tabBar setFrame:tabFrame];
-                 return;
-             }
-             //otherwise close it
-             [self resetSlidingViews];
-         }
-         completion:^(BOOL complete){
-             left_active = !left_active;
-//             [UIView setAnimationsEnabled:NO];
-         }
+                     animations:^(void){
+                         if(!left_active){ //open it
+                             CGRect leftFrame = self.leftNav.frame;
+                             leftFrame.origin.x = 0;
+                             [self.leftNav setFrame:leftFrame];
+                             CGRect centerFrame = self.centerNav.frame;
+                             centerFrame.origin.x = leftNavWidth;
+                             [self.centerNav setFrame:centerFrame];
+                             CGRect tabFrame = tabBar.frame;
+                             tabFrame.origin.x = leftNavWidth;
+                             [tabBar setFrame:tabFrame];
+                             return;
+                         }
+                         //otherwise close it
+                         [self resetSlidingViews];
+                     }
+                     completion:^(BOOL complete){
+                         left_active = !left_active;
+                         //             [UIView setAnimationsEnabled:NO];
+                     }
      ];
 }
 
 -(IBAction)expandFilterCell:(id)sender{
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
-         animations:^(void){
-             float filter_height = FILTER_VIEW_CLOSED_HEIGHT;
-             if(filter_active){
-                 filter_height = FILTER_VIEW_OPEN_HEIGHT;
-             }
-             [self.filterView setFrame:CGRectMake(CGRectGetMinX(self.filterView.frame), CGRectGetMinY(self.filterView.frame), CGRectGetWidth(self.filterView.frame), filter_height)];
-             [self.feedTableViewContainer setFrame:CGRectMake(CGRectGetMinX(self.feedTableViewContainer.frame), CGRectGetMaxY(self.filterView.frame), CGRectGetWidth(self.feedTableViewContainer.frame), CGRectGetHeight(self.feedTableViewContainer.frame))];
-         }
-         completion:^(BOOL completed){
-             filter_active = !filter_active;
-         }
+                     animations:^(void){
+                         float filter_height = FILTER_VIEW_CLOSED_HEIGHT;
+                         if(filter_active){
+                             filter_height = FILTER_VIEW_OPEN_HEIGHT;
+                         }
+                         [self.filterView setFrame:CGRectMake(CGRectGetMinX(self.filterView.frame), CGRectGetMinY(self.filterView.frame), CGRectGetWidth(self.filterView.frame), filter_height)];
+                         [self.feedTableViewContainer setFrame:CGRectMake(CGRectGetMinX(self.feedTableViewContainer.frame), CGRectGetMaxY(self.filterView.frame), CGRectGetWidth(self.feedTableViewContainer.frame), CGRectGetHeight(self.feedTableViewContainer.frame))];
+                     }
+                     completion:^(BOOL completed){
+                         filter_active = !filter_active;
+                     }
      ];
 }
 
@@ -302,11 +302,30 @@ float FILTER_VIEW_PADDING = 7;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if(![segue.identifier isEqualToString:@"embedFeedViewController"]) return;
-    FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
-    [self setFeedTableViewController:feedController];
-    [feedController setScrollDelegate:self];
-    [feedController viewDidEmbed];
+    
+    NSLog(@"PREPARE FOR SEGUE");
+    
+    if ([segue.destinationViewController isKindOfClass:[PostViewController class]]) {
+        __weak PostViewController *controller = (PostViewController *) segue.destinationViewController;
+        controller.delegate = self;
+        NSLog(@"POST VIEW CONTROLLER");
+    }
+    else
+        if ([segue.destinationViewController isKindOfClass:[FeedTableViewController class]]) {
+        __weak FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
+        [self setFeedTableViewController:feedController];
+        [feedController setScrollDelegate:self];
+        [feedController viewDidEmbed];
+        NSLog(@"FEED TABLE VIEW CONTROLLER");
+    }
+}
+
+#pragma mark - PostViewControllerDelegate's members
+- (void)postViewControllerDidRequestToPresentPost:(PostViewController *)controller {
+    
+    NSLog(@"perform Share View");
+    
+    [self performSegueWithIdentifier:kSegue_PresentShareView sender:nil];
 }
 
 @end

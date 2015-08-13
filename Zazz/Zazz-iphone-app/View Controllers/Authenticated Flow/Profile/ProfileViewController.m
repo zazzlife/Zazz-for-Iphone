@@ -81,7 +81,6 @@ PhotoPicker* _activePicker;
 
 -(void)viewWillAppear:(BOOL)animated{
     [self.scrollView setContentOffset:CGPointMake(0, 0)];
-    
     //    [self scrollViewDidScroll:self.feedTableViewController.tableView];
 }
 
