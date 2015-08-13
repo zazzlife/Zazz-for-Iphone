@@ -324,7 +324,6 @@ float FILTER_VIEW_PADDING = 7;
 - (void)postViewControllerDidRequestToPresentPost:(PostViewController *)controller {
     
     NSLog(@"perform Share View");
-    
     [self performSegueWithIdentifier:kSegue_PresentShareView sender:nil];
 }
 
