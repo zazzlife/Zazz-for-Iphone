@@ -101,12 +101,8 @@ int active_action = -1;
 #pragma mark - perform segue
 -(void)post
 {
-    NSLog(@"request to present post 1");
-    
     if (_delegate && [_delegate respondsToSelector:@selector(postViewControllerDidRequestToPresentPost:)]) {
         [_delegate postViewControllerDidRequestToPresentPost:self];
-        
-        NSLog(@"request to present post 2");
     }
 }
 

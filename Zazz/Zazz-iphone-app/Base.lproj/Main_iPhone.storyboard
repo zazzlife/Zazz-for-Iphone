@@ -1834,7 +1834,7 @@ places to party</string>
                         <outlet property="profileButton" destination="gNo-dN-GHm" id="1c4-qL-V6b"/>
                         <outlet property="tabBar" destination="4Bn-D7-dgr" id="8NC-Nr-toI"/>
                         <segue destination="961-x4-DZY" kind="modal" identifier="presentAuthenticationFlow" modalTransitionStyle="crossDissolve" id="7wd-Hr-M3O"/>
-                        <segue destination="L51-ey-Iex" kind="push" identifier="presentShareView" id="iFn-3W-VGc"/>
+                        <segue destination="L51-ey-Iex" kind="modal" identifier="presentShareView" modalTransitionStyle="crossDissolve" id="iFn-3W-VGc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qB-8w-Xr6" userLabel="First Responder" sceneMemberID="firstResponder"/>

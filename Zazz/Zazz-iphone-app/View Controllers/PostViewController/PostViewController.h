@@ -31,7 +31,7 @@
 @protocol PostViewControllerDelegate;
 
 
-@interface PostViewController : UIViewController  {
+@interface PostViewController : UIViewController <CFTabBarViewDelegate> {
 }
 
 @property (nonatomic, weak) id<PostViewControllerDelegate> delegate;

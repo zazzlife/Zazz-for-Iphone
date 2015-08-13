@@ -13,6 +13,13 @@
 #import "ProfileViewController.h"
 #import "UIColor.h"
 
+
+@interface CFTabBarController() <PostViewControllerDelegate> {
+}
+
+@end
+
+
 @implementation CFTabBarController
 
 const int TAG_FEED_VIEW = 1;
@@ -69,6 +76,18 @@ BOOL enabled = true;
         [self didClickBarButton:simButton];
     }
 }
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    NSLog(@"PREPARE FOR SEGUE");
+    
+    if ([segue.destinationViewController isKindOfClass:[PostViewController class]]) {
+        __weak PostViewController *controller = (PostViewController *) segue.destinationViewController;
+        controller.delegate = self;
+        NSLog(@"POST VIEW CONTROLLER");
+    }
+}
+
 
 -(IBAction)didClickBarButton:(UIBarButtonItem*)sender{
     
@@ -149,5 +168,14 @@ BOOL enabled = true;
     }
     
 }
+
+
+#pragma mark - PostViewControllerDelegate's members
+- (void)postViewControllerDidRequestToPresentPost:(PostViewController *)controller {
+    
+    NSLog(@"perform Share View");
+    [self performSegueWithIdentifier:kSegue_PresentShareView sender:nil];
+}
+
 
 @end

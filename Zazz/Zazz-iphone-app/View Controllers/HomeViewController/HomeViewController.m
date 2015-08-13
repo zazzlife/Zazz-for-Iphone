@@ -17,7 +17,7 @@
 #import "UIView.h"
 #import "UIColor.h"
 
-@interface HomeViewController () <PostViewControllerDelegate> {
+@interface HomeViewController ()  {
 }
 
 @property NSString* active_category_id;
@@ -320,11 +320,5 @@ float FILTER_VIEW_PADDING = 7;
     }
 }
 
-#pragma mark - PostViewControllerDelegate's members
-- (void)postViewControllerDidRequestToPresentPost:(PostViewController *)controller {
-    
-    NSLog(@"perform Share View");
-    [self performSegueWithIdentifier:kSegue_PresentShareView sender:nil];
-}
 
 @end
