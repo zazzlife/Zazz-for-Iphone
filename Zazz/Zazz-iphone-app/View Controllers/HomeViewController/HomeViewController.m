@@ -171,10 +171,10 @@ float FILTER_VIEW_PADDING = 7;
     [UIView animateWithDuration:SIDE_DRAWER_ANIMATION_DURATION
                      animations:^(void){
                          [tabBar setFrame:CGRectMake(0, 0, window_width, window_height)];
-                         //             [self.nextView setFrame:CGRectMake(window_width, 0, window_width, window_height)];
+                         //[self.nextView setFrame:CGRectMake(window_width, 0, window_width, window_height)];
                      }
                      completion:^(BOOL completed){
-                         //             [self.nextView setHidden:true];
+                         //[self.nextView setHidden:true];
                      }
      ];
 }
@@ -302,23 +302,18 @@ float FILTER_VIEW_PADDING = 7;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    NSLog(@"PREPARE FOR SEGUE");
-    
     if ([segue.destinationViewController isKindOfClass:[PostViewController class]]) {
         __weak PostViewController *controller = (PostViewController *) segue.destinationViewController;
         controller.delegate = self;
-        NSLog(@"POST VIEW CONTROLLER");
-    }
-    else
-        if ([segue.destinationViewController isKindOfClass:[FeedTableViewController class]]) {
+        
+        NSLog(@"prepare for segue");
+        
+    } else if ([segue.destinationViewController isKindOfClass:[FeedTableViewController class]]) {
         __weak FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
         [self setFeedTableViewController:feedController];
         [feedController setScrollDelegate:self];
         [feedController viewDidEmbed];
-        NSLog(@"FEED TABLE VIEW CONTROLLER");
     }
 }
-
 
 @end

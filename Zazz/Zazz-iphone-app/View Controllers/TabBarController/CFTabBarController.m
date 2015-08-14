@@ -6,19 +6,16 @@
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import "CFTabBarController.h"
-#import "PostViewController.h"
-#import "HomeViewController.h"
-#import "ProfileViewController.h"
-#import "UIColor.h"
+//#import "AppDelegate.h"
+//#import "CFTabBarController.h"
+//#import "PostViewController.h"
+//#import "HomeViewController.h"
+//#import "ProfileViewController.h"
+//#import "UIColor.h"
 
-
-@interface CFTabBarController() <PostViewControllerDelegate> {
-}
-
+/*
+@interface CFTabBarController() <PostViewControllerDelegate> {}
 @end
-
 
 @implementation CFTabBarController
 
@@ -36,6 +33,9 @@ ProfileViewController* profileView;
 BOOL enabled = true;
 
 -(void)viewDidLoad{
+    
+    [super viewDidLoad];
+    
     FRAME_FULL = [UIApplication sharedApplication].keyWindow.frame;
     FRAME_TABBED = CGRectMake(0, 0, FRAME_FULL.size.width, FRAME_FULL.size.height - self.tabBar.frame.size.height);
     
@@ -53,8 +53,8 @@ BOOL enabled = true;
             homeView = (HomeViewController*)childController;
             continue;
         }
-        if([NSStringFromClass(childController.class) isEqualToString:@"ProfileViewController"]){
-            profileView = (ProfileViewController*)childController;
+        if([NSStringFromClass(childController.class) isEqualToString:@"UINavigationController"]){
+            profileView = (ProfileViewController*)[(UINavigationController *)childController topViewController];
             continue;
         }
     }
@@ -64,6 +64,7 @@ BOOL enabled = true;
 }
 
 -(void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     if (![kPreferences accessToken]) {
         [self performSegueWithIdentifier:kSegue_PresentAuthenticationFlow sender:nil];
     }
@@ -78,13 +79,9 @@ BOOL enabled = true;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    NSLog(@"PREPARE FOR SEGUE");
-    
     if ([segue.destinationViewController isKindOfClass:[PostViewController class]]) {
         __weak PostViewController *controller = (PostViewController *) segue.destinationViewController;
         controller.delegate = self;
-        NSLog(@"POST VIEW CONTROLLER");
     }
 }
 
@@ -105,9 +102,13 @@ BOOL enabled = true;
             //            [profileView setViewHidden:false];
             //            _activeTagView = TAG_PROFILE_VIEW;
             
-            profileView.view.hidden = NO;
-            profileView.view.alpha = 0.0f;
+//            [profileView setViewHidden:NO];
+//            _activeTagView = TAG_PROFILE_VIEW;
             
+//            profileView.view.hidden = NO;
+//            profileView.view.alpha = 0.0f;
+//            _activeTagView = TAG_PROFILE_VIEW;
+            [profileView setViewHidden:NO];
             [UIView animateWithDuration:0.1f
                              animations:^{
                                  postView.view.alpha = 0.0f;
@@ -117,14 +118,17 @@ BOOL enabled = true;
                              completion:^(BOOL finished) {
                                  postView.view.hidden = YES;
                                  homeView.view.hidden = YES;
-                                 
+                                 profileView.view.hidden = NO;
                                  _activeTagView = TAG_PROFILE_VIEW;
                              }];
             break;
         }
         case 1: { //feed
-            homeView.view.hidden = NO;
-            homeView.view.alpha = 0.0f;
+//            homeView.view.hidden = NO;
+//            homeView.view.alpha = 0.0f;
+            
+            [homeView setViewHidden:NO];
+             _activeTagView = TAG_FEED_VIEW;
             
             [UIView animateWithDuration:0.1f
                              animations:^{
@@ -136,8 +140,11 @@ BOOL enabled = true;
                              completion:^(BOOL finished) {
                                  postView.view.hidden = YES;
                                  profileView.view.hidden = YES;
-                                 
+                                 homeView.view.alpha = 1.0f;
+                                 homeView.view.hidden = NO;
+                                 homeView.view.backgroundColor = [UIColor redColor];
                                  _activeTagView = TAG_FEED_VIEW;
+                                 
                              }];
             break;
         }
@@ -155,7 +162,6 @@ BOOL enabled = true;
                                  postView.view.alpha = 0.0f;
                                  profileView.view.alpha = 0.0f;
                                  homeView.view.alpha = 1.0f;
-                                 
                              }
                              completion:^(BOOL finished) {
                                  postView.view.hidden = YES;
@@ -166,16 +172,12 @@ BOOL enabled = true;
             break;
         }
     }
-    
 }
-
 
 #pragma mark - PostViewControllerDelegate's members
 - (void)postViewControllerDidRequestToPresentPost:(PostViewController *)controller {
-    
-    NSLog(@"perform Share View");
     [self performSegueWithIdentifier:kSegue_PresentShareView sender:nil];
 }
 
-
 @end
+ */

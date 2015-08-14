@@ -34,7 +34,10 @@ UIView* tempHelper;
 }
 
 -(void)viewDidLoad{
+    [super viewDidLoad];
+    
     placeholder = @"Add caption";
+    
     UIView* categoriesView = [self.view subviewWithRestorationIdentifier:@"categories"];
     for(UIView* category in categoriesView.subviews){
         if(![category isKindOfClass:[UIButton class]])
@@ -54,6 +57,7 @@ UIView* tempHelper;
 
 id _activePicker = nil;
 -(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     _activePicker = nil;
     if(self.presentImagePickerOnShow){
         _activePicker = [[PhotoPicker alloc] initWithMediaReceiver:self];
@@ -130,8 +134,9 @@ id _activePicker = nil;
 }
 
 - (IBAction)goBack:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:true];
     [self.view endEditing:YES];
+    // CFTabBarController
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(IBAction)pressedCategory:(UIButton*)sender{
@@ -151,6 +156,7 @@ id _activePicker = nil;
 -(void)setMediaAttachment:(NSArray*)media{
     [self.keyboardToolbar setHidden:false];
     [self.postField becomeFirstResponder];
+    
     NSString* identifier = @"uploadImage";
     UIImageView* thumbView = (UIImageView*)[self.postField.superview subviewWithRestorationIdentifier:identifier];
     if (!media){
@@ -184,7 +190,8 @@ id _activePicker = nil;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton*)sender{
-    [segue.destinationViewController setTag:sender.tag];
+    //    [segue.destinationViewController setTag:sender.tag];
+    
 }
 
 @end

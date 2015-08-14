@@ -19,7 +19,6 @@
 @interface ProfileViewController () {
 }
 
-
 /** Initialize class's private variables. */
 - (void)_init;
 /** Localize UI components. */
@@ -29,14 +28,12 @@
 
 @end
 
-
 @implementation ProfileViewController
 
 @synthesize user_id;
 @synthesize _profile;
 
 PhotoPicker* _activePicker;
-
 
 #pragma mark - Class's constructors
 //- (id)initWithCoder:(NSCoder *)aDecoder {
@@ -55,7 +52,6 @@ PhotoPicker* _activePicker;
 //    return self;
 //}
 
-
 #pragma mark - Cleanup memory
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -64,7 +60,6 @@ PhotoPicker* _activePicker;
     [super dealloc];
 #endif
 }
-
 
 #pragma mark - View's lifecycle
 - (void)viewDidLoad{
