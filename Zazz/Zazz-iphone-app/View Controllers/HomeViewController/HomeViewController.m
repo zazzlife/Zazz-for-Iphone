@@ -306,8 +306,6 @@ float FILTER_VIEW_PADDING = 7;
         __weak PostViewController *controller = (PostViewController *) segue.destinationViewController;
         controller.delegate = self;
         
-        NSLog(@"prepare for segue");
-        
     } else if ([segue.destinationViewController isKindOfClass:[FeedTableViewController class]]) {
         __weak FeedTableViewController* feedController = (FeedTableViewController*)segue.destinationViewController;
         [self setFeedTableViewController:feedController];

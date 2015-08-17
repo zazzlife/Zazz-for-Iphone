@@ -10,8 +10,8 @@
 
 @interface GenericModel : NSObject
 
-@property NSString* _id;
-@property NSString* name;
+@property (nonatomic, copy) NSString* _id;
+@property (nonatomic, copy) NSString* name;
 
 +(GenericModel*)makeGenericModelFromDict:(NSDictionary*)name_dict;
 

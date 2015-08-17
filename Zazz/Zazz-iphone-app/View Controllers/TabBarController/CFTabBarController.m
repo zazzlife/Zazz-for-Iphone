@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Mitchell Sorkin. All rights reserved.
 //
 
-//#import "AppDelegate.h"
-//#import "CFTabBarController.h"
-//#import "PostViewController.h"
-//#import "HomeViewController.h"
-//#import "ProfileViewController.h"
-//#import "UIColor.h"
+#import "AppDelegate.h"
+#import "CFTabBarController.h"
+#import "PostViewController.h"
+#import "HomeViewController.h"
+#import "ProfileViewController.h"
+#import "UIColor.h"
 
-/*
+
 @interface CFTabBarController() <PostViewControllerDelegate> {}
 @end
 
@@ -144,7 +144,7 @@ BOOL enabled = true;
                                  homeView.view.hidden = NO;
                                  homeView.view.backgroundColor = [UIColor redColor];
                                  _activeTagView = TAG_FEED_VIEW;
-                                 
+                
                              }];
             break;
         }
@@ -180,4 +180,4 @@ BOOL enabled = true;
 }
 
 @end
- */
+

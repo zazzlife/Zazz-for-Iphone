@@ -780,49 +780,49 @@ places to party</string>
                         <rect key="frame" x="0.0" y="44" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-Jd-Fyg" userLabel="profileView" customClass="FwiImage">
-                                <rect key="frame" x="15" y="10" width="60" height="60"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jyC-Jd-Fyg" userLabel="profileView" customClass="FwiImage">
+                                <rect key="frame" x="15" y="10" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="BDX-u0-NKw"/>
                                     <constraint firstAttribute="width" constant="60" id="Hz1-CN-ei4"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="changeProfileImageOverlayButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6Z-vX-eTq" userLabel="profileButton">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="changeProfileImageOverlayButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I6Z-vX-eTq" userLabel="profileButton">
                                 <rect key="frame" x="15" y="10" width="60" height="60"/>
-                                <state key="normal">
+                                <state key="normal" image="add icon photo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="changeProfileImage:" destination="00c-U6-IMJ" eventType="touchUpInside" id="Rg9-qT-lge"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KA6-98-1TO" userLabel="fullnameLabel">
-                                <rect key="frame" x="90" y="10" width="82" height="23"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="First Last" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KA6-98-1TO" userLabel="fullnameLabel">
+                                <rect key="frame" x="130" y="10" width="82" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="School" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HuW-78-TTO" userLabel="schoolLabel">
-                                <rect key="frame" x="90" y="38" width="48" height="18"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="School" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HuW-78-TTO" userLabel="schoolLabel">
+                                <rect key="frame" x="130" y="38" width="48" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibl-d8-f3i" userLabel="cityLabel">
-                                <rect key="frame" x="90" y="61" width="27" height="18"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibl-d8-f3i" userLabel="cityLabel">
+                                <rect key="frame" x="130" y="61" width="27" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dwm-4f-QFa" userLabel="fullnameLabel">
-                                <rect key="frame" x="15" y="95" width="86" height="30"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tag Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dwm-4f-QFa" userLabel="fullnameLabel">
+                                <rect key="frame" x="15" y="135" width="86" height="30"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="17"/>
                                 <color key="textColor" red="0.61597079998508042" green="0.62842793367346939" blue="0.022234056094113264" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGB-L9-jqb" userLabel="followButton" customClass="RoundedUIButton">
-                                <rect key="frame" x="185" y="95" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGB-L9-jqb" userLabel="followButton" customClass="RoundedUIButton">
+                                <rect key="frame" x="185" y="135" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.84305245535714279" green="0.79199840390975662" blue="0.23920656635327278" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="eSs-uM-oqp"/>
@@ -832,8 +832,8 @@ places to party</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5a-Eg-wWH" userLabel="infoView">
-                                <rect key="frame" x="0.0" y="135" width="320" height="57"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q5a-Eg-wWH" userLabel="infoView">
+                                <rect key="frame" x="0.0" y="175" width="320" height="57"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25000000000000006" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gSw-Xe-dPO" userLabel="likesCounterLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="106" height="40"/>
@@ -901,15 +901,15 @@ places to party</string>
                                     <constraint firstItem="r6s-2q-zda" firstAttribute="leading" secondItem="gSw-Xe-dPO" secondAttribute="trailing" constant="1" id="xMT-RC-Sfo"/>
                                 </constraints>
                             </view>
-                            <containerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5T-x7-9Zf" userLabel="postView">
-                                <rect key="frame" x="0.0" y="240" width="320" height="240"/>
+                            <containerView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N5T-x7-9Zf" userLabel="postView">
+                                <rect key="frame" x="0.0" y="280" width="320" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="l1V-EV-eRO" kind="embed" identifier="embedProfileFeedViewController" id="UqG-YO-jn2"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="85p-bh-RIP">
-                                <rect key="frame" x="20" y="202" width="280" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="85p-bh-RIP">
+                                <rect key="frame" x="20" y="242" width="280" height="29"/>
                                 <segments>
                                     <segment title="" image="4 boxes yellow"/>
                                     <segment title="" image="user icon"/>
@@ -919,8 +919,8 @@ places to party</string>
                                     <action selector="segmentChanged:" destination="00c-U6-IMJ" eventType="valueChanged" id="3Kt-h5-lD1"/>
                                 </connections>
                             </segmentedControl>
-                            <containerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ddu-ie-v5G" userLabel="mediaView">
-                                <rect key="frame" x="0.0" y="240" width="320" height="240"/>
+                            <containerView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ddu-ie-v5G" userLabel="mediaView">
+                                <rect key="frame" x="0.0" y="280" width="320" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="t5d-pf-eQ2" kind="embed" identifier="embedProfileFeedMediaViewController" id="Cne-Hu-UST"/>
@@ -994,7 +994,7 @@ places to party</string>
             <objects>
                 <tableViewController storyboardIdentifier="FeedTableViewController" id="l1V-EV-eRO" customClass="FeedTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xzr-e9-pEs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FeedTableCell" rowHeight="140" id="CE0-wH-MbP" customClass="FeedTableViewCell">
@@ -1085,7 +1085,7 @@ places to party</string>
             <objects>
                 <collectionViewController storyboardIdentifier="MediaFeedController" autoresizesArchivedViewToFullSize="NO" id="t5d-pf-eQ2" customClass="MediaFeedController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="uDM-Zk-lgU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lfi-ym-iQX">
@@ -2279,6 +2279,7 @@ places to party</string>
         <image name="Turning_Up" width="38" height="38"/>
         <image name="Zazz" width="130" height="40"/>
         <image name="ZazzLogo" width="70" height="70"/>
+        <image name="add icon photo" width="100" height="100"/>
         <image name="beer icon" width="25" height="25"/>
         <image name="feed filter icon (opacity 52%)" width="25" height="25"/>
         <image name="left bar icon" width="50" height="50"/>

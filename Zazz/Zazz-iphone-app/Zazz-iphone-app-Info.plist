@@ -30,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>20150813</string>
+	<string>20150814</string>
 	<key>FacebookAppID</key>
 	<string>433721150040606</string>
 	<key>FacebookDisplayName</key>
@@ -54,8 +54,6 @@
 	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main_iPhone</string>
-	<key>UIMainStoryboardFile~ipad</key>
-	<string>Main_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
